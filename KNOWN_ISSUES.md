@@ -13,3 +13,5 @@ This file describes actual limitations, not substitutes for the verification rep
 - The artifact is ad-hoc signed and has not been notarized. Public distribution also needs corresponding-source/license compliance review for bundled runtimes.
 
 See `verification/REPORT.md` for exact results, blocked checks, and independent review findings. GUI screenshot/automation restrictions must be stated there; a decoded frame is evidence of streaming, not a substitute for a macOS desktop screenshot.
+
+Automatic reconnection waits for full Android readiness. Three failed launches pause automatic retry for that outage; close and launch the app to start a fresh intent. Explicit Restore keeps unavailable saved descriptors pending and requires another Restore action once the device is ready.

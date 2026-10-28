@@ -25,6 +25,9 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var quitting = false
     var pending: [SessionDescriptor] = []
     var previousSerials = Set<String>()
+    var readySerials = Set<String>()
+    var reconnectRetries: [UUID: ReconnectRetry] = [:]
+    var appsDeviceSerial: String?
     var isWrapper: Bool { Bundle.main.url(forResource: "launch", withExtension: "json") != nil || ProcessInfo.processInfo.arguments.contains("--wrapper") }
     var preferredSerial: String? {
         let arguments = ProcessInfo.processInfo.arguments
@@ -116,8 +119,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                 let found = try await discovery.devices()
                 guard !quitting else { return }
                 let connected = Set(found.filter { $0.state == "device" }.map(\.serial))
-                for session in Array(sessions.values) where !connected.contains(session.descriptor.device.serial) && sessionStates[session.descriptor.id] != "disconnected" {
-                    session.stop(); sessionStates[session.descriptor.id] = "disconnected"
+                for session in Array(sessions.values) where !connected.contains(session.descriptor.device.serial) {
+                    let id = session.descriptor.id
+                    if sessionStates[id] != "disconnected" || previousSerials.contains(session.descriptor.device.serial) {
+                        session.stop(); sessionStates[id] = "disconnected"; reconnectRetries[id] = ReconnectRetry()
+                    }
                 }
                 let changed = found != devices
                 devices = found
@@ -127,15 +133,29 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                     if let index = DeviceSelection.index(in: devices, currentSerial: selected, preferredSerial: preferredSerial) { devicePicker.selectItem(at: index) }
                     else { devicePicker.selectItem(at: -1) }
                 }
-                if forceApps || changed { await loadApps() }
+                var probeSerials = Set(sessions.values.filter { sessionStates[$0.descriptor.id] == "disconnected" }.map { $0.descriptor.device.serial })
+                if let serial = selectedDevice?.serial { probeSerials.insert(serial) }
+                if let preferredSerial { probeSerials.insert(preferredSerial) }
+                var ready = Set<String>()
+                for device in found where probeSerials.contains(device.serial) && device.state == "device" {
+                    if await DeviceReadiness.isReady(device: device, toolchain: toolchain) { ready.insert(device.serial) }
+                }
+                readySerials = ready
+                if forceApps || changed || appsDeviceSerial != selectedDevice?.serial || selectedDevice.map({ !ready.contains($0.serial) }) == true { await loadApps(readinessChecked: true) }
                 if devices.isEmpty { status.stringValue = "No Android device found. Check USB debugging, authorization, or start an emulator." }
                 else if selectedDevice == nil, let preferredSerial { status.stringValue = "Waiting for requested Android device \(preferredSerial). Select another device to browse its apps." }
                 if reconnect.state == .on {
-                    let returning = connected.subtracting(previousSerials)
-                    for session in Array(sessions.values) where returning.contains(session.descriptor.device.serial) && sessionStates[session.descriptor.id] == "disconnected" {
+                    for session in Array(sessions.values) where sessionStates[session.descriptor.id] == "disconnected" {
                         let descriptor = session.descriptor
+                        var retry = reconnectRetries[descriptor.id] ?? ReconnectRetry()
+                        guard retry.admits(intentPresent: sessions[descriptor.id] != nil, ready: ready.contains(descriptor.device.serial), enabled: reconnect.state == .on, now: Date()) else { continue }
                         close(descriptor.id)
-                        await launch(device: descriptor.device, app: descriptor.application, configuration: descriptor.configuration)
+                        if let successor = await launch(device: descriptor.device, app: descriptor.application, configuration: descriptor.configuration, readinessChecked: true), sessions[successor.descriptor.id] != nil, successor.state != .running {
+                            retry.failed(at: Date())
+                            reconnectRetries[successor.descriptor.id] = retry
+                            sessionStates[successor.descriptor.id] = "disconnected"
+                            status.stringValue = retry.failures == ReconnectRetry.maximumAttempts ? "Automatic reconnection paused after three failed launches. Close and launch the app to retry." : "Reconnection failed; retrying after at least eight seconds (\(retry.failures)/3)."
+                        }
                     }
                 }
                 previousSerials = connected; updateSessions()
@@ -143,19 +163,25 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
             } catch { status.stringValue = error.localizedDescription }
         }
     }
-    @objc func deviceChanged() { Task { await loadApps() } }
-    func loadApps() async {
-        guard let device = selectedDevice, device.state == "device" else { applications = []; filterApps(); return }
+    @objc func deviceChanged() { appsDeviceSerial = nil; Task { await loadApps() } }
+    func loadApps(readinessChecked: Bool = false) async {
+        guard let device = selectedDevice, device.state == "device" else { applications = []; appsDeviceSerial = nil; filterApps(); return }
+        let ready = readinessChecked ? readySerials.contains(device.serial) : await DeviceReadiness.isReady(device: device, toolchain: toolchain)
+        guard selectedDevice?.serial == device.serial, !quitting else { return }
+        guard ready else { applications = []; appsDeviceSerial = nil; filterApps(); status.stringValue = "Waiting for Android to finish booting on \(device.model)…"; return }
         status.stringValue = "Reading apps from \(device.model)…"
-        do { let found = try await discovery.applications(device: device); guard selectedDevice?.serial == device.serial else { return }; applications = found; filterApps(); status.stringValue = "\(applications.count) launchable apps · \(device.serial) · Video remains on this Mac." }
-        catch { applications = []; filterApps(); status.stringValue = error.localizedDescription }
+        do { let found = try await discovery.applications(device: device); guard selectedDevice?.serial == device.serial else { return }; applications = found; appsDeviceSerial = device.serial; filterApps(); status.stringValue = "\(applications.count) launchable apps · \(device.serial) · Video remains on this Mac." }
+        catch { guard selectedDevice?.serial == device.serial, !quitting else { return }; applications = []; appsDeviceSerial = nil; filterApps(); status.stringValue = error.localizedDescription }
     }
     @objc func launchAction() {
         guard let device = selectedDevice, let app = selectedApp else { status.stringValue = "Select a connected device and an app first."; return }
         Task { await launch(device: device, app: app, configuration: SessionConfiguration(backend: backend)) }
     }
-    func launch(device: AndroidDevice, app: AndroidApplication, configuration: SessionConfiguration) async {
-        guard !quitting else { return }
+    @discardableResult
+    func launch(device: AndroidDevice, app: AndroidApplication, configuration: SessionConfiguration, readinessChecked: Bool = false) async -> BridgeSession? {
+        guard !quitting else { return nil }
+        if !readinessChecked, !(await DeviceReadiness.isReady(device: device, toolchain: toolchain)) { status.stringValue = "Android is still booting. The app can launch when package services are ready."; return nil }
+        guard !quitting else { return nil }
         let descriptor = SessionDescriptor(device: device, application: app, configuration: configuration)
         let session = BridgeSession(descriptor: descriptor, toolchain: toolchain)
         sessions[descriptor.id] = session; sessionStates[descriptor.id] = "starting"
@@ -165,7 +191,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
             hosts[descriptor.id] = host; host.showWindow(nil); host.window?.makeKeyAndOrderFront(nil)
         }
         session.onState = { [weak self] state, message in
-            guard let self else { return }
+            guard let self, self.sessions[descriptor.id] != nil else { return }
             if self.sessionStates[descriptor.id] == "disconnected" { return }
             self.sessionStates[descriptor.id] = state.rawValue
             if state == .failed || state == .stopped { self.hosts[descriptor.id]?.video.statusMessage = message ?? "Session ended. Close this window and launch again." }
@@ -179,9 +205,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         }
         updateSessions(); save()
         do { try await session.start(); status.stringValue = "\(app.name) is running with \(configuration.backend == .native ? "native AppKit" : "scrcpy")." }
-        catch { sessionStates[descriptor.id] = "failed"; status.stringValue = error.localizedDescription; updateSessions() }
+        catch { if sessions[descriptor.id] != nil { sessionStates[descriptor.id] = "failed"; status.stringValue = error.localizedDescription; updateSessions() } }
+        return session
     }
     func close(_ id: UUID) {
+        reconnectRetries.removeValue(forKey: id)
         let session = sessions.removeValue(forKey: id)
         if let host = hosts.removeValue(forKey: id) { host.onClose = nil; host.close() }
         if let session {
@@ -198,7 +226,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         perform(#selector(terminateWrapperIfIdle), with: nil, afterDelay: 3)
     }
     @objc func terminateWrapperIfIdle() {
-        guard isWrapper, sessions.values.allSatisfy({ $0.state == .stopped }) else { return }
+        guard isWrapper, reconnectRetries.isEmpty, !sessionStates.values.contains("disconnected"), sessions.values.allSatisfy({ $0.state == .stopped }) else { return }
         NSApp.terminate(nil)
     }
     func updateSessions() {
@@ -222,8 +250,8 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         let restore = pending; pending = []
         Task {
             for descriptor in restore {
-                if let device = devices.first(where: { $0.serial == descriptor.device.serial && $0.state == "device" }) { await launch(device: device, app: descriptor.application, configuration: descriptor.configuration) }
-                else { pending.append(descriptor); status.stringValue = "Connect \(descriptor.device.model) to restore \(descriptor.application.name)." }
+                if let device = devices.first(where: { $0.serial == descriptor.device.serial && $0.state == "device" }), await DeviceReadiness.isReady(device: device, toolchain: toolchain) { await launch(device: device, app: descriptor.application, configuration: descriptor.configuration, readinessChecked: true) }
+                else { pending.append(descriptor); status.stringValue = "Waiting for \(descriptor.device.model) to connect and finish booting before restoring \(descriptor.application.name)." }
             }
         }
     }
@@ -249,10 +277,10 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         func value(_ flag: String) -> String? { guard let i = args.firstIndex(of: flag), args.indices.contains(i+1) else { return nil }; return args[i+1] }
         guard let package = value("--launch") else { processedArguments = true; return }
         let serial = value("--serial")
-        guard let device = devices.first(where: { $0.state == "device" && (serial == nil || $0.serial == serial) }) else { return }
+        guard let device = devices.first(where: { $0.state == "device" && (serial == nil || $0.serial == serial) }), readySerials.contains(device.serial) else { return }
         processedArguments = true
         let app = applications.first(where: { $0.packageName == package }) ?? AndroidApplication(packageName: package, name: value("--name") ?? package)
-        await launch(device: device, app: app, configuration: SessionConfiguration(backend: BackendKind(rawValue: value("--backend") ?? "native") ?? .native))
+        await launch(device: device, app: app, configuration: SessionConfiguration(backend: BackendKind(rawValue: value("--backend") ?? "native") ?? .native), readinessChecked: true)
         if args.contains("--wrapper"), sessions.values.contains(where: { $0.state == .running || $0.state == .starting }) { window?.orderOut(nil) }
     }
     func shutdownAndWait() async {

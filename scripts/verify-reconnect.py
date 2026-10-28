@@ -57,6 +57,8 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-reconnect-') as temp:
                     restored=running(before_restore,backend)
                     if restored is not None:break
                     time.sleep(.2)
+                if restored is None:
+                    for file in set(logs.glob('*.jsonl'))-previous:(out/('failed-'+backend+'-'+file.name)).write_text(file.read_text())
                 assert restored is not None,'automatic session restoration did not produce successor running session'
                 print(f'PASS {backend}: same host PID {host.pid} automatically restored successor {restored.name}',flush=True)
                 first_events=first.read_text();restored_events=restored.read_text()

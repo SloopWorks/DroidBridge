@@ -26,7 +26,7 @@ Every startup has a generation fence; late frame, process and transport callback
 
 Before native staging, an immutable session receipt records owner PID, device serial and random scrcpy session ID. Recovery skips active owners (including independent wrappers), validates identities, and removes only abandoned matching forwards and the derived remote JAR. Offline cleanup retains the receipt for a later retry. The launcher completes recovery before beginning discovery polling or new admission. The supervisor handles running-child crash cleanup; receipts cover the earlier staging interval.
 
-Closing a session destroys its virtual display and its tasks under scrcpy's default content policy. Android controls persistent app state, task affinity, orientation and activity recreation. Saved session intent supports explicit restore after relaunch, while enabled reconnect polling replaces disconnected sessions with new ones after the same device returns. Discovery results are fenced against a changed selection or application shutdown.
+Closing a session destroys its virtual display and its tasks under scrcpy's default content policy. Android controls persistent app state, task affinity, orientation and activity recreation. Saved session intent supports explicit restore after relaunch, while enabled reconnect polling waits for boot completion and package-service readiness before replacing disconnected sessions. Readiness is reconsidered on later polls even if the device list is unchanged. Each outage permits three failed launches with at least eight seconds between failures; closing an intent cancels its retry. Discovery results are fenced against a changed selection or application shutdown.
 
 ## Native application experience
 
