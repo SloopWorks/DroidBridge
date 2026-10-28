@@ -1,0 +1,103 @@
+{
+  "ffmpeg": {
+    "version": "9.0.2_1",
+    "installed_origin": "/opt/homebrew/Cellar/ffmpeg/9.0.2_1",
+    "notices": [
+      "ffmpeg-9.0.2_1-LICENSE.md",
+      "ffmpeg-9.0.2_1-COPYING.LGPLv2.1",
+      "ffmpeg-9.0.2_1-COPYING.GPLv2",
+      "ffmpeg-9.0.2_1-COPYING.GPLv3",
+      "ffmpeg-9.0.2_1-COPYING.LGPLv3"
+    ]
+  },
+  "sdl3": {
+    "version": "3.4.18",
+    "installed_origin": "/opt/homebrew/Cellar/sdl3/3.4.18",
+    "notices": [
+      "sdl3-3.4.18-LICENSE.txt"
+    ]
+  },
+  "libusb": {
+    "version": "1.0.30",
+    "installed_origin": "/opt/homebrew/Cellar/libusb/1.0.30",
+    "notices": [
+      "libusb-1.0.30-COPYING"
+    ]
+  },
+  "openssl@4": {
+    "version": "4.1.0",
+    "installed_origin": "/opt/homebrew/Cellar/openssl@4/4.1.0",
+    "notices": [
+      "openssl@4-4.1.0-LICENSE.txt"
+    ]
+  },
+  "libvpx": {
+    "version": "1.17.0",
+    "installed_origin": "/opt/homebrew/Cellar/libvpx/1.17.0",
+    "notices": [
+      "libvpx-1.17.0-LICENSE"
+    ]
+  },
+  "xz": {
+    "version": "5.8.4",
+    "installed_origin": "/opt/homebrew/Cellar/xz/5.8.4",
+    "notices": [
+      "xz-5.8.4-COPYING.LGPLv2.1",
+      "xz-5.8.4-COPYING",
+      "xz-5.8.4-COPYING.0BSD",
+      "xz-5.8.4-COPYING.GPLv2",
+      "xz-5.8.4-COPYING.GPLv3"
+    ]
+  },
+  "dav1d": {
+    "version": "1.5.4",
+    "installed_origin": "/opt/homebrew/Cellar/dav1d/1.5.4",
+    "notices": [
+      "dav1d-1.5.4-COPYING"
+    ]
+  },
+  "lame": {
+    "version": "4.0",
+    "installed_origin": "/opt/homebrew/Cellar/lame/4.0",
+    "notices": [
+      "lame-4.0-LICENSE",
+      "lame-4.0-COPYING"
+    ]
+  },
+  "opus": {
+    "version": "1.6.1",
+    "installed_origin": "/opt/homebrew/Cellar/opus/1.6.1",
+    "notices": [
+      "opus-1.6.1-COPYING"
+    ]
+  },
+  "svt-av1": {
+    "version": "4.2.0",
+    "installed_origin": "/opt/homebrew/Cellar/svt-av1/4.2.0",
+    "notices": [
+      "svt-av1-4.2.0-LICENSE.md",
+      "svt-av1-4.2.0-LICENSE-BSD2.md"
+    ]
+  },
+  "x264": {
+    "version": "r3222",
+    "installed_origin": "/opt/homebrew/Cellar/x264/r3222",
+    "notices": [
+      "x264-r3222-COPYING"
+    ]
+  },
+  "x265": {
+    "version": "4.3",
+    "installed_origin": "/opt/homebrew/Cellar/x265/4.3",
+    "notices": [
+      "x265-4.3-COPYING"
+    ]
+  },
+  "mpg123": {
+    "version": "1.33.7",
+    "installed_origin": "/opt/homebrew/Cellar/mpg123/1.33.7",
+    "notices": [
+      "mpg123-1.33.7-COPYING"
+    ]
+  }
+}

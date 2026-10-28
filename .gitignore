@@ -4,3 +4,8 @@ Vendor/
 dist/
 *.dmg
 verification/**/*.mp4
+verification/android/testapp/
+verification/android/testapp2/
+__pycache__/
+verification/review/verify-appkit
+verification/review/appkit/verify-appkit

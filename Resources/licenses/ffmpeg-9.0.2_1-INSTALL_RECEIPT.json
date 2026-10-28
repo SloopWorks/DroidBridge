@@ -1,0 +1,206 @@
+{
+  "homebrew_version": "7.0.9-2-g4b8b86e",
+  "used_options": [],
+  "unused_options": [],
+  "built_as_bottle": true,
+  "built_prefix": "/opt/homebrew",
+  "poured_from_bottle": true,
+  "loaded_from_api": true,
+  "loaded_from_internal_api": true,
+  "installed_on_request": true,
+  "changed_files": [
+    "lib/pkgconfig/libavcodec.pc",
+    "lib/pkgconfig/libavdevice.pc",
+    "lib/pkgconfig/libavfilter.pc",
+    "lib/pkgconfig/libavformat.pc",
+    "lib/pkgconfig/libavutil.pc",
+    "lib/pkgconfig/libswresample.pc",
+    "lib/pkgconfig/libswscale.pc"
+  ],
+  "linkage_files": [
+    "bin/aviocat",
+    "bin/crypto_bench",
+    "bin/enc_recon_frame_test",
+    "bin/enum_options",
+    "bin/ffescape",
+    "bin/ffeval",
+    "bin/ffhash",
+    "bin/ffmpeg",
+    "bin/ffplay",
+    "bin/ffprobe",
+    "bin/fourcc2pixfmt",
+    "bin/graph2dot",
+    "bin/ismindex",
+    "bin/pktdumper",
+    "bin/probetest",
+    "bin/scale_slice_test",
+    "bin/seek_print",
+    "bin/sidxindex",
+    "bin/uncoded_frame",
+    "bin/venc_data_dump",
+    "lib/libavcodec.63.1.102.dylib",
+    "lib/libavdevice.63.1.102.dylib",
+    "lib/libavfilter.12.1.102.dylib",
+    "lib/libavformat.63.1.102.dylib",
+    "lib/libavutil.61.1.102.dylib",
+    "lib/libswresample.7.1.102.dylib",
+    "lib/libswscale.10.1.102.dylib"
+  ],
+  "binary_relocation_files": [
+    "bin/ffmpeg",
+    "bin/ffplay",
+    "bin/ffprobe"
+  ],
+  "time": 1793150655,
+  "source_modified_time": 1789698575,
+  "compiler": "clang",
+  "aliases": [
+    "ffmpeg@9"
+  ],
+  "runtime_dependencies": [
+    {
+      "full_name": "dav1d",
+      "version": "1.5.4",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "1.5.4",
+      "declared_directly": true,
+      "compatibility_version": 1
+    },
+    {
+      "full_name": "mpg123",
+      "version": "1.33.7",
+      "revision": 0,
+      "bottle_rebuild": 1,
+      "pkg_version": "1.33.7",
+      "declared_directly": false,
+      "compatibility_version": 1
+    },
+    {
+      "full_name": "lame",
+      "version": "4.0",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "4.0",
+      "declared_directly": true
+    },
+    {
+      "full_name": "libvmaf",
+      "version": "3.2.1",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "3.2.1",
+      "declared_directly": true,
+      "compatibility_version": 1
+    },
+    {
+      "full_name": "libvpx",
+      "version": "1.17.0",
+      "revision": 0,
+      "bottle_rebuild": 1,
+      "pkg_version": "1.17.0",
+      "declared_directly": true,
+      "compatibility_version": 1
+    },
+    {
+      "full_name": "ca-certificates",
+      "version": "2026-10-20",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "2026-10-20",
+      "declared_directly": false,
+      "compatibility_version": 1
+    },
+    {
+      "full_name": "openssl@4",
+      "version": "4.1.0",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "4.1.0",
+      "declared_directly": true
+    },
+    {
+      "full_name": "opus",
+      "version": "1.6.1",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "1.6.1",
+      "declared_directly": true,
+      "compatibility_version": 1
+    },
+    {
+      "full_name": "sdl3",
+      "version": "3.4.18",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "3.4.18",
+      "declared_directly": false,
+      "compatibility_version": 1
+    },
+    {
+      "full_name": "sdl2-compat",
+      "version": "2.32.74",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "2.32.74",
+      "declared_directly": true
+    },
+    {
+      "full_name": "svt-av1",
+      "version": "4.2.0",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "4.2.0",
+      "declared_directly": true,
+      "compatibility_version": 1
+    },
+    {
+      "full_name": "x264",
+      "version": "r3222",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "r3222",
+      "declared_directly": true,
+      "compatibility_version": 1
+    },
+    {
+      "full_name": "x265",
+      "version": "4.3",
+      "revision": 0,
+      "bottle_rebuild": 1,
+      "pkg_version": "4.3",
+      "declared_directly": true,
+      "compatibility_version": 2
+    },
+    {
+      "full_name": "xz",
+      "version": "5.8.4",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "5.8.4",
+      "declared_directly": true,
+      "compatibility_version": 1
+    }
+  ],
+  "source": {
+    "spec": "stable",
+    "versions": {
+      "stable": "9.0.2",
+      "head": null,
+      "version_scheme": 0,
+      "compatibility_version": null
+    },
+    "path": "/Users/patrick/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json",
+    "tap_git_head": null,
+    "tap": "homebrew/core"
+  },
+  "arch": "arm64",
+  "built_on": {
+    "os": "Macintosh",
+    "os_version": "macOS 26.6",
+    "cpu_family": "dunno",
+    "xcode": "27.0",
+    "clt": "27.0.0.0.1788430756",
+    "preferred_perl": "5.34"
+  }
+}

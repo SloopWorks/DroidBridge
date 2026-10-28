@@ -1,0 +1,1749 @@
+{
+  "formulae": [
+    {
+      "name": "dav1d",
+      "full_name": "dav1d",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "AV1 decoder targeted to be small and fast",
+      "license": "BSD-2-Clause",
+      "homepage": "https://code.videolan.org/videolan/dav1d",
+      "versions": {
+        "stable": "1.5.4",
+        "head": null,
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://code.videolan.org/videolan/dav1d/-/archive/1.5.4/dav1d-1.5.4.tar.bz2",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "2abfb0c89212e6e4733a54e0ae509ec00a5b845a6360946f918806e14aedb011"
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": 1,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/dav1d/blobs/sha256:d30ff747564febd643ec4b279c5adc74f708b8d6eb8e172f914b9fcdec26c464",
+              "sha256": "d30ff747564febd643ec4b279c5adc74f708b8d6eb8e172f914b9fcdec26c464"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [
+        "meson",
+        "ninja"
+      ],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/dav1d/1.5.4/sbom.spdx.json",
+          "version": "1.5.4",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "1.5.4",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/d/dav1d.rb",
+      "ruby_source_checksum": {
+        "sha256": "ceaebbf22c54822f9e1ff2d4fa6a5c26f3556dc6f5005ab77a335dfc185cbae6"
+      }
+    },
+    {
+      "name": "ffmpeg",
+      "full_name": "ffmpeg",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [
+        "ffmpeg@9"
+      ],
+      "versioned_formulae": [
+        "ffmpeg@8",
+        "ffmpeg@7",
+        "ffmpeg@6",
+        "ffmpeg@5",
+        "ffmpeg@4",
+        "ffmpeg@2.8"
+      ],
+      "desc": "Play, record, convert, and stream select audio and video codecs",
+      "license": "GPL-3.0-or-later",
+      "homepage": "https://ffmpeg.org/",
+      "versions": {
+        "stable": "9.0.2",
+        "head": "HEAD",
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e"
+        },
+        "head": {
+          "url": "https://github.com/FFmpeg/FFmpeg.git",
+          "branch": "master",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 1,
+      "version_scheme": 0,
+      "compatibility_version": 3,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:595b0bb854e692d7f6f89b866e860afacfdab5e3698451555547f58f523ed04d",
+              "sha256": "595b0bb854e692d7f6f89b866e860afacfdab5e3698451555547f58f523ed04d"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [
+        "pkgconf"
+      ],
+      "dependencies": [
+        "dav1d",
+        "lame",
+        "libvmaf",
+        "libvpx",
+        "openssl@4",
+        "opus",
+        "sdl2-compat",
+        "svt-av1",
+        "x264",
+        "x265",
+        "xz"
+      ],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [
+        "bzip2",
+        "libxml2"
+      ],
+      "uses_from_macos_bounds": [
+        {},
+        {}
+      ],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": "ffmpeg-full includes additional tools and libraries that are not included in the regular ffmpeg formula.\n",
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/ffmpeg/9.0.1_1/sbom.spdx.json",
+          "version": "9.0.1_1",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [
+            {
+              "full_name": "dav1d",
+              "version": "1.5.4",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.5.4",
+              "declared_directly": true
+            },
+            {
+              "full_name": "mpg123",
+              "version": "1.33.7",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.33.7",
+              "declared_directly": false
+            },
+            {
+              "full_name": "lame",
+              "version": "4.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libvmaf",
+              "version": "3.2.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "3.2.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libvpx",
+              "version": "1.17.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.17.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "ca-certificates",
+              "version": "2026-08-13",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "2026-08-13",
+              "declared_directly": false
+            },
+            {
+              "full_name": "openssl@3",
+              "version": "3.6.3",
+              "revision": 0,
+              "bottle_rebuild": 2,
+              "pkg_version": "3.6.3",
+              "declared_directly": true
+            },
+            {
+              "full_name": "opus",
+              "version": "1.6.1",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.6.1",
+              "declared_directly": true
+            },
+            {
+              "full_name": "sdl3",
+              "version": "3.4.14",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "3.4.14",
+              "declared_directly": false
+            },
+            {
+              "full_name": "sdl2-compat",
+              "version": "2.32.70",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "2.32.70",
+              "declared_directly": true
+            },
+            {
+              "full_name": "svt-av1",
+              "version": "4.2.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.2.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "x264",
+              "version": "r3222",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "r3222",
+              "declared_directly": true
+            },
+            {
+              "full_name": "x265",
+              "version": "4.3",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.3",
+              "declared_directly": true
+            },
+            {
+              "full_name": "xz",
+              "version": "5.8.3",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "5.8.3",
+              "declared_directly": true
+            }
+          ],
+          "installed_on_request": true
+        },
+        {
+          "sbom": "/opt/homebrew/Cellar/ffmpeg/9.0.2_1/sbom.spdx.json",
+          "version": "9.0.2_1",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1793150655,
+          "runtime_dependencies": [
+            {
+              "full_name": "dav1d",
+              "version": "1.5.4",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.5.4",
+              "declared_directly": true,
+              "compatibility_version": 1
+            },
+            {
+              "full_name": "mpg123",
+              "version": "1.33.7",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "1.33.7",
+              "declared_directly": false,
+              "compatibility_version": 1
+            },
+            {
+              "full_name": "lame",
+              "version": "4.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "libvmaf",
+              "version": "3.2.1",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "3.2.1",
+              "declared_directly": true,
+              "compatibility_version": 1
+            },
+            {
+              "full_name": "libvpx",
+              "version": "1.17.0",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "1.17.0",
+              "declared_directly": true,
+              "compatibility_version": 1
+            },
+            {
+              "full_name": "ca-certificates",
+              "version": "2026-10-20",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "2026-10-20",
+              "declared_directly": false,
+              "compatibility_version": 1
+            },
+            {
+              "full_name": "openssl@4",
+              "version": "4.1.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.1.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "opus",
+              "version": "1.6.1",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.6.1",
+              "declared_directly": true,
+              "compatibility_version": 1
+            },
+            {
+              "full_name": "sdl3",
+              "version": "3.4.18",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "3.4.18",
+              "declared_directly": false,
+              "compatibility_version": 1
+            },
+            {
+              "full_name": "sdl2-compat",
+              "version": "2.32.74",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "2.32.74",
+              "declared_directly": true
+            },
+            {
+              "full_name": "svt-av1",
+              "version": "4.2.0",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "4.2.0",
+              "declared_directly": true,
+              "compatibility_version": 1
+            },
+            {
+              "full_name": "x264",
+              "version": "r3222",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "r3222",
+              "declared_directly": true,
+              "compatibility_version": 1
+            },
+            {
+              "full_name": "x265",
+              "version": "4.3",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "4.3",
+              "declared_directly": true,
+              "compatibility_version": 2
+            },
+            {
+              "full_name": "xz",
+              "version": "5.8.4",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "5.8.4",
+              "declared_directly": true,
+              "compatibility_version": 1
+            }
+          ],
+          "installed_on_request": true
+        }
+      ],
+      "linked_keg": "9.0.2_1",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/f/ffmpeg.rb",
+      "ruby_source_checksum": {
+        "sha256": "1f3e7264a319af3096a9487b6847cf8dc1f888c7798a66b5f91bde1459a7a421"
+      }
+    },
+    {
+      "name": "lame",
+      "full_name": "lame",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "High quality MPEG Audio Layer III (MP3) encoder",
+      "license": "LGPL-2.0-or-later",
+      "homepage": "https://lame.sourceforge.io/",
+      "versions": {
+        "stable": "4.0",
+        "head": null,
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://downloads.sourceforge.net/project/lame/lame/4.0/lame-4.0.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb"
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": null,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/lame/blobs/sha256:b0fe0cfb39c74a53b7635833fe3293a62c886b084bc5ccc8ed7cd177803182e4",
+              "sha256": "b0fe0cfb39c74a53b7635833fe3293a62c886b084bc5ccc8ed7cd177803182e4"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [
+        "pkgconf"
+      ],
+      "dependencies": [
+        "mpg123"
+      ],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [
+        "ncurses"
+      ],
+      "uses_from_macos_bounds": [
+        {}
+      ],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/lame/4.0/sbom.spdx.json",
+          "version": "4.0",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [
+            {
+              "full_name": "mpg123",
+              "version": "1.33.7",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "1.33.7",
+              "declared_directly": true
+            }
+          ],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "4.0",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/l/lame.rb",
+      "ruby_source_checksum": {
+        "sha256": "9a5607136c9583e61d0be24428901baecce5d38f204df9428bbfde6ed3d1360e"
+      }
+    },
+    {
+      "name": "libusb",
+      "full_name": "libusb",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "Library for USB device access",
+      "license": "LGPL-2.1-or-later",
+      "homepage": "https://libusb.info/",
+      "versions": {
+        "stable": "1.0.30",
+        "head": "HEAD",
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://github.com/libusb/libusb/releases/download/v1.0.30/libusb-1.0.30.tar.bz2",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "fea36f34f9156400209595e300840767ab1a385ede1dc7ee893015aea9c6dbaf"
+        },
+        "head": {
+          "url": "https://github.com/libusb/libusb.git",
+          "branch": "master",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": 1,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/libusb/blobs/sha256:184daaa6108f0a56eb72c58cc4124dbbb0b54a655632dffdf8334569d71e2a34",
+              "sha256": "184daaa6108f0a56eb72c58cc4124dbbb0b54a655632dffdf8334569d71e2a34"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/libusb/1.0.29/sbom.spdx.json",
+          "version": "1.0.29",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1776694033,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        },
+        {
+          "sbom": "/opt/homebrew/Cellar/libusb/1.0.30/sbom.spdx.json",
+          "version": "1.0.30",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1792351086,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "1.0.30",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/lib/libusb.rb",
+      "ruby_source_checksum": {
+        "sha256": "513c20f992711ced872639a391fbb0b3194e397ffddc4968b9f9b1e4f03b48ee"
+      },
+      "head_dependencies": {
+        "build_dependencies": [
+          "autoconf",
+          "automake",
+          "libtool"
+        ],
+        "dependencies": [],
+        "test_dependencies": [],
+        "recommended_dependencies": [],
+        "optional_dependencies": [],
+        "no_linkage_dependencies": [],
+        "uses_from_macos": [],
+        "uses_from_macos_bounds": []
+      }
+    },
+    {
+      "name": "libvpx",
+      "full_name": "libvpx",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "VP8/VP9 video codec",
+      "license": "BSD-3-Clause",
+      "homepage": "https://www.webmproject.org/code/",
+      "versions": {
+        "stable": "1.17.0",
+        "head": "HEAD",
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://github.com/webmproject/libvpx/archive/refs/tags/v1.17.0.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "1020f184046187baa2985dbde38e0691f49c44088bca7a1842b0236c6081dc0a"
+        },
+        "head": {
+          "url": "https://chromium.googlesource.com/webm/libvpx.git",
+          "branch": "main",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": 1,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 1,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/libvpx/blobs/sha256:f98fa074f8eef7b2de3346fb83d4da15e7e6284fd13bf65210d855043f78f8c1",
+              "sha256": "f98fa074f8eef7b2de3346fb83d4da15e7e6284fd13bf65210d855043f78f8c1"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/libvpx/1.17.0/sbom.spdx.json",
+          "version": "1.17.0",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "1.17.0",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/lib/libvpx.rb",
+      "ruby_source_checksum": {
+        "sha256": "da99e55001e2a5494e8c27f80dc5ce54469b07af5a2dcbc428bc8dcb4a225833"
+      }
+    },
+    {
+      "name": "mpg123",
+      "full_name": "mpg123",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "MP3 player for Linux and UNIX",
+      "license": "LGPL-2.1-only",
+      "homepage": "https://www.mpg123.de/",
+      "versions": {
+        "stable": "1.33.7",
+        "head": null,
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://www.mpg123.de/download/mpg123-1.33.7.tar.bz2",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "31d0e35a4ca567ec9b5ebda6c3062bb4435d6d3eacd6ef0d95cadd7854dc03ee"
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": 1,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 1,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/mpg123/blobs/sha256:5fcd87caeb9b6e6730d7de5c7738e785c84814c641d1ba9ac578a142d2b033f5",
+              "sha256": "5fcd87caeb9b6e6730d7de5c7738e785c84814c641d1ba9ac578a142d2b033f5"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/mpg123/1.33.7/sbom.spdx.json",
+          "version": "1.33.7",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "1.33.7",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/m/mpg123.rb",
+      "ruby_source_checksum": {
+        "sha256": "3698eb1f9ba852c034a659b627386f0113671b77ea828535343b9c058fe0f9fb"
+      }
+    },
+    {
+      "name": "openssl@4",
+      "full_name": "openssl@4",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [
+        "openssl"
+      ],
+      "versioned_formulae": [
+        "openssl@3.6",
+        "openssl@3",
+        "openssl@3.0"
+      ],
+      "desc": "Cryptography and SSL/TLS Toolkit",
+      "license": "Apache-2.0",
+      "homepage": "https://openssl-library.org",
+      "versions": {
+        "stable": "4.1.0",
+        "head": null,
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://github.com/openssl/openssl/releases/download/openssl-4.1.0/openssl-4.1.0.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "50c17baf54cb008f6ce42d50deb4b28050a1aad711636cabd4b241c7e90cc2fd"
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": null,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/openssl/4/blobs/sha256:382f63e829b116d5fb9a2b186147e489631b5bbbb06ac0089f795a3fed1085c4",
+              "sha256": "382f63e829b116d5fb9a2b186147e489631b5bbbb06ac0089f795a3fed1085c4"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [],
+      "dependencies": [
+        "ca-certificates"
+      ],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [
+        "ca-certificates"
+      ],
+      "uses_from_macos": [
+        {
+          "perl": "build"
+        }
+      ],
+      "uses_from_macos_bounds": [
+        {}
+      ],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [
+        "bin/openssl",
+        "include/openssl/*",
+        "share/man/man*/*ssl.gz",
+        "lib/libcrypto*",
+        "lib/libssl*",
+        "lib/ossl-modules/legacy.*",
+        "lib/cmake/OpenSSL/OpenSSLConfig.cmake",
+        "lib/cmake/OpenSSL/OpenSSLConfigVersion.cmake",
+        "lib/pkgconfig/libcrypto.pc",
+        "lib/pkgconfig/libssl.pc",
+        "lib/pkgconfig/openssl.pc"
+      ],
+      "caveats": "To add additional certificates, place .pem, .crt, .cer, or .crl files in\n  $HOMEBREW_PREFIX/etc/openssl@4/certs\n\nand run\n  $HOMEBREW_PREFIX/Cellar/openssl@4/4.1.0/bin/openssl rehash $HOMEBREW_PREFIX/etc/openssl@4/certs\n",
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/openssl@4/4.0.3/sbom.spdx.json",
+          "version": "4.0.3",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1792350995,
+          "runtime_dependencies": [
+            {
+              "full_name": "ca-certificates",
+              "version": "2026-09-25",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "2026-09-25",
+              "declared_directly": true,
+              "compatibility_version": 1
+            }
+          ],
+          "installed_on_request": false
+        },
+        {
+          "sbom": "/opt/homebrew/Cellar/openssl@4/4.1.0/sbom.spdx.json",
+          "version": "4.1.0",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1793150651,
+          "runtime_dependencies": [
+            {
+              "full_name": "ca-certificates",
+              "version": "2026-10-20",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "2026-10-20",
+              "declared_directly": true,
+              "compatibility_version": 1
+            }
+          ],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "4.1.0",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [
+        {
+          "source": {
+            "path": "{{etc}}/ca-certificates/cert.pem"
+          },
+          "target": {
+            "path": "{{pkgetc}}/cert.pem"
+          },
+          "force": true,
+          "type": "symlink"
+        }
+      ],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/o/openssl@4.rb",
+      "ruby_source_checksum": {
+        "sha256": "91e18f2f14ecf16a9bbdb7547700f1f1d76b09e01bb461897191e2d2027cc8b9"
+      }
+    },
+    {
+      "name": "opus",
+      "full_name": "opus",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "Audio codec",
+      "license": "BSD-3-Clause",
+      "homepage": "https://www.opus-codec.org/",
+      "versions": {
+        "stable": "1.6.1",
+        "head": "HEAD",
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://ftp.osuosl.org/pub/xiph/releases/opus/opus-1.6.1.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "6ffcb593207be92584df15b32466ed64bbec99109f007c82205f0194572411a1"
+        },
+        "head": {
+          "url": "https://gitlab.xiph.org/xiph/opus.git",
+          "branch": "main",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": 1,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/opus/blobs/sha256:5e8146a64fab2683ea447aaa7d0de0b1d717539b4cdabd1fedd4a510e4be0d1e",
+              "sha256": "5e8146a64fab2683ea447aaa7d0de0b1d717539b4cdabd1fedd4a510e4be0d1e"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/opus/1.6.1/sbom.spdx.json",
+          "version": "1.6.1",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "1.6.1",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/o/opus.rb",
+      "ruby_source_checksum": {
+        "sha256": "39611712ad2de37708493f43569e9266c4be9dcc5e88e7276ee78a562bf03a33"
+      },
+      "head_dependencies": {
+        "build_dependencies": [
+          "autoconf",
+          "automake",
+          "libtool"
+        ],
+        "dependencies": [],
+        "test_dependencies": [],
+        "recommended_dependencies": [],
+        "optional_dependencies": [],
+        "no_linkage_dependencies": [],
+        "uses_from_macos": [],
+        "uses_from_macos_bounds": []
+      }
+    },
+    {
+      "name": "sdl3",
+      "full_name": "sdl3",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "Low-level access to audio, keyboard, mouse, joystick, and graphics",
+      "license": "Zlib",
+      "homepage": "https://libsdl.org/",
+      "versions": {
+        "stable": "3.4.18",
+        "head": "HEAD",
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://github.com/libsdl-org/SDL/releases/download/release-3.4.18/SDL3-3.4.18.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "9c75cf16330322c217dedd2e0609f1124f1b54b8633e763467b4684d0f4334a3"
+        },
+        "head": {
+          "url": "https://github.com/libsdl-org/SDL.git",
+          "branch": "main",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": 1,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/sdl3/blobs/sha256:0040e2deb33adb677f9ab1a0309e4a645a4bfdfb37e59bd6c3d4ed3ab4d0c814",
+              "sha256": "0040e2deb33adb677f9ab1a0309e4a645a4bfdfb37e59bd6c3d4ed3ab4d0c814"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [
+        "cmake",
+        "pkgconf"
+      ],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/sdl3/3.4.14/sbom.spdx.json",
+          "version": "3.4.14",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        },
+        {
+          "sbom": "/opt/homebrew/Cellar/sdl3/3.4.18/sbom.spdx.json",
+          "version": "3.4.18",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1793150653,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "3.4.18",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/s/sdl3.rb",
+      "ruby_source_checksum": {
+        "sha256": "c3d6ea1becc0bb53773e82d3a7f885bf4cfeaec10b367d82530928859d41dc75"
+      }
+    },
+    {
+      "name": "svt-av1",
+      "full_name": "svt-av1",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "AV1 encoder",
+      "license": "BSD-3-Clause",
+      "homepage": "https://gitlab.com/AOMediaCodec/SVT-AV1",
+      "versions": {
+        "stable": "4.2.0",
+        "head": "HEAD",
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v4.2.0/SVT-AV1-v4.2.0.tar.bz2",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "512f2ea5649e3e76c2dddcc25c2556fb67a9582baaab207c9c96161c94659dad"
+        },
+        "head": {
+          "url": "https://gitlab.com/AOMediaCodec/SVT-AV1.git",
+          "branch": "master",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": 1,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/svt-av1/blobs/sha256:bd6186cc963d1980f0d81d59ecef58c8fa6263eb1124211dd3537b224e04c9e0",
+              "sha256": "bd6186cc963d1980f0d81d59ecef58c8fa6263eb1124211dd3537b224e04c9e0"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [
+        "cmake"
+      ],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/svt-av1/4.2.0/sbom.spdx.json",
+          "version": "4.2.0",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "4.2.0",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/s/svt-av1.rb",
+      "ruby_source_checksum": {
+        "sha256": "de4c69992e6ea2943c41d38dccae7ad37faed0f04f0d76935755da8f1cf210c0"
+      }
+    },
+    {
+      "name": "x264",
+      "full_name": "x264",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "H.264/AVC encoder",
+      "license": "GPL-2.0-or-later",
+      "homepage": "https://www.videolan.org/developers/x264.html",
+      "versions": {
+        "stable": "r3222",
+        "head": "HEAD",
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://code.videolan.org/videolan/x264.git",
+          "tag": null,
+          "revision": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55",
+          "using": null,
+          "checksum": null
+        },
+        "head": {
+          "url": "https://code.videolan.org/videolan/x264.git",
+          "branch": "master",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": 1,
+      "autobump": false,
+      "no_autobump_message": "incompatible_version_format",
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/x264/blobs/sha256:b631667b5ad55c6c3ae383484f658c5b4ba14da8a2fbb1d537975695852529ca",
+              "sha256": "b631667b5ad55c6c3ae383484f658c5b4ba14da8a2fbb1d537975695852529ca"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/x264/r3222/sbom.spdx.json",
+          "version": "r3222",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "r3222",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/x/x264.rb",
+      "ruby_source_checksum": {
+        "sha256": "d404046a3ad9833f9878ab074a743060f3a83cc6ecb08a2a15fda5b960e693e4"
+      }
+    },
+    {
+      "name": "x265",
+      "full_name": "x265",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "H.265/HEVC encoder",
+      "license": "GPL-2.0-or-later",
+      "homepage": "https://github.com/Multicorewareinc/x265",
+      "versions": {
+        "stable": "4.3",
+        "head": "HEAD",
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "83c53e4c8bbb8f1e33ed59e10a7d621d1d7801ca853910c3eb41f038b8ffb121"
+        },
+        "head": {
+          "url": "https://github.com/Multicorewareinc/x265.git",
+          "branch": "master",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": 2,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 1,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/x265/blobs/sha256:46dd2b3656ec8e99438a789b627e41a25e3a24407dc76a3a6b88cf159b447858",
+              "sha256": "46dd2b3656ec8e99438a789b627e41a25e3a24407dc76a3a6b88cf159b447858"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [
+        "cmake"
+      ],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/x265/4.3/sbom.spdx.json",
+          "version": "4.3",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1788149759,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "4.3",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/x/x265.rb",
+      "ruby_source_checksum": {
+        "sha256": "f34703d7f7cb05d2374b19565b076c8b3d9a6968ccfab406905e435829662ed6"
+      }
+    },
+    {
+      "name": "xz",
+      "full_name": "xz",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "General-purpose data compression with high compression ratio",
+      "license": "0BSD AND GPL-2.0-or-later",
+      "homepage": "https://tukaani.org/xz/",
+      "versions": {
+        "stable": "5.8.4",
+        "head": null,
+        "bottle": true
+      },
+      "urls": {
+        "stable": {
+          "url": "https://github.com/tukaani-project/xz/releases/download/v5.8.4/xz-5.8.4.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "0014c7886930454fe8bd4228665b51af55eeae560ea135c9c4cd33f55b2591d9"
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 1,
+      "compatibility_version": 1,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {
+        "stable": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_tahoe": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/xz/blobs/sha256:d291ad2277682238329b0e4d249e5e2c948c4b10cd64dba1963d897330ad88dd",
+              "sha256": "d291ad2277682238329b0e4d249e5e2c948c4b10cd64dba1963d897330ad88dd"
+            }
+          }
+        }
+      },
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/xz/5.8.3/sbom.spdx.json",
+          "version": "5.8.3",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1776694042,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        },
+        {
+          "sbom": "/opt/homebrew/Cellar/xz/5.8.4/sbom.spdx.json",
+          "version": "5.8.4",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1792351026,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "5.8.4",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "ruby_source_path": "Formula/x/xz.rb",
+      "ruby_source_checksum": {
+        "sha256": "e5b8bbf09dccb4a1f2ee333ed65b13ee773350a26735ef594ca859d2cf85248e"
+      }
+    }
+  ],
+  "casks": []
+}
