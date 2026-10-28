@@ -1,0 +1,7 @@
+START actual emulator shutdown/reconnect native
+native: emulator absent; checking host survival
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-reconnect.py", line 60, in <module>
+    assert restored is not None,'automatic session restoration did not produce successor running session'
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError: automatic session restoration did not produce successor running session

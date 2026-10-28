@@ -1,0 +1,125 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] Write swift-version--58304C5D6DBC2206.txt
+[2/8] Emitting module DroidBridgeCore
+[3/8] Compiling DroidBridgeCore InputGeometry.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:5:55: error: value of type 'CGRect' has no member 'width'
+ 3 | public enum InputGeometry {
+ 4 |     public static func aspectFitRect(videoWidth: Int, videoHeight: Int, bounds: CGRect) -> CGRect {
+ 5 |         guard videoWidth > 0, videoHeight > 0, bounds.width > 0, bounds.height > 0 else { return .zero }
+   |                                                       `- error: value of type 'CGRect' has no member 'width'
+ 6 |         let scale = min(bounds.width / CGFloat(videoWidth), bounds.height / CGFloat(videoHeight))
+ 7 |         let size = CGSize(width: CGFloat(videoWidth) * scale, height: CGFloat(videoHeight) * scale)
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:5:73: error: value of type 'CGRect' has no member 'height'
+ 3 | public enum InputGeometry {
+ 4 |     public static func aspectFitRect(videoWidth: Int, videoHeight: Int, bounds: CGRect) -> CGRect {
+ 5 |         guard videoWidth > 0, videoHeight > 0, bounds.width > 0, bounds.height > 0 else { return .zero }
+   |                                                                         `- error: value of type 'CGRect' has no member 'height'
+ 6 |         let scale = min(bounds.width / CGFloat(videoWidth), bounds.height / CGFloat(videoHeight))
+ 7 |         let size = CGSize(width: CGFloat(videoWidth) * scale, height: CGFloat(videoHeight) * scale)
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:5:99: error: type 'CGRect' has no member 'zero'
+ 3 | public enum InputGeometry {
+ 4 |     public static func aspectFitRect(videoWidth: Int, videoHeight: Int, bounds: CGRect) -> CGRect {
+ 5 |         guard videoWidth > 0, videoHeight > 0, bounds.width > 0, bounds.height > 0 else { return .zero }
+   |                                                                                                   `- error: type 'CGRect' has no member 'zero'
+ 6 |         let scale = min(bounds.width / CGFloat(videoWidth), bounds.height / CGFloat(videoHeight))
+ 7 |         let size = CGSize(width: CGFloat(videoWidth) * scale, height: CGFloat(videoHeight) * scale)
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:6:32: error: value of type 'CGRect' has no member 'width'
+ 4 |     public static func aspectFitRect(videoWidth: Int, videoHeight: Int, bounds: CGRect) -> CGRect {
+ 5 |         guard videoWidth > 0, videoHeight > 0, bounds.width > 0, bounds.height > 0 else { return .zero }
+ 6 |         let scale = min(bounds.width / CGFloat(videoWidth), bounds.height / CGFloat(videoHeight))
+   |                                `- error: value of type 'CGRect' has no member 'width'
+ 7 |         let size = CGSize(width: CGFloat(videoWidth) * scale, height: CGFloat(videoHeight) * scale)
+ 8 |         return CGRect(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2, width: size.width, height: size.height)
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:6:68: error: value of type 'CGRect' has no member 'height'
+ 4 |     public static func aspectFitRect(videoWidth: Int, videoHeight: Int, bounds: CGRect) -> CGRect {
+ 5 |         guard videoWidth > 0, videoHeight > 0, bounds.width > 0, bounds.height > 0 else { return .zero }
+ 6 |         let scale = min(bounds.width / CGFloat(videoWidth), bounds.height / CGFloat(videoHeight))
+   |                                                                    `- error: value of type 'CGRect' has no member 'height'
+ 7 |         let size = CGSize(width: CGFloat(videoWidth) * scale, height: CGFloat(videoHeight) * scale)
+ 8 |         return CGRect(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2, width: size.width, height: size.height)
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:8:22: error: argument passed to call that takes no arguments
+ 6 |         let scale = min(bounds.width / CGFloat(videoWidth), bounds.height / CGFloat(videoHeight))
+ 7 |         let size = CGSize(width: CGFloat(videoWidth) * scale, height: CGFloat(videoHeight) * scale)
+ 8 |         return CGRect(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2, width: size.width, height: size.height)
+   |                      `- error: argument passed to call that takes no arguments
+ 9 |     }
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:8:33: error: value of type 'CGRect' has no member 'midX'
+ 6 |         let scale = min(bounds.width / CGFloat(videoWidth), bounds.height / CGFloat(videoHeight))
+ 7 |         let size = CGSize(width: CGFloat(videoWidth) * scale, height: CGFloat(videoHeight) * scale)
+ 8 |         return CGRect(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2, width: size.width, height: size.height)
+   |                                 `- error: value of type 'CGRect' has no member 'midX'
+ 9 |     }
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:8:66: error: value of type 'CGRect' has no member 'midY'
+ 6 |         let scale = min(bounds.width / CGFloat(videoWidth), bounds.height / CGFloat(videoHeight))
+ 7 |         let size = CGSize(width: CGFloat(videoWidth) * scale, height: CGFloat(videoHeight) * scale)
+ 8 |         return CGRect(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2, width: size.width, height: size.height)
+   |                                                                  `- error: value of type 'CGRect' has no member 'midY'
+ 9 |     }
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:11:20: error: value of type 'CGRect' has no member 'width'
+ 9 |     }
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+11 |         guard rect.width > 0, rect.height > 0, videoWidth > 0, videoHeight > 0, clamp || rect.contains(point) else { return nil }
+   |                    `- error: value of type 'CGRect' has no member 'width'
+12 |         return (max(0, min(videoWidth - 1, Int((point.x - rect.minX) / rect.width * CGFloat(videoWidth)))), max(0, min(videoHeight - 1, Int((point.y - rect.minY) / rect.height * CGFloat(videoHeight)))))
+13 |     }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:11:36: error: value of type 'CGRect' has no member 'height'
+ 9 |     }
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+11 |         guard rect.width > 0, rect.height > 0, videoWidth > 0, videoHeight > 0, clamp || rect.contains(point) else { return nil }
+   |                                    `- error: value of type 'CGRect' has no member 'height'
+12 |         return (max(0, min(videoWidth - 1, Int((point.x - rect.minX) / rect.width * CGFloat(videoWidth)))), max(0, min(videoHeight - 1, Int((point.y - rect.minY) / rect.height * CGFloat(videoHeight)))))
+13 |     }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:11:95: error: value of type 'CGRect' has no member 'contains'
+ 9 |     }
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+11 |         guard rect.width > 0, rect.height > 0, videoWidth > 0, videoHeight > 0, clamp || rect.contains(point) else { return nil }
+   |                                                                                               `- error: value of type 'CGRect' has no member 'contains'
+12 |         return (max(0, min(videoWidth - 1, Int((point.x - rect.minX) / rect.width * CGFloat(videoWidth)))), max(0, min(videoHeight - 1, Int((point.y - rect.minY) / rect.height * CGFloat(videoHeight)))))
+13 |     }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:12:64: error: value of type 'CGRect' has no member 'minX'
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+11 |         guard rect.width > 0, rect.height > 0, videoWidth > 0, videoHeight > 0, clamp || rect.contains(point) else { return nil }
+12 |         return (max(0, min(videoWidth - 1, Int((point.x - rect.minX) / rect.width * CGFloat(videoWidth)))), max(0, min(videoHeight - 1, Int((point.y - rect.minY) / rect.height * CGFloat(videoHeight)))))
+   |                                                                `- error: value of type 'CGRect' has no member 'minX'
+13 |     }
+14 | }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:12:77: error: value of type 'CGRect' has no member 'width'
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+11 |         guard rect.width > 0, rect.height > 0, videoWidth > 0, videoHeight > 0, clamp || rect.contains(point) else { return nil }
+12 |         return (max(0, min(videoWidth - 1, Int((point.x - rect.minX) / rect.width * CGFloat(videoWidth)))), max(0, min(videoHeight - 1, Int((point.y - rect.minY) / rect.height * CGFloat(videoHeight)))))
+   |                                                                             `- error: value of type 'CGRect' has no member 'width'
+13 |     }
+14 | }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:12:157: error: value of type 'CGRect' has no member 'minY'
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+11 |         guard rect.width > 0, rect.height > 0, videoWidth > 0, videoHeight > 0, clamp || rect.contains(point) else { return nil }
+12 |         return (max(0, min(videoWidth - 1, Int((point.x - rect.minX) / rect.width * CGFloat(videoWidth)))), max(0, min(videoHeight - 1, Int((point.y - rect.minY) / rect.height * CGFloat(videoHeight)))))
+   |                                                                                                                                                             `- error: value of type 'CGRect' has no member 'minY'
+13 |     }
+14 | }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/InputGeometry.swift:12:170: error: value of type 'CGRect' has no member 'height'
+10 |     public static func coordinates(point: CGPoint, rect: CGRect, videoWidth: Int, videoHeight: Int, clamp: Bool = false) -> (x: Int, y: Int)? {
+11 |         guard rect.width > 0, rect.height > 0, videoWidth > 0, videoHeight > 0, clamp || rect.contains(point) else { return nil }
+12 |         return (max(0, min(videoWidth - 1, Int((point.x - rect.minX) / rect.width * CGFloat(videoWidth)))), max(0, min(videoHeight - 1, Int((point.y - rect.minY) / rect.height * CGFloat(videoHeight)))))
+   |                                                                                                                                                                          `- error: value of type 'CGRect' has no member 'height'
+13 |     }
+14 | }
+error: fatalError

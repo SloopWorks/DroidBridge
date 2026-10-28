@@ -1,0 +1,21 @@
+/opt/homebrew/Cellar/scrcpy/5.0.1/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 225.5 MB/s (733930 bytes in 0.003s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+[server] INFO: Processing Android apps... (this may take some time)
+[server] INFO: List of apps:
+ * Calendar                       com.android.calendar
+ * Camera                         com.android.camera2
+ * Clock                          com.android.deskclock
+ * Contacts                       com.android.contacts
+ * Files                          com.android.documentsui
+ * Gallery                        com.android.gallery3d
+ * Messaging                      com.android.messaging
+ * Phone                          com.android.dialer
+ * SIM Toolkit                    com.android.stk
+ * Search                         com.android.quicksearchbox
+ * Settings                       com.android.settings
+ * System Tracing                 com.android.traceur
+ * WebView Shell                  org.chromium.webview_shell
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+INFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:     --> (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64

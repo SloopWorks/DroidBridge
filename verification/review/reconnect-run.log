@@ -1,0 +1,32 @@
+START actual emulator shutdown/reconnect native
+native: emulator absent; checking host survival
+PASS native: same host PID 11332 automatically restored successor session-72718A1D-B83E-4759-BB4D-E159F664ABDA.log.jsonl
+START actual emulator shutdown/reconnect scrcpy
+scrcpy: emulator absent; checking host survival
+PASS scrcpy: same host PID 12360 automatically restored successor session-E2081B72-C2F9-4F67-97CD-77FAF91BA211.log.jsonl
+[
+  {
+    "backend": "native",
+    "passed": true,
+    "same_host_pid": 11332,
+    "original_session": "session-BAA1F3BD-222A-4F49-8843-3F170607AD3E.log.jsonl",
+    "restored_session": "session-72718A1D-B83E-4759-BB4D-E159F664ABDA.log.jsonl",
+    "new_emulator_pid": 11683,
+    "host_survived_disconnect": true,
+    "automatic_successor_session": true,
+    "restored_video_verified": "decoded native frame",
+    "restored_virtual_display": true
+  },
+  {
+    "backend": "scrcpy",
+    "passed": true,
+    "same_host_pid": 12360,
+    "original_session": "session-82B98E83-6316-4ACF-BC44-CA3975AD19D1.log.jsonl",
+    "restored_session": "session-E2081B72-C2F9-4F67-97CD-77FAF91BA211.log.jsonl",
+    "new_emulator_pid": 12737,
+    "host_survived_disconnect": true,
+    "automatic_successor_session": true,
+    "restored_video_verified": "scrcpy Texture/decoder output",
+    "restored_virtual_display": true
+  }
+]

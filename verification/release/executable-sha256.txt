@@ -1,0 +1,2 @@
+be59b196988bdeefd993f847d408ee7249a705102a8a03f2278cb9055a6778bd  dist/DroidBridge.app/Contents/MacOS/DroidBridge
+be59b196988bdeefd993f847d408ee7249a705102a8a03f2278cb9055a6778bd  /Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge

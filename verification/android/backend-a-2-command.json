@@ -1,0 +1,14 @@
+[
+  "/opt/homebrew/bin/scrcpy",
+  "--serial",
+  "emulator-5580",
+  "--new-display=720x1080/240",
+  "--flex-display",
+  "--no-audio",
+  "--start-app=dev.droidbridge.testapp",
+  "--window-title=DroidBridge Android Verify dev.droidbridge.testapp",
+  "--window-x=800",
+  "--window-y=60",
+  "--time-limit=35",
+  "--record=/Users/patrick/workspace/DroidBridge/verification/android/backend-a-2.mp4"
+]

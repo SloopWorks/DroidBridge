@@ -1,0 +1,22 @@
+[
+  {
+    "backend": "native",
+    "passed": true,
+    "same_host_pid": 84413,
+    "original_session": "session-2EBA0C31-0AB6-4663-B6B2-ECDFEA8A11D0.log.jsonl",
+    "restored_session": "session-AF23E199-D487-4094-8CFD-3CF896B2CE7A.log.jsonl",
+    "new_emulator_pid": 84777,
+    "host_survived_disconnect": true,
+    "automatic_successor_session": true
+  },
+  {
+    "backend": "scrcpy",
+    "passed": true,
+    "same_host_pid": 85477,
+    "original_session": "session-AA67B2B5-0ED7-43BA-A644-71143EAC457E.log.jsonl",
+    "restored_session": "session-AE222586-3789-4DA6-BC92-264093724C12.log.jsonl",
+    "new_emulator_pid": 85859,
+    "host_survived_disconnect": true,
+    "automatic_successor_session": true
+  }
+]

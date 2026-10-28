@@ -1,0 +1,8 @@
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+
+Dependencies (compiled / linked):
+ - SDL: 3.4.18 / 3.4.18
+ - libavcodec: 63.1.102 / 63.1.102
+ - libavformat: 63.1.102 / 63.1.102
+ - libavutil: 61.1.102 / 61.1.102
+ - libusb: - / 1.0.30

@@ -1,0 +1,4 @@
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"455CF67B-C3F5-429E-A385-7CAA1A83C244","state":"starting","timestamp":"2026-10-28T02:23:08Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"455CF67B-C3F5-429E-A385-7CAA1A83C244","state":"running","timestamp":"2026-10-28T02:23:08Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"455CF67B-C3F5-429E-A385-7CAA1A83C244","state":"stopping","timestamp":"2026-10-28T02:23:10Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"455CF67B-C3F5-429E-A385-7CAA1A83C244","state":"stopped","timestamp":"2026-10-28T02:23:10Z"}

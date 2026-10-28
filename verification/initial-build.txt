@@ -1,0 +1,78 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] /Users/patrick/workspace/DroidBridge/.build/arm64-apple-macosx/debug/DroidBridgePackageTests.derived/runner.swift
+[2/9] Write sources
+[3/9] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[5/15] Emitting module DroidBridge
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/main.swift:30:16: error: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context [#ActorIsolatedCall]
+ 4 | 
+ 5 | @MainActor
+ 6 | final class AppDelegate: NSObject, NSApplicationDelegate {
+   |                                                          `- note: calls to initializer 'init()' from outside of its actor context are implicitly asynchronous
+ 7 |     var launcher: LauncherController!
+ 8 |     func applicationDidFinishLaunching(_ notification: Notification) {
+   :
+28 | }
+29 | let application = NSApplication.shared
+30 | let delegate = AppDelegate()
+   |                `- error: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context [#ActorIsolatedCall]
+31 | application.delegate = delegate
+32 | application.run()
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/NativeWindow.swift:78:16: error: overriding declaration requires an 'override' keyword
+ 76 |     override func keyUp(with event: NSEvent) { if let code = androidKey(event) { key(code, action: 1) } }
+ 77 |     @objc func paste(_ sender: Any?) { if let text = NSPasteboard.general.string(forType: .string) { input?(.clipboard(text, paste: true)) } }
+ 78 |     @objc func selectAll(_ sender: Any?) { key(29, meta: 0x1000); key(29, action: 1, meta: 0x1000) }
+    |                `- error: overriding declaration requires an 'override' keyword
+ 79 | }
+ 80 | 
+
+AppKit.NSResponder.selectAll:2:11: note: overridden declaration is here
+1 | class NSResponder {
+2 | open func selectAll(_ sender: Any?)}
+  |           `- note: overridden declaration is here
+3 | 
+
+[#ActorIsolatedCall]: <https://docs.swift.org/compiler/documentation/diagnostics/actor-isolated-call>
+[6/15] Compiling DroidBridge Launcher.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/Launcher.swift:200:28: error: cannot find 'MacAppWrapper' in scope
+198 |     @objc func createWrapper() {
+199 |         guard let device = selectedDevice, let app = selectedApp else { return }
+200 |         do { let url = try MacAppWrapper.create(application: app, device: device, backend: backend); status.stringValue = "Created \(url.path). Open it from Finder, add it to the Dock, or search in Spotlight."; NSWorkspace.shared.activateFileViewerSelecting([url]) }
+    |                            `- error: cannot find 'MacAppWrapper' in scope
+201 |         catch { status.stringValue = error.localizedDescription }
+202 |     }
+[7/15] Compiling DroidBridge NativeWindow.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/NativeWindow.swift:78:16: error: overriding declaration requires an 'override' keyword
+ 76 |     override func keyUp(with event: NSEvent) { if let code = androidKey(event) { key(code, action: 1) } }
+ 77 |     @objc func paste(_ sender: Any?) { if let text = NSPasteboard.general.string(forType: .string) { input?(.clipboard(text, paste: true)) } }
+ 78 |     @objc func selectAll(_ sender: Any?) { key(29, meta: 0x1000); key(29, action: 1, meta: 0x1000) }
+    |                `- error: overriding declaration requires an 'override' keyword
+ 79 | }
+ 80 | 
+
+AppKit.NSResponder.selectAll:2:11: note: overridden declaration is here
+1 | class NSResponder {
+2 | open func selectAll(_ sender: Any?)}
+  |           `- note: overridden declaration is here
+3 | 
+[8/15] Compiling DroidBridge main.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/main.swift:30:16: error: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context [#ActorIsolatedCall]
+ 4 | 
+ 5 | @MainActor
+ 6 | final class AppDelegate: NSObject, NSApplicationDelegate {
+   |                                                          `- note: calls to initializer 'init()' from outside of its actor context are implicitly asynchronous
+ 7 |     var launcher: LauncherController!
+ 8 |     func applicationDidFinishLaunching(_ notification: Notification) {
+   :
+28 | }
+29 | let application = NSApplication.shared
+30 | let delegate = AppDelegate()
+   |                `- error: call to main actor-isolated initializer 'init()' in a synchronous nonisolated context [#ActorIsolatedCall]
+31 | application.delegate = delegate
+32 | application.run()
+
+[#ActorIsolatedCall]: <https://docs.swift.org/compiler/documentation/diagnostics/actor-isolated-call>
+error: fatalError

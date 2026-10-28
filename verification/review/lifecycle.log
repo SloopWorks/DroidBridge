@@ -1,0 +1,22 @@
+Another instance of SwiftPM (PID: 98319) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/4] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.12s)
+Test Suite 'Selected tests' started at 2026-10-27 18:34:30.479.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-27 18:34:30.480.
+Test Suite 'QALifecycleTests' started at 2026-10-27 18:34:30.480.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup]' passed (9.665 seconds).
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testRejectsInvalidInputsBeforeAnySpawn]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testRejectsInvalidInputsBeforeAnySpawn]' passed (0.001 seconds).
+Test Suite 'QALifecycleTests' passed at 2026-10-27 18:34:40.146.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 9.666 (9.666) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-27 18:34:40.146.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 9.666 (9.666) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 18:34:40.146.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 9.666 (9.667) seconds
+QA lifecycle: invalid app, 3 cancelled startups, 3 decoded launch/stop cycles; exact forwards and display count restored
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

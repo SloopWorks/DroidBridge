@@ -1,0 +1,77 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] Write sources
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/12] Compiling DroidBridgeCoreTests StreamingTests.swift
+[5/12] Emitting module DroidBridgeCoreTests
+[5/12] Write Objects.LinkFileList
+[7/12] Compiling DroidBridge main.swift
+[8/12] Compiling DroidBridge Launcher.swift
+[9/12] Emitting module DroidBridge
+[9/13] Write Objects.LinkFileList
+[10/13] Linking DroidBridgePackageTests
+[11/13] Linking DroidBridge
+[12/13] Applying DroidBridge
+Build complete! (1.49s)
+Test Suite 'Selected tests' started at 2026-10-27 18:38:34.100.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-27 18:38:34.100.
+Test Suite 'StreamingTests' started at 2026-10-27 18:38:34.100.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' passed (16.966 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' passed (0.000 seconds).
+Test Suite 'StreamingTests' passed at 2026-10-27 18:38:51.069.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 16.968 (16.968) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-27 18:38:51.069.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 16.968 (16.968) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 18:38:51.069.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 16.968 (16.969) seconds
+PROBE A starting: 
+PROBE A running: 
+PROBE B starting: 
+PROBE B running: 
+--------- beginning of main
+10-27 18:38:36.457  6918  6918 I DroidBridgeProbe: click=1 display=26
+10-27 18:38:36.917  7014  7014 I DroidBridgeProbe: click=1 display=27
+10-27 18:38:37.292  7014  7014 I DroidBridgeProbe: text=I display=27
+10-27 18:38:37.311  7014  7014 I DroidBridgeProbe: text=In display=27
+10-27 18:38:37.356  7014  7014 I DroidBridgeProbe: text=Ind display=27
+10-27 18:38:37.396  7014  7014 I DroidBridgeProbe: text=Inde display=27
+10-27 18:38:37.425  7014  7014 I DroidBridgeProbe: text=Indep display=27
+10-27 18:38:37.442  7014  7014 I DroidBridgeProbe: text=Indepe display=27
+10-27 18:38:37.449  7014  7014 I DroidBridgeProbe: text=Indepen display=27
+10-27 18:38:37.491  7014  7014 I DroidBridgeProbe: text=Independ display=27
+10-27 18:38:37.497  6918  6918 I DroidBridgeProbe: text=D display=26
+10-27 18:38:37.526  7014  7014 I DroidBridgeProbe: text=Independe display=27
+10-27 18:38:37.606  6918  6918 I DroidBridgeProbe: text=Dr display=26
+10-27 18:38:37.618  6918  6918 I DroidBridgeProbe: text=Dro display=26
+10-27 18:38:37.620  6918  6918 I DroidBridgeProbe: text=Droi display=26
+10-27 18:38:37.633  6918  6918 I DroidBridgeProbe: text=Droid display=26
+10-27 18:38:37.638  6918  6918 I DroidBridgeProbe: text=DroidB display=26
+10-27 18:38:37.638  6918  6918 I DroidBridgeProbe: text=DroidBr display=26
+10-27 18:38:37.641  7014  7014 I DroidBridgeProbe: text=Independen display=27
+10-27 18:38:37.643  6918  6918 I DroidBridgeProbe: text=DroidBri display=26
+10-27 18:38:37.678  6918  6918 I DroidBridgeProbe: text=DroidBrid display=26
+10-27 18:38:37.686  6918  6918 I DroidBridgeProbe: text=DroidBridg display=26
+10-27 18:38:37.689  6918  6918 I DroidBridgeProbe: text=DroidBridge display=26
+10-27 18:38:37.694  6918  6918 I DroidBridgeProbe: text=DroidBridgeN display=26
+10-27 18:38:37.695  6918  6918 I DroidBridgeProbe: text=DroidBridgeNa display=26
+10-27 18:38:37.697  6918  6918 I DroidBridgeProbe: text=DroidBridgeNat display=26
+10-27 18:38:37.702  6918  6918 I DroidBridgeProbe: text=DroidBridgeNati display=26
+10-27 18:38:37.702  6918  6918 I DroidBridgeProbe: text=DroidBridgeNativ display=26
+10-27 18:38:37.702  6918  6918 I DroidBridgeProbe: text=DroidBridgeNative display=26
+10-27 18:38:37.703  7014  7014 I DroidBridgeProbe: text=Independent display=27
+10-27 18:38:37.703  7014  7014 I DroidBridgeProbe: text=IndependentB display=27
+
+PROBE A stopping: 
+PROBE A stopped: 
+PROBE B stopping: 
+PROBE B stopped: 
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

@@ -1,0 +1,14 @@
+[
+  {
+    "backend": "scrcpy",
+    "passed": true,
+    "same_host_pid": 93300,
+    "original_session": "session-E7884B0C-5966-470A-B17F-4F13D1FB1695.log.jsonl",
+    "restored_session": "session-172B17CA-B120-4DF8-AF74-D7DF6947B86E.log.jsonl",
+    "new_emulator_pid": 93703,
+    "host_survived_disconnect": true,
+    "automatic_successor_session": true,
+    "restored_video_verified": "scrcpy Texture/decoder output",
+    "restored_virtual_display": true
+  }
+]

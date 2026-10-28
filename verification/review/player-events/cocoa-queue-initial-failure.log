@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-player-events.py", line 24, in <module>
+    assert any('text='+word+' display='+display in line for line in receipt.splitlines()),f'no Cocoa keyboard receipt for display {display}'
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: no Cocoa keyboard receipt for display 4

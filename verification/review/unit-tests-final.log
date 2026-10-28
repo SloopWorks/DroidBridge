@@ -1,0 +1,73 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Compiling DroidBridge main.swift
+[4/7] Emitting module DroidBridge
+[5/7] Compiling DroidBridge Launcher.swift
+[5/8] Write Objects.LinkFileList
+[6/8] Linking DroidBridge
+[7/8] Applying DroidBridge
+Build complete! (1.64s)
+Test Suite 'All tests' started at 2026-10-27 18:39:45.745.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-27 18:39:45.745.
+Test Suite 'AndroidDiscoveryTests' started at 2026-10-27 18:39:45.745.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/AndroidDiscoveryTests.swift:26: -[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn] : Test skipped - Set DROIDBRIDGE_TEST_SERIAL to an emulator serial
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' skipped (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' passed (0.102 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' passed (0.320 seconds).
+Test Suite 'AndroidDiscoveryTests' passed at 2026-10-27 18:39:46.172.
+	 Executed 6 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.426 (0.427) seconds
+Test Suite 'InputGeometryTests' started at 2026-10-27 18:39:46.172.
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testDragClampsAndInvalidDimensions]' started.
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testDragClampsAndInvalidDimensions]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testLetterboxAndCenter]' started.
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testLetterboxAndCenter]' passed (0.000 seconds).
+Test Suite 'InputGeometryTests' passed at 2026-10-27 18:39:46.172.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'QALifecycleTests' started at 2026-10-27 18:39:46.172.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/QALifecycleTests.swift:27: -[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup] : Test skipped - Opt in after coordinating exclusive emulator sessions
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup]' skipped (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testRejectsInvalidInputsBeforeAnySpawn]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testRejectsInvalidInputsBeforeAnySpawn]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testStopAndWaitIncludesLateForwardAllocation]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testStopAndWaitIncludesLateForwardAllocation]' passed (1.380 seconds).
+Test Suite 'QALifecycleTests' passed at 2026-10-27 18:39:47.555.
+	 Executed 3 tests, with 1 test skipped and 0 failures (0 unexpected) in 1.382 (1.382) seconds
+Test Suite 'SessionRecoveryTests' started at 2026-10-27 18:39:47.555.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testReceiptValidationRejectsTraversalAndShellCharacters]' started.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testReceiptValidationRejectsTraversalAndShellCharacters]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testRecoveryScopesExactDeadOwnerResourcesAndRetainsOffline]' started.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testRecoveryScopesExactDeadOwnerResourcesAndRetainsOffline]' passed (0.711 seconds).
+Test Suite 'SessionRecoveryTests' passed at 2026-10-27 18:39:48.266.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.711 (0.712) seconds
+Test Suite 'StreamingTests' started at 2026-10-27 18:39:48.266.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/StreamingTests.swift:29: -[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams] : Test skipped - Set DROIDBRIDGE_INTEGRATION=1 with emulator-5580 running
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' skipped (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' passed (0.000 seconds).
+Test Suite 'StreamingTests' passed at 2026-10-27 18:39:48.268.
+	 Executed 4 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-27 18:39:48.269.
+	 Executed 17 tests, with 3 tests skipped and 0 failures (0 unexpected) in 2.521 (2.523) seconds
+Test Suite 'All tests' passed at 2026-10-27 18:39:48.269.
+	 Executed 17 tests, with 3 tests skipped and 0 failures (0 unexpected) in 2.521 (2.524) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

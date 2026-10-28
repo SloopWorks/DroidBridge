@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-installed.py", line 46, in <module>
+    assert session_log is not None and displays()>before_displays,'no real live virtual display within30sec'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: no real live virtual display within30sec

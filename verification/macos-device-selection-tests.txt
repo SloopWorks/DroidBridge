@@ -1,0 +1,48 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[3/9] Write swift-version--58304C5D6DBC2206.txt
+[5/11] Emitting module DroidBridgeCore
+[6/11] Compiling DroidBridgeCore DeviceSelection.swift
+[7/16] Compiling DroidBridgeStreaming H264Decoder.swift
+[8/16] Compiling DroidBridgeStreaming SessionRecovery.swift
+[9/16] Compiling DroidBridgeStreaming SocketTransport.swift
+[10/16] Compiling DroidBridgeStreaming BridgeSession.swift
+[11/16] Emitting module DroidBridgeStreaming
+[12/28] Compiling DroidBridge main.swift
+[13/28] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[14/28] Emitting module DroidBridgeCoreTests
+[15/28] Compiling DroidBridgeCoreTests DeviceSelectionTests.swift
+[16/28] Compiling DroidBridgeCoreTests InputGeometryTests.swift
+[17/28] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[18/28] Compiling DroidBridgeCoreTests StreamingTests.swift
+[19/28] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[19/28] Write Objects.LinkFileList
+[21/28] Compiling DroidBridge NativeWindow.swift
+[22/28] Emitting module DroidBridge
+[23/28] Compiling DroidBridge MacAppWrapper.swift
+[24/28] Compiling DroidBridge Launcher.swift
+[24/28] Write Objects.LinkFileList
+[25/28] Linking DroidBridgePackageTests
+[26/28] Linking DroidBridge
+[27/28] Applying DroidBridge
+Build complete! (2.39s)
+Test Suite 'Selected tests' started at 2026-10-27 18:54:57.232.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-27 18:54:57.232.
+Test Suite 'DeviceSelectionTests' started at 2026-10-27 18:54:57.232.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testExplicitSerialWinsOverFirstDevice]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testExplicitSerialWinsOverFirstDevice]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testMissingExplicitSerialDoesNotQueryAnotherDevice]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testMissingExplicitSerialDoesNotQueryAnotherDevice]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testUserSelectionAndDefault]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testUserSelectionAndDefault]' passed (0.000 seconds).
+Test Suite 'DeviceSelectionTests' passed at 2026-10-27 18:54:57.234.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-27 18:54:57.234.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 18:54:57.234.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

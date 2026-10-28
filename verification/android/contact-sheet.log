@@ -1,0 +1,64 @@
+ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers
+  built with Apple clang version 21.0.0 (clang-2100.3.34.2)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/9.0.2_1 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags= --enable-ffplay --enable-gpl --enable-libsvtav1 --enable-libopus --enable-libx264 --enable-libmp3lame --enable-libdav1d --enable-libvmaf --enable-libvpx --enable-libx265 --enable-openssl --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'verification/android/backend-a-0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+    comment         : Recorded by scrcpy 5.0.1
+  Duration: 00:00:14.17, start: 0.000000, bitrate: 223 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 720x1080, 221 kb/s, 15.39 fps, 90k tbr, 90k tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+Input #1, mov,mp4,m4a,3gp,3g2,mj2, from 'verification/android/backend-a-1.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+    comment         : Recorded by scrcpy 5.0.1
+  Duration: 00:00:11.59, start: 0.000000, bitrate: 172 kb/s
+  Stream #1:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 720x1080, 170 kb/s, 12.25 fps, 90k tbr, 90k tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+Input #2, mov,mp4,m4a,3gp,3g2,mj2, from 'verification/android/backend-a-2.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+    comment         : Recorded by scrcpy 5.0.1
+  Duration: 00:00:09.60, start: 0.000000, bitrate: 465 kb/s
+  Stream #2:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 720x1080, 463 kb/s, 18.64 fps, 90k tbr, 90k tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+Stream mapping:
+  Stream #0:0 (h264) -> scale:default
+  Stream #1:0 (h264) -> scale:default
+  Stream #2:0 (h264) -> scale:default
+  hstack:default -> Stream #0:0 (png)
+Press [q] to stop, [?] for help
+[fc#0 @ 0xa32808000] [vo0->#0:0 @ 0xa3281c600] No information about the input framerate is available. Falling back to a default value of 25fps. Use the -r option if you want a different framerate.
+Output #0, image2, to 'verification/android/concurrent-streams-contact-sheet.png':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    comment         : Recorded by scrcpy 5.0.1
+    encoder         : Lavf63.1.102
+  Stream #0:0: Video: png, rgb24(pc, gbr/unknown/unknown, progressive), 2160x1080, q=2-31, 200 kb/s, 25 fps, 25 tbn
+    Metadata:
+      encoder         : Lavc63.1.102 png
+[image2 @ 0xa32818f00] The specified filename 'verification/android/concurrent-streams-contact-sheet.png' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 0xa32818f00] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+[out#0/image2 @ 0xa328146c0] video:165KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=    1 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.04 bitrate=N/A dup=1 drop=0 speed=0.489x elapsed=0:00:00.08    

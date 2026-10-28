@@ -1,0 +1,4 @@
+app.droidbridge.desktop pid=10688 active=false name=DroidBridge bundle=/Users/patrick/Applications/DroidBridge.app
+app.droidbridge.wrapper.com.android.settings pid=14591 active=false name=Settings bundle=/Users/patrick/Applications/DroidBridge Apps/Settings.app
+app.droidbridge.wrapper.com.android.deskclock pid=15208 active=false name=Clock bundle=/Users/patrick/Applications/DroidBridge Apps/Clock.app
+frontmost=com.anthropic.claudefordesktop

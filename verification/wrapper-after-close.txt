@@ -1,0 +1,2 @@
+14591 /Users/patrick/Applications/DroidBridge Apps/Settings.app/Contents/MacOS/DroidBridge
+15208 /Users/patrick/Applications/DroidBridge Apps/Clock.app/Contents/MacOS/DroidBridge

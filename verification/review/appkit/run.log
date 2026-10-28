@@ -1,0 +1,16 @@
+APPKIT INPUT touch(action: 0, x: 300, y: 225, width: 720, height: 1080)
+APPKIT INPUT touch(action: 1, x: 300, y: 225, width: 720, height: 1080)
+APPKIT INPUT touch(action: 0, x: 260, y: 295, width: 720, height: 1080)
+APPKIT INPUT touch(action: 1, x: 260, y: 295, width: 720, height: 1080)
+APPKIT INPUT text("AppKitQA")
+RESIZED actual 960x656 bounds=(0.0, 0.0, 640.0, 440.0)
+APPKIT INPUT touch(action: 0, x: 400, y: 225, width: 960, height: 656)
+APPKIT INPUT touch(action: 1, x: 400, y: 225, width: 960, height: 656)
+Two distinct visible NSWindows; actual rendered PNGs unequal and changing.
+NSWindow mouse/key dispatch produced Android click/text receipts.
+NSWindow drag and Android scroll changed Settings content.
+Standard minimize/restore and rapid resize coalescing succeeded.
+Native frame sizes after resize: 960x656.
+Probe frames=162, Settings frames=104.
+
+APPKIT VERIFICATION PASS

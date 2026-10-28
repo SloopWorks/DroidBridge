@@ -1,0 +1,39 @@
+ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers
+  built with Apple clang version 21.0.0 (clang-2100.3.34.2)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/9.0.2_1 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags= --enable-ffplay --enable-gpl --enable-libsvtav1 --enable-libopus --enable-libx264 --enable-libmp3lame --enable-libdav1d --enable-libvmaf --enable-libvpx --enable-libx265 --enable-openssl --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'verification/android/backend-a-2.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+    comment         : Recorded by scrcpy 5.0.1
+  Duration: 00:00:09.60, start: 0.000000, bitrate: 465 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 720x1080, 463 kb/s, 18.64 fps, 90k tbr, 90k tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> png (native))
+Press [q] to stop, [?] for help
+Output #0, image2, to 'verification/android/probe-after-input.png':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    comment         : Recorded by scrcpy 5.0.1
+    encoder         : Lavf63.1.102
+  Stream #0:0(und): Video: png, rgb24(pc, gbr/bt709/bt709, progressive), 720x1080, q=2-31, 200 kb/s, 18.64 fps, 18.64 tbn (default)
+    Metadata:
+      encoder         : Lavc63.1.102 png
+      handler_name    : VideoHandler
+[image2 @ 0xa69014500] The specified filename 'verification/android/probe-after-input.png' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 0xa69014500] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+[out#0/image2 @ 0xa68c44180] video:68KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=    1 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.05 bitrate=N/A speed=2.14x elapsed=0:00:00.02    

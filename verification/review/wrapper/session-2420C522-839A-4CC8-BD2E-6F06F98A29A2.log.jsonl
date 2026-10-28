@@ -1,0 +1,4 @@
+{"backend":"native","device":"emulator-5580","package":"com.android.settings","session":"2420C522-839A-4CC8-BD2E-6F06F98A29A2","state":"starting","timestamp":"2026-10-28T02:18:06Z"}
+{"backend":"native","device":"emulator-5580","package":"com.android.settings","session":"2420C522-839A-4CC8-BD2E-6F06F98A29A2","state":"running","timestamp":"2026-10-28T02:18:06Z"}
+{"backend":"native","device":"emulator-5580","package":"com.android.settings","session":"2420C522-839A-4CC8-BD2E-6F06F98A29A2","state":"stopping","timestamp":"2026-10-28T02:18:10Z"}
+{"backend":"native","device":"emulator-5580","package":"com.android.settings","session":"2420C522-839A-4CC8-BD2E-6F06F98A29A2","state":"stopped","timestamp":"2026-10-28T02:18:10Z"}

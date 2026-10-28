@@ -1,0 +1,5 @@
+Physical size: 720x1080
+
+
+Physical size: 630x842
+Override size: 900x1200

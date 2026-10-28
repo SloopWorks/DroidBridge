@@ -1,0 +1,2 @@
+/Users/patrick/Applications/DroidBridge Apps/Settings.app: late-cancellation race candidate main executable and own runtime copied; ad-hoc signed; deep/strict signature passed
+/Users/patrick/Applications/DroidBridge Apps/Clock.app: late-cancellation race candidate main executable and own runtime copied; ad-hoc signed; deep/strict signature passed

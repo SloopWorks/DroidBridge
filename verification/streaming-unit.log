@@ -1,0 +1,40 @@
+[0/1] Planning build
+Building for debugging...
+[0/7] Write sources
+[1/7] Write swift-version--58304C5D6DBC2206.txt
+[3/10] Compiling DroidBridgeStreaming SessionRecovery.swift
+[4/10] Emitting module DroidBridgeStreaming
+[5/10] Compiling DroidBridgeStreaming BridgeSession.swift
+[6/18] Compiling DroidBridgeCoreTests StreamingTests.swift
+[7/18] Emitting module DroidBridgeCoreTests
+[8/18] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[8/18] Write Objects.LinkFileList
+[9/18] Linking DroidBridgePackageTests
+[11/18] Emitting module DroidBridge
+[12/18] Compiling DroidBridge main.swift
+[13/18] Compiling DroidBridge Launcher.swift
+[14/18] Compiling DroidBridge MacAppWrapper.swift
+[15/18] Compiling DroidBridge NativeWindow.swift
+[15/18] Write Objects.LinkFileList
+[16/18] Linking DroidBridge
+[17/18] Applying DroidBridge
+Build complete! (1.78s)
+Test Suite 'Selected tests' started at 2026-10-27 18:37:10.777.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-27 18:37:10.778.
+Test Suite 'StreamingTests' started at 2026-10-27 18:37:10.778.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' passed (0.000 seconds).
+Test Suite 'StreamingTests' passed at 2026-10-27 18:37:10.779.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-27 18:37:10.779.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 18:37:10.779.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

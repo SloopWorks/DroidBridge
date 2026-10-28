@@ -1,0 +1,11 @@
+{
+  "installed_runtime": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime",
+  "test_runtime": "/Users/patrick/workspace/DroidBridge/.build/sdl-fixture/DroidBridge.app/Contents/Resources/Runtime",
+  "sha256": {
+    "bin/adb": "1e22e72965d8a24046d0fb9bf94b5fcdb57796c2a5910dce2b05b70da619691d",
+    "share/scrcpy/scrcpy-server": "764eb6f79811d5211fe9df341120882ba9994c7a61b897d7bf3fb662e53bc536",
+    "Player.app/Contents/MacOS/scrcpy": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+    "lib/libSDL3.0.dylib": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6"
+  },
+  "identical_to_installed": true
+}

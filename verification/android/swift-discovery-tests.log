@@ -1,0 +1,45 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] Write sources
+[1/6] Write swift-version--58304C5D6DBC2206.txt
+[3/8] Emitting module DroidBridgeCore
+[4/8] Compiling DroidBridgeCore ProcessRunner.swift
+[5/9] Compiling DroidBridgeCore AndroidDiscovery.swift
+[6/11] Compiling DroidBridgeStreaming BridgeSession.swift
+[7/11] Emitting module DroidBridgeStreaming
+[7/14] Write Objects.LinkFileList
+[8/14] Linking DroidBridge
+[9/14] Applying DroidBridge
+[11/14] Emitting module DroidBridgeCoreTests
+[12/14] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[13/16] Emitting module DroidBridgePackageTests
+[14/16] Compiling DroidBridgePackageTests runner.swift
+[14/16] Write Objects.LinkFileList
+[15/16] Linking DroidBridgePackageTests
+Build complete! (7.34s)
+Test Suite 'Selected tests' started at 2026-10-27 18:27:46.415.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-27 18:27:46.417.
+Test Suite 'AndroidDiscoveryTests' started at 2026-10-27 18:27:46.417.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/AndroidDiscoveryTests.swift:26: -[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn] : Test skipped - Set DROIDBRIDGE_TEST_SERIAL to an emulator serial
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' skipped (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' passed (0.093 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' passed (0.294 seconds).
+Test Suite 'AndroidDiscoveryTests' passed at 2026-10-27 18:27:46.807.
+	 Executed 6 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.390 (0.390) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-27 18:27:46.807.
+	 Executed 6 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.390 (0.391) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 18:27:46.807.
+	 Executed 6 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.390 (0.393) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

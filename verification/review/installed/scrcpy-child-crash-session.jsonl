@@ -1,0 +1,7 @@
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"8692DD09-CC56-4075-B3A9-661EE62373B8","state":"starting","timestamp":"2026-10-28T02:23:11Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"8692DD09-CC56-4075-B3A9-661EE62373B8","state":"running","timestamp":"2026-10-28T02:23:11Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"8692DD09-CC56-4075-B3A9-661EE62373B8","state":"stopping","timestamp":"2026-10-28T02:23:13Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"8692DD09-CC56-4075-B3A9-661EE62373B8","state":"stopped","timestamp":"2026-10-28T02:23:13Z"}
+{"backend":"scrcpy","device":"emulator-5580","message":"Session process exited (137). See \/Users\/patrick\/Library\/Logs\/DroidBridge\/session-8692DD09-CC56-4075-B3A9-661EE62373B8.log","package":"dev.droidbridge.testapp","session":"8692DD09-CC56-4075-B3A9-661EE62373B8","state":"failed","timestamp":"2026-10-28T02:23:13Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"8692DD09-CC56-4075-B3A9-661EE62373B8","state":"stopping","timestamp":"2026-10-28T02:23:13Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"8692DD09-CC56-4075-B3A9-661EE62373B8","state":"stopped","timestamp":"2026-10-28T02:23:13Z"}

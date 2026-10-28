@@ -1,0 +1,3 @@
+/Users/patrick/Applications/DroidBridge Apps/Settings.app
+kMDItemCFBundleIdentifier = "app.droidbridge.wrapper.com.android.settings"
+kMDItemDisplayName        = "Settings"

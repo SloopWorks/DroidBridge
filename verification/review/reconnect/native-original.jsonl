@@ -1,0 +1,7 @@
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"BAA1F3BD-222A-4F49-8843-3F170607AD3E","state":"starting","timestamp":"2026-10-28T02:23:25Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"BAA1F3BD-222A-4F49-8843-3F170607AD3E","state":"running","timestamp":"2026-10-28T02:23:26Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"BAA1F3BD-222A-4F49-8843-3F170607AD3E","state":"stopping","timestamp":"2026-10-28T02:23:28Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"BAA1F3BD-222A-4F49-8843-3F170607AD3E","state":"stopped","timestamp":"2026-10-28T02:23:28Z"}
+{"backend":"native","device":"emulator-5580","message":"Android video transport disconnected","package":"dev.droidbridge.testapp","session":"BAA1F3BD-222A-4F49-8843-3F170607AD3E","state":"failed","timestamp":"2026-10-28T02:23:28Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"BAA1F3BD-222A-4F49-8843-3F170607AD3E","state":"stopping","timestamp":"2026-10-28T02:23:28Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"BAA1F3BD-222A-4F49-8843-3F170607AD3E","state":"stopped","timestamp":"2026-10-28T02:23:28Z"}

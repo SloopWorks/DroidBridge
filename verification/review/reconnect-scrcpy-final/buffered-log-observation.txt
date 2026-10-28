@@ -1,0 +1,6 @@
+START actual emulator shutdown/reconnect scrcpy
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-reconnect.py", line 39, in <module>
+    assert first is not None,'initial session did not run'
+           ^^^^^^^^^^^^^^^^^
+AssertionError: initial session did not run

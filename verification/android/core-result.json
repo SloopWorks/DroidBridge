@@ -1,0 +1,17 @@
+{
+  "serial": "emulator-5580",
+  "packages": [
+    "com.android.settings",
+    "org.chromium.webview_shell",
+    "dev.droidbridge.testapp"
+  ],
+  "displayIDs": [
+    5,
+    6,
+    7
+  ],
+  "concurrent": true,
+  "adbDisplayInputLog": "--------- beginning of main\n10-27 18:28:06.822  3051  3051 I DroidBridgeProbe: click=1 display=7\n10-27 18:28:06.962  3051  3051 I DroidBridgeProbe: text=D display=7\n10-27 18:28:06.999  3051  3051 I DroidBridgeProbe: text=Dr display=7\n10-27 18:28:07.014  3051  3051 I DroidBridgeProbe: text=Dro display=7\n10-27 18:28:07.032  3051  3051 I DroidBridgeProbe: text=Droi display=7\n10-27 18:28:07.048  3051  3051 I DroidBridgeProbe: text=Droid display=7\n10-27 18:28:07.084  3051  3051 I DroidBridgeProbe: text=DroidB display=7\n10-27 18:28:07.104  3051  3051 I DroidBridgeProbe: text=DroidBr display=7\n10-27 18:28:07.136  3051  3051 I DroidBridgeProbe: text=DroidBri display=7\n10-27 18:28:07.170  3051  3051 I DroidBridgeProbe: text=DroidBrid display=7\n10-27 18:28:07.175  3051  3051 I DroidBridgeProbe: text=DroidBridg display=7\n10-27 18:28:07.191  3051  3051 I DroidBridgeProbe: text=DroidBridge display=7\n10-27 18:28:07.237  3051  3051 I DroidBridgeProbe: text=DroidBridgeI display=7\n10-27 18:28:07.261  3051  3051 I DroidBridgeProbe: text=DroidBridgeIn display=7\n10-27 18:28:07.282  3051  3051 I DroidBridgeProbe: text=DroidBridgeInp display=7\n10-27 18:28:07.321  3051  3051 I DroidBridgeProbe: text=DroidBridgeInpu display=7\n10-27 18:28:07.355  3051  3051 I DroidBridgeProbe: text=DroidBridgeInput display=7\n",
+  "displayResize": true,
+  "note": "ADB input and wm resize exercise Android platform, GUI/control injection verified separately."
+}

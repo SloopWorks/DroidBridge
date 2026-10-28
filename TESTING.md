@@ -8,9 +8,11 @@ Use the dedicated `DroidBridge_API35` emulator on port 5580. The user's existing
 scripts/android-emulator.sh # run in a separate persistent terminal; foreground emulator supervisor
 scripts/android-build-testapp.sh
 swift test
+scripts/verify-launch-race.sh # deterministic no-device startup cancellation race
 DROIDBRIDGE_INTEGRATION=1 DROIDBRIDGE_TEST_SERIAL=emulator-5580 swift test --filter StreamingTests
 DROIDBRIDGE_QA_LIFECYCLE=1 DROIDBRIDGE_TEST_SERIAL=emulator-5580 swift test --filter QALifecycleTests
 scripts/verify-appkit.sh
+python3 scripts/verify-sdl-input.py "$HOME/Applications/DroidBridge.app" # test-only client events; no locked-host OS-focus claim
 python3 scripts/verify-package.py "$HOME/Applications/DroidBridge.app"
 python3 scripts/verify-installed.py "$HOME/Applications/DroidBridge.app" # exclusive DroidBridge GUI/emulator sessions
 python3 scripts/verify-wrapper-close.py "$HOME/Applications/DroidBridge.app"
@@ -32,3 +34,5 @@ Run emulator-dependent tests serially. Probe apps have single Android package id
 See verification/REPORT.md for the acceptance matrix, verification/review/ for independent results, verification/android/ for emulator evidence and verification/streaming/ for decoded-frame and input receipts. A screenshot is accepted only when it visibly contains real application content. Black screen-capture images are failed evidence and must be replaced with permitted UI screenshots or actual AppKit view captures. Input pass claims require Android receipts tied to the intended display; ADB-injected input alone does not prove Mac window event routing.
 
 A release must rerun the unit and actual integration tests after code changes, rebuild the package, verify its exact bundle, mount/copy the installer outside the build directory, and launch that installed copy. Record blocked/unexecuted scenarios explicitly. Cmd+Tab and Spotlight behavior must be observed; independent bundle IDs alone are insufficient evidence.
+
+The focused launch-race harness compiles the shipping launcher and delays a fake ADB resolve command, then checks that polling interruption survives the late startup catch. It complements actual emulator reboot tests. The SDL test injects only public client events into two unchanged bundled Players, validates separate Android mouse/text/raw-key receipts, inspects real recorded frames, and verifies cleanup; it does not establish OS focus under a locked desktop.

@@ -1,0 +1,6 @@
+Two distinct visible NSWindows; actual rendered PNGs unequal and changing.
+NSWindow mouse/key dispatch produced Android click/text receipts.
+NSWindow drag and Android scroll changed Settings content.
+Standard minimize/restore and rapid resize coalescing succeeded.
+Native frame sizes after resize: 960x656.
+Probe frames=162, Settings frames=104.

@@ -1,0 +1,24 @@
+--------- beginning of main
+10-27 19:20:17.256  4024  4024 I DroidBridgeProbe: click=1 display=17
+10-27 19:20:17.261  4022  4022 I DroidBridgeProbe: click=1 display=16
+10-27 19:20:18.239  4022  4022 I DroidBridgeProbe: text=1 display=16
+10-27 19:20:18.320  4024  4024 I DroidBridgeProbe: text=2 display=17
+10-27 19:20:18.374  4022  4022 I DroidBridgeProbe: text=1S display=16
+10-27 19:20:18.375  4022  4022 I DroidBridgeProbe: text=1SD display=16
+10-27 19:20:18.376  4022  4022 I DroidBridgeProbe: text=1SDL display=16
+10-27 19:20:18.379  4022  4022 I DroidBridgeProbe: text=1SDLF display=16
+10-27 19:20:18.397  4022  4022 I DroidBridgeProbe: text=1SDLFi display=16
+10-27 19:20:18.398  4022  4022 I DroidBridgeProbe: text=1SDLFir display=16
+10-27 19:20:18.399  4022  4022 I DroidBridgeProbe: text=1SDLFirs display=16
+10-27 19:20:18.400  4022  4022 I DroidBridgeProbe: text=1SDLFirst display=16
+10-27 19:20:18.424  4024  4024 I DroidBridgeProbe: text=2S display=17
+10-27 19:20:18.463  4024  4024 I DroidBridgeProbe: text=2SD display=17
+10-27 19:20:18.499  4024  4024 I DroidBridgeProbe: text=2SDL display=17
+10-27 19:20:18.568  4024  4024 I DroidBridgeProbe: text=2SDLS display=17
+10-27 19:20:18.571  4024  4024 I DroidBridgeProbe: text=2SDLSe display=17
+10-27 19:20:18.619  4024  4024 I DroidBridgeProbe: text=2SDLSec display=17
+10-27 19:20:18.641  4024  4024 I DroidBridgeProbe: text=2SDLSeco display=17
+10-27 19:20:18.671  4024  4024 I DroidBridgeProbe: text=2SDLSecon display=17
+10-27 19:20:18.700  4024  4024 I DroidBridgeProbe: text=2SDLSecond display=17
+10-27 19:20:19.224  4022  4022 I DroidBridgeProbe: text=1SDLFirstk display=16
+10-27 19:20:19.317  4024  4024 I DroidBridgeProbe: text=2SDLSecondk display=17

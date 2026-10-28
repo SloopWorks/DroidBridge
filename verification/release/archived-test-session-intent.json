@@ -1,0 +1,20 @@
+[
+  {
+    "device": {
+      "serial": "emulator-5580",
+      "state": "device",
+      "model": "Android SDK built for arm64"
+    },
+    "application": {
+      "packageName": "dev.droidbridge.testapp",
+      "name": "DroidBridge Test"
+    },
+    "configuration": {
+      "width": 720,
+      "height": 1080,
+      "backend": "scrcpy",
+      "density": 240
+    },
+    "id": "E2081B72-C2F9-4F67-97CD-77FAF91BA211"
+  }
+]

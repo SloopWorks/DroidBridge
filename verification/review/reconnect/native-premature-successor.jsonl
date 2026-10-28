@@ -1,0 +1,4 @@
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"A984A2C7-9D8C-4993-82FB-2707143FA41C","state":"starting","timestamp":"2026-10-28T02:00:29Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"A984A2C7-9D8C-4993-82FB-2707143FA41C","state":"stopping","timestamp":"2026-10-28T02:00:30Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"A984A2C7-9D8C-4993-82FB-2707143FA41C","state":"stopped","timestamp":"2026-10-28T02:00:30Z"}
+{"backend":"native","device":"emulator-5580","message":"adb failed (20): cmd: Can't find service: package\n","package":"dev.droidbridge.testapp","session":"A984A2C7-9D8C-4993-82FB-2707143FA41C","state":"failed","timestamp":"2026-10-28T02:00:30Z"}

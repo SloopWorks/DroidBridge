@@ -1,0 +1,41 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[2/8] Write swift-version--58304C5D6DBC2206.txt
+[4/11] Emitting module DroidBridgeStreaming
+[5/11] Compiling DroidBridgeStreaming BridgeSession.swift
+[6/11] Compiling DroidBridgeStreaming FrameMailbox.swift
+[7/12] Compiling DroidBridgeStreaming SessionRecovery.swift
+[8/22] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[9/22] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[10/22] Compiling DroidBridgeCoreTests StreamingTests.swift
+[11/22] Compiling DroidBridgeCoreTests FrameMailboxTests.swift
+[12/22] Emitting module DroidBridgeCoreTests
+[12/22] Write Objects.LinkFileList
+[14/22] Compiling DroidBridge main.swift
+[15/22] Emitting module DroidBridge
+[16/22] Compiling DroidBridge MacAppWrapper.swift
+[17/22] Compiling DroidBridge Launcher.swift
+[18/22] Compiling DroidBridge NativeWindow.swift
+[18/22] Write Objects.LinkFileList
+[19/22] Linking DroidBridge
+[20/22] Applying DroidBridge
+[21/22] Linking DroidBridgePackageTests
+Build complete! (2.49s)
+Test Suite 'Selected tests' started at 2026-10-27 18:41:33.429.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-27 18:41:33.433.
+Test Suite 'FrameMailboxTests' started at 2026-10-27 18:41:33.433.
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testBlockedDeliveryRetainsNewestImageAndAllCounters]' started.
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testBlockedDeliveryRetainsNewestImageAndAllCounters]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testProducerDuringDeliverySchedulesOneSuccessorAndCancelDropsPending]' started.
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testProducerDuringDeliverySchedulesOneSuccessorAndCancelDropsPending]' passed (0.000 seconds).
+Test Suite 'FrameMailboxTests' passed at 2026-10-27 18:41:33.436.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-27 18:41:33.436.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 18:41:33.436.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.007) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

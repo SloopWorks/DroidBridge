@@ -1,0 +1,26 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] Write sources
+[1/6] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module DroidBridgeCoreTests
+[4/6] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (0.94s)
+Test Suite 'Selected tests' started at 2026-10-27 18:38:55.988.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-27 18:38:55.989.
+Test Suite 'SessionRecoveryTests' started at 2026-10-27 18:38:55.989.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testReceiptValidationRejectsTraversalAndShellCharacters]' started.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testReceiptValidationRejectsTraversalAndShellCharacters]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testRecoveryScopesExactDeadOwnerResourcesAndRetainsOffline]' started.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testRecoveryScopesExactDeadOwnerResourcesAndRetainsOffline]' passed (0.720 seconds).
+Test Suite 'SessionRecoveryTests' passed at 2026-10-27 18:38:56.710.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.721 (0.721) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-27 18:38:56.710.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.721 (0.721) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 18:38:56.710.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.721 (0.722) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.
