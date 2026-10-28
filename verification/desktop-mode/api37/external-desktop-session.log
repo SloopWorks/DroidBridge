@@ -1,0 +1,33 @@
+/opt/homebrew/Cellar/scrcpy/5.0.1/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 1281.9 MB/s (733930 bytes in 0.001s)
+[server] INFO: Device: [Google] google sdk_gphone16k_arm64 (Android 17)
+[server] INFO: New display: 720x1080/240 (id=11)
+{"test":"SDL_window_ready","version":3004018,"main_thread":true,"window":3,"width":480,"height":720}
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 11...
+{"test":"SDL_click","w":480,"h":720,"androidY":225}
+{"test":"SDL_PushEvent","type":1025,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":1026,"window":3,"success":true}
+{"test":"SDL_click","w":480,"h":720,"androidY":295}
+{"test":"SDL_PushEvent","type":1025,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":1026,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":771,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":768,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":769,"window":3,"success":true}
+{"test":"SDL_click","w":480,"h":720,"androidY":365}
+{"test":"SDL_PushEvent","type":1025,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":1026,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":768,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":769,"window":3,"success":true}
+{"test":"SDL_resize","success":true}
+{"test":"SDL_input_complete","word":"1Desktopdesktop","window":3}
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+INFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:         (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+INFO:     --> (tcpip)  emulator-5582                   device  sdk_gphone16k_arm64
+INFO: Recording started to matroska file: /Users/patrick/workspace/DroidBridge/verification/desktop-mode/api37/external-desktop.mkv
+INFO: Renderer: metal
+INFO: Interop: videotoolbox
+INFO: Video decoding: videotoolbox
+INFO: Texture (VideoToolbox): 720x1080
+INFO: Time limit reached
+INFO: Recording complete to matroska file: /Users/patrick/workspace/DroidBridge/verification/desktop-mode/api37/external-desktop.mkv

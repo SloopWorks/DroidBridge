@@ -1,0 +1,9 @@
+{
+  "candidate_helper": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAvailability",
+  "remained_alive_after_cancel_while_catalog_lock_held": true,
+  "status_before_unlock": null,
+  "status_after_unlock": 0,
+  "elapsed_after_SIGTERM": 2.016,
+  "output": "{\"registrations\":0,\"available\":0,\"probed\":0,\"messages\":[],\"enabled\":false,\"pendingRegistrations\":0}\n",
+  "note": "Signal-cancel cannot break synchronous unbounded flock. Isolated catalog, no ADB and no default catalog mutated."
+}

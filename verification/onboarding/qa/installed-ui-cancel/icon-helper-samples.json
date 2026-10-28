@@ -1,0 +1,27 @@
+[
+  {
+    "elapsed": 0.058,
+    "icon_helper_pids": []
+  },
+  {
+    "elapsed": 3.902,
+    "icon_helper_pids": [
+      33719,
+      33723
+    ]
+  },
+  {
+    "elapsed": 4.831,
+    "icon_helper_pids": []
+  },
+  {
+    "elapsed": 6.099,
+    "icon_helper_pids": [
+      33787
+    ]
+  },
+  {
+    "elapsed": 6.971,
+    "icon_helper_pids": []
+  }
+]

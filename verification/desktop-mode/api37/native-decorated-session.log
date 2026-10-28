@@ -1,0 +1,6 @@
+{"event":"supervisor_started","parent":58090,"child":58342}
+[server] INFO: Device: [Google] google sdk_gphone16k_arm64 (Android 17)
+[server] DEBUG: Using video encoder: 'c2.android.avc.encoder'
+[server] DEBUG: Video codec size alignment requirement: 2px
+[server] INFO: New display: 720x1080/240 (id=14)
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 14...

@@ -1,0 +1,19 @@
+--------- beginning of main
+10-28 14:53:22.028  3842  3842 I DroidBridgeProbe: click=1 display=11
+10-28 14:53:23.071  3842  3842 I DroidBridgeProbe: text=1 display=11
+10-28 14:53:23.178  3842  3842 I DroidBridgeProbe: text=1D display=11
+10-28 14:53:23.313  3842  3842 I DroidBridgeProbe: text=1De display=11
+10-28 14:53:23.353  3842  3842 I DroidBridgeProbe: text=1Des display=11
+10-28 14:53:23.377  3842  3842 I DroidBridgeProbe: text=1Desk display=11
+10-28 14:53:23.418  3842  3842 I DroidBridgeProbe: text=1Deskt display=11
+10-28 14:53:23.447  3842  3842 I DroidBridgeProbe: text=1Deskto display=11
+10-28 14:53:23.448  3842  3842 I DroidBridgeProbe: text=1Desktop display=11
+10-28 14:53:23.449  3842  3842 I DroidBridgeProbe: text=1Desktopd display=11
+10-28 14:53:23.449  3842  3842 I DroidBridgeProbe: text=1Desktopde display=11
+10-28 14:53:23.449  3842  3842 I DroidBridgeProbe: text=1Desktopdes display=11
+10-28 14:53:23.449  3842  3842 I DroidBridgeProbe: text=1Desktopdesk display=11
+10-28 14:53:23.450  3842  3842 I DroidBridgeProbe: text=1Desktopdeskt display=11
+10-28 14:53:23.450  3842  3842 I DroidBridgeProbe: text=1Desktopdeskto display=11
+10-28 14:53:23.479  3842  3842 I DroidBridgeProbe: text=1Desktopdesktop display=11
+10-28 14:53:24.059  3842  3842 I DroidBridgeProbe: text=1Desktopdesktopk display=11
+10-28 14:53:24.626  3842  3842 I DroidBridgeProbe: secondary display=11 package=dev.droidbridge.testapp

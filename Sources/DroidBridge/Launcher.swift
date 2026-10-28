@@ -25,6 +25,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var refreshing = false
     var quitting = false
     var pending: [SessionDescriptor] = []
+    var restoreTask: Task<Void,Never>?
     var previousSerials = Set<String>()
     var readySerials = Set<String>()
     var reconnectRetries: [UUID: ReconnectRetry] = [:]
@@ -40,6 +41,30 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var iconRecency: [String] = []
     var iconRecoveryMessages: [String] = []
     lazy var iconProvider = AndroidIconProvider(toolchain: toolchain)
+    var sharedPreferences = (try? DroidBridgePreferences.load()) ?? DroidBridgePreferences(bulkWrapperOnboardingEnabled:false)
+    let bulkPreference = NSButton(checkboxWithTitle:"Enable device apps in Spotlight",target:nil,action:nil)
+    let decorationsPreference = NSButton(checkboxWithTitle:"Show Android system decorations",target:nil,action:nil)
+    let onboardingButton = NSButton(title:"Add All Device Apps to Spotlight",target:nil,action:nil)
+    let onboardingCancel = NSButton(title:"Cancel",target:nil,action:nil)
+    let onboardingProgress = NSProgressIndicator()
+    let onboardingStatus = NSTextField(wrappingLabelWithString:"Ready to add all launchable apps from the selected device.")
+    var onboardingAdmissionTask: Task<Void,Never>?
+    var onboardingPending = false
+    lazy var managedCatalog = ManagedAppCatalog()
+    lazy var availabilityMonitor = ManagedAvailabilityMonitor(toolchain:toolchain,catalog:managedCatalog)
+    lazy var onboarding: DeviceOnboardingController = {
+        let controller=DeviceOnboardingController(toolchain:toolchain,catalog:managedCatalog)
+        controller.onProgress = { [weak self,weak controller] progress in
+            guard let self else { return }
+            self.onboardingProgress.maxValue=Double(max(1,progress.total)); self.onboardingProgress.doubleValue=Double(progress.completed)
+            self.onboardingStatus.stringValue=String((progress.summary + (progress.active.isEmpty ? "" : " Working: " + progress.active.joined(separator:", "))).prefix(2000))
+            self.onboardingStatus.toolTip=self.onboardingStatus.stringValue
+            self.onboardingCancel.isEnabled=controller?.isRunning == true
+            self.onboardingButton.isEnabled=self.bulkPreference.state == .on && controller?.isRunning != true
+            if controller?.isRunning != true { self.pumpIcons() }
+        }
+        return controller
+    }()
     var isWrapper: Bool { Bundle.main.url(forResource: "launch", withExtension: "json") != nil || ProcessInfo.processInfo.arguments.contains("--wrapper") }
     var preferredSerial: String? {
         let arguments = ProcessInfo.processInfo.arguments
@@ -56,9 +81,9 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         return directory.appendingPathComponent(isWrapper ? "sessions-\(Bundle.main.bundleIdentifier ?? "wrapper").json" : "sessions.json")
     }
     init() {
-        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 940, height: 680), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1000, height: 800), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         window.title = "DroidBridge"
-        window.minSize = NSSize(width: 780, height: 540)
+        window.minSize = NSSize(width: 900, height: 720)
         window.isReleasedWhenClosed = false
         super.init(window: window)
         buildUI()
@@ -92,6 +117,17 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         let launch = button("Launch App", #selector(launchAction)); launch.keyEquivalent = "\r"
         let actions = NSStackView(views: [launch, button("Create / Update Mac App…", #selector(createWrapper)), button("Restore Previous Sessions", #selector(restoreAction)), button("Open Diagnostics", #selector(openDiagnostics))]); actions.spacing = 10
         outer.addArrangedSubview(actions)
+        bulkPreference.state=sharedPreferences.bulkWrapperOnboardingEnabled ? .on : .off
+        decorationsPreference.state=sharedPreferences.showAndroidSystemDecorations ? .on : .off
+        for control in [bulkPreference,decorationsPreference] { control.target=self; control.action=#selector(sharedPreferenceChanged(_:)) }
+        bulkPreference.setAccessibilityLabel("Enable device apps in Spotlight")
+        decorationsPreference.toolTip="Controls Android virtual-display launcher and system navigation. App-drawn controls are unaffected."
+        let preferences=NSStackView(views:[bulkPreference,decorationsPreference]); preferences.spacing=14; outer.addArrangedSubview(preferences)
+        onboardingButton.target=self; onboardingButton.action=#selector(onboardDeviceApps); onboardingButton.isEnabled=sharedPreferences.bulkWrapperOnboardingEnabled
+        onboardingCancel.target=self; onboardingCancel.action=#selector(cancelOnboarding); onboardingCancel.isEnabled=false
+        onboardingProgress.isIndeterminate=false; onboardingProgress.minValue=0; onboardingProgress.maxValue=1; onboardingProgress.widthAnchor.constraint(equalToConstant:150).isActive=true
+        let onboardingControls=NSStackView(views:[onboardingButton,onboardingCancel,button("Onboarding Details",#selector(showOnboardingDetails)),onboardingProgress]); onboardingControls.spacing=10; outer.addArrangedSubview(onboardingControls)
+        onboardingStatus.font = .systemFont(ofSize:11); onboardingStatus.textColor = .secondaryLabelColor; onboardingStatus.maximumNumberOfLines=3; onboardingStatus.lineBreakMode = .byTruncatingTail; outer.addArrangedSubview(onboardingStatus); onboardingStatus.widthAnchor.constraint(equalTo:outer.widthAnchor).isActive=true
         reconnect.state = .on; outer.addArrangedSubview(reconnect)
         let heading = NSTextField(labelWithString: "SESSIONS"); heading.font = .systemFont(ofSize: 11, weight: .semibold); heading.textColor = .secondaryLabelColor; outer.addArrangedSubview(heading)
         sessionList.orientation = .vertical; sessionList.alignment = .leading; sessionList.spacing = 8
@@ -121,11 +157,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     func iconKey(_ device: AndroidDevice, _ app: AndroidApplication) -> String { device.serial + ":" + app.packageName }
     func requestIcon(_ device: AndroidDevice, _ app: AndroidApplication) {
         let key = iconKey(device, app)
-        guard icons[key] == nil, iconTasks[key] == nil, iconFailures[key] == nil, !iconQueue.contains(where: { iconKey($0.0, $0.1) == key }), iconQueue.count < 64, !quitting else { return }
+        guard icons[key] == nil, iconTasks[key] == nil, iconFailures[key] == nil, !iconQueue.contains(where: { iconKey($0.0, $0.1) == key }), iconQueue.count < 64, !quitting, !onboardingPending, !onboarding.isRunning else { return }
         iconQueue.append((device, app)); pumpIcons()
     }
     func pumpIcons() {
-        while iconTasks.count < 2, !iconQueue.isEmpty, !quitting {
+        while iconTasks.count < 2, !iconQueue.isEmpty, !quitting, !onboardingPending, !onboarding.isRunning {
             let (device, app) = iconQueue.removeFirst(), key = iconKey(device, app)
             iconTasks[key] = Task { [weak self] in
                 guard let self else { return }
@@ -167,6 +203,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     func refresh() { refreshDevices(forceApps: true) }
     func refreshDevices(forceApps: Bool = false) {
         guard !refreshing, !quitting else { return }; refreshing = true
+        sharedPreferences=(try? DroidBridgePreferences.load()) ?? DroidBridgePreferences(bulkWrapperOnboardingEnabled:false)
+        bulkPreference.state=sharedPreferences.bulkWrapperOnboardingEnabled ? .on : .off
+        decorationsPreference.state=sharedPreferences.showAndroidSystemDecorations ? .on : .off
+        onboardingButton.isEnabled=sharedPreferences.bulkWrapperOnboardingEnabled && !onboardingPending && !onboarding.isRunning
+        if !sharedPreferences.bulkWrapperOnboardingEnabled && onboarding.isRunning { onboarding.cancel() }
         let selected = selectedDevice?.serial
         refreshTask = Task {
             defer { refreshing = false; refreshTask = nil }
@@ -177,6 +218,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                 let found = try await discovery.devices()
                 guard !quitting else { return }
                 let connected = Set(found.filter { $0.state == "device" }.map(\.serial))
+                if onboarding.isRunning, let captured=onboarding.capturedSerial, !connected.contains(captured) { onboarding.cancel() }
                 for session in Array(sessions.values) where !connected.contains(session.descriptor.device.serial) {
                     let id = session.descriptor.id
                     if sessionStates[id] != "disconnected" || previousSerials.contains(session.descriptor.device.serial) {
@@ -208,8 +250,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                         let descriptor = session.descriptor
                         var retry = reconnectRetries[descriptor.id] ?? ReconnectRetry()
                         guard retry.admits(intentPresent: sessions[descriptor.id] != nil, ready: ready.contains(descriptor.device.serial), enabled: reconnect.state == .on, now: Date()) else { continue }
-                        close(descriptor.id, reason: "reconnect_replacement")
-                        if let successor = await launch(device: descriptor.device, app: descriptor.application, configuration: descriptor.configuration, readinessChecked: true), sessions[successor.descriptor.id] != nil, successor.state != .running {
+                        if let successor = await launch(device: descriptor.device, app: descriptor.application, configuration: descriptor.configuration, readinessChecked: true,replacing:descriptor.id,replacementReason:"reconnect_replacement"), !quitting, sessions[successor.descriptor.id] != nil, successor.state != .running {
                             retry.failed(at: Date())
                             reconnectRetries[successor.descriptor.id] = retry
                             sessionStates[successor.descriptor.id] = "disconnected"
@@ -234,17 +275,32 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     }
     @objc func launchAction() {
         guard let device = selectedDevice, let app = selectedApp else { status.stringValue = "Select a connected device and an app first."; return }
-        Task { await launch(device: device, app: app, configuration: SessionConfiguration(backend: backend)) }
+        Task { await launch(device: device, app: app, configuration: SessionConfiguration(backend: backend,showSystemDecorations:(try? DroidBridgePreferences.load().showAndroidSystemDecorations) ?? true)) }
     }
     @discardableResult
-    func launch(device: AndroidDevice, app: AndroidApplication, configuration: SessionConfiguration, readinessChecked: Bool = false) async -> BridgeSession? {
-        guard !quitting else { return nil }
+    func launch(device: AndroidDevice, app: AndroidApplication, configuration: SessionConfiguration, readinessChecked: Bool = false,replacing:UUID? = nil,restoring:UUID? = nil,replacementReason:String = "session_replacement") async -> BridgeSession? {
+        guard !quitting,!Task.isCancelled else { return nil }
+        let predecessor=replacing.flatMap {sessions[$0]}
+        if replacing != nil && predecessor == nil {return nil}
+        if let restoring, !pending.contains(where:{$0.id==restoring}) {return nil}
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(terminateWrapperIfIdle), object: nil)
         if !readinessChecked, !(await DeviceReadiness.isReady(device: device, toolchain: toolchain)) { status.stringValue = "Android is still booting. The app can launch when package services are ready."; return nil }
-        guard !quitting else { return nil }
+        guard !quitting,!Task.isCancelled else { return nil }
+        if Bundle.main.bundleIdentifier?.hasPrefix("app.droidbridge.managed.") == true {
+            let bundleURL=Bundle.main.bundleURL, catalog=managedCatalog
+            let allowed = await Task.detached { ((try? DroidBridgePreferences.load().bulkWrapperOnboardingEnabled) == true) && ((try? catalog.isLaunchAllowed(bundleURL:bundleURL,serial:device.serial,packageName:app.packageName)) == true) }.value
+            guard allowed, !quitting,!Task.isCancelled else { status.stringValue="This managed app is disabled or its owning device is unavailable. Enable device apps in Spotlight and reconnect that device."; return nil }
+        }
+        // Admission is complete. Recheck ownership after every suspension before
+        // replacing intent. Insert the successor first so persistence and idle
+        // termination can never observe a destructive intermediate empty state.
+        if let replacing, sessions[replacing] !== predecessor {return nil}
+        if let restoring, !pending.contains(where:{$0.id==restoring}) {return nil}
         let descriptor = SessionDescriptor(device: device, application: app, configuration: configuration)
         let session = BridgeSession(descriptor: descriptor, toolchain: toolchain)
         sessions[descriptor.id] = session; sessionStates[descriptor.id] = "starting"
+        if let restoring {pending.removeAll {$0.id==restoring}}
+        if let replacing {close(replacing,reason:replacementReason)}
         if configuration.backend == .native {
             let host = NativeWindowController(session: session)
             host.onClose = { [weak self] in self?.close(descriptor.id, reason: "window_close") }
@@ -287,7 +343,15 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         if let session = sessions.values.first(where: { $0.descriptor.configuration.backend == .native && ($0.state == .running || $0.state == .starting) }), hosts[session.descriptor.id]?.window != nil {
             presentNativeWrapper(session, reason: "application_reopen")
             if !isWrapper { hosts[session.descriptor.id]?.window?.deminiaturize(nil); hosts[session.descriptor.id]?.window?.makeKeyAndOrderFront(nil) }
-        } else { NSApp.setActivationPolicy(.regular); showWindow(nil); window?.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true) }
+        } else {
+            NSApp.setActivationPolicy(.regular); showWindow(nil); window?.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true)
+            if Bundle.main.bundleIdentifier?.hasPrefix("app.droidbridge.managed.") == true, sessions.isEmpty, !argumentLaunchInFlight, !quitting {
+                // A denied Spotlight click retains diagnostics. A later explicit
+                // reopen retries the original immutable launch identity only.
+                processedArguments=false
+                refreshDevices(forceApps:true)
+            }
+        }
     }
     func presentFailure(_ session: BridgeSession, message: String?) {
         let id = session.descriptor.id
@@ -305,8 +369,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
             guard sessions[id] === previous, !quitting else { return }
             var configuration = descriptor.configuration
             if let backend { configuration.backend = backend }
-            close(id, reason: "retry_replacement")
-            let successor = await launch(device: descriptor.device, app: descriptor.application, configuration: configuration, readinessChecked: true)
+            let successor = await launch(device: descriptor.device, app: descriptor.application, configuration: configuration, readinessChecked: true,replacing:id,replacementReason:"retry_replacement")
             hideLauncherIfUsable(successor)
         }
     }
@@ -352,15 +415,22 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         sessionList.layoutSubtreeIfNeeded(); sessionList.setFrameSize(NSSize(width: 850, height: max(100, sessionList.fittingSize.height)))
     }
     func save() {
-        let values = Array(sessions.values).map(\.descriptor)
+        var intents=Dictionary(pending.map {($0.id,$0)},uniquingKeysWith:{first,_ in first})
+        for session in sessions.values {intents[session.descriptor.id]=session.descriptor}
+        let values=intents.values.sorted {$0.id.uuidString<$1.id.uuidString}
         if let data = try? JSONEncoder().encode(values) { try? data.write(to: persistenceURL, options: .atomic) }
     }
     @objc func restoreAction() {
-        let restore = pending; pending = []
-        Task {
+        guard restoreTask == nil,!quitting else {return}
+        let restore=pending
+        restoreTask=Task {
+            defer {restoreTask=nil}
             for descriptor in restore {
-                if let device = devices.first(where: { $0.serial == descriptor.device.serial && $0.state == "device" }), await DeviceReadiness.isReady(device: device, toolchain: toolchain) { await launch(device: device, app: descriptor.application, configuration: descriptor.configuration, readinessChecked: true) }
-                else { pending.append(descriptor); status.stringValue = "Waiting for \(descriptor.device.model) to connect and finish booting before restoring \(descriptor.application.name)." }
+                guard !quitting,!Task.isCancelled else {break}
+                if let device = devices.first(where: { $0.serial == descriptor.device.serial && $0.state == "device" }), await DeviceReadiness.isReady(device: device, toolchain: toolchain) {
+                    guard !quitting,!Task.isCancelled else {break}
+                    _ = await launch(device:device,app:descriptor.application,configuration:descriptor.configuration,readinessChecked:true,restoring:descriptor.id)
+                } else if !quitting,!Task.isCancelled {status.stringValue = "Waiting for \(descriptor.device.model) to connect and finish booting before restoring \(descriptor.application.name)."}
             }
         }
     }
@@ -390,23 +460,35 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         }
     }
     var processedArguments = false
+    var argumentLaunchInFlight = false
     func launchArgumentsIfNeeded() async {
-        guard !processedArguments else { return }
+        guard !processedArguments, !argumentLaunchInFlight, !quitting else { return }
+        argumentLaunchInFlight=true; defer { argumentLaunchInFlight=false }
         var args = ProcessInfo.processInfo.arguments
         if let resource = Bundle.main.url(forResource: "launch", withExtension: "json"), let data = try? Data(contentsOf: resource), let options = try? JSONDecoder().decode([String: String].self, from: data) {
             args += ["--wrapper", "--launch", options["package"] ?? "", "--serial", options["serial"] ?? "", "--name", options["name"] ?? "", "--backend", options["backend"] ?? "native"]
         }
         func value(_ flag: String) -> String? { guard let i = args.firstIndex(of: flag), args.indices.contains(i+1) else { return nil }; return args[i+1] }
         guard let package = value("--launch") else { processedArguments = true; return }
+        if Bundle.main.bundleIdentifier?.hasPrefix("app.droidbridge.managed.") == true {
+            let catalog=managedCatalog,bundleURL=Bundle.main.bundleURL,serial=value("--serial") ?? ""
+            let permitted = await Task.detached { ((try? DroidBridgePreferences.load().bulkWrapperOnboardingEnabled) == true) && ((try? catalog.isLaunchAllowed(bundleURL:bundleURL,serial:serial,packageName:package)) == true) }.value
+            guard !quitting else { return }
+            guard permitted else { processedArguments=true; status.stringValue="This managed Android app is unavailable or device apps in Spotlight are disabled. Connect its authorized device and enable the feature in DroidBridge."; return }
+        }
         let serial = value("--serial")
         guard let device = devices.first(where: { $0.state == "device" && (serial == nil || $0.serial == serial) }), readySerials.contains(device.serial) else { return }
         processedArguments = true
         let app = applications.first(where: { $0.packageName == package }) ?? AndroidApplication(packageName: package, name: value("--name") ?? package)
-        let launched = await launch(device: device, app: app, configuration: SessionConfiguration(backend: BackendKind(rawValue: value("--backend") ?? "native") ?? .native), readinessChecked: true)
+        let launched = await launch(device: device, app: app, configuration: SessionConfiguration(backend: BackendKind(rawValue: value("--backend") ?? "native") ?? .native,showSystemDecorations:(try? DroidBridgePreferences.load().showAndroidSystemDecorations) ?? true), readinessChecked: true)
         hideLauncherIfUsable(launched)
     }
     func shutdownAndWait() async {
-        quitting = true; save(); timer?.invalidate(); iconQueue.removeAll(); for task in iconTasks.values { task.cancel() }
+        quitting = true; restoreTask?.cancel(); onboardingAdmissionTask?.cancel(); onboarding.cancel()
+        for session in Array(sessions.values)+Array(retiring.values) {session.stop(reason:"application_quit")}
+        if let task=onboardingAdmissionTask { await task.value }
+        await onboarding.cancelAndWait()
+        save(); timer?.invalidate(); iconQueue.removeAll(); for task in iconTasks.values { task.cancel() }
         refreshTask?.cancel()
         wrapperTask?.cancel()
         for session in Array(sessions.values) + Array(retiring.values) { session.stop(reason: "application_quit") }
@@ -414,6 +496,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         for task in pendingIcons { await task.value }
         if let task = wrapperTask { await task.value }
         if let task = refreshTask { await task.value }
+        if let task = restoreTask {await task.value}
         let owned = Array(sessions.values) + Array(retiring.values)
         for session in owned { session.stop(reason: "application_quit") }
         for session in owned { await session.stopAndWait() }

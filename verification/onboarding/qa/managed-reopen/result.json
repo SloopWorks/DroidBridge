@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "installed_main_sha256": "4e2d3ca0666ba43c4199bac1dc9c40a17951b8cd1f23e863c4c12f707731be26",
+  "managed_name": "Settings",
+  "managed_source_build": "6",
+  "normalized_unsigned_code": {
+    "installed": "66aaf1532b06aa791f3507a730a256e03c350cf58067871204d9e305a8782322",
+    "managed": "66aaf1532b06aa791f3507a730a256e03c350cf58067871204d9e305a8782322"
+  },
+  "single_android_session": [
+    "599FEC7E-3F17-489A-B6E7-55BB82F88766"
+  ],
+  "native_presentation_events": [
+    {
+      "backend": "native",
+      "details": {
+        "app_active": "false",
+        "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.settings",
+        "key": "false",
+        "minimized": "false",
+        "pid": "40813",
+        "reason": "first_frame",
+        "visible": "true"
+      },
+      "device": "emulator-5580",
+      "event": "native_window_presented",
+      "package": "com.android.settings",
+      "session": "599FEC7E-3F17-489A-B6E7-55BB82F88766",
+      "timestamp": "2026-10-28T22:36:41Z"
+    },
+    {
+      "backend": "native",
+      "details": {
+        "app_active": "false",
+        "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.settings",
+        "key": "false",
+        "minimized": "false",
+        "pid": "40813",
+        "reason": "application_reopen",
+        "visible": "true"
+      },
+      "device": "emulator-5580",
+      "event": "native_window_presented",
+      "package": "com.android.settings",
+      "session": "599FEC7E-3F17-489A-B6E7-55BB82F88766",
+      "timestamp": "2026-10-28T22:36:41Z"
+    }
+  ],
+  "identity": {
+    "elapsed": 5.902572989463806,
+    "phase": "finished",
+    "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.settings",
+    "icon_valid": true,
+    "running_platform_mean_error": 0,
+    "android_icns_mean_error": 0.14539337158203125,
+    "activation_policy": 0,
+    "instrumentation": "Public NSApplicationDelegate reopen; physical focus/Cmd+Tab not verified",
+    "generic_host_difference": 55.56057071685791,
+    "name": "Settings",
+    "pid": 40813
+  },
+  "helper_paused_only_for_denied_launch": true,
+  "resource_baseline": {
+    "forwards": [],
+    "reverse": [
+      ""
+    ],
+    "display_count": 1
+  },
+  "resources_after": {
+    "forwards": [],
+    "reverse": [
+      ""
+    ],
+    "display_count": 1
+  },
+  "physical_focus_verified": false
+}

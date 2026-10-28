@@ -1,0 +1,38 @@
+{
+  "initial": {
+    "accepted": 16,
+    "active": 16,
+    "hidden": 0
+  },
+  "initialPID": 12485,
+  "featureOff": {
+    "state": {
+      "accepted": 16,
+      "active": 0,
+      "hidden": 16
+    },
+    "seconds": 16.5
+  },
+  "featureOffCycle": {
+    "probed": 0,
+    "enabled": false,
+    "pendingRegistrations": 0,
+    "transitions": 0,
+    "messages": [],
+    "available": 0,
+    "registrations": 3
+  },
+  "terminationSeconds": 0.006,
+  "restartedPID": 15218,
+  "restartSeconds": 0.006,
+  "featureOn": {
+    "state": {
+      "accepted": 16,
+      "active": 16,
+      "hidden": 0
+    },
+    "seconds": 1.65
+  },
+  "parentPID": 1,
+  "status": "PASS"
+}

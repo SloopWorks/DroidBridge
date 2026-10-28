@@ -1,0 +1,91 @@
+{
+  "cases" : [
+    {
+      "admitted_sessions" : 0,
+      "enabled" : false,
+      "entrypoint" : "central"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : false,
+      "entrypoint" : "Launch App button target"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : false,
+      "entrypoint" : "Restore"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : false,
+      "entrypoint" : "Retry"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : false,
+      "entrypoint" : "immutable wrapper launch arguments"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : false,
+      "entrypoint" : "poll reconnection"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : false,
+      "entrypoint" : "explicit reopen"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : true,
+      "entrypoint" : "central"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : true,
+      "entrypoint" : "Launch App button target"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : true,
+      "entrypoint" : "Restore"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : true,
+      "entrypoint" : "Retry"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : true,
+      "entrypoint" : "immutable wrapper launch arguments"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : true,
+      "entrypoint" : "poll reconnection"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : true,
+      "entrypoint" : "explicit reopen"
+    },
+    {
+      "admitted_sessions" : 0,
+      "enabled" : true,
+      "entrypoint" : "explicit close during Retry readiness is terminal"
+    },
+    {
+      "admitted_sessions" : 0,
+      "entrypoint" : "shutdown drains Restore"
+    }
+  ],
+  "failures" : [
+
+  ],
+  "passed" : true,
+  "policy_cases" : [
+    "flag off",
+    "enabled but stale\/unaccepted generation"
+  ]
+}

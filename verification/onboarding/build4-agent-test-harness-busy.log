@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-managed-agent.py", line 62, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-managed-agent.py", line 42, in main
+    state,seconds=wait_for(lambda:(s if (s:=snapshot())['hidden']==count and s['active']==0 else None))
+                  ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-managed-agent.py", line 23, in wait_for
+    value=predicate()
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-managed-agent.py", line 42, in <lambda>
+    state,seconds=wait_for(lambda:(s if (s:=snapshot())['hidden']==count and s['active']==0 else None))
+                                            ~~~~~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-managed-agent.py", line 16, in snapshot
+    text=call(str(STATUS),'status')
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-managed-agent.py", line 14, in call
+    def call(*args):return subprocess.check_output(args,text=True,stderr=subprocess.STDOUT)
+                           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 473, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '('/Users/patrick/workspace/DroidBridge/.build/verify-managed-availability', 'status')' died with <Signals.SIGTRAP: 5>.

@@ -1,0 +1,16 @@
+{
+  "removed_only_empty_owned_QA_roots": [
+    "/Users/patrick/Applications/DroidBridge Managed QA E7CA4C27-93C7-4D99-A8DA-B6C7A68B52D4",
+    "/Users/patrick/Applications/DroidBridge Managed QA 754763F5-E9BC-4566-8F94-A9E742E4451D",
+    "/Users/patrick/Applications/DroidBridge Managed QA 8137A4A5-F2F3-4C8A-84C4-1802ED7E02DC",
+    "/Users/patrick/Applications/DroidBridge Managed QA E2389D21-7974-4E6D-A610-1B9DEF018798",
+    "/Users/patrick/Applications/DroidBridge Managed QA 49445634-9F54-48B4-AD28-8F6B7D73501B",
+    "/Users/patrick/Applications/DroidBridge Managed QA 3F936203-F806-4E2C-B7E1-72F79FF29EC0",
+    "/Users/patrick/Applications/DroidBridge Managed QA 55C895E8-FB26-4D55-8C4F-54209FF9B988",
+    "/Users/patrick/Applications/DroidBridge Managed QA 83DE6167-528C-48CD-A3D4-DE0D21A90684",
+    "/Users/patrick/Applications/DroidBridge Managed QA CE5C7FEA-9086-4527-9290-04553BA28A5B",
+    "/Users/patrick/Applications/DroidBridge Managed QA 083B58BE-F81A-4FF9-ABDE-41637C3D9A3A",
+    "/Users/patrick/Applications/DroidBridge Managed QA 90197075-3754-457D-A3D6-92D0D2FBF5CC"
+  ],
+  "preserved_nonempty_or_changed_roots": []
+}

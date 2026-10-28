@@ -1,0 +1,33 @@
+{
+  "reconnected_active": 16,
+  "reconnected_index_count": 16,
+  "reconnected_paths": [
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Icon Fixture-b5ae9250195affe5.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Test-28243909f9642815.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Test-793533e8dfc8d763.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Messaging-c0c3fd26d554f357.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Gallery-677f6249c9b30b39.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Search-826b3a9625c87bee.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Settings-48f96ab723a440c7.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/SIM Toolkit-5450a64e756894c0.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/System Tracing-96d0b8a8677b51c2.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/WebView Shell-c6262d4f18c90c65.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Contacts-336bf271143fd0cf.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Clock-5f8b230d7ae4a0d8.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Files-d3da61eb84607cb8.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Phone-afe776da5ca49a7c.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Camera-e199ef5f380c9559.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Calendar-43634a3748fda6a6.app"
+  ],
+  "seconds_to_observed_positive": 11.013,
+  "final_hidden": 16,
+  "final_index_count": 0,
+  "final_hide_seconds": 11.554,
+  "accepted": 16,
+  "builds": [
+    "6"
+  ],
+  "pass": true,
+  "observed_helper_pid_after": 15218,
+  "user_emulator_5554_present_after": true
+}

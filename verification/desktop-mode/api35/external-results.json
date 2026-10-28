@@ -1,0 +1,40 @@
+{
+  "api": "35",
+  "serial": "emulator-5580",
+  "backend": "scrcpy",
+  "results": [
+    {
+      "decorations": true,
+      "frames": 286,
+      "frameSizes": [
+        "720,1080"
+      ],
+      "mouseKeyboard": true,
+      "backEventSent": true,
+      "backResult": "Inspect recorded after-Back PNG; API37 may retain secondary activity",
+      "flexDisplaySizes": [
+        "448,320",
+        "720,1080"
+      ]
+    },
+    {
+      "decorations": false,
+      "frames": 262,
+      "frameSizes": [
+        "720,1080"
+      ],
+      "mouseKeyboard": true,
+      "backEventSent": true,
+      "backResult": "Inspect recorded after-Back PNG; API37 may retain secondary activity",
+      "flexDisplaySizes": [
+        "448,320",
+        "720,1080"
+      ]
+    }
+  ],
+  "cleanup": {
+    "forward": true,
+    "reverse": true,
+    "displays": true
+  }
+}

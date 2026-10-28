@@ -1,0 +1,38 @@
+[
+  {
+    "api": "35",
+    "mode": "decorated",
+    "file": "verification/desktop-mode/api35/external-decorated-flex.mkv",
+    "distinctFrameSizes": [
+      "448,320",
+      "720,1080"
+    ]
+  },
+  {
+    "api": "35",
+    "mode": "desktop",
+    "file": "verification/desktop-mode/api35/external-desktop-flex.mkv",
+    "distinctFrameSizes": [
+      "448,320",
+      "720,1080"
+    ]
+  },
+  {
+    "api": "37",
+    "mode": "decorated",
+    "file": "verification/desktop-mode/api37/external-decorated-flex.mkv",
+    "distinctFrameSizes": [
+      "448,320",
+      "720,1080"
+    ]
+  },
+  {
+    "api": "37",
+    "mode": "desktop",
+    "file": "verification/desktop-mode/api37/external-desktop-flex.mkv",
+    "distinctFrameSizes": [
+      "448,320",
+      "720,1080"
+    ]
+  }
+]

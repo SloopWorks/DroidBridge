@@ -1,0 +1,102 @@
+{
+  "query": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Icon Fixture-b5ae9250195affe5.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Test-28243909f9642815.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Test-793533e8dfc8d763.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Phone-afe776da5ca49a7c.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Search-826b3a9625c87bee.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Settings-48f96ab723a440c7.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/SIM Toolkit-5450a64e756894c0.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/WebView Shell-c6262d4f18c90c65.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Camera-e199ef5f380c9559.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Calendar-43634a3748fda6a6.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Contacts-336bf271143fd0cf.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Clock-5f8b230d7ae4a0d8.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Files-d3da61eb84607cb8.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Messaging-c0c3fd26d554f357.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Gallery-677f6249c9b30b39.app\n/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/System Tracing-96d0b8a8677b51c2.app\n",
+  "indexed_parent_apps": [
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Icon Fixture-b5ae9250195affe5.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.dev.droidbridge.iconfixture",
+      "name": "DroidBridge Icon Fixture",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Test-28243909f9642815.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.dev.droidbridge.testapp",
+      "name": "DroidBridge Test",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Test-793533e8dfc8d763.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.dev.droidbridge.testapp2",
+      "name": "DroidBridge Test",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Phone-afe776da5ca49a7c.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.dialer",
+      "name": "Phone",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Search-826b3a9625c87bee.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.quicksearchbox",
+      "name": "Search",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Settings-48f96ab723a440c7.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.settings",
+      "name": "Settings",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/SIM Toolkit-5450a64e756894c0.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.stk",
+      "name": "SIM Toolkit",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/WebView Shell-c6262d4f18c90c65.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.org.chromium.webview_shell",
+      "name": "WebView Shell",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Camera-e199ef5f380c9559.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.camera2",
+      "name": "Camera",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Calendar-43634a3748fda6a6.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.calendar",
+      "name": "Calendar",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Contacts-336bf271143fd0cf.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.contacts",
+      "name": "Contacts",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Clock-5f8b230d7ae4a0d8.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.deskclock",
+      "name": "Clock",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Files-d3da61eb84607cb8.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.documentsui",
+      "name": "Files",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Messaging-c0c3fd26d554f357.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.messaging",
+      "name": "Messaging",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Gallery-677f6249c9b30b39.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.gallery3d",
+      "name": "Gallery",
+      "build": "6"
+    },
+    {
+      "path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/System Tracing-96d0b8a8677b51c2.app",
+      "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.traceur",
+      "name": "System Tracing",
+      "build": "6"
+    }
+  ],
+  "count": 16
+}

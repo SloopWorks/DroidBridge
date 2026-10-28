@@ -1,0 +1,14 @@
+[
+  "/opt/homebrew/bin/scrcpy",
+  "--serial",
+  "emulator-5582",
+  "--new-display=720x1080/240",
+  "--window-width=480",
+  "--window-height=720",
+  "--no-audio",
+  "--start-app=dev.droidbridge.testapp",
+  "--shortcut-mod=lctrl",
+  "--time-limit=11",
+  "--record=/Users/patrick/workspace/DroidBridge/verification/desktop-mode/api37/external-desktop.mkv",
+  "--no-vd-system-decorations"
+]

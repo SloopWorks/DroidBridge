@@ -17,8 +17,14 @@ Created Mac apps use the launcher activity's icon rendered by Android, including
 
 Unexpected session exits keep the wrapper's diagnostics visible instead of silently quitting. Use its retry or fallback controls to start a fresh session. Explicitly closing the session still releases its resources and ends the wrapper.
 
+**Enable device apps in Spotlight** is on by default. Click **Add All Device Apps to Spotlight** to prepare the selected device's apps. The operation runs with bounded background work and progress; use **Cancel** to stop admission, then click Add All again to resume. **Onboarding Details** retains individual errors; apps whose Android icons cannot be extracted are reported for retry. Managed apps are available only while their device is authorized and ready. A per-user availability helper maintains their visibility even after the launcher closes; offline apps move to a private `.noindex` store, and stale results cannot start an Android session. See [APP_ONBOARDING_DESIGN.md](APP_ONBOARDING_DESIGN.md) for ownership, migration and availability behavior.
+
+**Show Android system decorations** applies to new sessions on either backend. Turn it off to remove Android's virtual-display navigation/launcher surfaces when using Mac app switching. App-drawn controls and the Android keyboard remain controlled by Android. The setting does not change the phone screen or global Android settings.
+
 The current release disables audio. It includes its runtime tools and icon helper, so the installed application does not require Homebrew or an Android SDK installation. Diagnostics are local under `~/Library/Logs/DroidBridge`. See [WRAPPER_DESIGN.md](WRAPPER_DESIGN.md) for the implementation and verification boundaries.
 
 The [0.1.1 verification report](verification/launcher-fix/REPORT.md) covers the wrapper fixes, Android icons and independent review. The focused [Pixel wrapper retest](verification/launcher-fix/PIXEL_RETEST.md) explains the one-time update for existing copied wrappers and the additional window/stop diagnostics.
+
+The [0.1.2 onboarding verification report](verification/onboarding/REPORT.md) records bulk creation, Spotlight availability, helper recovery, performance and independent review. [Android display evidence](verification/desktop-mode/ANDROID_REVIEW.md) covers the system-decoration option on Android 15 and 17.
 
 After a device reboot, discovery and restoration wait for Android boot completion and package services. Interrupted sessions are checked on later four-second polls. Automatic restoration permits three failed launches per outage, with at least eight seconds after each failed attempt; the session remains visible if retries pause. Closing it cancels retry. Turn the reconnect checkbox off to hold interrupted sessions without admitting new ones.

@@ -1,0 +1,19 @@
+{
+  "helper_sha256": "f6b529516819ee843b3547ba668ef2fb018cd07a3749ea2a66fdabb1d86742fd",
+  "default_catalog_or_adb_used": false,
+  "cases": [
+    {
+      "cancelled": true,
+      "elapsed_while_lock_held_seconds": 0.06342887505888939,
+      "status": 0,
+      "output": "{\"transitions\":0,\"probed\":0,\"available\":0,\"messages\":[\"Managed app availability could not be reconciled: The operation couldn\u2019t be completed. (Swift.CancellationError error 1.)\",\"Managed app repair diagnostics are unavailable\"],\"pendingRegistrations\":0,\"registrations\":0,\"enabled\":false}\n"
+    },
+    {
+      "cancelled": false,
+      "elapsed_while_lock_held_seconds": 0.3191783339716494,
+      "status": 0,
+      "output": "{\"available\":0,\"probed\":0,\"enabled\":false,\"pendingRegistrations\":0,\"transitions\":0,\"messages\":[\"Managed app availability could not be reconciled: Another DroidBridge process is preparing this managed app. Try again when it finishes.\",\"Managed app repair diagnostics are unavailable\"],\"registrations\":0}\n"
+    }
+  ],
+  "passed": true
+}

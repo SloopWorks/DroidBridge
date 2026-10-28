@@ -1,0 +1,47 @@
+[0/1] Planning build
+Building for debugging...
+[0/7] Write sources
+[1/7] Write swift-version--58304C5D6DBC2206.txt
+[3/9] Emitting module DroidBridgeCore
+[4/9] Compiling DroidBridgeCore ManagedAvailabilityMonitor.swift
+[4/12] Write Objects.LinkFileList
+[7/12] Linking DroidBridgeAvailability
+[8/12] Applying DroidBridgeAvailability
+[9/12] Linking DroidBridge
+[10/12] Applying DroidBridge
+[11/12] Linking DroidBridgePackageTests
+Build complete! (0.94s)
+Test Suite 'Selected tests' started at 2026-10-28 15:13:54.405.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-28 15:13:54.406.
+Test Suite 'DroidBridgePreferencesTests' started at 2026-10-28 15:13:54.406.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testAtomicUpdatesMergeFieldsAndCorruptionFailsClosed]' started.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testAtomicUpdatesMergeFieldsAndCorruptionFailsClosed]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testDefaultsAndLegacyFieldsPreserveEnabledBehavior]' started.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testDefaultsAndLegacyFieldsPreserveEnabledBehavior]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testHeldWriterLockFailsWithinFiniteUIBudget]' started.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testHeldWriterLockFailsWithinFiniteUIBudget]' passed (0.101 seconds).
+Test Suite 'DroidBridgePreferencesTests' passed at 2026-10-28 15:13:54.510.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.104 (0.104) seconds
+Test Suite 'ManagedAvailabilityMonitorTests' started at 2026-10-28 15:13:54.510.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testDeviceQueryFailureHidesPreviouslyAcceptedApps]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testDeviceQueryFailureHidesPreviouslyAcceptedApps]' passed (0.021 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFeatureOffNeverCallsADBAndHidesAcceptedHistory]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFeatureOffNeverCallsADBAndHidesAcceptedHistory]' passed (0.014 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFlagChangedDuringProbePreventsPublicationAndCancellationDoesNotPublish]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFlagChangedDuringProbePreventsPublicationAndCancellationDoesNotPublish]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFlagChangedDuringRegistrationStopsRemainingAdmission]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFlagChangedDuringRegistrationStopsRemainingAdmission]' passed (0.016 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testMoreThanEightDevicesDoNotAlternateOfflineAndAbsentInvalidatesImmediately]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testMoreThanEightDevicesDoNotAlternateOfflineAndAbsentInvalidatesImmediately]' passed (0.084 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testSlowReadinessAdvancesOnlyVisitedCursorAndTTLExpires]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testSlowReadinessAdvancesOnlyVisitedCursorAndTTLExpires]' passed (0.089 seconds).
+Test Suite 'ManagedAvailabilityMonitorTests' passed at 2026-10-28 15:13:54.744.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.233 (0.234) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-28 15:13:54.744.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.337 (0.338) seconds
+Test Suite 'Selected tests' passed at 2026-10-28 15:13:54.744.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.337 (0.339) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

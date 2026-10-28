@@ -2,7 +2,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="/opt/homebrew/bin:$PATH"
-VERSION=0.1.1
+VERSION=0.1.2
 OUT="$PWD/dist"
 APP="$OUT/DroidBridge.app"
 SDK="${ANDROID_HOME:-$HOME/Library/Android/sdk}"
@@ -21,6 +21,7 @@ if [ -e "$APP" ]; then mv "$APP" ".build/package-backups/DroidBridge.previous.$(
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources/Runtime/bin" "$APP/Contents/Resources/Runtime/share/scrcpy" "$APP/Contents/Resources/Runtime/lib" "$APP/Contents/Resources/licenses"
 cp .build/release/DroidBridge "$APP/Contents/MacOS/"
 cp .build/release/DroidBridgeSupervisor "$APP/Contents/Resources/Runtime/bin/"
+cp .build/release/DroidBridgeAvailability "$APP/Contents/Resources/Runtime/bin/"
 cp "$ADB" "$APP/Contents/Resources/Runtime/bin/adb"
 cp "$SCRCPY" "$APP/Contents/Resources/Runtime/bin/scrcpy"
 cp "$SERVER" "$APP/Contents/Resources/Runtime/share/scrcpy/scrcpy-server"
@@ -29,16 +30,16 @@ cp .build/icon-helper/icon-helper.jar "$APP/Contents/Resources/Runtime/share/dro
 python3 scripts/bundle-dylibs.py "$APP/Contents/Resources/Runtime"
 
 if [ -f Resources/DroidBridge.icns ]; then cp Resources/DroidBridge.icns "$APP/Contents/Resources/"; fi
-for file in README.md ARCHITECTURE.md BUILD.md TESTING.md COMPATIBILITY.md KNOWN_ISSUES.md PIXEL_VERIFICATION.md THIRD_PARTY.md WRAPPER_DESIGN.md; do
+for file in README.md ARCHITECTURE.md BUILD.md TESTING.md COMPATIBILITY.md KNOWN_ISSUES.md PIXEL_VERIFICATION.md THIRD_PARTY.md WRAPPER_DESIGN.md APP_ONBOARDING_DESIGN.md; do
     if [ -f "$file" ]; then cp "$file" "$APP/Contents/Resources/"; fi
 done
 if [ -f scripts/collect-licenses.py ]; then python3 scripts/collect-licenses.py; fi
 if [ -d Resources/licenses ]; then cp -R Resources/licenses/. "$APP/Contents/Resources/licenses/"; fi
 cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict>
-<key>CFBundleName</key><string>DroidBridge</string><key>CFBundleDisplayName</key><string>DroidBridge</string><key>CFBundleIdentifier</key><string>app.droidbridge.desktop</string><key>CFBundleExecutable</key><string>DroidBridge</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>$VERSION</string><key>CFBundleVersion</key><string>2</string><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/><key>NSHumanReadableCopyright</key><string>Copyright © 2026 DroidBridge contributors</string></dict></plist>
+<key>CFBundleName</key><string>DroidBridge</string><key>CFBundleDisplayName</key><string>DroidBridge</string><key>CFBundleIdentifier</key><string>app.droidbridge.desktop</string><key>CFBundleExecutable</key><string>DroidBridge</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>$VERSION</string><key>CFBundleVersion</key><string>6</string><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/><key>NSHumanReadableCopyright</key><string>Copyright © 2026 DroidBridge contributors</string></dict></plist>
 PLIST
-find "$APP/Contents/Resources/Runtime" -type f \( -name '*.dylib' -o -name adb -o -name scrcpy -o -name DroidBridgeSupervisor \) -print0 | while IFS= read -r -d '' item; do codesign --force --sign - "$item"; done
+find "$APP/Contents/Resources/Runtime" -type f \( -name '*.dylib' -o -name adb -o -name scrcpy -o -name DroidBridgeSupervisor -o -name DroidBridgeAvailability \) -print0 | while IFS= read -r -d '' item; do codesign --force --sign - "$item"; done
 "$APP/Contents/Resources/Runtime/bin/adb" version > "$APP/Contents/Resources/Runtime/versions.txt"
 "$APP/Contents/Resources/Runtime/bin/scrcpy" --version >> "$APP/Contents/Resources/Runtime/versions.txt"
 shasum -a 256 "$SERVER" >> "$APP/Contents/Resources/Runtime/versions.txt"

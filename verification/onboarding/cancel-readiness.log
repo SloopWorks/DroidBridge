@@ -1,0 +1,11 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] Write sources
+[1/6] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module DroidBridge
+[4/6] Compiling DroidBridge DeviceOnboardingUI.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking DroidBridge
+[6/7] Applying DroidBridge
+Build complete! (0.95s)
+PASS: cancel during readiness never admits onboarding or installs an agent

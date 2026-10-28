@@ -17,7 +17,7 @@ ffmpeg -hide_banner -loglevel error -f lavfi -i color=red:s=64x64 -frames:v 1 -c
 printf '%s' native-clean > "$QA_ROOT/mode"
 swift build
 BIN=$(swift build --show-bin-path)
-swiftc -parse-as-library -I "$BIN/Modules" Sources/DroidBridge/Launcher.swift Sources/DroidBridge/NativeWindow.swift Sources/DroidBridge/MacAppWrapper.swift scripts/verify-wrapper-failure.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o .build/qa-wrapper-failure
+swiftc -parse-as-library -I "$BIN/Modules" Sources/DroidBridge/Launcher.swift Sources/DroidBridge/DeviceOnboarding.swift Sources/DroidBridge/DeviceOnboardingUI.swift Sources/DroidBridge/DeviceOnboardingAgent.swift Sources/DroidBridge/NativeWindow.swift Sources/DroidBridge/MacAppWrapper.swift scripts/verify-wrapper-failure.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o .build/qa-wrapper-failure
 mkdir -p verification/launcher-fix/qa
 DROIDBRIDGE_QA_H264="$QA_ROOT/frame.h264" DROIDBRIDGE_ICON_HELPER="$QA_ROOT/server" DROIDBRIDGE_ADB="$QA_ROOT/adb" DROIDBRIDGE_SCRCPY="$QA_ROOT/scrcpy" DROIDBRIDGE_SERVER="$QA_ROOT/server" DROIDBRIDGE_QA_MODE="$QA_ROOT/mode" .build/qa-wrapper-failure --wrapper 2>&1 | tee verification/launcher-fix/qa/failure-retention.log
 # An erroneous terminate(nil) exits zero before the assertions complete.

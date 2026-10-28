@@ -1,0 +1,58 @@
+{
+  "active_root" : "\/Users\/patrick\/Applications\/DroidBridge Managed QA 90197075-3754-457D-A3D6-92D0D2FBF5CC\/Devices",
+  "cross_process_statuses" : [
+    0,
+    3
+  ],
+  "factory_seconds" : 0.71142005920410156,
+  "feature_off_history_count" : 2,
+  "friendly_name_query" : "\/Users\/patrick\/Applications\/DroidBridge Managed QA 90197075-3754-457D-A3D6-92D0D2FBF5CC\/Devices\/8980cdc98b245b1f7e8a22ff\/Managed QA Android Settings-48f96ab723a440c7.app\n",
+  "host" : "\/Users\/patrick\/Applications\/DroidBridge.app",
+  "host_sha256" : "1ad5e6d36610bcd7d8c951ea2c62a169dad7370641d8a14615572d08f930fb11",
+  "offline_index_seconds" : 0.11598503589630127,
+  "offline_mdfind" : "",
+  "online_index_seconds" : 1.379269003868103,
+  "online_mdfind" : "\/Users\/patrick\/Applications\/DroidBridge Managed QA 90197075-3754-457D-A3D6-92D0D2FBF5CC\/Devices\/8980cdc98b245b1f7e8a22ff\/Managed QA Android Settings-48f96ab723a440c7.app\n",
+  "online_mdls" : "kMDItemCFBundleIdentifier = \"app.droidbridge.managed.d8980cdc98b245b1f7e8a22ff.com.android.settings\"\nkMDItemContentType        = \"com.apple.application-bundle\"\nkMDItemDisplayName        = \"Managed QA Android Settings-48f96ab723a440c7\"\n",
+  "private_root" : "\/Users\/patrick\/Library\/Application Support\/DroidBridge\/ManagedQA-90197075-3754-457D-A3D6-92D0D2FBF5CC.noindex",
+  "runtime_copy" : {
+    "cloned_files" : 29,
+    "copied_files" : 0,
+    "free_space_delta_bytes" : 8192,
+    "logical_bytes" : 59699213,
+    "seconds" : 0.0066220760345458984
+  },
+  "stable_1000_record_reconcile_seconds" : [
+    0.071207046508789062,
+    0.011562943458557129,
+    0.012678027153015137,
+    0.011013984680175781,
+    0.013399958610534668,
+    0.010184049606323242,
+    0.010638952255249023,
+    0.011333942413330078,
+    0.01129305362701416,
+    0.011502981185913086
+  ],
+  "strict_signature" : true,
+  "synthetic_1000_record_transitions" : {
+    "offline" : {
+      "max_64_admissions_seconds" : 0.02777409553527832,
+      "max_completion_seconds" : 0.051768064498901367,
+      "max_reconcile_seconds" : 0.036605000495910645,
+      "seconds" : 1.6454099416732788,
+      "waves" : 16
+    },
+    "online" : {
+      "max_64_admissions_seconds" : 0.034995079040527344,
+      "max_completion_seconds" : 0.0080739259719848633,
+      "max_reconcile_seconds" : 0.075276017189025879,
+      "seconds" : 1.6531449556350708,
+      "waves" : 16
+    }
+  },
+  "two_device_identities" : [
+    "app.droidbridge.managed.d8980cdc98b245b1f7e8a22ff.com.android.settings",
+    "app.droidbridge.managed.d58fe741bf13ff769599922a9.com.android.settings"
+  ]
+}

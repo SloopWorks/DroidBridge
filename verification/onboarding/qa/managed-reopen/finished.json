@@ -1,0 +1,13 @@
+{
+  "elapsed" : 5.9025729894638062,
+  "phase" : "finished",
+  "bundle_id" : "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.settings",
+  "icon_valid" : true,
+  "running_platform_mean_error" : 0,
+  "android_icns_mean_error" : 0.14539337158203125,
+  "activation_policy" : 0,
+  "instrumentation" : "Public NSApplicationDelegate reopen; physical focus\/Cmd+Tab not verified",
+  "generic_host_difference" : 55.56057071685791,
+  "name" : "Settings",
+  "pid" : 40813
+}

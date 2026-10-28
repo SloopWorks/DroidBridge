@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/verification/desktop-mode/verify-external.py", line 66, in <module>
+    assert all(cleanup.values()), cleanup
+           ~~~^^^^^^^^^^^^^^^^^^
+AssertionError: {'forward': False, 'reverse': True, 'displays': True}

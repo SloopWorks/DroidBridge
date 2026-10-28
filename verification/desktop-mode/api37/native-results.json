@@ -1,0 +1,26 @@
+{
+  "api" : "37",
+  "backend" : "native",
+  "cleanup" : true,
+  "results" : [
+    {
+      "backReturned" : true,
+      "decorations" : true,
+      "differentFrameHashes" : 126,
+      "fixtureReturnButtonUsed" : false,
+      "frames" : 140,
+      "mouseKeyboard" : true,
+      "resize" : "896x640"
+    },
+    {
+      "backReturned" : true,
+      "decorations" : false,
+      "differentFrameHashes" : 110,
+      "fixtureReturnButtonUsed" : false,
+      "frames" : 119,
+      "mouseKeyboard" : true,
+      "resize" : "896x640"
+    }
+  ],
+  "serial" : "emulator-5582"
+}

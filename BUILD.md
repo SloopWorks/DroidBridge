@@ -23,7 +23,16 @@ This build is locally ad-hoc signed. Apple Development and Apple Distribution id
 
 ## Uninstall
 
-Quit DroidBridge, remove its app bundle and any generated Android app wrappers. Remove `~/Library/Application Support/DroidBridge` for saved session intent/recovery receipts and `~/Library/Logs/DroidBridge` for diagnostics. Generated wrappers live in `~/Applications/DroidBridge Apps`. Each generated wrapper contains its own copied runtime and can run independently of the host installation. This does not uninstall Android apps. Keep shared ADB/Android SDK tools if other software uses them.
+Quit DroidBridge and its wrappers. If bulk onboarding was used, first unload the owned per-user availability helper, then remove its plist:
+
+```sh
+launchctl bootout "gui/$(id -u)/app.droidbridge.availability"
+rm "$HOME/Library/LaunchAgents/app.droidbridge.availability.plist"
+```
+
+An absent job/plist can be ignored. Remove the host app bundle and generated Android app wrappers under `~/Applications/DroidBridge Apps`. Remove `~/Library/Application Support/DroidBridge` for managed inactive apps, helper generations, shared preferences and saved intent/recovery receipts; remove `~/Library/Logs/DroidBridge` for diagnostics. Back up any previous wrapper generations you want to retain before removing support data. Each wrapper contains its pinned runtime using independent copy-on-write files where supported. Managed wrappers also require their catalog and an available authorized device. This does not uninstall Android apps. Keep shared ADB/Android SDK tools if other software uses them.
+
+The helper retains at most eight immutable runtime generations and refuses a ninth rather than deleting potentially running code. To reset only that limit, quit onboarding, unload the exact agent as above, ensure its helper process has exited, and remove only `~/Library/Application Support/DroidBridge/ManagedApps.noindex/availability/generations`. Add All reinstalls the current helper; managed app records and wrappers remain intact. Availability logs rotate with a 1 MiB current file and one previous file.
 
 ## Dependencies and redistribution
 

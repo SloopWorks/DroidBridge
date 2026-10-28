@@ -1,0 +1,9 @@
+{
+  "passed" : true,
+  "mode" : "cancel",
+  "elapsed_seconds" : 6.2006649971008301,
+  "message" : "Actual Cancel action completed; accepted history retained",
+  "rows" : 16,
+  "instrumentation" : "public AppKit performClick; physical OS click\/focus unverified",
+  "progress" : "4\/16 · 2 added · 0 current · 0 running\/skipped · 0 errors. Cancelled. Run Add All again to resume; completed apps are preserved."
+}

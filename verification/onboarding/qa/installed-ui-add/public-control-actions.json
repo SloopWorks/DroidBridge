@@ -1,0 +1,9 @@
+{
+  "passed" : true,
+  "mode" : "add",
+  "elapsed_seconds" : 9.5019890069961548,
+  "message" : "Actual AddAll, decoration preference and LaunchApp actions completed",
+  "rows" : 16,
+  "instrumentation" : "public AppKit performClick; physical OS click\/focus unverified",
+  "progress" : "16\/16 · 2 added · 14 current · 0 running\/skipped · 0 errors. Finished. 0 Spotlight updates pending in the background."
+}
