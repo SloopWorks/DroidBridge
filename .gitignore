@@ -9,3 +9,5 @@ verification/android/testapp2/
 __pycache__/
 verification/review/verify-appkit
 verification/review/appkit/verify-appkit
+verification/**/*.mkv
+verification/**/*.dylib

@@ -205,7 +205,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         }
         updateSessions(); save()
         do { try await session.start(); status.stringValue = "\(app.name) is running with \(configuration.backend == .native ? "native AppKit" : "scrcpy")." }
-        catch { if sessions[descriptor.id] != nil { sessionStates[descriptor.id] = "failed"; status.stringValue = error.localizedDescription; updateSessions() } }
+        catch { if sessions[descriptor.id] != nil, sessionStates[descriptor.id] != "disconnected" { sessionStates[descriptor.id] = "failed"; status.stringValue = error.localizedDescription; updateSessions() } }
         return session
     }
     func close(_ id: UUID) {

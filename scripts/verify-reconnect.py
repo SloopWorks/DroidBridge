@@ -3,7 +3,9 @@
 Never kills an ADB server or accesses emulator5554. Ends with fresh emulator live.
 """
 import argparse, json, os, pathlib, subprocess, tempfile, time
-p=argparse.ArgumentParser();p.add_argument('app',type=pathlib.Path);p.add_argument('--output',type=pathlib.Path,default=pathlib.Path('verification/review/reconnect'));args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('app',type=pathlib.Path);p.add_argument('--output',type=pathlib.Path,default=pathlib.Path('verification/review/reconnect'));p.add_argument('--backend',choices=('native','scrcpy','both'),default='both');args=p.parse_args()
+root=pathlib.Path(__file__).resolve().parents[1];unbuffered=root/'.build/qa-unbuffered.dylib'
+subprocess.run(['clang','-dynamiclib',str(root/'scripts/verify-unbuffered.c'),'-o',str(unbuffered)],check=True)
 app=args.app.resolve();exe=app/'Contents/MacOS/DroidBridge';adb=app/'Contents/Resources/Runtime/bin/adb';out=args.output;out.mkdir(parents=True,exist_ok=True)
 emulator=pathlib.Path.home()/'Library/Android/sdk/emulator/emulator';serial='emulator-5580';logs=pathlib.Path.home()/'Library/Logs/DroidBridge';results=[]
 def android(*cmd): return subprocess.check_output([str(adb),'-s',serial,*cmd],text=True,stderr=subprocess.STDOUT,timeout=10)
@@ -13,16 +15,20 @@ def connected():
 def running(existing,backend):
     for file in set(logs.glob('*.jsonl'))-existing:
         records=[json.loads(line) for line in file.read_text().splitlines() if line.startswith('{')]
-        if any(r.get('state')=='running' and r.get('device')==serial and r.get('backend')==backend for r in records):return file
+        if any(r.get('state')=='running' and r.get('device')==serial and r.get('backend')==backend for r in records):
+            if backend=='scrcpy':
+                raw=file.with_suffix('')
+                if not raw.exists() or 'Texture' not in raw.read_text():continue
+            return file
     return None
 with tempfile.TemporaryDirectory(prefix='droidbridge-reconnect-') as temp:
     temp=pathlib.Path(temp);source=temp/'quit.swift';quitter=temp/'quit'
     source.write_text('import AppKit\nlet app=NSRunningApplication(processIdentifier:Int32(CommandLine.arguments[1])!)!\nif !app.terminate() { exit(1) }\n')
     subprocess.run(['swiftc',str(source),'-o',str(quitter)],check=True)
-    for backend in ('native','scrcpy'):
+    for backend in (('native','scrcpy') if args.backend=='both' else (args.backend,)):
         print(f'START actual emulator shutdown/reconnect {backend}',flush=True)
         assert connected(),'dedicated emulator must be initially running'
-        previous=set(logs.glob('*.jsonl'));env=os.environ.copy();env['PATH']='/usr/bin:/bin'
+        previous=set(logs.glob('*.jsonl'));env=os.environ.copy();env['PATH']='/usr/bin:/bin';env['DYLD_INSERT_LIBRARIES']=str(unbuffered)
         with (out/f'{backend}-host.log').open('w') as hostlog:
             host=subprocess.Popen([str(exe),'--launch','dev.droidbridge.testapp','--serial',serial,'--backend',backend,'--name','Reconnect QA'],env=env,stdout=hostlog,stderr=hostlog)
             try:
@@ -55,7 +61,7 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-reconnect-') as temp:
                 while time.monotonic()<deadline:
                     assert host.poll() is None,'host crashed during reconnection'
                     restored=running(before_restore,backend)
-                    if restored is not None:break
+                    if restored is not None and android('shell','dumpsys','display').count('DisplayDeviceInfo{')>1:break
                     time.sleep(.2)
                 if restored is None:
                     for file in set(logs.glob('*.jsonl'))-previous:(out/('failed-'+backend+'-'+file.name)).write_text(file.read_text())
@@ -63,8 +69,11 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-reconnect-') as temp:
                 print(f'PASS {backend}: same host PID {host.pid} automatically restored successor {restored.name}',flush=True)
                 first_events=first.read_text();restored_events=restored.read_text()
                 (out/f'{backend}-original.jsonl').write_text(first_events);(out/f'{backend}-restored.jsonl').write_text(restored_events)
+                for label,file in [('original',first),('restored',restored)]:
+                    raw=file.with_suffix('')
+                    if raw.exists():(out/f'{backend}-{label}-server.log').write_text(raw.read_text())
                 subprocess.run([str(quitter),str(host.pid)],check=True);host.wait(timeout=25)
-                results.append({'backend':backend,'passed':True,'same_host_pid':host.pid,'original_session':first.name,'restored_session':restored.name,'new_emulator_pid':boot.pid,'host_survived_disconnect':True,'automatic_successor_session':True})
+                results.append({'backend':backend,'passed':True,'same_host_pid':host.pid,'original_session':first.name,'restored_session':restored.name,'new_emulator_pid':boot.pid,'host_survived_disconnect':True,'automatic_successor_session':True,'restored_video_verified':'decoded native frame' if backend=='native' else 'scrcpy Texture/decoder output','restored_virtual_display':True})
                 (out/'results.json').write_text(json.dumps(results,indent=2)+'\n')
             finally:
                 if host.poll() is None:host.kill();host.wait(timeout=5)
