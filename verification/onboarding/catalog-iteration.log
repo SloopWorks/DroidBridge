@@ -1,0 +1,70 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[3/10] Write swift-version--58304C5D6DBC2206.txt
+[5/13] Emitting module DroidBridgeCore
+[6/13] Compiling DroidBridgeCore ManagedAvailabilityMonitor.swift
+[7/13] Compiling DroidBridgeCore ManagedAppRegistrationExecutor.swift
+[8/21] Emitting module DroidBridgeAvailability
+[9/21] Compiling DroidBridgeAvailability main.swift
+[9/22] Write Objects.LinkFileList
+[11/22] Compiling DroidBridgeStreaming SessionRecovery.swift
+[12/22] Compiling DroidBridgeStreaming SocketTransport.swift
+[13/22] Compiling DroidBridgeStreaming H264Decoder.swift
+[14/22] Compiling DroidBridgeStreaming BridgeSession.swift
+[15/22] Emitting module DroidBridgeStreaming
+[15/42] Linking DroidBridgeAvailability
+[16/42] Applying DroidBridgeAvailability
+[18/42] Compiling DroidBridgeCoreTests SupervisorDiagnosticsTests.swift
+[19/42] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[20/42] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[21/42] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[22/42] Compiling DroidBridgeCoreTests DeviceSelectionTests.swift
+[23/42] Compiling DroidBridgeCoreTests DroidBridgePreferencesTests.swift
+[24/42] Compiling DroidBridgeCoreTests DeviceReadinessTests.swift
+[25/42] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[26/42] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[27/42] Compiling DroidBridgeCoreTests StreamingTests.swift
+[28/42] Compiling DroidBridgeCoreTests InputGeometryTests.swift
+[29/42] Compiling DroidBridge MacAppWrapper.swift
+[30/42] Compiling DroidBridge main.swift
+[31/42] Compiling DroidBridge NativeWindow.swift
+[32/42] Compiling DroidBridgeCoreTests AndroidIconProviderTests.swift
+[33/42] Emitting module DroidBridgeCoreTests
+[34/42] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[34/42] Write Objects.LinkFileList
+[35/42] Linking DroidBridgePackageTests
+[37/42] Emitting module DroidBridge
+[38/42] Compiling DroidBridge Launcher.swift
+[39/42] Compiling DroidBridge DeviceOnboardingAgent.swift
+[39/42] Write Objects.LinkFileList
+[40/42] Linking DroidBridge
+[41/42] Applying DroidBridge
+Build complete! (2.62s)
+Test Suite 'Selected tests' started at 2026-10-28 14:48:59.659.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-28 14:48:59.660.
+Test Suite 'ManagedAppsTests' started at 2026-10-28 14:48:59.660.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testAvailabilityRequiresPositiveDeviceAndUnregisterBeforeMove]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testAvailabilityRequiresPositiveDeviceAndUnregisterBeforeMove]' passed (0.016 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCloneCopyIsolationAndCapacityRefusal]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCloneCopyIsolationAndCapacityRefusal]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDeviceIdentityAndConcurrentReservationFence]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDeviceIdentityAndConcurrentReservationFence]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testForeignSymlinkAndCorruptReservationRefused]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testForeignSymlinkAndCorruptReservationRefused]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testGenerationReplacementAndRunningRefusal]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testGenerationReplacementAndRunningRefusal]' passed (0.019 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testMoveJournalRecoveryAndTamperedActionFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testMoveJournalRecoveryAndTamperedActionFailClosed]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testStaleRegistrationCreatesDurableCompensation]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testStaleRegistrationCreatesDurableCompensation]' passed (0.010 seconds).
+Test Suite 'ManagedAppsTests' passed at 2026-10-28 14:48:59.721.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.061 (0.062) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-28 14:48:59.721.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.061 (0.062) seconds
+Test Suite 'Selected tests' passed at 2026-10-28 14:48:59.721.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.061 (0.062) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

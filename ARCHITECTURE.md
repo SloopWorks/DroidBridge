@@ -38,6 +38,16 @@ For fallback wrappers the copied Player bundle also receives a package-specific 
 
 Icon requests persist an ownership receipt before any remote staging. The tracked device-refresh task performs finite, time-budgeted recovery before discovery: live PID owners and exact active producer commands are preserved; abandoned request UUIDs derive exact temporary JAR/PNG paths; unavailable devices retain their receipts. Subsequent polls retry retained requests with a rotating capped batch, and shutdown cancels and awaits refresh work. This covers abrupt host death as well as awaited normal cleanup. Native wrapper presentation is repeated at first decoded frame and on application reopen, with bounded visibility/activation facts and caller-specific stop reasons in the session log.
 
+## Managed device applications
+
+Bulk onboarding is explicit and controlled by a default-enabled shared preference. A captured device/application cohort runs with at most two workers; completed wrappers persist across cancellation. `ManagedAppCatalog` in Core owns a bounded local manifest, cross-process locking, generation-fenced reservations/publication and durable Launch Services actions. The off-main wrapper factory clones runtime files using copy-on-write where available, signs/verifies a private generation and publishes only complete bundles. Existing matching manual wrappers require ownership validation before migration; unrelated or running apps remain protected.
+
+Managed identities include a device hash and Android package. Public bundles live below `~/Applications/DroidBridge Apps/Devices`; unavailable bundles and previous generations live below `~/Library/Application Support/DroidBridge/ManagedApps.noindex`. Availability is positive authorization plus boot/package-service readiness. Missing, unauthorized, failed probes and feature-off state fail closed. Exact owned bundles move atomically; Launch Services work runs outside catalog locks and is reconciled through durable receipts. Launch admission checks also protect against stale indexed results.
+
+`DroidBridgeAvailability` is a Core-only executable installed as an owned per-user LaunchAgent after the first explicit onboarding. Its stable helper/runtime survives host-bundle movement and GUI quit. It probes only device/catalog readiness and reconciles the same catalog, with bounded work and retries. Shared atomic preferences are read by the GUI, wrappers and helper. Turning bulk onboarding off retains history while hiding managed apps and stopping Android polling. See `APP_ONBOARDING_DESIGN.md` for contracts and `BUILD.md` for uninstall steps.
+
+Session configuration pins `showSystemDecorations`; older JSON defaults to true. The fallback maps false to `--no-vd-system-decorations`, while native passes `vd_system_decorations` to the matching scrcpy server. This controls the virtual display only and does not remove application-drawn UI.
+
 ## Build and evidence
 
 The runtime is pinned to scrcpy 5.0.1 and the captured Homebrew versions. Packaging recursively bundles and relinks Mach-O dependencies, collects notices, ad-hoc signs the application, verifies signatures, and emits a DMG, ZIP and SHA-256 checksums. The packaged runtime requires Apple Silicon/macOS 26; the Swift source's lower deployment target is not a portability claim for those bundled dependencies.

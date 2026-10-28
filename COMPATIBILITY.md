@@ -20,6 +20,8 @@ The native input path uses scrcpy SDK input injection rather than UHID/AOA. Andr
 
 scrcpy 5.0.1 rejects `--window-width` and `--window-height` together with `--flex-display`; configure initial Android bounds via `--new-display=WxH/DPI` instead. Virtual displays are destroyed with their contents when sessions close. This can terminate the app's task; opening again starts a new display/task.
 
+The optional system-decoration toggle uses scrcpy 5.0.1's virtual-display option on both backends. Actual Android 15 and 17 emulator tests cover showing/hiding navigation/taskbar surfaces, changing frames, input and resize. It does not change phone-wide navigation settings, remove app-drawn controls, force a different app layout or hide the IME. See `verification/desktop-mode/ANDROID_REVIEW.md`.
+
 ## Physical Pixel 10 Pro
 
 The owner reports DroidBridge working on Pixel 10 Pro and ChatGPT working from the main launcher, with a missing-window issue in its standalone wrapper. The matching structured log proves native decoding, but not foreground window state. The 0.1.1 wrapper presentation fix requires the focused physical retest in `verification/launcher-fix/PIXEL_RETEST.md`; the developer currently has no attached Pixel. A Pixel's encoder, display density, thermal limits, task policy and USB transport can differ from either emulator. Emulator evidence must not be presented as physical Pixel evidence. No change to the Pixel's desktop-mode or root settings is required.

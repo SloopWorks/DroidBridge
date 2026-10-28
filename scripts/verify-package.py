@@ -24,9 +24,14 @@ for binary in ('adb','scrcpy'):
     environment=os.environ.copy(); environment['PATH']='/usr/bin:/bin'; environment['HOME']=str(pathlib.Path.home())
     report[binary]=subprocess.check_output([str(runtime/'bin'/binary),'--version' if binary=='scrcpy' else 'version'],env=environment,text=True,stderr=subprocess.STDOUT)
 assert 'scrcpy 5.0.1' in report['scrcpy']
+helper=runtime/'bin/DroidBridgeAvailability'
+assert helper.is_file() and os.access(helper,os.X_OK), 'missing device availability helper'
+report['availability_helper']=subprocess.check_output([str(helper),'--version'],env=environment,text=True,stderr=subprocess.STDOUT,timeout=5)
+assert 'DroidBridgeAvailability' in report['availability_helper']
+assert (runtime/'bin/DroidBridgeSupervisor').is_file(), 'missing session supervisor'
 player=runtime/'Player.app/Contents/MacOS/scrcpy'
 if player.exists():
     report['player']=subprocess.check_output([str(player),'--version'],env=environment,text=True,stderr=subprocess.STDOUT)
     assert 'scrcpy 5.0.1' in report['player']
 args.output.parent.mkdir(parents=True,exist_ok=True); args.output.write_text(json.dumps(report,indent=2)+'\n')
-print(f"PASS bundle signature, {len(report['dependencies'])} Mach-O dependency trees, isolated-PATH adb/scrcpy versions; report {args.output}")
+print(f"PASS bundle signature, {len(report['dependencies'])} Mach-O dependency trees, isolated-PATH adb/scrcpy/helper versions; report {args.output}")

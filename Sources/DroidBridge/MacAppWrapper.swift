@@ -14,24 +14,47 @@ enum MacAppWrapper {
         let running = Set(NSWorkspace.shared.runningApplications.compactMap { $0.bundleURL.map { canonicalPath($0) } })
         let root = destinationRoot ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Applications/DroidBridge Apps")
         let work = Task.detached(priority: .userInitiated) {
-            try await build(application: application, device: device, backend: backend, iconPNG: iconPNG, host: hostBundleURL, root: root, running: running)
+            try await build(application: application, device: device, backend: backend, iconPNG: iconPNG, host: hostBundleURL, root: root, running: running, managed: nil)
+        }
+        return try await withTaskCancellationHandler(operation: { try await work.value }, onCancel: { work.cancel() })
+    }
+
+    @MainActor
+    static func createManaged(application: AndroidApplication, device: AndroidDevice, backend: BackendKind, iconPNG: Data,
+                              reservation: ManagedAppReservation, hostBundleURL: URL = Bundle.main.bundleURL) async throws -> URL {
+        guard reservation.device.serial == device.serial, reservation.application.packageName == application.packageName,
+              reservation.bundleIdentifier == ManagedAppCatalog.bundleIdentifier(serial: device.serial, packageName: application.packageName) else { throw ManagedAppCatalogError.invalid("factory reservation identity") }
+        let running = Set(NSWorkspace.shared.runningApplications.compactMap { $0.bundleURL.map { canonicalPath($0) } })
+        guard !running.contains(canonicalPath(reservation.activeBundleURL)) else { throw ManagedAppCatalogError.running }
+        let work = Task.detached(priority: .userInitiated) {
+            try await build(application: reservation.application, device: device, backend: reservation.backend, iconPNG: iconPNG, host: hostBundleURL, root: reservation.stagingRoot, running: running, managed: reservation)
         }
         return try await withTaskCancellationHandler(operation: { try await work.value }, onCancel: { work.cancel() })
     }
 
     private static func build(application: AndroidApplication, device: AndroidDevice, backend: BackendKind, iconPNG: Data,
-                              host: URL, root: URL, running: Set<String>) async throws -> URL {
+                              host: URL, root: URL, running: Set<String>, managed: ManagedAppReservation?) async throws -> URL {
         try AndroidDiscovery.validatePackage(application.packageName)
         try AndroidDiscovery.validateSerial(device.serial)
         guard host.pathExtension == "app" else { throw BridgeError.message("Install DroidBridge.app before creating Mac app wrappers.") }
         let fm = FileManager.default
         let executable = host.appendingPathComponent("Contents/MacOS/DroidBridge")
         guard fm.isExecutableFile(atPath: executable.path) else { throw BridgeError.message("DroidBridge's installed executable is missing.") }
+        if managed != nil {
+            var current = root.standardizedFileURL
+            while current.path != "/" {
+                var metadata = stat()
+                if lstat(current.path, &metadata) == 0, (metadata.st_mode & S_IFMT) == S_IFLNK { throw ManagedAppCatalogError.invalid("symbolic link in factory staging path") }
+                current.deleteLastPathComponent()
+            }
+        }
         try fm.createDirectory(at: root, withIntermediateDirectories: true)
-        let safeName = application.name.replacingOccurrences(of: "/", with: "-").replacingOccurrences(of: ":", with: "-")
+        let label = application.name.replacingOccurrences(of: "/", with: "-").replacingOccurrences(of: ":", with: "-")
+        var safeName = ""
+        for character in label { guard (safeName + String(character)).utf8.count <= 180 else { break }; safeName.append(character) }
         guard !safeName.isEmpty else { throw BridgeError.message("The Android application name is empty.") }
-        let identifier = "app.droidbridge.wrapper.\(application.packageName)"
-        let proposed = root.appendingPathComponent("\(safeName).app")
+        let identifier = managed?.bundleIdentifier ?? "app.droidbridge.wrapper.\(application.packageName)"
+        let proposed = managed?.stagedBundleURL ?? root.appendingPathComponent("\(safeName).app")
         let matching = try fm.contentsOfDirectory(at: root, includingPropertiesForKeys: nil).filter { candidate in
             guard candidate.pathExtension == "app", !candidate.lastPathComponent.hasPrefix("."),
                   let info = readPlist(candidate), info["CFBundleIdentifier"] as? String == identifier else { return false }
@@ -41,6 +64,10 @@ enum MacAppWrapper {
         let destination = matching.first ?? proposed
         guard !running.contains(canonicalPath(destination)) else { throw BridgeError.message("Quit \(destination.deletingPathExtension().lastPathComponent) before updating its Mac app.") }
         var options = ["package": application.packageName, "name": application.name, "serial": device.serial, "backend": backend.rawValue]
+        if let managed {
+            options["managed_key"] = managed.key
+            options["managed_generation"] = managed.id.uuidString
+        }
         var previousConfig: Data?
         var previousInfo: Data?
         if fm.fileExists(atPath: destination.path) {
@@ -56,18 +83,18 @@ enum MacAppWrapper {
             options = saved; previousConfig = config
             previousInfo = try Data(contentsOf: destination.appendingPathComponent("Contents/Info.plist"))
         }
-        let stage = root.appendingPathComponent(".\(safeName).building-\(UUID().uuidString).app")
+        let stage = root.appendingPathComponent(".building-\(UUID().uuidString).app")
         var removeStage = true
         defer { if removeStage { try? fm.removeItem(at: stage) } }
         let contents = stage.appendingPathComponent("Contents"), resources = stage.appendingPathComponent("Contents/Resources")
         try fm.createDirectory(at: contents.appendingPathComponent("MacOS"), withIntermediateDirectories: true)
         try fm.createDirectory(at: resources, withIntermediateDirectories: true)
-        try fm.copyItem(at: executable, to: contents.appendingPathComponent("MacOS/DroidBridge"))
+        try ManagedAppCloneCopy.copy(executable, to: contents.appendingPathComponent("MacOS/DroidBridge"))
         let hostResources = host.appendingPathComponent("Contents/Resources")
-        try fm.copyItem(at: hostResources.appendingPathComponent("Runtime"), to: resources.appendingPathComponent("Runtime"))
+        try ManagedAppCloneCopy.copy(hostResources.appendingPathComponent("Runtime"), to: resources.appendingPathComponent("Runtime"))
         for name in ["licenses", "THIRD_PARTY.md"] {
             let source = hostResources.appendingPathComponent(name)
-            if fm.fileExists(atPath: source.path) { try fm.copyItem(at: source, to: resources.appendingPathComponent(name)) }
+            if fm.fileExists(atPath: source.path) { try ManagedAppCloneCopy.copy(source, to: resources.appendingPathComponent(name)) }
         }
         try Task.checkCancellation()
         try iconPNG.write(to: resources.appendingPathComponent("AndroidApp.png"))
@@ -89,14 +116,22 @@ enum MacAppWrapper {
         try config.write(to: resources.appendingPathComponent("launch.json"))
         let hostInfo = readPlist(host) ?? [:]
         let name = options["name"] ?? application.name
-        let plist: [String: Any] = ["CFBundleIdentifier": identifier, "CFBundleName": name, "CFBundleDisplayName": name, "CFBundleExecutable": "DroidBridge", "CFBundlePackageType": "APPL", "CFBundleShortVersionString": hostInfo["CFBundleShortVersionString"] as? String ?? "0.1.1", "CFBundleVersion": hostInfo["CFBundleVersion"] as? String ?? "2", "CFBundleIconFile": "AndroidApp.icns", "LSMinimumSystemVersion": "26.0", "NSHighResolutionCapable": true, "DroidBridgeWrapperFormat": 2]
+        var plist: [String: Any] = ["CFBundleIdentifier": identifier, "CFBundleName": name, "CFBundleDisplayName": name, "CFBundleExecutable": "DroidBridge", "CFBundlePackageType": "APPL", "CFBundleShortVersionString": hostInfo["CFBundleShortVersionString"] as? String ?? "0.1.2", "CFBundleVersion": hostInfo["CFBundleVersion"] as? String ?? "3", "CFBundleIconFile": "AndroidApp.icns", "LSMinimumSystemVersion": "26.0", "NSHighResolutionCapable": true, "DroidBridgeWrapperFormat": 2]
+        if let managed {
+            plist["DroidBridgeManagedGeneration"] = managed.id.uuidString
+            plist["DroidBridgeManagedDevice"] = managed.deviceHash
+        }
+        plist["CFBundleDevelopmentRegion"] = "en"
+        let localized = resources.appendingPathComponent("en.lproj")
+        try fm.createDirectory(at:localized,withIntermediateDirectories:true)
+        try PropertyListSerialization.data(fromPropertyList:["CFBundleName":name,"CFBundleDisplayName":name],format:.binary,options:0).write(to:localized.appendingPathComponent("InfoPlist.strings"))
         try PropertyListSerialization.data(fromPropertyList: plist, format: .xml, options: 0).write(to: contents.appendingPathComponent("Info.plist"))
         _ = try await ProcessRunner.run("/usr/bin/codesign", arguments: ["--force", "--sign", "-", stage.path], timeout: 30)
         _ = try await ProcessRunner.run("/usr/bin/codesign", arguments: ["--verify", "--deep", "--strict", stage.path], timeout: 30)
         try Task.checkCancellation()
         let activeNow = await MainActor.run { Set(NSWorkspace.shared.runningApplications.compactMap { $0.bundleURL.map { canonicalPath($0) } }) }
         try Task.checkCancellation()
-        guard !activeNow.contains(canonicalPath(destination)) else { throw BridgeError.message("Quit \(destination.deletingPathExtension().lastPathComponent) before completing its Mac app update.") }
+        guard !activeNow.contains(canonicalPath(managed?.activeBundleURL ?? destination)) else { throw BridgeError.message("Quit \(destination.deletingPathExtension().lastPathComponent) before completing its Mac app update.") }
         if let previousConfig, let previousInfo {
             guard try Data(contentsOf: destination.appendingPathComponent("Contents/Resources/launch.json")) == previousConfig,
                   try Data(contentsOf: destination.appendingPathComponent("Contents/Info.plist")) == previousInfo else { throw BridgeError.message("The existing Mac app changed while its update was being built. Retry the update.") }
@@ -113,11 +148,11 @@ enum MacAppWrapper {
             guard renamex_np(stage.path, destination.path, UInt32(RENAME_EXCL)) == 0 else { throw BridgeError.message("The destination appeared while building; no existing app was replaced.") }
             removeStage = false
         }
-        _ = try? await ProcessRunner.run("/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister", arguments: ["-f", destination.path], timeout: 10)
+        if managed == nil { _ = try? await ProcessRunner.run("/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister", arguments: ["-f", destination.path], timeout: 10) }
         return destination
     }
 
-    private static func canonicalPath(_ url: URL) -> String { url.standardizedFileURL.resolvingSymlinksInPath().path.trimmingCharacters(in: CharacterSet(charactersIn: "/")) }
+    private static func canonicalPath(_ url: URL) -> String { url.standardizedFileURL.resolvingSymlinksInPath().path }
     private static func readPlist(_ app: URL) -> [String: Any]? {
         guard let data = try? Data(contentsOf: app.appendingPathComponent("Contents/Info.plist")) else { return nil }
         return (try? PropertyListSerialization.propertyList(from: data, format: nil)) as? [String: Any]

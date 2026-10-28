@@ -1,0 +1,73 @@
+[
+  {
+    "elapsed": 0.055,
+    "icon_helper_pids": []
+  },
+  {
+    "elapsed": 1.841,
+    "icon_helper_pids": [
+      34201
+    ]
+  },
+  {
+    "elapsed": 1.913,
+    "icon_helper_pids": [
+      34201,
+      34203
+    ]
+  },
+  {
+    "elapsed": 2.784,
+    "icon_helper_pids": []
+  },
+  {
+    "elapsed": 4.839,
+    "icon_helper_pids": [
+      34529,
+      34530
+    ]
+  },
+  {
+    "elapsed": 5.759,
+    "icon_helper_pids": []
+  },
+  {
+    "elapsed": 6.323,
+    "icon_helper_pids": [
+      34576,
+      34577
+    ]
+  },
+  {
+    "elapsed": 7.223,
+    "icon_helper_pids": []
+  },
+  {
+    "elapsed": 7.617,
+    "icon_helper_pids": [
+      34608,
+      34609
+    ]
+  },
+  {
+    "elapsed": 8.497,
+    "icon_helper_pids": [
+      34609
+    ]
+  },
+  {
+    "elapsed": 8.597,
+    "icon_helper_pids": []
+  },
+  {
+    "elapsed": 8.944,
+    "icon_helper_pids": [
+      34646,
+      34647
+    ]
+  },
+  {
+    "elapsed": 9.795,
+    "icon_helper_pids": []
+  }
+]

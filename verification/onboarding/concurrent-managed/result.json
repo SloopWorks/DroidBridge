@@ -1,0 +1,106 @@
+{
+  "baseline": {
+    "forwards": "",
+    "displays": 1
+  },
+  "sessions": {
+    "com.android.deskclock": {
+      "events": [
+        {
+          "backend": "native",
+          "device": "emulator-5580",
+          "package": "com.android.deskclock",
+          "session": "12BE28B7-26AA-49A5-9798-E13CEBC8DB9C",
+          "state": "starting",
+          "timestamp": "2026-10-28T22:37:35Z"
+        },
+        {
+          "backend": "native",
+          "device": "emulator-5580",
+          "package": "com.android.deskclock",
+          "session": "12BE28B7-26AA-49A5-9798-E13CEBC8DB9C",
+          "state": "running",
+          "timestamp": "2026-10-28T22:37:36Z"
+        },
+        {
+          "backend": "native",
+          "details": {
+            "app_active": "false",
+            "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.deskclock",
+            "key": "false",
+            "minimized": "false",
+            "pid": "42489",
+            "reason": "first_frame",
+            "visible": "true"
+          },
+          "device": "emulator-5580",
+          "event": "native_window_presented",
+          "package": "com.android.deskclock",
+          "session": "12BE28B7-26AA-49A5-9798-E13CEBC8DB9C",
+          "timestamp": "2026-10-28T22:37:36Z"
+        }
+      ],
+      "log": "/Users/patrick/Library/Logs/DroidBridge/session-12BE28B7-26AA-49A5-9798-E13CEBC8DB9C.log.jsonl"
+    },
+    "com.android.settings": {
+      "events": [
+        {
+          "backend": "native",
+          "device": "emulator-5580",
+          "package": "com.android.settings",
+          "session": "8CF9F673-6BC6-47BE-8DDC-79E5FCEAA8F6",
+          "state": "starting",
+          "timestamp": "2026-10-28T22:37:34Z"
+        },
+        {
+          "backend": "native",
+          "device": "emulator-5580",
+          "package": "com.android.settings",
+          "session": "8CF9F673-6BC6-47BE-8DDC-79E5FCEAA8F6",
+          "state": "running",
+          "timestamp": "2026-10-28T22:37:35Z"
+        },
+        {
+          "backend": "native",
+          "details": {
+            "app_active": "false",
+            "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.settings",
+            "key": "false",
+            "minimized": "false",
+            "pid": "42485",
+            "reason": "first_frame",
+            "visible": "true"
+          },
+          "device": "emulator-5580",
+          "event": "native_window_presented",
+          "package": "com.android.settings",
+          "session": "8CF9F673-6BC6-47BE-8DDC-79E5FCEAA8F6",
+          "timestamp": "2026-10-28T22:37:35Z"
+        },
+        {
+          "backend": "native",
+          "details": {
+            "native_window_visible": "true"
+          },
+          "device": "emulator-5580",
+          "event": "launcher_hidden",
+          "package": "com.android.settings",
+          "session": "8CF9F673-6BC6-47BE-8DDC-79E5FCEAA8F6",
+          "timestamp": "2026-10-28T22:37:35Z"
+        }
+      ],
+      "log": "/Users/patrick/Library/Logs/DroidBridge/session-8CF9F673-6BC6-47BE-8DDC-79E5FCEAA8F6.log.jsonl"
+    }
+  },
+  "purpose": "real managed native concurrent launch and owned-parent termination cleanup",
+  "pids": [
+    42485,
+    42489
+  ],
+  "simultaneous_display_count": 3,
+  "unsigned_payload_sha256": "66aaf1532b06aa791f3507a730a256e03c350cf58067871204d9e305a8782322",
+  "after": {
+    "forwards": "",
+    "displays": 1
+  }
+}

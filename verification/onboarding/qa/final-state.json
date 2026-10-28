@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "installed_main_sha256": "4e2d3ca0666ba43c4199bac1dc9c40a17951b8cd1f23e863c4c12f707731be26",
+  "accepted": 16,
+  "all_build6_active": true,
+  "pending_publications": 0,
+  "pending_reservations": 0,
+  "preferences": {
+    "showAndroidSystemDecorations": true,
+    "bulkWrapperOnboardingEnabled": true
+  },
+  "availability_launchd_running": true
+}

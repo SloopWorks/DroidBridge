@@ -1,0 +1,27 @@
+[0/1] Planning build
+Building for debugging...
+[0/7] Write sources
+[1/7] Write swift-version--58304C5D6DBC2206.txt
+[3/8] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[4/8] Emitting module DroidBridgeCoreTests
+[5/8] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[6/8] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[6/8] Write Objects.LinkFileList
+[7/8] Linking DroidBridgePackageTests
+Build complete! (0.95s)
+Test Suite 'Selected tests' started at 2026-10-28 15:03:14.137.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-28 15:03:14.138.
+Test Suite 'ManagedAppsTests' started at 2026-10-28 15:03:14.138.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testUnregisterAdmissionRefusesForeignReplacementAtOwnedURL]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/ManagedAppCatalogQATests.swift:52: error: -[DroidBridgeCoreTests.ManagedAppsTests testUnregisterAdmissionRefusesForeignReplacementAtOwnedURL] : XCTAssertFalse failed - Do not dispatch lsregister -u against a foreign application now occupying an originally-owned URL
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testUnregisterAdmissionRefusesForeignReplacementAtOwnedURL]' failed (0.181 seconds).
+Test Suite 'ManagedAppsTests' failed at 2026-10-28 15:03:14.319.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.181 (0.181) seconds
+Test Suite 'DroidBridgePackageTests.xctest' failed at 2026-10-28 15:03:14.319.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.181 (0.181) seconds
+Test Suite 'Selected tests' failed at 2026-10-28 15:03:14.319.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.181 (0.182) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

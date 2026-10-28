@@ -1,0 +1,26 @@
+[0/1] Planning build
+Building for debugging...
+[0/7] Write sources
+[1/7] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Emitting module DroidBridgeCoreTests
+[4/5] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[5/6] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking DroidBridgePackageTests
+Build complete! (1.47s)
+Test Suite 'Selected tests' started at 2026-10-28 15:10:36.219.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-28 15:10:36.220.
+Test Suite 'ManagedAppsTests' started at 2026-10-28 15:10:36.220.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNewDenyPolicyPersistsEvenWhenOneOwnedPathFailsValidation]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/ManagedAppsTests.swift:264: error: -[DroidBridgeCoreTests.ManagedAppsTests testNewDenyPolicyPersistsEvenWhenOneOwnedPathFailsValidation] : XCTAssertFalse failed - A refused move must not erase the latest global deny decision
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNewDenyPolicyPersistsEvenWhenOneOwnedPathFailsValidation]' failed (0.241 seconds).
+Test Suite 'ManagedAppsTests' failed at 2026-10-28 15:10:36.461.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.241 (0.241) seconds
+Test Suite 'DroidBridgePackageTests.xctest' failed at 2026-10-28 15:10:36.461.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.241 (0.241) seconds
+Test Suite 'Selected tests' failed at 2026-10-28 15:10:36.461.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.241 (0.242) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

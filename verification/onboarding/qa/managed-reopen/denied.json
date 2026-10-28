@@ -1,0 +1,10 @@
+{
+  "elapsed" : 0.70337200164794922,
+  "phase" : "denied",
+  "bundle_id" : "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.settings",
+  "icon_valid" : true,
+  "activation_policy" : 0,
+  "instrumentation" : "Public NSApplicationDelegate reopen; physical focus\/Cmd+Tab not verified",
+  "name" : "Settings",
+  "pid" : 40813
+}

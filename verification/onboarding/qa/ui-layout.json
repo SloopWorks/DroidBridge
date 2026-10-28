@@ -1,0 +1,470 @@
+[
+  {
+    "content_size" : [
+      1000,
+      800
+    ],
+    "name" : "ui-default-content1000x800",
+    "rows" : [
+      {
+        "frame" : [
+          75.5,
+          675,
+          57.5,
+          24
+        ],
+        "hidden" : false,
+        "name" : "device",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          286.5,
+          675,
+          139,
+          24
+        ],
+        "hidden" : false,
+        "name" : "backend",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          635,
+          952,
+          24
+        ],
+        "hidden" : false,
+        "name" : "search",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          381,
+          952,
+          238
+        ],
+        "hidden" : false,
+        "name" : "app_table",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          309,
+          212,
+          16
+        ],
+        "hidden" : false,
+        "name" : "bulk_flag",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          250,
+          309,
+          228.5,
+          16
+        ],
+        "hidden" : false,
+        "name" : "decorations_flag",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          269,
+          220.5,
+          24
+        ],
+        "hidden" : false,
+        "name" : "add_all",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          254.5,
+          269,
+          66,
+          24
+        ],
+        "hidden" : false,
+        "name" : "cancel",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          481,
+          271,
+          150,
+          20
+        ],
+        "hidden" : false,
+        "name" : "progress",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          22,
+          239,
+          956,
+          14
+        ],
+        "hidden" : false,
+        "name" : "progress_status",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          207,
+          298.5,
+          16
+        ],
+        "hidden" : false,
+        "name" : "reconnect",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          51,
+          952,
+          110
+        ],
+        "hidden" : false,
+        "name" : "sessions",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          22,
+          20,
+          956,
+          15
+        ],
+        "hidden" : false,
+        "name" : "footer_status",
+        "within_content" : true
+      }
+    ],
+    "window_frame" : [
+      1000,
+      832
+    ]
+  },
+  {
+    "content_size" : [
+      900,
+      722
+    ],
+    "name" : "ui-minimum-frame900x720",
+    "rows" : [
+      {
+        "frame" : [
+          75.5,
+          597,
+          57.5,
+          24
+        ],
+        "hidden" : false,
+        "name" : "device",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          286.5,
+          597,
+          139,
+          24
+        ],
+        "hidden" : false,
+        "name" : "backend",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          557,
+          852,
+          24
+        ],
+        "hidden" : false,
+        "name" : "search",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          381,
+          852,
+          160
+        ],
+        "hidden" : false,
+        "name" : "app_table",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          309,
+          212,
+          16
+        ],
+        "hidden" : false,
+        "name" : "bulk_flag",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          250,
+          309,
+          228.5,
+          16
+        ],
+        "hidden" : false,
+        "name" : "decorations_flag",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          269,
+          220.5,
+          24
+        ],
+        "hidden" : false,
+        "name" : "add_all",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          254.5,
+          269,
+          66,
+          24
+        ],
+        "hidden" : false,
+        "name" : "cancel",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          481,
+          271,
+          150,
+          20
+        ],
+        "hidden" : false,
+        "name" : "progress",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          22,
+          239,
+          856,
+          14
+        ],
+        "hidden" : false,
+        "name" : "progress_status",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          207,
+          298.5,
+          16
+        ],
+        "hidden" : false,
+        "name" : "reconnect",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          51,
+          852,
+          110
+        ],
+        "hidden" : false,
+        "name" : "sessions",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          22,
+          20,
+          856,
+          15
+        ],
+        "hidden" : false,
+        "name" : "footer_status",
+        "within_content" : true
+      }
+    ],
+    "window_frame" : [
+      900,
+      754
+    ]
+  },
+  {
+    "content_size" : [
+      900,
+      722
+    ],
+    "name" : "ui-minimum-long-status",
+    "rows" : [
+      {
+        "frame" : [
+          75.5,
+          597,
+          57.5,
+          24
+        ],
+        "hidden" : false,
+        "name" : "device",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          286.5,
+          597,
+          139,
+          24
+        ],
+        "hidden" : false,
+        "name" : "backend",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          557,
+          852,
+          24
+        ],
+        "hidden" : false,
+        "name" : "search",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          381,
+          852,
+          160
+        ],
+        "hidden" : false,
+        "name" : "app_table",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          309,
+          212,
+          16
+        ],
+        "hidden" : false,
+        "name" : "bulk_flag",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          250,
+          309,
+          228.5,
+          16
+        ],
+        "hidden" : false,
+        "name" : "decorations_flag",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          269,
+          220.5,
+          24
+        ],
+        "hidden" : false,
+        "name" : "add_all",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          254.5,
+          269,
+          66,
+          24
+        ],
+        "hidden" : false,
+        "name" : "cancel",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          481,
+          271,
+          150,
+          20
+        ],
+        "hidden" : false,
+        "name" : "progress",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          22,
+          239,
+          856,
+          14
+        ],
+        "hidden" : false,
+        "name" : "progress_status",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          207,
+          298.5,
+          16
+        ],
+        "hidden" : false,
+        "name" : "reconnect",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          24,
+          51,
+          852,
+          110
+        ],
+        "hidden" : false,
+        "name" : "sessions",
+        "within_content" : true
+      },
+      {
+        "frame" : [
+          22,
+          20,
+          856,
+          15
+        ],
+        "hidden" : false,
+        "name" : "footer_status",
+        "within_content" : true
+      }
+    ],
+    "window_frame" : [
+      900,
+      754
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "mode": "cancel",
+  "installed_main_sha256": "4e2d3ca0666ba43c4199bac1dc9c40a17951b8cd1f23e863c4c12f707731be26",
+  "host_exit": 0,
+  "elapsed": 7.287,
+  "record_count_before": 16,
+  "record_count_after": 16,
+  "max_observed_icon_helpers": 2,
+  "prelaunch_settlement_seconds": 0.0,
+  "normalized_unsigned_code": {
+    "installed": "66aaf1532b06aa791f3507a730a256e03c350cf58067871204d9e305a8782322",
+    "metadata_clone": "66aaf1532b06aa791f3507a730a256e03c350cf58067871204d9e305a8782322"
+  },
+  "control_receipt": {
+    "passed": true,
+    "mode": "cancel",
+    "elapsed_seconds": 6.20066499710083,
+    "message": "Actual Cancel action completed; accepted history retained",
+    "rows": 16,
+    "instrumentation": "public AppKit performClick; physical OS click/focus unverified",
+    "progress": "4/16 \u00b7 2 added \u00b7 0 current \u00b7 0 running/skipped \u00b7 0 errors. Cancelled. Run Add All again to resume; completed apps are preserved."
+  },
+  "physical_mouse_or_focus_test": false
+}

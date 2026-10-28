@@ -1,0 +1,16 @@
+--------- beginning of main
+10-28 15:24:39.299  3463  3463 I DroidBridgeProbe: text=D display=4
+10-28 15:24:39.313  3463  3463 I DroidBridgeProbe: click=1 display=4
+10-28 15:24:39.411  3463  3463 I DroidBridgeProbe: text=De display=4
+10-28 15:24:39.422  3463  3463 I DroidBridgeProbe: text=Des display=4
+10-28 15:24:39.440  3463  3463 I DroidBridgeProbe: text=Desk display=4
+10-28 15:24:39.455  3463  3463 I DroidBridgeProbe: text=Deskt display=4
+10-28 15:24:39.476  3463  3463 I DroidBridgeProbe: text=Deskto display=4
+10-28 15:24:39.490  3463  3463 I DroidBridgeProbe: text=Desktop display=4
+10-28 15:24:39.511  3463  3463 I DroidBridgeProbe: text=DesktopC display=4
+10-28 15:24:39.528  3463  3463 I DroidBridgeProbe: text=DesktopCl display=4
+10-28 15:24:39.542  3463  3463 I DroidBridgeProbe: text=DesktopCle display=4
+10-28 15:24:39.558  3463  3463 I DroidBridgeProbe: text=DesktopClea display=4
+10-28 15:24:39.576  3463  3463 I DroidBridgeProbe: text=DesktopClean display=4
+10-28 15:24:39.990  3463  3463 I DroidBridgeProbe: secondary display=4 package=dev.droidbridge.testapp
+10-28 15:24:41.912  3463  3463 I DroidBridgeProbe: click=1 display=4

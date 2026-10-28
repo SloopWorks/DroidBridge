@@ -1,0 +1,30 @@
+{
+  "id": "app.droidbridge.indexprobe.37771a3cf1f04948b95b788e76ef35ad",
+  "active": "/Users/patrick/Applications/DroidBridge Index Probe 37771a3cf1f04948b95b788e76ef35ad.app",
+  "inactive": "/Users/patrick/Library/Application Support/DroidBridge/ManagedApps-Probe.noindex/DroidBridge Index Probe 37771a3cf1f04948b95b788e76ef35ad.app",
+  "register": {
+    "status": 0,
+    "output": ""
+  },
+  "mdimport": {
+    "status": 0,
+    "output": ""
+  },
+  "online_mdfind": {
+    "status": 0,
+    "output": "/Users/patrick/Applications/DroidBridge Index Probe 37771a3cf1f04948b95b788e76ef35ad.app\n"
+  },
+  "online_mdls": {
+    "status": 0,
+    "output": "_kMDItemDisplayNameWithExtensions  = \"DroidBridge Index Probe 37771a3cf1f04948b95b788e76ef35ad.app\"\nkMDItemAlternateNames              = (\n    \"DroidBridge Index Probe 37771a3cf1f04948b95b788e76ef35ad.app\"\n)\nkMDItemAppStoreIsAppleSigned       = 1\nkMDItemCFBundleIdentifier          = \"app.droidbridge.indexprobe.37771a3cf1f04948b95b788e76ef35ad\"\nkMDItemContentCreationDate         = 2026-10-28 21:46:57 +0000\nkMDItemContentCreationDate_Ranking = 2026-10-28 00:00:00 +0000\nkMDItemContentModificationDate     = 2026-10-28 21:46:57 +0000\nkMDItemContentType                 = \"com.apple.application-bundle\"\nkMDItemContentTypeTree             = (\n    \"com.apple.application-bundle\",\n    \"com.apple.application\",\n    \"public.executable\",\n    \"com.apple.localizable-name-bundle\",\n    \"com.apple.bundle\",\n    \"public.directory\",\n    \"public.item\",\n    \"com.apple.package\"\n)\nkMDItemCopyright                   = \"\"\nkMDItemDateAdded                   = 2026-10-28 21:46:57 +0000\nkMDItemDescription                 = \"\"\nkMDItemDisplayName                 = \"DroidBridge Index Probe 37771a3cf1f04948b95b788e76ef35ad\"\nkMDItemDocumentIdentifier          = 0\nkMDItemExecutableArchitectures     = (\n    arm64,\n    \"x86_64\"\n)\nkMDItemFSContentChangeDate         = 2026-10-28 21:46:57 +0000\nkMDItemFSCreationDate              = 2026-10-28 21:46:57 +0000\nkMDItemFSCreatorCode               = \"\"\nkMDItemFSFinderFlags               = 0\nkMDItemFSHasCustomIcon             = (null)\nkMDItemFSInvisible                 = 0\nkMDItemFSIsExtensionHidden         = 1\nkMDItemFSIsStationery              = (null)\nkMDItemFSLabel                     = 0\nkMDItemFSName                      = \"DroidBridge Index Probe 37771a3cf1f04948b95b788e76ef35ad.app\"\nkMDItemFSNodeCount                 = 1\nkMDItemFSOwnerGroupID              = 20\nkMDItemFSOwnerUserID               = 501\nkMDItemFSSize                      = 84790\nkMDItemFSTypeCode                  = \"\"\nkMDItemInterestingDate_Ranking     = 2026-10-28 00:00:00 +0000\nkMDItemKeywords                    = \"\"\nkMDItemKind                        = \"Application\"\nkMDItemLogicalSize                 = 84790\nkMDItemPhysicalSize                = 90112\n"
+  },
+  "unregister_missing_old_url": {
+    "status": 0,
+    "output": ""
+  },
+  "matching_ls_after_unregistered": [],
+  "offline_mdfind": {
+    "status": 0,
+    "output": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "mode": "add",
+  "installed_main_sha256": "4e2d3ca0666ba43c4199bac1dc9c40a17951b8cd1f23e863c4c12f707731be26",
+  "host_exit": 0,
+  "elapsed": 10.106,
+  "record_count_before": 16,
+  "record_count_after": 16,
+  "max_observed_icon_helpers": 2,
+  "prelaunch_settlement_seconds": 0.0,
+  "normalized_unsigned_code": {},
+  "control_receipt": {
+    "passed": true,
+    "mode": "add",
+    "elapsed_seconds": 9.501989006996155,
+    "message": "Actual AddAll, decoration preference and LaunchApp actions completed",
+    "rows": 16,
+    "instrumentation": "public AppKit performClick; physical OS click/focus unverified",
+    "progress": "16/16 \u00b7 2 added \u00b7 14 current \u00b7 0 running/skipped \u00b7 0 errors. Finished. 0 Spotlight updates pending in the background."
+  },
+  "physical_mouse_or_focus_test": false
+}

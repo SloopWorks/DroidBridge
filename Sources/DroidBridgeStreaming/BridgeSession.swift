@@ -123,7 +123,8 @@ public final class BridgeSession {
     }
     private func startExternal(token: UUID) throws {
         let config = descriptor.configuration
-        let args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=30","--video-codec=h264"]
+        var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=30","--video-codec=h264"]
+        if !config.showSystemDecorations { args.append("--no-vd-system-decorations") }
         try spawn(toolchain.scrcpy,arguments:args,token:token); transition(.running)
     }
     private func adb(_ arguments: [String]) async throws -> ProcessResult {
@@ -141,7 +142,7 @@ public final class BridgeSession {
         guard let port = UInt16(result.output.trimmingCharacters(in:.whitespacesAndNewlines)), port > 0 else { throw BridgeError.message("ADB did not allocate a video port") }
         localForward = "tcp:\(port)"; try check(token); forward = localForward
         let c = descriptor.configuration
-        let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=30","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_destroy_content=true","clipboard_autosync=false","cleanup=true"]
+        let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=30","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_system_decorations=\(c.showSystemDecorations)","vd_destroy_content=true","clipboard_autosync=false","cleanup=true"]
         try spawn(toolchain.adb,arguments:arguments,token:token)
         let transport = NativeTransport(); self.transport = transport
         let mailbox = FrameMailbox { [weak self] frame in

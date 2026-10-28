@@ -1,0 +1,12 @@
+[0/1] Planning build
+Building for production...
+[0/5] Write sources
+[4/9] Write swift-version--58304C5D6DBC2206.txt
+[6/10] Compiling DroidBridgeCore AndroidDiscovery.swift
+[7/12] Compiling DroidBridgeAvailability main.swift
+[7/12] Write Objects.LinkFileList
+[8/12] Linking DroidBridgeAvailability
+[10/12] Compiling DroidBridgeStreaming BridgeSession.swift
+[11/13] Compiling DroidBridge DeviceOnboarding.swift
+error: input file '/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/MacAppWrapper.swift' was modified during the build
+error: input file '/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/MacAppWrapper.swift' was modified during the build
