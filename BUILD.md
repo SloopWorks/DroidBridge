@@ -22,7 +22,7 @@ This build is locally ad-hoc signed. Apple Development and Apple Distribution id
 
 ## Uninstall
 
-Quit DroidBridge, remove its app bundle and any generated Android app wrappers. Remove `~/Library/Application Support/DroidBridge` for saved session intent/recovery receipts and `~/Library/Logs/DroidBridge` for diagnostics. Generated wrappers live in `~/Applications/DroidBridge Apps`. Wrappers share the installed host runtime by path; moving or deleting the host requires recreating wrappers. This does not uninstall Android apps. Keep shared ADB/Android SDK tools if other software uses them.
+Quit DroidBridge, remove its app bundle and any generated Android app wrappers. Remove `~/Library/Application Support/DroidBridge` for saved session intent/recovery receipts and `~/Library/Logs/DroidBridge` for diagnostics. Generated wrappers live in `~/Applications/DroidBridge Apps`. Each generated wrapper contains its own copied runtime and can run independently of the host installation. This does not uninstall Android apps. Keep shared ADB/Android SDK tools if other software uses them.
 
 ## Dependencies and redistribution
 

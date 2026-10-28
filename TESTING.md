@@ -13,6 +13,8 @@ DROIDBRIDGE_QA_LIFECYCLE=1 DROIDBRIDGE_TEST_SERIAL=emulator-5580 swift test --fi
 scripts/verify-appkit.sh
 python3 scripts/verify-package.py "$HOME/Applications/DroidBridge.app"
 python3 scripts/verify-installed.py "$HOME/Applications/DroidBridge.app" # exclusive DroidBridge GUI/emulator sessions
+python3 scripts/verify-wrapper-close.py "$HOME/Applications/DroidBridge.app"
+python3 scripts/verify-reconnect.py "$HOME/Applications/DroidBridge.app" # restarts only DroidBridge_API35/5580
 ```
 
 Run emulator-dependent tests serially. Probe apps have single Android package identities; simultaneous independent test runners launching the same package can move the task to a different display. Close GUI probe sessions before running integration tests. Lifecycle tests compare forward/display baseline snapshots and therefore require exclusive ownership of DroidBridge sessions on the dedicated emulator, while retaining unrelated baseline sessions. Never globally remove ADB forwards or kill the ADB server.
@@ -23,7 +25,7 @@ Run emulator-dependent tests serially. Probe apps have single Android package id
 
 `scripts/verify-appkit.sh` compiles the shipping `NativeWindow.swift` against the current core/streaming objects, creates two actual AppKit NSWindows, renders decoded Android frames through the shipping NSView, dispatches mouse and keyboard NSEvents through NSWindow, checks Android log receipts, resizes and repeats input. It captures rendered NSView bitmap PNGs without requiring screen-recording permission. This harness complements GUI launcher automation; it does not substitute for selecting apps and backend controls in the installed launcher.
 
-`scripts/verify-package.py` validates deep/strict ad-hoc signatures, arm64 Mach-O dependency paths and bundled runtime executables with PATH limited to system tools. Ad-hoc signature validity is not Developer ID trust or notarization. Separately launch the copied application outside `dist` and verify GUI sessions using its bundled runtime; capture screenshots and exact installation path.
+`scripts/verify-package.py` validates deep/strict ad-hoc signatures, arm64 Mach-O dependency paths and bundled runtime executables with PATH limited to system tools. Ad-hoc signature validity is not Developer ID trust or notarization. Separately launch the copied application outside `dist` and verify GUI sessions using its bundled runtime; capture screenshots and exact installation path. `verify-installed.py` starts live sessions with isolated PATH and tests SIGKILL of the host, graceful AppKit termination, and exact supervised-child failure for both backends; it checks process, ADB forward/reverse, and virtual-display cleanup and records CPU/RSS samples. `verify-wrapper-close.py` copies the installed Mach-O into a QA wrapper and injects a test-only public-API NSWindow close action, then requires live decoded video, normal app exit and cleanup. `verify-reconnect.py` shuts down and boots only the dedicated AVD, checks that the same host PID survives six seconds without the device, and requires a new running session after reconnection for each backend.
 
 ## Evidence policy
 

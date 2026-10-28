@@ -30,7 +30,7 @@ Closing a session destroys its virtual display and its tasks under scrcpy's defa
 
 ## Native application experience
 
-AppKit windows supply move/resize/minimize/full-screen controls, focus and Mission Control integration. Windows in the main launcher process share one Cmd+Tab identity. Generated wrappers copy the Mach-O executable into separate bundles with package-specific application identities and launch parameters. They use isolated intent stores and share the installed runtime through a path-bound link. Moving/removing the host requires recreating wrappers. Closing the final wrapper session ends that wrapper process. Spotlight indexing and switching behavior must be reported from observed tests, not inferred from bundle IDs.
+AppKit windows supply move/resize/minimize/full-screen controls, focus and Mission Control integration. Windows in the main launcher process share one Cmd+Tab identity. Generated wrappers copy the Mach-O executable into separate bundles with package-specific application identities and launch parameters. They use isolated intent stores and copy the pinned runtime into each wrapper, so each wrapper is independently portable and can pass strict signature verification. Closing the final wrapper session ends that wrapper process. Spotlight indexing and switching behavior must be reported from observed tests, not inferred from bundle IDs.
 
 ## Build and evidence
 

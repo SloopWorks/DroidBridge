@@ -20,6 +20,7 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-reconnect-') as temp:
     source.write_text('import AppKit\nlet app=NSRunningApplication(processIdentifier:Int32(CommandLine.arguments[1])!)!\nif !app.terminate() { exit(1) }\n')
     subprocess.run(['swiftc',str(source),'-o',str(quitter)],check=True)
     for backend in ('native','scrcpy'):
+        print(f'START actual emulator shutdown/reconnect {backend}',flush=True)
         assert connected(),'dedicated emulator must be initially running'
         previous=set(logs.glob('*.jsonl'));env=os.environ.copy();env['PATH']='/usr/bin:/bin'
         with (out/f'{backend}-host.log').open('w') as hostlog:
@@ -36,6 +37,7 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-reconnect-') as temp:
                 deadline=time.monotonic()+10
                 while connected() and time.monotonic()<deadline:time.sleep(.2)
                 assert not connected(),'emulator did not disconnect'
+                print(f'{backend}: emulator absent; checking host survival',flush=True)
                 time.sleep(6) # exceeds four-second discovery polling cadence
                 assert host.poll() is None,'host crashed while emulator absent'
                 before_restore=set(logs.glob('*.jsonl'))
@@ -56,6 +58,7 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-reconnect-') as temp:
                     if restored is not None:break
                     time.sleep(.2)
                 assert restored is not None,'automatic session restoration did not produce successor running session'
+                print(f'PASS {backend}: same host PID {host.pid} automatically restored successor {restored.name}',flush=True)
                 first_events=first.read_text();restored_events=restored.read_text()
                 (out/f'{backend}-original.jsonl').write_text(first_events);(out/f'{backend}-restored.jsonl').write_text(restored_events)
                 subprocess.run([str(quitter),str(host.pid)],check=True);host.wait(timeout=25)

@@ -2,7 +2,7 @@ import AppKit
 import DroidBridgeCore
 
 /// A copied Mach-O executable under a unique bundle gives Launch Services a real
-/// independent application identity. Runtime resources remain shared with the host.
+/// independent application identity. Each wrapper seals its own pinned runtime.
 enum MacAppWrapper {
     static func create(application: AndroidApplication, device: AndroidDevice, backend: BackendKind) throws -> URL {
         guard let executable = Bundle.main.executableURL, Bundle.main.bundleURL.pathExtension == "app" else { throw BridgeError.message("Install DroidBridge.app before creating Mac app wrappers.") }
@@ -19,7 +19,11 @@ enum MacAppWrapper {
         try fm.createDirectory(at: resources, withIntermediateDirectories: true)
         try fm.copyItem(at: executable, to: macOS.appendingPathComponent("DroidBridge"))
         if let hostResources = Bundle.main.resourceURL {
-            try fm.createSymbolicLink(at: resources.appendingPathComponent("Runtime"), withDestinationURL: hostResources.appendingPathComponent("Runtime"))
+            try fm.copyItem(at: hostResources.appendingPathComponent("Runtime"), to: resources.appendingPathComponent("Runtime"))
+            for name in ["licenses", "THIRD_PARTY.md"] {
+                let source = hostResources.appendingPathComponent(name)
+                if fm.fileExists(atPath: source.path) { try fm.copyItem(at: source, to: resources.appendingPathComponent(name)) }
+            }
             let icon = hostResources.appendingPathComponent("DroidBridge.icns")
             if fm.fileExists(atPath: icon.path) { try fm.copyItem(at: icon, to: resources.appendingPathComponent("DroidBridge.icns")) }
         }

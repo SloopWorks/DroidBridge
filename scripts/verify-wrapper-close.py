@@ -13,10 +13,11 @@ baseline=android('forward','--list');display_count=android('shell','dumpsys','di
 with tempfile.TemporaryDirectory(prefix='droidbridge-wrapper-') as temp:
     wrapper=pathlib.Path(temp)/'QA Settings.app';contents=wrapper/'Contents';macos=contents/'MacOS';resources=contents/'Resources';macos.mkdir(parents=True);resources.mkdir()
     shutil.copy2(app/'Contents/MacOS/DroidBridge',macos/'DroidBridge')
-    (resources/'Runtime').symlink_to(app/'Contents/Resources/Runtime',target_is_directory=True)
+    shutil.copytree(app/'Contents/Resources/Runtime',resources/'Runtime',symlinks=True)
     (resources/'launch.json').write_text(json.dumps({'package':'com.android.settings','name':'QA Settings','serial':'emulator-5580','backend':'native'}))
     with (contents/'Info.plist').open('wb') as f:plistlib.dump({'CFBundleIdentifier':'app.droidbridge.qa.wrapperclose','CFBundleName':'QA Settings','CFBundleExecutable':'DroidBridge','CFBundlePackageType':'APPL','LSMinimumSystemVersion':'26.0'},f)
     subprocess.run(['codesign','--force','--sign','-',str(wrapper)],check=True)
+    subprocess.run(['codesign','--verify','--deep','--strict',str(wrapper)],check=True)
     marker=out.resolve()/'close-action.txt';marker.unlink(missing_ok=True)
     env=os.environ.copy();env['PATH']='/usr/bin:/bin';env['DYLD_INSERT_LIBRARIES']=str(shim);env['DROIDBRIDGE_QA_WRAPPER_CLOSE_RECEIPT']=str(marker)
     with (out/'host.log').open('w') as log:

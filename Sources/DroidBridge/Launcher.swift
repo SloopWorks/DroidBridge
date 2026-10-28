@@ -26,6 +26,12 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var pending: [SessionDescriptor] = []
     var previousSerials = Set<String>()
     var isWrapper: Bool { Bundle.main.url(forResource: "launch", withExtension: "json") != nil || ProcessInfo.processInfo.arguments.contains("--wrapper") }
+    var preferredSerial: String? {
+        let arguments = ProcessInfo.processInfo.arguments
+        if let index = arguments.firstIndex(of: "--serial"), arguments.indices.contains(index + 1) { return arguments[index + 1] }
+        if let resource = Bundle.main.url(forResource: "launch", withExtension: "json"), let data = try? Data(contentsOf: resource), let options = try? JSONDecoder().decode([String: String].self, from: data) { return options["serial"] }
+        return nil
+    }
     var selectedDevice: AndroidDevice? { devices.indices.contains(devicePicker.indexOfSelectedItem) ? devices[devicePicker.indexOfSelectedItem] : nil }
     var selectedApp: AndroidApplication? { filtered.indices.contains(table.selectedRow) ? filtered[table.selectedRow] : nil }
     var backend: BackendKind { backendPicker.indexOfSelectedItem == 0 ? .native : .scrcpy }
@@ -118,10 +124,12 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                 if changed || devicePicker.numberOfItems == 0 {
                     devicePicker.removeAllItems()
                     devicePicker.addItems(withTitles: devices.map { "\($0.model) · \($0.serial)\($0.state == "device" ? "" : " (\($0.state))")" })
-                    if let index = devices.firstIndex(where: { $0.serial == selected }) { devicePicker.selectItem(at: index) }
+                    if let index = DeviceSelection.index(in: devices, currentSerial: selected, preferredSerial: preferredSerial) { devicePicker.selectItem(at: index) }
+                    else { devicePicker.selectItem(at: -1) }
                 }
                 if forceApps || changed { await loadApps() }
                 if devices.isEmpty { status.stringValue = "No Android device found. Check USB debugging, authorization, or start an emulator." }
+                else if selectedDevice == nil, let preferredSerial { status.stringValue = "Waiting for requested Android device \(preferredSerial). Select another device to browse its apps." }
                 if reconnect.state == .on {
                     let returning = connected.subtracting(previousSerials)
                     for session in Array(sessions.values) where returning.contains(session.descriptor.device.serial) && sessionStates[session.descriptor.id] == "disconnected" {

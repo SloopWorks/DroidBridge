@@ -26,6 +26,7 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-quit-') as temporary:
     subprocess.run(['swiftc',str(source),'-o',str(quitter)],check=True)
     for backend in ('native','scrcpy'):
         for mode in ('crash','quit','child-crash'):
+            print(f'START installed {backend} {mode}',flush=True)
             before_forwards=forwards(); before_reverses=reverses(); before_displays=displays(); existing=set(logs.glob('*.jsonl'))
             env=os.environ.copy(); env['PATH']='/usr/bin:/bin'
             with (out/f'{backend}-{mode}-host.log').open('w') as host_log:
@@ -82,6 +83,7 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-quit-') as temporary:
                     if raw.exists(): (out/f'{backend}-{mode}-server.log').write_text(raw.read_text())
                     results.append({'backend':backend,'mode':mode,'passed':True,'host_pid':process.pid,'owned_pids':sorted(owned),'active_resource_sample':resource_sample,'owned_forwards':sorted(owned_forwards),'owned_reverses':sorted(owned_reverses),'elapsed_seconds':round(time.monotonic()-started,3),'before_display_count':before_displays,'after_display_count':displays()})
                     (out/'results.json').write_text(json.dumps(results,indent=2)+'\n')
+                    print(f'PASS installed {backend} {mode}: cleanup {results[-1]["elapsed_seconds"]}s',flush=True)
                 finally:
                     if process.poll() is None: process.kill(); process.wait(timeout=5)
-print(json.dumps(results,indent=2))
+print(json.dumps([{key:r[key] for key in ('backend','mode','passed','elapsed_seconds')} for r in results],indent=2))
