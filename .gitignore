@@ -1,0 +1,6 @@
+.build/
+.DS_Store
+Vendor/
+dist/
+*.dmg
+verification/**/*.mp4
