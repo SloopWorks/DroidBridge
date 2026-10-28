@@ -11,3 +11,4 @@ verification/review/verify-appkit
 verification/review/appkit/verify-appkit
 verification/**/*.mkv
 verification/**/*.dylib
+verification/review/sdl-input/interpose-smoke
