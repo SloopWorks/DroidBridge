@@ -1,0 +1,18 @@
+START installed native child-crash
+PASS installed native child-crash: cleanup 4.521s
+START installed scrcpy child-crash
+PASS installed scrcpy child-crash: cleanup 3.836s
+[
+  {
+    "backend": "native",
+    "mode": "child-crash",
+    "passed": true,
+    "elapsed_seconds": 4.521
+  },
+  {
+    "backend": "scrcpy",
+    "mode": "child-crash",
+    "passed": true,
+    "elapsed_seconds": 3.836
+  }
+]

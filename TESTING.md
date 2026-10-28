@@ -7,7 +7,12 @@ Use the dedicated `DroidBridge_API35` emulator on port 5580. The user's existing
 ```sh
 scripts/android-emulator.sh # run in a separate persistent terminal; foreground emulator supervisor
 scripts/android-build-testapp.sh
+scripts/build-icon-helper.sh
+android/icon-helper/fixture/build.sh
 swift test
+scripts/verify-wrapper-failure.sh # no-device shipping launcher/video fixture, failure retention and presentation
+DROIDBRIDGE_TEST_ICONS=1 DROIDBRIDGE_TEST_SERIAL=emulator-5580 swift test --filter AndroidIconProviderTests
+DROIDBRIDGE_TEST_HOST="$HOME/Applications/DroidBridge.app" scripts/test-macos-wrappers.sh # actual creator, live signed wrappers, Android icons and update safety
 scripts/verify-launch-race.sh # deterministic no-device startup cancellation race
 DROIDBRIDGE_INTEGRATION=1 DROIDBRIDGE_TEST_SERIAL=emulator-5580 swift test --filter StreamingTests
 DROIDBRIDGE_QA_LIFECYCLE=1 DROIDBRIDGE_TEST_SERIAL=emulator-5580 swift test --filter QALifecycleTests
@@ -36,3 +41,7 @@ See verification/REPORT.md for the acceptance matrix, verification/review/ for i
 A release must rerun the unit and actual integration tests after code changes, rebuild the package, verify its exact bundle, mount/copy the installer outside the build directory, and launch that installed copy. Record blocked/unexecuted scenarios explicitly. Cmd+Tab and Spotlight behavior must be observed; independent bundle IDs alone are insufficient evidence.
 
 The focused launch-race harness compiles the shipping launcher and delays a fake ADB resolve command, then checks that polling interruption survives the late startup catch. It complements actual emulator reboot tests. The SDL test injects only public client events into two unchanged bundled Players, validates separate Android mouse/text/raw-key receipts, inspects real recorded frames, and verifies cleanup; it does not establish OS focus under a locked desktop.
+
+The 0.1.1 wrapper report is [verification/launcher-fix/REPORT.md](verification/launcher-fix/REPORT.md). `verify-wrapper-failure.sh` compiles the shipping launcher and uses bounded fake transports, including a real VideoToolbox-decoded H.264 frame. It verifies retained clean exits before/after running, precise error preservation, replacement-session quit-timer fencing, bounded/drained icon work, native window restoration at first frame, and reopening without duplicate sessions. It complements actual Android tests and is not a ChatGPT package test.
+
+`test-macos-wrappers.sh` uses the actual creator and installed runtime on dedicated emulator-5580. It checks PNG/ICNS content, atomic updates and backups, unrelated/destination-race refusal, live native video and fallback Texture/display binding, and separate regular native/Player application identities. ICNS pixels are compared with Android's source bitmap; running icons are compared with macOS's presented bundle icon, which may add a platform container. The generated code must match the installed executable after removing only signatures from temporary comparison copies; signatures differ because they seal distinct bundles. Direct Cmd+Tab interaction remains a separate unlocked-desktop check.

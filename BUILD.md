@@ -8,11 +8,12 @@ Pinned Android streaming protocol: **scrcpy 5.0.1**, client and server together.
 
 ```sh
 brew install scrcpy
+scripts/build-icon-helper.sh
 swift test
 scripts/package.sh
 ```
 
-The packaging script builds release Swift sources, assembles an app bundle, copies ADB, scrcpy, the exact server JAR and their dynamic library dependencies, rewrites library paths, ad-hoc signs, and creates a DMG and checksums. Android SDK/platform-tools must be present during packaging. No Homebrew dependency should be required by an installed bundle.
+The packaging script builds release Swift sources and the original DEX icon helper, assembles an app bundle, copies ADB, scrcpy, the exact server JAR and their dynamic library dependencies, rewrites library paths, ad-hoc signs, and creates a DMG and checksums. Android SDK platform 35, build-tools 35.0.0, platform-tools and a JDK must be present during packaging. The icon helper uses the same pinned Android build tools as the integration fixture. No Homebrew or SDK dependency should be required by an installed bundle.
 
 Install by dragging `DroidBridge.app` from the DMG to `/Applications` or `~/Applications`. Launch it, refresh devices, select an authorized Android device or emulator, choose a backend, and launch an app. USB authorization is an Android security prompt and must be accepted on the device.
 

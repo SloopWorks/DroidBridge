@@ -30,6 +30,8 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-wrapper-') as temp:
     session_logs=set(logs.glob('*.jsonl'))-existing
     events=[json.loads(line) for file in session_logs for line in file.read_text().splitlines() if line.startswith('{')]
     assert any(e.get('state')=='running' and e.get('package')=='com.android.settings' and e.get('device')=='emulator-5580' for e in events),'wrapper never decoded live Android frame'
+    assert any(e.get('event')=='session_close' and e.get('details',{}).get('reason')=='window_close' for e in events),'native window close cause not recorded'
+    assert any(e.get('event')=='session_stop_requested' and e.get('reason')=='window_close' for e in events),'backend stop caller not recorded'
     for file in session_logs:(out/file.name).write_text(file.read_text())
     assert android('forward','--list')==baseline,'wrapper leaked ADB forward'
     assert android('shell','dumpsys','display').count('DisplayDeviceInfo{')==display_count,'wrapper leaked virtual display'

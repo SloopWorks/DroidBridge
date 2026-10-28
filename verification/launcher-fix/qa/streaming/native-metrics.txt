@@ -1,0 +1,3 @@
+Distinct probe frame hashes=143
+A frames=159 bytes=406030 size=896x640
+B frames=123 bytes=563465 size=720x1080

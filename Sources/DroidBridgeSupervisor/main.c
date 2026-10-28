@@ -13,23 +13,29 @@
  * No shell is used, every child lives in its own process group, and cleanup
  * targets only the exact endpoint supplied by the owning session. */
 static volatile sig_atomic_t stopping = 0;
-static void request_stop(int signo) { (void)signo; stopping = 1; }
+static volatile sig_atomic_t stop_signal = 0;
+static void request_stop(int signo) { stop_signal = signo; stopping = 1; }
 static void pause_tick(void) { struct timespec delay = {0, 50000000}; nanosleep(&delay, NULL); }
 static double monotonic_seconds(void) {
     struct timespec now; clock_gettime(CLOCK_MONOTONIC, &now);
     return (double)now.tv_sec + (double)now.tv_nsec / 1000000000.0;
 }
-static pid_t launch(char *const args[]) {
+static pid_t launch_output(char *const args[], int output) {
     pid_t pid = fork();
     if (pid == 0) {
         setpgid(0, 0);
         signal(SIGTERM, SIG_DFL); signal(SIGINT, SIG_DFL); signal(SIGHUP, SIG_DFL);
+        if (output >= 0) {
+            if (dup2(output, STDOUT_FILENO) < 0 || dup2(output, STDERR_FILENO) < 0) _exit(71);
+            if (output > STDERR_FILENO) close(output);
+        }
         execv(args[0], args);
         perror("DroidBridge supervisor exec"); _exit(127);
     }
     if (pid > 0) setpgid(pid, pid);
     return pid;
 }
+static pid_t launch(char *const args[]) { return launch_output(args, -1); }
 static int reap(pid_t child, int *status, double seconds) {
     double deadline = monotonic_seconds() + seconds;
     do {
@@ -48,9 +54,32 @@ static void terminate_child(pid_t child, int *status) {
     }
 }
 static void cleanup_command(char *const args[]) {
-    pid_t child = launch(args); int status = 0;
+    /* The GUI and this crash-independent owner may finish the same cleanup.
+     * Stage diagnostics so an already-absent exact listener is a successful
+     * idempotent outcome, rather than an alarming (and misleading) ADB error.
+     * Every other diagnostic remains visible. */
+    FILE *capture = tmpfile();
+    pid_t child = launch_output(args, capture ? fileno(capture) : -1); int status = -1;
     if (child > 0 && !reap(child, &status, 5.0)) terminate_child(child, &status);
-    if (child < 0 || !WIFEXITED(status) || WEXITSTATUS(status) != 0)
+    char output[16385] = {0}; size_t length = 0;
+    if (capture) {
+        rewind(capture); length = fread(output, 1, sizeof(output)-1, capture);
+        fclose(capture);
+    }
+    int failed = child < 0 || !WIFEXITED(status) || WEXITSTATUS(status) != 0;
+    int absent = 0;
+    if (failed && child > 0 && WIFEXITED(status) && !strcmp(args[3], "forward") && args[4] && !strcmp(args[4], "--remove") && args[5]) {
+        char expected[512];
+        snprintf(expected, sizeof(expected), "adb: error: listener '%s' not found", args[5]);
+        while (length && (output[length-1] == '\n' || output[length-1] == '\r')) output[--length] = '\0';
+        absent = !strcmp(output, expected);
+    }
+    if (absent) {
+        fprintf(stderr, "{\"event\":\"supervisor_cleanup_already_complete\",\"operation\":\"forward\"}\n");
+        return;
+    }
+    if (length) fprintf(stderr, "%s%s", output, output[length-1] == '\n' ? "" : "\n");
+    if (failed)
         fprintf(stderr, "{\"event\":\"supervisor_cleanup_failed\",\"operation\":\"%s\"}\n", args[3]);
 }
 int main(int argc, char **argv) {
@@ -85,17 +114,22 @@ int main(int argc, char **argv) {
             char *args[] = {adb, "-s", serial, "shell", "rm", "-f", remote, NULL};
             cleanup_command(args);
         }
+        fprintf(stderr, "{\"event\":\"supervisor_stopped\",\"reason\":\"parent_missing_before_launch\",\"exit_status\":null,\"signal\":null}\n");
         return 75;
     }
     pid_t child = launch(&argv[command]);
     if (child < 0) { perror("DroidBridge supervisor fork"); return 71; }
     fprintf(stderr, "{\"event\":\"supervisor_started\",\"parent\":%d,\"child\":%d}\n", parent, child);
-    int status = 0;
+    int status = -1;
+    const char *reason = "child_exit";
     for (;;) {
         pid_t result = waitpid(child, &status, WNOHANG);
         if (result == child || (result < 0 && errno == ECHILD)) break;
-        if (result < 0 && errno != EINTR) { stopping = 1; }
-        if (stopping || getppid() != parent) { terminate_child(child, &status); break; }
+        if (result < 0 && errno != EINTR) { reason = "wait_error"; stopping = 1; }
+        if (stopping || getppid() != parent) {
+            if (strcmp(reason, "wait_error")) reason = stopping ? "stop_signal" : "parent_exit";
+            terminate_child(child, &status); break;
+        }
         pause_tick();
     }
     if (forward) {
@@ -106,6 +140,10 @@ int main(int argc, char **argv) {
         char *args[] = {adb, "-s", serial, "shell", "rm", "-f", remote, NULL};
         cleanup_command(args);
     }
-    fprintf(stderr, "{\"event\":\"supervisor_stopped\"}\n");
+    char exit_value[16] = "null", signal_value[16] = "null", request_value[16] = "null";
+    if (WIFEXITED(status)) snprintf(exit_value, sizeof(exit_value), "%d", WEXITSTATUS(status));
+    if (WIFSIGNALED(status)) snprintf(signal_value, sizeof(signal_value), "%d", WTERMSIG(status));
+    if (stop_signal) snprintf(request_value, sizeof(request_value), "%d", (int)stop_signal);
+    fprintf(stderr, "{\"event\":\"supervisor_stopped\",\"reason\":\"%s\",\"exit_status\":%s,\"signal\":%s,\"requested_signal\":%s}\n", reason, exit_value, signal_value, request_value);
     return WIFEXITED(status) ? WEXITSTATUS(status) : (WIFSIGNALED(status) ? 128 + WTERMSIG(status) : 1);
 }

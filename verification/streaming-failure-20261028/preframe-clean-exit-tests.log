@@ -1,0 +1,38 @@
+[0/1] Planning build
+Building for debugging...
+[0/7] Write sources
+[2/7] Write swift-version--58304C5D6DBC2206.txt
+[4/9] Compiling DroidBridgeStreaming BridgeSession.swift
+[5/9] Emitting module DroidBridgeStreaming
+[6/10] Compiling DroidBridgeStreaming SessionRecovery.swift
+[7/20] Compiling DroidBridge main.swift
+[8/20] Compiling DroidBridge NativeWindow.swift
+[9/20] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[10/20] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[11/20] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[12/20] Compiling DroidBridgeCoreTests StreamingTests.swift
+[13/20] Emitting module DroidBridgeCoreTests
+[13/20] Write Objects.LinkFileList
+[15/20] Compiling DroidBridge Launcher.swift
+[16/20] Compiling DroidBridge MacAppWrapper.swift
+[17/20] Emitting module DroidBridge
+[17/21] Write Objects.LinkFileList
+[18/21] Linking DroidBridgePackageTests
+[19/21] Linking DroidBridge
+[20/21] Applying DroidBridge
+Build complete! (2.38s)
+Test Suite 'Selected tests' started at 2026-10-28 13:55:13.872.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-28 13:55:13.872.
+Test Suite 'NativeStartupExitTests' started at 2026-10-28 13:55:13.872.
+Test Case '-[DroidBridgeCoreTests.NativeStartupExitTests testCleanProcessExitBeforeFirstFramePreservesActionableFailure]' started.
+Test Case '-[DroidBridgeCoreTests.NativeStartupExitTests testCleanProcessExitBeforeFirstFramePreservesActionableFailure]' passed (2.977 seconds).
+Test Suite 'NativeStartupExitTests' passed at 2026-10-28 13:55:16.849.
+	 Executed 1 test, with 0 failures (0 unexpected) in 2.977 (2.977) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-28 13:55:16.849.
+	 Executed 1 test, with 0 failures (0 unexpected) in 2.977 (2.977) seconds
+Test Suite 'Selected tests' passed at 2026-10-28 13:55:16.849.
+	 Executed 1 test, with 0 failures (0 unexpected) in 2.977 (2.978) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

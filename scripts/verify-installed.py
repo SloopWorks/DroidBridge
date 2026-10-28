@@ -2,15 +2,26 @@
 """Exercise running-session parent death, child failure, and graceful AppKit termination.
 Requires exclusive DroidBridge UI on the dedicated emulator, never emulator5554.
 """
-import argparse, json, os, pathlib, re, signal, subprocess, tempfile, time
-p=argparse.ArgumentParser(); p.add_argument('app',type=pathlib.Path); p.add_argument('--serial',default='emulator-5580'); p.add_argument('--output',type=pathlib.Path,default=pathlib.Path('verification/review/installed')); args=p.parse_args()
+import argparse, atexit, json, os, pathlib, plistlib, re, signal, subprocess, tempfile, time
+p=argparse.ArgumentParser(); p.add_argument('app',type=pathlib.Path); p.add_argument('--serial',default='emulator-5580'); p.add_argument('--output',type=pathlib.Path,default=pathlib.Path('verification/review/installed')); p.add_argument('--wrapper',action='store_true'); p.add_argument('--mode',choices=('crash','quit','child-crash')); args=p.parse_args()
 assert args.serial=='emulator-5580','only dedicated test emulator is authorized'
 app=args.app.resolve(); exe=app/'Contents/MacOS/DroidBridge'; runtime=app/'Contents/Resources/Runtime'; adb=runtime/'bin/adb'; out=args.output; out.mkdir(parents=True,exist_ok=True)
+# Preserve existing user's launch intents while the exact installed app writes its
+# real persistence file during these controlled lifecycle cases.
+bundle_id=plistlib.loads((app/'Contents/Info.plist').read_bytes())['CFBundleIdentifier']
+persistence=pathlib.Path.home()/'Library/Application Support/DroidBridge'/('sessions-'+bundle_id+'.json' if args.wrapper else 'sessions.json')
+prior_intent=persistence.read_bytes() if persistence.exists() else None
+def restore_intent():
+    if prior_intent is None: persistence.unlink(missing_ok=True)
+    else: persistence.write_bytes(prior_intent)
+atexit.register(restore_intent)
+
 def run(*command): return subprocess.check_output(list(map(str,command)),text=True,stderr=subprocess.STDOUT)
 def android(*command): return run(adb,'-s',args.serial,*command)
 def forwards(): return set(android('forward','--list').splitlines())
 def reverses(): return set(android('reverse','--list').splitlines())
 def displays(): return android('shell','dumpsys','display').count('DisplayDeviceInfo{')
+def icon_files(): return set(android('shell','find','/data/local/tmp','-maxdepth','1','-name','droidbridge-icon-*').splitlines())
 def processes():
     rows={}
     for line in run('/bin/ps','-axo','pid,ppid,state,pcpu,rss,command').splitlines()[1:]:
@@ -25,12 +36,12 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-quit-') as temporary:
     source.write_text('import AppKit\nlet pid = Int32(CommandLine.arguments[1])!\nguard let app = NSRunningApplication(processIdentifier:pid), app.terminate() else { exit(1) }\n')
     subprocess.run(['swiftc',str(source),'-o',str(quitter)],check=True)
     for backend in ('native','scrcpy'):
-        for mode in ('crash','quit','child-crash'):
+        for mode in ((args.mode,) if args.mode else ('crash','quit','child-crash')):
             print(f'START installed {backend} {mode}',flush=True)
-            before_forwards=forwards(); before_reverses=reverses(); before_displays=displays(); existing=set(logs.glob('*.jsonl'))
+            before_forwards=forwards(); before_reverses=reverses(); before_displays=displays(); before_icons=icon_files(); existing=set(logs.glob('*.jsonl'))
             env=os.environ.copy(); env['PATH']='/usr/bin:/bin'
             with (out/f'{backend}-{mode}-host.log').open('w') as host_log:
-                process=subprocess.Popen([str(exe),'--launch','dev.droidbridge.testapp','--serial',args.serial,'--backend',backend,'--name','Installed QA'],env=env,stdout=host_log,stderr=host_log)
+                process=subprocess.Popen([str(exe),'--launch','dev.droidbridge.testapp','--serial',args.serial,'--backend',backend,'--name','Installed QA'] + (['--wrapper'] if args.wrapper else []),env=env,stdout=host_log,stderr=host_log)
                 owned=set(); session_log=None
                 try:
                     deadline=time.monotonic()+30
@@ -75,13 +86,16 @@ with tempfile.TemporaryDirectory(prefix='droidbridge-quit-') as temporary:
                     assert not owned_reverses.intersection(reverses()),'orphan owned ADB reverse'
                     assert displays()==before_displays,'orphan virtual display'
                     if mode=='child-crash':
-                        assert process.poll() is None,'host died during failed session cleanup'
+                        time.sleep(3.5 if args.wrapper else 0)
+                        assert process.poll() is None,'host died during failed session cleanup or stale wrapper timer'
                         subprocess.run([str(quitter),str(process.pid)],check=True)
                         process.wait(timeout=25)
+                    after_icons=icon_files()
+                    if mode!='crash': assert not after_icons-before_icons, 'graceful host quit leaked new icon temporary files'
                     (out/f'{backend}-{mode}-session.jsonl').write_text(session_log.read_text())
                     raw=session_log.with_suffix('')
                     if raw.exists(): (out/f'{backend}-{mode}-server.log').write_text(raw.read_text())
-                    results.append({'backend':backend,'mode':mode,'passed':True,'host_pid':process.pid,'owned_pids':sorted(owned),'active_resource_sample':resource_sample,'owned_forwards':sorted(owned_forwards),'owned_reverses':sorted(owned_reverses),'elapsed_seconds':round(time.monotonic()-started,3),'before_display_count':before_displays,'after_display_count':displays()})
+                    results.append({'backend':backend,'mode':mode,'wrapper':args.wrapper,'passed':True,'host_pid':process.pid,'owned_pids':sorted(owned),'active_resource_sample':resource_sample,'owned_forwards':sorted(owned_forwards),'owned_reverses':sorted(owned_reverses),'new_icon_temp_files_after_exit':sorted(after_icons-before_icons),'elapsed_seconds':round(time.monotonic()-started,3),'before_display_count':before_displays,'after_display_count':displays()})
                     (out/'results.json').write_text(json.dumps(results,indent=2)+'\n')
                     print(f'PASS installed {backend} {mode}: cleanup {results[-1]["elapsed_seconds"]}s',flush=True)
                 finally:

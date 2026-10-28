@@ -25,6 +25,7 @@ public final class BridgeSession {
     private var startupInFlight = 0
     private var startupWaiters: [CheckedContinuation<Void,Never>] = []
     private var admissionOpen = true
+    private var startupTerminalMessage: String?
     public init(descriptor: SessionDescriptor, toolchain: Toolchain) {
         self.descriptor = descriptor; self.toolchain = toolchain
         let directory = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Logs/DroidBridge",isDirectory:true)
@@ -33,14 +34,27 @@ public final class BridgeSession {
     }
     private func transition(_ value: SessionState, _ message: String? = nil) {
         state = value
-        var event: [String:Any] = ["timestamp":ISO8601DateFormatter().string(from:Date()),"session":descriptor.id.uuidString,"backend":descriptor.configuration.backend.rawValue,"device":descriptor.device.serial,"package":descriptor.application.packageName,"state":value.rawValue]
+        var event: [String:Any] = ["state":value.rawValue]
         if let message { event["message"] = message }
+        appendEvent(event)
+        onState?(value,message)
+    }
+    private func appendEvent(_ fields: [String:Any]) {
+        var event: [String:Any] = ["timestamp":ISO8601DateFormatter().string(from:Date()),"session":descriptor.id.uuidString,"backend":descriptor.configuration.backend.rawValue,"device":descriptor.device.serial,"package":descriptor.application.packageName]
+        fields.forEach { event[$0.key] = $0.value }
         let eventURL = logURL.appendingPathExtension("jsonl")
         if !FileManager.default.fileExists(atPath:eventURL.path) { FileManager.default.createFile(atPath:eventURL.path,contents:Data()) }
         if let data = try? JSONSerialization.data(withJSONObject:event,options:[.sortedKeys]), let handle = try? FileHandle(forWritingTo:eventURL) {
             _ = try? handle.seekToEnd(); try? handle.write(contentsOf:data+Data([10])); try? handle.close()
         }
-        onState?(value,message)
+    }
+    /// Small client lifecycle facts help distinguish a hidden Mac window from
+    /// Android transport failure. Never accepts images, text input or app data.
+    public func recordClientEvent(_ event: String, details: [String: String]) {
+        guard event.range(of: "^[a-z_]{1,64}$", options: .regularExpression) != nil,
+              details.count <= 16,
+              details.allSatisfy({ $0.key.utf8.count <= 64 && $0.value.utf8.count <= 512 }) else { return }
+        appendEvent(["event": event, "details": details])
     }
     public func start() async throws {
         guard admissionOpen else { throw CancellationError() }
@@ -65,7 +79,8 @@ public final class BridgeSession {
             if descriptor.configuration.backend == .scrcpy { try startExternal(token:token) }
             else { try await startNative(token:token) }
         } catch {
-            if generation == token { stop(); transition(.failed,error.localizedDescription) }
+            if generation == token { stop(reason: "startup_failure"); transition(.failed,error.localizedDescription) }
+            else if state == .failed, let startupTerminalMessage { throw BridgeError.message(startupTerminalMessage) }
             throw error
         }
     }
@@ -93,8 +108,15 @@ public final class BridgeSession {
             Task { @MainActor in
                 guard let self, self.generation == token, self.state == .running || self.state == .starting else { return }
                 let code = terminated.terminationStatus
-                self.stop()
-                self.transition(code == 0 ? .stopped : .failed,code == 0 ? nil : "Session process exited (\(code)). See \(self.logURL.path)")
+                let reason = terminated.terminationReason == .uncaughtSignal ? "signal \(code)" : "exit status \(code)"
+                let beforeFrame = self.state == .starting && self.descriptor.configuration.backend == .native
+                let message = beforeFrame
+                    ? "Native session process ended before the first decoded video frame (\(reason)). See \(self.logURL.path)"
+                    : "Session process exited (\(reason)). See \(self.logURL.path)"
+                if beforeFrame { self.startupTerminalMessage = message }
+                self.stop(reason: "session_process_exit")
+                let clean = code == 0 && terminated.terminationReason == .exit && !beforeFrame
+                self.transition(clean ? .stopped : .failed,clean ? nil : message)
             }
         }
         try process.run(); self.process = process
@@ -132,7 +154,15 @@ public final class BridgeSession {
         frameMailbox = mailbox
         transport.onFrame = { [mailbox] image,bytes in mailbox.publish(image,bytes:bytes) }
         transport.onSize = { [weak self] width,height in Task { @MainActor in guard let self,self.generation == token else { return }; self.metrics.width = width; self.metrics.height = height } }
-        transport.onFailure = { [weak self] error in Task { @MainActor in guard let self,self.generation == token else { return }; self.stop(); self.transition(.failed,error.localizedDescription) } }
+        transport.onDiagnostic = { [weak self] message in Task { @MainActor in
+            guard let self, self.generation == token else { return }
+            self.appendEvent(["event":"native_decoder_error","message":message])
+        } }
+        transport.onFailure = { [weak self] error in Task { @MainActor in
+            guard let self,self.generation == token else { return }
+            let diagnostic = self.transport?.startupDiagnostic ?? "video diagnostics unavailable"
+            self.stop(reason: "transport_failure"); self.transition(.failed,"\(error.localizedDescription) (\(diagnostic))")
+        } }
         try await transport.start(port:port,package:descriptor.application.packageName)
         try check(token)
         for _ in 0..<150 {
@@ -140,7 +170,7 @@ public final class BridgeSession {
             if state == .running { return }
             try await Task.sleep(nanoseconds:100_000_000)
         }
-        throw BridgeError.message("Android did not produce a decoded video frame within 15 seconds")
+        throw BridgeError.message("Android did not produce a decoded video frame within 15 seconds (\(transport.startupDiagnostic))")
         } catch {
             // Cleanup belongs to this start attempt, even if stop() fenced it
             // while ADB was still staging bytes or allocating a forward.
@@ -179,11 +209,12 @@ public final class BridgeSession {
             for (id,task) in pending { await task.value; cleanupTasks.removeValue(forKey:id) }
         }
     }
-    public func stop() {
+    public func stop(reason: String = "requested") {
         // Closing an intent is terminal. A reconnect creates a new BridgeSession;
         // a previously queued start must never resurrect a closed window.
         admissionOpen = false
         guard state != .stopped || process != nil || forward != nil || remotePath != nil else { return }
+        appendEvent(["event": "session_stop_requested", "reason": String(reason.prefix(128))])
         generation = UUID(); transition(.stopping)
         frameMailbox?.cancel(); frameMailbox = nil
         transport?.stop(); transport = nil

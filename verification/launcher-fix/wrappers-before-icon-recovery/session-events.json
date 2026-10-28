@@ -1,0 +1,73 @@
+[
+  {
+    "backend" : "native",
+    "device" : "emulator-5580",
+    "package" : "com.android.settings",
+    "session" : "310087D3-9C84-4896-AF2A-7D9E41927CBF",
+    "state" : "starting",
+    "timestamp" : "2026-10-28T21:01:28Z"
+  },
+  {
+    "backend" : "native",
+    "device" : "emulator-5580",
+    "package" : "com.android.settings",
+    "session" : "310087D3-9C84-4896-AF2A-7D9E41927CBF",
+    "state" : "running",
+    "timestamp" : "2026-10-28T21:01:29Z"
+  },
+  {
+    "backend" : "native",
+    "details" : {
+      "app_active" : "false",
+      "bundle_id" : "app.droidbridge.wrapper.com.android.settings",
+      "key" : "false",
+      "minimized" : "false",
+      "pid" : "53880",
+      "reason" : "first_frame",
+      "visible" : "true"
+    },
+    "device" : "emulator-5580",
+    "event" : "native_window_presented",
+    "package" : "com.android.settings",
+    "session" : "310087D3-9C84-4896-AF2A-7D9E41927CBF",
+    "timestamp" : "2026-10-28T21:01:29Z"
+  },
+  {
+    "backend" : "native",
+    "details" : {
+      "native_window_visible" : "true"
+    },
+    "device" : "emulator-5580",
+    "event" : "launcher_hidden",
+    "package" : "com.android.settings",
+    "session" : "310087D3-9C84-4896-AF2A-7D9E41927CBF",
+    "timestamp" : "2026-10-28T21:01:29Z"
+  },
+  {
+    "backend" : "scrcpy",
+    "device" : "emulator-5580",
+    "package" : "dev.droidbridge.iconfixture",
+    "session" : "D71E327C-0428-4DF5-BEC8-E3A8A52526F7",
+    "state" : "starting",
+    "timestamp" : "2026-10-28T21:01:28Z"
+  },
+  {
+    "backend" : "scrcpy",
+    "device" : "emulator-5580",
+    "package" : "dev.droidbridge.iconfixture",
+    "session" : "D71E327C-0428-4DF5-BEC8-E3A8A52526F7",
+    "state" : "running",
+    "timestamp" : "2026-10-28T21:01:28Z"
+  },
+  {
+    "backend" : "scrcpy",
+    "details" : {
+      "native_window_visible" : "false"
+    },
+    "device" : "emulator-5580",
+    "event" : "launcher_hidden",
+    "package" : "dev.droidbridge.iconfixture",
+    "session" : "D71E327C-0428-4DF5-BEC8-E3A8A52526F7",
+    "timestamp" : "2026-10-28T21:01:28Z"
+  }
+]

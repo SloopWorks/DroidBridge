@@ -1,0 +1,67 @@
+[
+  {
+    "test": "parent-crash",
+    "passed": true,
+    "cleanup": [
+      [
+        "-s",
+        "emulator-test",
+        "forward",
+        "--remove",
+        "tcp:12345"
+      ],
+      [
+        "-s",
+        "emulator-test",
+        "shell",
+        "rm",
+        "-f",
+        "/data/local/tmp/owned.jar"
+      ]
+    ],
+    "elapsed_seconds": 0.49
+  },
+  {
+    "test": "supervisor-terminate",
+    "passed": true,
+    "cleanup": [
+      [
+        "-s",
+        "emulator-test",
+        "forward",
+        "--remove",
+        "tcp:12345"
+      ],
+      [
+        "-s",
+        "emulator-test",
+        "shell",
+        "rm",
+        "-f",
+        "/data/local/tmp/owned.jar"
+      ]
+    ],
+    "elapsed_seconds": 0.4
+  },
+  {
+    "test": "parent-gone-before-helper-start",
+    "passed": true,
+    "cleanup": [
+      [
+        "-s",
+        "emulator-test",
+        "forward",
+        "--remove",
+        "tcp:45678"
+      ],
+      [
+        "-s",
+        "emulator-test",
+        "shell",
+        "rm",
+        "-f",
+        "/data/local/tmp/late.jar"
+      ]
+    ]
+  }
+]

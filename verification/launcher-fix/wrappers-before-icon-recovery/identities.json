@@ -1,0 +1,22 @@
+[
+  {
+    "difference_from_generic_host" : 55.560704231262207,
+    "icon_representations" : 32,
+    "identifier" : "app.droidbridge.wrapper.com.android.settings",
+    "name" : "QA Android Settings",
+    "original_android_icns_mean_pixel_error" : 0.14539337158203125,
+    "pid" : 53880,
+    "platform_icon_mean_pixel_error" : 0,
+    "regular" : true
+  },
+  {
+    "difference_from_generic_host" : 58.240453720092773,
+    "icon_representations" : 32,
+    "identifier" : "app.droidbridge.wrapper.dev.droidbridge.iconfixture.player",
+    "name" : "QA Android Alias",
+    "original_android_icns_mean_pixel_error" : 0.18894004821777344,
+    "pid" : 53919,
+    "platform_icon_mean_pixel_error" : 0,
+    "regular" : true
+  }
+]

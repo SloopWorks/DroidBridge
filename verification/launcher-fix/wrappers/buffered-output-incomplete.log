@@ -1,0 +1,5 @@
+{"event":"supervisor_started","parent":35531,"child":35571}
+/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/DroidBridge-WrapperQA-7C703DF4-5E7D-4470-889F-AFDDF56155BB/QA Android Alias.app/Contents/Resources/Runtime/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 1254.6 MB/s (733930 bytes in 0.001s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+[server] INFO: New display: 720x1080/240 (id=2)
+[server] INFO: Starting app "DroidBridge Icon Fixture" [dev.droidbridge.iconfixture] on display 2...

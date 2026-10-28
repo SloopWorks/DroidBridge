@@ -1,0 +1,30 @@
+{
+  "policy": "Only exact test-file paths recorded before durable receipts existed; no prefix deletion",
+  "removed_known_legacy_test_paths": [
+    "/data/local/tmp/droidbridge-icon-01337177-292d-4f3d-9761-fb7721e00930.jar",
+    "/data/local/tmp/droidbridge-icon-01337177-292d-4f3d-9761-fb7721e00930.png",
+    "/data/local/tmp/droidbridge-icon-162aa869-d2f5-4043-83a8-e8d464e39cb4.jar",
+    "/data/local/tmp/droidbridge-icon-162aa869-d2f5-4043-83a8-e8d464e39cb4.png",
+    "/data/local/tmp/droidbridge-icon-18d493db-978b-48b8-98c7-2752baf4527d.jar",
+    "/data/local/tmp/droidbridge-icon-18d493db-978b-48b8-98c7-2752baf4527d.png",
+    "/data/local/tmp/droidbridge-icon-26f5ec2e-4fdc-4de4-93f8-f6f41288f416.jar",
+    "/data/local/tmp/droidbridge-icon-26f5ec2e-4fdc-4de4-93f8-f6f41288f416.png",
+    "/data/local/tmp/droidbridge-icon-49ab280d-8249-40f3-89de-3ba0f2079c89.jar",
+    "/data/local/tmp/droidbridge-icon-49ab280d-8249-40f3-89de-3ba0f2079c89.png",
+    "/data/local/tmp/droidbridge-icon-584cef50-2527-4e84-bc0b-389bfbfd43a7.jar",
+    "/data/local/tmp/droidbridge-icon-584cef50-2527-4e84-bc0b-389bfbfd43a7.png",
+    "/data/local/tmp/droidbridge-icon-95f5f29f-63ba-4925-88ee-fc03358c9102.jar",
+    "/data/local/tmp/droidbridge-icon-95f5f29f-63ba-4925-88ee-fc03358c9102.png",
+    "/data/local/tmp/droidbridge-icon-9e576229-18c4-46c0-9ab6-3db9abcab337.jar",
+    "/data/local/tmp/droidbridge-icon-9e576229-18c4-46c0-9ab6-3db9abcab337.png",
+    "/data/local/tmp/droidbridge-icon-a41a63ef-b41d-4213-9e25-196859f4a019.jar",
+    "/data/local/tmp/droidbridge-icon-a41a63ef-b41d-4213-9e25-196859f4a019.png",
+    "/data/local/tmp/droidbridge-icon-b8f31bdd-9bd4-4e3a-bf83-e97a7c099575.jar",
+    "/data/local/tmp/droidbridge-icon-b8f31bdd-9bd4-4e3a-bf83-e97a7c099575.png",
+    "/data/local/tmp/droidbridge-icon-d79e0fe3-7c01-4660-9373-aa7954d51e63.jar",
+    "/data/local/tmp/droidbridge-icon-d79e0fe3-7c01-4660-9373-aa7954d51e63.png",
+    "/data/local/tmp/droidbridge-icon-ef074577-43c3-4041-9ba4-c6ea10dfa896.jar",
+    "/data/local/tmp/droidbridge-icon-ef074577-43c3-4041-9ba4-c6ea10dfa896.png"
+  ],
+  "remaining": []
+}

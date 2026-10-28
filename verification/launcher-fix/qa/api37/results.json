@@ -1,0 +1,11 @@
+{
+  "api" : 37,
+  "chatgpt_reproduction" : false,
+  "decoded_frames" : 45,
+  "height" : 640,
+  "input_note" : "Sent native scroll control; Settings receipt not independently asserted",
+  "package" : "com.android.settings",
+  "physical_pixel" : false,
+  "serial" : "emulator-5582",
+  "width" : 896
+}

@@ -1,0 +1,8 @@
+{
+  "installed_path": "/Users/patrick/Applications/DroidBridge.app",
+  "source": "read-only mounted DMG",
+  "previous_bundle_backup": "/Users/patrick/workspace/DroidBridge/.build/install-backups/DroidBridge.previous-20261028-141932.app",
+  "installed_main_sha256": "6de35eea781f59398375fe882248ec21aaab2c66be1d35963498161cec3d9c6b",
+  "dist_main_sha256": "6de35eea781f59398375fe882248ec21aaab2c66be1d35963498161cec3d9c6b",
+  "version": "0.1.1"
+}

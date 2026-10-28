@@ -1,0 +1,10 @@
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"35CAD15E-CA23-4250-88A3-044843D85B95","state":"starting","timestamp":"2026-10-28T21:22:53Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"35CAD15E-CA23-4250-88A3-044843D85B95","state":"running","timestamp":"2026-10-28T21:22:53Z"}
+{"backend":"scrcpy","details":{"native_window_visible":"false"},"device":"emulator-5580","event":"launcher_hidden","package":"dev.droidbridge.testapp","session":"35CAD15E-CA23-4250-88A3-044843D85B95","timestamp":"2026-10-28T21:22:53Z"}
+{"backend":"scrcpy","device":"emulator-5580","event":"session_stop_requested","package":"dev.droidbridge.testapp","reason":"session_process_exit","session":"35CAD15E-CA23-4250-88A3-044843D85B95","timestamp":"2026-10-28T21:22:55Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"35CAD15E-CA23-4250-88A3-044843D85B95","state":"stopping","timestamp":"2026-10-28T21:22:55Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"35CAD15E-CA23-4250-88A3-044843D85B95","state":"stopped","timestamp":"2026-10-28T21:22:55Z"}
+{"backend":"scrcpy","device":"emulator-5580","message":"Session process exited (exit status 137). See \/Users\/patrick\/Library\/Logs\/DroidBridge\/session-35CAD15E-CA23-4250-88A3-044843D85B95.log","package":"dev.droidbridge.testapp","session":"35CAD15E-CA23-4250-88A3-044843D85B95","state":"failed","timestamp":"2026-10-28T21:22:55Z"}
+{"backend":"scrcpy","device":"emulator-5580","event":"session_stop_requested","package":"dev.droidbridge.testapp","reason":"application_quit","session":"35CAD15E-CA23-4250-88A3-044843D85B95","timestamp":"2026-10-28T21:22:59Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"35CAD15E-CA23-4250-88A3-044843D85B95","state":"stopping","timestamp":"2026-10-28T21:22:59Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"35CAD15E-CA23-4250-88A3-044843D85B95","state":"stopped","timestamp":"2026-10-28T21:22:59Z"}

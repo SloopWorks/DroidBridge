@@ -1,0 +1,312 @@
+[
+  {
+    "backend": "native",
+    "mode": "crash",
+    "wrapper": false,
+    "passed": true,
+    "host_pid": 65072,
+    "owned_pids": [
+      65084,
+      65086,
+      65089,
+      65101,
+      65102,
+      65106,
+      65107
+    ],
+    "active_resource_sample": {
+      "65072": {
+        "parent": 64802,
+        "state": "S",
+        "cpu_percent": 15.8,
+        "rss_kib": 143744,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge --launch dev.droidbridge.testapp --serial emulator-5580 --backend native --name Installed QA"
+      },
+      "65106": {
+        "parent": 65072,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 1280,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeSupervisor --parent 65072 --adb /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb --serial emulator-5580 --forward tcp:50088 --remote /data/local/tmp/droidbridge-71dce2ab.jar -- /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/droidbridge-71dce2ab.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=71dce2ab tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_destroy_content=true clipboard_autosync=false cleanup=true"
+      },
+      "65107": {
+        "parent": 65106,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 7856,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/droidbridge-71dce2ab.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=71dce2ab tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_destroy_content=true clipboard_autosync=false cleanup=true"
+      }
+    },
+    "owned_forwards": [
+      "emulator-5580 tcp:50088 localabstract:scrcpy_71dce2ab"
+    ],
+    "owned_reverses": [],
+    "new_icon_temp_files_after_exit": [
+      "/data/local/tmp/droidbridge-icon-95f5f29f-63ba-4925-88ee-fc03358c9102.jar",
+      "/data/local/tmp/droidbridge-icon-95f5f29f-63ba-4925-88ee-fc03358c9102.png",
+      "/data/local/tmp/droidbridge-icon-ef074577-43c3-4041-9ba4-c6ea10dfa896.jar",
+      "/data/local/tmp/droidbridge-icon-ef074577-43c3-4041-9ba4-c6ea10dfa896.png"
+    ],
+    "elapsed_seconds": 0.408,
+    "before_display_count": 1,
+    "after_display_count": 1
+  },
+  {
+    "backend": "native",
+    "mode": "quit",
+    "wrapper": false,
+    "passed": true,
+    "host_pid": 65154,
+    "owned_pids": [
+      65163,
+      65167,
+      65172,
+      65174,
+      65175,
+      65181,
+      65182
+    ],
+    "active_resource_sample": {
+      "65154": {
+        "parent": 64802,
+        "state": "S",
+        "cpu_percent": 16.9,
+        "rss_kib": 143808,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge --launch dev.droidbridge.testapp --serial emulator-5580 --backend native --name Installed QA"
+      },
+      "65181": {
+        "parent": 65154,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 1280,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeSupervisor --parent 65154 --adb /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb --serial emulator-5580 --forward tcp:50211 --remote /data/local/tmp/droidbridge-7d0dbdcc.jar -- /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/droidbridge-7d0dbdcc.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=7d0dbdcc tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_destroy_content=true clipboard_autosync=false cleanup=true"
+      },
+      "65182": {
+        "parent": 65181,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 7856,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/droidbridge-7d0dbdcc.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=7d0dbdcc tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_destroy_content=true clipboard_autosync=false cleanup=true"
+      }
+    },
+    "owned_forwards": [
+      "emulator-5580 tcp:50211 localabstract:scrcpy_7d0dbdcc"
+    ],
+    "owned_reverses": [],
+    "new_icon_temp_files_after_exit": [],
+    "elapsed_seconds": 0.885,
+    "before_display_count": 1,
+    "after_display_count": 1
+  },
+  {
+    "backend": "native",
+    "mode": "child-crash",
+    "wrapper": false,
+    "passed": true,
+    "host_pid": 65232,
+    "owned_pids": [
+      65247,
+      65251,
+      65258,
+      65259,
+      65263,
+      65264
+    ],
+    "active_resource_sample": {
+      "65264": {
+        "parent": 65263,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 7904,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/droidbridge-3335cd18.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=3335cd18 tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_destroy_content=true clipboard_autosync=false cleanup=true"
+      },
+      "65232": {
+        "parent": 64802,
+        "state": "S",
+        "cpu_percent": 15.7,
+        "rss_kib": 177760,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge --launch dev.droidbridge.testapp --serial emulator-5580 --backend native --name Installed QA"
+      },
+      "65263": {
+        "parent": 65232,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 1280,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeSupervisor --parent 65232 --adb /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb --serial emulator-5580 --forward tcp:50347 --remote /data/local/tmp/droidbridge-3335cd18.jar -- /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/droidbridge-3335cd18.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=3335cd18 tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_destroy_content=true clipboard_autosync=false cleanup=true"
+      }
+    },
+    "owned_forwards": [
+      "emulator-5580 tcp:50347 localabstract:scrcpy_3335cd18"
+    ],
+    "owned_reverses": [],
+    "new_icon_temp_files_after_exit": [],
+    "elapsed_seconds": 1.587,
+    "before_display_count": 1,
+    "after_display_count": 1
+  },
+  {
+    "backend": "scrcpy",
+    "mode": "crash",
+    "wrapper": false,
+    "passed": true,
+    "host_pid": 65561,
+    "owned_pids": [
+      65575,
+      65580,
+      65588,
+      65589,
+      65590,
+      65591,
+      65595,
+      65597
+    ],
+    "active_resource_sample": {
+      "65590": {
+        "parent": 65561,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 1280,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeSupervisor --parent 65561 -- /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy --serial emulator-5580 --no-audio --new-display=720x1080/240 --flex-display --start-app=dev.droidbridge.testapp --window-title=DroidBridge \u00b7 DroidBridge Test --max-fps=30 --video-codec=h264"
+      },
+      "65591": {
+        "parent": 65590,
+        "state": "S",
+        "cpu_percent": 1.5,
+        "rss_kib": 96880,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy --serial emulator-5580 --no-audio --new-display=720x1080/240 --flex-display --start-app=dev.droidbridge.testapp --window-title=DroidBridge \u00b7 DroidBridge Test --max-fps=30 --video-codec=h264"
+      },
+      "65561": {
+        "parent": 64802,
+        "state": "S",
+        "cpu_percent": 2.6,
+        "rss_kib": 105024,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge --launch dev.droidbridge.testapp --serial emulator-5580 --backend scrcpy --name Installed QA"
+      },
+      "65597": {
+        "parent": 65591,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 7920,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/scrcpy-server.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=03b7a107 log_level=info audio=false max_fps=30 new_display=720x1080/240 flex_display=true"
+      }
+    },
+    "owned_forwards": [],
+    "owned_reverses": [],
+    "new_icon_temp_files_after_exit": [
+      "/data/local/tmp/droidbridge-icon-18d493db-978b-48b8-98c7-2752baf4527d.jar",
+      "/data/local/tmp/droidbridge-icon-18d493db-978b-48b8-98c7-2752baf4527d.png",
+      "/data/local/tmp/droidbridge-icon-26f5ec2e-4fdc-4de4-93f8-f6f41288f416.jar",
+      "/data/local/tmp/droidbridge-icon-26f5ec2e-4fdc-4de4-93f8-f6f41288f416.png"
+    ],
+    "elapsed_seconds": 0.41,
+    "before_display_count": 1,
+    "after_display_count": 1
+  },
+  {
+    "backend": "scrcpy",
+    "mode": "quit",
+    "wrapper": false,
+    "passed": true,
+    "host_pid": 65648,
+    "owned_pids": [
+      65660,
+      65664,
+      65668,
+      65675,
+      65676,
+      65677,
+      65678,
+      65683,
+      65685
+    ],
+    "active_resource_sample": {
+      "65677": {
+        "parent": 65648,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 1280,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeSupervisor --parent 65648 -- /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy --serial emulator-5580 --no-audio --new-display=720x1080/240 --flex-display --start-app=dev.droidbridge.testapp --window-title=DroidBridge \u00b7 DroidBridge Test --max-fps=30 --video-codec=h264"
+      },
+      "65678": {
+        "parent": 65677,
+        "state": "S",
+        "cpu_percent": 1.6,
+        "rss_kib": 98112,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy --serial emulator-5580 --no-audio --new-display=720x1080/240 --flex-display --start-app=dev.droidbridge.testapp --window-title=DroidBridge \u00b7 DroidBridge Test --max-fps=30 --video-codec=h264"
+      },
+      "65648": {
+        "parent": 64802,
+        "state": "S",
+        "cpu_percent": 3.5,
+        "rss_kib": 104048,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge --launch dev.droidbridge.testapp --serial emulator-5580 --backend scrcpy --name Installed QA"
+      },
+      "65683": {
+        "parent": 65678,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 7888,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/scrcpy-server.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=0c7e089d log_level=info audio=false max_fps=30 new_display=720x1080/240 flex_display=true"
+      }
+    },
+    "owned_forwards": [],
+    "owned_reverses": [],
+    "new_icon_temp_files_after_exit": [],
+    "elapsed_seconds": 1.21,
+    "before_display_count": 1,
+    "after_display_count": 1
+  },
+  {
+    "backend": "scrcpy",
+    "mode": "child-crash",
+    "wrapper": false,
+    "passed": true,
+    "host_pid": 65758,
+    "owned_pids": [
+      65989,
+      65990,
+      65995,
+      66000,
+      66001,
+      66002,
+      66003,
+      66008
+    ],
+    "active_resource_sample": {
+      "66002": {
+        "parent": 65758,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 1280,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeSupervisor --parent 65758 -- /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy --serial emulator-5580 --no-audio --new-display=720x1080/240 --flex-display --start-app=dev.droidbridge.testapp --window-title=DroidBridge \u00b7 DroidBridge Test --max-fps=30 --video-codec=h264"
+      },
+      "66003": {
+        "parent": 66002,
+        "state": "S",
+        "cpu_percent": 1.1,
+        "rss_kib": 97024,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy --serial emulator-5580 --no-audio --new-display=720x1080/240 --flex-display --start-app=dev.droidbridge.testapp --window-title=DroidBridge \u00b7 DroidBridge Test --max-fps=30 --video-codec=h264"
+      },
+      "66008": {
+        "parent": 66003,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 7856,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/scrcpy-server.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=124256e2 log_level=info audio=false max_fps=30 new_display=720x1080/240 flex_display=true"
+      },
+      "65758": {
+        "parent": 64802,
+        "state": "S",
+        "cpu_percent": 1.9,
+        "rss_kib": 104624,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge --launch dev.droidbridge.testapp --serial emulator-5580 --backend scrcpy --name Installed QA"
+      }
+    },
+    "owned_forwards": [],
+    "owned_reverses": [],
+    "new_icon_temp_files_after_exit": [],
+    "elapsed_seconds": 0.82,
+    "before_display_count": 1,
+    "after_display_count": 1
+  }
+]

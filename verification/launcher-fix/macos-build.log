@@ -1,0 +1,15 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[2/5] Write swift-version--58304C5D6DBC2206.txt
+[4/7] Compiling DroidBridgeStreaming BridgeSession.swift
+[5/7] Emitting module DroidBridgeStreaming
+[6/8] Compiling DroidBridgeStreaming SessionRecovery.swift
+[7/12] Emitting module DroidBridge
+[8/12] Compiling DroidBridge NativeWindow.swift
+[9/12] Compiling DroidBridge main.swift
+[10/12] Compiling DroidBridge Launcher.swift
+[10/13] Write Objects.LinkFileList
+[11/13] Linking DroidBridge
+[12/13] Applying DroidBridge
+Build complete! (2.42s)

@@ -1,0 +1,10 @@
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","state":"starting","timestamp":"2026-10-28T21:07:20Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","state":"running","timestamp":"2026-10-28T21:07:21Z"}
+{"backend":"native","device":"emulator-5580","event":"session_stop_requested","package":"dev.droidbridge.testapp","reason":"transport_failure","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","timestamp":"2026-10-28T21:07:22Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","state":"stopping","timestamp":"2026-10-28T21:07:22Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","state":"stopped","timestamp":"2026-10-28T21:07:22Z"}
+{"backend":"native","device":"emulator-5580","message":"Android video transport disconnected (video packets=29, bytes=119207, decoded frames=28, announced size=720x1080, decoder errors=0, last decoder status=unavailable)","package":"dev.droidbridge.testapp","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","state":"failed","timestamp":"2026-10-28T21:07:22Z"}
+{"backend":"native","device":"emulator-5580","event":"session_stop_requested","package":"dev.droidbridge.testapp","reason":"application_quit","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","timestamp":"2026-10-28T21:07:24Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","state":"stopping","timestamp":"2026-10-28T21:07:24Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","state":"stopped","timestamp":"2026-10-28T21:07:24Z"}
+{"backend":"native","details":{"reason":"window_close"},"device":"emulator-5580","event":"session_close","package":"dev.droidbridge.testapp","session":"FB0343F8-4742-46DD-A7D7-EA746DE29C77","timestamp":"2026-10-28T21:07:24Z"}

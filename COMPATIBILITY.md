@@ -6,6 +6,7 @@ The pinned transport is scrcpy **5.0.1** (client and server must match). The nat
 
 - Apple Silicon macOS host, Swift/AppKit; exact host/build versions are in verification/environment/.
 - Dedicated AVD `DroidBridge_API35`, serial `emulator-5580`, Android 15 / API35 AOSP arm64-v8a image; configuration in `verification/android/avd-config.ini`.
+- Dedicated AVD `DroidBridge_API37`, serial `emulator-5582`, Android 17 / API37 arm64 image: actual native Settings video/resize/cleanup smoke and launcher-icon extraction passed. This is narrower coverage than the API35 full suite; see `verification/launcher-fix/`.
 - Three concurrent scrcpy virtual displays: Settings (`com.android.settings`), WebView Shell browser (`org.chromium.webview_shell`), and DroidBridge Test (`dev.droidbridge.testapp`). Logs and MP4 streams under `verification/android` establish display creation and actual frames.
 - The pre-existing user emulator `emulator-5554` was never stopped or reset. An initial launcher check opened and closed Settings on a separate virtual display there; subsequent integration and QA use only the dedicated emulator. Operations always use an explicit serial.
 
@@ -21,6 +22,6 @@ scrcpy 5.0.1 rejects `--window-width` and `--window-height` together with `--fle
 
 ## Physical Pixel 10 Pro
 
-Physical-device acceptance remains explicitly untested until the owner follows `PIXEL_VERIFICATION.md`. A modern Pixel's Android build, encoder, display density, thermal limits, task policy, and USB transport can differ from this API35 emulator. Emulator evidence must not be presented as physical Pixel evidence. No change to the Pixel's desktop-mode or root settings is required.
+The owner reports DroidBridge working on Pixel 10 Pro and ChatGPT working from the main launcher, with a missing-window issue in its standalone wrapper. The matching structured log proves native decoding, but not foreground window state. The 0.1.1 wrapper presentation fix requires the focused physical retest in `verification/launcher-fix/PIXEL_RETEST.md`; the developer currently has no attached Pixel. A Pixel's encoder, display density, thermal limits, task policy and USB transport can differ from either emulator. Emulator evidence must not be presented as physical Pixel evidence. No change to the Pixel's desktop-mode or root settings is required.
 
 See `verification/REPORT.md` and independent QA evidence for the final backend-specific acceptance status.

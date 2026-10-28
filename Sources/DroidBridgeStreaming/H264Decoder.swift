@@ -14,10 +14,20 @@ final class H264Decoder {
     private var pps: Data?
     private let context = CIContext(options: [.cacheIntermediates: false])
     var output: ((CGImage) -> Void)?
+    var onDecodeError: ((OSStatus) -> Void)?
     deinit { finish() }
     func finish() {
         if let session { VTDecompressionSessionWaitForAsynchronousFrames(session); VTDecompressionSessionInvalidate(session) }
         session = nil
+    }
+    /// VideoToolbox may report an output error through its callback even when
+    /// submitting the sample returned noErr. Preserve that diagnostic while
+    /// allowing a later valid frame to recover, as before.
+    func handleDecodedOutput(status: OSStatus, buffer: CVImageBuffer?) {
+        guard status == noErr else { onDecodeError?(status); return }
+        guard let buffer else { return }
+        let ci = CIImage(cvPixelBuffer: buffer)
+        if let image = context.createCGImage(ci, from: ci.extent) { output?(image) }
     }
     static func nalUnits(_ data: Data) -> [Data] {
         let bytes = [UInt8](data); var starts: [(Int,Int)] = []; var i = 0
@@ -52,10 +62,9 @@ final class H264Decoder {
             } }
             guard status == noErr, let format else { throw BridgeError.message("Invalid H.264 configuration (\(status))") }
             var callback = VTDecompressionOutputCallbackRecord(decompressionOutputCallback: { ref,_,status,_,buffer,_,_ in
-                guard status == noErr, let ref, let buffer else { return }
+                guard let ref else { return }
                 let decoder = Unmanaged<H264Decoder>.fromOpaque(ref).takeUnretainedValue()
-                let ci = CIImage(cvPixelBuffer: buffer)
-                if let image = decoder.context.createCGImage(ci, from: ci.extent) { decoder.output?(image) }
+                decoder.handleDecodedOutput(status: status, buffer: buffer)
             }, decompressionOutputRefCon: Unmanaged.passUnretained(self).toOpaque())
             let attrs: [CFString:Any] = [kCVPixelBufferPixelFormatTypeKey:kCVPixelFormatType_32BGRA,kCVPixelBufferIOSurfacePropertiesKey:[:]]
             status = VTDecompressionSessionCreate(allocator: kCFAllocatorDefault, formatDescription: format, decoderSpecification: nil, imageBufferAttributes: attrs as CFDictionary, outputCallback: &callback, decompressionSessionOut: &session)

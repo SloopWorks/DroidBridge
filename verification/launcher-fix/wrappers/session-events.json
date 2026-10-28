@@ -1,0 +1,62 @@
+[
+  {
+    "backend" : "native",
+    "device" : "emulator-5580",
+    "package" : "com.android.settings",
+    "session" : "37523496-8BF2-4024-8850-02E7EC68F973",
+    "state" : "starting",
+    "timestamp" : "2026-10-28T21:27:42Z"
+  },
+  {
+    "backend" : "native",
+    "device" : "emulator-5580",
+    "package" : "com.android.settings",
+    "session" : "37523496-8BF2-4024-8850-02E7EC68F973",
+    "state" : "running",
+    "timestamp" : "2026-10-28T21:27:43Z"
+  },
+  {
+    "backend" : "native",
+    "details" : {
+      "app_active" : "false",
+      "bundle_id" : "app.droidbridge.wrapper.com.android.settings",
+      "key" : "false",
+      "minimized" : "false",
+      "pid" : "4395",
+      "reason" : "first_frame",
+      "visible" : "true"
+    },
+    "device" : "emulator-5580",
+    "event" : "native_window_presented",
+    "package" : "com.android.settings",
+    "session" : "37523496-8BF2-4024-8850-02E7EC68F973",
+    "timestamp" : "2026-10-28T21:27:43Z"
+  },
+  {
+    "backend" : "scrcpy",
+    "device" : "emulator-5580",
+    "package" : "dev.droidbridge.iconfixture",
+    "session" : "4B56328A-4AF8-4690-A36F-A7ED5B5B37BF",
+    "state" : "starting",
+    "timestamp" : "2026-10-28T21:27:42Z"
+  },
+  {
+    "backend" : "scrcpy",
+    "device" : "emulator-5580",
+    "package" : "dev.droidbridge.iconfixture",
+    "session" : "4B56328A-4AF8-4690-A36F-A7ED5B5B37BF",
+    "state" : "running",
+    "timestamp" : "2026-10-28T21:27:43Z"
+  },
+  {
+    "backend" : "scrcpy",
+    "details" : {
+      "native_window_visible" : "false"
+    },
+    "device" : "emulator-5580",
+    "event" : "launcher_hidden",
+    "package" : "dev.droidbridge.iconfixture",
+    "session" : "4B56328A-4AF8-4690-A36F-A7ED5B5B37BF",
+    "timestamp" : "2026-10-28T21:27:43Z"
+  }
+]

@@ -1,0 +1,28 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.11s)
+Test Suite 'Selected tests' started at 2026-10-28 13:47:44.014.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-28 13:47:44.015.
+Test Suite 'NativeDiagnosticsTests' started at 2026-10-28 13:47:44.015.
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testDecoderCallbackFailureIsObservableAndLaterOutputCanRecover]' started.
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testDecoderCallbackFailureIsObservableAndLaterOutputCanRecover]' passed (0.052 seconds).
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testStartupDiagnosticDistinguishesMissingAndUndecodedMedia]' started.
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testStartupDiagnosticDistinguishesMissingAndUndecodedMedia]' passed (0.001 seconds).
+Test Suite 'NativeDiagnosticsTests' passed at 2026-10-28 13:47:44.067.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.052 (0.052) seconds
+Test Suite 'SupervisorDiagnosticsTests' started at 2026-10-28 13:47:44.067.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testAlreadyAbsentExactListenerIsAnIdempotentSuccess]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testAlreadyAbsentExactListenerIsAnIdempotentSuccess]' passed (0.377 seconds).
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testOtherFailuresRemainVisibleIncludingDifferentListener]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testOtherFailuresRemainVisibleIncludingDifferentListener]' passed (0.781 seconds).
+Test Suite 'SupervisorDiagnosticsTests' passed at 2026-10-28 13:47:45.225.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 1.158 (1.158) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-28 13:47:45.225.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.210 (1.211) seconds
+Test Suite 'Selected tests' passed at 2026-10-28 13:47:45.226.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.210 (1.211) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

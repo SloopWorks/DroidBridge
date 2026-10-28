@@ -1,0 +1,10 @@
+/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/droidbridge-wrapper-px8c2cpn/QA Settings.app: replacing existing signature
+{
+  "passed": true,
+  "exit_status": 0,
+  "elapsed_seconds": 8.823,
+  "window_close_action": "Settings \u2014 DroidBridge",
+  "live_frame_before_close": true,
+  "forward_display_cleanup": true,
+  "host_binary_sha256": "6de35eea781f59398375fe882248ec21aaab2c66be1d35963498161cec3d9c6b"
+}

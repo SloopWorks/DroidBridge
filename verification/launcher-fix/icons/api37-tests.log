@@ -1,0 +1,23 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.13s)
+Test Suite 'Selected tests' started at 2026-10-28 13:46:21.386.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-28 13:46:21.386.
+Test Suite 'AndroidIconProviderTests' started at 2026-10-28 13:46:21.386.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' passed (3.444 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' passed (1.021 seconds).
+Test Suite 'AndroidIconProviderTests' passed at 2026-10-28 13:46:25.856.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 4.469 (4.469) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-28 13:46:25.856.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 4.469 (4.469) seconds
+Test Suite 'Selected tests' passed at 2026-10-28 13:46:25.856.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 4.469 (4.470) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

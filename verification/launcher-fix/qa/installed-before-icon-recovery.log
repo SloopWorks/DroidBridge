@@ -1,0 +1,50 @@
+START installed native crash
+PASS installed native crash: cleanup 0.408s
+START installed native quit
+PASS installed native quit: cleanup 0.885s
+START installed native child-crash
+PASS installed native child-crash: cleanup 1.587s
+START installed scrcpy crash
+PASS installed scrcpy crash: cleanup 0.41s
+START installed scrcpy quit
+PASS installed scrcpy quit: cleanup 1.21s
+START installed scrcpy child-crash
+PASS installed scrcpy child-crash: cleanup 0.82s
+[
+  {
+    "backend": "native",
+    "mode": "crash",
+    "passed": true,
+    "elapsed_seconds": 0.408
+  },
+  {
+    "backend": "native",
+    "mode": "quit",
+    "passed": true,
+    "elapsed_seconds": 0.885
+  },
+  {
+    "backend": "native",
+    "mode": "child-crash",
+    "passed": true,
+    "elapsed_seconds": 1.587
+  },
+  {
+    "backend": "scrcpy",
+    "mode": "crash",
+    "passed": true,
+    "elapsed_seconds": 0.41
+  },
+  {
+    "backend": "scrcpy",
+    "mode": "quit",
+    "passed": true,
+    "elapsed_seconds": 1.21
+  },
+  {
+    "backend": "scrcpy",
+    "mode": "child-crash",
+    "passed": true,
+    "elapsed_seconds": 0.82
+  }
+]

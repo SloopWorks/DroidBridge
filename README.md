@@ -11,8 +11,14 @@ Device content stays on the Mac and Android device. No account, cloud service, r
 
 ## Use
 
-Open DroidBridge, select a connected device, and choose **Native AppKit** or **scrcpy fallback**. Search by app name or package, select an app, and click **Launch App** (or double-click it). Launch another app the same way. Close a native window or use the session's Close button to release its display. Use **Restore Previous Sessions** after relaunch; the reconnect checkbox controls restoration after an interrupted connection. **Create Mac App…** creates a separate launchable wrapper under `~/Applications/DroidBridge Apps` for Finder, Dock, and Spotlight indexing.
+Open DroidBridge, select a connected device, and choose **Native AppKit** or **scrcpy fallback**. Search by app name or package, select an app, and click **Launch App** (or double-click it). Launch another app the same way. Close a native window or use the session's Close button to release its display. Use **Restore Previous Sessions** after relaunch; the reconnect checkbox controls restoration after an interrupted connection. **Create / Update Mac App…** creates a separate launchable wrapper under `~/Applications/DroidBridge Apps` for Finder, Dock, and Spotlight indexing.
 
-The current release disables audio and uses generic launcher/wrapper icons. It includes its runtime tools, so the installed application does not require Homebrew. Diagnostics are local under `~/Library/Logs/DroidBridge`.
+Created Mac apps use the launcher activity's icon rendered by Android, including adaptive and vector icons. Each wrapper is a separate Mac application with its own name, icon and process. Run **Create / Update Mac App…** again to update an existing matching wrapper after installing a new DroidBridge version; quit that wrapper first. Updates preserve its launch settings and keep the previous bundle under `~/Applications/DroidBridge Apps/.DroidBridge Backups`. The main launcher's app list loads Android icons asynchronously; unavailable icons have a diagnostic tooltip.
+
+Unexpected session exits keep the wrapper's diagnostics visible instead of silently quitting. Use its retry or fallback controls to start a fresh session. Explicitly closing the session still releases its resources and ends the wrapper.
+
+The current release disables audio. It includes its runtime tools and icon helper, so the installed application does not require Homebrew or an Android SDK installation. Diagnostics are local under `~/Library/Logs/DroidBridge`. See [WRAPPER_DESIGN.md](WRAPPER_DESIGN.md) for the implementation and verification boundaries.
+
+The [0.1.1 verification report](verification/launcher-fix/REPORT.md) covers the wrapper fixes, Android icons and independent review. The focused [Pixel wrapper retest](verification/launcher-fix/PIXEL_RETEST.md) explains the one-time update for existing copied wrappers and the additional window/stop diagnostics.
 
 After a device reboot, discovery and restoration wait for Android boot completion and package services. Interrupted sessions are checked on later four-second polls. Automatic restoration permits three failed launches per outage, with at least eight seconds after each failed attempt; the session remains visible if retries pause. Closing it cancels retry. Turn the reconnect checkbox off to hold interrupted sessions without admitting new ones.

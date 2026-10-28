@@ -1,0 +1,17 @@
+total 1016
+-rw-rw-rw- 1 shell shell   2739 2026-10-28 13:47 droidbridge-icon-01337177-292d-4f3d-9761-fb7721e00930.jar
+-rw-rw-rw- 1 shell shell  70172 2026-10-28 13:55 droidbridge-icon-01337177-292d-4f3d-9761-fb7721e00930.png
+-rw-rw-rw- 1 shell shell   2739 2026-10-28 13:47 droidbridge-icon-162aa869-d2f5-4043-83a8-e8d464e39cb4.jar
+-rw-rw-rw- 1 shell shell 216281 2026-10-28 13:55 droidbridge-icon-162aa869-d2f5-4043-83a8-e8d464e39cb4.png
+-rw-rw-rw- 1 shell shell   2739 2026-10-28 13:47 droidbridge-icon-49ab280d-8249-40f3-89de-3ba0f2079c89.jar
+-rw-rw-rw- 1 shell shell 216281 2026-10-28 13:53 droidbridge-icon-49ab280d-8249-40f3-89de-3ba0f2079c89.png
+-rw-rw-rw- 1 shell shell   2739 2026-10-28 13:47 droidbridge-icon-584cef50-2527-4e84-bc0b-389bfbfd43a7.jar
+-rw-rw-rw- 1 shell shell 216281 2026-10-28 13:55 droidbridge-icon-584cef50-2527-4e84-bc0b-389bfbfd43a7.png
+-rw-rw-rw- 1 shell shell   2739 2026-10-28 13:47 droidbridge-icon-9e576229-18c4-46c0-9ab6-3db9abcab337.jar
+-rw-rw-rw- 1 shell shell   4188 2026-10-28 13:56 droidbridge-icon-9e576229-18c4-46c0-9ab6-3db9abcab337.png
+-rw-rw-rw- 1 shell shell   2739 2026-10-28 13:47 droidbridge-icon-a41a63ef-b41d-4213-9e25-196859f4a019.jar
+-rw-rw-rw- 1 shell shell  70172 2026-10-28 13:53 droidbridge-icon-a41a63ef-b41d-4213-9e25-196859f4a019.png
+-rw-rw-rw- 1 shell shell   2739 2026-10-28 13:47 droidbridge-icon-b8f31bdd-9bd4-4e3a-bf83-e97a7c099575.jar
+-rw-rw-rw- 1 shell shell  70172 2026-10-28 13:55 droidbridge-icon-b8f31bdd-9bd4-4e3a-bf83-e97a7c099575.png
+-rw-rw-rw- 1 shell shell   2739 2026-10-28 13:47 droidbridge-icon-d79e0fe3-7c01-4660-9373-aa7954d51e63.jar
+-rw-rw-rw- 1 shell shell  60776 2026-10-28 13:56 droidbridge-icon-d79e0fe3-7c01-4660-9373-aa7954d51e63.png

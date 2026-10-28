@@ -1,7 +1,9 @@
 #import <AppKit/AppKit.h>
+#include <stdlib.h>
 // Test-only instrumentation in the QA wrapper process. Public window actions;
 // all production lifecycle, termination, and backend code runs unchanged.
 __attribute__((constructor)) static void install_wrapper_close_test(void) {
+    unsetenv("DYLD_INSERT_LIBRARIES"); // Instrument only this host; leave all ADB/client children unchanged.
     dispatch_async(dispatch_get_main_queue(), ^{
         __block BOOL scheduled = NO;
         NSTimer *timer = [NSTimer timerWithTimeInterval:0.2 repeats:YES block:^(NSTimer *poll) {

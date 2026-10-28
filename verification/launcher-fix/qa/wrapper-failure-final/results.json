@@ -1,0 +1,100 @@
+[
+  {
+    "backend": "native",
+    "mode": "child-crash",
+    "wrapper": true,
+    "passed": true,
+    "host_pid": 95019,
+    "owned_pids": [
+      95026,
+      95028,
+      95043,
+      95046,
+      95060,
+      95061
+    ],
+    "active_resource_sample": {
+      "95060": {
+        "parent": 95019,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 1280,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeSupervisor --parent 95019 --adb /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb --serial emulator-5580 --forward tcp:53592 --remote /data/local/tmp/droidbridge-4010a9f6.jar -- /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/droidbridge-4010a9f6.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=4010a9f6 tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_destroy_content=true clipboard_autosync=false cleanup=true"
+      },
+      "95061": {
+        "parent": 95060,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 7888,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/droidbridge-4010a9f6.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=4010a9f6 tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_destroy_content=true clipboard_autosync=false cleanup=true"
+      },
+      "95019": {
+        "parent": 94992,
+        "state": "S",
+        "cpu_percent": 16.2,
+        "rss_kib": 159072,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge --launch dev.droidbridge.testapp --serial emulator-5580 --backend native --name Installed QA --wrapper"
+      }
+    },
+    "owned_forwards": [
+      "emulator-5580 tcp:53592 localabstract:scrcpy_4010a9f6"
+    ],
+    "owned_reverses": [],
+    "new_icon_temp_files_after_exit": [],
+    "elapsed_seconds": 4.521,
+    "before_display_count": 1,
+    "after_display_count": 1
+  },
+  {
+    "backend": "scrcpy",
+    "mode": "child-crash",
+    "wrapper": true,
+    "passed": true,
+    "host_pid": 95392,
+    "owned_pids": [
+      95398,
+      95402,
+      95409,
+      95410,
+      95411,
+      95412,
+      95417
+    ],
+    "active_resource_sample": {
+      "95392": {
+        "parent": 94992,
+        "state": "S",
+        "cpu_percent": 2.2,
+        "rss_kib": 104592,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge --launch dev.droidbridge.testapp --serial emulator-5580 --backend scrcpy --name Installed QA --wrapper"
+      },
+      "95411": {
+        "parent": 95392,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 1280,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeSupervisor --parent 95392 -- /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy --serial emulator-5580 --no-audio --new-display=720x1080/240 --flex-display --start-app=dev.droidbridge.testapp --window-title=DroidBridge \u00b7 DroidBridge Test --max-fps=30 --video-codec=h264"
+      },
+      "95412": {
+        "parent": 95411,
+        "state": "S",
+        "cpu_percent": 1.2,
+        "rss_kib": 96992,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy --serial emulator-5580 --no-audio --new-display=720x1080/240 --flex-display --start-app=dev.droidbridge.testapp --window-title=DroidBridge \u00b7 DroidBridge Test --max-fps=30 --video-codec=h264"
+      },
+      "95417": {
+        "parent": 95412,
+        "state": "S",
+        "cpu_percent": 0.0,
+        "rss_kib": 7856,
+        "command": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb -s emulator-5580 shell CLASSPATH=/data/local/tmp/scrcpy-server.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=07c95b12 log_level=info audio=false max_fps=30 new_display=720x1080/240 flex_display=true"
+      }
+    },
+    "owned_forwards": [],
+    "owned_reverses": [],
+    "new_icon_temp_files_after_exit": [],
+    "elapsed_seconds": 3.836,
+    "before_display_count": 1,
+    "after_display_count": 1
+  }
+]

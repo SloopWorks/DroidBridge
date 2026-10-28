@@ -1,0 +1,15 @@
+{
+  "installed_main_sha256": "6de35eea781f59398375fe882248ec21aaab2c66be1d35963498161cec3d9c6b",
+  "normalized_unsigned_main_sha256": "efb62a3bf2df91df4aefe62d9be87ee1f21b026c7ca5d219c4ea7282f612bdaa",
+  "comparison": "signatures removed only from temporary copies; wrapper signatures bind different bundles",
+  "wrappers": {
+    "/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/DroidBridge-WrapperQA-E6ACECB8-DC7C-4878-89D1-D78424C5D5D6/QA Android Settings.app": {
+      "signed_sha256": "54b14530f4cd14696d5acf06e7a2f001aa182e26c1bfe70f20d34187a697599a",
+      "normalized_unsigned_sha256": "efb62a3bf2df91df4aefe62d9be87ee1f21b026c7ca5d219c4ea7282f612bdaa"
+    },
+    "/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/DroidBridge-WrapperQA-E6ACECB8-DC7C-4878-89D1-D78424C5D5D6/QA Android Alias.app": {
+      "signed_sha256": "356a90ac0f2e72d0db6a160b30a447fb13966a6036991e91bb75aebcd259a30c",
+      "normalized_unsigned_sha256": "efb62a3bf2df91df4aefe62d9be87ee1f21b026c7ca5d219c4ea7282f612bdaa"
+    }
+  }
+}

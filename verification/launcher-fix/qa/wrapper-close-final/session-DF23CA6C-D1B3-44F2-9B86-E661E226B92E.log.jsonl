@@ -1,0 +1,8 @@
+{"backend":"native","device":"emulator-5580","package":"com.android.settings","session":"DF23CA6C-D1B3-44F2-9B86-E661E226B92E","state":"starting","timestamp":"2026-10-28T21:23:59Z"}
+{"backend":"native","device":"emulator-5580","package":"com.android.settings","session":"DF23CA6C-D1B3-44F2-9B86-E661E226B92E","state":"running","timestamp":"2026-10-28T21:24:00Z"}
+{"backend":"native","details":{"app_active":"false","bundle_id":"app.droidbridge.qa.wrapperclose","key":"false","minimized":"false","pid":"97238","reason":"first_frame","visible":"true"},"device":"emulator-5580","event":"native_window_presented","package":"com.android.settings","session":"DF23CA6C-D1B3-44F2-9B86-E661E226B92E","timestamp":"2026-10-28T21:24:00Z"}
+{"backend":"native","details":{"native_window_visible":"true"},"device":"emulator-5580","event":"launcher_hidden","package":"com.android.settings","session":"DF23CA6C-D1B3-44F2-9B86-E661E226B92E","timestamp":"2026-10-28T21:24:00Z"}
+{"backend":"native","details":{"reason":"window_close"},"device":"emulator-5580","event":"session_close","package":"com.android.settings","session":"DF23CA6C-D1B3-44F2-9B86-E661E226B92E","timestamp":"2026-10-28T21:24:03Z"}
+{"backend":"native","device":"emulator-5580","event":"session_stop_requested","package":"com.android.settings","reason":"window_close","session":"DF23CA6C-D1B3-44F2-9B86-E661E226B92E","timestamp":"2026-10-28T21:24:03Z"}
+{"backend":"native","device":"emulator-5580","package":"com.android.settings","session":"DF23CA6C-D1B3-44F2-9B86-E661E226B92E","state":"stopping","timestamp":"2026-10-28T21:24:03Z"}
+{"backend":"native","device":"emulator-5580","package":"com.android.settings","session":"DF23CA6C-D1B3-44F2-9B86-E661E226B92E","state":"stopped","timestamp":"2026-10-28T21:24:03Z"}

@@ -1,0 +1,166 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.15s)
+Test Suite 'All tests' started at 2026-10-28 14:19:55.757.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-28 14:19:55.758.
+Test Suite 'AndroidDiscoveryTests' started at 2026-10-28 14:19:55.758.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' passed (1.077 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' passed (0.100 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' passed (0.308 seconds).
+Test Suite 'AndroidDiscoveryTests' passed at 2026-10-28 14:19:57.246.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 1.487 (1.488) seconds
+Test Suite 'AndroidIconProviderTests' started at 2026-10-28 14:19:57.246.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testBoundedRecoveryCursorReachesReceiptAfter128RetainedRequests]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testBoundedRecoveryCursorReachesReceiptAfter128RetainedRequests]' passed (8.857 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testConcurrentRecoveryReturnsCanonicalCompletedResult]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testConcurrentRecoveryReturnsCanonicalCompletedResult]' passed (0.640 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testFailedRequestCleanupRetainsReceiptUntilRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testFailedRequestCleanupRetainsReceiptUntilRecovery]' passed (0.795 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' passed (3.348 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' passed (1.135 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryPreservesLiveOwnerAndRetriesOfflineExactPaths]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryPreservesLiveOwnerAndRetriesOfflineExactPaths]' passed (0.892 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryWaitsForExactDelayedProducerBeforeRemovingReceipt]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryWaitsForExactDelayedProducerBeforeRemovingReceipt]' passed (0.835 seconds).
+Test Suite 'AndroidIconProviderTests' passed at 2026-10-28 14:20:13.755.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 16.507 (16.509) seconds
+Test Suite 'DeviceReadinessTests' started at 2026-10-28 14:20:13.755.
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testBootReadinessProgressesWithoutLosingIntent]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testBootReadinessProgressesWithoutLosingIntent]' passed (0.717 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testProbeTimeoutAndFiniteRetryCadence]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testProbeTimeoutAndFiniteRetryCadence]' passed (0.214 seconds).
+Test Suite 'DeviceReadinessTests' passed at 2026-10-28 14:20:14.686.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.931 (0.932) seconds
+Test Suite 'DeviceSelectionTests' started at 2026-10-28 14:20:14.686.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testExplicitSerialWinsOverFirstDevice]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testExplicitSerialWinsOverFirstDevice]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testMissingExplicitSerialDoesNotQueryAnotherDevice]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testMissingExplicitSerialDoesNotQueryAnotherDevice]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testUserSelectionAndDefault]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testUserSelectionAndDefault]' passed (0.000 seconds).
+Test Suite 'DeviceSelectionTests' passed at 2026-10-28 14:20:14.687.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'FrameMailboxTests' started at 2026-10-28 14:20:14.687.
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testBlockedDeliveryRetainsNewestImageAndAllCounters]' started.
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testBlockedDeliveryRetainsNewestImageAndAllCounters]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testProducerDuringDeliverySchedulesOneSuccessorAndCancelDropsPending]' started.
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testProducerDuringDeliverySchedulesOneSuccessorAndCancelDropsPending]' passed (0.000 seconds).
+Test Suite 'FrameMailboxTests' passed at 2026-10-28 14:20:14.690.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'InputGeometryTests' started at 2026-10-28 14:20:14.690.
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testDragClampsAndInvalidDimensions]' started.
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testDragClampsAndInvalidDimensions]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testLetterboxAndCenter]' started.
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testLetterboxAndCenter]' passed (0.000 seconds).
+Test Suite 'InputGeometryTests' passed at 2026-10-28 14:20:14.690.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+Test Suite 'NativeDiagnosticsTests' started at 2026-10-28 14:20:14.690.
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testDecoderCallbackFailureIsObservableAndLaterOutputCanRecover]' started.
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testDecoderCallbackFailureIsObservableAndLaterOutputCanRecover]' passed (0.067 seconds).
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testStartupDiagnosticDistinguishesMissingAndUndecodedMedia]' started.
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testStartupDiagnosticDistinguishesMissingAndUndecodedMedia]' passed (0.000 seconds).
+Test Suite 'NativeDiagnosticsTests' passed at 2026-10-28 14:20:14.758.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.067 (0.067) seconds
+Test Suite 'NativeStartupExitTests' started at 2026-10-28 14:20:14.758.
+Test Case '-[DroidBridgeCoreTests.NativeStartupExitTests testCleanProcessExitBeforeFirstFramePreservesActionableFailure]' started.
+Test Case '-[DroidBridgeCoreTests.NativeStartupExitTests testCleanProcessExitBeforeFirstFramePreservesActionableFailure]' passed (2.980 seconds).
+Test Suite 'NativeStartupExitTests' passed at 2026-10-28 14:20:17.738.
+	 Executed 1 test, with 0 failures (0 unexpected) in 2.980 (2.981) seconds
+Test Suite 'QALifecycleTests' started at 2026-10-28 14:20:17.738.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup]' passed (10.079 seconds).
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testRejectsInvalidInputsBeforeAnySpawn]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testRejectsInvalidInputsBeforeAnySpawn]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testStopAndWaitIncludesLateForwardAllocation]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testStopAndWaitIncludesLateForwardAllocation]' passed (1.468 seconds).
+Test Suite 'QALifecycleTests' passed at 2026-10-28 14:20:29.288.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 11.548 (11.549) seconds
+Test Suite 'SessionRecoveryTests' started at 2026-10-28 14:20:29.288.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testReceiptValidationRejectsTraversalAndShellCharacters]' started.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testReceiptValidationRejectsTraversalAndShellCharacters]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testRecoveryScopesExactDeadOwnerResourcesAndRetainsOffline]' started.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testRecoveryScopesExactDeadOwnerResourcesAndRetainsOffline]' passed (0.734 seconds).
+Test Suite 'SessionRecoveryTests' passed at 2026-10-28 14:20:30.023.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.735 (0.735) seconds
+Test Suite 'StreamingTests' started at 2026-10-28 14:20:30.023.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' passed (16.847 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' passed (0.000 seconds).
+Test Suite 'StreamingTests' passed at 2026-10-28 14:20:46.871.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 16.848 (16.848) seconds
+Test Suite 'SupervisorDiagnosticsTests' started at 2026-10-28 14:20:46.871.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testAlreadyAbsentExactListenerIsAnIdempotentSuccess]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testAlreadyAbsentExactListenerIsAnIdempotentSuccess]' passed (0.488 seconds).
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testOtherFailuresRemainVisibleIncludingDifferentListener]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testOtherFailuresRemainVisibleIncludingDifferentListener]' passed (0.784 seconds).
+Test Suite 'SupervisorDiagnosticsTests' passed at 2026-10-28 14:20:48.144.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 1.272 (1.272) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-28 14:20:48.144.
+	 Executed 37 tests, with 0 failures (0 unexpected) in 52.378 (52.386) seconds
+Test Suite 'All tests' passed at 2026-10-28 14:20:48.144.
+	 Executed 37 tests, with 0 failures (0 unexpected) in 52.378 (52.387) seconds
+QA lifecycle: invalid app, 3 cancelled startups, 3 decoded launch/stop cycles; exact forwards and display count restored
+PROBE A starting: 
+PROBE A running: 
+PROBE B starting: 
+PROBE B running: 
+--------- beginning of main
+10-28 14:20:31.856  4841  4841 I DroidBridgeProbe: click=1 display=27
+10-28 14:20:32.317  5131  5131 I DroidBridgeProbe: click=1 display=28
+10-28 14:20:32.370  4841  4841 I DroidBridgeProbe: text=D display=27
+10-28 14:20:32.654  4841  4841 I DroidBridgeProbe: text=Dr display=27
+10-28 14:20:32.704  4841  4841 I DroidBridgeProbe: text=Dro display=27
+10-28 14:20:32.755  4841  4841 I DroidBridgeProbe: text=Droi display=27
+10-28 14:20:32.785  4841  4841 I DroidBridgeProbe: text=Droid display=27
+10-28 14:20:32.855  4841  4841 I DroidBridgeProbe: text=DroidB display=27
+10-28 14:20:32.878  4841  4841 I DroidBridgeProbe: text=DroidBr display=27
+10-28 14:20:32.878  4841  4841 I DroidBridgeProbe: text=DroidBri display=27
+10-28 14:20:32.878  4841  4841 I DroidBridgeProbe: text=DroidBrid display=27
+10-28 14:20:32.879  4841  4841 I DroidBridgeProbe: text=DroidBridg display=27
+10-28 14:20:32.879  4841  4841 I DroidBridgeProbe: text=DroidBridge display=27
+10-28 14:20:32.882  4841  4841 I DroidBridgeProbe: text=DroidBridgeN display=27
+10-28 14:20:32.882  4841  4841 I DroidBridgeProbe: text=DroidBridgeNa display=27
+10-28 14:20:32.882  4841  4841 I DroidBridgeProbe: text=DroidBridgeNat display=27
+10-28 14:20:32.883  4841  4841 I DroidBridgeProbe: text=DroidBridgeNati display=27
+10-28 14:20:32.883  4841  4841 I DroidBridgeProbe: text=DroidBridgeNativ display=27
+10-28 14:20:32.883  4841  4841 I DroidBridgeProbe: text=DroidBridgeNative display=27
+10-28 14:20:32.889  5131  5131 I DroidBridgeProbe: text=I display=28
+10-28 14:20:32.893  5131  5131 I DroidBridgeProbe: text=In display=28
+10-28 14:20:32.894  5131  5131 I DroidBridgeProbe: text=Ind display=28
+10-28 14:20:32.894  5131  5131 I DroidBridgeProbe: text=Inde display=28
+10-28 14:20:32.897  5131  5131 I DroidBridgeProbe: text=Indep display=28
+10-28 14:20:32.904  5131  5131 I DroidBridgeProbe: text=Indepe display=28
+10-28 14:20:32.905  5131  5131 I DroidBridgeProbe: text=Indepen display=28
+10-28 14:20:32.906  5131  5131 I DroidBridgeProbe: text=Independ display=28
+10-28 14:20:32.906  5131  5131 I DroidBridgeProbe: text=Independe display=28
+10-28 14:20:32.908  5131  5131 I DroidBridgeProbe: text=Independen display=28
+10-28 14:20:32.909  5131  5131 I DroidBridgeProbe: text=Independent display=28
+10-28 14:20:32.910  5131  5131 I DroidBridgeProbe: text=IndependentB display=28
+
+PROBE A stopping: 
+PROBE A stopped: 
+PROBE B stopping: 
+PROBE B stopped: 
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

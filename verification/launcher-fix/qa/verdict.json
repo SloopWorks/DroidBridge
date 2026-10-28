@@ -1,0 +1,20 @@
+{
+  "verdict": "PASS within tested macOS and emulator release scope",
+  "installed_main_sha256": "6de35eea781f59398375fe882248ec21aaab2c66be1d35963498161cec3d9c6b",
+  "full_suite_tests": 37,
+  "full_suite_failures": 0,
+  "full_suite_skips": 0,
+  "installed_main_lifecycle_cases_passed": 6,
+  "installed_wrapper_child_crash_cases_passed": 2,
+  "installed_icon_staging_crash_recovery": true,
+  "installed_native_window_close": true,
+  "exact_final_created_wrapper_identity_and_icon_checks": true,
+  "package_macho_trees_checked": 22,
+  "confirmed_release_blockers": [],
+  "not_verified": [
+    "Physical Pixel10Pro/ChatGPT foreground behavior",
+    "Actual Dock/Cmd+Tab switching and OS foreground focus under locked host"
+  ],
+  "evidence": "REVIEW.md",
+  "git_diff_check": "passed"
+}

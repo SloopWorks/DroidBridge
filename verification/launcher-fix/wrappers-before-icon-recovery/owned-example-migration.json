@@ -1,0 +1,24 @@
+{
+  "host" : "\/Users\/patrick\/Applications\/DroidBridge.app",
+  "host_sha256" : "33c6fe59e2a1a16e434ffadcbaf5361a0c12ad02409a2ec702f35fc3f9af1f83",
+  "policy" : "Only the two task-owned existing examples were updated. Original complete generations retained in .DroidBridge Backups; original launch.json bytes preserved.",
+  "signed_macho_note" : "Wrapper signing identity changes embedded signature bytes; code payloads compared byte-for-byte after removing signatures from temporary copies only.",
+  "wrappers" : [
+    {
+      "icon_png_sha256" : "86738165712b73a649cea42c384ac113390f67414e8e7adc8c15c07230999000",
+      "launch_json_preserved" : true,
+      "matches_final_host_unsigned_payload" : true,
+      "name" : "Settings",
+      "package" : "com.android.settings",
+      "strict_signature" : true
+    },
+    {
+      "icon_png_sha256" : "be1028317cda69e114817c966d798890f70fc56af47fa4bfffb4a6934ae8e063",
+      "launch_json_preserved" : true,
+      "matches_final_host_unsigned_payload" : true,
+      "name" : "Clock",
+      "package" : "com.android.deskclock",
+      "strict_signature" : true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "installed_main_sha256": "6de35eea781f59398375fe882248ec21aaab2c66be1d35963498161cec3d9c6b",
+  "installed_session_cases": 8,
+  "owned_host_and_child_pid_count": 60,
+  "owned_process_survivors": [],
+  "owned_icon_receipts_remaining": [],
+  "crash_icon_paths_recovered_by_successor_hosts": [
+    "/data/local/tmp/droidbridge-icon-6ba57111-aced-43e0-8d6e-5d8030776985.jar",
+    "/data/local/tmp/droidbridge-icon-6ba57111-aced-43e0-8d6e-5d8030776985.png",
+    "/data/local/tmp/droidbridge-icon-98f7ee07-61e6-4add-967e-b5462b49a366.jar",
+    "/data/local/tmp/droidbridge-icon-98f7ee07-61e6-4add-967e-b5462b49a366.png",
+    "/data/local/tmp/droidbridge-icon-d62ad10a-78f2-43a2-9bb4-d4b1f493f458.jar",
+    "/data/local/tmp/droidbridge-icon-d62ad10a-78f2-43a2-9bb4-d4b1f493f458.png",
+    "/data/local/tmp/droidbridge-icon-f96ae044-523d-4135-af39-1c36136445c2.jar",
+    "/data/local/tmp/droidbridge-icon-f96ae044-523d-4135-af39-1c36136445c2.png"
+  ],
+  "owned_crash_paths_still_present": [],
+  "test_emulator_display_count": 1,
+  "test_emulator_forwards": [],
+  "explicit_native_window_close_cause_receipt": true
+}

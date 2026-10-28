@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "host_binary_sha256": "6de35eea781f59398375fe882248ec21aaab2c66be1d35963498161cec3d9c6b",
+  "owner_exit_status": -9,
+  "staged_remote_jar": "/data/local/tmp/droidbridge-icon-e3872c71-ff10-41b5-86ec-86247b804c58.jar",
+  "staged_receipt": "/Users/patrick/Library/Application Support/DroidBridge/icon-receipts/e3872c71-ff10-41b5-86ec-86247b804c58.json",
+  "successor_exit_status": 0,
+  "exact_jar_and_png_absent": true,
+  "new_receipts_after_shutdown": [],
+  "new_remote_icon_files_after_shutdown": [],
+  "historical_baseline_count": 24
+}

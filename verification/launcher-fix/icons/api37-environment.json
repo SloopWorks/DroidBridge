@@ -1,0 +1,7 @@
+{
+  "ro.build.version.release": "17",
+  "ro.build.version.sdk": "37",
+  "ro.product.model": "sdk_gphone16k_arm64",
+  "ro.product.cpu.abi": "arm64-v8a",
+  "avd_name": "DroidBridge_API37\nOK"
+}

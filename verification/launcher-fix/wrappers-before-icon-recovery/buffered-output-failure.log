@@ -1,0 +1,1 @@
+FAIL: message("Fallback never decoded a live video texture with display binding")

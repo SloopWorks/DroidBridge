@@ -1,0 +1,14 @@
+{"event":"supervisor_started","parent":4396,"child":4678}
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+INFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:     --> (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+INFO:         (tcpip)  emulator-5582                   device  sdk_gphone16k_arm64
+/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/DroidBridge-WrapperQA-E6ACECB8-DC7C-4878-89D1-D78424C5D5D6/QA Android Alias.app/Contents/Resources/Runtime/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 1086.1 MB/s (733930 bytes in 0.001s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+INFO: Renderer: metal
+INFO: Interop: videotoolbox
+INFO: Video decoding: videotoolbox
+[server] INFO: New display: 720x1080/240 (id=42)
+[server] INFO: Starting app "DroidBridge Icon Fixture" [dev.droidbridge.iconfixture] on display 42...
+INFO: Texture (VideoToolbox): 720x1080

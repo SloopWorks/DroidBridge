@@ -1,0 +1,7 @@
+{"event":"supervisor_started","parent":92715,"child":92747}
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+[server] DEBUG: Using video encoder: 'c2.android.avc.encoder'
+[server] DEBUG: Video codec size alignment requirement: 2px
+[server] INFO: New display: 720x1080/240 (id=32)
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 32...
+{"event":"supervisor_stopped","reason":"child_exit","exit_status":null,"signal":9,"requested_signal":15}

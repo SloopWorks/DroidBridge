@@ -1,0 +1,47 @@
+Building for debugging...
+[0/9] Write sources
+[2/9] Write swift-version--58304C5D6DBC2206.txt
+[3/12] Compiling DroidBridgeSupervisor main.c
+[4/13] Write Objects.LinkFileList
+[5/13] Linking DroidBridgeSupervisor
+[6/13] Applying DroidBridgeSupervisor
+[8/13] Emitting module DroidBridgeStreaming
+[9/13] Compiling DroidBridgeStreaming H264Decoder.swift
+[10/13] Compiling DroidBridgeStreaming SocketTransport.swift
+[11/14] Compiling DroidBridgeStreaming BridgeSession.swift
+[12/25] Emitting module DroidBridgeCoreTests
+[13/25] Compiling DroidBridgeCoreTests AndroidIconProviderTests.swift
+[14/25] Compiling DroidBridgeCoreTests StreamingTests.swift
+[15/25] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[16/25] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[17/25] Compiling DroidBridgeCoreTests FrameMailboxTests.swift
+[17/26] Write Objects.LinkFileList
+[18/26] Linking DroidBridgePackageTests
+[20/26] Compiling DroidBridge Launcher.swift
+[21/26] Compiling DroidBridge NativeWindow.swift
+[22/26] Compiling DroidBridge main.swift
+[23/26] Compiling DroidBridge MacAppWrapper.swift
+[24/26] Emitting module DroidBridge
+[24/27] Write Objects.LinkFileList
+[25/27] Linking DroidBridge
+[26/27] Applying DroidBridge
+Build complete! (2.59s)
+Test Suite 'Selected tests' started at 2026-10-28 13:46:06.403.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-28 13:46:06.403.
+Test Suite 'AndroidIconProviderTests' started at 2026-10-28 13:46:06.404.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' passed (3.420 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' passed (1.044 seconds).
+Test Suite 'AndroidIconProviderTests' passed at 2026-10-28 13:46:10.871.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 4.467 (4.468) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-28 13:46:10.871.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 4.467 (4.468) seconds
+Test Suite 'Selected tests' passed at 2026-10-28 13:46:10.871.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 4.467 (4.469) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

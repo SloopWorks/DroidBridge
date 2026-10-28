@@ -50,15 +50,33 @@ final class SocketChannel: @unchecked Sendable {
     }
 }
 
+struct NativeVideoDiagnostics {
+    var packets = 0
+    var bytes = 0
+    var decodedFrames = 0
+    var width: Int?
+    var height: Int?
+    var decoderErrors = 0
+    var lastDecoderStatus: Int32?
+    var summary: String {
+        let size = width.flatMap { w in height.map { "\(w)x\($0)" } } ?? "unavailable"
+        let status = lastDecoderStatus.map(String.init) ?? "unavailable"
+        return "video packets=\(packets), bytes=\(bytes), decoded frames=\(decodedFrames), announced size=\(size), decoder errors=\(decoderErrors), last decoder status=\(status)"
+    }
+}
+
 final class NativeTransport: @unchecked Sendable {
     private let lock = NSLock()
     private var stopped = false
     private var video: SocketChannel?
     private var control: SocketChannel?
+    private var diagnostics = NativeVideoDiagnostics()
     private let inputQueue = DispatchQueue(label:"DroidBridge.input")
     var onFrame: ((CGImage,Int) -> Void)?
     var onSize: ((Int,Int) -> Void)?
     var onFailure: ((Error) -> Void)?
+    var onDiagnostic: ((String) -> Void)?
+    var startupDiagnostic: String { lock.lock(); defer { lock.unlock() }; return diagnostics.summary }
     func stop() { lock.lock(); stopped = true; video?.shutdown(); control?.shutdown(); lock.unlock() }
     var isStopped: Bool { lock.lock(); defer { lock.unlock() }; return stopped }
     func send(_ data: Data) {
@@ -94,16 +112,32 @@ final class NativeTransport: @unchecked Sendable {
                     }
                     let decoder = H264Decoder()
                     var packetBytes = 0
-                    decoder.output = { [weak self] frame in self?.onFrame?(frame,packetBytes) }
+                    decoder.output = { [weak self] frame in
+                        guard let self else { return }
+                        self.lock.lock(); self.diagnostics.decodedFrames += 1; self.lock.unlock()
+                        self.onFrame?(frame,packetBytes)
+                    }
+                    decoder.onDecodeError = { [weak self] status in
+                        guard let self else { return }
+                        self.lock.lock()
+                        self.diagnostics.decoderErrors += 1
+                        self.diagnostics.lastDecoderStatus = status
+                        let count = self.diagnostics.decoderErrors
+                        self.lock.unlock()
+                        // A damaged stream must not produce an unbounded log.
+                        if count <= 4 { self.onDiagnostic?("VideoToolbox output status \(status), callback error \(count)") }
+                    }
                     do {
                         while !isStopped {
                             let header = try video.read(12)
                             if header[0] & 0x80 != 0 {
                                 let width = Int(header.number(4,4)); let height = Int(header.number(8,4))
                                 guard width > 0, height > 0, width <= 8192, height <= 8192 else { throw BridgeError.message("Invalid Android frame dimensions") }
+                                lock.lock(); diagnostics.width = width; diagnostics.height = height; lock.unlock()
                                 onSize?(width,height); continue
                             }
                             let size = Int(header.number(8,4)); let packet = try video.read(size); packetBytes = size
+                            lock.lock(); diagnostics.packets += 1; diagnostics.bytes += size; lock.unlock()
                             try decoder.decode(packet,pts: header.number(0,8) & 0x1fff_ffff_ffff_ffff)
                         }
                     } catch { if !isStopped { onFailure?(error) } }

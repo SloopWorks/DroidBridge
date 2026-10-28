@@ -1,0 +1,1 @@
+FAIL: message("Running application icon differs from Android bitmap: app.droidbridge.wrapper.com.android.settings, mean error 101.67580223083496")

@@ -1,0 +1,33 @@
+--------- beginning of main
+10-28 14:04:58.415  4841  4841 I DroidBridgeProbe: click=1 display=15
+10-28 14:04:58.932  5131  5131 I DroidBridgeProbe: click=1 display=16
+10-28 14:04:59.384  5131  5131 I DroidBridgeProbe: text=I display=16
+10-28 14:04:59.429  5131  5131 I DroidBridgeProbe: text=In display=16
+10-28 14:04:59.454  5131  5131 I DroidBridgeProbe: text=Ind display=16
+10-28 14:04:59.493  5131  5131 I DroidBridgeProbe: text=Inde display=16
+10-28 14:04:59.505  4841  4841 I DroidBridgeProbe: text=D display=15
+10-28 14:04:59.548  5131  5131 I DroidBridgeProbe: text=Indep display=16
+10-28 14:04:59.569  5131  5131 I DroidBridgeProbe: text=Indepe display=16
+10-28 14:04:59.604  5131  5131 I DroidBridgeProbe: text=Indepen display=16
+10-28 14:04:59.625  5131  5131 I DroidBridgeProbe: text=Independ display=16
+10-28 14:04:59.655  5131  5131 I DroidBridgeProbe: text=Independe display=16
+10-28 14:04:59.662  5131  5131 I DroidBridgeProbe: text=Independen display=16
+10-28 14:04:59.722  5131  5131 I DroidBridgeProbe: text=Independent display=16
+10-28 14:04:59.755  5131  5131 I DroidBridgeProbe: text=IndependentB display=16
+10-28 14:04:59.806  4841  4841 I DroidBridgeProbe: text=Dr display=15
+10-28 14:04:59.807  4841  4841 I DroidBridgeProbe: text=Dro display=15
+10-28 14:04:59.807  4841  4841 I DroidBridgeProbe: text=Droi display=15
+10-28 14:04:59.823  4841  4841 I DroidBridgeProbe: text=Droid display=15
+10-28 14:04:59.824  4841  4841 I DroidBridgeProbe: text=DroidB display=15
+10-28 14:04:59.839  4841  4841 I DroidBridgeProbe: text=DroidBr display=15
+10-28 14:04:59.858  4841  4841 I DroidBridgeProbe: text=DroidBri display=15
+10-28 14:04:59.860  4841  4841 I DroidBridgeProbe: text=DroidBrid display=15
+10-28 14:04:59.862  4841  4841 I DroidBridgeProbe: text=DroidBridg display=15
+10-28 14:04:59.863  4841  4841 I DroidBridgeProbe: text=DroidBridge display=15
+10-28 14:04:59.864  4841  4841 I DroidBridgeProbe: text=DroidBridgeN display=15
+10-28 14:04:59.865  4841  4841 I DroidBridgeProbe: text=DroidBridgeNa display=15
+10-28 14:04:59.866  4841  4841 I DroidBridgeProbe: text=DroidBridgeNat display=15
+10-28 14:04:59.866  4841  4841 I DroidBridgeProbe: text=DroidBridgeNati display=15
+10-28 14:04:59.869  4841  4841 I DroidBridgeProbe: text=DroidBridgeNativ display=15
+10-28 14:04:59.870  4841  4841 I DroidBridgeProbe: text=DroidBridgeNative display=15
+10-28 14:05:00.608  5131  5131 I DroidBridgeProbe: secondary display=16 package=dev.droidbridge.testapp2

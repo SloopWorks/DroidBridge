@@ -1,0 +1,22 @@
+{
+  "Sources/DroidBridge/Launcher.swift": "2ec5a9dea397060c39da5de7de9d896f7c54d3023cb665414772aafb285776d3",
+  "Sources/DroidBridge/MacAppWrapper.swift": "d6a6e2fabecc03e1a264a1369a87c413fa462c5959e38fd5680c6777d973ff22",
+  "Sources/DroidBridge/NativeWindow.swift": "d267cb903ab11dab01bed4a8cefeba6073d924597744f86587a70bc14a637cd9",
+  "Sources/DroidBridge/main.swift": "08fe7fec528eeaadf2aa9a8061c95343873728c4c829a433419e9f3b18cdf1cf",
+  "Sources/DroidBridgeCore/AndroidDiscovery.swift": "81dab0293ed0def8366d0a918098f8c57c0541ee6387223521f1ac5a312008b2",
+  "Sources/DroidBridgeCore/AndroidIconProvider.swift": "5a17862c284c05f62a9c65e55f87a5ec2b8b0ce287f7c5e0db18f5f4e827547f",
+  "Sources/DroidBridgeCore/DeviceReadiness.swift": "7e5170ef613363be40f0170a7a16dfd13c0d1af4159479fc12ddcab59e400fa5",
+  "Sources/DroidBridgeCore/DeviceSelection.swift": "e0bd1b3cd19ccb1aa5204e2af1f7783e8e71be59b394a0a55be03daa92bee23f",
+  "Sources/DroidBridgeCore/InputGeometry.swift": "be7efb7033ef40c554804ff981c852361a3c94c09a8456ba4d764f945f04ebc2",
+  "Sources/DroidBridgeCore/Models.swift": "db240fa2ee1c285c652c798f62f320f41cfe3f3385ce4e96b7a6118746e0f163",
+  "Sources/DroidBridgeCore/ProcessRunner.swift": "2bad40bd3b1625fae6d68923e99e385175255d10a5f266d2a90d6ef4bbbfe482",
+  "Sources/DroidBridgeCore/Toolchain.swift": "468ddbbe584dce68bf6c75d05710c6450590712db4226a4f0013a3c1d1394a8d",
+  "Sources/DroidBridgeStreaming/BridgeSession.swift": "31b27310d0d34e245538b824eb3a384ae8cd2dee2c9f76b9ea6d1af40ea3d08e",
+  "Sources/DroidBridgeStreaming/FrameMailbox.swift": "19c1deed81a98170c3f24924c86cb92c88603316fd2cc17c751383fa00639313",
+  "Sources/DroidBridgeStreaming/H264Decoder.swift": "3a8423d6d5c979d9e208c2fa8dea5e895bb90648f2237c5751c964ca7838dc92",
+  "Sources/DroidBridgeStreaming/Protocol.swift": "f9769d3c5c2180d208cc43d38b4e5845a7e6f64b738a26c1872175a150efc76a",
+  "Sources/DroidBridgeStreaming/SessionRecovery.swift": "e706cef3ca28aff3b467566f50771f360d38545b96aea58a0e2ab6dd8b087500",
+  "Sources/DroidBridgeStreaming/SocketTransport.swift": "a8e550c4fcfe29b21504cd5541a8e18aa1ce1757b29a0a0760966fd4b4430770",
+  "Sources/DroidBridgeSupervisor/main.c": "7ee1e628e9f3bbb836d7da608fb1181262756e872db7b4c35d108e71302bb265",
+  "android/icon-helper/dev/droidbridge/icons/IconHelper.java": "b478dda16c0662eb061614a8f167c893e57b7b51a88f9f7721cf4f3e3cb57245"
+}
