@@ -1,0 +1,3 @@
+# Preserve upstream notice bytes and captured command output verbatim.
+Resources/licenses/** -whitespace
+verification/** -whitespace
