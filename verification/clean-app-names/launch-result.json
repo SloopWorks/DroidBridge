@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "installed_main_sha256": "e7544a05c60e4a4d6953a908e363536b1515188d79fbc6111ff637b1cb4116c9",
+  "spotlight_exact_paths": [
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Calendar.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Camera.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Clock.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Contacts.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Icon Fixture.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Test (dev.droidbridge.testapp2).app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Test.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Files.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Gallery.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Messaging.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Phone.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/SIM Toolkit.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Search.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/Settings.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/System Tracing.app",
+    "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/WebView Shell.app"
+  ],
+  "spotlight_display_names": {
+    "com.android.camera2": "Camera",
+    "com.android.calendar": "Calendar",
+    "dev.droidbridge.iconfixture": "DroidBridge Icon Fixture",
+    "dev.droidbridge.testapp2": "DroidBridge Test (dev.droidbridge.testapp2)",
+    "com.android.dialer": "Phone",
+    "com.android.contacts": "Contacts",
+    "com.android.settings": "Settings",
+    "dev.droidbridge.testapp": "DroidBridge Test",
+    "com.android.stk": "SIM Toolkit",
+    "com.android.quicksearchbox": "Search",
+    "com.android.deskclock": "Clock",
+    "com.android.traceur": "System Tracing",
+    "org.chromium.webview_shell": "WebView Shell",
+    "com.android.gallery3d": "Gallery",
+    "com.android.documentsui": "Files",
+    "com.android.messaging": "Messaging"
+  },
+  "wrapper_filename": "Settings.app",
+  "native_frame_events": [
+    {
+      "backend": "native",
+      "details": {
+        "app_active": "false",
+        "bundle_id": "app.droidbridge.managed.d5e6f2505624f8523ae5b4121.com.android.settings",
+        "key": "false",
+        "minimized": "false",
+        "pid": "30075",
+        "reason": "first_frame",
+        "visible": "true"
+      },
+      "device": "emulator-5580",
+      "event": "native_window_presented",
+      "package": "com.android.settings",
+      "session": "4B643886-188C-46DD-BF17-162400B05031",
+      "timestamp": "2026-10-29T02:17:23Z"
+    }
+  ],
+  "resource_baseline": {
+    "displays": 1,
+    "forwards": [],
+    "reverse": "\n"
+  },
+  "resource_after": {
+    "displays": 1,
+    "forwards": [],
+    "reverse": "\n"
+  },
+  "main_panel_and_physical_focus_unverified": true
+}

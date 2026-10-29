@@ -6,6 +6,10 @@ The default-enabled bulk-wrapper flag exposes an explicit onboarding button. No 
 
 Managed apps are published under `~/Applications/DroidBridge Apps/Devices/<device hash>`. Device identity is part of their bundle identity, so two devices cannot overwrite each other's wrappers. Each copied wrapper remains a real signed application with its own process and Android icon. Spotlight and Cmd+Tab behavior require observed evidence, separately from bundle metadata.
 
+Visible filenames use the Android app label without hashes. Stable device/package identity stays in bundle IDs and catalog metadata. Within a device, canonical Unicode/case-insensitive name collisions and foreign occupants receive a readable package qualifier, then a number if necessary. Existing clean filenames remain pinned across updates.
+
+Existing 0.1.2 copied executables validate hashed paths globally. Main-app maintenance therefore first upgrades every present accepted wrapper at its original filename, preserving the complete launch dictionary and saved PNG, then rebuilds under clean names only after all incompatible readers and live old reservations are gone. Missing bundles retain their repairable metadata without blocking healthy apps; deleted-but-running wrappers still block the compatibility barrier. Local maintenance uses the shared update lease, four sequential attempts per batch, cancellation and error backoff, and runs even when device visibility is disabled. The helper is upgraded before maintenance; old GUI processes must be quit before installation. Exact old public URL/generation history fences delayed Launch Services effects after renaming.
+
 When a device is unavailable, managed bundles move into the private `ManagedApps.noindex` store and are unregistered. A stale Spotlight result is also protected by a launch admission check. Unauthorized, offline, failed and not-yet-booted devices are unavailable. Reconnection restores bundles and registration. Turning the feature off stops new bulk admission and hides managed apps without deleting accepted history.
 
 ## Ownership and concurrency

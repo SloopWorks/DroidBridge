@@ -50,6 +50,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     let onboardingStatus = NSTextField(wrappingLabelWithString:"Ready to add all launchable apps from the selected device.")
     var onboardingAdmissionTask: Task<Void,Never>?
     var onboardingPending = false
+    var managedNameRepair: ManagedAppNameRepair?
     lazy var managedCatalog = ManagedAppCatalog()
     lazy var availabilityMonitor = ManagedAvailabilityMonitor(toolchain:toolchain,catalog:managedCatalog)
     lazy var onboarding: DeviceOnboardingController = {
@@ -203,10 +204,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     func refresh() { refreshDevices(forceApps: true) }
     func refreshDevices(forceApps: Bool = false) {
         guard !refreshing, !quitting else { return }; refreshing = true
+        scheduleManagedNameRepair()
         sharedPreferences=(try? DroidBridgePreferences.load()) ?? DroidBridgePreferences(bulkWrapperOnboardingEnabled:false)
         bulkPreference.state=sharedPreferences.bulkWrapperOnboardingEnabled ? .on : .off
         decorationsPreference.state=sharedPreferences.showAndroidSystemDecorations ? .on : .off
-        onboardingButton.isEnabled=sharedPreferences.bulkWrapperOnboardingEnabled && !onboardingPending && !onboarding.isRunning
+        onboardingButton.isEnabled=sharedPreferences.bulkWrapperOnboardingEnabled && !onboardingPending && !onboarding.isRunning && managedNameRepair?.isRunning != true
         if !sharedPreferences.bulkWrapperOnboardingEnabled && onboarding.isRunning { onboarding.cancel() }
         let selected = selectedDevice?.serial
         refreshTask = Task {
@@ -444,11 +446,14 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     }
     @objc func createWrapper() {
         guard let device = selectedDevice, let app = selectedApp, !creatingWrapper else { return }
+        guard managedNameRepair?.isRunning != true,!onboardingPending,!onboarding.isRunning else {status.stringValue="Wait for the current Mac app update to finish.";return}
         let chosenBackend = backend
         creatingWrapper = true; status.stringValue = "Loading Android icon and building \(app.name)'s Mac app…"
         wrapperTask = Task {
             defer { creatingWrapper = false; wrapperTask = nil }
             do {
+                let lease=try DeviceOnboardingLease(root:managedCatalog.paths.privateRoot)
+                defer {lease.release()}
                 let png: Data
                 if let cached = iconData[iconKey(device, app)] { png = cached }
                 else { png = try await iconProvider.icon(device: device, application: app) }
@@ -484,10 +489,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         hideLauncherIfUsable(launched)
     }
     func shutdownAndWait() async {
-        quitting = true; restoreTask?.cancel(); onboardingAdmissionTask?.cancel(); onboarding.cancel()
+        quitting = true; managedNameRepair?.cancel(); restoreTask?.cancel(); onboardingAdmissionTask?.cancel(); onboarding.cancel()
         for session in Array(sessions.values)+Array(retiring.values) {session.stop(reason:"application_quit")}
         if let task=onboardingAdmissionTask { await task.value }
         await onboarding.cancelAndWait()
+        await managedNameRepair?.cancelAndWait()
         save(); timer?.invalidate(); iconQueue.removeAll(); for task in iconTasks.values { task.cancel() }
         refreshTask?.cancel()
         wrapperTask?.cancel()

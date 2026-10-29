@@ -46,6 +46,8 @@ Managed identities include a device hash and Android package. Public bundles liv
 
 `DroidBridgeAvailability` is a Core-only executable installed as an owned per-user LaunchAgent after the first explicit onboarding. Its stable helper/runtime survives host-bundle movement and GUI quit. It probes only device/catalog readiness and reconciles the same catalog, with bounded work and retries. Shared atomic preferences are read by the GUI, wrappers and helper. Turning bulk onboarding off retains history while hiding managed apps and stopping Android polling. See `APP_ONBOARDING_DESIGN.md` for contracts and `BUILD.md` for uninstall steps.
 
+Managed wrapper filenames contain only the Android label, with readable package disambiguation for actual same-device collisions. A main-GUI-only bounded maintenance controller upgrades incompatible copied executables before changing any hashed paths, then republishes signed clean-name bundles using saved icons and launch options. Durable retired-path ownership compensates delayed Launch Services callbacks after filename changes; IDs and offline admission remain stable.
+
 Session configuration pins `showSystemDecorations`; older JSON defaults to true. The fallback maps false to `--no-vd-system-decorations`, while native passes `vd_system_decorations` to the matching scrcpy server. This controls the virtual display only and does not remove application-drawn UI.
 
 ## Build and evidence

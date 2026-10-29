@@ -115,12 +115,12 @@ import DroidBridgeCore
             try fm.createDirectory(at:inactive.appendingPathComponent("Contents/MacOS"),withIntermediateDirectories:true)
             try fm.createDirectory(at:inactive.appendingPathComponent("Contents/Resources"),withIntermediateDirectories:true)
             let bundleID = ManagedAppCatalog.bundleIdentifier(serial:device.serial,packageName:package)
-            let fixtureInfo: [String:Any] = ["CFBundleIdentifier":bundleID,"DroidBridgeManagedGeneration":first.generation.uuidString,"DroidBridgeManagedDevice":hash]
+            let fixtureInfo: [String:Any] = ["DroidBridgeManagedNamingVersion":2,"CFBundleIdentifier":bundleID,"DroidBridgeManagedGeneration":first.generation.uuidString,"DroidBridgeManagedDevice":hash]
             try PropertyListSerialization.data(fromPropertyList:fixtureInfo,format:.xml,options:0).write(to:inactive.appendingPathComponent("Contents/Info.plist"))
-            try JSONEncoder().encode(["managed_key":key,"managed_generation":first.generation.uuidString,"serial":device.serial,"package":package,"name":first.name,"backend":"native"]).write(to:inactive.appendingPathComponent("Contents/Resources/launch.json"))
+            try JSONEncoder().encode(["managed_key":key,"managed_generation":first.generation.uuidString,"serial":device.serial,"package":package,"name":package,"backend":"native"]).write(to:inactive.appendingPathComponent("Contents/Resources/launch.json"))
             try Data([0]).write(to:inactive.appendingPathComponent("Contents/MacOS/DroidBridge"))
             try fm.setAttributes([.posixPermissions:0o700],ofItemAtPath:inactive.appendingPathComponent("Contents/MacOS/DroidBridge").path)
-            var entry = template; entry["key"] = key; entry["packageName"] = package; entry["bundleFilename"] = ManagedAppCatalog.bundleFilename(package); entry["bundleIdentifier"] = ManagedAppCatalog.bundleIdentifier(serial:device.serial,packageName:package)
+            var entry = template; entry["key"] = key; entry["name"] = package; entry["packageName"] = package; entry["bundleFilename"] = ManagedAppCatalog.bundleFilename(package); entry["bundleIdentifier"] = ManagedAppCatalog.bundleIdentifier(serial:device.serial,packageName:package)
             entry["activeBundleURL"] = active.absoluteString; entry["inactiveBundleURL"] = inactive.absoluteString; entry["availability"] = "inactive"; entry["location"] = "inactive"
             entries[key] = entry
         }

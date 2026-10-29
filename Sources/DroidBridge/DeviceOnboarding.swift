@@ -12,14 +12,14 @@ struct DeviceOnboardingProgress {
 
 /// A durable admission lease, not a long-held filesystem lock. Expensive icon,
 /// copy and signing work runs after the short metadata critical section exits.
-private final class DeviceOnboardingLease {
+final class DeviceOnboardingLease {
     let url: URL; let token = UUID()
     init(root: URL) throws {
         try FileManager.default.createDirectory(at:root,withIntermediateDirectories:true)
         url = root.appendingPathComponent("onboarding-owner.json")
         try locked {
             if let bytes = try? Data(contentsOf:url), let value = try? JSONSerialization.jsonObject(with:bytes) as? [String:Any], let pid = value["pid"] as? Int32,
-               kill(pid,0) == 0 || errno == EPERM { throw BridgeError.message("Another DroidBridge window is already adding device apps. Wait for that onboarding to finish.") }
+               kill(pid,0) == 0 || errno == EPERM { throw BridgeError.message("Another DroidBridge window is already updating Mac apps. Wait for that update to finish.") }
             try JSONSerialization.data(withJSONObject:["pid":getpid(),"token":token.uuidString]).write(to:url,options:.atomic)
         }
     }
@@ -130,6 +130,7 @@ private final class DeviceOnboardingLease {
         let line = "\(app.name) [\(app.packageName)]: \(message.prefix(600))"
         retainDetail(line); progress.message=line
     }
+    func recordMaintenanceMessage(_ message:String) {retainDetail(message)}
     private func retainDetail(_ line:String) {
         if failures.count == 100 { failures.removeFirst(); omittedFailures += 1 }
         failures.append(line)
