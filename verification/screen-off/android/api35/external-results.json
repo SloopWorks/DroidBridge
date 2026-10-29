@@ -1,0 +1,33 @@
+{
+  "api": "35",
+  "serial": "emulator-5580",
+  "originalPanel": "ON",
+  "idleSeconds": 12,
+  "physicalPanelOffObserved": true,
+  "displayIDs": [
+    8,
+    7
+  ],
+  "streams": [
+    {
+      "displayID": 8,
+      "totalFrames": 267,
+      "framesAfterPanelOff": 226,
+      "distinctFramesAfterPanelOff": 219
+    },
+    {
+      "displayID": 7,
+      "totalFrames": 290,
+      "framesAfterPanelOff": 248,
+      "distinctFramesAfterPanelOff": 242
+    }
+  ],
+  "twoAppInput": true,
+  "firstCloseLeftOtherStreamActive": true,
+  "settingsUnchanged": true,
+  "cleanup": {
+    "forward": true,
+    "reverse": true,
+    "displays": true
+  }
+}

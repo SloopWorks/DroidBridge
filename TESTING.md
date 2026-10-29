@@ -57,3 +57,7 @@ The 0.1.1 wrapper report is [verification/launcher-fix/REPORT.md](verification/l
 ## Clean managed app names
 
 `swift test --filter ManagedAppsTests.testNaming` checks collision reservations, Unicode/case behavior, foreign paths, two-phase compatibility and late Launch Services effects. The installed-app migration and actual Spotlight evidence are recorded under `verification/clean-app-names/`. A metadata name assertion does not establish a running copied executable; acceptance must launch a final clean-name wrapper with the current executable and receive a real frame.
+
+## Physical phone screen control
+
+`swift test --filter PhoneDisplayPower` covers parser certainty, command capability changes, latest-intent races, per-device mutexes and preferences. Real Android15/17 streams, input, display-state evidence and final installed GUI checks live under `verification/screen-off/`. Test primary display0OFF separately from virtual-display liveness; command exit0 and window existence alone are insufficient. Preserve user emulator5554 and all unrelated devices.

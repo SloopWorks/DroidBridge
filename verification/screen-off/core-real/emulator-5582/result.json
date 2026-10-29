@@ -1,0 +1,143 @@
+{
+  "serial": "emulator-5582",
+  "initial_state": "ON",
+  "commands": [
+    {
+      "pid": 67946,
+      "requested": "off",
+      "result": "offVerified",
+      "serial": "emulator-5582"
+    },
+    {
+      "pid": 67973,
+      "requested": "on",
+      "result": "onVerified",
+      "serial": "emulator-5582"
+    }
+  ],
+  "races": [
+    {
+      "first": "off",
+      "last_started": "on",
+      "left": {
+        "pid": 67994,
+        "requested": "off",
+        "result": "intentNoLongerRequested",
+        "serial": "emulator-5582"
+      },
+      "right": {
+        "pid": 67996,
+        "requested": "on",
+        "result": "onVerified",
+        "serial": "emulator-5582"
+      },
+      "latest_saved_off": false,
+      "verified_state": "ON"
+    },
+    {
+      "first": "on",
+      "last_started": "off",
+      "left": {
+        "pid": 68011,
+        "requested": "on",
+        "result": "intentNoLongerRequested",
+        "serial": "emulator-5582"
+      },
+      "right": {
+        "pid": 68013,
+        "requested": "off",
+        "result": "offVerified",
+        "serial": "emulator-5582"
+      },
+      "latest_saved_off": true,
+      "verified_state": "OFF"
+    },
+    {
+      "first": "off",
+      "last_started": "on",
+      "left": {
+        "pid": 68025,
+        "requested": "off",
+        "result": "intentNoLongerRequested",
+        "serial": "emulator-5582"
+      },
+      "right": {
+        "pid": 68028,
+        "requested": "on",
+        "result": "onVerified",
+        "serial": "emulator-5582"
+      },
+      "latest_saved_off": false,
+      "verified_state": "ON"
+    },
+    {
+      "first": "on",
+      "last_started": "off",
+      "left": {
+        "pid": 68046,
+        "requested": "on",
+        "result": "intentNoLongerRequested",
+        "serial": "emulator-5582"
+      },
+      "right": {
+        "pid": 68052,
+        "requested": "off",
+        "result": "offVerified",
+        "serial": "emulator-5582"
+      },
+      "latest_saved_off": true,
+      "verified_state": "OFF"
+    },
+    {
+      "first": "off",
+      "last_started": "on",
+      "left": {
+        "pid": 68312,
+        "requested": "off",
+        "result": "intentNoLongerRequested",
+        "serial": "emulator-5582"
+      },
+      "right": {
+        "pid": 68314,
+        "requested": "on",
+        "result": "onVerified",
+        "serial": "emulator-5582"
+      },
+      "latest_saved_off": false,
+      "verified_state": "ON"
+    },
+    {
+      "first": "on",
+      "last_started": "off",
+      "left": {
+        "pid": 68330,
+        "requested": "on",
+        "result": "intentNoLongerRequested",
+        "serial": "emulator-5582"
+      },
+      "right": {
+        "pid": 68332,
+        "requested": "off",
+        "result": "offVerified",
+        "serial": "emulator-5582"
+      },
+      "latest_saved_off": true,
+      "verified_state": "OFF"
+    }
+  ],
+  "asleep_on": {
+    "pid": 68370,
+    "requested": "on",
+    "result": "onVerified",
+    "serial": "emulator-5582"
+  },
+  "passed": true,
+  "settings_unchanged": true,
+  "cleanup": {
+    "pid": 68382,
+    "requested": "on",
+    "result": "onVerified",
+    "serial": "emulator-5582"
+  },
+  "final_state": "ON"
+}

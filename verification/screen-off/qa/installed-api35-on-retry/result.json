@@ -1,0 +1,186 @@
+{
+  "passed": true,
+  "installed_sha256": "3f3b6245a37fe1513250a60b605f5033712f585df2ff0e78124105fe6cdd06f9",
+  "serial": "emulator-5580",
+  "physical_focus_verified": false,
+  "injected_single_on_failure": true,
+  "instrumentation": "Public AppKit menu performAction and checkbox performClick in exact installed binary",
+  "other_panel_unchanged": null,
+  "app_exit": 0,
+  "baseline": {
+    "forwards": [],
+    "displays": 1
+  },
+  "after": {
+    "forwards": [],
+    "displays": 1
+  },
+  "frame_hashes": {
+    "before": "c128efa1c18bc55f4b8c38a4bc43b4d455006f13a44d745c45a4157736fd0d2c",
+    "off_first": "5b714200350045c8f766f7490116ffd5e1cd1a1fe41afb61d4b346c957719581",
+    "off_second": "8303224c7f7ed7cd0e17851c99a8abe83ee24097f8cf218d66616fa5ca12c004"
+  },
+  "actions": [
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "ready",
+      "id": 1,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 90857
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "menu_on",
+      "id": 2,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 90857
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "launch",
+      "id": 3,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 90857
+    },
+    {
+      "id": 4,
+      "checkbox_enabled": true,
+      "passed": true,
+      "width": 936,
+      "bundle": "app.droidbridge.desktop",
+      "action": "capture",
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "phone_messages": [],
+      "height": 1404,
+      "checkbox_state": 0,
+      "visible": true,
+      "pid": 90857,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580"
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "checkbox_on",
+      "id": 5,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 1,
+      "pid": 90857
+    },
+    {
+      "id": 6,
+      "checkbox_enabled": true,
+      "passed": true,
+      "width": 936,
+      "bundle": "app.droidbridge.desktop",
+      "action": "capture",
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "phone_messages": [],
+      "height": 1404,
+      "checkbox_state": 1,
+      "visible": true,
+      "pid": 90857,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580"
+    },
+    {
+      "id": 7,
+      "checkbox_enabled": true,
+      "passed": true,
+      "width": 936,
+      "bundle": "app.droidbridge.desktop",
+      "action": "capture",
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "phone_messages": [],
+      "height": 1404,
+      "checkbox_state": 1,
+      "visible": true,
+      "pid": 90857,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580"
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "menu_on",
+      "id": 8,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 1,
+      "pid": 90857
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "status",
+      "id": 9,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [
+        "Android SDK built for arm64: phone screen request will retry. adb-fail-once.py failed (1): QA injected one explicit ON transport failure\n"
+      ],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 90857
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "menu_off",
+      "id": 10,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [
+        "Android SDK built for arm64: phone screen request will retry. adb-fail-once.py failed (1): QA injected one explicit ON transport failure\n"
+      ],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 90857
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "checkbox_off",
+      "id": 11,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [
+        "Android SDK built for arm64: phone screen OFF verified. Mac app sessions continue."
+      ],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 90857
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "quit",
+      "id": 12,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [
+        "Android SDK built for arm64: phone screen OFF verified. Mac app sessions continue."
+      ],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 90857
+    }
+  ]
+}

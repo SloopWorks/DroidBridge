@@ -1,0 +1,27 @@
+--------- beginning of main
+10-29 05:03:21.776  2482  2482 I DroidBridgeProbe: click=1 display=13
+10-29 05:03:24.727  2482  2482 I DroidBridgeProbe: text=1 display=13
+10-29 05:03:24.750  2482  2482 I DroidBridgeProbe: text=1S display=13
+10-29 05:03:24.767  2482  2482 I DroidBridgeProbe: text=1Sc display=13
+10-29 05:03:24.786  2482  2482 I DroidBridgeProbe: text=1Scr display=13
+10-29 05:03:24.802  2482  2482 I DroidBridgeProbe: text=1Scre display=13
+10-29 05:03:24.816  2482  2482 I DroidBridgeProbe: text=1Scree display=13
+10-29 05:03:24.849  2482  2482 I DroidBridgeProbe: text=1Screen display=13
+10-29 05:03:24.870  2482  2482 I DroidBridgeProbe: text=1ScreenO display=13
+10-29 05:03:24.885  2482  2482 I DroidBridgeProbe: text=1ScreenOf display=13
+10-29 05:03:24.900  2482  2482 I DroidBridgeProbe: text=1ScreenOff display=13
+10-29 05:03:24.914  2482  2482 I DroidBridgeProbe: text=1ScreenOffA display=13
+10-29 05:03:25.751  2482  2482 I DroidBridgeProbe: text=1ScreenOffAk display=13
+10-29 05:03:28.360  2590  2590 I DroidBridgeProbe: click=1 display=14
+10-29 05:03:31.332  2590  2590 I DroidBridgeProbe: text=2 display=14
+10-29 05:03:31.353  2590  2590 I DroidBridgeProbe: text=2S display=14
+10-29 05:03:31.368  2590  2590 I DroidBridgeProbe: text=2Sc display=14
+10-29 05:03:31.388  2590  2590 I DroidBridgeProbe: text=2Scr display=14
+10-29 05:03:31.407  2590  2590 I DroidBridgeProbe: text=2Scre display=14
+10-29 05:03:31.418  2590  2590 I DroidBridgeProbe: text=2Scree display=14
+10-29 05:03:31.436  2590  2590 I DroidBridgeProbe: text=2Screen display=14
+10-29 05:03:31.454  2590  2590 I DroidBridgeProbe: text=2ScreenO display=14
+10-29 05:03:31.471  2590  2590 I DroidBridgeProbe: text=2ScreenOf display=14
+10-29 05:03:31.488  2590  2590 I DroidBridgeProbe: text=2ScreenOff display=14
+10-29 05:03:31.501  2590  2590 I DroidBridgeProbe: text=2ScreenOffB display=14
+10-29 05:03:32.327  2590  2590 I DroidBridgeProbe: text=2ScreenOffBk display=14

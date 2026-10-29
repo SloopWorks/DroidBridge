@@ -1,0 +1,22 @@
+{
+  "serial": "emulator-5580",
+  "nativeRemoteFiles": [
+    {
+      "path": "/data/local/tmp/droidbridge-47cd3b6f.jar",
+      "status": 1,
+      "absent": true
+    },
+    {
+      "path": "/data/local/tmp/droidbridge-2afbd2c1.jar",
+      "status": 1,
+      "absent": true
+    }
+  ],
+  "forwards": [],
+  "reverse": [],
+  "displayIDs": [
+    0
+  ],
+  "scrcpyServers": [],
+  "resourceCheckPassed": true
+}

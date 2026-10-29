@@ -7,18 +7,26 @@ import Darwin
 public struct DroidBridgePreferences: Codable, Equatable {
     public var bulkWrapperOnboardingEnabled: Bool
     public var showAndroidSystemDecorations: Bool
-    public init(bulkWrapperOnboardingEnabled: Bool = true, showAndroidSystemDecorations: Bool = true) {
+    public var screenOffDeviceSerials: Set<String>
+    public init(bulkWrapperOnboardingEnabled: Bool = true, showAndroidSystemDecorations: Bool = true, screenOffDeviceSerials: Set<String> = []) {
         self.bulkWrapperOnboardingEnabled = bulkWrapperOnboardingEnabled
         self.showAndroidSystemDecorations = showAndroidSystemDecorations
+        self.screenOffDeviceSerials = screenOffDeviceSerials
     }
     public static var defaultURL: URL {
         FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/preferences.json")
     }
-    private enum CodingKeys: String, CodingKey { case bulkWrapperOnboardingEnabled, showAndroidSystemDecorations }
+    private enum CodingKeys: String, CodingKey { case bulkWrapperOnboardingEnabled, showAndroidSystemDecorations, screenOffDeviceSerials }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         bulkWrapperOnboardingEnabled = try values.decodeIfPresent(Bool.self, forKey: .bulkWrapperOnboardingEnabled) ?? true
         showAndroidSystemDecorations = try values.decodeIfPresent(Bool.self, forKey: .showAndroidSystemDecorations) ?? true
+        screenOffDeviceSerials = try values.decodeIfPresent(Set<String>.self,forKey:.screenOffDeviceSerials) ?? []
+        try validate()
+    }
+    private func validate() throws {
+        guard screenOffDeviceSerials.count<=32 else {throw BridgeError.message("Phone screen preferences support at most 32 devices")}
+        for serial in screenOffDeviceSerials {try AndroidDiscovery.validateSerial(serial)}
     }
     public static func load(url: URL = defaultURL) throws -> Self {
         guard FileManager.default.fileExists(atPath: url.path) else { return Self() }
@@ -41,6 +49,7 @@ public struct DroidBridgePreferences: Codable, Equatable {
         }
         var preferences = try load(url: url)
         change(&preferences)
+        try preferences.validate()
         try JSONEncoder().encode(preferences).write(to: url, options: .atomic)
         try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: url.path)
         return preferences

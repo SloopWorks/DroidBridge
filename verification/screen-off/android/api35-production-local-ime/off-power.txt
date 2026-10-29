@@ -1,0 +1,2063 @@
+POWER MANAGER (dumpsys power)
+
+Power Manager State:
+  Settings power_manager_constants:
+    no_cached_wake_locks=true
+  mDirty=0x0
+  mWakefulness=Awake
+  mWakefulnessChanging=false
+  mIsPowered=true
+  mPlugType=1
+  mBatteryLevel=100
+  mDreamsBatteryLevelDrain=0
+  mDockState=0
+  mStayOn=true
+  mProximityPositive=false
+  mBootCompleted=true
+  mSystemReady=true
+  mEnhancedDischargeTimeElapsed=0
+  mLastEnhancedDischargeTimeUpdatedElapsed=0
+  mEnhancedDischargePredictionIsPersonalized=false
+  mUseAutoSuspend=true
+  mHalAutoSuspendModeEnabled=false
+  mHalInteractiveModeEnabled=true
+  mWakeLockSummary=0x0
+  mNotifyLongScheduled=+57s512ms
+  mNotifyLongDispatched=-37s214ms
+  mNotifyLongNextCheck=(none)
+  mRequestWaitForNegativeProximity=false
+  mInterceptedPowerKeyForProximity=false
+  mSandmanScheduled=false
+  mBatteryLevelLow=false
+  mLightDeviceIdleMode=false
+  mDeviceIdleMode=false
+  mDeviceIdleWhitelist=[2000, 10060, 10065, 10067, 10119, 10136, 10143]
+  mDeviceIdleTempWhitelist=[]
+  mLowPowerStandbyActive=false
+  mLastWakeTime=0 (35149270 ms ago)
+  mLastSleepTime=0 (35149270 ms ago)
+  mLastSleepReason=application
+  mLastGlobalWakeTimeRealtime=0 (35149270 ms ago)
+  mLastGlobalSleepTimeRealtime=0 (35149270 ms ago)
+  mLastInteractivePowerHintTime=35146707 (2563 ms ago)
+  mLastScreenBrightnessBoostTime=0 (35149270 ms ago)
+  mScreenBrightnessBoostInProgress=false
+  mHoldingWakeLockSuspendBlocker=false
+  mHoldingDisplaySuspendBlocker=true
+  mLastFlipTime=0
+  mIsFaceDown=false
+
+Settings and Configuration:
+  mDecoupleHalAutoSuspendModeFromDisplayConfig=false
+  mDecoupleHalInteractiveModeFromDisplayConfig=false
+  mWakeUpWhenPluggedOrUnpluggedConfig=false
+  mWakeUpWhenPluggedOrUnpluggedInTheaterModeConfig=false
+  mTheaterModeEnabled=false
+  mKeepDreamingWhenUnplugging=false
+  mSuspendWhenScreenOffDueToProximityConfig=false
+  mDreamsSupportedConfig=true
+  mDreamsEnabledByDefaultConfig=true
+  mDreamsActivatedOnSleepByDefaultConfig=false
+  mDreamsActivatedOnDockByDefaultConfig=true
+  mDreamsEnabledOnBatteryConfig=false
+  mDreamsBatteryLevelMinimumWhenPoweredConfig=-1
+  mDreamsBatteryLevelMinimumWhenNotPoweredConfig=15
+  mDreamsBatteryLevelDrainCutoffConfig=5
+  mDreamsEnabledSetting=true
+  mDreamsActivateOnSleepSetting=false
+  mDreamsActivateOnDockSetting=true
+  mDozeAfterScreenOff=true
+  mBrightWhenDozingConfig=false
+  mMinimumScreenOffTimeoutConfig=10000
+  mMaximumScreenDimDurationConfig=7000
+  mMaximumScreenDimRatioConfig=0.20000005
+  mAttentiveTimeoutConfig=-1
+  mAttentiveTimeoutSetting=-1
+  mAttentiveWarningDurationConfig=30000
+  mScreenOffTimeoutSetting=2147483647
+  mSleepTimeoutSetting=-1
+  mMaximumScreenOffTimeoutFromDeviceAdmin=9223372036854775807 (enforced=false)
+  mStayOnWhilePluggedInSetting=1
+  mScreenBrightnessOverrideFromWindowManager=NaN
+  mUserActivityTimeoutOverrideFromWindowManager=-1
+  mUserInactiveOverrideFromWindowManager=false
+  mDozeScreenStateOverrideFromDreamManager=0
+  mDrawWakeLockOverrideFromSidekick=false
+  mDozeScreenBrightnessOverrideFromDreamManager=-1
+  mScreenBrightnessMinimum=0.035433073
+  mScreenBrightnessMaximum=1.0
+  mScreenBrightnessDefault=0.39763778
+  mDoubleTapWakeEnabled=false
+  mForegroundProfile=0
+  mUserId=0
+
+Attentive timeout: -1 ms
+Sleep timeout: -1 ms
+Screen off timeout: 2147483647 ms
+Screen dim duration: 7000 ms
+
+UID states (changing=false changed=false):
+  UID 1000:   ACTIVE  count=0 state=0
+  UID 1001:   ACTIVE  count=0 state=0
+  UID 1002:   ACTIVE  count=0 state=0
+  UID 1068:   ACTIVE  count=0 state=0
+  UID 1073:   ACTIVE  count=0 state=0
+  UID 2000: INACTIVE  count=0 state=19
+  UID u0a60: INACTIVE  count=0 state=19
+  UID u0a62: INACTIVE  count=0 state=19
+  UID u0a66:   ACTIVE  count=0 state=7
+  UID u0a68: INACTIVE  count=0 state=19
+  UID u0a73: INACTIVE  count=0 state=19
+  UID u0a75: INACTIVE  count=0 state=19
+  UID u0a89: INACTIVE  count=0 state=19
+  UID u0a108: INACTIVE  count=0 state=19
+  UID u0a111:   ACTIVE  count=0 state=7
+  UID u0a120:   ACTIVE  count=0 state=0
+  UID u0a123:   ACTIVE  count=0 state=2
+  UID u0a128:   ACTIVE  count=0 state=5
+  UID u0a129: INACTIVE  count=0 state=19
+  UID u0a132: INACTIVE  count=0 state=19
+  UID u0a140: INACTIVE  count=0 state=19
+  UID u0a146: INACTIVE  count=0 state=19
+  UID u0a147:   ACTIVE  count=0 state=0
+  UID u0a148:   ACTIVE  count=0 state=2
+  UID u0a149:   ACTIVE  count=0 state=2
+
+Looper state:
+  Looper (PowerManagerService, tid 52) {e49ee62}
+    Message 0: { when=+57s512ms what=4 target=android.os.Handler }
+    Message 1: { when=+24d10h45m41s202ms what=1 target=android.os.Handler }
+    (Total messages: 2, polling=true, quitting=false)
+
+Wake Locks: size=0
+
+Suspend Blockers: size=5
+  PowerManagerService.Booting: ref count=0 []
+  PowerManagerService.WakeLocks: ref count=0 []
+  PowerManagerService.Display: ref count=1 [holding display: (10-28 19:16:56.679)]
+  PowerManagerService.Broadcasts: ref count=0 []
+  PowerManagerService.WirelessChargerDetector: ref count=0 []
+
+Display Power: com.android.server.power.PowerManagerService$1@de88bf3
+
+Battery saving stats:
+  Battery Saver is currently: OFF
+    Times full enabled: 0
+    Times adaptive enabled: 0
+  
+  Drain stats:
+                     Battery saver OFF                          ON
+  NonDoze NonIntr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+             Intr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+  Deep    NonIntr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+             Intr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+  Light   NonIntr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+             Intr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+
+Battery saver policy (*NOTE* they only apply when battery saver is ON):
+  Settings: battery_saver_constants
+    value: 
+  Settings: (overlay)
+    value: 
+  DeviceConfig: battery_saver
+    N/A
+  mAccessibilityEnabled=false
+  mAutomotiveProjectionActive=false
+  mPolicyLevel=0
+  
+  Policy 'default full'
+    advertise_is_enabled=true
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=true
+    defer_keyvalue_backup=true
+    enable_firewall=true
+    enable_datasaver=false
+    disable_launch_boost=true
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=0.5
+    location_mode=3
+    force_all_apps_standby=true
+    force_background_check=true
+    disable_optional_sensors=true
+    disable_aod=true
+    soundtrigger_mode=1
+    enable_quick_doze=true
+    enable_night_mode=true
+  
+  Policy 'current full'
+    advertise_is_enabled=true
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=true
+    defer_keyvalue_backup=true
+    enable_firewall=true
+    enable_datasaver=false
+    disable_launch_boost=true
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=0.5
+    location_mode=3
+    force_all_apps_standby=true
+    force_background_check=true
+    disable_optional_sensors=true
+    disable_aod=true
+    soundtrigger_mode=1
+    enable_quick_doze=true
+    enable_night_mode=true
+  
+  Policy 'default adaptive'
+    advertise_is_enabled=false
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=false
+    defer_keyvalue_backup=false
+    enable_firewall=false
+    enable_datasaver=false
+    disable_launch_boost=false
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=1.0
+    location_mode=0
+    force_all_apps_standby=false
+    force_background_check=false
+    disable_optional_sensors=false
+    disable_aod=false
+    soundtrigger_mode=0
+    enable_quick_doze=false
+    enable_night_mode=false
+  
+  Policy 'current adaptive'
+    advertise_is_enabled=false
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=false
+    defer_keyvalue_backup=false
+    enable_firewall=false
+    enable_datasaver=false
+    disable_launch_boost=false
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=1.0
+    location_mode=0
+    force_all_apps_standby=false
+    force_background_check=false
+    disable_optional_sensors=false
+    disable_aod=false
+    soundtrigger_mode=0
+    enable_quick_doze=false
+    enable_night_mode=false
+  
+  Policy 'effective'
+    advertise_is_enabled=false
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=false
+    defer_keyvalue_backup=false
+    enable_firewall=false
+    enable_datasaver=false
+    disable_launch_boost=false
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=1.0
+    location_mode=0
+    force_all_apps_standby=false
+    force_background_check=false
+    disable_optional_sensors=false
+    disable_aod=false
+    soundtrigger_mode=0
+    enable_quick_doze=false
+    enable_night_mode=false
+
+Battery saver state machine:
+  Enabled=false
+    full=false
+    adaptive=false
+  mState=1
+  mLastChangedIntReason=0
+  mLastChangedStrReason=null
+  mBootCompleted=true
+  mSettingsLoaded=true
+  mBatteryStatusSet=true
+  mIsPowered=true
+  mBatteryLevel=100
+  mIsBatteryLevelLow=false
+  mSettingAutomaticBatterySaver=0
+  mSettingBatterySaverEnabled=false
+  mSettingBatterySaverEnabledSticky=false
+  mSettingBatterySaverStickyAutoDisableEnabled=true
+  mSettingBatterySaverStickyAutoDisableThreshold=90
+  mSettingBatterySaverTriggerThreshold=0
+  mBatterySaverStickyBehaviourDisabled=false
+  mBatterySaverTurnedOffNotificationEnabled=true
+  mDynamicPowerSavingsDefaultDisableThreshold=80
+  mDynamicPowerSavingsDisableThreshold=80
+  mDynamicPowerSavingsEnableBatterySaver=false
+  mLastAdaptiveBatterySaverChangedExternallyElapsed=0
+AttentionDetector:
+ mIsSettingEnabled=false
+ mMaxExtensionMillis=900000
+ mPreDimCheckDurationMillis=2000
+ mEffectivePostDimTimeout=0
+ mLastUserActivityTime(excludingAttention)=35146707
+ mAttentionServiceSupported=false
+ mRequested=false
+
+Profile power states: size=0
+Display Group User Activity:
+  displayGroupId=0
+  userActivitySummary=0x1
+  lastUserActivityTime=13825 (35135445 ms ago)
+  lastUserActivityTimeNoChangeLights=16417 (35132853 ms ago)
+  mWakeLockSummary=0x0
+  displayGroupId=1
+  userActivitySummary=0x1
+  lastUserActivityTime=35146707 (2563 ms ago)
+  lastUserActivityTimeNoChangeLights=0 (35149270 ms ago)
+  mWakeLockSummary=0x0
+
+Wireless Charger Detector State:
+  mGravitySensor={Sensor name="Gravity Sensor", vendor="AOSP", version=3, type=9, maxRange=19.6133, resolution=2.480159E-4, power=12.7, minDelay=10000}
+  mPoweredWirelessly=false
+  mAtRest=false
+  mRestX=0.0, mRestY=0.0, mRestZ=0.0
+  mDetectionInProgress=false
+  mDetectionStartTime=0 (never)
+  mMustUpdateRestPosition=false
+  mTotalSamples=0
+  mMovingSamples=0
+  mFirstSampleX=0.0, mFirstSampleY=0.0, mFirstSampleZ=0.0
+  mLastSampleX=0.0, mLastSampleY=0.0, mLastSampleZ=0.0
+Wake Lock Log
+  10-28 19:16:59.278 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:16:59.400 - 1001 (com.android.phone,...) - ACQ GsmInboundSmsHandler (partial)
+  10-28 19:16:59.454 - 1001 (com.android.phone,...) - ACQ CdmaInboundSmsHandler (partial)
+  10-28 19:17:10.472 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:10.473 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:17:22.976 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:22.979 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:17:23.315 - 1000 (com.android.location.fused,...) - ACQ *launch* (partial)
+  10-28 19:17:24.294 - 1000 (com.android.location.fused,...) - REL *launch*
+  10-28 19:17:36.849 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:36.852 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:17:45.168 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:45.170 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:18:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:18:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:18:33.751 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:19:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:19:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:20:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:20:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:21:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:21:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:22:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:22:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:22:02.214 - 1000 (com.android.location.fused,...) - ACQ *location*:PsdsDownload (partial)
+  10-28 19:22:02.216 - 1000 (com.android.location.fused,...) - REL *location*:PsdsDownload
+  10-28 19:23:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:23:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:24:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:24:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:25:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:25:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:26:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:26:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:27:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:27:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:28:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:28:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:29:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:29:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:30:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:30:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:30:45.047 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:30:45.049 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:30:45.049 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:30:45.050 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:31:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:31:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:32:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:32:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:32:02.222 - 1000 (com.android.location.fused,...) - ACQ *location*:PsdsDownload (partial)
+  10-28 19:32:02.235 - 1000 (com.android.location.fused,...) - REL *location*:PsdsDownload
+  10-28 19:33:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:33:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:34:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:34:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:35:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:35:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:36:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:36:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:37:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:37:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:38:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:38:00.014 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:39:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:39:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:40:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:40:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:41:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:41:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:41:39.494 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 19:41:39.494 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 19:41:39.554 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 19:41:39.555 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 19:42:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:42:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:43:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:43:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:43:13.588 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:43:13.589 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:43:13.589 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:43:13.590 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:43:13.590 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:43:13.591 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:44:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:44:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:45:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:45:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:46:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:46:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:46:47.965 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:46:47.965 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:46:47.965 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:46:47.966 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:46:47.966 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:46:47.966 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:47:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:47:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:48:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:48:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:49:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:49:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:50:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:50:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:51:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:51:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:52:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:52:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:52:02.306 - 1000 (com.android.location.fused,...) - ACQ *location*:PsdsDownload (partial)
+  10-28 19:52:02.309 - 1000 (com.android.location.fused,...) - REL *location*:PsdsDownload
+  10-28 19:53:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:53:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:54:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:54:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:55:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:55:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:56:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:56:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:57:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:57:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:58:00.000 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:58:00.001 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:59:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:59:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:00:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:00:00.048 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:00:00.048 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:00:00.049 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:00:00.049 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:00:00.051 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:00:00.051 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:00:00.054 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:01:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:01:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:02:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:02:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:03:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:03:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:04:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:04:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:05:00.016 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:05:00.017 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:06:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:06:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:07:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:07:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:08:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:08:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:08:25.718 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:08:25.724 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 20:08:25.732 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 20:08:25.732 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 20:08:25.742 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 20:08:25.751 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 20:08:25.754 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 20:08:25.755 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:09:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:09:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:10:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:10:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:11:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:11:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:12:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:12:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:13:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:13:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:13:19.415 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:13:19.416 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:13:19.416 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:13:19.417 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:13:19.417 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:13:19.418 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:14:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:14:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:15:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:15:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:16:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:16:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:16:47.967 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:16:47.967 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:16:47.967 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:16:47.968 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:16:47.968 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:16:47.968 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:17:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:17:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:18:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:18:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:19:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:19:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:20:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:20:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:21:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:21:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:22:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:22:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:23:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:23:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:24:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:24:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:25:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:25:00.014 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:26:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:26:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:27:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:27:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:28:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:28:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:29:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:29:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:30:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:30:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:30:03.449 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:30:03.450 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:30:03.450 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:30:03.452 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:30:03.452 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:30:03.452 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:31:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:31:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:32:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:32:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:32:02.317 - 1000 (com.android.location.fused,...) - ACQ *location*:PsdsDownload (partial)
+  10-28 20:32:02.319 - 1000 (com.android.location.fused,...) - REL *location*:PsdsDownload
+  10-28 20:33:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:33:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:34:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:34:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:35:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:35:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:36:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:36:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:37:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:37:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:38:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:38:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:39:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:39:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:39:27.781 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:39:27.782 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 20:39:27.813 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 20:39:27.814 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:39:27.829 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 20:39:27.848 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 20:40:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:40:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:40:35.257 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:40:35.257 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:40:35.257 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:40:35.259 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:40:35.259 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:40:35.259 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:41:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:41:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:42:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:42:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:43:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:43:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:44:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:44:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:45:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:45:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:46:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:46:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:46:47.975 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:46:47.976 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:46:47.976 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:46:47.978 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:46:47.978 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 20:46:47.978 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 20:47:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:47:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:48:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:48:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:49:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:49:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:50:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:50:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:51:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:51:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:52:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:52:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:53:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:53:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:54:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:54:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:55:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:55:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:56:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:56:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:57:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:57:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:58:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:58:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 20:59:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 20:59:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:00:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:00:00.028 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:00:00.028 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:00:00.028 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:00:00.030 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:00:00.030 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:00:00.031 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:00:00.046 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:01:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:01:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:02:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:02:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:03:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:03:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:04:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:04:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:05:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:05:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:06:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:06:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:07:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:07:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:08:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:08:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:09:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:09:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:09:27.784 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:09:27.785 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 21:09:27.810 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 21:09:27.812 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:09:27.820 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 21:09:27.837 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 21:10:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:10:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:11:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:11:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:12:00.000 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:12:00.001 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:13:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:13:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:14:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:14:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:15:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:15:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:15:01.943 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:15:01.944 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:15:01.944 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:15:01.947 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:15:01.947 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:15:01.947 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:15:51.784 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:15:51.784 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:16:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:16:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:16:47.979 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:16:47.979 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:16:47.979 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:16:47.980 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:16:47.981 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:16:47.981 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:16:51.785 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:16:51.786 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:17:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:17:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:18:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:18:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:19:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:19:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:20:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:20:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:21:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:21:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:22:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:22:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:23:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:23:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:24:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:24:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:25:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:25:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:26:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:26:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:27:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:27:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:28:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:28:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:28:25.532 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:28:25.533 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:28:25.533 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:28:25.535 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:28:25.535 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:28:25.535 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:29:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:29:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:30:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:30:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:31:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:31:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:32:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:32:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:33:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:33:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:34:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:34:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:35:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:35:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:36:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:36:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:37:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:37:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:38:00.015 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:38:00.015 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:39:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:39:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:39:27.785 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:39:27.786 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 21:39:27.813 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 21:39:27.815 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:39:27.827 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 21:39:27.848 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 21:40:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:40:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:41:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:41:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:41:24.022 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:41:24.022 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:41:24.022 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:41:24.025 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:41:24.025 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:41:24.025 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:42:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:42:00.016 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:43:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:43:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:44:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:44:00.016 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:45:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:45:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:46:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:46:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:46:47.982 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:46:47.983 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:46:47.983 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:46:47.984 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:46:47.985 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 21:46:47.985 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 21:47:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:47:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:48:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:48:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:49:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:49:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:50:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:50:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:51:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:51:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:52:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:52:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:52:02.353 - 1000 (com.android.location.fused,...) - ACQ *location*:PsdsDownload (partial)
+  10-28 21:52:02.355 - 1000 (com.android.location.fused,...) - REL *location*:PsdsDownload
+  10-28 21:53:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:53:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:54:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:54:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:55:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:55:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:56:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:56:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:57:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:57:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:58:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:58:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 21:59:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 21:59:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:00:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:00:00.047 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:00:00.052 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:00:00.052 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:00:00.052 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:00:00.058 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:00:00.058 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:00:00.058 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:01:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:01:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:02:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:02:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:03:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:03:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:04:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:04:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:05:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:05:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:06:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:06:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:07:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:07:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:08:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:08:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:08:21.324 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:08:21.328 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 22:08:21.329 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 22:08:21.330 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 22:08:21.337 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 22:08:21.339 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 22:08:21.355 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 22:08:21.358 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:08:21.368 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 22:08:21.380 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 22:09:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:09:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:10:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:10:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:11:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:11:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:12:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:12:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:13:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:13:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:14:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:14:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:15:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:15:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:16:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:16:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:16:47.985 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:16:47.985 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:16:47.985 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:16:47.987 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:16:47.987 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:16:47.987 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:17:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:17:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:18:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:18:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:19:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:19:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:20:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:20:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:21:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:21:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:22:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:22:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:23:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:23:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:24:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:24:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:25:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:25:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:26:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:26:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:27:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:27:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:28:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:28:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:28:36.914 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:28:36.914 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:28:36.914 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:28:36.915 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:28:36.915 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:28:36.915 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:29:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:29:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:30:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:30:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:31:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:31:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:32:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:32:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:33:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:33:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:34:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:34:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:35:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:35:00.014 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:36:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:36:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:37:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:37:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:38:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:38:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:39:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:39:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:39:27.791 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:39:27.792 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 22:39:27.815 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 22:39:27.817 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:39:27.826 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 22:39:27.839 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 22:40:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:40:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:41:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:41:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:42:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:42:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:43:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:43:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:44:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:44:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:44:32.821 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:44:32.821 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:44:32.821 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:44:32.824 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:44:32.824 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:44:32.824 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:45:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:45:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:46:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:46:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:46:47.983 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:46:47.984 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:46:47.984 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:46:47.985 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:46:47.985 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 22:46:47.985 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 22:47:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:47:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:48:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:48:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:49:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:49:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:50:00.014 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:50:00.015 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:51:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:51:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:52:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:52:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:53:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:53:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:54:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:54:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:55:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:55:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:56:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:56:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:57:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:57:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:58:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:58:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 22:59:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 22:59:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:00:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:00:00.047 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:00:00.050 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:00:00.050 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:00:00.051 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:00:00.051 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:00:00.058 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:00:00.061 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:01:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:01:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:02:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:02:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:03:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:03:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:04:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:04:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:05:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:05:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:06:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:06:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:07:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:07:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:08:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:08:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:09:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:09:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:09:27.783 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:09:27.783 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 23:09:27.810 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 23:09:27.812 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:09:27.819 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 23:09:27.836 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 23:10:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:10:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:11:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:11:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:12:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:12:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:13:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:13:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:14:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:14:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:14:39.164 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:14:39.164 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:14:39.164 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:14:39.166 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:14:39.166 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:14:39.167 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:15:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:15:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:16:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:16:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:16:47.991 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:16:47.991 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:16:47.991 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:16:47.992 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:16:47.992 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:16:47.993 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:17:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:17:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:18:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:18:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:19:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:19:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:20:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:20:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:21:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:21:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:22:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:22:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:23:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:23:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:24:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:24:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:25:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:25:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:26:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:26:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:27:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:27:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:28:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:28:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:29:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:29:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:30:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:30:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:31:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:31:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:31:54.936 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:31:54.937 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:31:54.937 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:31:54.938 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:31:54.938 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:31:54.938 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:32:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:32:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:33:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:33:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:34:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:34:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:35:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:35:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:36:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:36:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:37:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:37:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:38:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:38:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:39:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:39:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:39:27.785 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:39:27.788 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.b.KeyValueBackupJob (partial)
+  10-28 23:39:27.789 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.b.KeyValueBackupJob (partial)
+  10-28 23:39:27.790 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 23:39:27.800 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.b.KeyValueBackupJob
+  10-28 23:39:27.800 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 23:39:27.800 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 23:39:27.800 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 23:39:27.802 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.b.KeyValueBackupJob
+  10-28 23:39:27.804 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 23:39:27.810 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 23:39:27.812 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:40:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:40:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:41:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:41:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:42:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:42:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:43:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:43:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:43:27.676 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:43:27.676 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:43:27.676 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:43:27.678 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:43:27.678 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:43:27.679 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:44:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:44:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:45:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:45:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:46:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:46:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:46:47.992 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:46:47.993 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:46:47.993 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:46:47.994 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:46:47.994 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:46:47.995 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:47:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:47:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:48:00.014 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:48:00.015 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:49:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:49:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:50:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:50:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:51:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:51:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:52:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:52:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:53:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:53:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:54:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:54:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:55:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:55:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:56:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:56:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:57:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:57:00.014 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:58:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:58:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:59:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 23:59:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 23:59:45.335 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:59:45.336 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:59:45.336 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:59:45.337 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 23:59:45.337 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 23:59:45.338 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:00:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:00:00.040 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:00:00.040 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:00:00.040 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:00:00.042 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:00:00.042 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:00:00.042 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:00:00.053 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:01:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:01:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:02:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:02:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:03:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:03:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:04:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:04:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:05:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:05:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:06:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:06:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:07:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:07:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:08:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:08:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:09:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:09:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:09:27.786 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:09:27.788 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 00:09:27.816 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 00:09:27.816 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:10:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:10:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:11:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:11:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:11:31.383 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:11:31.383 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:11:31.383 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:11:31.385 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:11:31.385 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:11:31.386 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:12:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:12:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:13:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:13:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:14:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:14:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:15:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:15:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:16:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:16:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:16:47.996 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:16:47.996 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:16:47.996 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:16:47.998 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:16:47.998 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:16:47.998 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:17:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:17:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:18:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:18:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:19:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:19:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:20:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:20:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:21:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:21:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:22:00.014 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:22:00.016 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:23:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:23:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:24:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:24:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:25:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:25:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:26:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:26:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:27:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:27:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:28:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:28:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:29:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:29:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:30:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:30:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:31:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:31:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:31:56.089 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:31:56.090 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:31:56.090 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:31:56.092 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:31:56.092 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:31:56.092 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:32:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:32:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:32:02.365 - 1000 (com.android.location.fused,...) - ACQ *location*:PsdsDownload (partial)
+  10-29 00:32:02.367 - 1000 (com.android.location.fused,...) - REL *location*:PsdsDownload
+  10-29 00:33:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:33:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:34:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:34:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:35:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:35:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:36:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:36:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:37:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:37:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:38:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:38:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:39:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:39:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:39:27.786 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:39:27.787 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 00:39:27.812 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 00:39:27.813 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:39:27.826 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 00:39:27.848 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 00:40:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:40:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:41:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:41:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:42:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:42:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:43:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:43:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:43:51.097 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:43:51.098 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:43:51.098 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:43:51.100 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:43:51.100 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:43:51.100 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:44:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:44:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:45:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:45:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:46:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:46:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:46:48.000 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:46:48.000 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:46:48.000 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:46:48.002 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:46:48.002 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 00:46:48.002 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 00:47:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:47:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:48:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:48:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:49:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:49:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:50:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:50:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:51:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:51:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:52:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:52:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:53:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:53:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:54:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:54:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:55:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:55:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:56:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:56:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:57:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:57:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:58:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:58:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 00:59:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 00:59:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:00:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:00:00.044 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:00:00.044 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:00:00.044 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:00:00.046 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:00:00.046 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:00:00.046 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:00:00.053 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:01:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:01:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:02:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:02:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:03:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:03:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:04:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:04:00.001 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:05:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:05:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:06:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:06:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:07:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:07:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:08:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:08:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:09:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:09:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:09:27.789 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:09:27.789 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 01:09:27.816 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 01:09:27.817 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:09:27.828 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 01:09:27.839 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 01:10:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:10:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:11:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:11:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:12:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:12:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:13:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:13:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:13:05.210 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:13:05.211 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:13:05.211 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:13:05.213 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:13:05.213 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:13:05.214 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:14:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:14:00.015 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:15:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:15:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:16:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:16:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:16:48.000 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:16:48.001 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:16:48.001 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:16:48.005 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:16:48.005 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:16:48.005 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:16:57.425 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:16:57.426 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:17:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:17:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:17:57.436 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:17:57.437 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:18:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:18:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:19:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:19:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:20:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:20:00.014 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:20:01.409 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:20:01.409 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:21:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:21:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:21:01.411 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:21:01.412 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:22:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:22:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:22:15.791 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:22:15.791 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:23:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:23:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:24:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:24:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:25:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:25:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:26:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:26:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:27:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:27:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:28:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:28:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:28:50.100 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:28:50.101 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:28:50.101 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:28:50.104 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:28:50.104 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:28:50.104 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:29:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:29:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:30:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:30:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:31:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:31:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:32:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:32:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:33:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:33:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:34:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:34:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:35:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:35:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:36:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:36:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:37:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:37:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:38:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:38:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:39:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:39:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:39:27.783 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:39:27.783 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 01:39:27.812 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 01:39:27.813 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:39:27.824 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 01:39:27.840 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 01:40:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:40:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:40:47.160 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:40:47.160 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:40:47.160 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:40:47.162 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:40:47.162 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:40:47.162 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:41:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:41:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:42:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:42:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:43:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:43:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:44:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:44:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:45:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:45:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:46:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:46:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:46:47.998 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:46:47.999 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:46:47.999 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:46:48.001 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:46:48.001 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 01:46:48.002 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 01:47:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:47:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:48:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:48:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:49:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:49:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:50:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:50:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:51:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:51:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:52:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:52:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:53:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:53:00.001 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:54:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:54:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:55:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:55:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:56:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:56:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:57:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:57:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:58:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:58:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 01:59:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 01:59:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:00:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:00:00.060 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:00:00.063 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:00:00.066 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:00:00.066 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:00:00.067 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:00:00.067 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:00:00.068 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:01:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:01:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:02:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:02:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:03:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:03:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:04:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:04:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:05:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:05:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:06:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:06:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:07:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:07:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:08:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:08:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:09:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:09:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:09:27.785 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:09:27.786 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 02:09:27.811 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 02:09:27.814 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:09:27.830 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 02:09:27.862 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 02:10:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:10:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:11:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:11:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:11:48.028 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:11:48.029 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:11:48.029 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:11:48.031 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:11:48.031 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:11:48.032 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:12:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:12:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:13:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:13:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:14:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:14:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:15:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:15:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:16:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:16:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:16:48.015 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:16:48.016 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:16:48.016 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:16:48.018 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:16:48.018 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:16:48.018 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:16:58.631 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:16:58.631 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 02:16:58.648 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.p.c/.CalendarProviderJobService (partial)
+  10-29 02:16:58.649 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.p.c/.CalendarProviderJobService (partial)
+  10-29 02:16:58.650 - 1000 (com.android.location.fused,...) - REL *job*/c.a.p.c/.CalendarProviderJobService
+  10-29 02:16:58.652 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 02:16:58.654 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:16:58.661 - 1000 (com.android.location.fused,...) - REL *job*/c.a.p.c/.CalendarProviderJobService
+  10-29 02:17:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:17:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:18:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:18:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:19:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:19:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:20:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:20:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:21:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:21:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:22:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:22:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:23:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:23:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:24:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:24:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:25:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:25:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:26:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:26:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:27:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:27:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:28:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:28:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:29:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:29:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:30:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:30:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:31:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:31:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:32:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:32:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:33:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:33:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:34:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:34:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:34:15.863 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:34:15.864 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:34:15.864 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:34:15.868 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:34:15.868 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:34:15.868 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:35:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:35:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:36:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:36:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:37:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:37:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:38:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:38:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:39:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:39:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:40:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:40:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:41:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:41:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:42:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:42:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:43:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:43:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:44:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:44:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:45:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:45:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:46:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:46:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:46:48.019 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:46:48.019 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:46:48.019 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:46:48.021 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:46:48.021 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 02:46:48.021 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 02:47:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:47:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:48:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:48:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:49:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:49:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:50:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:50:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:51:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:51:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:52:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:52:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:53:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:53:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:54:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:54:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:55:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:55:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:56:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:56:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:57:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:57:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:58:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:58:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 02:59:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 02:59:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:00:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:00:00.046 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:00:00.046 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:00:00.046 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:00:00.047 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:00:00.049 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:00:00.049 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:00:00.056 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:01:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:01:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:02:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:02:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:03:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:03:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:04:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:04:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:05:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:05:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:06:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:06:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:07:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:07:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:08:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:08:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:09:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:09:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:09:27.783 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:09:27.783 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 03:09:27.817 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 03:09:27.819 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:10:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:10:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:11:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:11:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:12:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:12:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:13:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:13:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:13:32.087 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:13:32.088 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:13:32.088 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:13:32.089 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:13:32.089 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:13:32.089 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:14:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:14:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:15:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:15:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:16:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:16:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:16:48.020 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:16:48.020 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:16:48.020 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:16:48.022 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:16:48.022 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:16:48.022 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:17:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:17:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:18:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:18:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:19:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:19:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:20:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:20:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:21:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:21:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:22:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:22:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:23:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:23:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:24:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:24:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:25:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:25:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:26:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:26:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:27:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:27:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:28:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:28:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:29:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:29:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:30:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:30:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:31:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:31:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:31:14.997 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:31:14.998 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:31:14.998 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:31:14.999 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:31:14.999 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:31:15.000 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:32:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:32:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:33:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:33:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:34:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:34:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:35:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:35:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:36:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:36:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:37:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:37:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:38:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:38:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:39:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:39:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:39:27.782 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:39:27.783 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 03:39:27.801 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 03:39:27.803 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:39:27.813 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 03:39:27.839 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 03:40:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:40:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:41:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:41:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:42:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:42:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:43:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:43:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:44:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:44:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:44:02.492 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:44:02.492 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:44:02.492 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:44:02.495 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:44:02.495 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:44:02.496 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:45:00.010 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:45:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:46:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:46:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:46:48.025 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:46:48.025 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:46:48.025 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:46:48.026 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:46:48.026 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 03:46:48.027 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 03:47:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:47:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:48:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:48:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:49:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:49:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:50:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:50:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:51:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:51:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:52:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:52:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:53:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:53:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:54:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:54:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:55:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:55:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:56:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:56:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:57:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:57:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:58:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:58:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 03:59:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 03:59:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:00:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:00:00.044 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:00:00.044 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:00:00.044 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:00:00.046 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:00:00.046 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:00:00.046 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:00:00.050 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:01:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:01:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:02:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:02:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:03:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:03:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:04:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:04:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:05:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:05:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:06:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:06:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:07:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:07:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:08:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:08:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:09:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:09:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:09:27.783 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:09:27.785 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 04:09:27.809 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 04:09:27.811 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:09:27.819 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 04:09:27.840 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 04:10:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:10:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:11:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:11:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:12:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:12:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:13:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:13:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:14:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:14:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:14:19.316 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:14:19.317 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:14:19.317 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:14:19.318 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:14:19.318 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:14:19.318 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:15:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:15:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:16:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:16:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:16:48.029 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:16:48.030 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:16:48.030 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:16:48.031 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:16:48.032 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:16:48.034 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:17:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:17:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:18:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:18:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:19:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:19:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:20:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:20:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:21:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:21:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:22:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:22:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:23:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:23:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:24:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:24:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:25:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:25:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:26:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:26:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:27:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:27:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:28:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:28:00.014 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:29:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:29:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:30:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:30:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:31:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:31:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:32:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:32:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:33:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:33:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:33:46.934 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:33:46.935 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:33:46.935 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:33:46.937 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:33:46.937 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:33:46.937 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:34:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:34:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:35:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:35:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:36:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:36:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:37:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:37:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:38:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:38:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:39:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:39:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:39:27.787 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:39:27.787 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 04:39:27.811 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 04:39:27.815 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:39:27.830 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-29 04:39:27.853 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-29 04:40:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:40:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:41:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:41:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:42:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:42:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:43:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:43:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:44:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:44:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:45:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:45:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:46:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:46:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:46:14.197 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:46:14.197 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:46:14.197 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:46:14.199 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:46:14.199 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:46:14.199 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:46:48.031 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:46:48.032 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:46:48.032 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:46:48.033 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:46:48.033 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 04:46:48.033 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 04:47:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:47:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:48:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:48:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:49:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:49:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:50:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:50:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:51:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:51:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:52:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:52:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:53:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:53:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:54:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:54:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:55:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:55:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:56:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:56:00.011 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:57:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:57:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:58:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:58:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 04:59:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 04:59:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 05:00:00.005 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 05:00:00.035 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 05:00:00.035 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 05:00:00.035 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 05:00:00.036 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 05:00:00.036 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-29 05:00:00.036 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-29 05:00:00.039 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 05:01:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 05:01:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 05:02:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-29 05:02:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-29 05:02:34.736 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-29 05:02:34.738 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-29 05:02:34.743 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-29 05:02:34.757 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-29 05:02:34.844 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-29 05:02:34.845 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-29 05:02:34.845 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-29 05:02:34.846 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  -
+  Events: 1680, Time-Resets: 671
+  Buffer, Bytes used: 10231
+
+Wakefulness Session Observer:
+default timeout: 2147483647
+override timeout: -1
+  Wakefulness Session Power Group powerGroupId: 0
+    current wakefulness: 0
+    current user activity event: 0
+    current user activity duration: 35135451
+    previous user activity event: 6
+    previous user activity duration: 35135835
+    is in override timeout: false
+  Wakefulness Session Power Group powerGroupId: 1
+    current wakefulness: 1
+    current user activity event: 0
+    current user activity duration: 35149281
+    previous user activity event: 0
+    previous user activity duration: 35149281
+    is in override timeout: false
+
+FaceDownDetector:
+  mFaceDown=false
+  mActive=true
+  mLastFlipTime=0
+  mSensorMaxLatencyMicros=2000000
+  mUserInteractionBackoffMillis=60000
+  mPreviousResultTime=0
+  mPreviousResultType=1
+  mMillisSaved=0
+  mZAccelerationThreshold=-9.5
+  mAccelerationThreshold=0.2
+  mTimeThreshold=PT1S
+  mEnabledOverride=true
+AmbientDisplaySuppressionController:
+ ambientDisplaySuppressed=false
+ mSuppressionTokens={}
+
+Low Power Standby Controller:
+  mIsActive=false
+  mIsEnabled=false
+  mSupportedConfig=false
+  mEnabledByDefaultConfig=false
+  mStandbyTimeoutConfig=0
+  mEnableCustomPolicy=false
+  Allowed UIDs=[]
+  
+  UID allowed reasons:
+
+ScreenTimeoutOverridePolicy:
+  mScreenTimeoutOverrideConfig=-1
+  mLastAutoReleaseReason=-1
+PowerManagerFlags:
+ enable_early_screen_timeout_detector:                 true (def:true)
+ improve_wakelock_latency:                             false (def:false)

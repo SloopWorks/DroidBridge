@@ -1,0 +1,26 @@
+{
+  "a": {
+    "stream": [
+      {
+        "width": 720,
+        "height": 1080
+      }
+    ],
+    "off_sample_frames": 37,
+    "off_sample_distinct_frames": 33,
+    "video_sha256": "075369b78929cf93e22cb0f226a29c9db284d55981f23ce03e452306c3ae9b51",
+    "production_port": "--port=46001"
+  },
+  "b": {
+    "stream": [
+      {
+        "width": 720,
+        "height": 1080
+      }
+    ],
+    "off_sample_frames": 24,
+    "off_sample_distinct_frames": 14,
+    "video_sha256": "6666ee0b4948ee701dff81bacf75e6de9b5decae154f274503d24786dfd5c879",
+    "production_port": "--port=46000"
+  }
+}

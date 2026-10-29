@@ -7,6 +7,7 @@ final class DroidBridgePreferencesTests: XCTestCase {
         XCTAssertEqual(try JSONDecoder().decode(DroidBridgePreferences.self, from: Data("{}".utf8)), DroidBridgePreferences())
         XCTAssertTrue(DroidBridgePreferences().bulkWrapperOnboardingEnabled)
         XCTAssertTrue(DroidBridgePreferences().showAndroidSystemDecorations)
+        XCTAssertTrue(DroidBridgePreferences().screenOffDeviceSerials.isEmpty)
     }
     func testAtomicUpdatesMergeFieldsAndCorruptionFailsClosed() throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -31,6 +32,27 @@ final class DroidBridgePreferencesTests: XCTestCase {
         XCTAssertThrowsError(try DroidBridgePreferences.update(url:url){$0.bulkWrapperOnboardingEnabled=false})
         XCTAssertLessThan(ProcessInfo.processInfo.systemUptime-start,0.5)
         XCTAssertFalse(FileManager.default.fileExists(atPath:url.path))
+    }
+
+    func testScreenOffPreferencesArePerDeviceAndSurviveOtherFieldUpdates() throws {
+        let root=FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer {try? FileManager.default.removeItem(at:root)}
+        let url=root.appendingPathComponent("preferences.json")
+        try DroidBridgePreferences.update(url:url){$0.screenOffDeviceSerials.insert("first-phone")}
+        try DroidBridgePreferences.update(url:url){$0.screenOffDeviceSerials.insert("second-phone")}
+        try DroidBridgePreferences.update(url:url){$0.showAndroidSystemDecorations=false;$0.bulkWrapperOnboardingEnabled=false}
+        XCTAssertEqual(try DroidBridgePreferences.load(url:url).screenOffDeviceSerials,["first-phone","second-phone"])
+        try DroidBridgePreferences.update(url:url){$0.screenOffDeviceSerials.remove("first-phone")}
+        XCTAssertEqual(try DroidBridgePreferences.load(url:url).screenOffDeviceSerials,["second-phone"])
+    }
+    func testInvalidScreenOffSerialIsRejectedWithoutReplacingAcceptedPreferences() throws {
+        let root=FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer {try? FileManager.default.removeItem(at:root)}
+        let url=root.appendingPathComponent("preferences.json")
+        try DroidBridgePreferences.update(url:url){$0.screenOffDeviceSerials=["valid-phone"]}
+        let accepted=try Data(contentsOf:url)
+        XCTAssertThrowsError(try DroidBridgePreferences.update(url:url){$0.screenOffDeviceSerials.insert("bad; serial")})
+        XCTAssertEqual(try Data(contentsOf:url),accepted)
     }
 
 }

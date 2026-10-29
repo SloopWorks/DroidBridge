@@ -14,7 +14,7 @@ DroidBridge is a Swift/AppKit application. Android executes every application on
 
 ## Two backends, one session model
 
-The **scrcpy** backend starts the pinned upstream 5.0.1 client with `--new-display`, `--start-app`, `--flex-display`, H.264 and no audio. Upstream SDL windows own their event and resize handling. DroidBridge tracks the supervised client lifecycle and offers launch/close controls. External windows have standard upstream controls; the launcher's native Focus action is disabled for this backend.
+The **scrcpy** backend starts the pinned upstream 5.0.1 client with `--new-display`, `--start-app`, `--flex-display`, H.264 and no audio. Upstream SDL windows own their event and resize handling. DroidBridge tracks the supervised client lifecycle and offers launch/close controls. Concurrent fallback clients receive distinct host TCP ports from cross-process leases. The supervisor inherits each lease through stdin and retains it through parent-crash cleanup, avoiding the pinned client’s reverse-tunnel/bind startup race. Foreign listeners are skipped. External windows have standard upstream controls; the launcher's native Focus action is disabled for this backend.
 
 The **native** backend pushes the matching scrcpy 5.0.1 server, obtains a random session ID and dynamic loopback ADB forward, and starts the server on Android. Separate video/control connections use scrcpy's version-specific protocol. Session/codec headers and bounded packet lengths are validated. Android MediaCodec emits H.264 Annex-B data; VideoToolbox decodes it, CoreImage creates CGImages, and an AppKit NSView renders those live frames. The native Swift process does not link FFmpeg.
 
@@ -49,6 +49,12 @@ Managed identities include a device hash and Android package. Public bundles liv
 Managed wrapper filenames contain only the Android label, with readable package disambiguation for actual same-device collisions. A main-GUI-only bounded maintenance controller upgrades incompatible copied executables before changing any hashed paths, then republishes signed clean-name bundles using saved icons and launch options. Durable retired-path ownership compensates delayed Launch Services callbacks after filename changes; IDs and offline admission remain stable.
 
 Session configuration pins `showSystemDecorations`; older JSON defaults to true. The fallback maps false to `--no-vd-system-decorations`, while native passes `vd_system_decorations` to the matching scrcpy server. This controls the virtual display only and does not remove application-drawn UI.
+
+## Physical phone display control
+
+Both backends enable pinned scrcpy virtual-display keep-active behavior and disable startup power-on. Virtual displays use local IME policy so keyboard input does not depend on the physical phone screen. Activity signals target the virtual display every four seconds; no global stay-awake or timeout setting changes. Per-device screen-off intent is an opt-in serial set in shared preferences. The launcher and independent wrappers apply it only to their running devices, with finite polling, backoff and a separate short-lived actuation task. Explicit Phone-menu Off/On controls also work without a running session. Pending failed On actions retry while their host remains open; a newer Off intent supersedes them.
+
+Core `PhoneDisplayPower` serializes actuation across processes with per-device filesystem locks, outside catalog/preference critical sections. Only authorized serials and physical display 0 are addressed. It detects advertised Android 15+ commands, handles nonzero read-only help exits, reads actual display state, and verifies effects. Android 17 uses power-reset and, if normal policy is asleep, the advertised display-scoped power wakeup command. Fresh intent checks before/after asynchronous boundaries compensate superseded effects in either direction. Closing any or all sessions never implicitly wakes the phone; explicit user intent persists. Lock/PIN and secure-content policy remain Android behavior.
 
 ## Build and evidence
 

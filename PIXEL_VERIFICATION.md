@@ -18,3 +18,9 @@ For bulk onboarding, start the explicit device-app onboarding action and allow i
 For desktop windows, turn off Android system decorations, close prior sessions and launch new sessions with each backend. Check that the virtual display's system navigation/taskbar/launcher surfaces are absent, while app controls, Back, typing and resizing still work. Turn decorations back on and repeat with a new session. Verify the phone's own navigation and launcher settings were not changed. App-drawn bars and IME behavior are separate from system decorations.
 
 Do not mark this guide passed until performed on the actual Pixel 10 Pro. Emulator success cannot establish USB behavior, device codec limits, thermal performance, DRM compatibility, or Pixel-specific task policy.
+
+## Clean names and phone display control
+
+After installing the update, quit the old main app and open the new DroidBridge once. Let existing Mac app maintenance finish; quit running wrappers when asked. Spotlight should show app names without hashes (only actual duplicate labels receive readable disambiguation). No phone connection is needed for this local repair.
+
+With the authorized Pixel connected and unlocked, open two Mac Android-app windows. Select the Pixel and enable **Keep phone screen off during Mac sessions**, or choose **Phone → Turn Phone Screen Off**. Confirm the physical panel is off while each Mac window continues updating and accepting clicks, typing and resizing. Close one window, then the other: closing should leave the phone off. Choose **Phone → Turn Phone Screen On** to clear the saved setting and restore/wake the panel; verify that normal lock/PIN behavior remains intact. Repeat with the fallback backend using the main DroidBridge controls. Disconnect/reconnect and reopen a Mac app: the saved device choice should apply only to the Pixel. Collect diagnostics if a command cannot be confirmed; a power-control failure must not close working app sessions.

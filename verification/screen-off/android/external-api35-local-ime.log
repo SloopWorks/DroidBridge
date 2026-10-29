@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/verification/screen-off/android/verify-external-screen-off.py", line 123, in <module>
+    assert any(float(f.get('pts_time', '0')) > first_close+.5 for f in frames), 'Second recording did not continue after the first client closed'
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Second recording did not continue after the first client closed

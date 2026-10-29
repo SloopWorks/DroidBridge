@@ -1,0 +1,29 @@
+Building for debugging...
+[0/7] Write sources
+[1/7] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Emitting module DroidBridgeCoreTests
+[4/5] Compiling DroidBridgeCoreTests ScrcpyStartupLeaseTests.swift
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.71s)
+Test Suite 'Selected tests' started at 2026-10-29 05:10:07.487.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-29 05:10:07.488.
+Test Suite 'ScrcpyStartupLeaseTests' started at 2026-10-29 05:10:07.488.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testActualChildCannotAcquireHeldDeviceAndDoesNotPinGateAfterExec]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testActualChildCannotAcquireHeldDeviceAndDoesNotPinGateAfterExec]' passed (0.534 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testDifferentDevicesDoNotBlockAndCancellationReleasesWaiter]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testDifferentDevicesDoNotBlockAndCancellationReleasesWaiter]' passed (0.032 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testSameDeviceExcludesAndReleaseAdmitsNextStartup]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testSameDeviceExcludesAndReleaseAdmitsNextStartup]' passed (0.101 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testSymlinkRefusedAndLockPermissionsArePrivate]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testSymlinkRefusedAndLockPermissionsArePrivate]' passed (0.001 seconds).
+Test Suite 'ScrcpyStartupLeaseTests' passed at 2026-10-29 05:10:08.157.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.668 (0.669) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-29 05:10:08.157.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.668 (0.669) seconds
+Test Suite 'Selected tests' passed at 2026-10-29 05:10:08.157.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.668 (0.670) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

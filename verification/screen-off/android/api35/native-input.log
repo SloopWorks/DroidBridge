@@ -1,0 +1,21 @@
+--------- beginning of main
+10-28 19:41:55.044  2482  2482 I DroidBridgeProbe: click=1 display=9
+10-28 19:41:55.429  2482  2482 I DroidBridgeProbe: text=P display=9
+10-28 19:41:55.451  2482  2482 I DroidBridgeProbe: text=Pa display=9
+10-28 19:41:55.462  2482  2482 I DroidBridgeProbe: text=Pan display=9
+10-28 19:41:55.479  2482  2482 I DroidBridgeProbe: text=Pane display=9
+10-28 19:41:55.497  2482  2482 I DroidBridgeProbe: text=Panel display=9
+10-28 19:41:55.513  2482  2482 I DroidBridgeProbe: text=PanelO display=9
+10-28 19:41:55.530  2482  2482 I DroidBridgeProbe: text=PanelOf display=9
+10-28 19:41:55.547  2482  2482 I DroidBridgeProbe: text=PanelOff display=9
+10-28 19:41:55.564  2482  2482 I DroidBridgeProbe: text=PanelOffA display=9
+10-28 19:41:55.757  2590  2590 I DroidBridgeProbe: click=1 display=10
+10-28 19:41:56.128  2590  2590 I DroidBridgeProbe: text=P display=10
+10-28 19:41:56.147  2590  2590 I DroidBridgeProbe: text=Pa display=10
+10-28 19:41:56.167  2590  2590 I DroidBridgeProbe: text=Pan display=10
+10-28 19:41:56.169  2590  2590 I DroidBridgeProbe: text=Pane display=10
+10-28 19:41:56.170  2590  2590 I DroidBridgeProbe: text=Panel display=10
+10-28 19:41:56.198  2590  2590 I DroidBridgeProbe: text=PanelO display=10
+10-28 19:41:56.216  2590  2590 I DroidBridgeProbe: text=PanelOf display=10
+10-28 19:41:56.216  2590  2590 I DroidBridgeProbe: text=PanelOff display=10
+10-28 19:41:56.236  2590  2590 I DroidBridgeProbe: text=PanelOffB display=10

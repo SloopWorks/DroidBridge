@@ -43,6 +43,15 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     lazy var iconProvider = AndroidIconProvider(toolchain: toolchain)
     var sharedPreferences = (try? DroidBridgePreferences.load()) ?? DroidBridgePreferences(bulkWrapperOnboardingEnabled:false)
     let bulkPreference = NSButton(checkboxWithTitle:"Enable device apps in Spotlight",target:nil,action:nil)
+    let phoneScreenPreference = NSButton(checkboxWithTitle:"Keep phone screen off during Mac sessions",target:nil,action:nil)
+    lazy var phoneDisplayControls:PhoneDisplayControls = {
+        let controls=PhoneDisplayControls(toolchain:toolchain)
+        controls.onMessage={ [weak self] message in
+            guard let self,!self.quitting else {return}
+            self.status.stringValue=message;self.onboarding.recordMaintenanceMessage(message)
+        }
+        return controls
+    }()
     let decorationsPreference = NSButton(checkboxWithTitle:"Show Android system decorations",target:nil,action:nil)
     let onboardingButton = NSButton(title:"Add All Device Apps to Spotlight",target:nil,action:nil)
     let onboardingCancel = NSButton(title:"Cancel",target:nil,action:nil)
@@ -123,6 +132,9 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         for control in [bulkPreference,decorationsPreference] { control.target=self; control.action=#selector(sharedPreferenceChanged(_:)) }
         bulkPreference.setAccessibilityLabel("Enable device apps in Spotlight")
         decorationsPreference.toolTip="Controls Android virtual-display launcher and system navigation. App-drawn controls are unaffected."
+        phoneScreenPreference.target=self;phoneScreenPreference.action=#selector(phoneScreenPreferenceChanged(_:));phoneScreenPreference.isEnabled=false
+        phoneScreenPreference.toolTip="Opt in for this device. Applies only to its physical phone screen while Android apps run on this Mac. Use the Phone menu to turn the screen back on."
+        outer.addArrangedSubview(phoneScreenPreference)
         let preferences=NSStackView(views:[bulkPreference,decorationsPreference]); preferences.spacing=14; outer.addArrangedSubview(preferences)
         onboardingButton.target=self; onboardingButton.action=#selector(onboardDeviceApps); onboardingButton.isEnabled=sharedPreferences.bulkWrapperOnboardingEnabled
         onboardingCancel.target=self; onboardingCancel.action=#selector(cancelOnboarding); onboardingCancel.isEnabled=false
@@ -198,7 +210,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     @objc func refreshAction() { iconFailures.removeAll(); refresh() }
     func beginPolling() {
         guard !quitting else { return }
-        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in Task { @MainActor in self?.refreshDevices() } }
+        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in Task { @MainActor in self?.pollPhoneDisplayControls();self?.refreshDevices() } }
         refresh()
     }
     func refresh() { refreshDevices(forceApps: true) }
@@ -260,12 +272,12 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                         }
                     }
                 }
-                previousSerials = connected; updateSessions()
+                previousSerials = connected; updateSessions();pollPhoneDisplayControls()
                 await launchArgumentsIfNeeded()
             } catch { status.stringValue = error.localizedDescription }
         }
     }
-    @objc func deviceChanged() { discardStaleIconRequests(); appsDeviceSerial = nil; Task { await loadApps() } }
+    @objc func deviceChanged() { pollPhoneDisplayControls();discardStaleIconRequests(); appsDeviceSerial = nil; Task { await loadApps() } }
     func loadApps(readinessChecked: Bool = false) async {
         guard let device = selectedDevice, device.state == "device" else { applications = []; appsDeviceSerial = nil; filterApps(); return }
         let ready = readinessChecked ? readySerials.contains(device.serial) : await DeviceReadiness.isReady(device: device, toolchain: toolchain)
@@ -315,6 +327,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
             if state == .failed || state == .stopped { self.presentFailure(session, message: message) }
             else { self.hosts[descriptor.id]?.video.statusMessage = nil }
             if let message, state != .failed && state != .stopped { self.status.stringValue = message }
+            if state == .running {self.pollPhoneDisplayControls()}
             if state == .running && self.isWrapper {
                 if descriptor.configuration.backend == .scrcpy { NSApp.setActivationPolicy(.accessory) }
                 else { self.presentNativeWrapper(session, reason: "first_frame") }
@@ -489,11 +502,12 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         hideLauncherIfUsable(launched)
     }
     func shutdownAndWait() async {
-        quitting = true; managedNameRepair?.cancel(); restoreTask?.cancel(); onboardingAdmissionTask?.cancel(); onboarding.cancel()
+        quitting = true; phoneDisplayControls.cancel(); managedNameRepair?.cancel(); restoreTask?.cancel(); onboardingAdmissionTask?.cancel(); onboarding.cancel()
         for session in Array(sessions.values)+Array(retiring.values) {session.stop(reason:"application_quit")}
         if let task=onboardingAdmissionTask { await task.value }
         await onboarding.cancelAndWait()
         await managedNameRepair?.cancelAndWait()
+        await phoneDisplayControls.cancelAndWait()
         save(); timer?.invalidate(); iconQueue.removeAll(); for task in iconTasks.values { task.cancel() }
         refreshTask?.cancel()
         wrapperTask?.cancel()

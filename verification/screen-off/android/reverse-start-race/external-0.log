@@ -1,0 +1,10 @@
+/opt/homebrew/Cellar/scrcpy/5.0.1/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 444.3 MB/s (733930 bytes in 0.002s)
+[server] INFO: Device: [Google] google sdk_gphone16k_arm64 (Android 17)
+[server] INFO: New display: 720x1080/240 (id=7)
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp2] on display 7...
+adb: error: listener 'localabstract:scrcpy_5f3c436c' not found
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+INFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:         (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+INFO:     --> (tcpip)  emulator-5582                   device  sdk_gphone16k_arm64

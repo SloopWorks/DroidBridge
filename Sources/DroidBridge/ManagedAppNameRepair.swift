@@ -1,4 +1,5 @@
 import AppKit
+import Darwin
 import DroidBridgeCore
 
 struct ManagedAppNameRepairProgress {
@@ -36,11 +37,16 @@ struct ManagedAppNameRepairProgress {
                 let records=try await Task.detached {try self.catalog.records()}.value
                 try checkAdmission()
                 let liveKeys=Set(records.map(\.key));retryAfter=retryAfter.filter{liveKeys.contains($0.key)}
-                let oldReaders=records.filter {($0.namingVersion ?? 1)<2}
+                let info=Bundle(url:hostBundleURL)?.infoDictionary ?? [:]
+                let hostVersion=info["CFBundleShortVersionString"] as? String ?? ""
+                let hostBuild=info["CFBundleVersion"] as? String ?? ""
                 let observedRunning=runningPaths()
+                let oldReaders=await Task.detached {records.filter {
+                    (($0.namingVersion ?? 1)<2 || $0.sourceVersion != hostVersion || $0.sourceBuild != hostBuild) && Self.mayHaveReader($0,running:observedRunning)
+                }}.value
                 let cleanNamesAllowed=try await Task.detached {try self.catalog.canRepairNames(runningBundlePaths:observedRunning)}.value
                 try checkAdmission()
-                let compatibilityPass = !cleanNamesAllowed && !oldReaders.isEmpty
+                let compatibilityPass = !oldReaders.isEmpty
                 let candidates=(compatibilityPass ? oldReaders : records.filter(ManagedAppCatalog.needsNameRepair)).sorted{$0.key<$1.key}
                 guard !candidates.isEmpty else {return}
                 guard cleanNamesAllowed || compatibilityPass else {
@@ -115,6 +121,14 @@ struct ManagedAppNameRepairProgress {
     private func checkAdmission() throws {
         try Task.checkCancellation()
         guard mayProceed() else {throw CancellationError()}
+    }
+    nonisolated private static func mayHaveReader(_ record:ManagedAppRecord,running:Set<String>) ->Bool {
+        for url in [record.activeBundleURL,record.inactiveBundleURL] {
+            if running.contains(url.standardizedFileURL.resolvingSymlinksInPath().path) {return true}
+            var metadata=stat()
+            if lstat(url.path,&metadata)==0 || errno != ENOENT {return true}
+        }
+        return false
     }
     private func canonicalPath(_ url:URL) ->String {url.standardizedFileURL.resolvingSymlinksInPath().path}
     private func runningPaths() ->Set<String> {

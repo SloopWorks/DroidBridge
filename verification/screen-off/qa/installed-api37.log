@@ -1,0 +1,244 @@
+{
+  "passed": true,
+  "installed_sha256": "3f3b6245a37fe1513250a60b605f5033712f585df2ff0e78124105fe6cdd06f9",
+  "serial": "emulator-5582",
+  "physical_focus_verified": false,
+  "injected_single_on_failure": false,
+  "instrumentation": "Public AppKit menu performAction and checkbox performClick in exact installed binary",
+  "other_panel_unchanged": true,
+  "app_exit": 0,
+  "baseline": {
+    "forwards": [],
+    "displays": 1
+  },
+  "after": {
+    "forwards": [],
+    "displays": 1
+  },
+  "frame_hashes": {
+    "before": "083ae8b947eed6288e05becb215e666e7c69e8cc293d9b674bb051f9e9e8a081",
+    "off_first": "ac4708dee69cbd393c3acb687a1cb95b25bc2c7559213bb9206b351a2e30c421",
+    "off_second": "58330b70590a9a555c631147d0c7024f00dc6fd6bd4672f145d00b1df72902b5"
+  },
+  "actions": [
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "ready",
+      "id": 1,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "menu_on",
+      "id": 2,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "launch",
+      "id": 3,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 91700
+    },
+    {
+      "id": 4,
+      "checkbox_enabled": true,
+      "passed": true,
+      "width": 936,
+      "bundle": "app.droidbridge.desktop",
+      "action": "capture",
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "phone_messages": [
+        "sdk gphone16k arm64: phone screen ON verified."
+      ],
+      "height": 1404,
+      "checkbox_state": 0,
+      "visible": true,
+      "pid": 91700,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582"
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "checkbox_on",
+      "id": 5,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 1,
+      "pid": 91700
+    },
+    {
+      "id": 6,
+      "checkbox_enabled": true,
+      "passed": true,
+      "width": 936,
+      "bundle": "app.droidbridge.desktop",
+      "action": "capture",
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "phone_messages": [],
+      "height": 1404,
+      "checkbox_state": 1,
+      "visible": true,
+      "pid": 91700,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582"
+    },
+    {
+      "id": 7,
+      "checkbox_enabled": true,
+      "passed": true,
+      "width": 936,
+      "bundle": "app.droidbridge.desktop",
+      "action": "capture",
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "phone_messages": [],
+      "height": 1404,
+      "checkbox_state": 1,
+      "visible": true,
+      "pid": 91700,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582"
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "menu_on",
+      "id": 8,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 1,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "menu_off",
+      "id": 9,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "checkbox_off",
+      "id": 10,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "select_device",
+      "id": 11,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "select_device",
+      "id": 12,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [
+        "sdk gphone16k arm64: phone screen ON verified."
+      ],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "checkbox_on",
+      "id": 13,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [
+        "sdk gphone16k arm64: phone screen ON verified."
+      ],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 1,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "select_device",
+      "id": 14,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "select_device",
+      "id": 15,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 1,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "menu_on",
+      "id": 16,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 1,
+      "pid": 91700
+    },
+    {
+      "passed": true,
+      "bundle": "app.droidbridge.desktop",
+      "action": "quit",
+      "id": 17,
+      "device": "sdk gphone16k arm64 \u00b7 emulator-5582",
+      "phone_messages": [],
+      "instrumentation": "public AppKit target/action and native view draw; physical focus not verified",
+      "checkbox_enabled": true,
+      "checkbox_state": 0,
+      "pid": 91700
+    }
+  ]
+}

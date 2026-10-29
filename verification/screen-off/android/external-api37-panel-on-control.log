@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/verification/screen-off/android/verify-external-screen-off.py", line 80, in <module>
+    assert f'text={word}k display={display_id}' in receipt, receipt
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: --------- beginning of main
+10-28 19:40:00.237  3795  3795 I DroidBridgeProbe: click=1 display=16
+

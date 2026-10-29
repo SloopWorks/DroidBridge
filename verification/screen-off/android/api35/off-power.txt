@@ -1,0 +1,603 @@
+POWER MANAGER (dumpsys power)
+
+Power Manager State:
+  Settings power_manager_constants:
+    no_cached_wake_locks=true
+  mDirty=0x0
+  mWakefulness=Awake
+  mWakefulnessChanging=false
+  mIsPowered=true
+  mPlugType=1
+  mBatteryLevel=100
+  mDreamsBatteryLevelDrain=0
+  mDockState=0
+  mStayOn=true
+  mProximityPositive=false
+  mBootCompleted=true
+  mSystemReady=true
+  mEnhancedDischargeTimeElapsed=0
+  mLastEnhancedDischargeTimeUpdatedElapsed=0
+  mEnhancedDischargePredictionIsPersonalized=false
+  mUseAutoSuspend=true
+  mHalAutoSuspendModeEnabled=false
+  mHalInteractiveModeEnabled=true
+  mWakeLockSummary=0x0
+  mNotifyLongScheduled=+17s720ms
+  mNotifyLongDispatched=-1m42s280ms
+  mNotifyLongNextCheck=(none)
+  mRequestWaitForNegativeProximity=false
+  mInterceptedPowerKeyForProximity=false
+  mSandmanScheduled=false
+  mBatteryLevelLow=false
+  mLightDeviceIdleMode=false
+  mDeviceIdleMode=false
+  mDeviceIdleWhitelist=[2000, 10060, 10065, 10067, 10119, 10136, 10143]
+  mDeviceIdleTempWhitelist=[]
+  mLowPowerStandbyActive=false
+  mLastWakeTime=0 (1494337 ms ago)
+  mLastSleepTime=0 (1494337 ms ago)
+  mLastSleepReason=application
+  mLastGlobalWakeTimeRealtime=0 (1494337 ms ago)
+  mLastGlobalSleepTimeRealtime=0 (1494337 ms ago)
+  mLastInteractivePowerHintTime=1491176 (3161 ms ago)
+  mLastScreenBrightnessBoostTime=0 (1494337 ms ago)
+  mScreenBrightnessBoostInProgress=false
+  mHoldingWakeLockSuspendBlocker=false
+  mHoldingDisplaySuspendBlocker=true
+  mLastFlipTime=0
+  mIsFaceDown=false
+
+Settings and Configuration:
+  mDecoupleHalAutoSuspendModeFromDisplayConfig=false
+  mDecoupleHalInteractiveModeFromDisplayConfig=false
+  mWakeUpWhenPluggedOrUnpluggedConfig=false
+  mWakeUpWhenPluggedOrUnpluggedInTheaterModeConfig=false
+  mTheaterModeEnabled=false
+  mKeepDreamingWhenUnplugging=false
+  mSuspendWhenScreenOffDueToProximityConfig=false
+  mDreamsSupportedConfig=true
+  mDreamsEnabledByDefaultConfig=true
+  mDreamsActivatedOnSleepByDefaultConfig=false
+  mDreamsActivatedOnDockByDefaultConfig=true
+  mDreamsEnabledOnBatteryConfig=false
+  mDreamsBatteryLevelMinimumWhenPoweredConfig=-1
+  mDreamsBatteryLevelMinimumWhenNotPoweredConfig=15
+  mDreamsBatteryLevelDrainCutoffConfig=5
+  mDreamsEnabledSetting=true
+  mDreamsActivateOnSleepSetting=false
+  mDreamsActivateOnDockSetting=true
+  mDozeAfterScreenOff=true
+  mBrightWhenDozingConfig=false
+  mMinimumScreenOffTimeoutConfig=10000
+  mMaximumScreenDimDurationConfig=7000
+  mMaximumScreenDimRatioConfig=0.20000005
+  mAttentiveTimeoutConfig=-1
+  mAttentiveTimeoutSetting=-1
+  mAttentiveWarningDurationConfig=30000
+  mScreenOffTimeoutSetting=2147483647
+  mSleepTimeoutSetting=-1
+  mMaximumScreenOffTimeoutFromDeviceAdmin=9223372036854775807 (enforced=false)
+  mStayOnWhilePluggedInSetting=1
+  mScreenBrightnessOverrideFromWindowManager=NaN
+  mUserActivityTimeoutOverrideFromWindowManager=-1
+  mUserInactiveOverrideFromWindowManager=false
+  mDozeScreenStateOverrideFromDreamManager=0
+  mDrawWakeLockOverrideFromSidekick=false
+  mDozeScreenBrightnessOverrideFromDreamManager=-1
+  mScreenBrightnessMinimum=0.035433073
+  mScreenBrightnessMaximum=1.0
+  mScreenBrightnessDefault=0.39763778
+  mDoubleTapWakeEnabled=false
+  mForegroundProfile=0
+  mUserId=0
+
+Attentive timeout: -1 ms
+Sleep timeout: -1 ms
+Screen off timeout: 2147483647 ms
+Screen dim duration: 7000 ms
+
+UID states (changing=false changed=false):
+  UID 1000:   ACTIVE  count=0 state=0
+  UID 1001:   ACTIVE  count=0 state=0
+  UID 1002:   ACTIVE  count=0 state=0
+  UID 1068:   ACTIVE  count=0 state=0
+  UID 1073:   ACTIVE  count=0 state=0
+  UID 2000: INACTIVE  count=0 state=19
+  UID u0a60: INACTIVE  count=0 state=19
+  UID u0a62: INACTIVE  count=0 state=19
+  UID u0a66:   ACTIVE  count=0 state=7
+  UID u0a68: INACTIVE  count=0 state=19
+  UID u0a73: INACTIVE  count=0 state=19
+  UID u0a75: INACTIVE  count=0 state=19
+  UID u0a89: INACTIVE  count=0 state=19
+  UID u0a108: INACTIVE  count=0 state=19
+  UID u0a111:   ACTIVE  count=0 state=7
+  UID u0a120:   ACTIVE  count=0 state=0
+  UID u0a123:   ACTIVE  count=0 state=2
+  UID u0a128:   ACTIVE  count=0 state=5
+  UID u0a129: INACTIVE  count=0 state=19
+  UID u0a132: INACTIVE  count=0 state=19
+  UID u0a140: INACTIVE  count=0 state=19
+  UID u0a146: INACTIVE  count=0 state=19
+  UID u0a147:   ACTIVE  count=0 state=0
+  UID u0a148:   ACTIVE  count=0 state=2
+  UID u0a149:   ACTIVE  count=0 state=2
+
+Looper state:
+  Looper (PowerManagerService, tid 52) {e49ee62}
+    Message 0: { when=+17s720ms what=4 target=android.os.Handler }
+    Message 1: { when=+24d20h6m36s135ms what=1 target=android.os.Handler }
+    (Total messages: 2, polling=true, quitting=false)
+
+Wake Locks: size=0
+
+Suspend Blockers: size=5
+  PowerManagerService.Booting: ref count=0 []
+  PowerManagerService.WakeLocks: ref count=0 []
+  PowerManagerService.Display: ref count=1 [holding display: (10-28 19:16:56.679)]
+  PowerManagerService.Broadcasts: ref count=0 []
+  PowerManagerService.WirelessChargerDetector: ref count=0 []
+
+Display Power: com.android.server.power.PowerManagerService$1@de88bf3
+
+Battery saving stats:
+  Battery Saver is currently: OFF
+    Times full enabled: 0
+    Times adaptive enabled: 0
+  
+  Drain stats:
+                     Battery saver OFF                          ON
+  NonDoze NonIntr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+             Intr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+  Deep    NonIntr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+             Intr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+  Light   NonIntr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+             Intr:      0m      0mAh(  0%)      0.0mAh/h          0m      0mAh(  0%)      0.0mAh/h
+
+Battery saver policy (*NOTE* they only apply when battery saver is ON):
+  Settings: battery_saver_constants
+    value: 
+  Settings: (overlay)
+    value: 
+  DeviceConfig: battery_saver
+    N/A
+  mAccessibilityEnabled=false
+  mAutomotiveProjectionActive=false
+  mPolicyLevel=0
+  
+  Policy 'default full'
+    advertise_is_enabled=true
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=true
+    defer_keyvalue_backup=true
+    enable_firewall=true
+    enable_datasaver=false
+    disable_launch_boost=true
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=0.5
+    location_mode=3
+    force_all_apps_standby=true
+    force_background_check=true
+    disable_optional_sensors=true
+    disable_aod=true
+    soundtrigger_mode=1
+    enable_quick_doze=true
+    enable_night_mode=true
+  
+  Policy 'current full'
+    advertise_is_enabled=true
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=true
+    defer_keyvalue_backup=true
+    enable_firewall=true
+    enable_datasaver=false
+    disable_launch_boost=true
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=0.5
+    location_mode=3
+    force_all_apps_standby=true
+    force_background_check=true
+    disable_optional_sensors=true
+    disable_aod=true
+    soundtrigger_mode=1
+    enable_quick_doze=true
+    enable_night_mode=true
+  
+  Policy 'default adaptive'
+    advertise_is_enabled=false
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=false
+    defer_keyvalue_backup=false
+    enable_firewall=false
+    enable_datasaver=false
+    disable_launch_boost=false
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=1.0
+    location_mode=0
+    force_all_apps_standby=false
+    force_background_check=false
+    disable_optional_sensors=false
+    disable_aod=false
+    soundtrigger_mode=0
+    enable_quick_doze=false
+    enable_night_mode=false
+  
+  Policy 'current adaptive'
+    advertise_is_enabled=false
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=false
+    defer_keyvalue_backup=false
+    enable_firewall=false
+    enable_datasaver=false
+    disable_launch_boost=false
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=1.0
+    location_mode=0
+    force_all_apps_standby=false
+    force_background_check=false
+    disable_optional_sensors=false
+    disable_aod=false
+    soundtrigger_mode=0
+    enable_quick_doze=false
+    enable_night_mode=false
+  
+  Policy 'effective'
+    advertise_is_enabled=false
+    disable_vibration=false
+    disable_animation=false
+    defer_full_backup=false
+    defer_keyvalue_backup=false
+    enable_firewall=false
+    enable_datasaver=false
+    disable_launch_boost=false
+    enable_brightness_adjustment=false
+    adjust_brightness_factor=1.0
+    location_mode=0
+    force_all_apps_standby=false
+    force_background_check=false
+    disable_optional_sensors=false
+    disable_aod=false
+    soundtrigger_mode=0
+    enable_quick_doze=false
+    enable_night_mode=false
+
+Battery saver state machine:
+  Enabled=false
+    full=false
+    adaptive=false
+  mState=1
+  mLastChangedIntReason=0
+  mLastChangedStrReason=null
+  mBootCompleted=true
+  mSettingsLoaded=true
+  mBatteryStatusSet=true
+  mIsPowered=true
+  mBatteryLevel=100
+  mIsBatteryLevelLow=false
+  mSettingAutomaticBatterySaver=0
+  mSettingBatterySaverEnabled=false
+  mSettingBatterySaverEnabledSticky=false
+  mSettingBatterySaverStickyAutoDisableEnabled=true
+  mSettingBatterySaverStickyAutoDisableThreshold=90
+  mSettingBatterySaverTriggerThreshold=0
+  mBatterySaverStickyBehaviourDisabled=false
+  mBatterySaverTurnedOffNotificationEnabled=true
+  mDynamicPowerSavingsDefaultDisableThreshold=80
+  mDynamicPowerSavingsDisableThreshold=80
+  mDynamicPowerSavingsEnableBatterySaver=false
+  mLastAdaptiveBatterySaverChangedExternallyElapsed=0
+AttentionDetector:
+ mIsSettingEnabled=false
+ mMaxExtensionMillis=900000
+ mPreDimCheckDurationMillis=2000
+ mEffectivePostDimTimeout=0
+ mLastUserActivityTime(excludingAttention)=1491176
+ mAttentionServiceSupported=false
+ mRequested=false
+
+Profile power states: size=0
+Display Group User Activity:
+  displayGroupId=0
+  userActivitySummary=0x1
+  lastUserActivityTime=13825 (1480512 ms ago)
+  lastUserActivityTimeNoChangeLights=16417 (1477920 ms ago)
+  mWakeLockSummary=0x0
+  displayGroupId=1
+  userActivitySummary=0x1
+  lastUserActivityTime=1491176 (3161 ms ago)
+  lastUserActivityTimeNoChangeLights=0 (1494337 ms ago)
+  mWakeLockSummary=0x0
+
+Wireless Charger Detector State:
+  mGravitySensor={Sensor name="Gravity Sensor", vendor="AOSP", version=3, type=9, maxRange=19.6133, resolution=2.480159E-4, power=12.7, minDelay=10000}
+  mPoweredWirelessly=false
+  mAtRest=false
+  mRestX=0.0, mRestY=0.0, mRestZ=0.0
+  mDetectionInProgress=false
+  mDetectionStartTime=0 (never)
+  mMustUpdateRestPosition=false
+  mTotalSamples=0
+  mMovingSamples=0
+  mFirstSampleX=0.0, mFirstSampleY=0.0, mFirstSampleZ=0.0
+  mLastSampleX=0.0, mLastSampleY=0.0, mLastSampleZ=0.0
+Wake Lock Log
+  10-28 19:16:58.369 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:16:58.391 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:16:58.391 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:16:58.393 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:16:58.426 - 1000 (com.android.location.fused,...) - ACQ GnssVisibilityControl (partial)
+  10-28 19:16:58.433 - 1000 (com.android.location.fused,...) - REL GnssVisibilityControl
+  10-28 19:16:58.475 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:16:58.477 - 1000 (com.android.location.fused,...) - ACQ WiredAccessoryManager (partial)
+  10-28 19:16:58.511 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:16:58.511 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:16:58.512 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:16:58.514 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:16:58.514 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:16:58.515 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:16:58.516 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:16:58.516 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:16:58.526 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:16:58.527 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:16:58.535 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:16:58.795 - 1000 (com.android.location.fused,...) - REL WiredAccessoryManager
+  10-28 19:16:59.258 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:16:59.261 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:16:59.278 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:16:59.278 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:16:59.278 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:16:59.345 - 1002 (com.android.bluetooth) - ACQ bluetooth_timer (partial)
+  10-28 19:16:59.347 - 1002 (com.android.bluetooth) - REL bluetooth_timer
+  10-28 19:16:59.357 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.p/.p.s.PermissionEventCleanupJobService (partial)
+  10-28 19:16:59.357 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.p/.p.s.PermissionEventCleanupJobService (partial)
+  10-28 19:16:59.360 - 1000 (com.android.location.fused,...) - REL *job*/c.a.p/.p.s.PermissionEventCleanupJobService
+  10-28 19:16:59.384 - 1001 (com.android.phone,...) - ACQ RILJ_ACK_WL (partial)
+  10-28 19:16:59.400 - 1001 (com.android.phone,...) - ACQ GsmInboundSmsHandler (partial)
+  10-28 19:16:59.443 - 1073 (com.android.cellbroadcastservice,...) - ACQ GsmCellBroadcastHandler (partial)
+  10-28 19:16:59.444 - 1000 (com.android.location.fused,...) - REL *job*/c.a.p/.p.s.PermissionEventCleanupJobService
+  10-28 19:16:59.454 - 1001 (com.android.phone,...) - ACQ CdmaInboundSmsHandler (partial)
+  10-28 19:16:59.456 - 1000 (com.android.location.fused,...) - ACQ *job*/@.a.p.s/.WriteFallbackSettingsFilesJobService (partial)
+  10-28 19:16:59.456 - 1000 (com.android.location.fused,...) - ACQ *job*/@.a.p.s/.WriteFallbackSettingsFilesJobService (partial)
+  10-28 19:16:59.464 - 1073 (com.android.cellbroadcastservice,...) - ACQ CellBroadcastHandler (partial)
+  10-28 19:16:59.465 - 1073 (com.android.cellbroadcastservice,...) - ACQ CdmaServiceCategoryProgramHandler (partial)
+  10-28 19:16:59.466 - 1000 (com.android.location.fused,...) - REL *job*/@.a.p.s/.WriteFallbackSettingsFilesJobService
+  10-28 19:16:59.466 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 19:16:59.466 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 19:16:59.470 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 19:16:59.472 - 1000 (com.android.location.fused,...) - REL *job*/@.a.p.s/.WriteFallbackSettingsFilesJobService
+  10-28 19:16:59.477 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 19:16:59.700 - 1001 (com.android.phone,...) - ACQ NitzSignalInputFilterPredicateFactory (partial)
+  10-28 19:16:59.700 - 1001 (com.android.phone,...) - REL NitzSignalInputFilterPredicateFactory
+  10-28 19:16:59.704 - 1000 (com.android.location.fused,...) - ACQ time_detector (partial)
+  10-28 19:17:00.095 - 1000 (com.android.location.fused,...) - REL time_detector
+  10-28 19:17:00.110 - 10110 (com.android.deskclock) - ACQ AlarmAlertWakeLock (partial)
+  10-28 19:17:00.114 - 10110 (com.android.deskclock) - REL AlarmAlertWakeLock
+  10-28 19:17:00.348 - 1000 (com.android.location.fused,...) - ACQ WindowManager/displayId:0 (screen-bright,on-after-release)
+  10-28 19:17:00.558 - 1001 (com.android.phone,...) - REL RILJ_ACK_WL
+  10-28 19:17:01.044 - 1000 (com.android.location.fused,...) - ACQ GnssVisibilityControl (partial)
+  10-28 19:17:01.044 - 1000 (com.android.location.fused,...) - REL GnssVisibilityControl
+  10-28 19:17:01.133 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.s/.s.PrimarySubscriptionListChangedService (partial)
+  10-28 19:17:01.133 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.s/.s.PrimarySubscriptionListChangedService (partial)
+  10-28 19:17:01.134 - 1000 (com.android.location.fused,...) - REL *job*/c.a.s/.s.PrimarySubscriptionListChangedService
+  10-28 19:17:01.141 - 1000 (com.android.location.fused,...) - REL *job*/c.a.s/.s.PrimarySubscriptionListChangedService
+  10-28 19:17:01.203 - 10120 (com.android.systemui) - ACQ SysUI:BroadcastSender (partial)
+  10-28 19:17:01.204 - 10120 (com.android.systemui) - REL SysUI:BroadcastSender
+  10-28 19:17:01.514 - 1000 (com.android.location.fused,...) - ACQ NotificationManagerService:post:android (partial)
+  10-28 19:17:01.545 - 1000 (com.android.location.fused,...) - REL NotificationManagerService:post:android
+  10-28 19:17:01.693 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:17:01.696 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:17:01.783 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:17:01.790 - 1000 (com.android.location.fused,...) - ACQ *launch* (partial)
+  10-28 19:17:01.824 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:17:01.837 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:17:01.864 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:17:01.871 - 1000 (com.android.location.fused,...) - ACQ NetworkTimeUpdateService (partial)
+  10-28 19:17:01.874 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:17:01.878 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:17:01.974 - 1000 (com.android.location.fused,...) - ACQ SyncLoopWakeLock (partial)
+  10-28 19:17:01.976 - 1000 (com.android.location.fused,...) - REL SyncLoopWakeLock
+  10-28 19:17:01.976 - 1073 (com.android.cellbroadcastservice,...) - REL CdmaServiceCategoryProgramHandler
+  10-28 19:17:01.977 - 1073 (com.android.cellbroadcastservice,...) - REL CellBroadcastHandler
+  10-28 19:17:01.977 - 1073 (com.android.cellbroadcastservice,...) - REL GsmCellBroadcastHandler
+  10-28 19:17:01.978 - 1000 (com.android.location.fused,...) - REL NetworkTimeUpdateService
+  10-28 19:17:01.979 - 1000 (com.android.location.fused,...) - ACQ time_detector (partial)
+  10-28 19:17:01.979 - 1000 (com.android.location.fused,...) - REL time_detector
+  10-28 19:17:02.204 - 1000 (com.android.location.fused,...) - ACQ *location*:GnssLocationProvider (partial)
+  10-28 19:17:02.205 - 1000 (com.android.location.fused,...) - ACQ *location*:PsdsDownload (partial)
+  10-28 19:17:02.206 - 1000 (com.android.location.fused,...) - REL *location*:GnssLocationProvider
+  10-28 19:17:02.206 - 1000 (com.android.location.fused,...) - REL *location*:PsdsDownload
+  10-28 19:17:02.458 - 10110 (com.android.deskclock) - ACQ AlarmAlertWakeLock (partial)
+  10-28 19:17:02.473 - 10110 (com.android.deskclock) - REL AlarmAlertWakeLock
+  10-28 19:17:02.475 - 10110 (com.android.deskclock) - ACQ AlarmAlertWakeLock (partial)
+  10-28 19:17:02.527 - 10110 (com.android.deskclock) - REL AlarmAlertWakeLock
+  10-28 19:17:02.561 - 1000 (com.android.location.fused,...) - ACQ GnssVisibilityControl (partial)
+  10-28 19:17:02.561 - 1000 (com.android.location.fused,...) - REL GnssVisibilityControl
+  10-28 19:17:02.820 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.i/.f.FcmRegistrationService (partial)
+  10-28 19:17:02.820 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.i/.f.FcmRegistrationService (partial)
+  10-28 19:17:02.824 - 1000 (com.android.location.fused,...) - REL *job*/c.a.i/.f.FcmRegistrationService
+  10-28 19:17:02.830 - 1000 (com.android.location.fused,...) - REL *job*/c.a.i/.f.FcmRegistrationService
+  10-28 19:17:02.864 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.p.m.m/c.a.p.m.MediaService (partial)
+  10-28 19:17:02.864 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.p.m.m/c.a.p.m.MediaService (partial)
+  10-28 19:17:02.869 - 1000 (com.android.location.fused,...) - REL *job*/c.a.p.m.m/c.a.p.m.MediaService
+  10-28 19:17:03.225 - 1000 (com.android.location.fused,...) - REL *job*/c.a.p.m.m/c.a.p.m.MediaService
+  10-28 19:17:03.373 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.m/.d.a.ActionServiceImpl (partial)
+  10-28 19:17:03.373 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.m/.d.a.ActionServiceImpl (partial)
+  10-28 19:17:03.373 - 1000 (com.android.location.fused,...) - REL *job*/c.a.m/.d.a.ActionServiceImpl
+  10-28 19:17:03.443 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.m/.d.a.BackgroundWorkerService (partial)
+  10-28 19:17:03.443 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.m/.d.a.BackgroundWorkerService (partial)
+  10-28 19:17:03.444 - 1000 (com.android.location.fused,...) - REL *job*/c.a.m/.d.a.BackgroundWorkerService
+  10-28 19:17:03.446 - 1000 (com.android.location.fused,...) - REL *job*/c.a.m/.d.a.ActionServiceImpl
+  10-28 19:17:03.462 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.m/.d.a.ActionServiceImpl (partial)
+  10-28 19:17:03.462 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.m/.d.a.ActionServiceImpl (partial)
+  10-28 19:17:03.462 - 1000 (com.android.location.fused,...) - REL *job*/c.a.m/.d.a.ActionServiceImpl
+  10-28 19:17:03.463 - 1000 (com.android.location.fused,...) - REL *job*/c.a.m/.d.a.BackgroundWorkerService
+  10-28 19:17:03.470 - 1000 (com.android.location.fused,...) - REL *job*/c.a.m/.d.a.ActionServiceImpl
+  10-28 19:17:03.504 - 10060 (com.android.providers.calendar) - ACQ CalendarReceiver_Provider (partial)
+  10-28 19:17:03.509 - 10060 (com.android.providers.calendar) - REL CalendarReceiver_Provider
+  10-28 19:17:03.578 - 1000 (com.android.location.fused,...) - ACQ *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService (partial)
+  10-28 19:17:03.578 - 1000 (com.android.location.fused,...) - ACQ *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService (partial)
+  10-28 19:17:03.581 - 1000 (com.android.location.fused,...) - REL *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService
+  10-28 19:17:03.591 - 1000 (com.android.location.fused,...) - REL *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService
+  10-28 19:17:03.597 - 1000 (com.android.location.fused,...) - ACQ *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService (partial)
+  10-28 19:17:03.599 - 1000 (com.android.location.fused,...) - ACQ *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService (partial)
+  10-28 19:17:03.599 - 1000 (com.android.location.fused,...) - REL *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService
+  10-28 19:17:03.615 - 1000 (com.android.location.fused,...) - ACQ *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService (partial)
+  10-28 19:17:03.615 - 1000 (com.android.location.fused,...) - ACQ *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService (partial)
+  10-28 19:17:03.615 - 1000 (com.android.location.fused,...) - REL *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService
+  10-28 19:17:03.664 - 1000 (com.android.location.fused,...) - REL *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService
+  10-28 19:17:03.809 - 1000 (com.android.location.fused,...) - ACQ *job*/@.w.s.a.s/a.w.i.b.s.SystemJobService (partial)
+  10-28 19:17:03.809 - 1000 (com.android.location.fused,...) - ACQ *job*/@.w.s.a.s/a.w.i.b.s.SystemJobService (partial)
+  10-28 19:17:03.813 - 1000 (com.android.location.fused,...) - REL *job*/@.w.s.a.s/a.w.i.b.s.SystemJobService
+  10-28 19:17:03.911 - 1000 (com.android.location.fused,...) - REL *job*/@.w.s.a.r/a.w.i.b.s.SystemJobService
+  10-28 19:17:03.952 - 1000 (com.android.location.fused,...) - REL *job*/@.w.s.a.s/a.w.i.b.s.SystemJobService
+  10-28 19:17:04.075 - 1000 (com.android.location.fused,...) - REL *launch*
+  10-28 19:17:04.371 - 1000 (com.android.location.fused,...) - REL WindowManager/displayId:0
+  10-28 19:17:05.462 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:17:05.464 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:17:05.480 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:17:05.483 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:17:06.452 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:06.453 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:17:06.851 - 1000 (com.android.location.fused,...) - ACQ NetworkStats (partial)
+  10-28 19:17:06.856 - 1000 (com.android.location.fused,...) - REL NetworkStats
+  10-28 19:17:06.856 - 1000 (com.android.location.fused,...) - ACQ NetworkTimeUpdateService (partial)
+  10-28 19:17:06.857 - 1000 (com.android.location.fused,...) - REL NetworkTimeUpdateService
+  10-28 19:17:06.859 - 1000 (com.android.location.fused,...) - ACQ time_detector (partial)
+  10-28 19:17:06.859 - 1000 (com.android.location.fused,...) - REL time_detector
+  10-28 19:17:08.510 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:08.512 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.p.c/.CalendarProviderJobService (partial)
+  10-28 19:17:08.512 - 1000 (com.android.location.fused,...) - ACQ *job*/c.a.p.c/.CalendarProviderJobService (partial)
+  10-28 19:17:08.513 - 1000 (com.android.location.fused,...) - REL *job*/c.a.p.c/.CalendarProviderJobService
+  10-28 19:17:08.513 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:17:08.516 - 1000 (com.android.location.fused,...) - REL *job*/c.a.p.c/.CalendarProviderJobService
+  10-28 19:17:10.472 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:10.473 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:17:22.976 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:22.979 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:17:23.315 - 1000 (com.android.location.fused,...) - ACQ *launch* (partial)
+  10-28 19:17:24.294 - 1000 (com.android.location.fused,...) - REL *launch*
+  10-28 19:17:36.849 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:36.852 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:17:45.168 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:17:45.170 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:18:00.001 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:18:00.002 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:18:33.751 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:19:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:19:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:20:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:20:00.008 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:21:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:21:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:22:00.009 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:22:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:22:02.214 - 1000 (com.android.location.fused,...) - ACQ *location*:PsdsDownload (partial)
+  10-28 19:22:02.216 - 1000 (com.android.location.fused,...) - REL *location*:PsdsDownload
+  10-28 19:23:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:23:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:24:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:24:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:25:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:25:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:26:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:26:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:27:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:27:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:28:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:28:00.010 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:29:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:29:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:30:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:30:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:30:45.047 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:30:45.049 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:30:45.049 - 1001 (com.android.phone,...) - ACQ *telephony-radio* (partial)
+  10-28 19:30:45.050 - 1001 (com.android.phone,...) - REL *telephony-radio*
+  10-28 19:31:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:31:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:32:00.012 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:32:00.013 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:32:02.222 - 1000 (com.android.location.fused,...) - ACQ *location*:PsdsDownload (partial)
+  10-28 19:32:02.235 - 1000 (com.android.location.fused,...) - REL *location*:PsdsDownload
+  10-28 19:33:00.008 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:33:00.009 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:34:00.006 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:34:00.006 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:35:00.002 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:35:00.003 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:36:00.004 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:36:00.005 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:37:00.007 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:37:00.007 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:38:00.013 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:38:00.014 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:39:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:39:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:40:00.003 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:40:00.004 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:41:00.011 - 1000 (com.android.location.fused,...) - ACQ *alarm* (partial)
+  10-28 19:41:00.012 - 1000 (com.android.location.fused,...) - REL *alarm*
+  10-28 19:41:39.494 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 19:41:39.494 - 1000 (com.android.location.fused,...) - ACQ *job*/a/c.a.s.n.NotificationHistoryJobService (partial)
+  10-28 19:41:39.554 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  10-28 19:41:39.555 - 1000 (com.android.location.fused,...) - REL *job*/a/c.a.s.n.NotificationHistoryJobService
+  -
+  Events: 220, Time-Resets: 47
+  Buffer, Bytes used: 974
+
+Wakefulness Session Observer:
+default timeout: 2147483647
+override timeout: -1
+  Wakefulness Session Power Group powerGroupId: 0
+    current wakefulness: 0
+    current user activity event: 0
+    current user activity duration: 1480510
+    previous user activity event: 6
+    previous user activity duration: 1480894
+    is in override timeout: false
+  Wakefulness Session Power Group powerGroupId: 1
+    current wakefulness: 1
+    current user activity event: 0
+    current user activity duration: 1494340
+    previous user activity event: 0
+    previous user activity duration: 1494340
+    is in override timeout: false
+
+FaceDownDetector:
+  mFaceDown=false
+  mActive=true
+  mLastFlipTime=0
+  mSensorMaxLatencyMicros=2000000
+  mUserInteractionBackoffMillis=60000
+  mPreviousResultTime=0
+  mPreviousResultType=1
+  mMillisSaved=0
+  mZAccelerationThreshold=-9.5
+  mAccelerationThreshold=0.2
+  mTimeThreshold=PT1S
+  mEnabledOverride=true
+AmbientDisplaySuppressionController:
+ ambientDisplaySuppressed=false
+ mSuppressionTokens={}
+
+Low Power Standby Controller:
+  mIsActive=false
+  mIsEnabled=false
+  mSupportedConfig=false
+  mEnabledByDefaultConfig=false
+  mStandbyTimeoutConfig=0
+  mEnableCustomPolicy=false
+  Allowed UIDs=[]
+  
+  UID allowed reasons:
+
+ScreenTimeoutOverridePolicy:
+  mScreenTimeoutOverrideConfig=-1
+  mLastAutoReleaseReason=-1
+PowerManagerFlags:
+ enable_early_screen_timeout_detector:                 true (def:true)
+ improve_wakelock_latency:                             false (def:false)

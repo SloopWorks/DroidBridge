@@ -1,0 +1,44 @@
+[
+  {
+    "operation": [
+      "cmd",
+      "power",
+      "sleep",
+      "--display-id",
+      "0"
+    ],
+    "panelState": "OFF",
+    "wakefulness": "Asleep"
+  },
+  {
+    "operation": [
+      "cmd",
+      "display",
+      "power-off",
+      "0"
+    ],
+    "panelState": "OFF",
+    "wakefulness": "Asleep"
+  },
+  {
+    "operation": [
+      "cmd",
+      "display",
+      "power-reset",
+      "0"
+    ],
+    "panelState": "OFF",
+    "wakefulness": "Asleep"
+  },
+  {
+    "operation": [
+      "cmd",
+      "power",
+      "wakeup",
+      "--display-id",
+      "0"
+    ],
+    "panelState": "ON",
+    "wakefulness": "Awake"
+  }
+]
