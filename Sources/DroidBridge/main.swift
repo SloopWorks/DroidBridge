@@ -20,6 +20,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             edit.submenu?.addItem(withTitle: title, action: Selector(action), keyEquivalent: key)
         }
         menu.addItem(edit)
+        let phoneItem=NSMenuItem();phoneItem.title="Phone"
+        let phoneMenu=NSMenu(title:"Phone")
+        phoneMenu.addItem(withTitle:"Turn Phone Screen Off",action:#selector(turnPhoneScreenOff),keyEquivalent:"").target=self
+        phoneMenu.addItem(withTitle:"Turn Phone Screen On",action:#selector(turnPhoneScreenOn),keyEquivalent:"").target=self
+        phoneItem.submenu=phoneMenu;menu.addItem(phoneItem)
         let windowItem = NSMenuItem(); windowItem.title = "Window"
         let windowMenu = NSMenu(title: "Window")
         windowMenu.addItem(withTitle: "Launcher", action: #selector(showLauncher), keyEquivalent: "l").target = self
@@ -38,6 +43,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             launcher.beginPolling()
         }
     }
+    @objc func turnPhoneScreenOff() {launcher?.turnPhoneScreenOff()}
+    @objc func turnPhoneScreenOn() {launcher?.turnPhoneScreenOn()}
     @objc func showLauncher() { launcher?.showWindow(nil); launcher?.window?.makeKeyAndOrderFront(nil) }
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool { launcher?.reopen(); return false }
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { false }

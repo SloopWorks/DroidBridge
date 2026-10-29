@@ -1,0 +1,34 @@
+[
+  {
+    "serial": "emulator-5580",
+    "service": "display",
+    "status": 255,
+    "bytes": 5676,
+    "advertisedPowerReset": false,
+    "advertisedWakeup": false
+  },
+  {
+    "serial": "emulator-5580",
+    "service": "power",
+    "status": 255,
+    "bytes": 3878,
+    "advertisedPowerReset": false,
+    "advertisedWakeup": false
+  },
+  {
+    "serial": "emulator-5582",
+    "service": "display",
+    "status": 255,
+    "bytes": 9227,
+    "advertisedPowerReset": true,
+    "advertisedWakeup": false
+  },
+  {
+    "serial": "emulator-5582",
+    "service": "power",
+    "status": 255,
+    "bytes": 5444,
+    "advertisedPowerReset": false,
+    "advertisedWakeup": true
+  }
+]

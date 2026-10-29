@@ -1,0 +1,1 @@
+SCREEN OFF NATIVE FAIL: message("Input while physical display off did not reach the correct app: --------- beginning of main\n10-28 19:43:22.939  3795  3795 I DroidBridgeProbe: click=1 display=20\n")

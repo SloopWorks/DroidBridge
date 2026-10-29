@@ -1,0 +1,16 @@
+{
+  "approved": true,
+  "version": "0.1.4",
+  "build": "9",
+  "installed_sha256": "3f3b6245a37fe1513250a60b605f5033712f585df2ff0e78124105fe6cdd06f9",
+  "verified_production_source_input_count": 43,
+  "source_mismatches": [],
+  "installed_control_cases": [
+    "installed-api35",
+    "installed-api35-on-retry",
+    "installed-api37"
+  ],
+  "physical_pixel_verified": false,
+  "physical_os_focus_verified": false,
+  "persisted_relaunch_cycles_verified": 2
+}

@@ -1,0 +1,12 @@
+--------- beginning of main
+10-28 19:31:20.262   680   829 W InputDispatcher: channel 'stylus-handwriting-event-receiver-0' ~ Consumer closed input channel or an error occurred.  events=0x9
+10-28 19:31:20.262   680   829 E InputDispatcher: channel 'stylus-handwriting-event-receiver-0' ~ Channel is unrecoverably broken and will be disposed!
+--------- beginning of system
+10-28 19:31:20.280   680   839 D InputMethodManagerService: Initializing Handwriting Spy
+10-28 19:31:20.953   680   829 W InputDispatcher: channel 'stylus-handwriting-event-receiver-0' ~ Consumer closed input channel or an error occurred.  events=0x9
+10-28 19:31:20.953   680   829 E InputDispatcher: channel 'stylus-handwriting-event-receiver-0' ~ Channel is unrecoverably broken and will be disposed!
+10-28 19:31:20.976   680   839 D InputMethodManagerService: Initializing Handwriting Spy
+10-28 19:31:44.720   680   829 W InputDispatcher: channel 'PointerEventDispatcher8' ~ Consumer closed input channel or an error occurred.  events=0x9
+10-28 19:31:44.720   680   829 E InputDispatcher: channel 'PointerEventDispatcher8' ~ Channel is unrecoverably broken and will be disposed!
+10-28 19:31:44.806   680   829 W InputDispatcher: channel 'PointerEventDispatcher9' ~ Consumer closed input channel or an error occurred.  events=0x9
+10-28 19:31:44.806   680   829 E InputDispatcher: channel 'PointerEventDispatcher9' ~ Channel is unrecoverably broken and will be disposed!

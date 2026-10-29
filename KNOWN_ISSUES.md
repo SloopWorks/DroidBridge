@@ -18,3 +18,5 @@ This file describes actual limitations, not substitutes for the verification rep
 See `verification/REPORT.md` for exact results, blocked checks, and independent review findings. GUI screenshot/automation restrictions must be stated there; a decoded frame is evidence of streaming, not a substitute for a macOS desktop screenshot.
 
 Automatic reconnection waits for full Android readiness. Three failed launches pause automatic retry for that outage; close and launch the app to start a fresh intent. Explicit Restore keeps unavailable saved descriptors pending and requires another Restore action once the device is ready.
+
+- Phone screen control is opt-in per device and requires verified Android15+ shell support. Closing windows deliberately does not wake the phone. Explicit ON requests retry after transport/lock errors while that host stays open; quitting the host cancels its pending work. Native wrapper menus expose the controls; for SDL fallback windows use the main DroidBridge launcher/menu. Hardware panel/lock behavior on the physical Pixel remains for owner verification.

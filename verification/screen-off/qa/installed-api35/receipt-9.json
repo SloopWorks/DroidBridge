@@ -1,0 +1,14 @@
+{
+  "passed" : true,
+  "bundle" : "app.droidbridge.desktop",
+  "action" : "menu_off",
+  "id" : 9,
+  "device" : "Android SDK built for arm64 · emulator-5580",
+  "phone_messages" : [
+
+  ],
+  "instrumentation" : "public AppKit target\/action and native view draw; physical focus not verified",
+  "checkbox_enabled" : true,
+  "checkbox_state" : 0,
+  "pid" : 90141
+}

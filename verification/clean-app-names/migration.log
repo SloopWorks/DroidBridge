@@ -1,0 +1,40 @@
+{'seconds': 0.0, 'old_readers': 16, 'clean_names': 0, 'publications': 0}
+{'seconds': 2.282, 'old_readers': 15, 'clean_names': 0, 'publications': 0}
+{'seconds': 3.104, 'old_readers': 14, 'clean_names': 0, 'publications': 0}
+{'seconds': 3.932, 'old_readers': 13, 'clean_names': 0, 'publications': 0}
+{'seconds': 4.563, 'old_readers': 12, 'clean_names': 0, 'publications': 0}
+{'seconds': 9.973, 'old_readers': 11, 'clean_names': 0, 'publications': 0}
+{'seconds': 10.604, 'old_readers': 10, 'clean_names': 0, 'publications': 0}
+{'seconds': 11.432, 'old_readers': 9, 'clean_names': 0, 'publications': 0}
+{'seconds': 12.273, 'old_readers': 8, 'clean_names': 0, 'publications': 0}
+{'seconds': 18.1, 'old_readers': 7, 'clean_names': 0, 'publications': 0}
+{'seconds': 18.727, 'old_readers': 6, 'clean_names': 0, 'publications': 0}
+{'seconds': 19.554, 'old_readers': 5, 'clean_names': 0, 'publications': 0}
+{'seconds': 20.379, 'old_readers': 4, 'clean_names': 0, 'publications': 0}
+{'seconds': 25.987, 'old_readers': 3, 'clean_names': 0, 'publications': 0}
+{'seconds': 26.616, 'old_readers': 2, 'clean_names': 0, 'publications': 0}
+{'seconds': 27.435, 'old_readers': 1, 'clean_names': 0, 'publications': 0}
+{'seconds': 28.273, 'old_readers': 0, 'clean_names': 0, 'publications': 0}
+{'seconds': 34.744, 'old_readers': 0, 'clean_names': 1, 'publications': 0}
+{'seconds': 35.984, 'old_readers': 0, 'clean_names': 2, 'publications': 0}
+{'seconds': 38.482, 'old_readers': 0, 'clean_names': 3, 'publications': 0}
+{'seconds': 39.936, 'old_readers': 0, 'clean_names': 4, 'publications': 0}
+{'seconds': 46.387, 'old_readers': 0, 'clean_names': 4, 'publications': 1}
+{'seconds': 46.598, 'old_readers': 0, 'clean_names': 5, 'publications': 0}
+{'seconds': 47.634, 'old_readers': 0, 'clean_names': 5, 'publications': 1}
+{'seconds': 47.844, 'old_readers': 0, 'clean_names': 6, 'publications': 0}
+{'seconds': 49.089, 'old_readers': 0, 'clean_names': 7, 'publications': 0}
+{'seconds': 50.334, 'old_readers': 0, 'clean_names': 8, 'publications': 0}
+{'seconds': 58.85, 'old_readers': 0, 'clean_names': 9, 'publications': 0}
+{'seconds': 59.884, 'old_readers': 0, 'clean_names': 10, 'publications': 0}
+{'seconds': 61.135, 'old_readers': 0, 'clean_names': 11, 'publications': 0}
+{'seconds': 62.382, 'old_readers': 0, 'clean_names': 12, 'publications': 0}
+{'seconds': 70.498, 'old_readers': 0, 'clean_names': 13, 'publications': 0}
+{'seconds': 71.538, 'old_readers': 0, 'clean_names': 14, 'publications': 0}
+{'seconds': 72.772, 'old_readers': 0, 'clean_names': 15, 'publications': 0}
+{'seconds': 74.006, 'old_readers': 0, 'clean_names': 16, 'publications': 0}
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-app-name-migration.py", line 75, in <module>
+    assert record['bundleFilename'] == record['name'] + '.app', record['bundleFilename']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: DroidBridge Test (dev.droidbridge.testapp2).app

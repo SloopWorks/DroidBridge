@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "installed_sha256": "3f3b6245a37fe1513250a60b605f5033712f585df2ff0e78124105fe6cdd06f9",
+  "launches": [
+    {
+      "cycle": 1,
+      "automatic_off_verified": true,
+      "decoded_native_running": true,
+      "graceful_exit": 0,
+      "close_kept_panel_off": true,
+      "resource_baseline_restored": true
+    },
+    {
+      "cycle": 2,
+      "automatic_off_verified": true,
+      "decoded_native_running": true,
+      "graceful_exit": 0,
+      "close_kept_panel_off": true,
+      "resource_baseline_restored": true
+    }
+  ]
+}

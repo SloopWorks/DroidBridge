@@ -1,0 +1,51 @@
+{"event":"supervisor_started","parent":88556,"child":88625}
+/opt/homebrew/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 21.0 MB/s (733930 bytes in 0.033s)
+[server] INFO: Device: [Google] google sdk_gphone16k_arm64 (Android 17)
+[server] DEBUG: Using video encoder: 'c2.android.avc.encoder'
+{"test":"SDL_window_ready","version":3004018,"main_thread":true,"window":3,"width":256,"height":256}
+[server] DEBUG: Video codec size alignment requirement: 2px
+[server] INFO: New display: 720x1080/240 (id=17)
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 17...
+{"test":"SDL_PushEvent","type":1025,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":1026,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":1025,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":1026,"window":3,"success":true}
+{"test":"text_modifiers","value":0}
+{"test":"SDL_PushEvent","type":771,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":768,"window":3,"success":true}
+{"test":"SDL_PushEvent","type":769,"window":3,"success":true}
+{"test":"SDL_input_complete","word":"1ProductionA","window":3}
+WARN: Device disconnected
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+DEBUG: Using adb: /Users/patrick/Library/Android/sdk/platform-tools/adb
+INFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:         (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+INFO:     --> (tcpip)  emulator-5582                   device  sdk_gphone16k_arm64
+DEBUG: Device serial: emulator-5582
+DEBUG: Using SCRCPY_SERVER_PATH: /opt/homebrew/share/scrcpy/scrcpy-server
+DEBUG: Server connected
+DEBUG: Starting controller thread
+DEBUG: Starting receiver thread
+INFO: Recording started to matroska file: /Users/patrick/workspace/DroidBridge/verification/screen-off/concurrent-fallback/a.mkv
+INFO: Renderer: metal
+DEBUG: Trilinear filtering disabled (not an OpenGL renderer)
+INFO: Interop: videotoolbox
+DEBUG: Using icon: /opt/homebrew/Cellar/scrcpy/5.0.1/share/icons/hicolor/256x256/apps/scrcpy.png
+INFO: Video decoding: videotoolbox
+DEBUG: Demuxer 'video': starting thread
+DEBUG: Decoder 'video': h264
+INFO: Texture (VideoToolbox): 720x1080
+INFO: Texture (VideoToolbox): 720x906
+DEBUG: Server disconnected
+DEBUG: Server terminated
+DEBUG: Receiver stopped
+DEBUG: Demuxer 'video': end of frames
+DEBUG: Decoder (video) thread ended
+DEBUG: Using icon: /opt/homebrew/Cellar/scrcpy/5.0.1/share/icons/hicolor/256x256/apps/disconnected.png
+DEBUG: Controller stopped
+DEBUG: User requested to quit
+DEBUG: Quit...
+INFO: Recording complete to matroska file: /Users/patrick/workspace/DroidBridge/verification/screen-off/concurrent-fallback/a.mkv
+DEBUG: Recorder thread ended
+{"event":"supervisor_stopped","reason":"stop_signal","exit_status":2,"signal":null,"requested_signal":15}

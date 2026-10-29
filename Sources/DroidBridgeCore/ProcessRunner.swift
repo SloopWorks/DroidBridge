@@ -9,13 +9,13 @@ public struct ProcessResult {
 /// Bounded subprocess execution without a shell. Combined stdout/stderr is staged to
 /// a temporary file so a verbose child cannot deadlock a pipe or exhaust memory.
 public enum ProcessRunner {
-    public static func run(_ executable: String, arguments: [String], environment: [String: String] = [:], timeout: TimeInterval = 20) async throws -> ProcessResult {
+    public static func run(_ executable: String, arguments: [String], environment: [String: String] = [:], timeout: TimeInterval = 20, allowNonZeroExit: Bool = false) async throws -> ProcessResult {
         try await Task.detached(priority: .userInitiated) {
-            try runBlocking(executable, arguments: arguments, environment: environment, timeout: timeout)
+            try runBlocking(executable, arguments: arguments, environment: environment, timeout: timeout, allowNonZeroExit: allowNonZeroExit)
         }.value
     }
 
-    private static func runBlocking(_ executable: String, arguments: [String], environment: [String: String], timeout: TimeInterval) throws -> ProcessResult {
+    private static func runBlocking(_ executable: String, arguments: [String], environment: [String: String], timeout: TimeInterval, allowNonZeroExit: Bool) throws -> ProcessResult {
             let path = FileManager.default.temporaryDirectory.appendingPathComponent("droidbridge-\(UUID().uuidString).log")
             FileManager.default.createFile(atPath: path.path, contents: nil)
             defer { try? FileManager.default.removeItem(at: path) }
@@ -47,7 +47,7 @@ public enum ProcessRunner {
             let data = try reader.read(upToCount: 4 * 1024 * 1024) ?? Data()
             let output = String(decoding: data, as: UTF8.self)
             if exceeded { throw BridgeError.message("Command exceeded its time or output limit: \(URL(fileURLWithPath: executable).lastPathComponent). \(output.suffix(1000))") }
-            guard process.terminationStatus == 0 else { throw BridgeError.message("\(URL(fileURLWithPath: executable).lastPathComponent) failed (\(process.terminationStatus)): \(output.suffix(3000))") }
+            guard allowNonZeroExit || process.terminationStatus == 0 else { throw BridgeError.message("\(URL(fileURLWithPath: executable).lastPathComponent) failed (\(process.terminationStatus)): \(output.suffix(3000))") }
             return ProcessResult(output: output, status: process.terminationStatus)
     }
 }

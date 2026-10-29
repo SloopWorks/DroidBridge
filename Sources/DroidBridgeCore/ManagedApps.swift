@@ -38,6 +38,7 @@ public enum ManagedAppCatalogError: LocalizedError {
     }
 }
 public struct ManagedAppReservation: Codable, Sendable, Equatable {
+    public var namingVersion: Int? = nil
     public let id: UUID
     public let key: String
     public let deviceHash: String
@@ -59,6 +60,7 @@ public struct ManagedAppManualAdoption: Codable, Sendable, Equatable {
     public let configuration: Data
 }
 public struct ManagedAppRecord: Codable, Sendable {
+    public var namingVersion: Int? = nil
     public let key: String
     public let generation: UUID
     public let deviceHash: String
@@ -122,8 +124,11 @@ public final class ManagedAppCatalog: @unchecked Sendable {
         var availableSerials: Set<String> = []
         var issues: [String:ManagedAppIssue] = [:]
         var missingHistory: [String:ManagedAppRecord] = [:]
+        // Exact previous public paths remain authoritative for late LS effects
+        // after a filename change; they never authorize replacing foreign bytes.
+        var retiredNames: [String:ManagedAppRecord] = [:]
         init() {}
-        private enum CodingKeys: String, CodingKey { case version, records, reservations, publications, actions, policyEnabled, availableSerials, issues, missingHistory }
+        private enum CodingKeys: String, CodingKey { case version, records, reservations, publications, actions, policyEnabled, availableSerials, issues, missingHistory, retiredNames }
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy:CodingKeys.self)
             version = try values.decode(Int.self,forKey:.version)
@@ -135,24 +140,106 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             availableSerials = try values.decodeIfPresent(Set<String>.self,forKey:.availableSerials) ?? []
             issues = try values.decodeIfPresent([String:ManagedAppIssue].self,forKey:.issues) ?? [:]
             missingHistory = try values.decodeIfPresent([String:ManagedAppRecord].self,forKey:.missingHistory) ?? [:]
+            retiredNames = try values.decodeIfPresent([String:ManagedAppRecord].self,forKey:.retiredNames) ?? [:]
         }
     }
     public init(paths: ManagedAppsPaths = .userDefault) { self.paths = paths }
     public static func bundleFilename(_ package: String, name: String? = nil) -> String {
+        filenameStem(name ?? package) + ".app"
+    }
+    private static func legacyFilename(_ package: String, name: String) -> String {
         let suffix = SHA256.hash(data:Data(package.utf8)).prefix(8).map { String(format:"%02x",$0) }.joined()
-        let label = (name ?? package).replacingOccurrences(of:"/",with:"-").replacingOccurrences(of:":",with:"-").trimmingCharacters(in:.whitespacesAndNewlines)
+        return filenameStem(name) + "-" + suffix + ".app"
+    }
+    private static func filenameStem(_ name: String, limit: Int = 160) -> String {
+        let label = name.replacingOccurrences(of:"/",with:"-").replacingOccurrences(of:":",with:"-").trimmingCharacters(in:.whitespacesAndNewlines)
         var slug = ""
         for character in label where !character.unicodeScalars.contains(where: { CharacterSet.controlCharacters.contains($0) }) {
-            guard (slug + String(character)).utf8.count <= 160 else { break }; slug.append(character)
+            guard (slug + String(character)).utf8.count <= limit else { break }; slug.append(character)
         }
         if slug.isEmpty || slug.hasPrefix(".") { slug = "Android App" }
-        return slug + "-" + suffix + ".app"
+        return slug
+    }
+    private static func filenameKey(_ filename: String) -> String {
+        filename.precomposedStringWithCanonicalMapping.folding(options:[.caseInsensitive],locale:Locale(identifier:"en_US_POSIX"))
+    }
+    public static func needsNameRepair(_ record: ManagedAppRecord) -> Bool {
+        record.bundleFilename == legacyFilename(record.packageName,name:record.name)
+    }
+    private func cleanNamesAllowed(_ manifest: Manifest, running: Set<String> = []) -> Bool {
+        // Deleted bundles have no reader to upgrade. Keep their accepted metadata
+        // for explicit repair, but don't let one absent icon block healthy apps.
+        // A deleted-but-still-running app remains a compatibility barrier.
+        manifest.records.values.allSatisfy { record in
+            if (record.namingVersion ?? 1) >= 2 { return true }
+            for url in [record.activeBundleURL,record.inactiveBundleURL] {
+                if running.contains(Self.canonical(url)) { return false }
+                var metadata = stat()
+                if lstat(url.path,&metadata) == 0 || errno != ENOENT { return false }
+            }
+            return true
+        } &&
+        manifest.reservations.values.allSatisfy { ($0.namingVersion ?? 1) >= 2 || (kill($0.ownerPID,0) != 0 && errno != EPERM) } &&
+        manifest.publications.values.allSatisfy { ($0.candidate.namingVersion ?? 1) >= 2 }
+    }
+    private func chooseFilename(package: String, name: String, hash: String, key: String, manifest: Manifest) throws -> String {
+        var occupied = Set<String>()
+        for record in manifest.records.values where record.deviceHash == hash && record.key != key { occupied.insert(Self.filenameKey(record.bundleFilename)) }
+        for claim in manifest.reservations.values where claim.deviceHash == hash && claim.key != key { occupied.insert(Self.filenameKey(claim.bundleFilename)) }
+        for publication in manifest.publications.values where publication.candidate.deviceHash == hash && publication.candidate.key != key { occupied.insert(Self.filenameKey(publication.candidate.bundleFilename)) }
+        for parent in [paths.activeRoot.appendingPathComponent(hash),paths.privateRoot.appendingPathComponent("inactive/"+hash)] {
+            try rejectSymlink(parent,below:root(containing:parent))
+            if fm.fileExists(atPath:parent.path) {
+                let children = try fm.contentsOfDirectory(at:parent,includingPropertiesForKeys:nil)
+                guard children.count <= 20_000 else { throw ManagedAppCatalogError.invalid("application directory capacity") }
+                for child in children { occupied.insert(Self.filenameKey(child.lastPathComponent)) }
+            }
+        }
+        let plain = Self.bundleFilename(package,name:name)
+        if !occupied.contains(Self.filenameKey(plain)) { return plain }
+        let qualifier = Self.filenameStem(package,limit:80)
+        for number in 1...10_001 {
+            let suffix = " ("+qualifier+(number == 1 ? "" : " \(number)")+").app"
+            let candidate = Self.filenameStem(name,limit:210-suffix.utf8.count)+suffix
+            if !occupied.contains(Self.filenameKey(candidate)) { return candidate }
+        }
+        throw ManagedAppCatalogError.invalid("application name capacity")
     }
 
     public static func deviceHash(_ serial: String) -> String { SHA256.hash(data: Data(serial.utf8)).prefix(12).map { String(format: "%02x", $0) }.joined() }
     public static func bundleIdentifier(serial: String, packageName: String) -> String { "app.droidbridge.managed.d\(deviceHash(serial)).\(packageName)" }
 
     public func records() throws -> [ManagedAppRecord] { try locked { manifest in manifest.records.values.sorted { $0.key < $1.key } } }
+    public func canRepairNames(runningBundlePaths: Set<String> = []) throws -> Bool {
+        let running = Set(runningBundlePaths.map { Self.canonical(URL(fileURLWithPath:$0)) })
+        return try locked { cleanNamesAllowed($0,running:running) }
+    }
+    public func savedLaunchConfiguration(for record: ManagedAppRecord) throws -> [String:String] {
+        try locked { manifest in
+            guard manifest.records[record.key]?.generation == record.generation, manifest.publications[record.key] == nil else { throw ManagedAppCatalogError.busy }
+            try validateBundle(record.bundleURL,record:record)
+            guard let options = try boundedDictionary(record.bundleURL.appendingPathComponent("Contents/Resources/launch.json"),plist:false) as? [String:String] else { throw ManagedAppCatalogError.invalid("saved launch configuration") }
+            return options
+        }
+    }
+    public func savedIcon(for record: ManagedAppRecord) throws -> Data {
+        let url = try locked { manifest in
+            guard manifest.records[record.key]?.generation == record.generation, manifest.publications[record.key] == nil else { throw ManagedAppCatalogError.busy }
+            try validateBundle(record.bundleURL,record:record)
+            let url = record.bundleURL.appendingPathComponent("Contents/Resources/AndroidApp.png")
+            try rejectSymlink(url,below:root(containing:url))
+            return url
+        }
+        // Byte staging stays outside the catalog lock. A concurrent availability
+        // move can refuse this read and be retried without altering accepted state.
+        let fd = open(url.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC)
+        guard fd >= 0 else { throw ManagedAppCatalogError.invalid("saved Android icon unavailable") }
+        let handle = FileHandle(fileDescriptor:fd,closeOnDealloc:true)
+        defer { try? handle.close() }
+        var metadata = stat()
+        guard fstat(fd,&metadata) == 0, metadata.st_mode & S_IFMT == S_IFREG, metadata.st_size <= 4*1024*1024 else { throw ManagedAppCatalogError.invalid("saved Android icon size/type") }
+        return try handle.read(upToCount:4*1024*1024+1) ?? Data()
+    }
     public func issues() throws -> [ManagedAppIssue] { try locked { manifest in Array(manifest.issues.values.sorted { $0.key < $1.key }.prefix(32)) } }
     public func isCurrent(_ record: ManagedAppRecord, hostVersion: String, hostBuild: String, backend: BackendKind, name: String) throws -> Bool {
         try locked { manifest in
@@ -162,7 +249,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             return (try? validateBundle(record.bundleURL, record: record)) != nil
         }
     }
-    public func reserve(device: AndroidDevice, application: AndroidApplication, backend: BackendKind, runningBundlePaths: Set<String> = [], adoptManualWrappers: Bool = false) throws -> ManagedAppReservation {
+    public func reserve(device: AndroidDevice, application: AndroidApplication, backend: BackendKind, runningBundlePaths: Set<String> = [], adoptManualWrappers: Bool = false, preserveLegacyFilename: Bool = false) throws -> ManagedAppReservation {
         try AndroidDiscovery.validateSerial(device.serial); try AndroidDiscovery.validatePackage(application.packageName)
         guard !application.name.isEmpty, application.name.utf8.count <= 1024 else { throw ManagedAppCatalogError.invalid("application name") }
         let normalizedRunning = Set(runningBundlePaths.map { Self.canonical(URL(fileURLWithPath:$0)) })
@@ -179,9 +266,13 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             if let adoption, let saved = try JSONSerialization.jsonObject(with: adoption.configuration) as? [String:String], let savedName = saved["name"], let savedBackend = saved["backend"].flatMap(BackendKind.init(rawValue:)) {
                 selectedApplication = AndroidApplication(packageName: application.packageName, name: savedName); selectedBackend = savedBackend
             }
-            let filename = manifest.records[key]?.bundleFilename ?? Self.bundleFilename(application.packageName,name:selectedApplication.name)
+            let filename: String
+            if let existing = manifest.records[key], preserveLegacyFilename || !Self.needsNameRepair(existing) || !cleanNamesAllowed(manifest,running:normalizedRunning) { filename = existing.bundleFilename }
+            else if !cleanNamesAllowed(manifest,running:normalizedRunning) || preserveLegacyFilename { filename = Self.legacyFilename(application.packageName,name:selectedApplication.name) }
+            else { filename = try chooseFilename(package:application.packageName,name:selectedApplication.name,hash:hash,key:key,manifest:manifest) }
             let id = UUID(), root = paths.privateRoot.appendingPathComponent("staging/\(id.uuidString)")
-            let result = ManagedAppReservation(id: id, key: key, deviceHash: hash, bundleIdentifier: Self.bundleIdentifier(serial: device.serial, packageName: application.packageName), bundleFilename: filename, stagingRoot: root, stagedBundleURL: root.appendingPathComponent(filename), activeBundleURL: activeURL(hash, filename), device: device, application: selectedApplication, backend: selectedBackend, manualAdoption: adoption, previousGeneration: manifest.records[key]?.generation, ownerPID: getpid())
+            var result = ManagedAppReservation(id: id, key: key, deviceHash: hash, bundleIdentifier: Self.bundleIdentifier(serial: device.serial, packageName: application.packageName), bundleFilename: filename, stagingRoot: root, stagedBundleURL: root.appendingPathComponent(filename), activeBundleURL: activeURL(hash, filename), device: device, application: selectedApplication, backend: selectedBackend, manualAdoption: adoption, previousGeneration: manifest.records[key]?.generation, ownerPID: getpid())
+            result.namingVersion = 2
             manifest.issues.removeValue(forKey:key); manifest.reservations[key] = result; try save(manifest); return result
         }
     }
@@ -204,7 +295,8 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                   manifest.records[reservation.key]?.generation == reservation.previousGeneration else { throw ManagedAppCatalogError.invalid("expired reservation generation") }
             if let previous = manifest.records[reservation.key], normalizedRunning.contains(Self.canonical(previous.bundleURL)) { throw ManagedAppCatalogError.running }
             let info = try boundedDictionary(reservation.stagedBundleURL.appendingPathComponent("Contents/Info.plist"), plist: true)
-            let record = ManagedAppRecord(key: reservation.key, generation: reservation.id, deviceHash: reservation.deviceHash, deviceSerial: reservation.device.serial, deviceModel: reservation.device.model, packageName: reservation.application.packageName, name: reservation.application.name, backend: reservation.backend, bundleIdentifier: reservation.bundleIdentifier, bundleFilename: reservation.bundleFilename, activeBundleURL: reservation.activeBundleURL, inactiveBundleURL: inactiveURL(reservation.deviceHash, reservation.bundleFilename), availability: .inactive, location: .inactive, sourceVersion: info["CFBundleShortVersionString"] as? String ?? "", sourceBuild: info["CFBundleVersion"] as? String ?? "")
+            var record = ManagedAppRecord(key: reservation.key, generation: reservation.id, deviceHash: reservation.deviceHash, deviceSerial: reservation.device.serial, deviceModel: reservation.device.model, packageName: reservation.application.packageName, name: reservation.application.name, backend: reservation.backend, bundleIdentifier: reservation.bundleIdentifier, bundleFilename: reservation.bundleFilename, activeBundleURL: reservation.activeBundleURL, inactiveBundleURL: inactiveURL(reservation.deviceHash, reservation.bundleFilename), availability: .inactive, location: .inactive, sourceVersion: info["CFBundleShortVersionString"] as? String ?? "", sourceBuild: info["CFBundleVersion"] as? String ?? "")
+            record.namingVersion = info["DroidBridgeManagedNamingVersion"] as? Int ?? 1
             try validateBundle(reservation.stagedBundleURL, record: record)
             if let previous = manifest.records[record.key] {
                 for oldURL in [previous.activeBundleURL,previous.inactiveBundleURL] {
@@ -214,6 +306,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                 }
             }
             manifest.publications[record.key] = Publication(reservation: reservation, candidate: record, previous: manifest.records[record.key])
+            if let previous = manifest.records[record.key], previous.activeBundleURL != record.activeBundleURL || Self.needsNameRepair(previous) { manifest.retiredNames[previous.generation.uuidString] = previous }
             if let previous = manifest.records[record.key], previous.location == .active { enqueue(register: false, record: previous, manifest: &manifest) }
             if let adoption = reservation.manualAdoption { enqueueUnregister(url: adoption.bundleURL, key: record.key, generation: record.generation, manifest: &manifest) }
             try save(manifest)
@@ -306,6 +399,8 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                     try validateManual(adoption,serial:publication.candidate.deviceSerial,package:publication.candidate.packageName)
                 } else if let record = manifest.records[action.key], record.activeBundleURL.path == action.bundleURL.path {
                     try validateBundle(action.bundleURL,record:record)
+                } else if let record = manifest.retiredNames[action.generation.uuidString], record.key == action.key, record.activeBundleURL.path == action.bundleURL.path {
+                    try validateBundle(action.bundleURL,record:record)
                 } else { throw ManagedAppCatalogError.invalid("unregister path has no current owned bundle") }
                 return true
             }
@@ -331,13 +426,20 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                 manifest.actions.removeAll { $0.id == action.id && $0 == action }
                 results[action.id] = present
                 if action.register {
-                    guard let record = manifest.records[action.key], action.bundleURL.path == record.activeBundleURL.path else { throw ManagedAppCatalogError.invalid("completed registration path") }
+                    guard let record = manifest.records[action.key] else { throw ManagedAppCatalogError.invalid("completed registration owner") }
+                    if action.bundleURL.path != record.activeBundleURL.path {
+                        guard let retired = manifest.retiredNames[action.generation.uuidString], retired.key == action.key, retired.activeBundleURL.path == action.bundleURL.path else { throw ManagedAppCatalogError.invalid("completed registration path") }
+                        enqueueUnregister(url:action.bundleURL,key:action.key,generation:action.generation,manifest:&manifest,supersedeRegistrations:false)
+                        if manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) && record.availability == .active && record.location == .active && manifest.publications[action.key] == nil { enqueue(register:true,record:record,manifest:&manifest) }
+                        results[action.id] = false
+                        continue
+                    }
                     if !manifest.policyEnabled || !manifest.availableSerials.contains(record.deviceSerial) || record.generation != action.generation || record.availability != .active || record.location != .active || manifest.publications[action.key] != nil {
                         enqueueUnregister(url:action.bundleURL,key:action.key,generation:action.generation,manifest:&manifest,supersedeRegistrations:false)
                         if manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) && record.availability == .active && record.location == .active && manifest.publications[action.key] == nil { enqueue(register:true,record:record,manifest:&manifest) }
                         results[action.id] = false
                     }
-                } else if let record = manifest.records[action.key], record.availability == .inactive && record.location == .active && manifest.publications[action.key] == nil {
+                } else if let record = manifest.records[action.key], action.bundleURL.path == record.activeBundleURL.path, record.availability == .inactive && record.location == .active && manifest.publications[action.key] == nil {
                     var successor = record; successor.location = .inactive; manifest.records[action.key] = successor
                     moves.append((successor,record.activeBundleURL,record.inactiveBundleURL))
                 }
@@ -436,6 +538,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
               launch["managed_generation"] as? String == record.generation.uuidString,
               launch["serial"] as? String == record.deviceSerial, launch["package"] as? String == record.packageName,
               launch["name"] as? String == record.name, launch["backend"] as? String == record.backend.rawValue,
+              (record.namingVersion ?? 1) < 2 || info["DroidBridgeManagedNamingVersion"] as? Int == record.namingVersion,
               fm.isExecutableFile(atPath: url.appendingPathComponent("Contents/MacOS/DroidBridge").path) else { throw ManagedAppCatalogError.invalid("owned bundle metadata mismatch at \(url.lastPathComponent)") }
     }
     private func boundedDictionary(_ url: URL, plist: Bool) throws -> [String: Any] {
@@ -502,10 +605,14 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                 manifest = cachedManifest
             } else {
             manifest = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url))
-            guard manifest.version == 1, manifest.records.count <= 10_000, manifest.reservations.count <= 10_000, manifest.actions.count <= 30_000, manifest.publications.count <= 10_000, manifest.availableSerials.count <= 10_000, manifest.issues.count <= 10_000, manifest.missingHistory.count <= 10_000 else { throw ManagedAppCatalogError.invalid("manifest limits/version") }
+            guard manifest.version == 1, manifest.records.count <= 10_000, manifest.reservations.count <= 10_000, manifest.actions.count <= 30_000, manifest.publications.count <= 10_000, manifest.availableSerials.count <= 10_000, manifest.issues.count <= 10_000, manifest.missingHistory.count <= 10_000, manifest.retiredNames.count <= 10_000 else { throw ManagedAppCatalogError.invalid("manifest limits/version") }
             for serial in manifest.availableSerials { try AndroidDiscovery.validateSerial(serial) }
             for (id,record) in manifest.missingHistory {
                 guard id == record.generation.uuidString else { throw ManagedAppCatalogError.invalid("missing history identity") }
+                try validateRecord(record,key:record.key)
+            }
+            for (id,record) in manifest.retiredNames {
+                guard id == record.generation.uuidString, manifest.records[record.key] != nil || manifest.publications[record.key] != nil else { throw ManagedAppCatalogError.invalid("retired name owner") }
                 try validateRecord(record,key:record.key)
             }
             for (key,issue) in manifest.issues {
@@ -520,28 +627,43 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             }
             for action in manifest.actions {
                 guard let record = manifest.records[action.key] ?? manifest.publications[action.key]?.candidate else { throw ManagedAppCatalogError.invalid("unknown action owner") }
-                let manual = manifest.publications[action.key]?.reservation.manualAdoption?.bundleURL
-                guard action.bundleURL.isFileURL, action.bundleURL.path == record.activeBundleURL.path || (!action.register && action.bundleURL.path == manual?.path) else { throw ManagedAppCatalogError.invalid("action path") }
+                let publication = manifest.publications[action.key]
+                let manual = publication?.reservation.manualAdoption?.bundleURL
+                let retired = manifest.retiredNames[action.generation.uuidString]
+                let retiredMatch = retired?.key == action.key && retired?.activeBundleURL.path == action.bundleURL.path
+                guard action.bundleURL.isFileURL, action.bundleURL.path == record.activeBundleURL.path || action.bundleURL.path == publication?.candidate.activeBundleURL.path || (!action.register && action.bundleURL.path == manual?.path) || retiredMatch else { throw ManagedAppCatalogError.invalid("action path") }
             }
             cachedManifest = manifest; cachedFingerprint = fingerprint
             }
         } else { cachedManifest = nil; cachedFingerprint = nil }
         return try operation(&manifest)
     }
-    private func validateFilename(_ filename: String, package: String) throws {
+    private func validateFilename(_ filename: String, package: String, name: String) throws {
         let suffix = "-" + SHA256.hash(data:Data(package.utf8)).prefix(8).map { String(format:"%02x",$0) }.joined() + ".app"
-        guard filename.hasSuffix(suffix), filename.utf8.count <= 220, !filename.hasPrefix("."), !filename.contains("/"), !filename.contains(":"), !filename.unicodeScalars.contains(where:{CharacterSet.controlCharacters.contains($0)}) else { throw ManagedAppCatalogError.invalid("friendly filename binding") }
+        var clean = filename == Self.bundleFilename(package,name:name)
+        if !clean {
+            let qualifier = Self.filenameStem(package,limit:80)
+            let tail = ").app"
+            if filename.hasSuffix(tail), let range = filename.range(of:" ("+qualifier,options:.backwards) {
+                let numeric = String(filename[range.upperBound..<filename.index(filename.endIndex,offsetBy:-tail.count)])
+                if numeric.isEmpty || (numeric.hasPrefix(" ") && Int(numeric.dropFirst()).map({ (2...10_001).contains($0) }) == true) {
+                    let extra = " ("+qualifier+numeric+tail
+                    clean = filename == Self.filenameStem(name,limit:210-extra.utf8.count)+extra
+                }
+            }
+        }
+        guard (filename.hasSuffix(suffix) || clean), filename.utf8.count <= 220, !filename.hasPrefix("."), !filename.contains("/"), !filename.contains(":"), !filename.unicodeScalars.contains(where:{CharacterSet.controlCharacters.contains($0)}) else { throw ManagedAppCatalogError.invalid("friendly filename binding") }
     }
     private func validateRecord(_ record: ManagedAppRecord, key: String) throws {
         try AndroidDiscovery.validateSerial(record.deviceSerial); try AndroidDiscovery.validatePackage(record.packageName)
-        try validateFilename(record.bundleFilename, package:record.packageName)
+        try validateFilename(record.bundleFilename, package:record.packageName,name:record.name)
         guard key == record.key, record.deviceHash == Self.deviceHash(record.deviceSerial), key == record.deviceHash + ":" + record.packageName,
               record.bundleIdentifier == Self.bundleIdentifier(serial: record.deviceSerial, packageName: record.packageName),
               record.activeBundleURL.path == activeURL(record.deviceHash, record.bundleFilename).path, record.inactiveBundleURL.path == inactiveURL(record.deviceHash, record.bundleFilename).path, record.name.utf8.count <= 1024 else { throw ManagedAppCatalogError.invalid("manifest record identity") }
     }
     private func validateReservation(_ reservation: ManagedAppReservation, key: String) throws {
         try AndroidDiscovery.validateSerial(reservation.device.serial); try AndroidDiscovery.validatePackage(reservation.application.packageName)
-        try validateFilename(reservation.bundleFilename, package:reservation.application.packageName)
+        try validateFilename(reservation.bundleFilename, package:reservation.application.packageName,name:reservation.application.name)
         guard reservation.ownerPID > 0, reservation.key == key, reservation.deviceHash == Self.deviceHash(reservation.device.serial),
               key == reservation.deviceHash + ":" + reservation.application.packageName,
               reservation.bundleIdentifier == Self.bundleIdentifier(serial: reservation.device.serial, packageName: reservation.application.packageName),

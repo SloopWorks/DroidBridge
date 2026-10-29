@@ -13,6 +13,7 @@ public final class BridgeSession {
     public private(set) var logURL: URL
     private let toolchain: Toolchain
     private var process: Process?
+    private var externalPortLease: ScrcpyPortLease?
     private var logHandle: FileHandle?
     private var transport: NativeTransport?
     private var frameMailbox: FrameMailbox?
@@ -76,7 +77,7 @@ public final class BridgeSession {
             let activity = try await adb(["shell","cmd","package","resolve-activity","--brief","-a","android.intent.action.MAIN","-c","android.intent.category.LAUNCHER",descriptor.application.packageName])
             guard !activity.output.contains("No activity found"), activity.output.contains("/") else { throw BridgeError.message("Android application has no launchable activity") }
             try check(token)
-            if descriptor.configuration.backend == .scrcpy { try startExternal(token:token) }
+            if descriptor.configuration.backend == .scrcpy { try await startExternal(token:token) }
             else { try await startNative(token:token) }
         } catch {
             if generation == token { stop(reason: "startup_failure"); transition(.failed,error.localizedDescription) }
@@ -104,28 +105,56 @@ public final class BridgeSession {
         var environment = ProcessInfo.processInfo.environment; toolchain.environment.forEach { environment[$0.key] = $0.value }
         environment["SCRCPY_SERVER_PATH"] = toolchain.server; environment["ADB"] = toolchain.adb
         process.environment = environment; process.standardOutput = file; process.standardError = file
+        process.standardInput = externalPortLease?.inheritedInput ?? FileHandle.nullDevice
         process.terminationHandler = { [weak self] terminated in
             Task { @MainActor in
                 guard let self, self.generation == token, self.state == .running || self.state == .starting else { return }
                 let code = terminated.terminationStatus
                 let reason = terminated.terminationReason == .uncaughtSignal ? "signal \(code)" : "exit status \(code)"
-                let beforeFrame = self.state == .starting && self.descriptor.configuration.backend == .native
+                let beforeReady = self.state == .starting
+                let beforeFrame = beforeReady && self.descriptor.configuration.backend == .native
                 let message = beforeFrame
                     ? "Native session process ended before the first decoded video frame (\(reason)). See \(self.logURL.path)"
-                    : "Session process exited (\(reason)). See \(self.logURL.path)"
-                if beforeFrame { self.startupTerminalMessage = message }
+                    : beforeReady ? "Fallback session process ended before Android confirmed the application display (\(reason)). See \(self.logURL.path)" : "Session process exited (\(reason)). See \(self.logURL.path)"
+                if beforeReady { self.startupTerminalMessage = message }
                 self.stop(reason: "session_process_exit")
-                let clean = code == 0 && terminated.terminationReason == .exit && !beforeFrame
+                let clean = code == 0 && terminated.terminationReason == .exit && !beforeReady
                 self.transition(clean ? .stopped : .failed,clean ? nil : message)
             }
         }
         try process.run(); self.process = process
     }
-    private func startExternal(token: UUID) throws {
+    private func startExternal(token: UUID) async throws {
+        let startup = try await ScrcpyStartupLease.acquire(serial:descriptor.device.serial)
+        // Keep the descriptor alive across awaits; it is CLOEXEC and is not
+        // passed as child stdin, so readiness releases it while the app runs.
+        defer {withExtendedLifetime(startup) {}}
+        try Task.checkCancellation();try check(token)
         let config = descriptor.configuration
-        var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=30","--video-codec=h264"]
+        let lease = try ScrcpyPortLease.acquire(); externalPortLease = lease
+        var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=30","--video-codec=h264","--keep-active","--no-power-on","--display-ime-policy=local"]
         if !config.showSystemDecorations { args.append("--no-vd-system-decorations") }
-        try spawn(toolchain.scrcpy,arguments:args,token:token); transition(.running)
+        args.append("--port=\(lease.port)")
+        try spawn(toolchain.scrcpy,arguments:args,token:token)
+        let url=logURL,package=descriptor.application.packageName
+        let deadline=ProcessInfo.processInfo.systemUptime+15
+        while ProcessInfo.processInfo.systemUptime<deadline {
+            try Task.checkCancellation();try check(token)
+            let ready=try await Task.detached(priority:.utility) {
+                let handle=try FileHandle(forReadingFrom:url);defer {try? handle.close()}
+                let data=try handle.read(upToCount:64*1024) ?? Data()
+                let text=String(decoding:data,as:UTF8.self)
+                return text.components(separatedBy:.newlines).contains {line in
+                    guard line.hasPrefix("[server] INFO: Starting app "),let range=line.range(of:"[\(package)] on display ",options:.backwards) else {return false}
+                    let suffix=line[range.upperBound...]
+                    return suffix.range(of:#"^[0-9]+\.\.\.$"#,options:.regularExpression) != nil
+                }
+            }.value
+            try Task.checkCancellation();try check(token)
+            if ready {transition(.running);return}
+            try await Task.sleep(for:.milliseconds(50))
+        }
+        throw BridgeError.message("Android did not confirm the fallback application display within 15 seconds. See \(logURL.path)")
     }
     private func adb(_ arguments: [String]) async throws -> ProcessResult {
         try await ProcessRunner.run(toolchain.adb,arguments:["-s",descriptor.device.serial]+arguments,environment:toolchain.environment)
@@ -142,7 +171,7 @@ public final class BridgeSession {
         guard let port = UInt16(result.output.trimmingCharacters(in:.whitespacesAndNewlines)), port > 0 else { throw BridgeError.message("ADB did not allocate a video port") }
         localForward = "tcp:\(port)"; try check(token); forward = localForward
         let c = descriptor.configuration
-        let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=30","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_system_decorations=\(c.showSystemDecorations)","vd_destroy_content=true","clipboard_autosync=false","cleanup=true"]
+        let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=30","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_system_decorations=\(c.showSystemDecorations)","vd_destroy_content=true","clipboard_autosync=false","keep_active=true","power_on=false","display_ime_policy=local","cleanup=true"]
         try spawn(toolchain.adb,arguments:arguments,token:token)
         let transport = NativeTransport(); self.transport = transport
         let mailbox = FrameMailbox { [weak self] frame in
@@ -219,6 +248,7 @@ public final class BridgeSession {
         generation = UUID(); transition(.stopping)
         frameMailbox?.cancel(); frameMailbox = nil
         transport?.stop(); transport = nil
+        let portLease = externalPortLease; externalPortLease = nil
         if let process,process.isRunning {
             process.terminate()
             let taskID = UUID()
@@ -227,6 +257,7 @@ public final class BridgeSession {
                 while process.isRunning && Date() < deadline { try? await Task.sleep(nanoseconds:50_000_000) }
                 if process.isRunning { kill(process.processIdentifier,SIGKILL) }
                 process.waitUntilExit()
+                withExtendedLifetime(portLease) {}
             }
         }
         process = nil; try? logHandle?.close(); logHandle = nil

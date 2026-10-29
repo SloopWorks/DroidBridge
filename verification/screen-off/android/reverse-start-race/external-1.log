@@ -1,0 +1,18 @@
+/opt/homebrew/Cellar/scrcpy/5.0.1/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 1243.3 MB/s (733930 bytes in 0.001s)
+bind: Address already in use
+WARN: Could not listen on port 27183, retrying on 27184
+[server] INFO: Device: [Google] google sdk_gphone16k_arm64 (Android 17)
+[server] INFO: New display: 720x1080/240 (id=6)
+{"test":"SDL_window_ready","version":3004018,"main_thread":true,"window":3,"width":480,"height":720}
+WARN: Device disconnected
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+INFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:         (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+INFO:     --> (tcpip)  emulator-5582                   device  sdk_gphone16k_arm64
+INFO: Recording started to matroska file: /Users/patrick/workspace/DroidBridge/verification/screen-off/android/api37/external-1.mkv
+INFO: Renderer: metal
+INFO: Interop: videotoolbox
+INFO: Video decoding: videotoolbox
+INFO: Texture (VideoToolbox): 720x1080
+INFO: Recording complete to matroska file: /Users/patrick/workspace/DroidBridge/verification/screen-off/android/api37/external-1.mkv

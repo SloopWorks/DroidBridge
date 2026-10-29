@@ -1,0 +1,13 @@
+{
+  "simultaneous_production_start" : true,
+  "recording_proxy_only_adds_test_recording_and_public_sdl_fixture" : true,
+  "off_idle_seconds" : 12,
+  "real_core_and_streaming" : true,
+  "passed" : true,
+  "settings_unchanged" : true,
+  "display_ids" : [
+    17,
+    16
+  ],
+  "resource_baseline_restored" : true
+}

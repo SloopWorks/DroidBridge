@@ -15,6 +15,8 @@ scripts/package.sh
 
 The packaging script builds release Swift sources and the original DEX icon helper, assembles an app bundle, copies ADB, scrcpy, the exact server JAR and their dynamic library dependencies, rewrites library paths, ad-hoc signs, and creates a DMG and checksums. Android SDK platform 35, build-tools 35.0.0, platform-tools and a JDK must be present during packaging. The icon helper uses the same pinned Android build tools as the integration fixture. No Homebrew or SDK dependency should be required by an installed bundle.
 
+For an update, quit the old DroidBridge main application before replacing it. Open the new main app once to repair existing managed app names automatically, even with the phone disconnected. Running wrappers wait until they quit; do not run old and new main app versions concurrently during migration. Progress and retry errors appear in the onboarding area and Onboarding Details.
+
 Install by dragging `DroidBridge.app` from the DMG to `/Applications` or `~/Applications`. Launch it, refresh devices, select an authorized Android device or emulator, choose a backend, and launch an app. USB authorization is an Android security prompt and must be accepted on the device.
 
 ## Signing

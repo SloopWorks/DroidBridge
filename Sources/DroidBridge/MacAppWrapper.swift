@@ -21,23 +21,28 @@ enum MacAppWrapper {
 
     @MainActor
     static func createManaged(application: AndroidApplication, device: AndroidDevice, backend: BackendKind, iconPNG: Data,
-                              reservation: ManagedAppReservation, hostBundleURL: URL = Bundle.main.bundleURL) async throws -> URL {
+                              reservation: ManagedAppReservation, hostBundleURL: URL = Bundle.main.bundleURL,
+                              preservingConfiguration: [String:String]? = nil) async throws -> URL {
         guard reservation.device.serial == device.serial, reservation.application.packageName == application.packageName,
               reservation.bundleIdentifier == ManagedAppCatalog.bundleIdentifier(serial: device.serial, packageName: application.packageName) else { throw ManagedAppCatalogError.invalid("factory reservation identity") }
         let running = Set(NSWorkspace.shared.runningApplications.compactMap { $0.bundleURL.map { canonicalPath($0) } })
         guard !running.contains(canonicalPath(reservation.activeBundleURL)) else { throw ManagedAppCatalogError.running }
         let work = Task.detached(priority: .userInitiated) {
-            try await build(application: reservation.application, device: device, backend: reservation.backend, iconPNG: iconPNG, host: hostBundleURL, root: reservation.stagingRoot, running: running, managed: reservation)
+            try await build(application: reservation.application, device: device, backend: reservation.backend, iconPNG: iconPNG, host: hostBundleURL, root: reservation.stagingRoot, running: running, managed: reservation, preservingConfiguration:preservingConfiguration)
         }
         return try await withTaskCancellationHandler(operation: { try await work.value }, onCancel: { work.cancel() })
     }
 
     private static func build(application: AndroidApplication, device: AndroidDevice, backend: BackendKind, iconPNG: Data,
-                              host: URL, root: URL, running: Set<String>, managed: ManagedAppReservation?) async throws -> URL {
+                              host: URL, root: URL, running: Set<String>, managed: ManagedAppReservation?, preservingConfiguration: [String:String]? = nil) async throws -> URL {
         try AndroidDiscovery.validatePackage(application.packageName)
         try AndroidDiscovery.validateSerial(device.serial)
         guard host.pathExtension == "app" else { throw BridgeError.message("Install DroidBridge.app before creating Mac app wrappers.") }
         let fm = FileManager.default
+        let hostInfo = readPlist(host) ?? [:]
+        if managed != nil, hostInfo["DroidBridgeManagedNamingVersion"] as? Int != 2 {
+            throw BridgeError.message("Install the current DroidBridge application before updating managed Mac apps.")
+        }
         let executable = host.appendingPathComponent("Contents/MacOS/DroidBridge")
         guard fm.isExecutableFile(atPath: executable.path) else { throw BridgeError.message("DroidBridge's installed executable is missing.") }
         if managed != nil {
@@ -64,6 +69,11 @@ enum MacAppWrapper {
         let destination = matching.first ?? proposed
         guard !running.contains(canonicalPath(destination)) else { throw BridgeError.message("Quit \(destination.deletingPathExtension().lastPathComponent) before updating its Mac app.") }
         var options = ["package": application.packageName, "name": application.name, "serial": device.serial, "backend": backend.rawValue]
+        if let saved = preservingConfiguration {
+            guard managed != nil, saved["package"] == application.packageName, saved["name"] == application.name,
+                  saved["serial"] == device.serial, saved["backend"] == backend.rawValue else { throw ManagedAppCatalogError.invalid("saved wrapper launch identity") }
+            options = saved
+        }
         if let managed {
             options["managed_key"] = managed.key
             options["managed_generation"] = managed.id.uuidString
@@ -114,12 +124,12 @@ enum MacAppWrapper {
         }
         let config = try previousConfig ?? JSONEncoder().encode(options)
         try config.write(to: resources.appendingPathComponent("launch.json"))
-        let hostInfo = readPlist(host) ?? [:]
         let name = options["name"] ?? application.name
         var plist: [String: Any] = ["CFBundleIdentifier": identifier, "CFBundleName": name, "CFBundleDisplayName": name, "CFBundleExecutable": "DroidBridge", "CFBundlePackageType": "APPL", "CFBundleShortVersionString": hostInfo["CFBundleShortVersionString"] as? String ?? "0.1.2", "CFBundleVersion": hostInfo["CFBundleVersion"] as? String ?? "3", "CFBundleIconFile": "AndroidApp.icns", "LSMinimumSystemVersion": "26.0", "NSHighResolutionCapable": true, "DroidBridgeWrapperFormat": 2]
         if let managed {
             plist["DroidBridgeManagedGeneration"] = managed.id.uuidString
             plist["DroidBridgeManagedDevice"] = managed.deviceHash
+            plist["DroidBridgeManagedNamingVersion"] = 2
         }
         plist["CFBundleDevelopmentRegion"] = "en"
         let localized = resources.appendingPathComponent("en.lproj")

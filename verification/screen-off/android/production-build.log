@@ -1,0 +1,4 @@
+Another instance of SwiftPM (PID: 57330) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/5] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.14s)

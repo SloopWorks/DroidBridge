@@ -1,0 +1,21 @@
+{
+  "aDistinctFramesWhileOff" : 187,
+  "aFramesWhileOff" : 190,
+  "api" : 35,
+  "baselinePanel" : "ON",
+  "bDistinctFramesWhileOff" : 152,
+  "bFramesWhileOff" : 206,
+  "cleanup" : true,
+  "displayIDs" : [
+    9,
+    10
+  ],
+  "idleSeconds" : 12,
+  "independentClose" : true,
+  "physicalPanelOffObserved" : true,
+  "resize" : "896x640",
+  "serial" : "emulator-5580",
+  "settingsUnchanged" : true,
+  "twoAppClickAndText" : true,
+  "usesUnmodifiedProductionADB" : true
+}
