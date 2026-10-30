@@ -194,10 +194,11 @@ class MainActivity : Activity() {
                         when (changed.optString("status")) {
                             "applied" -> if (changed.optJSONObject("result")?.optBoolean("materialization_pending") == true)
                                 announce("Spotlight choice saved on ${name()}; its Mac app is pending. Use Retry Spotlight in Recent actions.")
+                            else if (audioOutputUnconfirmed(changed)) announce("Audio preference saved on ${name()}; output unconfirmed. Check audio status or use Retry Mac audio.")
                             else announce("Completed on ${name()}: ${changed.optString("kind").replace('_', ' ')}")
                             "rejected" -> announce("Rejected by ${name()}: ${changed.optString("error_code", "check Diagnostics")}")
-                            "unknown" -> announce("Outcome not confirmed on ${name()}. Do not repeat this action until its receipt is resolved.")
-                            "expired" -> announce("Action expired without confirmed completion. Check Recent actions before trying again.")
+                            "unknown" -> announce("Outcome not confirmed on ${name()}. Check the Mac before repeating; the action may already have happened.")
+                            "expired" -> announce("Action expired without confirmed completion. Check the Mac outcome before retrying; the action may already have happened.")
                         }
                     }
                     (v[5] as? JSONObject)?.let { approveDialog(it) }
@@ -220,14 +221,15 @@ class MainActivity : Activity() {
         val key = "$target:$kind:$payload"
         pendingRequests[key]?.let { id ->
             val outcome = (0 until outcomes.length()).map { outcomes.getJSONObject(it) }.firstOrNull { it.optString("request_id") == id }
-            if (id == "admitting" || outcome == null || outcome.optString("status") in listOf("queued", "accepted", "admitted", "unknown")) { announce("This action is already pending. Check Recent actions; no duplicate was sent."); return }
+            if (outcome?.optString("status") == "unknown") { announce("This action's outcome is unknown. Check the Mac before repeating; no duplicate was sent."); return }
+            if (id == "admitting" || outcome == null || outcome.optString("status") in listOf("queued", "accepted", "admitted")) { announce("This action is already pending. Check Recent actions; no duplicate was sent."); return }
             pendingRequests.remove(key)
         }
-        if (pendingRequests.size >= 32) { announce("Too many unresolved actions. Wait for their receipts or expiry before trying again."); return }
+        if (pendingRequests.size >= 32) { announce("Too many unresolved actions. Check Mac outcomes and Recent actions before retrying."); return }
         pendingRequests[key] = "admitting"
         val receiverName = name(); announce("Waiting for $receiverName · $description")
         work.execute { val r = runCatching { require(store.selectedTrust() == target) { "Receiver changed; review again" }; store.phoneCommand(kind, payload) }
-            handler.post { r.onSuccess { id -> pendingRequests[key] = id; announce("Queued for $receiverName · $description. Completion not confirmed yet."); snapshot() }.onFailure { pendingRequests.remove(key); announce("Action was not queued: ${it.message?.take(180) ?: "check the selected Mac"}") } } }
+            handler.post { r.onSuccess { id -> pendingRequests[key] = id; announce("Queued for $receiverName · $description. Completion not confirmed yet."); snapshot() }.onFailure { pendingRequests.remove(key); announce("Action submission not confirmed. Check Recent actions and the Mac before retrying: ${it.message?.take(180) ?: "check the selected Mac"}") } } }
     }
     private fun action(label: String, kind: String, payload: JSONObject, description: String = label) = button(label) { send(kind, payload, description) }.apply { isEnabled = selected != null && store.running }
     private fun home() {
@@ -292,7 +294,7 @@ class MainActivity : Activity() {
                 orientation = LinearLayout.VERTICAL; setPadding(dp(10), dp(8), dp(10), dp(8)); setBackgroundColor(Color.WHITE)
                 val row = LinearLayout(this@MainActivity).apply { gravity = android.view.Gravity.CENTER_VERTICAL }; val icon = ImageView(this@MainActivity).apply { setImageResource(android.R.drawable.sym_def_app_icon) }; row.addView(icon, LinearLayout.LayoutParams(dp(40), dp(40)).apply { marginEnd = dp(10) }); row.addView(text(label, 18f, true), LinearLayout.LayoutParams(0, -2, 1f)); addView(row); loadIcon(app.optString("icon_sha256"), icon)
                 if (catalog.count { it.optString("label") == label } > 1) addView(text(pkg, 12f))
-                addView(CheckBox(this@MainActivity).apply { text = "Include in Spotlight"; minHeight = dp(48); isEnabled = exportTrust != null; isChecked = app.optBoolean("export_to_mac"); setOnCheckedChangeListener { _, enabled -> work.execute { val r = runCatching { store.chooseExport(pkg, enabled, exportTrust ?: throw IllegalArgumentException("Choose a trusted Mac")) }; handler.post { announce(if (r.isSuccess) "Spotlight choice saved on phone and queued for this Mac. Availability is not confirmed yet." else "Choice could not be saved. Try again."); snapshot() } } } })
+                addView(CheckBox(this@MainActivity).apply { text = "Include in Spotlight"; minHeight = dp(48); isEnabled = exportTrust != null; isChecked = app.optBoolean("export_to_mac"); setOnCheckedChangeListener { _, enabled -> work.execute { val r = runCatching { store.chooseExport(pkg, enabled, exportTrust ?: throw IllegalArgumentException("Choose a trusted Mac")) }; handler.post { announce(if (r.isSuccess) "Spotlight choice saved on phone and queued for this Mac. Availability is not confirmed yet." else "Spotlight update not confirmed. Check Recent actions and the Mac before retrying."); snapshot() } } } })
                 addView(CheckBox(this@MainActivity).apply { text = "Favorite"; minHeight = dp(48); isChecked = preferences.getStringSet("favorites", emptySet())?.contains(pkg) == true; setOnCheckedChangeListener { _, checked -> val set = (preferences.getStringSet("favorites", emptySet()) ?: emptySet()).toMutableSet(); if (checked) set.add(pkg) else set.remove(pkg); preferences.edit().putStringSet("favorites", set).apply(); notifyDataSetChanged() } })
                 addView(action("Open on ${name()}", "open_app", JSONObject().put("package_name", pkg), "Open $label"))
             }
@@ -356,13 +358,18 @@ class MainActivity : Activity() {
         }
         updateOutcomes()
     }
+    private fun audioOutputUnconfirmed(outcome: JSONObject): Boolean {
+        val result = outcome.optJSONObject("result") ?: return false
+        return outcome.optString("kind") in listOf("set_audio_route", "retry_audio") &&
+            result.optBoolean("intent_committed") && result.has("output_confirmed") && !result.optBoolean("output_confirmed")
+    }
     private fun updateOutcomes() {
         val list = outcomeList ?: return
         list.removeAllViews()
         val selectedOutcomes = (0 until outcomes.length()).map { outcomes.getJSONObject(it) }.filter { it.optString("trust_id") == selected }
         if (selectedOutcomes.isEmpty()) list.addView(text("No recent commands", 14f))
         selectedOutcomes.forEach { o ->
-            val state = when (o.optString("status")) { "queued" -> "Waiting for Mac"; "accepted", "admitted" -> "Accepted · completing"; "applied" -> if (o.optJSONObject("result")?.optBoolean("materialization_pending") == true) "Selection saved · Mac app pending" else "Completed"; "rejected" -> "Rejected"; "expired" -> "Expired · try original action again"; else -> "Outcome not confirmed" }
+            val state = when (o.optString("status")) { "queued" -> "Waiting for Mac"; "accepted", "admitted" -> "Accepted · completing"; "applied" -> if (o.optJSONObject("result")?.optBoolean("materialization_pending") == true) "Selection saved · Mac app pending" else if (audioOutputUnconfirmed(o)) "Audio preference saved; output unconfirmed" else "Completed"; "rejected" -> "Rejected"; "expired" -> "Expired · check Mac outcome before retry"; else -> "Outcome not confirmed · check Mac before repeating" }
             list.addView(text("${o.optString("kind").replace('_', ' ')} · $state${o.optString("error_code").takeIf { it.isNotBlank() }?.let { " · $it" } ?: ""}", 14f))
             if (o.optString("kind") == "set_export" && o.optString("status") == "applied" && o.optJSONObject("result")?.optBoolean("materialization_pending") == true && o.optJSONObject("result")?.optBoolean("retryable") == true) {
                 val originalId = o.getString("request_id"); val trust = o.getString("trust_id"); val key = "retry_spotlight:$originalId"
@@ -372,7 +379,7 @@ class MainActivity : Activity() {
                     work.execute {
                         val result = runCatching { store.retrySpotlight(originalId, trust) }
                         handler.post { if (!alive) return@post; result.onSuccess { id -> pendingRequests[key] = id; announce("Spotlight retry queued for ${trusts.optJSONObject(trust)?.optString("name", "Mac") ?: "Mac"}; completion is not confirmed."); snapshot() }
-                            .onFailure { pendingRequests.remove(key); announce("Spotlight retry was not queued. Check the receiver and try again.") } }
+                            .onFailure { pendingRequests.remove(key); announce("Spotlight retry not confirmed. Check Recent actions and the Mac before repeating.") } }
                     }
                 }.apply { isEnabled = store.running && !pendingRequests.containsKey(key) })
             }

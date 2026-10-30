@@ -154,7 +154,7 @@ class BridgeStore private constructor(val context: Context) {
         val pending = pendingPair ?: throw SecurityException("Pairing unavailable")
         require(pending.getString("pairing_id") == id)
         return (if (pending.getString("status") == "approved") JSONObject(pending.getJSONObject("response").toString()).put("status", "approved") else JSONObject().put("status", "pending"))
-            .put("clock_epoch", epoch).put("expires_uptime_ms", pairingDeadline)
+            .put("pairing_id", pending.getString("pairing_id")).put("clock_epoch", epoch).put("expires_uptime_ms", pairingDeadline)
     }
     @Synchronized fun trustPublic(requestingTrust: String? = null): JSONObject {
         val records = trusted()
@@ -387,7 +387,7 @@ class BridgeStore private constructor(val context: Context) {
         val previous = JSONObject(value.toString())
         val summary = JSONObject()
         val result = request.optJSONObject("result") ?: JSONObject()
-        for (key in listOf("intent_committed", "materialization_pending", "wrapper_created", "retryable")) {
+        for (key in listOf("intent_committed", "materialization_pending", "wrapper_created", "retryable", "output_confirmed")) {
             if (result.has(key)) { require(result.get(key) is Boolean); summary.put(key, result.getBoolean(key)) }
         }
         if (result.has("phase")) { val phase = result.get("phase"); require(phase is String && phase.length <= 80); summary.put("phase", phase) }

@@ -24,10 +24,10 @@ class CompanionSecurityTest {
         var store: BridgeStore = BridgeStore::class.java.getDeclaredConstructor(Context::class.java).apply { isAccessible = true }.newInstance(context)
         private var server = BridgeHttpServer(store).apply { start() }
         fun restart() { server.close(); store = BridgeStore::class.java.getDeclaredConstructor(Context::class.java).apply { isAccessible = true }.newInstance(context); server = BridgeHttpServer(store).apply { start() } }
-        fun request(path: String, body: JSONObject? = null, token: String? = null, method: String? = null, bytes: ByteArray? = null, chunkHash: String? = null): Pair<Int, JSONObject> {
+        fun request(path: String, body: JSONObject? = null, token: String? = null, method: String? = null, bytes: ByteArray? = null, chunkHash: String? = null, pairingSecret: String? = null): Pair<Int, JSONObject> {
             val c = PinnedTestClient.open(path)
             c.connectTimeout = 3000; c.readTimeout = 5000; c.requestMethod = method ?: if (body != null) "POST" else "GET"
-            token?.let { c.setRequestProperty("Authorization", "Bearer $it") }
+            if (pairingSecret != null) c.setRequestProperty("Authorization", "Pairing $pairingSecret") else token?.let { c.setRequestProperty("Authorization", "Bearer $it") }
             chunkHash?.let { c.setRequestProperty("X-Chunk-SHA256", it) }
             if (body != null || bytes != null) { c.doOutput = true; c.outputStream.use { it.write(bytes ?: body!!.toString().toByteArray()) } }
             val status = c.responseCode; val parsed = JSONObject((if (status < 400) c.inputStream else c.errorStream).bufferedReader().use { it.readText() }); c.disconnect()
@@ -242,6 +242,48 @@ class CompanionSecurityTest {
         val successor = p.store.phoneCommand("open_app", JSONObject().put("package_name", "com.android.settings"), pair.second)
         assertFalse(ids.contains(successor))
         assertEquals("Capacity returns through a new explicit UUID", 32, p.store.commandOutcomes().length())
+    }
+
+    @Test fun tlsPairPollCarriesCanonicalIDBeforeAndAfterApprovalAndRejectsReplacement() = Peer().use { p ->
+        fun begin(): Pair<String, String> {
+            val secret = p.store.startPairing()
+            val result = p.request("/v1/pair", JSONObject().put("request_id", UUID.randomUUID().toString()).put("pairing_secret", secret)
+                .put("mac_id", UUID.randomUUID().toString()).put("mac_name", "Wire pairing regression"))
+            assertEquals(202, result.first)
+            return secret to result.second.getJSONObject("data").getString("pairing_id")
+        }
+        val first = begin()
+        val pending = p.request("/v1/pair/${first.second}", pairingSecret = first.first)
+        assertEquals(200, pending.first)
+        assertEquals("pending", pending.second.getJSONObject("data").getString("status"))
+        assertEquals(first.second, pending.second.getJSONObject("data").getString("pairing_id"))
+        assertFalse(pending.second.getJSONObject("data").has("credential"))
+        assertEquals(400, p.request("/v1/pair/${UUID.randomUUID()}", pairingSecret = first.first).first)
+        assertEquals(401, p.request("/v1/pair/${first.second}", pairingSecret = "A".repeat(43)).first)
+        p.store.approvePair(first.second)
+        val approved = p.request("/v1/pair/${first.second}", pairingSecret = first.first)
+        assertEquals(200, approved.first)
+        val data = approved.second.getJSONObject("data")
+        assertEquals("approved", data.getString("status")); assertEquals(first.second, data.getString("pairing_id"))
+        assertTrue("Approved response contains a credential without logging it", data.getString("credential").matches(Regex("[A-Za-z0-9_-]{43}")))
+        val repeated = p.request("/v1/pair/${first.second}", pairingSecret = first.first).second.getJSONObject("data")
+        assertEquals(first.second, repeated.getString("pairing_id"))
+        assertTrue("Polling is canonical", data.getString("credential") == repeated.getString("credential"))
+        val replacement = begin()
+        assertEquals(400, p.request("/v1/pair/${first.second}", pairingSecret = replacement.first).first)
+        assertEquals(401, p.request("/v1/pair/${first.second}", pairingSecret = first.first).first)
+        val next = p.request("/v1/pair/${replacement.second}", pairingSecret = replacement.first)
+        assertEquals(200, next.first); assertEquals(replacement.second, next.second.getJSONObject("data").getString("pairing_id"))
+        p.store.denyPair()
+        assertEquals(401, p.request("/v1/pair/${replacement.second}", pairingSecret = replacement.first).first)
+        InstrumentationRegistry.getInstrumentation().addResults(android.os.Bundle().apply {
+            putString("droidbridge_pair_wire_evidence", JSONObject().put("transport", "pinned_tls_http")
+                .put("pending_status", pending.first).put("approved_status", approved.first)
+                .put("pending_id_matched", true).put("approved_id_matched", true).put("repeat_id_matched", true)
+                .put("invalid_id_rejected", true).put("replaced_id_rejected", true).put("denied_poll_rejected", true)
+                .put("pending_fields", org.json.JSONArray(pending.second.getJSONObject("data").keys().asSequence().sorted().toList()))
+                .put("approved_fields", org.json.JSONArray(data.keys().asSequence().sorted().toList())).toString())
+        })
     }
 
 }

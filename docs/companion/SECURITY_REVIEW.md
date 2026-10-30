@@ -690,3 +690,40 @@ The earlier completed pre-final run is preserved separately with its changed
 source cohort and is not substituted for this gate. No orphan was left by either
 of this reviewer's completed suite runs. Installed release and corresponding
 source archive verification remain separate acceptance gates.
+
+### Provisional source archive and pairing wire review
+
+Independent streaming inspection of
+`.build/DroidBridge-0.2.0-candidate5720-source.tar.gz` passed against commit
+`5720ddf1071c46542b7cc2eee5e04860357d83c3` and the signed build-5 app. It contains
+612 tar members and 528 checksum-covered files, with no links/special entries or
+excluded evidence/binary cache subtree. All 399 eligible tracked Git source blobs
+and executable modes were checked. The sole intentional Git archive conversion,
+Windows Gradle launcher's committed `eol=crlf`, is checked explicitly against its
+normalized Git blob. All 16 shipped dependency formula/version source archives,
+recipes and source-history hashes match; ADB source/patch/recipe/closure/notices
+and the actual packaged ADB files match the same runtime inventory. The audit
+executes no packaged code and extracts nothing. Evidence:
+`security/source-archive-candidate5720-independent.json`; reusable independent
+checker: `scripts/verify-companion-source-archive.py`. This is a provisional
+archive review, not a legal assertion or final public release approval.
+
+Actual API35 and API37 installed pairing rejected Android code8 because its poll
+response omitted `pairing_id`, which the broker requires to bind the receipt to
+the pending pairing capability. The native fixture supplied that field and the
+311-test source gate therefore did not prove this cross-language wire behavior.
+The failed installed evidence must remain failed; the strict Core guard must
+remain. Android code9 adds the canonical ID to both pending and approved poll
+responses. Its new actual TLS/HTTP regression checks pending/approved/repeated
+identity, absence of a pending credential and refusal of wrong/replaced/denied
+polls. Source review accepts that repair approach; executed Android and installed
+Mac/APK results are still required before closure. Candidate5720/build5 archive
+approval cannot substitute for the upcoming exact committed code9/package6
+archive and interoperability gate.
+
+The coordinator's Vision audit reports189 PNG/JPEG images scanned, zero detected
+QR codes and zero unreadable/oversized images (`security/evidence-qr-audit.json`).
+Its source never logs decoded barcode payloads and rejects detections for separate
+review. This is a detector result, not proof that arbitrary sensitive content is
+absent; existing text/secret review and deliberate evidence redaction remain
+separate publication controls.
