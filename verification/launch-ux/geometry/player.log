@@ -1,0 +1,21 @@
+/opt/homebrew/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 463.2 MB/s (733930 bytes in 0.002s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+[server] INFO: New display: 480x620/240 (id=4)
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 4...
+GEOMETRY_PROBE {"CG_windows":[{"bounds":{"Height":640,"Width":470,"X":105,"Y":74},"number":11581,"onscreen":true}],"NSView_bounds":"{{0, 0}, {480, 620}}","NSWindow_content":"{{100, 247}, {480, 620}}","NSWindow_frame":"{{100, 247}, {480, 652}}","NSWindow_number":11581,"NSWindow_visible":true,"pid":98694,"SDL_borders":[0,0,0,0],"SDL_pixels":[960,1240],"SDL_position":[100,100],"SDL_size":[480,620]}
+GEOMETRY_PROBE {"CG_windows":[{"bounds":{"Height":640,"Width":470,"X":105,"Y":74},"number":11581,"onscreen":true}],"NSView_bounds":"{{0, 0}, {480, 620}}","NSWindow_content":"{{100, 247}, {480, 620}}","NSWindow_frame":"{{100, 247}, {480, 652}}","NSWindow_number":11581,"NSWindow_visible":true,"pid":98694,"SDL_borders":[0,0,0,0],"SDL_pixels":[960,1240],"SDL_position":[100,100],"SDL_size":[480,620]}
+GEOMETRY_PROBE {"CG_windows":[{"bounds":{"Height":640,"Width":470,"X":105,"Y":74},"number":11581,"onscreen":true}],"NSView_bounds":"{{0, 0}, {480, 620}}","NSWindow_content":"{{100, 247}, {480, 620}}","NSWindow_frame":"{{100, 247}, {480, 652}}","NSWindow_number":11581,"NSWindow_visible":true,"pid":98694,"SDL_borders":[0,0,0,0],"SDL_pixels":[960,1240],"SDL_position":[100,100],"SDL_size":[480,620]}
+GEOMETRY_PROBE {"CG_windows":[{"bounds":{"Height":640,"Width":470,"X":105,"Y":74},"number":11581,"onscreen":true}],"NSView_bounds":"{{0, 0}, {480, 620}}","NSWindow_content":"{{100, 247}, {480, 620}}","NSWindow_frame":"{{100, 247}, {480, 652}}","NSWindow_number":11581,"NSWindow_visible":true,"pid":98694,"SDL_borders":[0,0,0,0],"SDL_pixels":[960,1240],"SDL_position":[100,100],"SDL_size":[480,620]}
+GEOMETRY_PROBE {"CG_windows":[{"bounds":{"Height":640,"Width":470,"X":105,"Y":74},"number":11581,"onscreen":true}],"NSView_bounds":"{{0, 0}, {480, 620}}","NSWindow_content":"{{100, 247}, {480, 620}}","NSWindow_frame":"{{100, 247}, {480, 652}}","NSWindow_number":11581,"NSWindow_visible":true,"pid":98694,"SDL_borders":[0,0,0,0],"SDL_pixels":[960,1240],"SDL_position":[100,100],"SDL_size":[480,620]}
+GEOMETRY_PROBE {"CG_windows":[{"bounds":{"Height":640,"Width":470,"X":105,"Y":74},"number":11581,"onscreen":true}],"NSView_bounds":"{{0, 0}, {480, 620}}","NSWindow_content":"{{100, 247}, {480, 620}}","NSWindow_frame":"{{100, 247}, {480, 652}}","NSWindow_number":11581,"NSWindow_visible":true,"pid":98694,"SDL_borders":[0,0,0,0],"SDL_pixels":[960,1240],"SDL_position":[100,100],"SDL_size":[480,620]}
+GEOMETRY_PROBE {"CG_windows":[{"bounds":{"Height":640,"Width":470,"X":105,"Y":74},"number":11581,"onscreen":true}],"NSView_bounds":"{{0, 0}, {480, 620}}","NSWindow_content":"{{100, 247}, {480, 620}}","NSWindow_frame":"{{100, 247}, {480, 652}}","NSWindow_number":11581,"NSWindow_visible":true,"pid":98694,"SDL_borders":[0,0,0,0],"SDL_pixels":[960,1240],"SDL_position":[100,100],"SDL_size":[480,620]}
+GEOMETRY_PROBE {"CG_windows":[{"bounds":{"Height":640,"Width":470,"X":105,"Y":74},"number":11581,"onscreen":true}],"NSView_bounds":"{{0, 0}, {480, 620}}","NSWindow_content":"{{100, 247}, {480, 620}}","NSWindow_frame":"{{100, 247}, {480, 652}}","NSWindow_number":11581,"NSWindow_visible":true,"pid":98694,"SDL_borders":[0,0,0,0],"SDL_pixels":[960,1240],"SDL_position":[100,100],"SDL_size":[480,620]}
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+INFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:     --> (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+INFO: Renderer: metal
+INFO: Interop: videotoolbox
+INFO: Video decoding: videotoolbox
+INFO: Texture (VideoToolbox): 480x620
+INFO: Time limit reached

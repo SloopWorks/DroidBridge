@@ -1,10 +1,22 @@
 import Foundation
+import Darwin
 import CoreGraphics
 import DroidBridgeCore
 
 @MainActor
 public final class BridgeSession {
     public let descriptor: SessionDescriptor
+    private var externalChildPID:Int32?
+    public var externalApplicationPID:Int32? {
+        guard let pid=externalChildPID,let process,process.isRunning else {return nil}
+        var info=proc_bsdinfo()
+        guard proc_pidinfo(pid,PROC_PIDTBSDINFO,0,&info,Int32(MemoryLayout<proc_bsdinfo>.stride)) == MemoryLayout<proc_bsdinfo>.stride,info.pbi_ppid == UInt32(process.processIdentifier) else {return nil}
+        return pid
+    }
+    public var onExternalWindowFrame: ((CGRect) -> Void)?
+    private var externalWindowTask: Task<Void,Never>?
+    public var externalWindowFrame: CGRect?
+    public var onStartupProgress: ((String) -> Void)?
     public var onFrame: ((CGImage) -> Void)?
     public var onState: ((SessionState,String?) -> Void)?
     public var onMetrics: ((SessionMetrics) -> Void)?
@@ -71,9 +83,11 @@ public final class BridgeSession {
         }
         let token = UUID(); generation = token; transition(.starting)
         do {
+            onStartupProgress?("Preparing Android connection…")
             let version = try await ProcessRunner.run(toolchain.scrcpy, arguments:["--version"],environment:toolchain.environment)
             guard version.output.contains("scrcpy 5.0.1") else { throw BridgeError.message("DroidBridge requires the bundled scrcpy 5.0.1 client and server") }
             try check(token)
+            onStartupProgress?("Opening \(descriptor.application.name)…")
             let activity = try await adb(["shell","cmd","package","resolve-activity","--brief","-a","android.intent.action.MAIN","-c","android.intent.category.LAUNCHER",descriptor.application.packageName])
             guard !activity.output.contains("No activity found"), activity.output.contains("/") else { throw BridgeError.message("Android application has no launchable activity") }
             try check(token)
@@ -95,6 +109,7 @@ public final class BridgeSession {
         let paths = [explicit,bundled,sibling,FileManager.default.currentDirectoryPath + "/.build/debug/DroidBridgeSupervisor",FileManager.default.currentDirectoryPath + "/.build/release/DroidBridgeSupervisor"].compactMap { $0 }
         guard let supervisor = paths.first(where:{ FileManager.default.isExecutableFile(atPath:$0) }) else { throw BridgeError.message("DroidBridgeSupervisor is missing; rebuild or reinstall DroidBridge") }
         var supervised = ["--parent",String(getpid())]
+        if descriptor.configuration.backend == .scrcpy {supervised += ["--terminal-output","1"]}
         if descriptor.configuration.backend == .native {
             supervised += ["--adb",toolchain.adb,"--serial",descriptor.device.serial]
             if let forward { supervised += ["--forward",forward] }
@@ -130,31 +145,82 @@ public final class BridgeSession {
         // passed as child stdin, so readiness releases it while the app runs.
         defer {withExtendedLifetime(startup) {}}
         try Task.checkCancellation();try check(token)
-        let config = descriptor.configuration
+        var config = descriptor.configuration
+        let placement=externalWindowFrame.flatMap { frame -> CGRect? in
+            guard [frame.minX,frame.minY,frame.width,frame.height].allSatisfy({$0.isFinite}), (240...4096).contains(frame.width),(240...4096).contains(frame.height) else {return nil}
+            return frame
+        }
+        // Pinned 5.0.1 forbids --window-width/height with --flex-display.
+        // Its initial content points come from new-display dimensions instead.
+        if let frame=placement {config.width=Int(frame.width)/2*2;config.height=Int(frame.height)/2*2}
         let lease = try ScrcpyPortLease.acquire(); externalPortLease = lease
         var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=30","--video-codec=h264","--keep-active","--no-power-on","--display-ime-policy=local"]
         if !config.showSystemDecorations { args.append("--no-vd-system-decorations") }
         args.append("--port=\(lease.port)")
+        if let frame=placement {
+            args += ["--window-x=\(Int(frame.minX))","--window-y=\(Int(frame.minY))"]
+        }
+        onStartupProgress?("Waiting for \(descriptor.application.name)…")
         try spawn(toolchain.scrcpy,arguments:args,token:token)
         let url=logURL,package=descriptor.application.packageName
         let deadline=ProcessInfo.processInfo.systemUptime+15
         while ProcessInfo.processInfo.systemUptime<deadline {
             try Task.checkCancellation();try check(token)
-            let ready=try await Task.detached(priority:.utility) {
+            let readiness=try await Task.detached(priority:.utility) {
                 let handle=try FileHandle(forReadingFrom:url);defer {try? handle.close()}
                 let data=try handle.read(upToCount:64*1024) ?? Data()
-                let text=String(decoding:data,as:UTF8.self)
-                return text.components(separatedBy:.newlines).contains {line in
+                // A real terminal enables the client's OSC window-title
+                // sequence, which can interleave with a server log line.
+                let text=String(decoding:data,as:UTF8.self).replacingOccurrences(of:#"\x1B\][^\x07]*(?:\x07|\x1B\\)"#,with:"",options:.regularExpression)
+                let lines=text.components(separatedBy:.newlines)
+                let launched=lines.contains {line in
                     guard line.hasPrefix("[server] INFO: Starting app "),let range=line.range(of:"[\(package)] on display ",options:.backwards) else {return false}
                     let suffix=line[range.upperBound...]
                     return suffix.range(of:#"^[0-9]+\.\.\.$"#,options:.regularExpression) != nil
                 }
+                let rendered=lines.contains {$0.range(of:#"^INFO: Texture(?: \(VideoToolbox\))?: [0-9]+x[0-9]+$"#,options:.regularExpression) != nil}
+                return (launched,rendered)
             }.value
             try Task.checkCancellation();try check(token)
-            if ready {transition(.running);return}
+            if readiness.0 && readiness.1 {transition(.running);trackExternalWindow(token:token);return}
             try await Task.sleep(for:.milliseconds(50))
         }
-        throw BridgeError.message("Android did not confirm the fallback application display within 15 seconds. See \(logURL.path)")
+        throw BridgeError.message("Android did not confirm the fallback application and video renderer within 15 seconds. See \(logURL.path)")
+    }
+    /// Public window metadata only, scoped to the exact supervised child PID.
+    /// No screen pixels, accessibility permission or unrelated titles are read.
+    private func trackExternalWindow(token:UUID) {
+        guard let supervisor=process else {return}
+        let url=logURL,parent=getpid(),supervisorPID=supervisor.processIdentifier
+        externalWindowTask=Task { [weak self] in
+            var child:Int32?
+            var previous:CGRect?
+            while !Task.isCancelled {
+                guard let self,self.generation==token,self.state == .running,supervisor.isRunning else {return}
+                let result=await Task.detached(priority:.utility) { () -> (Int32?,CGRect?) in
+                    var pid=child
+                    if pid == nil,let handle=try? FileHandle(forReadingFrom:url) {
+                        defer {try? handle.close()}
+                        let data=(try? handle.read(upToCount:8192)) ?? Data()
+                        for line in String(decoding:data,as:UTF8.self).split(separator:"\n") {
+                            if let object=(try? JSONSerialization.jsonObject(with:Data(line.utf8))) as? [String:Any],object["event"] as? String == "supervisor_started",object["parent"] as? Int32 == parent {pid=object["child"] as? Int32;break}
+                        }
+                    }
+                    guard let pid,pid>0 else {return (nil,nil)}
+                    var processInfo=proc_bsdinfo()
+                    guard proc_pidinfo(pid,PROC_PIDTBSDINFO,0,&processInfo,Int32(MemoryLayout<proc_bsdinfo>.stride)) == MemoryLayout<proc_bsdinfo>.stride,processInfo.pbi_ppid == UInt32(supervisorPID) else {return (nil,nil)}
+                    guard let windows=CGWindowListCopyWindowInfo(.optionAll,kCGNullWindowID) as? [[String:Any]] else {return (pid,nil)}
+                    for info in windows where (info[kCGWindowOwnerPID as String] as? Int32) == pid && (info[kCGWindowLayer as String] as? Int)==0 {
+                        if let dictionary=info[kCGWindowBounds as String] as? [String:Any],let bounds=CGRect(dictionaryRepresentation:dictionary as CFDictionary),[bounds.minX,bounds.minY,bounds.width,bounds.height].allSatisfy({$0.isFinite}),bounds.width>=240,bounds.height>=240,bounds.width<=8192,bounds.height<=8192 {return (pid,bounds)}
+                    }
+                    return (pid,nil)
+                }.value
+                guard self.generation==token,!Task.isCancelled else {return}
+                child=result.0;self.externalChildPID=result.0
+                if let bounds=result.1,bounds != previous {previous=bounds;self.onExternalWindowFrame?(bounds)}
+                do {try await Task.sleep(for:.milliseconds(500))} catch {return}
+            }
+        }
     }
     private func adb(_ arguments: [String]) async throws -> ProcessResult {
         try await ProcessRunner.run(toolchain.adb,arguments:["-s",descriptor.device.serial]+arguments,environment:toolchain.environment)
@@ -166,6 +232,7 @@ public final class BridgeSession {
         let remote = receipt.remote; remotePath = remote
         var localForward: String?
         do {
+        onStartupProgress?("Preparing app display…")
         _ = try await adb(["push",toolchain.server,remote]); try check(token)
         let result = try await adb(["forward","tcp:0","localabstract:scrcpy_\(scid)"])
         guard let port = UInt16(result.output.trimmingCharacters(in:.whitespacesAndNewlines)), port > 0 else { throw BridgeError.message("ADB did not allocate a video port") }
@@ -193,6 +260,7 @@ public final class BridgeSession {
             let diagnostic = self.transport?.startupDiagnostic ?? "video diagnostics unavailable"
             self.stop(reason: "transport_failure"); self.transition(.failed,"\(error.localizedDescription) (\(diagnostic))")
         } }
+        onStartupProgress?("Waiting for \(descriptor.application.name)…")
         try await transport.start(port:port,package:descriptor.application.packageName)
         try check(token)
         for _ in 0..<150 {
@@ -243,6 +311,7 @@ public final class BridgeSession {
         // Closing an intent is terminal. A reconnect creates a new BridgeSession;
         // a previously queued start must never resurrect a closed window.
         admissionOpen = false
+        externalWindowTask?.cancel();externalWindowTask=nil;externalChildPID=nil
         guard state != .stopped || process != nil || forward != nil || remotePath != nil else { return }
         appendEvent(["event": "session_stop_requested", "reason": String(reason.prefix(128))])
         generation = UUID(); transition(.stopping)

@@ -1,0 +1,11 @@
+{
+  "installed_sha256": "65ad68a070a601008e92a88e5802a8eae817636eeec222d0f9ee1b508b05b4ae",
+  "unsigned_payloads": {
+    "installed": "d8112b135dfcc504e6b73fd4e5aa96664fbebc16db5b02465bc654f33c0fd604",
+    "factory_wrapper": "d8112b135dfcc504e6b73fd4e5aa96664fbebc16db5b02465bc654f33c0fd604"
+  },
+  "strict_wrapper_signature_verified": true,
+  "android_icon_png_hash_matches": true,
+  "four_cycle_identity_size_cleanup_report_verified": true,
+  "physical_os_focus_verified": false
+}

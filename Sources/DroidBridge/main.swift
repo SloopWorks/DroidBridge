@@ -35,7 +35,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         windowItem.submenu = windowMenu; menu.addItem(windowItem); NSApp.windowsMenu = windowMenu
         NSApp.mainMenu = menu
         launcher = LauncherController()
-        launcher.showWindow(nil)
+        if !launcher.prepareWrapperLaunch() { launcher.showWindow(nil) }
         NSApp.activate(ignoringOtherApps: true)
         Task { @MainActor in
             let recovery = await BridgeSession.recoverAbandonedSessions(toolchain: launcher.toolchain)
@@ -45,7 +45,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     @objc func turnPhoneScreenOff() {launcher?.turnPhoneScreenOff()}
     @objc func turnPhoneScreenOn() {launcher?.turnPhoneScreenOn()}
-    @objc func showLauncher() { launcher?.showWindow(nil); launcher?.window?.makeKeyAndOrderFront(nil) }
+    @objc func showLauncher() { launcher?.showWindow(nil); launcher?.window?.makeKeyAndOrderFront(nil);launcher?.refreshDevices(forceApps:true) }
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool { launcher?.reopen(); return false }
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { false }
     var terminating = false

@@ -1,0 +1,34 @@
+{
+  "approved": true,
+  "version": "0.1.5",
+  "build": "10",
+  "installed_sha256": "cc84835c5cc57fc4d3807509d7fb4b478b8dc9a3074d913e96247fe03460bb7c",
+  "manifest_checks": {
+    "source_inputs": {
+      "verified_count": 49,
+      "mismatches": []
+    },
+    "installed_files": {
+      "verified_count": 5,
+      "mismatches": []
+    },
+    "artifacts": {
+      "verified_count": 2,
+      "mismatches": []
+    }
+  },
+  "unsigned_code_identity": {
+    "installed": "d720b067f6502c6e04704895347aee93dda9a72aa1959b4425e05076acaa83c3",
+    "factory_wrapper": "d720b067f6502c6e04704895347aee93dda9a72aa1959b4425e05076acaa83c3"
+  },
+  "strict_app_and_wrapper_signatures": true,
+  "factory_icon_matches": true,
+  "installed_cycles_verified": 5,
+  "launch_services_cycle_verified": true,
+  "crash_backends_verified": [
+    "native",
+    "scrcpy"
+  ],
+  "physical_focus_verified": false,
+  "physical_pixel_verified": false
+}

@@ -61,3 +61,7 @@ The 0.1.1 wrapper report is [verification/launcher-fix/REPORT.md](verification/l
 ## Physical phone screen control
 
 `swift test --filter PhoneDisplayPower` covers parser certainty, command capability changes, latest-intent races, per-device mutexes and preferences. Real Android15/17 streams, input, display-state evidence and final installed GUI checks live under `verification/screen-off/`. Test primary display0OFF separately from virtual-display liveness; command exit0 and window existence alone are insufficient. Preserve user emulator5554 and all unrelated devices.
+
+## Launch presentation
+
+`scripts/verify-launch-ux.sh` verifies immediate branded loading, prior geometry, same-window frame handoff, input gating, close cancellation and reopen using shipping UI and an actual decoded fixture frame. `verification/launch-ux/` separately records actual emulator and exact installed-bundle loading-to-video evidence. Public AppKit instrumentation under a locked desktop does not prove an interactive Spotlight/Dock click or OS focus. Android splash pixels are app-controlled; DroidBridge manufactures only the local loading screen from the saved Android launcher icon.

@@ -1,0 +1,4 @@
+{"event":"supervisor_started","parent":90130,"child":90261}
+[server] INFO: Starting app "Fixture" [dev.droidbridge.testapp] on display 1...
+INFO: Texture (VideoToolbox): 720x1080
+{"event":"supervisor_stopped","reason":"child_exit","exit_status":0,"signal":null,"requested_signal":null}

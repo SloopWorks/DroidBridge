@@ -1,0 +1,16 @@
+{
+  "corrected_player_top_left" : "{{100, 68}, {480, 652}}",
+  "correction" : {
+    "height" : 12,
+    "width" : 10,
+    "x" : -5,
+    "y" : -6
+  },
+  "matches_actual_player_frame" : true,
+  "own_actual_top_left" : "{{100, 68}, {480, 652}}",
+  "own_AppKit_frame" : "{{100, 247}, {480, 652}}",
+  "own_CG_bounds" : "{{105, 74}, {470, 640}}",
+  "physical_focus_verified" : false,
+  "prior_same_style_player_CG" : "{{105, 74}, {470, 640}}",
+  "style_mask" : 15
+}

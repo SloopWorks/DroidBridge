@@ -1,0 +1,4 @@
+{"backend":"scrcpy","details":{"height":"702","launcher_visible":"false","width":"468","window_number":"11684"},"device":"emulator-5580","event":"loading_window_presented","package":"dev.droidbridge.testapp","session":"A8C77483-B9E9-43FA-9EFB-F18C86AB90CD","timestamp":"2026-10-30T01:53:54Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"A8C77483-B9E9-43FA-9EFB-F18C86AB90CD","state":"starting","timestamp":"2026-10-30T01:53:54Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp","session":"A8C77483-B9E9-43FA-9EFB-F18C86AB90CD","state":"running","timestamp":"2026-10-30T01:53:55Z"}
+{"backend":"scrcpy","details":{"native_window_visible":"false"},"device":"emulator-5580","event":"launcher_hidden","package":"dev.droidbridge.testapp","session":"A8C77483-B9E9-43FA-9EFB-F18C86AB90CD","timestamp":"2026-10-30T01:53:55Z"}
