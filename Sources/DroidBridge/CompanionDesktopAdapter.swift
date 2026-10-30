@@ -8,6 +8,7 @@ struct CompanionDesktopDevice: Equatable {
     let connected: Bool, paired: Bool
     let profile: CompanionPerformanceProfile
     let trustID: String?
+    let catalogChangeToken: String?
     let error: String?
     init?(_ value: CompanionJSON) {
         guard let o = value.object, let id = o["device_id"]?.string, UUID(uuidString: id) != nil,
@@ -18,6 +19,7 @@ struct CompanionDesktopDevice: Equatable {
         connected = o["connected"]?.bool == true; paired = o["paired"]?.bool == true
         profile = CompanionPerformanceProfile(rawValue: o["profile"]?.string ?? "balanced") ?? .balanced
         trustID = o["trust_id"]?.string.flatMap { UUID(uuidString: $0)?.uuidString.lowercased() }
+        catalogChangeToken = o["catalog_change_token"]?.string.flatMap { UUID(uuidString: $0)?.uuidString.lowercased() }
         error = o["connection_error"]?.string
     }
 }
@@ -47,13 +49,26 @@ struct CompanionDesktopPendingPairing: Equatable {
     private(set) var hostRegistrationMessage = ""
     var onChange: (() -> Void)?
     var windowController: CompanionWindowController?
+    private lazy var catalogSync = CompanionCatalogSync(request: { [weak self] operation, payload in
+        guard let self, !self.stopped else { throw CancellationError() }; return try await self.broker.request(operation: operation, payload: payload).data
+    }, deliver: { [weak self] demand, snapshot in
+        guard let self else { return }
+        if demand.consumer == "launcher" { self.launcher?.acceptCompanionCatalog(serial: demand.serial, apps: snapshot.apps) }
+        else { self.windowController?.acceptCatalog(snapshot, phone: demand.phone, complete: true) }
+    }, report: { [weak self] demand, message in
+        if demand.consumer == "companion" { self?.windowController?.catalogStatus(message, phone: demand.phone) }
+    }, progress: { [weak self] demand, snapshot in
+        if demand.consumer == "companion" { self?.windowController?.acceptCatalog(snapshot, phone: demand.phone, complete: false) }
+    }, isVisible: { [weak self] demand in
+        self?.catalogDemands.contains { $0.origin == demand.origin && $0.consumer == demand.consumer && $0.serial == demand.serial } == true
+    })
     private var lifecycle: Task<Void, Never>?
     private var hostRegistration: Task<Void, Never>?
     private var commands: [String: Task<Void, Never>] = [:]
     private var receipts: [String: (String, [String: CompanionJSON])] = [:]
     private var receiptOrder: [String] = []
-    private var lastStatus = Date.distantPast
-    private var lastPublish = Date.distantPast
+    private var lastStatusMS = -Double.infinity
+    private var lastPublishMS = -Double.infinity
     private var publishRevision: UInt64 = 0
     private var markedSessionFingerprint: [String]?
     private var stopped = false
@@ -79,8 +94,8 @@ struct CompanionDesktopPendingPairing: Equatable {
             }
             while !Task.isCancelled, !self.stopped {
                 do {
-                    if Date().timeIntervalSince(self.lastStatus) >= self.statusWorkInterval { try await self.refreshStatus() }
-                    if Date().timeIntervalSince(self.lastPublish) >= self.statusWorkInterval { try await self.publish() }
+                    if CompanionClock.nowMS() - self.lastStatusMS >= self.statusReadInterval * 1000 { try await self.refreshStatus() }
+                    if CompanionClock.nowMS() - self.lastPublishMS >= self.statusWorkInterval * 1000 { try await self.publish() }
                     try await self.pollCommands()
                 } catch {
                     if !Task.isCancelled { self.statusMessage = "Companion unavailable. \(String(error.localizedDescription.prefix(350))) Existing app windows continue."; self.onChange?() }
@@ -125,16 +140,31 @@ struct CompanionDesktopPendingPairing: Equatable {
         devices = (reply.data["devices"]?.array ?? []).compactMap(CompanionDesktopDevice.init)
         pendingPairings = (reply.data["pending_pairings"]?.array ?? []).prefix(32).compactMap(CompanionDesktopPendingPairing.init)
         sessionSnapshot = (reply.data["sessions"]?.array ?? []).compactMap(\.object)
-        lastStatus = Date()
+        lastStatusMS = CompanionClock.nowMS()
         let online = devices.filter(\.connected).count
         if online > 0 { statusMessage = "\(online) paired phone\(online == 1 ? "" : "s") connected" }
         else if !pendingPairings.isEmpty { statusMessage = "Phone approval needs local completion. In Connection, choose Finish Approved Pairing or Forget Pending Pairing." }
         else { statusMessage = "No paired companion connected. Existing Android app windows work independently." }
         launcher?.pollAudioControls()
         onChange?()
+        catalogVisibilityChanged()
     }
     func device(for serial: String) -> CompanionDesktopDevice? { devices.first { $0.aliases.contains(serial) } }
     func configuration(_ value: SessionConfiguration, serial: String) -> SessionConfiguration { device(for: serial)?.profile.applying(to: value) ?? value }
+    private var catalogDemands: [CompanionCatalogSync.Demand] {
+        guard let launcher, !launcher.isWrapper, !stopped else { return [] }
+        var result: [CompanionCatalogSync.Demand] = []
+        if launcher.window?.isVisible == true, launcher.window?.isMiniaturized != true, let serial = launcher.selectedDevice?.serial, launcher.readySerials.contains(serial), let phone = device(for: serial) {
+            result.append(.init(phone: phone, serial: serial, consumer: "launcher"))
+        }
+        if let id = windowController?.catalogDeviceID, let phone = devices.first(where: { $0.id == id }), let serial = (launcher.selectedDevice?.serial).flatMap({ phone.aliases.contains($0) ? $0 : nil }) ?? phone.aliases.first(where: { alias in launcher.devices.contains { $0.serial == alias && $0.state == "device" } }) {
+            result.append(.init(phone: phone, serial: serial, consumer: "companion"))
+        }
+        return result
+    }
+    private var statusReadInterval: TimeInterval { catalogDemands.isEmpty ? statusWorkInterval : min(1, statusWorkInterval) }
+    func catalogVisibilityChanged() { catalogSync.reconcile(catalogDemands) }
+    func refreshCatalog(deviceID: String) { catalogSync.reconcile(catalogDemands); catalogSync.refresh(deviceID: deviceID) }
     var statusWorkInterval: TimeInterval {
         guard let launcher else { return CompanionPerformanceProfile.balanced.statusInterval }
         let serials = Set(launcher.sessions.values.map { $0.descriptor.device.serial } + [launcher.preferredSerial].compactMap { $0 })
@@ -144,11 +174,11 @@ struct CompanionDesktopPendingPairing: Equatable {
         guard let launcher else { return }
         let fingerprint = launcher.sessions.values.map { "\($0.descriptor.id.uuidString):\(launcher.sessionStates[$0.descriptor.id] ?? $0.state.rawValue)" }.sorted()
         guard fingerprint != markedSessionFingerprint else { return }
-        markedSessionFingerprint = fingerprint; publishRevision &+= 1; lastPublish = .distantPast
+        markedSessionFingerprint = fingerprint; publishRevision &+= 1; lastPublishMS = -Double.infinity
     }
     func show() {
         if windowController == nil { windowController = CompanionWindowController(adapter: self) }
-        windowController?.showWindow(nil); windowController?.window?.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true)
+        windowController?.showWindow(nil); windowController?.window?.makeKeyAndOrderFront(nil); catalogVisibilityChanged(); NSApp.activate(ignoringOtherApps: true)
     }
 
     private func publish() async throws {
@@ -169,7 +199,7 @@ struct CompanionDesktopPendingPairing: Equatable {
             _ = try await broker.request(operation: "session_publish", payload: ["device_id": .string(phone.id), "serial": .string(serial), "role": .string(launcher.isWrapper ? "wrapper" : "launcher"), "command_protocol": .number(2), "generation": .number(generation), "sessions": .array(rows), "audio_status": .object(["route": .string(audio.route == .macAndPhone ? "mac_and_phone" : audio.route.rawValue), "phase": .string(audio.phase.rawValue), "message": .string(String(audio.message.prefix(512)))])])
             publishedDeviceIDs.insert(phone.id)
         }
-        lastPublish = revision == publishRevision ? Date() : .distantPast
+        lastPublishMS = revision == publishRevision ? CompanionClock.nowMS() : -Double.infinity
     }
     private func pollCommands() async throws {
         guard !publishedDeviceIDs.isEmpty else { return }
@@ -180,7 +210,7 @@ struct CompanionDesktopPendingPairing: Equatable {
             guard commands.count < 4 else { break }
             commands[id] = Task { [weak self] in
                 guard let self else { return }
-                defer { self.commands.removeValue(forKey: id); self.lastPublish = .distantPast }
+                defer { self.commands.removeValue(forKey: id); self.lastPublishMS = -Double.infinity }
                 var status = "rejected", result: [String: CompanionJSON] = ["code": .string("cancelled")]
                 do {
                     let admission = try await self.broker.request(operation: "command_admit", payload: ["command_id": .string(id), "generation": .number(self.generation)])
@@ -285,7 +315,7 @@ struct CompanionDesktopPendingPairing: Equatable {
 
     func shutdown() async {
         guard !stopped else { return }; stopped = true; lifecycle?.cancel(); hostRegistration?.cancel()
-        windowController?.shutdown()
+        catalogSync.shutdown(); windowController?.shutdown()
         for task in commands.values { task.cancel() }
         await broker.invalidate()
         for task in commands.values { await task.value }

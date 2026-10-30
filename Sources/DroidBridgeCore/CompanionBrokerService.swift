@@ -51,6 +51,8 @@ private struct BrokerDevice: Codable {
     var exportSelection: [String: Bool]
     var enabled: Bool = true
     var lastError: String? = nil
+    var catalogChangeToken: String? = nil
+    var lastCatalogEventID: String? = nil
 }
 private struct BrokerInbox: Codable {
     let id: String; let deviceID: String; let kind: String; let created: Date
@@ -226,11 +228,13 @@ public actor CompanionBrokerEngine {
     public func exchange(_ input: CompanionBrokerRequest, owner: CompanionBrokerOwner) async -> CompanionBrokerReply {
         guard initialized else { return .init(requestID: input.requestID, error: .init("broker_starting", "Companion service is starting. Retry shortly.", retryable: true)) }
         guard !stopping else { return .init(requestID: input.requestID, error: .init("broker_stopping", "Companion service is stopping. Retry after it restarts.", retryable: true)) }
+        let currentCatalogRead = ["catalog", "catalog_changes", "export_selection_get"].contains(input.operation)
         if let receipt = receipts[input.requestID] {
             guard receipt.owner == owner, receipt.request.operation == input.operation, receipt.request.payload == input.payload else { return .init(requestID: input.requestID, error: .init("request_conflict", "A request identity was reused with different content.")) }
             // An execution grant is a one-time delivery, not a replayable
             // receipt. Recompute canonical state without granting it again.
-            if input.operation != "command_admit" { return receipt.reply }
+            // Catalog reads must also re-evaluate current pairing authority.
+            if input.operation != "command_admit", !currentCatalogRead { return receipt.reply }
         }
         guard !pending.contains(input.requestID), pending.count < 64 else { return .init(requestID: input.requestID, error: .init("request_pending", "Companion request is already running or the service is busy.", retryable: true)) }
         guard !persistenceFailure else { return .init(requestID: input.requestID, error: .init("broker_storage_unavailable", "Companion state is unavailable. Existing Android windows remain usable.")) }
@@ -246,7 +250,7 @@ public actor CompanionBrokerEngine {
         releaseStoppedOwner()
         receipts[input.requestID] = .init(request: input, owner: owner, reply: result, created: Date())
         // Never retain pairing secrets, shared text or file chunks in the local retry cache.
-        if ["begin_pair", "clipboard_send", "share_send", "transfer_chunk", "notification_reply"].contains(input.operation) { receipts.removeValue(forKey: input.requestID) }
+        if currentCatalogRead || ["begin_pair", "clipboard_send", "share_send", "transfer_chunk", "notification_reply"].contains(input.operation) { receipts.removeValue(forKey: input.requestID) }
         if receipts.count > 512 { for key in receipts.sorted(by: { $0.value.created < $1.value.created }).prefix(receipts.count - 512).map(\.key) { receipts.removeValue(forKey: key) } }
         return result
     }
@@ -343,6 +347,7 @@ public actor CompanionBrokerEngine {
             if let index = storage.devices.firstIndex(where: { $0.deviceID == deviceID }) {
                 storage.devices[index].trustID = nil; storage.devices[index].enabled = false; storage.devices[index].lastError = "pairing_forgotten"
                 storage.devices[index].epoch = nil; storage.devices[index].sequence = 0
+                storage.devices[index].catalogChangeToken = nil; storage.devices[index].lastCatalogEventID = nil
             }
             storage.registry.revoke(deviceID: deviceID)
             audioStatuses.removeValue(forKey: deviceID)
@@ -370,6 +375,10 @@ public actor CompanionBrokerEngine {
             guard let command = storage.registry.commands.first(where: { $0.id.lowercased() == id && $0.deviceID == deviceID }) else { throw CompanionBoundaryError("receipt_unavailable", "This Mac command receipt is unavailable.", retryable: true) }
             return ["request_id": .string(command.id), "status": .string(command.status), "result": .object(command.result)]
         }
+        if ["catalog", "catalog_changes", "export_selection_get"].contains(operation), p["expected_trust_id"] != nil {
+            let expected = try uuid(p, "expected_trust_id")
+            guard storage.devices.contains(where: { $0.deviceID == deviceID && $0.trustID == expected }) else { throw CompanionBoundaryError("trust_changed", "The catalog belongs to an older phone pairing. Refresh the connection.") }
+        }
         if operation == "export_selection_get" { return ["selection": .object(try catalog.companionExportSelection(deviceID: deviceID).mapValues(CompanionJSON.bool))] }
         if operation == "inbox_list" {
             let all = storage.inbox.filter { $0.deviceID == deviceID }
@@ -390,8 +399,19 @@ public actor CompanionBrokerEngine {
         guard let transport = verified(deviceID) else { throw CompanionBoundaryError("phone_unavailable", "Connect the paired phone to use this feature.", retryable: true) }
         let client = transport.client
         switch operation {
-        case "catalog": return try await control(deviceID:deviceID) { try Self.object(await client.catalog(cursor: p["cursor"]?.string)) }
-        case "catalog_changes": return try await control(deviceID:deviceID) { try Self.object(await client.catalogChanges(after: selfString(p, "after"))) }
+        case "catalog", "catalog_changes":
+            guard let trust = storage.devices.first(where: { $0.deviceID == deviceID })?.trustID else { throw CompanionBoundaryError("trust_changed", "The phone pairing changed before catalog discovery.") }
+            let epoch = trustEpochs[deviceID], generation = transport.generation
+            let result = try await control(deviceID: deviceID) {
+                try self.checkCatalogReadScope(deviceID: deviceID, trustID: trust, epoch: epoch, generation: generation)
+                let value: [String: CompanionJSON]
+                if operation == "catalog" { value = try Self.object(await client.catalog(cursor: p["cursor"]?.string)) }
+                else { value = try Self.object(await client.catalogChanges(after: selfString(p, "after"))) }
+                try self.checkCatalogReadScope(deviceID: deviceID, trustID: trust, epoch: epoch, generation: generation)
+                return value
+            }
+            try checkCatalogReadScope(deviceID: deviceID, trustID: trust, epoch: epoch, generation: generation)
+            return result
         case "icon":
             let hash = try string(p, "hash"), key = deviceID + ":" + hash
             let bytes: Data
@@ -409,7 +429,7 @@ public actor CompanionBrokerEngine {
         case "trust_list": return ["items": try await control(deviceID:deviceID) { try Self.value(await client.trustedMacs()) }]
         case "revoke":
             let id = try uuid(p, "trust_id"); try await control(deviceID:deviceID) { try await client.revoke(trustID: id) }
-            if storage.devices.first(where: { $0.deviceID == deviceID })?.trustID == id { try CompanionCredentialStore.remove(deviceID: deviceID); if let i = storage.devices.firstIndex(where: { $0.deviceID == deviceID }) { storage.devices[i].trustID = nil }; storage.inbox.removeAll { $0.deviceID == deviceID }; storage.registry.revoke(deviceID: deviceID); try persist(); return try await perform("disconnect", p, requestID: requestID, owner: owner) }
+            if storage.devices.first(where: { $0.deviceID == deviceID })?.trustID == id { try CompanionCredentialStore.remove(deviceID: deviceID); if let i = storage.devices.firstIndex(where: { $0.deviceID == deviceID }) { storage.devices[i].trustID = nil; storage.devices[i].catalogChangeToken = nil; storage.devices[i].lastCatalogEventID = nil }; storage.inbox.removeAll { $0.deviceID == deviceID }; storage.registry.revoke(deviceID: deviceID); try persist(); return try await perform("disconnect", p, requestID: requestID, owner: owner) }
             return ["status": .string("revoked")]
         case "diagnostics": return try await control(deviceID:deviceID) { try await client.diagnostics() }
         case "profile_get": return ["profile": .string(storage.devices.first(where: { $0.deviceID == deviceID })?.profile ?? "balanced")]
@@ -632,12 +652,16 @@ public actor CompanionBrokerEngine {
                 previous = existing
             }
             if !next.devices[i].aliases.contains(transport.serial) { guard next.devices[i].aliases.count < 8 else { throw CompanionBoundaryError("alias_capacity", "This phone has too many saved transport aliases.") }; next.devices[i].aliases.append(transport.serial) }
+            if next.devices[i].trustID != trustID { next.devices[i].lastCatalogEventID = nil }
             next.devices[i].preferredSerial = transport.serial; next.devices[i].name = transport.hello.deviceName; next.devices[i].trustID = trustID; next.devices[i].enabled = true; next.devices[i].lastError = nil
         } else {
             guard next.devices.count < 32 else { throw CompanionBoundaryError("device_capacity", "The companion device limit was reached.") }
             next.devices.append(.init(deviceID: deviceID, name: transport.hello.deviceName, aliases: [transport.serial], preferredSerial: transport.serial, trustID: trustID, epoch: nil, sequence: 0, profile: inheritedProfile ?? "balanced", exportSelection: [:]))
         }
         guard let current = next.devices.firstIndex(where: { $0.deviceID == deviceID }) else { throw CompanionBoundaryError("invalid_identity", "Missing paired device identity.") }
+        // A successful authenticated reconnect may follow missed package events.
+        // This is a cached invalidation hint, never a catalog read from status.
+        next.devices[current].catalogChangeToken = UUID().uuidString.lowercased()
         // This independently locked atomic policy is authoritative if the broker
         // crashes before its cache commit. No live broker state changes on refusal.
         #if DEBUG
@@ -784,6 +808,7 @@ public actor CompanionBrokerEngine {
             // never dismiss on Android or discard explicit shares/files.
             storage.inbox.removeAll { $0.deviceID == deviceID && $0.kind == "notification_posted" }
             storage.devices[index].sequence = 0; storage.devices[index].epoch = page.epoch
+            storage.devices[index].catalogChangeToken = UUID().uuidString.lowercased()
         }
         for event in page.events {
             guard verified(deviceID)?.generation == transport.generation, !Task.isCancelled else { throw CancellationError() }
@@ -828,7 +853,14 @@ public actor CompanionBrokerEngine {
                 guard !storage.localCommands.contains(id.lowercased()) else { return }
                 try? await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: (error as? CompanionBoundaryError)?.code == "selection_outcome_unknown" ? "unknown" : "rejected", result: ["code": .string((error as? CompanionBoundaryError)?.code ?? "export_apply_failed")]) }
             }
-        } else if ["clipboard", "clipboard_text", "share", "share_text", "share_url", "file_shared", "notification_posted", "notification_removed", "catalog_changed"].contains(event.kind) {
+        } else if event.kind == "catalog_changed" {
+            guard let index = storage.devices.firstIndex(where: { $0.deviceID == deviceID && $0.enabled && $0.trustID != nil }),
+                  event.targetTrustId == nil || event.targetTrustId.flatMap(UUID.init(uuidString:))?.uuidString.lowercased() == storage.devices[index].trustID,
+                  let eventID = UUID(uuidString: event.eventId)?.uuidString.lowercased(),
+                  storage.devices[index].lastCatalogEventID != eventID else { return }
+            storage.devices[index].lastCatalogEventID = eventID
+            storage.devices[index].catalogChangeToken = UUID().uuidString.lowercased()
+        } else if ["clipboard", "clipboard_text", "share", "share_text", "share_url", "file_shared", "notification_posted", "notification_removed"].contains(event.kind) {
             guard !storage.inbox.contains(where: { $0.id == event.eventId }) else { return }
             if event.kind == "notification_posted" || event.kind == "notification_removed" {
                 guard let origin = event.targetTrustId.flatMap(UUID.init(uuidString:))?.uuidString.lowercased(),
@@ -1028,7 +1060,11 @@ public actor CompanionBrokerEngine {
         guard budget.isValid else { throw CompanionBoundaryError("command_expired", "App selection expired before admission.") }
         let outcome = try catalog.applyCompanionExportOutcome(deviceID: deviceID, trustID: trust, packageName: package, selected: selected, revision: revision)
         do {
-            storage.devices[deviceIndex].exportSelection = try catalog.companionExportSelection(deviceID: deviceID)
+            let selection = try catalog.companionExportSelection(deviceID: deviceID)
+            if storage.devices[deviceIndex].exportSelection != selection {
+                storage.devices[deviceIndex].catalogChangeToken = UUID().uuidString.lowercased()
+            }
+            storage.devices[deviceIndex].exportSelection = selection
             try persist()
         } catch { throw CompanionBoundaryError("selection_outcome_unknown", "The selection may be saved, but its Mac receipt could not be published. Inspect its state before a new explicit retry.") }
         // An equal policy revision without its exact broker receipt is a crash
@@ -1142,7 +1178,7 @@ public actor CompanionBrokerEngine {
     }
     private func status() -> [String: CompanionJSON] {
         let devices: [CompanionJSON] = storage.devices.map { device in
-            .object(["device_id": .string(device.deviceID), "device_name": .string(device.name), "serial": .string(device.preferredSerial), "aliases": .array(device.aliases.map(CompanionJSON.string)), "connected": .bool(verified(device.deviceID) != nil), "paired": .bool(device.trustID != nil), "connection_error": device.lastError.map(CompanionJSON.string) ?? .null, "enabled": .bool(device.enabled), "profile": .string(device.profile), "trust_id": device.trustID.map(CompanionJSON.string) ?? .null, "capabilities": .array(verified(device.deviceID)?.hello.capabilities.map(CompanionJSON.string) ?? [])])
+            .object(["device_id": .string(device.deviceID), "device_name": .string(device.name), "serial": .string(device.preferredSerial), "aliases": .array(device.aliases.map(CompanionJSON.string)), "connected": .bool(verified(device.deviceID) != nil), "paired": .bool(device.trustID != nil), "connection_error": device.lastError.map(CompanionJSON.string) ?? .null, "enabled": .bool(device.enabled), "profile": .string(device.profile), "trust_id": device.trustID.map(CompanionJSON.string) ?? .null, "catalog_change_token": device.trustID == nil ? .null : device.catalogChangeToken.map(CompanionJSON.string) ?? .null, "capabilities": .array(verified(device.deviceID)?.hello.capabilities.map(CompanionJSON.string) ?? [])])
         }
         return ["devices": .array(devices), "sessions": (try? json(storage.registry.sessions)) ?? .array([]), "broker_version": .number(1), "pending_pairings": .array(storage.pendingAdmissions.map { .object(["device_id":.string($0.deviceID),"serial":.string($0.serial),"phase":.string($0.phase),"expires":.number($0.expires.timeIntervalSinceReferenceDate)]) })]
     }
@@ -1164,6 +1200,13 @@ public actor CompanionBrokerEngine {
         catch { persistenceFailure = true; throw error }
     }
     private func checkCancelled(_ requestID: UUID) throws { if cancelled.remove(requestID) != nil { throw CompanionBoundaryError("cancelled", "Companion operation was cancelled.") } }
+    private func checkCatalogReadScope(deviceID: String, trustID: String, epoch: UUID?, generation: UUID) throws {
+        try Task.checkCancellation()
+        guard !stopping, trustEpochs[deviceID] == epoch, verified(deviceID)?.generation == generation,
+              storage.devices.contains(where: { $0.deviceID == deviceID && $0.enabled && $0.trustID == trustID }) else {
+            throw CompanionBoundaryError("trust_changed", "The phone connection or pairing changed during catalog discovery. Refresh the connection.")
+        }
+    }
     private func control<T>(deviceID:String,_ body: () async throws -> T) async throws -> T {
         guard !stopping else { throw CancellationError() }
         let canonical=UUID(uuidString:deviceID)?.uuidString.lowercased() ?? deviceID

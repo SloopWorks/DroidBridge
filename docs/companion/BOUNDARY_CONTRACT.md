@@ -365,3 +365,73 @@ generation-fenced background wave of at most eight receipts, with finite exponen
 backoff (1/2/4/8/16/30 seconds). Shutdown cancels and awaits that wave before releasing
 broker ownership; neither late responses nor task cleanup can publish or clear a
 successor task after shutdown.
+
+## Catalog change propagation
+
+The broker exposes `catalog_change_token` in its existing local device status.
+It is an opaque, bounded invalidation token scoped to the current paired phone
+installation and trust, not a catalog generation, event cursor or permission to
+create wrappers. A legacy journal may omit it. Authenticated admission/reconnect,
+event cursor reset/service-epoch discontinuity, a new authenticated catalog change,
+and an accepted actual export-selection map change create a fresh token. Forget
+or self-revocation clears it; a new trust cannot reuse the old trust's context.
+A repeat of the last accepted canonical catalog event ID does not churn the signal.
+An older ID replayed after another event may harmlessly invalidate again; the
+hint is not an authoritative change log. Reset/reconnect
+still force a fresh token even if the event ring replays that same last event ID,
+so a reset cannot collapse back to the token already observed by the UI.
+
+Status reads return only already accepted local state and neither advance the
+token nor query the phone. New catalog_changed events are control metadata and
+are no longer appended to the user inbox; retained legacy inbox history stays
+inert. The existing authenticated long-poll is the change producer. There is no
+additional global phone-catalog polling loop and no catalog snapshot in this hint.
+
+One host-owned catalog synchronizer serves visible main-launcher/Companion catalog
+surfaces; independent wrapper processes never synchronize catalogs. While a catalog
+surface is visible, bounded one-second **local IPC** status observation can detect
+the hint without changing the profile's separate phone-publish or asset cadence.
+Initial visible connected selection fetches a snapshot. Once a complete generation
+is retained, a changed token requests catalog_changes after that exact generation.
+A missing base or stale cursor falls back to bounded complete pages; the opaque
+change token is never passed as the phone catalog generation. Hidden surfaces do
+no catalog HTTP work. Opening a surface reconciles the current hint.
+
+Requests coalesce into at most one in-flight synchronization per selected origin.
+The immutable publication context binds device, trust, connection/event context,
+selected surface and task generation before/after awaits. A newer observed token
+is retained for one successor pass rather than spawning or cancelling into a
+restart loop. A completed pass acknowledges only its captured hint; it cannot
+silently mark a later event fresh. Delta upserts/deletions merge into the complete
+base atomically and validate package identities/capacity. A bounded stale/churn
+retry preserves the last good list with explicit freshness/error state. Reconnect,
+phone/trust change or hiding cancels/fences late UI publication; repeated errors
+back off instead of looping. No accepted running Android sessions are removed by
+a catalog refresh. Existing export policy remains the sole wrapper-admission
+owner; catalog sync itself never opts in an app or publishes a new wrapper.
+
+Names, favorites/search selection and export intent remain keyed by stable package
+identity. Changed icon hashes request only new content through the existing bounded
+profile-aware asset queue; unchanged hashes reuse cached icons. Installed tests
+must change/rename/icon-update/delete a real Android fixture while the catalog is
+visible and observe the change without pressing Refresh. The small-change target
+is visible within two seconds of the broker observing the package-change event;
+manual refresh proves the recovery control, not this automatic propagation gate.
+
+Visible catalog synchronization supplies `expected_trust_id` with each broker IPC
+`catalog`, `catalog_changes` and `export_selection_get` read. The broker validates
+that UUID against the saved current device trust **before** a phone request or
+local export-policy read. A stale adapter snapshot cannot relabel a catalog from
+a replacement pairing as its own. The field remains optional only for legacy
+read compatibility; omitting it grants no mutation and does not remove fencing.
+Every network catalog read captures its current trust epoch, trust UUID and exact
+transport generation even for a legacy reader. It rechecks those facts before
+control-lane HTTP admission, after HTTP completion and after releasing the lane
+before returning data. Forget, revocation, connection replacement, cancellation or
+shutdown refuse late publication instead of returning an otherwise valid old
+response under a new authority. Local policy reads have the same explicit origin
+preflight and remain side-effect free.
+Exact local RPC retries of these three reads re-evaluate current authority instead
+of reusing a prior reply. A successful read followed by Forget cannot disclose the
+old data by replaying its original request UUID, payload and owner. This exception
+does not change canonical mutation receipts or their conflicting-request checks.

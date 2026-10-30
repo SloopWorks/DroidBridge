@@ -12,6 +12,9 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
     private var metadata: [String: CompanionJSON] = [:]
     private var recoveryFinished = false
     private var activeProfile = "balanced"
+    private var catalogToken = UUID().uuidString.lowercased()
+    private var catalogGeneration = "fixture-generation"
+    private var renamed = false
     private var activeTrustID = "9bf0e385-15bd-4d61-9650-26221a8af695"
     private var notificationChoices: [Bool] = []
     private var notificationOriginTrust: String? = "9bf0e385-15bd-4d61-9650-26221a8af695"
@@ -22,6 +25,7 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
     private var admissionCalls = Set<String>()
     private var acknowledgments: [String: [String: CompanionJSON]] = [:]
     var operations: [String] = []
+    func advanceCatalog() { lock.lock(); renamed = true; catalogGeneration = "fixture-generation-2"; catalogToken = UUID().uuidString.lowercased(); lock.unlock() }
     func setProfile(_ profile: String) { lock.lock(); activeProfile = profile; lock.unlock() }
     func captureNotificationTrust() { lock.lock(); notificationOriginTrust = activeTrustID; lock.unlock() }
     func omitNotificationTrust() { lock.lock(); notificationOriginTrust = nil; lock.unlock() }
@@ -66,7 +70,10 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
                 recoveryFinished = true; data = ["status": .string("approved"), "device_id": .string(device)]
             case "catalog":
                 let start = Int(p["cursor"]?.string ?? "0") ?? 0, end = min(start + 64, 1000)
-                data = ["generation": .string("fixture-generation"), "items": .array((start..<end).map { .object(["package_name": .string("dev.droidbridge.fixture.app\($0)"), "label": .string($0 == 17 ? "Distinct Companion Search" : "Android Application \($0)"), "launchable": .bool(true), "export_to_mac": .bool(true)]) }), "next_cursor": end < 1000 ? .string(String(end)) : .null]
+                data = ["generation": .string(catalogGeneration), "items": .array((start..<end).map { .object(["package_name": .string("dev.droidbridge.fixture.app\($0)"), "label": .string($0 == 17 ? (renamed ? "Updated Companion Search" : "Distinct Companion Search") : "Android Application \($0)"), "launchable": .bool(true), "export_to_mac": .bool(true)]) }), "next_cursor": end < 1000 ? .string(String(end)) : .null]
+            case "catalog_changes":
+                guard p["after"]?.string == "fixture-generation" else { throw CompanionBoundaryError("stale_cursor", "Fixture delta unavailable") }
+                data = ["generation": .string(catalogGeneration), "items": .array([.object(["package_name": .string("dev.droidbridge.fixture.app17"), "label": .string("Updated Companion Search"), "launchable": .bool(true)])]), "deleted": .array([])]
             case "inbox_list": data = ["items": .array([.object(["id": .string("d39a1ccc-7d17-4839-a17e-671b18e6ea93"), "device_id": .string(device), "kind": .string("share_text"), "payload": .object(["text": .string("Fixture text stays in the inbox until Copy is clicked.")])]), .object(["id": .string("9444cc0e-bd58-44bc-aa6c-7c23a05b7c85"), "kind": .string("notification_posted"), "payload": .object(["title": .string("Fixture notification"), "text": .string("In-app only, no OS permission requested."), "package_name": .string("dev.droidbridge.fixture"), "can_reply": .bool(false)])])])]
             case "host_command", "export_selection_set", "profile_set": data = ["status": .string("accepted")]
             case "command_status": data = ["status": .string("applied"), "result": .object(["phase": .string("fixture_effect")])]
@@ -87,6 +94,7 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
             }
             if input.operation == "status", var devices = data["devices"]?.array, var device = devices.first?.object {
                 device["profile"] = .string(activeProfile); devices[0] = .object(device); data["devices"] = .array(devices)
+                device["catalog_change_token"] = .string(catalogToken)
                 device["trust_id"] = .string(activeTrustID); devices[0] = .object(device); data["devices"] = .array(devices)
             }
             reply(try JSONEncoder().encode(CompanionBrokerReply(requestID: input.requestID, data: data)))
@@ -147,6 +155,24 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         search.stringValue = "distinct companion"; controller.controlTextDidChange(Notification(name: NSControl.textDidChangeNotification, object: search))
         try require(table.numberOfRows == 1, "Companion local search did not match")
         search.stringValue = ""; controller.controlTextDidChange(Notification(name: NSControl.textDidChangeNotification, object: search))
+        // One cached token drives both visible UIs; no Companion controller
+        // is required for the main launcher to receive a complete catalog.
+        let mainOnly = LauncherController(); mainOnly.onboardingPending = true
+        mainOnly.devices = [AndroidDevice(serial: "qa-companion-ui", model: "QA Phone")]; mainOnly.readySerials = ["qa-companion-ui"]
+        mainOnly.devicePicker.addItem(withTitle: "QA Phone"); mainOnly.devicePicker.selectItem(at: 0); mainOnly.window?.orderFront(nil)
+        let mainBroker = CompanionBrokerIPCClient(endpoint: listener.endpoint, nonce: "fixture-nonce")
+        let mainAdapter = CompanionDesktopAdapter(launcher: mainOnly, broker: mainBroker)
+        let oldDiscovery = mainOnly.appsLoadToken; mainOnly.loadingAppsSerial = "qa-companion-ui"
+        try await mainAdapter.refreshStatus(); try await wait { mainOnly.applications.count == 1000 }
+        try require(mainAdapter.windowController == nil && mainOnly.appsLoadToken != oldDiscovery && mainOnly.loadingAppsSerial == nil, "Main-only sync did not fence old ADB discovery")
+        let fullBeforeDelta = peer.count("catalog")
+        peer.advanceCatalog(); try await adapter.refreshStatus(); try await mainAdapter.refreshStatus()
+        try await wait { mainOnly.applications.contains { $0.name == "Updated Companion Search" } }
+        search.stringValue = "updated companion"; controller.controlTextDidChange(Notification(name: NSControl.textDidChangeNotification, object: search))
+        try await wait { table.numberOfRows == 1 }
+        try require(peer.count("catalog") == fullBeforeDelta && peer.count("catalog_changes") == 2, "Visible launcher/companion delta fell back to full or did not propagate")
+        search.stringValue = ""; controller.controlTextDidChange(Notification(name: NSControl.textDidChangeNotification, object: search))
+        mainOnly.window?.orderOut(nil); await mainAdapter.shutdown()
         var captures: [String] = []
         for width in [900, 700] {
             window.setContentSize(NSSize(width: width, height: width == 900 ? 760 : 570))
@@ -190,6 +216,7 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         use.performClick(nil); scannerContent.layoutSubtreeIfNeeded(); try capture(scannerContent, to: output.appendingPathComponent("scanner-narrow-validation.png"))
         try require(descendants(scannerContent).compactMap { $0 as? NSScrollView }.contains { $0.hasVerticalScroller }, "Scanner alternates cannot scroll")
         scanner.close()
+        window.orderOut(nil); adapter.catalogVisibilityChanged()
         peer.setProfile("battery"); try await adapter.refreshStatus()
         try require(adapter.statusWorkInterval == 5, "Battery profile did not select its actual status cadence")
         let batteryStatusBefore = peer.count("status"), batteryPublishBefore = peer.count("session_publish"), batteryCommandsBefore = peer.count("command_poll")
@@ -233,6 +260,7 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         try await wait { peer.acknowledgment(wrongBootID) != nil }
         try require(peer.acknowledgment(wrongBootID)?["result"]?.object?["code"]?.string == "command_expired" && launcher.sessions.isEmpty, "A deadline from another boot caused an effect")
         try JSONEncoder().encode([expiredID, completedID, validID, wrongBootID].compactMap(peer.acknowledgment)).write(to: output.appendingPathComponent("adapter-admission-receipts.json"))
+        window.makeKeyAndOrderFront(nil); adapter.catalogVisibilityChanged()
         // A native permission sheet can suspend indefinitely. Exercise the
         // shipping controller with a deferred authorization callback and real
         // anonymous NSXPC, without requesting any OS permission in this fixture.
@@ -288,6 +316,44 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         deniedMirror.performClick(nil); try await wait { peer.notificationRequests().count == notificationBefore + 2 }
         try require(peer.notificationRequests().last == true, "Denied banner permission incorrectly disabled the explicitly requested in-app notification list")
         deniedController.shutdown(); deniedController.window?.orderOut(nil)
+        // Actual macOS Denied may throw from requestAuthorization. Continue
+        // in-app preferences only after an independently read Denied status.
+        var deniedStatus: CheckedContinuation<Bool, Never>?
+        let throwingController = CompanionWindowController(adapter: adapter, authorizeNotifications: {
+            throw CompanionBoundaryError("os_denied", "Notifications are not allowed for this application")
+        }, notificationsDenied: { await withCheckedContinuation { deniedStatus = $0 } })
+        let throwingRoot = try XCT(throwingController.window?.contentView, "Denied-throws window content missing")
+        let throwingTabs = try XCT(descendants(throwingRoot).compactMap { $0 as? NSTabView }.first, "Denied-throws tabs missing")
+        throwingTabs.selectTabViewItem(at: 4)
+        let throwingAlerts = try XCT(throwingTabs.tabViewItems[4].view, "Denied-throws alerts content missing")
+        let throwingMirror = try XCT(descendants(throwingAlerts).compactMap { $0 as? NSButton }.first { $0.title == "Mirror permitted phone notifications" }, "Denied-throws opt-in missing")
+        let throwingBefore = peer.notificationRequests().count
+        throwingMirror.performClick(nil); try await wait { deniedStatus != nil }
+        deniedStatus?.resume(returning: true); deniedStatus = nil
+        try await wait { peer.notificationRequests().count == throwingBefore + 1 }
+        try require(peer.notificationRequests().last == true, "Thrown Denied blocked explicit in-app sharing")
+        throwingMirror.state = .off; throwingMirror.performClick(nil); try await wait { deniedStatus != nil }
+        throwingController.showWindow(nil); throwingController.window?.performClose(nil)
+        deniedStatus?.resume(returning: true); deniedStatus = nil
+        try await Task.sleep(nanoseconds: 100_000_000)
+        try require(peer.notificationRequests().count == throwingBefore + 1, "Late Denied read crossed window close")
+        throwingController.showWindow(nil); throwingMirror.state = .off; throwingMirror.performClick(nil); try await wait { deniedStatus != nil }
+        peer.setTrustID(UUID().uuidString.lowercased()); try await adapter.refreshStatus()
+        deniedStatus?.resume(returning: true); deniedStatus = nil
+        try await Task.sleep(nanoseconds: 100_000_000)
+        try require(peer.notificationRequests().count == throwingBefore + 1, "Late Denied read crossed trust replacement")
+        throwingMirror.state = .off; throwingMirror.performClick(nil); try await wait { deniedStatus != nil }
+        deniedStatus?.resume(returning: false); deniedStatus = nil
+        try await Task.sleep(nanoseconds: 100_000_000)
+        try require(peer.notificationRequests().count == throwingBefore + 1, "Non-Denied authorization error was silently accepted")
+        throwingMirror.state = .off; throwingMirror.performClick(nil); try await wait { deniedStatus != nil }
+        let throwingFilter = try XCT(descendants(throwingAlerts).compactMap { $0 as? NSTextField }.first { $0.accessibilityLabel() == "Advanced notification package allowlist" }, "Denied-throws filter missing")
+        throwingFilter.stringValue = "invalid edited package"
+        throwingController.controlTextDidChange(Notification(name: NSControl.textDidChangeNotification, object: throwingFilter))
+        deniedStatus?.resume(returning: true); deniedStatus = nil
+        try await Task.sleep(nanoseconds: 100_000_000)
+        try require(peer.notificationRequests().count == throwingBefore + 1, "Late Denied read overwrote an edited invalid filter")
+        throwingController.shutdown(); throwingController.window?.orderOut(nil)
         var settingsContinuation: CheckedContinuation<Bool, Never>?
         var postContinuation: CheckedContinuation<Void, Error>?
         var postedIdentifiers: [String] = [], removedIdentifiers: [String] = []

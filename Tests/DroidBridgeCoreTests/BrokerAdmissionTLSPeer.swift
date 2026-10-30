@@ -20,6 +20,13 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
         let data = try JSONSerialization.data(withJSONObject: ["epoch": epoch, "events": [], "next_sequence": 0, "reset_required": reset])
         try data.write(to: directory.appendingPathComponent("event-page.json"), options: .atomic)
     }
+    /// Cursor-aware additive journal fixture. Existing static event-page tests
+    /// keep their original behavior. A forced reset is emitted once per page.
+    func setCatalogEventPage(epoch: String, reset: Bool = false, events: [[String: Any]], nextSequence: Int64? = nil) throws {
+        let next = nextSequence ?? events.compactMap { ($0["sequence"] as? NSNumber)?.int64Value }.max() ?? 0
+        let data = try JSONSerialization.data(withJSONObject: ["epoch": epoch, "events": events, "next_sequence": next, "reset_required": reset, "fixture_page_id": UUID().uuidString])
+        try data.write(to: directory.appendingPathComponent("catalog-event-page.json"), options: .atomic)
+    }
     init(heartbeat:Bool=false,blockedPath:String="",notificationScopeV2:Bool=true)throws {
         directory=FileManager.default.temporaryDirectory.appendingPathComponent("admission-tls-\(UUID().uuidString)")
         try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:false,attributes:[.posixPermissions:0o700])
@@ -30,7 +37,7 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
         try openssl(["req","-x509","-newkey","ec","-pkeyopt","ec_paramgen_curve:prime256v1","-pkeyopt","ec_param_enc:named_curve","-sha256","-nodes","-keyout",key.path,"-out",cert.path,"-days","1","-config",configuration.path])
         try openssl(["x509","-in",cert.path,"-outform","DER","-out",der.path]);serverPin=CompanionClient.sha256(try Data(contentsOf:der))
         let source = #"""
-        import socket,ssl,pathlib,sys,json,datetime,threading,time
+        import socket,ssl,pathlib,sys,json,datetime,threading,time,urllib.parse
         root=pathlib.Path(sys.argv[1]);device,trust,pair=sys.argv[2:5];heartbeat=sys.argv[5]=='1';blocked=sys.argv[6];notification_scope=sys.argv[7]=='1'
         ctx=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);ctx.minimum_version=ssl.TLSVersion.TLSv1_2
         ctx.set_ecdh_curve('prime256v1')
@@ -38,6 +45,17 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
         server=socket.socket();server.bind(('127.0.0.1',0));server.listen(8)
         (root/'port.tmp').write_text(str(server.getsockname()[1]));(root/'port.tmp').replace(root/'port')
         clock_epoch=device;pair_expiry=int(time.monotonic()*1000)+120000
+        catalog_lock=threading.Lock();served_catalog_resets=set()
+        def catalog_event_page(query):
+          with catalog_lock:
+            page=json.loads((root/'catalog-event-page.json').read_text())
+            after=int(urllib.parse.parse_qs(query).get('after',['0'])[0])
+            page_id=page.pop('fixture_page_id')
+            reset=page.get('reset_required',False) and page_id not in served_catalog_resets
+            if reset:served_catalog_resets.add(page_id)
+            page['reset_required']=reset
+            if not reset:page['events']=[event for event in page['events'] if event['sequence']>after]
+            return page
         def handle(client):
           try:
             client.settimeout(5)
@@ -52,7 +70,7 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
                   length=next((int(line.split(b':',1)[1]) for line in heads.split(b'\r\n') if line.lower().startswith(b'content-length:')),0)
                   if len(body)>=length:break
               lines=heads.decode().split('\r\n');method,path,_=lines[0].split(' ')
-              path=path.split('?',1)[0]
+              parsed=urllib.parse.urlsplit(path);query=parsed.query;path=parsed.path
               headers={line.split(':',1)[0].lower():line.split(':',1)[1] for line in lines[1:] if ':' in line}
               request=headers.get('x-request-id','').strip()
               with (root/'paths.txt').open('a') as record:record.write(path+'\n')
@@ -67,6 +85,9 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
               elif path=='/v1/pair/'+pair:data={'pairing_id':pair,'status':'approved','credential':'A'*43,'trust_id':trust,'device_id':device,'capabilities':[]}
               elif path=='/v1/commands':data={'request_id':request,'status':'applied','result':{}}
               elif path=='/v1/identity':data={'device_id':device,'trust_id':trust,'protocol':1}
+              elif path=='/v1/catalog':data={'generation':'c'*64,'items':[],'next_cursor':None}
+              elif path=='/v1/catalog/changes':data={'generation':'c'*64,'items':[],'deleted':[]}
+              elif path.startswith('/v1/events') and (root/'catalog-event-page.json').exists():data=catalog_event_page(query)
               elif path.startswith('/v1/events'):data=json.loads((root/'event-page.json').read_text()) if (root/'event-page.json').exists() else {'epoch':device,'events':[],'next_sequence':0,'reset_required':False}
               else:data={'accepted':True}
               error=None

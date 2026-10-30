@@ -9,6 +9,20 @@ extension LauncherController {
     func acceptCompanionCatalog(serial: String, apps: [CompanionApp]) {
         guard !isWrapper, !quitting, selectedDevice?.serial == serial, readySerials.contains(serial), apps.count <= 4096,
               apps.allSatisfy({ (try? AndroidDiscovery.validatePackage($0.packageName)) != nil }) else { return }
+        appsLoadToken = UUID(); loadingAppsSerial = nil
+        let prefix = serial + ":", packages = Set(apps.map(\.packageName))
+        companionIconHashes = companionIconHashes.filter { $0.key.hasPrefix(prefix) }
+        for key in companionIconHashes.keys where key.hasPrefix(prefix) && !packages.contains(String(key.dropFirst(prefix.count))) {
+            companionIconHashes.removeValue(forKey: key); icons.removeValue(forKey: key); iconData.removeValue(forKey: key); iconFailures.removeValue(forKey: key); iconTasks[key]?.cancel()
+        }
+        for app in apps {
+            let key = prefix + app.packageName
+            if companionIconHashes[key] != app.iconSha256 {
+                icons.removeValue(forKey: key); iconData.removeValue(forKey: key); iconFailures.removeValue(forKey: key); iconTasks[key]?.cancel()
+                iconQueue.removeAll { iconKey($0.0, $0.1) == key }
+            }
+            companionIconHashes[key] = app.iconSha256
+        }
         applications = apps.filter { $0.launchable != false }.map { AndroidApplication(packageName: $0.packageName, name: $0.label) }
         appsDeviceSerial = serial; appsError = nil; filterApps()
     }

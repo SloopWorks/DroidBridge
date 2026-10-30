@@ -905,3 +905,108 @@ is accepted; the failed candidate is not relabeled passed. Evidence and hashes:
 installed Mac8/APK11 interoperability and exact final source archive validation
 remain outstanding at this checkpoint. No reviewer device or GUI mutation was
 used to obtain this independent source/log/artifact assessment.
+
+
+### Android11 full gate and provisional source candidate a2a37c6
+
+Independent raw-log inspection confirms the exact candidate2 code11 completed
+full34/34 in282.426s and large-layout9/9 in48.715s, in addition to focused3/3.
+All62 source manifest hashes still match. The full notification matrix measured
+27ms; real provider deadline/cancellation,120-second pairing expiry, uncertainty
+copy and zero automatic successors also appear in the completed full log.
+Raw10→11 upgrade snapshots preserve device UUID, TLS pin and explicit settings.
+This is Android API35 evidence; it does not assert final installed Mac/API37
+interoperability. `security/code11-candidate2-independent.json` binds these logs.
+
+The source candidate for commit
+`a2a37c68d67d7f809ea7e1694fdf030414334435` passed the independent read-only archive
+checker against the outside-build QA8 app:622 members,538 checksum-covered files,
+409 exact Git source blobs/modes,16 dependency formula/version source cohorts,
+16 ADB notices and exact packaged source-built ADB inventory. No links/special
+entries were found; deep/strict bundle signature verification passed. Archive
+SHA256 is `2a02838e5b2368e5ee3a95fdf64b89c5f62e51819b3297292c65c680a95a676b`.
+This remains a provisional archive because later verification documentation and
+scripts may be committed without changing product runtime sources.
+
+Separately, the reviewer generated a fresh streaming Git archive from trusted
+Vendor scrcpy commit `a60891aea193d92e7e5c3942700eca63f9d19a5f` with the fixed
+`scrcpy-5.0.1/` prefix. Its SHA256
+`64bac06d6e31630296c957e067ae2485b0b0fc5746d805c2ce8a60744aba20b1`
+matches the source member independently of BUILD_IDENTITIES' self-manifest.
+Outer source layout and197 app files contain no local-signing keystore/PKCS12 or
+test-APK path; the sole packaged APK is the reviewed production code11 binary.
+A read-only release host/broker byte scan found none of seven specific DEBUG
+hook/test strings. This is a bounded presence check, not proof of arbitrary-code
+absence. Evidence: `source-archive-candidatea2a37c6-independent.json`,
+`source-archive-candidatea2a37c6-upstream-and-signing.json` and
+`build8-release-debug-seams-independent.json` under `security/`.
+Final installed interoperability/performance and final committed distribution
+review remain coordinator acceptance gates; this review does not authorize a
+public asset release or claim legal compliance, Developer ID or notarization.
+
+
+### S30 — Core catalog invalidation hint review (C04 repair)
+
+Installed acceptance found that the desktop previously required manual catalog
+refresh; earlier raw Android delta tests did not establish automatic UI updates.
+The new Core hint is a random UUID held in bounded per-device cached state.
+Authenticated reconnect, stream reset/epoch change, a newly accepted catalog
+change and an actual export-selection map change invalidate it. Targeted events
+must match current enabled trust; broadcast device catalog hints are permitted.
+The event payload never becomes a catalog snapshot or user inbox content, and
+status reads neither derive work nor contact Android. Forget/self-revoke clears
+the hint and deduplication context. Replayed immediately last accepted event IDs
+do not advance it; replay of an older ID after another event may harmlessly
+invalidate again. Reset/reconnect always create fresh UUIDs rather than restoring
+an already observed event-derived token.
+
+Independent source review found no blocking authority, privacy or persistence
+fence issue in this Core checkpoint. The actual pinned TLS fixture log completed
+six catalog signal tests plus nine independent notification regressions with zero
+failures; all three current Source/Tests hashes match the producer checkpoint.
+No Android or GUI operation was performed by this reviewer. Evidence:
+`security/catalog-signal-independent-review.json` and
+`security/catalog-signal-focused-attempt2.log`. An exact map-change/no-op export
+hint assertion is a recommended focused coverage addition. Mac automatic
+coalescing/delta publication, visible rename/icon/delete without manual refresh,
+the observed-event-to-UI timing bound, current full Swift suite and final package
+remain required. Product/runtime changes supersede provisional build8/a2a37c6
+for final release, while that archive's historical byte review stays valid.
+
+
+### S31 — Mac catalog synchronization and current read-scope review
+
+The first source9 synchronizer was rejected because every observed token change
+cancelled its in-flight pass, reset retry counters and invalidated its ticket.
+A package-change storm could therefore starve a slow complete snapshot and
+circumvent the finite retry budget. The corrected source retains an authority-
+valid pass, settles only its captured hint and schedules one successor against
+the newest pending hint. Origin/trust/visibility changes and explicit Refresh
+still cancel/fence old work. New hints do not reset three failed attempts.
+Independent reinspection and the deterministic shipping-engine assertions cover
+a blocked snapshot with100 hints yielding one current full read and one successor
+delta,100 more hints after exhausted retries yielding no extra reads, and dynamic
+visibility loss before another status observation yielding no successor loop.
+Bounds remain two visible demands, four retained origins,64 pages/4096 unique
+apps and64 delta identities. Last complete snapshots are distinct from first-
+page progress; duplicate/generation failures cannot replace the complete base.
+
+Every new UI policy/catalog read supplies its original expected trust. Core
+rechecks epoch, trust and verified transport generation before the control-lane
+request, after HTTP, and after scheduler release. The read receipt cache was
+explicitly bypassed for these three operations; exact same-ID replay after
+Forget must re-evaluate authority rather than return an earlier catalog. Mutation
+receipt semantics remain intact. Independent raw-log inspection confirms21
+focused pinned-HTTPS tests (six read scope, six signals, nine security) completed
+with zero failures in3.961s. Source and output bindings are in
+`security/catalog-source9-independent-review.json`.
+
+The source9 notification fallback permits explicit in-app sharing after a thrown
+OS authorization error only when a separate read reports actual Denied status.
+It preserves window, trust, cancellation and filter guards on both sides of that
+additional await; other errors propagate. Source review accepts this narrow
+behavior. The first AppKit harness execution failed a test-only forced checkbox
+lookup before selecting its tab; it is not a passing GUI gate. Corrected AppKit
+execution, installed automatic rename/icon/delete and selection-token behavior,
+observed timing, current full Swift and final package/archive remain required.
+No reviewer GUI/device or OS permission operation was performed in this review.

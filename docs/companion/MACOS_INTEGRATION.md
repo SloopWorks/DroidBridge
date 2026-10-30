@@ -296,3 +296,49 @@ The quiet build-3 ABBA cohort improved local preview median to 226 ms paired and
 target still fails. First-video medians were 1952/1665 ms, so the paired overhead
 also fails the proposed 10%/200 ms regression budget. Raw phase attribution and
 both failures are retained; further startup changes need a new installed cohort.
+
+## Shared visible catalog synchronization (candidate 9)
+
+`CompanionDesktopAdapter` owns one `CompanionCatalogSync` for both the main
+launcher and companion window. A visible catalog observes the broker's **local,
+cached** status at one second; this does not poll Android's catalog. Hidden UIs
+and immutable wrapper hosts create no catalog demand. Phone publication still
+uses its selected performance profile separately. All status, publication and
+inbox cadence deadlines use the sleep-inclusive monotonic Mac clock, so a wall
+clock correction cannot stall those periodic observations.
+
+A captured phone installation ID, original trust ID and opaque
+`catalog_change_token` identify each demand. Initial connection loads pages of
+64 (at most 64 pages and 4096 distinct package names), with first-page progress
+in the companion view. Only a complete, consistent generation becomes the next
+delta base. A changed token asks `catalog_changes` against that base, atomically
+merges changed/deleted packages, and preserves unchanged icon hashes. A retained
+base that Android no longer recognizes permits one bounded full-page fallback.
+Ordinary failures retry at most three times; explicit Refresh resets that finite
+budget. Cached complete catalogs remain usable during refresh failure.
+The engine fixture is reproducible with
+`scripts/verify-companion-catalog-sync.sh <report-path>`.
+
+Both visible views share a fetch for the same phone/trust. Every request includes
+`expected_trust_id`; responses are fenced again against current visibility,
+selected alias, trust, task ticket and cancellation. A newer token coalesces
+one successor instead of cancelling a valid in-flight snapshot; only the captured
+token is acknowledged by that pass, and hints never reset the retry budget. Re-pair cannot reuse
+the former trust's base. The main launcher also invalidates an older ADB app-load
+ticket before accepting a companion snapshot, and invalidates only changed icon
+hashes. Metadata caches retain at most four bounded origins. The pure shipping
+engine regression covers shared 1000-app discovery, incremental rename/add/remove,
+unchanged-token quietness, stale fallback, hidden/re-pair late responses,
+duplicate-page refusal and finite retry. It is component evidence, not installed
+Android acceptance; candidate-9 actual package-change testing remains required.
+
+## Denied macOS notification permission
+
+Installed build 8 confirmed that `requestAuthorization` can **throw** when the
+system setting is Denied. The candidate-9 UI reads the current system status
+without changing it and continues an explicitly requested in-app sharing
+preference only when that read confirms Denied. Other authorization errors remain
+errors. The original intent, phone/trust, filter, checkbox, window lifetime and
+cancellation are checked before and after the extra await. This permits in-app
+phone notifications while preserving the user's system-banner denial. It does
+not grant macOS notification permission or demonstrate a delivered OS banner.

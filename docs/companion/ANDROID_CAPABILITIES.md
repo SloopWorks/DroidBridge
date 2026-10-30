@@ -49,9 +49,36 @@ Incoming files stay private until the user chooses Save via Android's document U
 Nothing is automatically opened, executed or extracted.
 
 Notification sharing is separately opt-in and uses Android's user-granted
-NotificationListenerService access. Replies use only a currently advertised
-free-form RemoteInput action. There is no accessibility service, root request,
-microphone, contacts, SMS, location or broad storage permission.
+NotificationListenerService access. Only eligible public app notifications are
+published; private, ongoing, foreground-service, own-package and internal
+single-segment system-package notifications are excluded. Replies use only a
+currently advertised free-form RemoteInput action, with a 1..4096 UTF-8-byte
+limit enforced before admission and at the Android sink. Preview limits are
+separate: 256 UTF-16 title units and 4096 UTF-16 body units, within the event byte
+and response caps.
+
+The `notification_scope_v2` capability binds notification preferences, replies
+and dismissal to a canonical `expected_trust_id` matching the authenticated
+credential before receipt lookup or effects. Missing or changed scope fails
+closed; an old UUID cannot replay under a replacement trust. Current package,
+recipient and action generation are checked before effects.
+
+A bounded 256-key/eight-recipient index tracks which public generations were
+selected into authenticated event responses. Exclusion, opt-out, filter change,
+listener loss or eviction sends only key metadata to that prior selected audience;
+never-selected recipients receive no cleanup existence signal. Cleanup is allowed
+after content opt-out, while old content is suppressed. Revoked credentials get
+401 and no metadata. Mac clears active notification rows on epoch/journal gaps
+or authorization failure; listener reconnect can replay up to 256 current eligible
+public notifications with fresh action identities. An already admitted in-flight
+response cannot be absolutely retracted.
+
+The action cache is capped at 256 minimal capabilities, without retaining whole
+StatusBarNotification objects or bodies. Publication and reconciliation snapshot
+trust once per operation. Listener callbacks release their action lock before
+entering Store; polling waits without the Store lock and filters in Store→event
+lock order. There is no accessibility service, root request, microphone, contacts,
+SMS, location or broad storage permission.
 
 ## Build and verification boundaries
 

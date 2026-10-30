@@ -40,10 +40,11 @@ import DroidBridgeCore
     private var iconQueue: [(String, String)] = []
     private var action: Task<Void, Never>?, refresh: Task<Void, Never>?, catalogTask: Task<Void, Never>?, pairingTask: Task<Void, Never>?
     private var scanner: CompanionPairingScanner?, wireless: CompanionWirelessSetup?
+    private var presentedCatalogOrigin: String?
     private var catalogToken = UUID(), changingPhone = false, stopped = false
     private var items: [[String: CompanionJSON]] = []
     private var mirrorShown = Set<String>()
-    private var lastInbox = Date.distantPast
+    private var lastInboxMS = -Double.infinity
     private var presentedDevices: [CompanionDesktopDevice] = []
     private var presentedADBDevices: [AndroidDevice] = []
     private var presentedSessions: [[String: CompanionJSON]] = []
@@ -55,6 +56,7 @@ import DroidBridgeCore
     private let authorizeNotifications: @MainActor () async throws -> Bool
     private var notificationIntent = UUID()
     private var actionToken = UUID(), windowClosed = false
+    private let notificationsDenied: @MainActor () async -> Bool
     private let notificationsAuthorized: @MainActor () async -> Bool
     private let postNotification: @MainActor (UNNotificationRequest) async throws -> Void
     private let removeNotifications: @MainActor ([String]) -> Void
@@ -63,6 +65,8 @@ import DroidBridgeCore
         try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
     }, notificationsAuthorized: @escaping @MainActor () async -> Bool = {
         await UNUserNotificationCenter.current().notificationSettings().authorizationStatus == .authorized
+    }, notificationsDenied: @escaping @MainActor () async -> Bool = {
+        await UNUserNotificationCenter.current().notificationSettings().authorizationStatus == .denied
     }, postNotification: @escaping @MainActor (UNNotificationRequest) async throws -> Void = {
         try await UNUserNotificationCenter.current().add($0)
     }, removeNotifications: @escaping @MainActor ([String]) -> Void = {
@@ -71,7 +75,7 @@ import DroidBridgeCore
     }) {
         self.adapter = adapter
         self.authorizeNotifications = authorizeNotifications
-        self.notificationsAuthorized = notificationsAuthorized; self.postNotification = postNotification; self.removeNotifications = removeNotifications
+        self.notificationsAuthorized = notificationsAuthorized; self.notificationsDenied = notificationsDenied; self.postNotification = postNotification; self.removeNotifications = removeNotifications
         let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 900, height: 760), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         window.title = "DroidBridge Companion"; window.contentMinSize = NSSize(width: 700, height: 570); window.isReleasedWhenClosed = false; window.center()
         window.contentView = LauncherBackground()
@@ -83,17 +87,18 @@ import DroidBridgeCore
         refresh = Task { [weak self] in
             while !Task.isCancelled {
                 guard let self, !self.stopped else { return }
-                if self.window?.isVisible == true { self.refreshState(); if Date().timeIntervalSince(self.lastInbox) >= 3 { await self.loadInbox() } }
+                if self.window?.isVisible == true { self.refreshState(); if CompanionClock.nowMS() - self.lastInboxMS >= 3000 { await self.loadInbox() } }
                 try? await Task.sleep(nanoseconds: 1_000_000_000)
             }
         }
         refreshState()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
-    override func showWindow(_ sender: Any?) { windowClosed = false; super.showWindow(sender) }
+    override func showWindow(_ sender: Any?) { windowClosed = false; super.showWindow(sender); adapter.catalogVisibilityChanged() }
+    var catalogDeviceID: String? { !stopped && !windowClosed && window?.isVisible == true && window?.isMiniaturized != true ? selectedID : nil }
     func windowWillClose(_ notification: Notification) {
         windowClosed = true; notificationIntent = UUID(); actionToken = UUID()
-        action?.cancel(); action = nil; progress.stopAnimation(nil)
+        action?.cancel(); action = nil; progress.stopAnimation(nil); adapter.catalogVisibilityChanged()
     }
     private var phone: CompanionDesktopDevice? { adapter.devices.first { $0.id == selectedID } }
     private var localDefaults: UserDefaults { CompanionQAScope.current.flatMap { UserDefaults(suiteName: "dev.droidbridge.companion.qa.\($0.serviceSuffix)") } ?? .standard }
@@ -195,6 +200,8 @@ import DroidBridgeCore
         if let previous, let index = phones.itemArray.firstIndex(where: { ($0.representedObject as? String) == previous }) { phones.selectItem(at: index) }
         else if let serial = adapter.launcher?.selectedDevice?.serial, let device = adapter.device(for: serial), let index = adapter.devices.firstIndex(where: { $0.id == device.id }) { phones.selectItem(at: index) }
         selectedID = phones.selectedItem?.representedObject as? String
+        let catalogOrigin = phone.flatMap { value in value.trustID.map { value.id + ":" + $0 } }
+        if presentedCatalogOrigin != catalogOrigin { clearPhoneContent(); presentedCatalogOrigin = catalogOrigin }
         let notificationTrust = phone.flatMap { value in value.trustID.map { value.id + ":" + $0 } }
         if presentedNotificationTrust != notificationTrust {
             presentedNotificationTrust = notificationTrust; notificationIntent = UUID(); notificationOptIn.state = .off; renderInbox()
@@ -372,38 +379,27 @@ import DroidBridgeCore
     }
     func loadCatalog() {
         guard let phone, phone.connected else { appStatus.stringValue = "Connect and pair the companion before reading its catalog. The main launcher can still discover apps through ADB."; return }
-        catalogTask?.cancel(); let token = UUID(); catalogToken = token; appStatus.stringValue = "Reading first app page…"
-        catalogTask = Task { [weak self] in
-            guard let self else { return }
-            do {
-                let policy = try await self.adapter.broker.request(operation: "export_selection_get", payload: ["device_id": .string(phone.id)])
-                guard !Task.isCancelled, self.catalogToken == token, self.selectedID == phone.id else { return }
-                self.selection = policy.data["selection"]?.object?.compactMapValues(\.bool) ?? [:]
-                let chosen = Set(self.selection.compactMap { $0.value ? $0.key : nil })
-                if !chosen.isEmpty, let catalog = self.adapter.launcher?.managedCatalog {
-                    let aliases = Set(phone.aliases)
-                    let active = try await Task.detached(priority: .utility) {
-                        Set(try catalog.records().filter { aliases.contains($0.deviceSerial) && $0.availability == .active && $0.location == .active }.map(\.packageName))
-                    }.value
-                    guard !Task.isCancelled, self.catalogToken == token, self.selectedID == phone.id else { return }
-                    self.pendingExports = chosen.subtracting(active)
-                } else { self.pendingExports.removeAll() }
-                var cursor: String?, generation: String?, result: [CompanionApp] = [], pages = 0
-                repeat {
-                    var payload: [String: CompanionJSON] = ["device_id": .string(phone.id)]
-                    if let cursor { payload["cursor"] = .string(cursor) }
-                    let response = try await self.adapter.broker.request(operation: "catalog", payload: payload)
-                    let decoder = JSONDecoder(); decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let page = try decoder.decode(CompanionCatalogPage.self, from: JSONEncoder().encode(response.data))
-                    guard generation == nil || generation == page.generation else { throw CompanionBoundaryError("stale_catalog", "Apps changed during discovery. Refresh the catalog.") }
-                    generation = page.generation; result += page.items; pages += 1
-                    guard result.count <= 4096, pages <= 64 else { throw CompanionBoundaryError("catalog_too_large", "The app catalog exceeds its supported bound.") }
-                    guard !Task.isCancelled, self.catalogToken == token, self.selectedID == phone.id else { return }
-                    self.apps = result; self.filterApps(); self.appStatus.stringValue = "\(result.count) apps loaded\(page.nextCursor == nil ? "." : " · reading more…")"
-                    cursor = page.nextCursor
-                } while cursor != nil
-                self.adapter.launcher?.acceptCompanionCatalog(serial: phone.serial, apps: result)
-            } catch { if !Task.isCancelled, self.catalogToken == token { self.appStatus.stringValue = error.localizedDescription + " Existing Android app launching remains available." } }
+        appStatus.stringValue = "Reading first app page…"; adapter.refreshCatalog(deviceID: phone.id)
+    }
+    func catalogStatus(_ text: String, phone origin: CompanionDesktopDevice) {
+        guard !stopped, selectedID == origin.id, phone?.trustID == origin.trustID else { return }; appStatus.stringValue = text
+    }
+    func acceptCatalog(_ snapshot: CompanionCatalogSync.Snapshot, phone origin: CompanionDesktopDevice, complete: Bool) {
+        guard !stopped, !windowClosed, window?.isVisible == true, selectedID == origin.id, phone?.trustID == origin.trustID else { return }
+        apps = snapshot.apps; selection = snapshot.selection; filterApps()
+        appStatus.stringValue = "\(apps.count) apps loaded\(complete ? ". Changes update automatically while this window is visible." : " · reading more…")"
+        if complete {
+            catalogTask?.cancel(); let token = UUID(); catalogToken = token
+            catalogTask = Task { [weak self] in
+                guard let self else { return }
+                let chosen = Set(snapshot.selection.compactMap { $0.value ? $0.key : nil })
+                guard !chosen.isEmpty, let catalog = self.adapter.launcher?.managedCatalog else { self.pendingExports.removeAll(); return }
+                let aliases = Set(origin.aliases)
+                guard let active = try? await Task.detached(priority: .utility, operation: {
+                    Set(try catalog.records().filter { aliases.contains($0.deviceSerial) && $0.availability == .active && $0.location == .active }.map(\.packageName))
+                }).value, !Task.isCancelled, self.catalogToken == token, self.selectedID == origin.id, self.phone?.trustID == origin.trustID else { return }
+                self.pendingExports = chosen.subtracting(active); self.appTable.reloadData()
+            }
         }
     }
     func controlTextDidChange(_ obj: Notification) { if obj.object as? NSTextField === notificationFilters { notificationIntent = UUID() } else if obj.object as? NSSearchField === notificationSearch { filterNotificationApps() } else { filterApps() } }
@@ -517,7 +513,7 @@ import DroidBridgeCore
         if panel.runModal() == .OK, let url = panel.url { transfers.send(url, device: phone.id) }
     }
     func loadInbox(force: Bool = false) async {
-        guard let phone, phone.connected, force || Date().timeIntervalSince(lastInbox) >= 3 else { return }; lastInbox = Date()
+        guard let phone, phone.connected, force || CompanionClock.nowMS() - lastInboxMS >= 3000 else { return }; lastInboxMS = CompanionClock.nowMS()
         do {
             var result: [[String: CompanionJSON]] = [], cursor: String?
             repeat {
@@ -576,7 +572,18 @@ import DroidBridgeCore
         run("Updating notification permissions and filters…") { [weak self] in
             guard let self else { throw CancellationError() }
             if enabled {
-                let allowed = try await self.authorizeNotifications()
+                let allowed: Bool
+                do { allowed = try await self.authorizeNotifications() }
+                catch {
+                    try Task.checkCancellation()
+                    guard self.notificationContextValid(intent: intent, phoneID: phone.id, trustID: trustID), self.notificationPackages == packages, self.notificationOptIn.state == .on else { throw CancellationError() }
+                    // A denied system setting may throw instead of returning
+                    // false. It must not prevent explicit in-app sharing.
+                    guard await self.notificationsDenied() else { throw error }
+                    try Task.checkCancellation()
+                    guard self.notificationContextValid(intent: intent, phoneID: phone.id, trustID: trustID), self.notificationPackages == packages, self.notificationOptIn.state == .on else { throw CancellationError() }
+                    allowed = false
+                }
                 try Task.checkCancellation()
                 guard self.notificationContextValid(intent: intent, phoneID: phone.id, trustID: trustID), self.notificationPackages == packages, self.notificationOptIn.state == (enabled ? .on : .off) else { throw CancellationError() }
                 self.notificationStatus.stringValue = allowed ? "Mac notification permission granted. Android notification access and app filters still apply." : "Mac notification permission denied. Mirrored items remain available inside DroidBridge; change permission in System Settings if desired."

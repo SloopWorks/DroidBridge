@@ -44,6 +44,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var sessionPresentation:[LauncherSessionPresentation]?
     var sessionErrors: [UUID: String] = [:]
     var iconData: [String: Data] = [:]
+    var companionIconHashes: [String: String] = [:]
     var icons: [String: NSImage] = [:]
     var iconFailures: [String: String] = [:]
     var iconQueue: [(AndroidDevice, AndroidApplication)] = []
@@ -198,6 +199,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     override func showWindow(_ sender: Any?) {
         prepareLauncherUIIfNeeded()
         super.showWindow(sender)
+        companion.catalogVisibilityChanged()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
     func button(_ title: String, _ action: Selector) -> NSButton { let button = NSButton(title: title, target: self, action: action); button.bezelStyle = .rounded; return button }
@@ -260,7 +262,12 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                     if !self.quitting, self.selectedDevice?.serial == device.serial, let row = self.filtered.firstIndex(where: { $0.packageName == app.packageName }) { self.table.reloadData(forRowIndexes: IndexSet(integer: row), columnIndexes: IndexSet(integer: 0));self.updateLauncherPresentation() }
                 }
                 do {
-                    let data = try await self.iconProvider.icon(device: device, application: app)
+                    let hash = self.companionIconHashes[key]
+                    let data: Data
+                    if let hash, let phone = self.companion.device(for: device.serial), phone.connected {
+                        data = try await self.companion.broker.icon(deviceID: phone.id, hash: hash)
+                    } else { data = try await self.iconProvider.icon(device: device, application: app) }
+                    guard self.companionIconHashes[key] == hash else { return }
                     guard !self.quitting, !Task.isCancelled, let image = NSImage(data: data) else { return }
                     self.iconData[key] = data; self.icons[key] = image; self.touchIcon(key)
                 } catch { if !Task.isCancelled { self.iconFailures[key] = error.localizedDescription; self.touchIcon(key) } }
@@ -339,6 +346,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                     if await DeviceReadiness.isReady(device: device, toolchain: toolchain) { ready.insert(device.serial) }
                 }
                 readySerials = ready
+                companion.catalogVisibilityChanged()
                 pollAudioControls()
                 // A wrapper already knows its package/name/icon. Never wait for the
                 // full catalog (or fetch every app icon) to launch that identity.
@@ -366,6 +374,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     @objc func deviceChanged() {
         deviceSelectionTask?.cancel();pollPhoneDisplayControls();pollAudioControls();discardStaleIconRequests()
         appsDeviceSerial=nil;appsLoadToken=UUID();loadingAppsSerial=nil;appsError=nil;applications=[];filterApps()
+        companion.catalogVisibilityChanged()
         let id=UUID()
         let task=Task { [weak self] in
             guard let self else {return}
