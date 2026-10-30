@@ -1,0 +1,1 @@
+{"pid": 41576, "client": "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient", "argv": ["--serial", "emulator-5580", "--port", "46000", "--force-adb-forward", "--no-video", "--no-control", "--no-window", "--no-power-on", "--require-audio", "--audio-codec=raw", "--audio-source=output"], "time": 1793380277.6614358}

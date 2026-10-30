@@ -1,0 +1,93 @@
+{
+  "id" : 4,
+  "texts" : [
+    "Selected macAndPhone"
+  ],
+  "backend" : "",
+  "menus" : {
+    "Audio" : [
+      {
+        "separator" : false,
+        "title" : "mac",
+        "enabled" : true,
+        "state" : 0,
+        "route" : "mac"
+      },
+      {
+        "separator" : false,
+        "title" : "phone",
+        "enabled" : true,
+        "state" : 0,
+        "route" : "phone"
+      },
+      {
+        "separator" : false,
+        "title" : "macAndPhone",
+        "enabled" : true,
+        "state" : 1,
+        "route" : "macAndPhone"
+      },
+      {
+        "separator" : false,
+        "title" : "Retry Audio",
+        "enabled" : true,
+        "state" : 0,
+        "route" : ""
+      }
+    ]
+  },
+  "physical_focus_verified" : false,
+  "selected_row" : 0,
+  "buttons" : {
+    "macAndPhone" : true
+  },
+  "passed" : true,
+  "launch_enabled" : false,
+  "audio_status" : "Retry 1",
+  "action" : "audio_menu",
+  "rows" : 0,
+  "audio_route" : "macAndPhone",
+  "pid" : 92783,
+  "windows" : [
+    {
+      "number" : 12098,
+      "height" : 300,
+      "visible" : false,
+      "title" : "DroidBridge",
+      "width" : 500,
+      "minimized" : false,
+      "key" : false
+    }
+  ],
+  "device" : "",
+  "audio_menu" : [
+    {
+      "separator" : false,
+      "title" : "mac",
+      "enabled" : true,
+      "state" : 0,
+      "route" : "mac"
+    },
+    {
+      "separator" : false,
+      "title" : "phone",
+      "enabled" : true,
+      "state" : 0,
+      "route" : "phone"
+    },
+    {
+      "separator" : false,
+      "title" : "macAndPhone",
+      "enabled" : true,
+      "state" : 1,
+      "route" : "macAndPhone"
+    },
+    {
+      "separator" : false,
+      "title" : "Retry Audio",
+      "enabled" : true,
+      "state" : 0,
+      "route" : ""
+    }
+  ]
+}

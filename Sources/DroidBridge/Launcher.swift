@@ -51,6 +51,15 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var sharedPreferences = (try? DroidBridgePreferences.load()) ?? DroidBridgePreferences(bulkWrapperOnboardingEnabled:false)
     let bulkPreference = NSButton(checkboxWithTitle:"Enable device apps in Spotlight",target:nil,action:nil)
     let phoneScreenPreference = NSButton(checkboxWithTitle:"Keep phone screen off during Mac sessions",target:nil,action:nil)
+    let audioRoutePicker = NSPopUpButton()
+    let audioStatus = NSTextField(wrappingLabelWithString:"Mac audio starts when an app is running.")
+    let audioRetry = NSButton(title:"Retry Audio",target:nil,action:nil)
+    let audioUsePhone = NSButton(title:"Use Phone",target:nil,action:nil)
+    lazy var audioControls: AudioControls = {
+        let controls = AudioControls(toolchain: toolchain)
+        controls.onChange = { [weak self] _ in self?.updateAudioPresentation() }
+        return controls
+    }()
     lazy var phoneDisplayControls:PhoneDisplayControls = {
         let controls=PhoneDisplayControls(toolchain:toolchain)
         controls.onMessage={ [weak self] message in
@@ -135,13 +144,17 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         return directory.appendingPathComponent(isWrapper ? "sessions-\(Bundle.main.bundleIdentifier ?? "wrapper").json" : "sessions.json")
     }
-    init() {
+    init(audioControls providedAudioControls: AudioControls? = nil) {
         let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1160, height: 780), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         window.title = "DroidBridge"
         window.contentMinSize = NSSize(width: 920, height: 640)
         window.titlebarSeparatorStyle = .line
         window.isReleasedWhenClosed = false
         super.init(window: window)
+        if let providedAudioControls {
+            audioControls = providedAudioControls
+            audioControls.onChange = { [weak self] _ in self?.updateAudioPresentation() }
+        }
         buildUI()
         window.center()
         if let data = try? Data(contentsOf: persistenceURL), let descriptors = try? JSONDecoder().decode([SessionDescriptor].self, from: data) { pending = descriptors }
@@ -156,7 +169,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         status.onChange={ [weak self] in self?.updateLauncherPresentation() }
         updateSessions()
     }
-    func updateLauncherPresentation() {launcherUI?.refresh()}
+    func updateLauncherPresentation() {launcherUI?.refresh();updateAudioPresentation()}
     func tableViewSelectionDidChange(_ notification:Notification) {updateLauncherPresentation()}
     var canLaunchSelectedApp:Bool {
         guard let device=selectedDevice else {return false}
@@ -239,7 +252,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     @objc func refreshAction() { iconFailures.removeAll(); refresh() }
     func beginPolling() {
         guard !quitting else { return }
-        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in Task { @MainActor in self?.pollPhoneDisplayControls();self?.refreshDevices() } }
+        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in Task { @MainActor in self?.pollPhoneDisplayControls();self?.pollAudioControls();self?.refreshDevices() } }
         refresh()
     }
     func refresh() { refreshDevices(forceApps: true) }
@@ -285,6 +298,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                     if await DeviceReadiness.isReady(device: device, toolchain: toolchain) { ready.insert(device.serial) }
                 }
                 readySerials = ready
+                pollAudioControls()
                 // A wrapper already knows its package/name/icon. Never wait for the
                 // full catalog (or fetch every app icon) to launch that identity.
                 if (!isWrapper || window?.isVisible == true), forceApps || changed || appsDeviceSerial != selectedDevice?.serial || selectedDevice.map({ !ready.contains($0.serial) }) == true { await loadApps(readinessChecked: true) }
@@ -303,13 +317,13 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                         }
                     }
                 }
-                previousSerials = connected; updateSessions();pollPhoneDisplayControls()
+                previousSerials = connected; updateSessions();pollPhoneDisplayControls();pollAudioControls()
                 await launchArgumentsIfNeeded()
             } catch { showLaunchProblem(error.localizedDescription) }
         }
     }
     @objc func deviceChanged() {
-        deviceSelectionTask?.cancel();pollPhoneDisplayControls();discardStaleIconRequests()
+        deviceSelectionTask?.cancel();pollPhoneDisplayControls();pollAudioControls();discardStaleIconRequests()
         appsDeviceSerial=nil;appsLoadToken=UUID();loadingAppsSerial=nil;appsError=nil;applications=[];filterApps()
         let id=UUID()
         let task=Task { [weak self] in
@@ -397,6 +411,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
             guard let self, let session, self.sessions[descriptor.id] != nil else { return }
             if self.sessionStates[descriptor.id] == "disconnected" { return }
             self.sessionStates[descriptor.id] = state.rawValue
+            self.pollAudioControls()
             if state == .failed || state == .stopped { self.presentFailure(session, message: message) }
             else { self.hosts[descriptor.id]?.video.statusMessage = nil }
             if let message, state != .failed && state != .stopped { self.status.stringValue = message }
@@ -492,7 +507,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
             session.stop(reason: reason); retiring[id] = session
             Task { [weak self] in await session.stopAndWait(); self?.retiring.removeValue(forKey: id) }
         }
-        sessionStates.removeValue(forKey: id); updateSessions(); if !quitting { save() }
+        sessionStates.removeValue(forKey: id); updateSessions();pollAudioControls(); if !quitting { save() }
         if isWrapper && sessions.isEmpty && !quitting { scheduleWrapperTermination() }
     }
     func scheduleWrapperTermination() {
@@ -602,6 +617,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         if let preview=launchPreview {preview.onClose=nil;preview.close();launchPreview=nil}
         phoneDisplayControls.cancel(); managedNameRepair?.cancel(); restoreTask?.cancel(); onboardingAdmissionTask?.cancel(); onboarding.cancel()
         for session in Array(sessions.values)+Array(retiring.values) {session.stop(reason:"application_quit")}
+        await audioControls.shutdown()
         if let task=onboardingAdmissionTask { await task.value }
         await onboarding.cancelAndWait()
         await managedNameRepair?.cancelAndWait()

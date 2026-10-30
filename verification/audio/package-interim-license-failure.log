@@ -1,0 +1,143 @@
+ninja: Entering directory `/Users/patrick/workspace/DroidBridge/.build/audio-client/build'
+ninja: no work to do.
+INFO: autodetecting backend as ninja
+INFO: calculating backend command to run: /opt/homebrew/bin/ninja -C /Users/patrick/workspace/DroidBridge/.build/audio-client/build
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+
+Dependencies (compiled / linked):
+ - SDL: 3.4.18 / 3.4.18
+ - libavcodec: 63.1.102 / 63.1.102
+ - libavformat: 63.1.102 / 63.1.102
+ - libavutil: 61.1.102 / 61.1.102
+Pinned source a60891aea193d92e7e5c3942700eca63f9d19a5f; audio readiness patch d9d91f9b6e416a4b583f81bae1adeb8ee80ed4c5d4f0ac16bf689d11a4272c5a
+[0/1] Planning build
+Building for production...
+[0/5] Write sources
+[2/5] Write swift-version--58304C5D6DBC2206.txt
+[4/5] Compiling DroidBridgeStreaming BridgeSession.swift
+[5/7] Compiling DroidBridge AudioControls.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking DroidBridge
+Build complete! (10.36s)
+warning: [options] bootstrap class path not set in conjunction with -source 8
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+Note: /Users/patrick/workspace/DroidBridge/android/icon-helper/dev/droidbridge/icons/IconHelper.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+4 warnings
+/Users/patrick/workspace/DroidBridge/.build/icon-helper/icon-helper.jar
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavutil.61.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavutil.61.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavutil.61.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libavutil.61.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libSDL3.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libSDL3.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libusb-1.0.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libusb-1.0.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libssl.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libssl.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libssl.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libcrypto.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libcrypto.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libvpx.12.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libvpx.12.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/liblzma.5.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/liblzma.5.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libdav1d.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libdav1d.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libmp3lame.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libmp3lame.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libmp3lame.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libopus.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libopus.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libSvtAv1Enc.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libSvtAv1Enc.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libx264.165.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libx264.165.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libx265.217.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libx265.217.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libmpg123.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.TEysGU/Runtime/lib/libmpg123.0.dylib
+Collected runtime notices for 13 formulae. Corresponding-source review remains required before public redistribution.
+cp: Resources/licenses/.: unable to copy extended attributes to /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/.: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./sdl3-3.4.18-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./android-platform-tools-NOTICE.txt: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./opus-1.6.1-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./xz-5.8.4-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./dav1d-1.5.4-COPYING: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./xz-5.8.4-COPYING.LGPLv2.1: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./lame-4.0-COPYING: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./sdl3-3.4.18-LICENSE.txt: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./ffmpeg-9.0.2_1-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./xz-5.8.4-COPYING.0BSD: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./x264-r3222-COPYING: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./opus-1.6.1-COPYING: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./runtime-notices.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./scrcpy-Apache-2.0.txt: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./openssl@4-4.1.0-LICENSE.txt: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./x264-r3222-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./lame-4.0-LICENSE: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./libvpx-1.17.0-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./xz-5.8.4-COPYING: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./ffmpeg-9.0.2_1-COPYING.LGPLv3: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./libusb-1.0.30-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./x265-4.3-COPYING: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./lame-4.0-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./dav1d-1.5.4-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./xz-5.8.4-COPYING.GPLv3: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./ffmpeg-9.0.2_1-COPYING.GPLv2: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./openssl@4-4.1.0-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./libusb-1.0.30-COPYING: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./homebrew-formulae.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./ffmpeg-9.0.2_1-COPYING.GPLv3: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./xz-5.8.4-COPYING.GPLv2: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./ffmpeg-9.0.2_1-LICENSE.md: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./libvpx-1.17.0-LICENSE: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./svt-av1-4.2.0-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./svt-av1-4.2.0-LICENSE-BSD2.md: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./mpg123-1.33.7-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./ffmpeg-9.0.2_1-COPYING.LGPLv2.1: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./svt-av1-4.2.0-LICENSE.md: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./x265-4.3-INSTALL_RECEIPT.json: Operation not permitted
+cp: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/licenses/./mpg123-1.33.7-COPYING: Operation not permitted

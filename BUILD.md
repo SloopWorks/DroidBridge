@@ -7,13 +7,14 @@ Development host: Apple Silicon, macOS 26.2, Xcode 26.2, Swift 6.2.3. The Swift 
 Pinned Android streaming protocol: **scrcpy 5.0.1**, client and server together. ADB tested: 37.0.0. Android emulator: dedicated API 35 arm64. See `verification/environment/` for actual host records.
 
 ```sh
-brew install scrcpy
+brew install scrcpy meson ninja pkg-config
+scripts/build-audio-client.sh
 scripts/build-icon-helper.sh
 swift test
 scripts/package.sh
 ```
 
-The packaging script builds release Swift sources and the original DEX icon helper, assembles an app bundle, copies ADB, scrcpy, the exact server JAR and their dynamic library dependencies, rewrites library paths, ad-hoc signs, and creates a DMG and checksums. Android SDK platform 35, build-tools 35.0.0, platform-tools and a JDK must be present during packaging. The icon helper uses the same pinned Android build tools as the integration fixture. No Homebrew or SDK dependency should be required by an installed bundle.
+The packaging script builds release Swift sources and the original DEX icon helper, assembles an app bundle, copies ADB, scrcpy, the exact server JAR, the dedicated audio client and their dynamic library dependencies, rewrites library paths in private build staging before app assembly, ad-hoc signs, and creates a DMG and checksums. Android SDK platform 35, build-tools 35.0.0, platform-tools and a JDK must be present during packaging. The icon helper uses the same pinned Android build tools as the integration fixture. No Homebrew or SDK dependency should be required by an installed bundle.
 
 For an update, quit the old DroidBridge main application before replacing it. Open the new main app once to repair existing managed app names automatically, even with the phone disconnected. Running wrappers wait until they quit; do not run old and new main app versions concurrently during migration. Progress and retry errors appear in the onboarding area and Onboarding Details.
 
@@ -39,3 +40,11 @@ The helper retains at most eight immutable runtime generations and refuses a nin
 ## Dependencies and redistribution
 
 See [THIRD_PARTY.md](THIRD_PARTY.md). The release includes GPL-enabled FFmpeg libraries used by the separate upstream scrcpy executable. This local artifact is not a notarized public release. Public redistribution requires preserving notices and fulfilling corresponding-source obligations for every bundled library; do not describe a set of download links alone as complete GPL compliance.
+
+The audio client builds pinned scrcpy commit
+`a60891aea193d92e7e5c3942700eca63f9d19a5f` from its Git archive, with the tracked
+`scripts/patches/audio-output-ready.patch`. The patch adds positive output
+readiness and fenced supervised transport identity/cleanup; the video Player is
+unchanged. Build cache is `.build/audio-client`; package versions and bundled
+notices bind the source and patch. Developer overrides use
+`DROIDBRIDGE_AUDIO_CLIENT`. Installed applications use only bundled tools.

@@ -1,0 +1,93 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[2/9] Write swift-version--58304C5D6DBC2206.txt
+[4/9] Compiling DroidBridgeStreaming DeviceAudioRouter.swift
+[5/9] Emitting module DroidBridgeStreaming
+[6/16] Emitting module DroidBridge
+[7/16] Compiling DroidBridge AudioControls.swift
+[7/16] Write Objects.LinkFileList
+[9/16] Compiling DroidBridgeCoreTests DeviceAudioQATests.swift
+[10/16] Compiling DroidBridgeCoreTests DeviceAudioTests.swift
+[11/16] Compiling DroidBridgeCoreTests DeviceAudioReadinessTests.swift
+[12/16] Emitting module DroidBridgeCoreTests
+[12/16] Write Objects.LinkFileList
+[13/16] Linking DroidBridge
+[14/16] Applying DroidBridge
+[15/16] Linking DroidBridgePackageTests
+Build complete! (2.18s)
+Test Suite 'Selected tests' started at 2026-10-30 10:13:17.701.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 10:13:17.702.
+Test Suite 'DeviceAudioArtifactTests' started at 2026-10-30 10:13:17.702.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testDeadAttemptRemovedAndLiveAttemptPreserved]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testDeadAttemptRemovedAndLiveAttemptPreserved]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testFailureDiagnosticsBoundedTo32FilesAnd64KiB]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testFailureDiagnosticsBoundedTo32FilesAnd64KiB]' passed (0.021 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testHeldOwnerTokenPreservesUnpublishedLog]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testHeldOwnerTokenPreservesUnpublishedLog]' passed (0.001 seconds).
+Test Suite 'DeviceAudioArtifactTests' passed at 2026-10-30 10:13:17.728.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.026 (0.026) seconds
+Test Suite 'DeviceAudioPreferencesTests' started at 2026-10-30 10:13:17.728.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testConcurrentIndependentChoicesMergeAndKeepAcceptedPhone]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testConcurrentIndependentChoicesMergeAndKeepAcceptedPhone]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testInvalidSerialNeverCreatesOrChangesAudioStore]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testInvalidSerialNeverCreatesOrChangesAudioStore]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testMissingStoreStartsEmptyAndMalformedStoreNeverFallsBackToGlobal]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testMissingStoreStartsEmptyAndMalformedStoreNeverFallsBackToGlobal]' passed (0.001 seconds).
+Test Suite 'DeviceAudioPreferencesTests' passed at 2026-10-30 10:13:17.733.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'DeviceAudioQATests' started at 2026-10-30 10:13:17.733.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQACapacityGrowthStopsPreviouslyDefaultMacCapture]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQACapacityGrowthStopsPreviouslyDefaultMacCapture]' passed (2.357 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQADisconnectDuringSDKProbeDrainsWithoutLateCapture]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQADisconnectDuringSDKProbeDrainsWithoutLateCapture]' passed (0.707 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAFullPreferenceCapacityKeepsKnownRouteAndUnknownPhoneEscape]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAFullPreferenceCapacityKeepsKnownRouteAndUnknownPhoneEscape]' passed (3.321 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAInvalidOwnershipSymlinkFailsWithoutLaunchingOrOverwritingTarget]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAInvalidOwnershipSymlinkFailsWithoutLaunchingOrOverwritingTarget]' passed (0.028 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAPhoneIntentDuringSDKProbeNeverSpawnsClient]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAPhoneIntentDuringSDKProbeNeverSpawnsClient]' passed (1.831 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAPreferenceCapacityUnknownRouteAndAtomicRefusal]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAPreferenceCapacityUnknownRouteAndAtomicRefusal]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAReadyClientFailureLatchesAndRetryLeavesOtherDeviceRunning]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAReadyClientFailureLatchesAndRetryLeavesOtherDeviceRunning]' passed (3.510 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQASeparateAudioAuthoritySurvivesLegacyGlobalPreferenceRewrite]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQASeparateAudioAuthoritySurvivesLegacyGlobalPreferenceRewrite]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQASeparateAudioStoreBoundsAndBusyRefusalPreserveAcceptedBytes]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQASeparateAudioStoreBoundsAndBusyRefusalPreserveAcceptedBytes]' passed (0.112 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQATwoSerialsHaveIndependentOwnershipAndPhoneRelease]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQATwoSerialsHaveIndependentOwnershipAndPhoneRelease]' passed (2.423 seconds).
+Test Suite 'DeviceAudioQATests' passed at 2026-10-30 10:13:32.029.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 14.294 (14.296) seconds
+Test Suite 'DeviceAudioReadinessTests' started at 2026-10-30 10:13:32.029.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testActualPinnedClientOSCWindowTitleBeforeOutputReady]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testActualPinnedClientOSCWindowTitleBeforeOutputReady]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testBoundedInputAndCompleteLineRequirement]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testBoundedInputAndCompleteLineRequirement]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testIncompleteOrPayloadMarkersNeverClaimReadiness]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testIncompleteOrPayloadMarkersNeverClaimReadiness]' passed (0.000 seconds).
+Test Suite 'DeviceAudioReadinessTests' passed at 2026-10-30 10:13:32.031.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.003 (0.003) seconds
+Test Suite 'DeviceAudioTests' started at 2026-10-30 10:13:32.031.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testAudioArgumentsCannotCaptureMicrophoneOrControlVideo]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testAudioArgumentsCannotCaptureMicrophoneOrControlVideo]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testDecoderLogIsNotReadyAndFailureLatchRequiresExplicitRetry]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testDecoderLogIsNotReadyAndFailureLatchRequiresExplicitRetry]' passed (3.108 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testLegacyPreferencesAndAtomicMerge]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testLegacyPreferencesAndAtomicMerge]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testMissingOutputRefusesCapture]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testMissingOutputRefusesCapture]' passed (0.023 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testPhoneRoundTripClearsFailureWithoutImplicitRestartLoop]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testPhoneRoundTripClearsFailureWithoutImplicitRestartLoop]' passed (1.150 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testPositiveReadinessSingleOwnerHandoffAndRouteRelease]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testPositiveReadinessSingleOwnerHandoffAndRouteRelease]' passed (3.507 seconds).
+Test Suite 'DeviceAudioTests' passed at 2026-10-30 10:13:39.822.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 7.790 (7.790) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 10:13:39.822.
+	 Executed 25 tests, with 0 failures (0 unexpected) in 22.117 (22.120) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 10:13:39.822.
+	 Executed 25 tests, with 0 failures (0 unexpected) in 22.117 (22.121) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

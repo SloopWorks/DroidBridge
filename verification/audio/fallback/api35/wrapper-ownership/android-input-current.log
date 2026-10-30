@@ -1,0 +1,26 @@
+--------- beginning of main
+10-30 10:43:53.064  2237 18573 I DroidBridgeProbe: tone_started frequency=997 display=16
+10-30 10:43:54.368  3726 18654 I DroidBridgeProbe: tone_started frequency=1499 display=17
+10-30 10:43:55.702  2237 18573 I DroidBridgeProbe: tone_stopped display=16
+10-30 10:43:57.199  3726 18654 I DroidBridgeProbe: tone_stopped display=17
+10-30 10:44:29.595  2237 19718 I DroidBridgeProbe: tone_started frequency=997 display=16
+10-30 10:44:31.554  2237 19831 I DroidBridgeProbe: tone_started frequency=997 display=16
+10-30 10:44:31.614  2237 19718 I DroidBridgeProbe: tone_stopped display=16
+10-30 10:44:41.476  2237 19831 I DroidBridgeProbe: tone_stopped display=16
+10-30 10:46:02.086  3726 22454 I DroidBridgeProbe: tone_started frequency=1499 display=17
+10-30 10:46:03.703  3726 22454 I DroidBridgeProbe: tone_stopped display=17
+10-30 10:47:01.712  3726 24040 I DroidBridgeProbe: tone_started frequency=1499 display=18
+10-30 10:47:06.587 24183 24276 I DroidBridgeProbe: tone_started frequency=997 display=19
+10-30 10:47:07.071  3726 24311 I DroidBridgeProbe: tone_started frequency=1499 display=18
+10-30 10:47:07.102  3726 24040 I DroidBridgeProbe: tone_stopped display=18
+10-30 10:47:12.014  3726 24311 I DroidBridgeProbe: tone_stopped display=18
+10-30 10:47:13.874 24183 24276 I DroidBridgeProbe: tone_stopped display=19
+10-30 10:48:05.559  3726 25097 I DroidBridgeProbe: tone_started frequency=1499 display=20
+10-30 10:48:10.070 24183 25309 I DroidBridgeProbe: tone_started frequency=997 display=21
+10-30 10:48:10.920  3726 25353 I DroidBridgeProbe: tone_started frequency=1499 display=20
+10-30 10:48:10.949  3726 25097 I DroidBridgeProbe: tone_stopped display=20
+10-30 10:48:11.870  3726 25353 I DroidBridgeProbe: tone_stopped display=20
+10-30 10:48:16.843 24183 25533 I DroidBridgeProbe: tone_started frequency=997 display=21
+10-30 10:48:16.852 24183 25309 I DroidBridgeProbe: tone_stopped display=21
+10-30 10:48:24.944 24183 25781 I DroidBridgeProbe: tone_started frequency=997 display=21
+10-30 10:48:24.981 24183 25533 I DroidBridgeProbe: tone_stopped display=21

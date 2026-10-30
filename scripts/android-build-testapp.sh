@@ -8,7 +8,7 @@ export PATH="$JAVA_HOME/bin:$PATH"
 BT="$SDK/build-tools/35.0.0"
 PACKAGE="${DROIDBRIDGE_TEST_PACKAGE:-dev.droidbridge.testapp}"
 [[ "$PACKAGE" =~ ^dev\.droidbridge\.testapp[0-9]*$ ]] || { echo 'Invalid test package' >&2; exit 1; }
-OUT="$ROOT/verification/android/${PACKAGE##*.}"
+OUT="${DROIDBRIDGE_TEST_OUTPUT:-$ROOT/verification/android/${PACKAGE##*.}}"
 mkdir -p "$OUT/classes" "$OUT/dex" "$OUT/source"
 sed "s/dev.droidbridge.testapp/$PACKAGE/g" "$ROOT/scripts/android-testapp/AndroidManifest.xml" > "$OUT/source/AndroidManifest.xml"
 for file in "$ROOT"/scripts/android-testapp/*.java; do

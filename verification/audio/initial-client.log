@@ -1,0 +1,4 @@
+/opt/homebrew/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 346.7 MB/s (733930 bytes in 0.002s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+[server] WARN: Could not get initial audio timestamp
+[server] DEBUG: Audio recorder stopped

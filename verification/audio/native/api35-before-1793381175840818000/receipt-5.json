@@ -1,0 +1,245 @@
+{
+  "id" : 5,
+  "texts" : [
+    "DroidBridge",
+    "Android apps on your Mac",
+    "DEVICE",
+    "Connected and ready\nemulator-5580",
+    "RENDERING",
+    "Used for new app windows.",
+    "AUDIO",
+    "Device-wide Android audio, including apps outside DroidBridge. Mac routing silences phone playback.",
+    "Audio waiting\nMac selected. Audio starts when an app is running.",
+    "SPOTLIGHT",
+    "Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",
+    "Existing Mac app name repair will retry: Eight availability runtime generations are retained. Uninstall the availability agent before installing another generation.",
+    "Applications",
+    "17 of 17 apps · Android SDK built for arm64",
+    "",
+    "Calendar",
+    "com.android.calendar",
+    "Camera",
+    "com.android.camera2",
+    "Clock",
+    "com.android.deskclock",
+    "Contacts",
+    "com.android.contacts",
+    "DroidBridge Icon Fixture",
+    "dev.droidbridge.iconfixture",
+    "DroidBridge Test",
+    "dev.droidbridge.testapp",
+    "Loading applications…",
+    "Reading the launchable apps on this device.",
+    "Calendar",
+    "com.android.calendar",
+    "Sessions",
+    "",
+    "No active sessions. Launch an app to open its own Mac window.",
+    "17 apps ready. Double-click an app to open it."
+  ],
+  "backend" : "Native AppKit",
+  "audio_menu" : [
+    {
+      "separator" : false,
+      "title" : "Audio for Android SDK built for arm64",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Device-wide · includes other Android apps",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : true,
+      "title" : "",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Mac",
+      "enabled" : true,
+      "state" : 1,
+      "route" : "mac"
+    },
+    {
+      "separator" : false,
+      "title" : "Phone",
+      "enabled" : true,
+      "state" : 0,
+      "route" : "phone"
+    },
+    {
+      "separator" : false,
+      "title" : "Mac + Phone",
+      "enabled" : true,
+      "state" : 0,
+      "route" : "macAndPhone"
+    },
+    {
+      "separator" : true,
+      "title" : "",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Audio waiting",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Mac selected. Audio starts when an app is running.",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    }
+  ],
+  "physical_focus_verified" : false,
+  "menus" : {
+    "Audio" : [
+      {
+        "separator" : false,
+        "title" : "Audio for Android SDK built for arm64",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Device-wide · includes other Android apps",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : true,
+        "title" : "",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Mac",
+        "enabled" : true,
+        "state" : 1,
+        "route" : "mac"
+      },
+      {
+        "separator" : false,
+        "title" : "Phone",
+        "enabled" : true,
+        "state" : 0,
+        "route" : "phone"
+      },
+      {
+        "separator" : false,
+        "title" : "Mac + Phone",
+        "enabled" : true,
+        "state" : 0,
+        "route" : "macAndPhone"
+      },
+      {
+        "separator" : true,
+        "title" : "",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Audio waiting",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Mac selected. Audio starts when an app is running.",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      }
+    ]
+  },
+  "selected_row" : 0,
+  "buttons" : {
+    "" : true,
+    "Restore Previous Sessions" : false,
+    "Use Phone" : true,
+    "Create \/ Update Mac App…" : true,
+    "Enable device apps in Spotlight" : true,
+    "Add Device Apps…" : true,
+    "Show Android system decorations" : true,
+    "Refresh Devices" : true,
+    "Retry Audio" : false,
+    "Reconnect interrupted sessions automatically" : true,
+    "Native AppKit" : true,
+    "Keep phone screen off during Mac sessions" : true,
+    "Details…" : true,
+    "Android SDK built for arm64 · emulator-5580" : true,
+    "Mac" : true,
+    "search" : true,
+    "Launch App" : true,
+    "Diagnostics…" : true,
+    "Cancel" : false
+  },
+  "passed" : true,
+  "launch_enabled" : true,
+  "audio_status" : "Audio waiting\nMac selected. Audio starts when an app is running.",
+  "action" : "status",
+  "rows" : 17,
+  "audio_route" : "mac",
+  "button_states" : {
+    "" : 1,
+    "Restore Previous Sessions" : 0,
+    "Use Phone" : 0,
+    "Create \/ Update Mac App…" : 0,
+    "Enable device apps in Spotlight" : 1,
+    "Add Device Apps…" : 0,
+    "Show Android system decorations" : 1,
+    "Refresh Devices" : 0,
+    "Retry Audio" : 0,
+    "Reconnect interrupted sessions automatically" : 1,
+    "Native AppKit" : 1,
+    "Keep phone screen off during Mac sessions" : 0,
+    "Details…" : 0,
+    "Android SDK built for arm64 · emulator-5580" : 1,
+    "Mac" : 1,
+    "search" : 0,
+    "Launch App" : 0,
+    "Diagnostics…" : 0,
+    "Cancel" : 0
+  },
+  "windows" : [
+    {
+      "number" : 12119,
+      "height" : 780,
+      "visible" : true,
+      "title" : "DroidBridge",
+      "width" : 1160,
+      "minimized" : false,
+      "key" : true
+    },
+    {
+      "number" : 12120,
+      "height" : 500,
+      "visible" : false,
+      "title" : "",
+      "width" : 500,
+      "minimized" : false,
+      "key" : false
+    }
+  ],
+  "device" : "Android SDK built for arm64 · emulator-5580",
+  "pid" : 41115
+}

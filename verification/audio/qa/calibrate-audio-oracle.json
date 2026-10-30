@@ -1,0 +1,283 @@
+{
+  "passed": true,
+  "scope": "offline synthetic PCM and real test predicate; no audio device proof",
+  "driver_sha256": "1bc4b0c099f3a28869e89c9b80e14f36ffa4e0d120db10b4c784d3cb62967dc1",
+  "normalization": "2*abs(direct complex DFT)/4800; same quantized fixture frequencies",
+  "maximum_observed_rectangular_leak_ratio": 0.0048738318010543786,
+  "accepted_leak_ratio_bound": 0.02,
+  "limitations": "2% bounds measurement cross-bin leakage; it is not mathematical zero unwanted energy",
+  "cases": [
+    {
+      "phase": 0,
+      "gain": 1,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.04416576848685068,
+        "tone997": 0.062439429350410254,
+        "tone1499": 0.0002116367215601803
+      },
+      "wrong1499": {
+        "rms": 0.044189748124196994,
+        "tone997": 0.0002901836362371208,
+        "tone1499": 0.06250706846032225
+      },
+      "mixed": {
+        "rms": 0.0625383619114206,
+        "tone997": 0.06256082738075212,
+        "tone1499": 0.06263383835685221
+      },
+      "unwanted_to_wanted_ratio": 0.003389472385669549
+    },
+    {
+      "phase": 0,
+      "gain": 0.02365,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.0010445204247140187,
+        "tone997": 0.0014766925041372024,
+        "tone1499": 5.005208464898264e-06
+      },
+      "wrong1499": {
+        "rms": 0.001045087543137259,
+        "tone997": 6.8628429970079034e-06,
+        "tone1499": 0.0014782921690866214
+      },
+      "mixed": {
+        "rms": 0.0014790322592050972,
+        "tone997": 0.0014795635675547878,
+        "tone1499": 0.001481290277139555
+      },
+      "unwanted_to_wanted_ratio": 0.0033894723856695494
+    },
+    {
+      "phase": 0.3,
+      "gain": 1,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.04418546086265535,
+        "tone997": 0.06249510573505518,
+        "tone1499": 0.00025579377787696275
+      },
+      "wrong1499": {
+        "rms": 0.044193903699352256,
+        "tone997": 0.0003075502120915591,
+        "tone1499": 0.06251874901566001
+      },
+      "mixed": {
+        "rms": 0.0625569481406325,
+        "tone997": 0.06263441211694055,
+        "tone1499": 0.06263473902779927
+      },
+      "unwanted_to_wanted_ratio": 0.004093020963295709
+    },
+    {
+      "phase": 0.3,
+      "gain": 0.02365,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.001044986149401799,
+        "tone997": 0.001478009250634055,
+        "tone1499": 6.049522846790167e-06
+      },
+      "wrong1499": {
+        "rms": 0.0010451858224896809,
+        "tone997": 7.273562515965371e-06,
+        "tone1499": 0.0014785684142203592
+      },
+      "mixed": {
+        "rms": 0.001479471823525959,
+        "tone997": 0.0014813038465656442,
+        "tone1499": 0.0014813115780074528
+      },
+      "unwanted_to_wanted_ratio": 0.004093020963295708
+    },
+    {
+      "phase": 1.2,
+      "gain": 1,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.044211445985581924,
+        "tone997": 0.0625685409170172,
+        "tone1499": 0.00030494854446693056
+      },
+      "wrong1499": {
+        "rms": 0.044180057962218716,
+        "tone997": 0.0002447122520169921,
+        "tone1499": 0.06247995583619015
+      },
+      "mixed": {
+        "rms": 0.06252029308979405,
+        "tone997": 0.06262356136621886,
+        "tone1499": 0.062497662701277094
+      },
+      "unwanted_to_wanted_ratio": 0.0048738318010543786
+    },
+    {
+      "phase": 1.2,
+      "gain": 0.02365,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.0010456006975590126,
+        "tone997": 0.0014797459926874567,
+        "tone1499": 7.2120330766429055e-06
+      },
+      "wrong1499": {
+        "rms": 0.0010448583708064726,
+        "tone997": 5.787444760201864e-06,
+        "tone1499": 0.0014776509555258972
+      },
+      "mixed": {
+        "rms": 0.0014786049315736293,
+        "tone997": 0.0014810472263110759,
+        "tone1499": 0.0014780697228852033
+      },
+      "unwanted_to_wanted_ratio": 0.004873831801054378
+    },
+    {
+      "phase": 2.7,
+      "gain": 1,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.04414753411453389,
+        "tone997": 0.062387893733218375,
+        "tone1499": 0.00016048829197270608
+      },
+      "wrong1499": {
+        "rms": 0.04417836735395107,
+        "tone997": 0.00023502882412252614,
+        "tone1499": 0.06247497833286996
+      },
+      "mixed": {
+        "rms": 0.06249723962000319,
+        "tone997": 0.06244950748659118,
+        "tone1499": 0.06257934617168541
+      },
+      "unwanted_to_wanted_ratio": 0.0025724268342666333
+    },
+    {
+      "phase": 2.7,
+      "gain": 0.02365,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.0010440891818087265,
+        "tone997": 0.0014754736867906143,
+        "tone1499": 3.7955481051545003e-06
+      },
+      "wrong1499": {
+        "rms": 0.0010448183879209429,
+        "tone997": 5.558431690497742e-06,
+        "tone1499": 0.0014775332375723746
+      },
+      "mixed": {
+        "rms": 0.0014780597170130755,
+        "tone997": 0.0014769308520578815,
+        "tone1499": 0.0014800015369603597
+      },
+      "unwanted_to_wanted_ratio": 0.002572426834266635
+    },
+    {
+      "phase": 4.9,
+      "gain": 1,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.044182671099822414,
+        "tone997": 0.0624871035807731,
+        "tone1499": 0.0002501797786098556
+      },
+      "wrong1499": {
+        "rms": 0.044167820533788725,
+        "tone997": 0.00016782984652271915,
+        "tone1499": 0.062445059416065075
+      },
+      "mixed": {
+        "rms": 0.062472391905597835,
+        "tone997": 0.06247869412556046,
+        "tone1499": 0.06245013222698616
+      },
+      "unwanted_to_wanted_ratio": 0.004003702592591192
+    },
+    {
+      "phase": 4.9,
+      "gain": 0.02365,
+      "checks": {
+        "valid997": true,
+        "wrong1499_rejected": true,
+        "mixed_rejected_when1499_absent": true,
+        "valid1499": true,
+        "both_desired": true
+      },
+      "tone997": {
+        "rms": 0.0010449201715108003,
+        "tone997": 0.0014778199996852836,
+        "tone1499": 5.9167517641230855e-06
+      },
+      "wrong1499": {
+        "rms": 0.0010445689556241033,
+        "tone997": 3.96917587026231e-06,
+        "tone1499": 0.0014768256551899394
+      },
+      "mixed": {
+        "rms": 0.0014774720685673888,
+        "tone997": 0.001477621116069505,
+        "tone1499": 0.0014769456271682229
+      },
+      "unwanted_to_wanted_ratio": 0.004003702592591193
+    }
+  ],
+  "silence_rejected_as_tone": true,
+  "silence_accepted_as_silence": true
+}

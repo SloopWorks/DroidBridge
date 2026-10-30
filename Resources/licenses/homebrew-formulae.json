@@ -95,7 +95,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/d/dav1d.rb",
       "ruby_source_checksum": {
         "sha256": "ceaebbf22c54822f9e1ff2d4fa6a5c26f3556dc6f5005ab77a335dfc185cbae6"
@@ -474,7 +474,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/f/ffmpeg.rb",
       "ruby_source_checksum": {
         "sha256": "1f3e7264a319af3096a9487b6847cf8dc1f888c7798a66b5f91bde1459a7a421"
@@ -508,7 +508,7 @@
       "local_patch_checksums": {},
       "revision": 0,
       "version_scheme": 0,
-      "compatibility_version": null,
+      "compatibility_version": 1,
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
@@ -589,10 +589,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/l/lame.rb",
       "ruby_source_checksum": {
-        "sha256": "9a5607136c9583e61d0be24428901baecce5d38f204df9428bbfde6ed3d1360e"
+        "sha256": "ce4a855da3c473fe789a3ec97b264f8e80143260adf57e5fd3d95f3fc6cbb2ac"
       }
     },
     {
@@ -702,7 +702,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/lib/libusb.rb",
       "ruby_source_checksum": {
         "sha256": "513c20f992711ced872639a391fbb0b3194e397ffddc4968b9f9b1e4f03b48ee"
@@ -819,7 +819,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/lib/libvpx.rb",
       "ruby_source_checksum": {
         "sha256": "da99e55001e2a5494e8c27f80dc5ce54469b07af5a2dcbc428bc8dcb4a225833"
@@ -917,7 +917,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/m/mpg123.rb",
       "ruby_source_checksum": {
         "sha256": "3698eb1f9ba852c034a659b627386f0113671b77ea828535343b9c058fe0f9fb"
@@ -957,7 +957,7 @@
       "local_patch_checksums": {},
       "revision": 0,
       "version_scheme": 0,
-      "compatibility_version": null,
+      "compatibility_version": 1,
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
@@ -1084,10 +1084,10 @@
       ],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/o/openssl@4.rb",
       "ruby_source_checksum": {
-        "sha256": "91e18f2f14ecf16a9bbdb7547700f1f1d76b09e01bb461897191e2d2027cc8b9"
+        "sha256": "50f58cda0dfd54aabc627e53205a88afc2e1780d83f43a99c525b58950c32049"
       }
     },
     {
@@ -1187,7 +1187,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/o/opus.rb",
       "ruby_source_checksum": {
         "sha256": "39611712ad2de37708493f43569e9266c4be9dcc5e88e7276ee78a562bf03a33"
@@ -1317,7 +1317,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/s/sdl3.rb",
       "ruby_source_checksum": {
         "sha256": "c3d6ea1becc0bb53773e82d3a7f885bf4cfeaec10b367d82530928859d41dc75"
@@ -1422,7 +1422,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/s/svt-av1.rb",
       "ruby_source_checksum": {
         "sha256": "de4c69992e6ea2943c41d38dccae7ad37faed0f04f0d76935755da8f1cf210c0"
@@ -1525,7 +1525,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/x/x264.rb",
       "ruby_source_checksum": {
         "sha256": "d404046a3ad9833f9878ab074a743060f3a83cc6ecb08a2a15fda5b960e693e4"
@@ -1630,7 +1630,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/x/x265.rb",
       "ruby_source_checksum": {
         "sha256": "f34703d7f7cb05d2374b19565b076c8b3d9a6968ccfab406905e435829662ed6"
@@ -1738,7 +1738,7 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "71f2f069cf7b6695d57f6bd91668f55e68d280cc",
+      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
       "ruby_source_path": "Formula/x/xz.rb",
       "ruby_source_checksum": {
         "sha256": "e5b8bbf09dccb4a1f2ee333ed65b13ee773350a26735ef594ca859d2cf85248e"

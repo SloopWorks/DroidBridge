@@ -12,3 +12,11 @@ verification/review/appkit/verify-appkit
 verification/**/*.mkv
 verification/**/*.dylib
 verification/review/sdl-input/interpose-smoke
+
+# Rebuilt audio verification tools; retain sources, receipts and metrics.
+verification/audio/**/recognize
+verification/audio/**/wrapper-factory
+verification/audio/**/host-unsigned-test-copy
+verification/audio/**/wrapper-unsigned-test-copy
+verification/audio/qa/player-capture-final-control/control
+verification/audio/fallback/**/frame.bmp

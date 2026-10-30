@@ -4,17 +4,19 @@ public struct Toolchain {
     public let adb: String
     public let scrcpy: String
     public let server: String
+    public let audioClient: String
     public let environment: [String: String]
 
     /// Bundle tools take precedence over installation-specific paths. Explicit
     /// paths and environment overrides support reproducible developer/test runs.
-    public init(adb: String? = nil, scrcpy: String? = nil, server: String? = nil) {
+    public init(adb: String? = nil, scrcpy: String? = nil, server: String? = nil, audioClient: String? = nil) {
         let env = ProcessInfo.processInfo.environment
         let resources = Bundle.main.resourceURL?.appendingPathComponent("Runtime")
         self.adb = Self.resolve(adb ?? env["DROIDBRIDGE_ADB"], name: "adb", bundled: resources?.appendingPathComponent("bin/adb").path, extras: [NSHomeDirectory() + "/Library/Android/sdk/platform-tools/adb", NSHomeDirectory() + "/.local/bin/adb"])
         self.scrcpy = Self.resolve(scrcpy ?? env["DROIDBRIDGE_SCRCPY"], name: "scrcpy", bundled: resources?.appendingPathComponent("Player.app/Contents/MacOS/scrcpy").path, extras: [])
         let serverPaths = [server, env["DROIDBRIDGE_SERVER"], resources?.appendingPathComponent("share/scrcpy/scrcpy-server").path, "/opt/homebrew/share/scrcpy/scrcpy-server", "/usr/local/share/scrcpy/scrcpy-server"].compactMap { $0 }
         self.server = serverPaths.first { FileManager.default.fileExists(atPath: $0) } ?? serverPaths.first ?? "/opt/homebrew/share/scrcpy/scrcpy-server"
+        self.audioClient = Self.resolve(audioClient ?? env["DROIDBRIDGE_AUDIO_CLIENT"], name: "DroidBridgeAudioClient", bundled: resources?.appendingPathComponent("bin/DroidBridgeAudioClient").path, extras: [FileManager.default.currentDirectoryPath + "/.build/audio-client/DroidBridgeAudioClient"])
         self.environment = ["ADB": self.adb, "SCRCPY_SERVER_PATH": self.server]
     }
 

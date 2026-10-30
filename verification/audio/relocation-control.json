@@ -1,0 +1,27 @@
+[
+  {
+    "dependency": "/opt/homebrew/opt/ffmpeg/lib/libavformat.63.dylib",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "dependency": "/opt/homebrew/opt/ffmpeg/lib/libavcodec.63.dylib",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "dependency": "/opt/homebrew/opt/ffmpeg/lib/libavutil.61.dylib",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "dependency": "/opt/homebrew/opt/ffmpeg/lib/libswresample.7.dylib",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "dependency": "/opt/homebrew/opt/sdl3/lib/libSDL3.0.dylib",
+    "exit": 0,
+    "output": ""
+  }
+]

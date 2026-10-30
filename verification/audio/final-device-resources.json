@@ -1,0 +1,20 @@
+{
+  "emulator-5580": {
+    "avd": "DroidBridge_API35\nOK",
+    "displays": 1,
+    "forwards": [],
+    "reverses": [],
+    "staged_audio_jars": [],
+    "owned_emulator_shutdown_requested": true,
+    "shutdown_reply": "OK: killing emulator, bye bye\nOK"
+  },
+  "emulator-5582": {
+    "avd": "DroidBridge_API37\nOK",
+    "displays": 1,
+    "forwards": [],
+    "reverses": [],
+    "staged_audio_jars": [],
+    "owned_emulator_shutdown_requested": true,
+    "shutdown_reply": "OK: killing emulator, bye bye\nOK"
+  }
+}

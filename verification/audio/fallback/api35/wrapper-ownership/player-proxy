@@ -1,0 +1,15 @@
+#!/Library/Frameworks/Python.framework/Versions/3.14/bin/python3
+config={'player': '/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy', 'root': '/Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/wrapper-ownership/players', 'dylibs': '/Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/wrapper-ownership/player-actions.dylib:/Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/wrapper-ownership/player-pump.dylib:/Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/wrapper-ownership/player-capture.dylib', 'libraries': '/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/lib'}
+import json,os,pathlib,sys,time
+argv=sys.argv[1:]; env=dict(os.environ)
+package=next((a.split("=",1)[1] for a in argv if a.startswith("--start-app=")),None)
+if package:
+ root=pathlib.Path(config["root"])/package;root.mkdir(parents=True,exist_ok=True)
+ (root/"production-argv.json").write_text(json.dumps(argv,indent=2))
+ (root/"started.json").write_text(json.dumps(dict(pid=os.getpid(),time=time.time(),player=config["player"])))
+ extra=["--record="+str(root/"video.mkv")]
+ (root/"launched-argv.json").write_text(json.dumps(argv+extra,indent=2))
+ argv+=extra
+ env.update(DYLD_INSERT_LIBRARIES=config["dylibs"],DYLD_LIBRARY_PATH=config["libraries"],DROIDBRIDGE_HIDDEN_IME_QA=str(root),DROIDBRIDGE_HIDDEN_INPUT="sdl",DROIDBRIDGE_AUDIO_PLAYER_CAPTURE_ROOT=str(root))
+else:env.pop("DYLD_INSERT_LIBRARIES",None)
+os.execve(config["player"],[config["player"]]+argv,env)

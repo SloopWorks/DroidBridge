@@ -1,0 +1,10 @@
+{
+  "target": "emulator-5580; later owned5582 only",
+  "redactions": [
+    {
+      "file": "verification/audio/initial-client-fixed.log",
+      "unrelated_inventory_rows_redacted": 2
+    }
+  ],
+  "initial_pcm": "negative silence control only, no accepted tone yet"
+}

@@ -11,4 +11,8 @@ if [ ! -d "$ROOT/Vendor/scrcpy" ]; then
   git clone --depth 1 --branch v5.0.1 https://github.com/Genymobile/scrcpy.git "$ROOT/Vendor/scrcpy"
 fi
 cd "$ROOT"
+for tool in meson ninja pkg-config; do
+  if ! command -v "$tool" >/dev/null; then HOMEBREW_NO_AUTO_UPDATE=1 brew install "$tool"; fi
+done
+scripts/build-audio-client.sh
 swift build

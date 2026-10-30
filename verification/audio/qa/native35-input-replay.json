@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "receipts": [
+    {
+      "package": "dev.droidbridge.testapp",
+      "display": 8,
+      "frequency": 997,
+      "tone_start_receipts": 3
+    },
+    {
+      "package": "dev.droidbridge.testapp2",
+      "display": 9,
+      "frequency": 1499,
+      "tone_start_receipts": 2
+    }
+  ]
+}

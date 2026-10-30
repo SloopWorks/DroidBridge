@@ -1,0 +1,312 @@
+[
+  {
+    "time": 1793381890.781548,
+    "processes": [
+      "96844 96843   0.9  90880 00:31 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.7 100576 00:07 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381891.816438,
+    "processes": [
+      "96844 96843   1.2  90912 00:32 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0 100576 00:08 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381892.838988,
+    "processes": [
+      "96844 96843   1.0  90912 00:33 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.9 100576 00:09 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381893.869108,
+    "processes": [
+      "96844 96843   1.0  90912 00:34 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0 100576 00:10 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381894.905181,
+    "processes": [
+      "96844 96843   1.2  90912 00:35 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0 100592 00:11 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381895.935754,
+    "processes": [
+      "96844 96843   0.8  90912 00:36 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0 100592 00:12 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381896.964289,
+    "processes": [
+      "96844 96843   0.8  90912 00:37 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.9 100608 00:13 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381897.995786,
+    "processes": [
+      "96844 96843   1.0  90912 00:38 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0 100640 00:14 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381899.028388,
+    "processes": [
+      "96844 96843   0.9  90912 00:40 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.8 100640 00:16 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381900.053955,
+    "processes": [
+      "96844 96843   1.0  90912 00:41 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.4 100720 00:17 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381901.079656,
+    "processes": [
+      "96844 96843   2.7  91040 00:42 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.7 100720 00:18 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381902.106981,
+    "processes": [
+      "96844 96843   2.9  91040 00:43 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0 100720 00:19 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381903.130444,
+    "processes": [
+      "96844 96843   3.0  91040 00:44 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.8  95920 00:20 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381904.154034,
+    "processes": [
+      "96844 96843   3.1  91040 00:45 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.7  95920 00:21 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381905.185314,
+    "processes": [
+      "96844 96843   2.5  91040 00:46 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0  95920 00:22 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381906.215841,
+    "processes": [
+      "96844 96843   2.5  91040 00:47 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.8  95920 00:23 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381907.247562,
+    "processes": [
+      "96844 96843   2.2  91040 00:48 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0  95936 00:24 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381908.271938,
+    "processes": [
+      "96844 96843   2.5  91040 00:49 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.9  95936 00:25 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381909.296803,
+    "processes": [
+      "96844 96843   2.3  91040 00:50 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0  95936 00:26 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381910.327339,
+    "processes": [
+      "96844 96843   3.0  91248 00:51 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.1  95936 00:27 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381911.3532228,
+    "processes": [
+      "96844 96843   3.1  91280 00:52 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0  95936 00:28 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   0.0    800 00:01 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381912.3793569,
+    "processes": [
+      "96844 96843   3.0  91280 00:53 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0  95936 00:29 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   2.3  30048 00:02 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381913.410089,
+    "processes": [
+      "96844 96843   3.0  91264 00:54 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.9  89824 00:30 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   0.7  30848 00:03 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381914.44369,
+    "processes": [
+      "96844 96843   2.6  91392 00:55 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.0  89840 00:31 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   1.1  30944 00:04 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381915.4745688,
+    "processes": [
+      "96844 96843   1.1  91392 00:56 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   2.4  90128 00:32 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   1.2  30944 00:05 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381916.5194602,
+    "processes": [
+      "96844 96843   2.2  91440 00:57 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.2  90128 00:33 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   1.2  30944 00:06 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381917.544678,
+    "processes": [
+      "96844 96843   1.4  91344 00:58 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.4  90064 00:34 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   1.1  30912 00:07 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381918.581193,
+    "processes": [
+      "96844 96843   1.0  91344 00:59 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   1.2  90112 00:35 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   1.3  30944 00:08 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381919.605715,
+    "processes": [
+      "96844 96843   1.0  91328 01:00 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.7  90112 00:36 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   1.1  30976 00:09 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  },
+  {
+    "time": 1793381920.6392572,
+    "processes": [
+      "96844 96843   1.1  91344 01:01 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "97769 97768   0.8  90128 00:37 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "98939 98938   1.0  30976 00:10 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+    ],
+    "rss_unit": "KiB",
+    "cpu_unit": "percent",
+    "observational_not_acceptance": true
+  }
+]

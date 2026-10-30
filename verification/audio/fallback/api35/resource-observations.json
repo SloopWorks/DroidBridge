@@ -1,0 +1,11 @@
+{
+  "time": 1793382269.736032,
+  "processes": [
+    " 8699  8698   1.0  84112 01:40 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+    " 9058  9057   0.8  83424 01:32 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+    "12429 12428   0.0  30544 00:02 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+  ],
+  "rss_unit": "KiB",
+  "cpu_unit": "percent",
+  "observational_not_acceptance": true
+}

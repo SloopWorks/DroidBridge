@@ -26,3 +26,12 @@ After installing the update, quit the old main app and open the new DroidBridge 
 With the authorized Pixel connected and unlocked, open two Mac Android-app windows. Select the Pixel and enable **Keep phone screen off during Mac sessions**, or choose **Phone → Turn Phone Screen Off**. Confirm the physical panel is off while each Mac window continues updating and accepting clicks, typing and resizing. Close one window, then the other: closing should leave the phone off. Choose **Phone → Turn Phone Screen On** to clear the saved setting and restore/wake the panel; verify that normal lock/PIN behavior remains intact. Repeat with the fallback backend using the main DroidBridge controls. Disconnect/reconnect and reopen a Mac app: the saved device choice should apply only to the Pixel. Collect diagnostics if a command cannot be confirmed; a power-control failure must not close working app sessions.
 
 For launch UX, quit the old copied wrapper and let the updated main DroidBridge refresh it. Launch from Spotlight: the Android app icon/name and loading status should appear immediately without the main launcher. Resize, close and reopen; confirm the size is retained and the same window switches to live video. Try closing while loading and reconnecting an unavailable phone. For fallback, confirm loading hands over to the Player and its last size is restored.
+
+For audio, play known media and check Audio → Mac, Phone and Mac + Phone on both
+video backends. The route affects the entire device, including other apps. Check
+normal phone/headphone playback resumes on Phone/quit; Mac + Phone may be silent
+for apps that refuse playback capture. Open two Mac app wrappers and check there
+is one playback stream, no echo, and audio survives quitting its first owner.
+Test phone panel OFF, disconnect/reconnect, and Retry / Use Phone after a failure.
+An initialized output label does not replace listening to real speakers/headphones.
+No microphone or call-audio forwarding is promised.

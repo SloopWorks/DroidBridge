@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "Independent source/control artifact audit only; not yet actual Player renderer acceptance",
+  "source_sha256": "a27d3c0bf5f8050969cb6e2b9c0e26b02eb0b266a79033b32ee386f3a434a990",
+  "ack_id": 2,
+  "fresh_final_bmp_center_bgra": [
+    255,
+    0,
+    0,
+    255
+  ],
+  "control_checks": [
+    "no unsolicited capture",
+    "fresh red then blue",
+    "duplicate request refused",
+    "lower stale ID refused"
+  ]
+}

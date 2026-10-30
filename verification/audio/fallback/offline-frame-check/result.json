@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "scope": "OFFLINE harness check against retained previously verified Android video; not current audio/runtime acceptance",
+  "ocr_rows": 6,
+  "text": [
+    "DroidBridge input / frame probe",
+    "Display 6 \u2022 ticks 77",
+    "Clicks 3 \u2022 900\u00d7906",
+    "INCREMENT COUNTER",
+    "1PanelOnTextkPasteP1ResizedOffTextkPasteResizedOff1PanelOffTex",
+    "OPEN SECONDARY ACTIVITY"
+  ]
+}

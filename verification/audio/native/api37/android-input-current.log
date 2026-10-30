@@ -1,0 +1,11 @@
+--------- beginning of main
+10-30 10:31:14.026  4329  4595 I DroidBridgeProbe: tone_started frequency=997 display=2
+10-30 10:31:15.326  4502  4623 I DroidBridgeProbe: tone_started frequency=1499 display=3
+10-30 10:31:17.249  4329  4595 I DroidBridgeProbe: tone_stopped display=2
+10-30 10:31:19.353  4502  4623 I DroidBridgeProbe: tone_stopped display=3
+10-30 10:31:27.106  4329  4806 I DroidBridgeProbe: tone_started frequency=997 display=2
+10-30 10:31:28.999  4329  4865 I DroidBridgeProbe: tone_started frequency=997 display=2
+10-30 10:31:29.027  4329  4806 I DroidBridgeProbe: tone_stopped display=2
+10-30 10:31:32.648  4329  4865 I DroidBridgeProbe: tone_stopped display=2
+10-30 10:31:46.498  4502  5043 I DroidBridgeProbe: tone_started frequency=1499 display=3
+10-30 10:31:47.727  4502  5043 I DroidBridgeProbe: tone_stopped display=3

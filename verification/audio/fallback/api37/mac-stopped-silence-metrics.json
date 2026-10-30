@@ -1,0 +1,104 @@
+{
+  "summary": {
+    "phase": "mac-stopped-silence",
+    "passed": true,
+    "audio_pid": 22380,
+    "samples": 7,
+    "matching": 6,
+    "tone_presence_thresholds": {
+      "997": 2e-05,
+      "1499": 2e-05
+    },
+    "maximum_absent_to_wanted_ratio": 0.02,
+    "silence_rms_limit": 2e-05,
+    "minimum_wanted_to_rms_ratio": 0.25,
+    "wanted_hz": [],
+    "absent_hz": [],
+    "silence": true,
+    "max_dropped_frames": 0,
+    "max_tone997": 5.4e-06,
+    "max_tone1499": 3.449e-05,
+    "min_rms": 0.0,
+    "max_rms": 0.00015954,
+    "one_audio_client": true
+  },
+  "samples": [
+    {
+      "pid": 22380,
+      "accepted_frames": 379200,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00015954,
+      "peak": 0.00147227,
+      "tone997": 5.4e-06,
+      "tone1499": 3.449e-05,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22380,
+      "accepted_frames": 384000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22380,
+      "accepted_frames": 388800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22380,
+      "accepted_frames": 393600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22380,
+      "accepted_frames": 398400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22380,
+      "accepted_frames": 403200,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22380,
+      "accepted_frames": 408000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    }
+  ]
+}

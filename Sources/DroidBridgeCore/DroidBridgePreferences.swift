@@ -8,23 +8,30 @@ public struct DroidBridgePreferences: Codable, Equatable {
     public var bulkWrapperOnboardingEnabled: Bool
     public var showAndroidSystemDecorations: Bool
     public var screenOffDeviceSerials: Set<String>
-    public init(bulkWrapperOnboardingEnabled: Bool = true, showAndroidSystemDecorations: Bool = true, screenOffDeviceSerials: Set<String> = []) {
+    public static let maximumAudioDevices = 32
+    public var deviceAudioRoutes: [String:DeviceAudioRoute]
+    public init(bulkWrapperOnboardingEnabled: Bool = true, showAndroidSystemDecorations: Bool = true, screenOffDeviceSerials: Set<String> = [], deviceAudioRoutes: [String:DeviceAudioRoute] = [:]) {
         self.bulkWrapperOnboardingEnabled = bulkWrapperOnboardingEnabled
         self.showAndroidSystemDecorations = showAndroidSystemDecorations
         self.screenOffDeviceSerials = screenOffDeviceSerials
+        self.deviceAudioRoutes = deviceAudioRoutes
     }
     public static var defaultURL: URL {
         FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/preferences.json")
     }
-    private enum CodingKeys: String, CodingKey { case bulkWrapperOnboardingEnabled, showAndroidSystemDecorations, screenOffDeviceSerials }
+    private enum CodingKeys: String, CodingKey { case bulkWrapperOnboardingEnabled, showAndroidSystemDecorations, screenOffDeviceSerials, deviceAudioRoutes }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         bulkWrapperOnboardingEnabled = try values.decodeIfPresent(Bool.self, forKey: .bulkWrapperOnboardingEnabled) ?? true
         showAndroidSystemDecorations = try values.decodeIfPresent(Bool.self, forKey: .showAndroidSystemDecorations) ?? true
         screenOffDeviceSerials = try values.decodeIfPresent(Set<String>.self,forKey:.screenOffDeviceSerials) ?? []
+        deviceAudioRoutes = try values.decodeIfPresent([String:DeviceAudioRoute].self,forKey:.deviceAudioRoutes) ?? [:]
         try validate()
     }
+    public func audioRoute(for serial:String) -> DeviceAudioRoute { deviceAudioRoutes[serial] ?? (deviceAudioRoutes.count >= Self.maximumAudioDevices ? .phone : .mac) }
     private func validate() throws {
+        guard deviceAudioRoutes.count<=Self.maximumAudioDevices else {throw BridgeError.message("Audio preferences support at most 32 devices")}
+        for serial in deviceAudioRoutes.keys {try AndroidDiscovery.validateSerial(serial)}
         guard screenOffDeviceSerials.count<=32 else {throw BridgeError.message("Phone screen preferences support at most 32 devices")}
         for serial in screenOffDeviceSerials {try AndroidDiscovery.validateSerial(serial)}
     }
@@ -50,7 +57,9 @@ public struct DroidBridgePreferences: Codable, Equatable {
         var preferences = try load(url: url)
         change(&preferences)
         try preferences.validate()
-        try JSONEncoder().encode(preferences).write(to: url, options: .atomic)
+        let data = try JSONEncoder().encode(preferences)
+        guard data.count <= 16_384 else {throw BridgeError.message("DroidBridge preferences exceed the supported size")}
+        try data.write(to: url, options: .atomic)
         try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: url.path)
         return preferences
     }

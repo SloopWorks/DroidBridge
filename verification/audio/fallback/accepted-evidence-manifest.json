@@ -1,0 +1,3315 @@
+{
+  "cases": [
+    {
+      "case": "api35",
+      "passed": true,
+      "phases": 13,
+      "aggregate_blocks": 913,
+      "max_dropped_frames": 0,
+      "audio_pids": [
+        11019,
+        12429,
+        15062,
+        15750
+      ],
+      "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+      "driver_sha256": "c213de16bbc0f3eaa3afb8ec34a7d3f62c201eb5669d62665e6bac2b80ec69ad",
+      "after": {
+        "displays": 1,
+        "forwards": [],
+        "reverses": []
+      },
+      "cleanup_errors": []
+    },
+    {
+      "case": "api35/wrapper-ownership",
+      "passed": true,
+      "phases": 6,
+      "aggregate_blocks": 177,
+      "max_dropped_frames": 0,
+      "audio_pids": [
+        20366,
+        20757,
+        21154
+      ],
+      "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+      "driver_sha256": "fd7e489ddd8a8c1527dd701aac3029a7652624e278f0e36b29aec4304f0d54f7",
+      "after": {
+        "displays": 1,
+        "forwards": [],
+        "reverses": []
+      },
+      "cleanup_errors": []
+    },
+    {
+      "case": "api37",
+      "passed": true,
+      "phases": 13,
+      "aggregate_blocks": 268,
+      "max_dropped_frames": 0,
+      "audio_pids": [
+        22380,
+        22916,
+        23656,
+        23987
+      ],
+      "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+      "driver_sha256": "fd7e489ddd8a8c1527dd701aac3029a7652624e278f0e36b29aec4304f0d54f7",
+      "after": {
+        "displays": 1,
+        "forwards": [],
+        "reverses": []
+      },
+      "cleanup_errors": []
+    },
+    {
+      "case": "api37/disconnect-recovery",
+      "passed": true,
+      "phases": 6,
+      "aggregate_blocks": 95,
+      "max_dropped_frames": 0,
+      "audio_pids": [
+        24849,
+        25987
+      ],
+      "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+      "driver_sha256": "fd7e489ddd8a8c1527dd701aac3029a7652624e278f0e36b29aec4304f0d54f7",
+      "after": {
+        "displays": 1,
+        "forwards": [],
+        "reverses": []
+      },
+      "cleanup_errors": []
+    }
+  ],
+  "artifacts": {
+    "verification/audio/fallback/api35/actions.dylib": {
+      "sha256": "3eab736cc130009cba98ba99931c2fb071a518a74545bbe79dc095ad4fcead31",
+      "bytes": 75616
+    },
+    "verification/audio/fallback/api35/android-input-current.log": {
+      "sha256": "0ae40a793a714f1e83f42f4ce27ae24fc743af737dce973a1c90b55382096dca",
+      "bytes": 1179
+    },
+    "verification/audio/fallback/api35/android-input.log": {
+      "sha256": "0ae40a793a714f1e83f42f4ce27ae24fc743af737dce973a1c90b55382096dca",
+      "bytes": 1179
+    },
+    "verification/audio/fallback/api35/android-settings-after.json": {
+      "sha256": "2474cf9eec0c1bc671147bbab1332de407697722a9bc54fe7421000832f365a7",
+      "bytes": 287
+    },
+    "verification/audio/fallback/api35/android-settings-before.json": {
+      "sha256": "2474cf9eec0c1bc671147bbab1332de407697722a9bc54fe7421000832f365a7",
+      "bytes": 287
+    },
+    "verification/audio/fallback/api35/audio-54AD290F-BD7B-46D8-82AB-F116864CCE3F.failed.log": {
+      "sha256": "51336246873f4aeace6fee13e7ac545d8e3799ac6de7e00d27ea20e563c78526",
+      "bytes": 954
+    },
+    "verification/audio/fallback/api35/audio-935580C3-E16E-4739-9B39-F16C8C29C136.failed.log": {
+      "sha256": "09ce8a5288107288e13243cd6c030ceefcc3d27e2b6a49745d23312d8471a0b1",
+      "bytes": 954
+    },
+    "verification/audio/fallback/api35/audio-argv.jsonl": {
+      "sha256": "3d5321d9e6d491b45b211cad323dc33fa1bc81556646826aad9be594e5bb6582",
+      "bytes": 1461
+    },
+    "verification/audio/fallback/api35/audio-client-proxy": {
+      "sha256": "f16edc3c8ab42b0d77af965a7d50b01693eb9e6c9bca925cce85a50125612c38",
+      "bytes": 966
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-testapp-decode-attempt.json": {
+      "sha256": "51097220e6e3cafc4e5885a60adda60ee382bc7f5383df308dcccdd27726f554",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-testapp-ocr.json": {
+      "sha256": "1a483f97fbfac6454377cb5a5b6210e9d69739d3c2467e7ddabc5556a1b02441",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-testapp-video-frame.json": {
+      "sha256": "add776f95d7caeb5ea3a6d3ea84257c9e55f724a343e7d63be4bdd7d1779b13f",
+      "bytes": 243
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-testapp.png": {
+      "sha256": "b6cdaf142e22669bf356cde515e0e37371c67bc05b9af7d4e213f636f0efe501",
+      "bytes": 82860
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-testapp2-decode-attempt.json": {
+      "sha256": "0d35d65af6780fbb6a42266f401bda2c2bb8626152ae744176f2f8d85b260d26",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-testapp2-ocr.json": {
+      "sha256": "0dd573de45efe571d20dd815ca9176f33db03d5927b9c31413617cedf9c29bac",
+      "bytes": 1407
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-testapp2-video-frame.json": {
+      "sha256": "db650dc188945a1e5bdff93f6853b0de08b967dfb869b472180583bd378f6e86",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-testapp2.png": {
+      "sha256": "0bcb08e37b44bf19a18a3c55d8151bee012067ed98690a78803a517da78628d4",
+      "bytes": 82530
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-updated-testapp-decode-attempt.json": {
+      "sha256": "a1047fbc33ceb0a6a711aa518d21f1175d3cf336e9d55198a8b93b1d74fb0b87",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-updated-testapp-ocr.json": {
+      "sha256": "d13c137638533a6b301036863a6d966e6e152bb265cebb6d662d5a1e470fa9a7",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-updated-testapp-video-frame.json": {
+      "sha256": "e52af42e39280dc3a2bc761560980211c97167493a5c8d963b58df4e843e3065",
+      "bytes": 243
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-updated-testapp.png": {
+      "sha256": "695100da29f2000f1fa2cec59738cedafc239e66c06f93635c3b0de640cbbced",
+      "bytes": 83063
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-updated-testapp2-decode-attempt.json": {
+      "sha256": "05b6848fe4c22d61396684d30e454d29924cc465d4d50bbf8a3e6e312d69f12c",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-updated-testapp2-ocr.json": {
+      "sha256": "0c44fabbdf4b908b4d8e8cea018481b1a575904c2f867af5dbe4f3b17c95d0a3",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-updated-testapp2-video-frame.json": {
+      "sha256": "49cb5d1e14359b3839dd629cb2c81f2a75dd7e6d052b169635902d22ae914dd8",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/audio-failed-video-continues-updated-testapp2.png": {
+      "sha256": "d6a825011c00b27f8573bfb1d6e9c3f2ec2f48c2e9749f96cb5df0acaae84834",
+      "bytes": 81349
+    },
+    "verification/audio/fallback/api35/command.json": {
+      "sha256": "e7f9c4966c084f94a8600e9089d318bc976618891e4756341b1bfd7670b18046",
+      "bytes": 28
+    },
+    "verification/audio/fallback/api35/dup-play-A-decode-attempt.json": {
+      "sha256": "c2f4ba974953e4a9de61b122e5a028985b6c37d799c0cd442ef55c8376a73175",
+      "bytes": 196
+    },
+    "verification/audio/fallback/api35/dup-play-A-ocr.json": {
+      "sha256": "e5ccec8cc41e01eb4b27ee4ff51cbea9167591ea33879dee73b91e460560ce41",
+      "bytes": 1395
+    },
+    "verification/audio/fallback/api35/dup-play-A-video-frame.json": {
+      "sha256": "6c55a374a59fa536079a420c545ef1990332c1dd31d6a967e975c2811d41c39c",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/dup-play-A.png": {
+      "sha256": "0fbce46dacd51756ac5e5da90cc4b92b14e08fc0f132ea96e9ff10e84668a32f",
+      "bytes": 82151
+    },
+    "verification/audio/fallback/api35/dup-stop-A-decode-attempt.json": {
+      "sha256": "d1a64cc283b238bcc82de9cd827f2090e2143d2669053e8fa8d1881a2065657d",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/dup-stop-A-ocr.json": {
+      "sha256": "c86fc9713b53200f3ee55d045d57b0ea01e4be119488221df97c4789a0e75025",
+      "bytes": 1411
+    },
+    "verification/audio/fallback/api35/dup-stop-A-video-frame.json": {
+      "sha256": "555c1ce18db2aaa3938edd751ee5ef42bbd87603a9a8158e8cc47e970cd40a19",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/dup-stop-A.png": {
+      "sha256": "414a02f306cb10952e61b869ca149441cd11eeaa7762e5b47c5a9701e08fa8d0",
+      "bytes": 96527
+    },
+    "verification/audio/fallback/api35/host.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "verification/audio/fallback/api35/launched-testapp-decode-attempt.json": {
+      "sha256": "f1ad010c5271cff068c8215979da3ea9d17622922100983012ae4d5a0c9c18d7",
+      "bytes": 193
+    },
+    "verification/audio/fallback/api35/launched-testapp-decode-error.txt": {
+      "sha256": "227f7b50ee85e88e9eb85f769da6184833224f7f2d9e6e8a21fcab22e9886d76",
+      "bytes": 1619
+    },
+    "verification/audio/fallback/api35/launched-testapp-ocr.json": {
+      "sha256": "407dd4d32039817f4f7e25bc27f71d4b91bbfb91eec5b783e4e9c9c8a71dbd9e",
+      "bytes": 1405
+    },
+    "verification/audio/fallback/api35/launched-testapp-video-frame.json": {
+      "sha256": "3c3fce9e05a51e4931ad0bed7e800f6ad9d928ba78f3ed1148876c571a7b4db6",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/launched-testapp.png": {
+      "sha256": "483fd50203e1d1a6c9f92768ef9fe9cd643cbd9b023b385cca075daa9b52a8d9",
+      "bytes": 90231
+    },
+    "verification/audio/fallback/api35/launched-testapp2-decode-attempt.json": {
+      "sha256": "094d6f00533115ff827e39ffd8785ed3b7762f8929660be98f86d81ed12d5a20",
+      "bytes": 195
+    },
+    "verification/audio/fallback/api35/launched-testapp2-decode-error.txt": {
+      "sha256": "06bdd609f138ca122806c6cc44bb5d78daa96bbaf2dcccc5b101e8f72426fda2",
+      "bytes": 1623
+    },
+    "verification/audio/fallback/api35/launched-testapp2-ocr.json": {
+      "sha256": "17550525522f1e0efedddc60a717a759d6c9033875bb89a4b3ea903e96b85cb9",
+      "bytes": 1407
+    },
+    "verification/audio/fallback/api35/launched-testapp2-video-frame.json": {
+      "sha256": "4f99c5173679164d8c2a19bfd7af32857aefb185667ff4df51ba48d6911f4d1f",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/launched-testapp2.png": {
+      "sha256": "a91095982dc3e71ad824f0999fabae0cf47f1ffcdd13be81e5a9b2939c117d95",
+      "bytes": 90742
+    },
+    "verification/audio/fallback/api35/launcher-audio-failed.png": {
+      "sha256": "ae52751b577eb95b31c255ad73725b97d438f4724f362f92d6c8b36dd96a2fb7",
+      "bytes": 313302
+    },
+    "verification/audio/fallback/api35/launcher-route-mac-25.png": {
+      "sha256": "bb0cc23f2099eeb8fb55398356d366978ecd4b011672ee81639f151c06587404",
+      "bytes": 312217
+    },
+    "verification/audio/fallback/api35/launcher-route-mac-56.png": {
+      "sha256": "8d60e5e73930c1f0d9958b3c849d431f2c96fd96aa805590ebea5bfff3e702f4",
+      "bytes": 312958
+    },
+    "verification/audio/fallback/api35/launcher-route-macAndPhone-38.png": {
+      "sha256": "a35263368ff856bdd147287e1382a2de9c4c798fab91265a0175d6ca98a0fd1a",
+      "bytes": 310992
+    },
+    "verification/audio/fallback/api35/launcher-route-phone-10.png": {
+      "sha256": "3c8792998963863249c5d6d0adafb0ad47048b9f00a69717293274a78958bb7e",
+      "bytes": 302619
+    },
+    "verification/audio/fallback/api35/launcher-route-phone-50.png": {
+      "sha256": "93a5e4314b998200d776a5ce2f69d889160169f04d69989ebbb8aa91e78feaef",
+      "bytes": 305596
+    },
+    "verification/audio/fallback/api35/loaded-images-11019.txt": {
+      "sha256": "d4028c3ff755a109af96d61b6b9e80cbcd309ed25cab793f575f74972a6c3081",
+      "bytes": 619307
+    },
+    "verification/audio/fallback/api35/loaded-images-12429.txt": {
+      "sha256": "0e4d6b0c4d65d1b15a01865ad282e31572ba396bccbc4eacd159f78e629ce5e1",
+      "bytes": 619116
+    },
+    "verification/audio/fallback/api35/loaded-images-15062.txt": {
+      "sha256": "23c613bd0771f6c4e0bbf9b19188c927b92da01cc45b27b49a7b35d64d4ca4f9",
+      "bytes": 619251
+    },
+    "verification/audio/fallback/api35/mac-A-997-metrics.json": {
+      "sha256": "98cb48eac54c4d29ae849172733e10e820f492f277fc0db184a66e304cab597d",
+      "bytes": 2306
+    },
+    "verification/audio/fallback/api35/mac-B-1499-metrics.json": {
+      "sha256": "8440a353a46d9edc3e1117ee1acd1d9c12c62e470b228626fabd9259aa7732de",
+      "bytes": 2308
+    },
+    "verification/audio/fallback/api35/mac-overlapping-A-B-metrics.json": {
+      "sha256": "c6e653a33d9bb4496d4d0afec37835a175308d356abf39bd1aeba49685582050",
+      "bytes": 2084
+    },
+    "verification/audio/fallback/api35/mac-silence-baseline-metrics.json": {
+      "sha256": "8a32826ffccf071003dc92db43e14745a1a0750745bdbb62682e36ceb1f304ca",
+      "bytes": 2288
+    },
+    "verification/audio/fallback/api35/mac-stopped-silence-metrics.json": {
+      "sha256": "46898683bfbcc535414faa409e3cdc70488b221a70d43ffeb5228066cddd905c",
+      "bytes": 2121
+    },
+    "verification/audio/fallback/api35/macAndPhone-A-997-metrics.json": {
+      "sha256": "1b1eb456d92699109383fde26f8119b99afe48763ea28a8240a256764ebdf573",
+      "bytes": 2328
+    },
+    "verification/audio/fallback/api35/macAndPhone-silence-baseline-metrics.json": {
+      "sha256": "6cd25828bd39154044d1f07ea89cd93242a6f2cef13909eb39a5934e8ebf7084",
+      "bytes": 2296
+    },
+    "verification/audio/fallback/api35/macAndPhone-stopped-silence-metrics.json": {
+      "sha256": "7520c798ac1447b3ad696a868830c4fb317fc13baf83eb70ddf2f9aae853c795",
+      "bytes": 1876
+    },
+    "verification/audio/fallback/api35/observer-linkage.txt": {
+      "sha256": "ff96f8cec9e7cc082555ab31130c310499f0d419a9544bbd1e3041d7a94c4e3d",
+      "bytes": 397
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-testapp-decode-attempt.json": {
+      "sha256": "b6b7bdb362f7a68f92352ac9c53e73fedfdd35dae84e72823987b1a40dacb78e",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-testapp-ocr.json": {
+      "sha256": "b924798ae133c240bef3974b5a7f88973cf619029fd5c777c49e431f5df4b61a",
+      "bytes": 1410
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-testapp-video-frame.json": {
+      "sha256": "7193d342c110c5e6702a7d1ea61c41129027b966f658b10b2fa6789528292e5b",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-testapp.png": {
+      "sha256": "43cb26709c4be4fbc04d08abd9647100685cffd0c77ed413acf66b0e56cc5063",
+      "bytes": 95481
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-testapp2-decode-attempt.json": {
+      "sha256": "7c0999aa96bc871cedfe6083e1e71a8cafa192e584c984ed3f59b5ab6553eda2",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-testapp2-ocr.json": {
+      "sha256": "1043fc6e7ce44a50e153cd5c022cc1ca7ef8fa739451ee4d32d512a27ecfb86f",
+      "bytes": 1410
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-testapp2-video-frame.json": {
+      "sha256": "d6444d9ee66cb00139dba53b09187875c2ac1d13c94238bd77334679054843a7",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-testapp2.png": {
+      "sha256": "de0a294104782031ef6083c01b5b54544d4b2ca7fbf68f980afa337eb2e7c7bb",
+      "bytes": 96001
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-updated-testapp-decode-attempt.json": {
+      "sha256": "f0df6543d4cb3ffeea3170ad3bc6812cb0862397c7df6d18788508d3b6db705f",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-updated-testapp-ocr.json": {
+      "sha256": "40d983d18832e730fd8e317238ee393dc152cc30bca1497624ff7fe5548d55d1",
+      "bytes": 1410
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-updated-testapp-video-frame.json": {
+      "sha256": "d9affa05e55233da93dc7c6355ecbaf823fa40b6de87d0ae7225c4ebe7b93109",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-updated-testapp.png": {
+      "sha256": "28801f2450c8492dac7568c62bd5718270b8bbfb3855e73f7a9cb320b962cb30",
+      "bytes": 95888
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-updated-testapp2-decode-attempt.json": {
+      "sha256": "f70fe77783395792bb07784721cbb336017bfceae13b861ce60895f1a8169b79",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-updated-testapp2-ocr.json": {
+      "sha256": "66005342d3b50e070e99be80faa57b0293f4bd4edd772a70996fa736532480a2",
+      "bytes": 1410
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-updated-testapp2-video-frame.json": {
+      "sha256": "59dbcf784aebc67ae1a4d2e513cf68393ca7e130d18a33daf1ce48a14d3ecac5",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/panel-off-continued-frames-updated-testapp2.png": {
+      "sha256": "6cba4b638828d423c2a37a5d846159f82171b4faf913126beac403bb2f39b08c",
+      "bytes": 96365
+    },
+    "verification/audio/fallback/api35/panel-off-replay-A-decode-attempt.json": {
+      "sha256": "c2f4ba974953e4a9de61b122e5a028985b6c37d799c0cd442ef55c8376a73175",
+      "bytes": 196
+    },
+    "verification/audio/fallback/api35/panel-off-replay-A-ocr.json": {
+      "sha256": "e5ccec8cc41e01eb4b27ee4ff51cbea9167591ea33879dee73b91e460560ce41",
+      "bytes": 1395
+    },
+    "verification/audio/fallback/api35/panel-off-replay-A-video-frame.json": {
+      "sha256": "6c55a374a59fa536079a420c545ef1990332c1dd31d6a967e975c2811d41c39c",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/panel-off-replay-A.png": {
+      "sha256": "0fbce46dacd51756ac5e5da90cc4b92b14e08fc0f132ea96e9ff10e84668a32f",
+      "bytes": 82151
+    },
+    "verification/audio/fallback/api35/panel-off-video-and-tone-metrics.json": {
+      "sha256": "b82776fb9f829b73476926abaf667bbea22b2d6bdfc5792f25048e4bcb02877c",
+      "bytes": 4771
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-testapp-decode-attempt.json": {
+      "sha256": "d1a64cc283b238bcc82de9cd827f2090e2143d2669053e8fa8d1881a2065657d",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-testapp-ocr.json": {
+      "sha256": "c86fc9713b53200f3ee55d045d57b0ea01e4be119488221df97c4789a0e75025",
+      "bytes": 1411
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-testapp-video-frame.json": {
+      "sha256": "555c1ce18db2aaa3938edd751ee5ef42bbd87603a9a8158e8cc47e970cd40a19",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-testapp.png": {
+      "sha256": "414a02f306cb10952e61b869ca149441cd11eeaa7762e5b47c5a9701e08fa8d0",
+      "bytes": 96527
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-testapp2-decode-attempt.json": {
+      "sha256": "f70fe77783395792bb07784721cbb336017bfceae13b861ce60895f1a8169b79",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-testapp2-ocr.json": {
+      "sha256": "66005342d3b50e070e99be80faa57b0293f4bd4edd772a70996fa736532480a2",
+      "bytes": 1410
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-testapp2-video-frame.json": {
+      "sha256": "59dbcf784aebc67ae1a4d2e513cf68393ca7e130d18a33daf1ce48a14d3ecac5",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-testapp2.png": {
+      "sha256": "6cba4b638828d423c2a37a5d846159f82171b4faf913126beac403bb2f39b08c",
+      "bytes": 96365
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-updated-testapp-decode-attempt.json": {
+      "sha256": "51097220e6e3cafc4e5885a60adda60ee382bc7f5383df308dcccdd27726f554",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-updated-testapp-ocr.json": {
+      "sha256": "1a483f97fbfac6454377cb5a5b6210e9d69739d3c2467e7ddabc5556a1b02441",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-updated-testapp-video-frame.json": {
+      "sha256": "add776f95d7caeb5ea3a6d3ea84257c9e55f724a343e7d63be4bdd7d1779b13f",
+      "bytes": 243
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-updated-testapp.png": {
+      "sha256": "b6cdaf142e22669bf356cde515e0e37371c67bc05b9af7d4e213f636f0efe501",
+      "bytes": 82860
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-updated-testapp2-decode-attempt.json": {
+      "sha256": "0d35d65af6780fbb6a42266f401bda2c2bb8626152ae744176f2f8d85b260d26",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-updated-testapp2-ocr.json": {
+      "sha256": "0dd573de45efe571d20dd815ca9176f33db03d5927b9c31413617cedf9c29bac",
+      "bytes": 1407
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-updated-testapp2-video-frame.json": {
+      "sha256": "db650dc188945a1e5bdff93f6853b0de08b967dfb869b472180583bd378f6e86",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/phone-again-videos-continue-updated-testapp2.png": {
+      "sha256": "0bcb08e37b44bf19a18a3c55d8151bee012067ed98690a78803a517da78628d4",
+      "bytes": 82530
+    },
+    "verification/audio/fallback/api35/phone-no-capture-testapp-decode-attempt.json": {
+      "sha256": "f1ad010c5271cff068c8215979da3ea9d17622922100983012ae4d5a0c9c18d7",
+      "bytes": 193
+    },
+    "verification/audio/fallback/api35/phone-no-capture-testapp-ocr.json": {
+      "sha256": "407dd4d32039817f4f7e25bc27f71d4b91bbfb91eec5b783e4e9c9c8a71dbd9e",
+      "bytes": 1405
+    },
+    "verification/audio/fallback/api35/phone-no-capture-testapp-video-frame.json": {
+      "sha256": "3c3fce9e05a51e4931ad0bed7e800f6ad9d928ba78f3ed1148876c571a7b4db6",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/phone-no-capture-testapp.png": {
+      "sha256": "483fd50203e1d1a6c9f92768ef9fe9cd643cbd9b023b385cca075daa9b52a8d9",
+      "bytes": 90231
+    },
+    "verification/audio/fallback/api35/phone-no-capture-testapp2-decode-attempt.json": {
+      "sha256": "094d6f00533115ff827e39ffd8785ed3b7762f8929660be98f86d81ed12d5a20",
+      "bytes": 195
+    },
+    "verification/audio/fallback/api35/phone-no-capture-testapp2-ocr.json": {
+      "sha256": "17550525522f1e0efedddc60a717a759d6c9033875bb89a4b3ea903e96b85cb9",
+      "bytes": 1407
+    },
+    "verification/audio/fallback/api35/phone-no-capture-testapp2-video-frame.json": {
+      "sha256": "4f99c5173679164d8c2a19bfd7af32857aefb185667ff4df51ba48d6911f4d1f",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/phone-no-capture-testapp2.png": {
+      "sha256": "a91095982dc3e71ad824f0999fabae0cf47f1ffcdd13be81e5a9b2939c117d95",
+      "bytes": 90742
+    },
+    "verification/audio/fallback/api35/phone-no-capture-updated-testapp-decode-attempt.json": {
+      "sha256": "fdccfec02dd6c7048d97da4078eef7622d6e36a93c5b47b7597ba2fc064c8d92",
+      "bytes": 195
+    },
+    "verification/audio/fallback/api35/phone-no-capture-updated-testapp-ocr.json": {
+      "sha256": "4a60c884560a6e3d394d151e7ca8ce030aa1a64edf3cedce3dc15ac1f2cfeca1",
+      "bytes": 1396
+    },
+    "verification/audio/fallback/api35/phone-no-capture-updated-testapp-video-frame.json": {
+      "sha256": "d1a291e69a928ad96e092852beffceed4bedd6db073c9645c48ef44a36979c41",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/phone-no-capture-updated-testapp.png": {
+      "sha256": "0395867e928c56bdb078cd52001c118c92961618a7be19c14e78d4ca4d241e1c",
+      "bytes": 91780
+    },
+    "verification/audio/fallback/api35/phone-no-capture-updated-testapp2-decode-attempt.json": {
+      "sha256": "dd1fb6ceac149f1486d5aad09ef35c999065056d32f88389a4096e1c6040207a",
+      "bytes": 195
+    },
+    "verification/audio/fallback/api35/phone-no-capture-updated-testapp2-ocr.json": {
+      "sha256": "858c2a100ca53e46c528a6a6a6e09a09473c17656a0636827ddbd3b0c2d8009c",
+      "bytes": 1395
+    },
+    "verification/audio/fallback/api35/phone-no-capture-updated-testapp2-video-frame.json": {
+      "sha256": "cb6da3260e0638488f32b5f8e2303d6c53da5e6519af71c03c64e7295f82b368",
+      "bytes": 243
+    },
+    "verification/audio/fallback/api35/phone-no-capture-updated-testapp2.png": {
+      "sha256": "b7d0e0bc11de151a70d786afbc749be0faecbef06bdef8d373fd424f1955b81f",
+      "bytes": 91438
+    },
+    "verification/audio/fallback/api35/play-A-decode-attempt.json": {
+      "sha256": "96b89f509068c6d3aac5b75b164ff8c8650bfe2e069d9251ac52f245a4649a32",
+      "bytes": 195
+    },
+    "verification/audio/fallback/api35/play-A-ocr.json": {
+      "sha256": "f83fefa5c2abe6c33472cd73f282fec3103ff05f36cddf27548bab893499b9bb",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api35/play-A-video-frame.json": {
+      "sha256": "3c5b658534ddc5a440f885f29768b09eae6ef0e6b980101b4352f196dc765639",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/play-A.png": {
+      "sha256": "2ae050c4b5d4799b09fa9ce3df74f24ff5ad85ef17a86f3b5872e2e790320569",
+      "bytes": 91164
+    },
+    "verification/audio/fallback/api35/play-B-decode-attempt.json": {
+      "sha256": "dd1fb6ceac149f1486d5aad09ef35c999065056d32f88389a4096e1c6040207a",
+      "bytes": 195
+    },
+    "verification/audio/fallback/api35/play-B-ocr.json": {
+      "sha256": "858c2a100ca53e46c528a6a6a6e09a09473c17656a0636827ddbd3b0c2d8009c",
+      "bytes": 1395
+    },
+    "verification/audio/fallback/api35/play-B-video-frame.json": {
+      "sha256": "cb6da3260e0638488f32b5f8e2303d6c53da5e6519af71c03c64e7295f82b368",
+      "bytes": 243
+    },
+    "verification/audio/fallback/api35/play-B.png": {
+      "sha256": "b7d0e0bc11de151a70d786afbc749be0faecbef06bdef8d373fd424f1955b81f",
+      "bytes": 91438
+    },
+    "verification/audio/fallback/api35/player-actions.dylib": {
+      "sha256": "dc32498b26895a6ee26f9967a9141224fec7b80ada3f34847a64d6e68efb545f",
+      "bytes": 92608
+    },
+    "verification/audio/fallback/api35/player-proxy": {
+      "sha256": "fd4f245d7a9a5e0fd13cd094aba8358490adba50bf74e7d5d575c429d29f9ffa",
+      "bytes": 1380
+    },
+    "verification/audio/fallback/api35/player-pump.dylib": {
+      "sha256": "edfd46f794dbc75efda9cb05ca717a7a75f28be9263ba2db5e4c51cc866d00d4",
+      "bytes": 51616
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/launched-argv.json": {
+      "sha256": "8857bb9b46010b030cd83adb949b0404303160a98b4be689d4078a99e7e82335",
+      "bytes": 478
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-command.json": {
+      "sha256": "637f8508d5b6342e9b5e1baddd4a9ced7a0e32490472a7aec1d0dd76f09e66dc",
+      "bytes": 30
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-1.json": {
+      "sha256": "5a2f74882e9544e51770a88052f298e059a7c41fe41885209b1640bd04170fe6",
+      "bytes": 321
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-11.json": {
+      "sha256": "af82014a142428792d9586a270d42b324fac5e98882fe23f0035f5cc886b53d6",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-13.json": {
+      "sha256": "85dfd761e9e20a85ecc0d88b9e2a94a050d5b2cf9c51cfb5cbb2628a19faaef1",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-14.json": {
+      "sha256": "c588c3c01ea62d9674d3b1f63393517f3c0daee53f377e00a9de8bef80725e74",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-15.json": {
+      "sha256": "ee3dcfa1005b44f573d2122f85331695cf3fc98dcecd11475bc0c0f6a75503ab",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-17.json": {
+      "sha256": "5c3f9d714c787ebc7fa2a447de1a40c2094ad13efa33ccd6b9fc06f40e37a183",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-19.json": {
+      "sha256": "39ac7c126e284197d74499961380ecc256268255d18226617b38c37716b82b10",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-2.json": {
+      "sha256": "2c7bf9d5a6986c61587d19681c3e78deb8efb284c31f5968d106110b155b177e",
+      "bytes": 321
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-20.json": {
+      "sha256": "35d768b28cd95f34dfba06fe306ed357ffe60dd5d3df87217cce77dd9122f2f1",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-22.json": {
+      "sha256": "6f3b6369b4c04b9f089877a5138a132bb2e3f5bb93dd7b673773303eff091094",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-26.json": {
+      "sha256": "c21feaba867c90ee6b0f112c6c83b903361a7f141d0f7632d9c12ff84a63bf95",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-5.json": {
+      "sha256": "603e1200537b7ca912615f35bbcd913baa54a9cc588286a4e5b0f6d8fd68db7c",
+      "bytes": 321
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-7.json": {
+      "sha256": "ce9b9ed1be3974e473a3b66f7ce734f1e229167069c069a32a11373029f46c68",
+      "bytes": 363
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/player-receipt-9.json": {
+      "sha256": "648edcaf338b6d850d535115c152170bcb7c06aa90ebd35499bd27ae0f6a2fd9",
+      "bytes": 363
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/production-argv.json": {
+      "sha256": "af3581a6317b1f4244499e754a221a07e912fa79f560463e29fb5fd469e6e57f",
+      "bytes": 351
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/started.json": {
+      "sha256": "b074fbabf572907053f5203482b368023e0eca52a7fb37edd04499ca3973b442",
+      "bytes": 156
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp/video.mkv": {
+      "sha256": "c88bff157f9ad4c15132122b60fb080261f659ce74a2428545b9aa777f353b6a",
+      "bytes": 3158625
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/launched-argv.json": {
+      "sha256": "8bd5b7063fa18c53a73cea92bc2858ce517bfc8fe95678d1c19e8676fffa1499",
+      "bytes": 480
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-command.json": {
+      "sha256": "89bf148a591a8a8e55c88ab17b4dcbe958571992d433b7eeaa0794a3864398e1",
+      "bytes": 30
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-10.json": {
+      "sha256": "10a0ed743d40f95108bbd36d3d1851ad137435df491e0c371c423a830b728eeb",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-12.json": {
+      "sha256": "448af3775228adc28cb17c8ec01dc74d0e982ae59b07aa69673c74d7c56c0e03",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-16.json": {
+      "sha256": "dbc8ff2fd908c3738670aa6274575286c38f8709275d39323032a9797fedefb4",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-18.json": {
+      "sha256": "c937213b11153888edfa07b5efb3d10d56b560bf806337805698f7f9a9b8f48e",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-21.json": {
+      "sha256": "9402013ba504da007a7c2bd43d8de503bd8308bbd9dc13b5fbb62c1be8b1f2ad",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-23.json": {
+      "sha256": "b3d529986f3369130be5a20ab0ffbe14fe748ede7b7edc12b95e6e61bafa5abe",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-24.json": {
+      "sha256": "9abba7ae791ff8b08fc9787a44914c767cfb986bbee5d55b0d22ea0ea9bd913e",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-25.json": {
+      "sha256": "fd08f55beccd181d3cfb45470676244b0f86b994552d31374034c78c01d55577",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-27.json": {
+      "sha256": "2171f01bb64b0da7cc3f5498e35199692b5d534771b5250e8b50ebbf65c08670",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-3.json": {
+      "sha256": "cbf27317bff72b8c80503ea8920ce446c035e649d40b6cfe4b0f6b875e6862ca",
+      "bytes": 321
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-4.json": {
+      "sha256": "ac5758599ff7134c1ea0a655e801a211f0107bf315d4c9ef244870aecf38ddaf",
+      "bytes": 321
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-6.json": {
+      "sha256": "886808ec0a1e742006318503de5ff834eeccfa5274364551b3733ba73818e967",
+      "bytes": 321
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/player-receipt-8.json": {
+      "sha256": "952ba07195a09beb8ef7db4d18ba0613fb50bd6b212b1fb85c01b51ef13fd5bf",
+      "bytes": 363
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/production-argv.json": {
+      "sha256": "fb64335519fd297c60b5b77c98bfe8b9efc0b4c72aa75a91a2156e348f64667d",
+      "bytes": 352
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/started.json": {
+      "sha256": "16247e8e3b4c797ae004cc76735b44c0c0130cbff6772886e10aa46835c5a134",
+      "bytes": 157
+    },
+    "verification/audio/fallback/api35/players/dev.droidbridge.testapp2/video.mkv": {
+      "sha256": "0a644bf1ec0899f69879da4bece1963455e770ba03b4079763a154c1aaaa0c1f",
+      "bytes": 3193996
+    },
+    "verification/audio/fallback/api35/receipt-1.json": {
+      "sha256": "de555f06540a9bb5d0efe462877e4d67190b73d3ecb87fe51582adb7700f626d",
+      "bytes": 5576
+    },
+    "verification/audio/fallback/api35/receipt-10.json": {
+      "sha256": "4d3b0e8ff4024deaedcc9c8b4687450e2db4649d7799def2a9eee09f75b34b08",
+      "bytes": 5901
+    },
+    "verification/audio/fallback/api35/receipt-11.json": {
+      "sha256": "16dfd9053c4131cb02bba02aad1d40923d1b2ef0d5804a621a52192d88b86338",
+      "bytes": 6145
+    },
+    "verification/audio/fallback/api35/receipt-12.json": {
+      "sha256": "37865e5f37d507073f27c5486e218040b87f531ee2d36f80ed96ba3f944bcc9b",
+      "bytes": 6144
+    },
+    "verification/audio/fallback/api35/receipt-13.json": {
+      "sha256": "20491edbca46a541beebc81a6e0761c368d33dd4458ca28c19d89e97fec33a9e",
+      "bytes": 6050
+    },
+    "verification/audio/fallback/api35/receipt-14.json": {
+      "sha256": "5436c67f86da527642939ef4df7350633b61fafbc2479cf1f3c36f51dc3933b8",
+      "bytes": 6050
+    },
+    "verification/audio/fallback/api35/receipt-15.json": {
+      "sha256": "0b47ef5885356cb942c55493d0738c50087e5d055e72a3ce83ae989618d0db5f",
+      "bytes": 6182
+    },
+    "verification/audio/fallback/api35/receipt-16.json": {
+      "sha256": "3fbc12d6a60a9300062f75a223b103c1b47eee576f6d70e9c6510eac0b6d9516",
+      "bytes": 6073
+    },
+    "verification/audio/fallback/api35/receipt-17.json": {
+      "sha256": "e6507f3e45f50aeaa3d6f8e3f6aa8bd57c4fb2c505432c1b32b73af39ccf51ed",
+      "bytes": 6073
+    },
+    "verification/audio/fallback/api35/receipt-18.json": {
+      "sha256": "b18194395371e28be39449de87ffa954190a97fea95c483a66bdc359d1aa29e1",
+      "bytes": 6310
+    },
+    "verification/audio/fallback/api35/receipt-19.json": {
+      "sha256": "c6aaa75281370fa6069e4455427b63098278cd8a17af7293c88d309f8006018f",
+      "bytes": 6358
+    },
+    "verification/audio/fallback/api35/receipt-2.json": {
+      "sha256": "d84ca767cb5f48d751058c794bf788708555e1888ac935bc7c20332d1914f82e",
+      "bytes": 5576
+    },
+    "verification/audio/fallback/api35/receipt-20.json": {
+      "sha256": "410b26f580202de7bc16994bc7faa031f3a32ed551cf8a488d2cd677388931fe",
+      "bytes": 6359
+    },
+    "verification/audio/fallback/api35/receipt-21.json": {
+      "sha256": "21af132b46c65a68ed4da20bd5c4eb8ab8c6496d6b7e4272b2115e0d24a22146",
+      "bytes": 6051
+    },
+    "verification/audio/fallback/api35/receipt-22.json": {
+      "sha256": "d5497ff88869f196c2a3067f340687a38b49eff1c551c0eb32befaa00fff3a15",
+      "bytes": 6051
+    },
+    "verification/audio/fallback/api35/receipt-23.json": {
+      "sha256": "a5531cc6afbf81d6a1f3a2878c231b6f3ee7b07d8fb98e3169fc9fb5197c2280",
+      "bytes": 6051
+    },
+    "verification/audio/fallback/api35/receipt-24.json": {
+      "sha256": "9f08e4f1385275322b72b175887d390566796f99731dc3129ffd11e3ca9388d1",
+      "bytes": 6051
+    },
+    "verification/audio/fallback/api35/receipt-25.json": {
+      "sha256": "1ff1323d4e5590edd54c744e925eb6cbd8de1d1a989bb3b093cb7229894015e7",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-26.json": {
+      "sha256": "a6dc72dac9ca3896d0a5860d7812f7d4dc998ecf0d2bd7d0d509538869fc7a9d",
+      "bytes": 6784
+    },
+    "verification/audio/fallback/api35/receipt-27.json": {
+      "sha256": "92359d01bae3e9ace595712233cfd5aacb081a829602d55951352333f1e84a6f",
+      "bytes": 6373
+    },
+    "verification/audio/fallback/api35/receipt-28.json": {
+      "sha256": "1b5ffd7ccdb58837bfe32527f6b47a4f4215f31e49a6ef078f9a7063de54d7fe",
+      "bytes": 6382
+    },
+    "verification/audio/fallback/api35/receipt-29.json": {
+      "sha256": "5019a4a7ad9103439b0491a183eabb6e5e2ba20f7c4d209b4a1ae5f0f46f73e8",
+      "bytes": 6382
+    },
+    "verification/audio/fallback/api35/receipt-3.json": {
+      "sha256": "38e46ea0e5704d152d5743e8d6120e666615c36f808e2ac4c43f626cdb94e22e",
+      "bytes": 6140
+    },
+    "verification/audio/fallback/api35/receipt-30.json": {
+      "sha256": "43c3a63f5d6ac9e32c25d204a0989908bee4b3d4e627351833dcda42fbde39ae",
+      "bytes": 6382
+    },
+    "verification/audio/fallback/api35/receipt-31.json": {
+      "sha256": "9c2704113236445d6d2346321d06bc15574e105af7ab66d71f887cbc0a0873cb",
+      "bytes": 6382
+    },
+    "verification/audio/fallback/api35/receipt-32.json": {
+      "sha256": "22eb1b49908cf12f1a364e36024e7613eb5f69e7ac172646ed1de2508872de4e",
+      "bytes": 6382
+    },
+    "verification/audio/fallback/api35/receipt-33.json": {
+      "sha256": "3d3360eaf8c28d6abdcef852b079eb41322977b3f7c646b45c0a04333993cf20",
+      "bytes": 6382
+    },
+    "verification/audio/fallback/api35/receipt-34.json": {
+      "sha256": "cbb1fc04347c344eb059bcf24d02736efa1566747a84a73e5008569503e58a23",
+      "bytes": 6382
+    },
+    "verification/audio/fallback/api35/receipt-35.json": {
+      "sha256": "f3ceb38325e425e1360a873344ce42924b7bd4a6f15a116d799e89bcae545304",
+      "bytes": 6382
+    },
+    "verification/audio/fallback/api35/receipt-36.json": {
+      "sha256": "526afbae920877107f32c64c26abbe3a207a4bc660ef5dacb2f4af32a257f9de",
+      "bytes": 6075
+    },
+    "verification/audio/fallback/api35/receipt-37.json": {
+      "sha256": "8b9f6310531d4e3430d3501a394d10725903f24b9e5d02f295d3b7e3e36aabfb",
+      "bytes": 6075
+    },
+    "verification/audio/fallback/api35/receipt-38.json": {
+      "sha256": "531a389eb23fcd2269ebe5da6aa864907aef786ad99cfa6a80e962505acfddbb",
+      "bytes": 6659
+    },
+    "verification/audio/fallback/api35/receipt-39.json": {
+      "sha256": "1c0b0dafcd49b8f238ef7761215a80bfd4cbc70d0c3b408dd4bc1417799d35bc",
+      "bytes": 6660
+    },
+    "verification/audio/fallback/api35/receipt-4.json": {
+      "sha256": "d88f6e75ea9d41193729401d19f960e15b0668fbd194d6c69e75a3080e0223ec",
+      "bytes": 5854
+    },
+    "verification/audio/fallback/api35/receipt-40.json": {
+      "sha256": "e3709b760b7fa175feffeba3ba9246bf5ca6babc1bb48f4b85a365a43db018b5",
+      "bytes": 6659
+    },
+    "verification/audio/fallback/api35/receipt-41.json": {
+      "sha256": "94ad0462e8641572f5312744699febbc936767564d5185ae95b0f8b92bb7a279",
+      "bytes": 6659
+    },
+    "verification/audio/fallback/api35/receipt-42.json": {
+      "sha256": "6109bd8134e950a63563c8bd7e9d1aefaf14b2c1274c939db18c06b6793e7c85",
+      "bytes": 6289
+    },
+    "verification/audio/fallback/api35/receipt-43.json": {
+      "sha256": "be9e0abf9e9fa60cc994d7bcca68478c9a2c48e655933314b85ab4b6fb032950",
+      "bytes": 6289
+    },
+    "verification/audio/fallback/api35/receipt-44.json": {
+      "sha256": "85e57053246ff1aa2e97f7c462db4b8c317ebfc71bd77723d790cc70321ba9e1",
+      "bytes": 6289
+    },
+    "verification/audio/fallback/api35/receipt-45.json": {
+      "sha256": "82ac7bcc88b9ec3c8511ccead1cef72969c6858cd0cc2387f171c4b99c15dc36",
+      "bytes": 6289
+    },
+    "verification/audio/fallback/api35/receipt-46.json": {
+      "sha256": "11ec8fbb9ba6c2c254dae1140b15314dcec3116d2b75612a3fe0c950834e2b12",
+      "bytes": 6289
+    },
+    "verification/audio/fallback/api35/receipt-47.json": {
+      "sha256": "2c14da149127f9da8aed5fdc46252fc280969c055dc2e75f0dacad99be8430ff",
+      "bytes": 6289
+    },
+    "verification/audio/fallback/api35/receipt-48.json": {
+      "sha256": "00a511f54e401b74cdb014ea428818e21118360367de1945761413f6fe425cd6",
+      "bytes": 6289
+    },
+    "verification/audio/fallback/api35/receipt-49.json": {
+      "sha256": "e471fbb09f33578a74e66c0088e999fdab9d248eaf7ca958c048d6f121fc077c",
+      "bytes": 6289
+    },
+    "verification/audio/fallback/api35/receipt-5.json": {
+      "sha256": "4da1aaf430b5a53f2fcebe96baabcda335ba1764633e3c3a7b5826176353cfa2",
+      "bytes": 5854
+    },
+    "verification/audio/fallback/api35/receipt-50.json": {
+      "sha256": "b19b86a95bf675ed2e526143eaf40d811ab36922b11b24c7912585b5a44d57ec",
+      "bytes": 6157
+    },
+    "verification/audio/fallback/api35/receipt-51.json": {
+      "sha256": "3ed3c00b7bfe74678e2d3eb1a69f4257abbc00a78b450500762bdfe757a96ce6",
+      "bytes": 6158
+    },
+    "verification/audio/fallback/api35/receipt-52.json": {
+      "sha256": "02d5fe26dea6a6d780741c4fa37c300915af7dc6c2a6d662c12749a942f56fcb",
+      "bytes": 6310
+    },
+    "verification/audio/fallback/api35/receipt-53.json": {
+      "sha256": "7c0a1001c7899b64dd6eefc31d9b55097f644af8e63607bcf42032f4e021885f",
+      "bytes": 6358
+    },
+    "verification/audio/fallback/api35/receipt-54.json": {
+      "sha256": "0692bc2e33ab28f52306a7ee1489b9dee0b3fa71ee5444798036d552825fa195",
+      "bytes": 6051
+    },
+    "verification/audio/fallback/api35/receipt-55.json": {
+      "sha256": "4cbbcf641062f9a9fda703b44ef10326a3d68a86046f5b287fcf6a79f5d1e11d",
+      "bytes": 6051
+    },
+    "verification/audio/fallback/api35/receipt-56.json": {
+      "sha256": "520b3369d4f2f952dace128afc017d17b5363bd662747111aa28e297d6cea2fe",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-57.json": {
+      "sha256": "11ebedc85af2c6403b5b387fd7c43042bcea8487d6fc7ff2ebe22fb6c10d22cf",
+      "bytes": 6784
+    },
+    "verification/audio/fallback/api35/receipt-58.json": {
+      "sha256": "d14dd24d58901ae50f4a85f3c6af80a9cef1f7283bb208d70d2be7a0edae1335",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-59.json": {
+      "sha256": "42fb9df9b6f397f656b958a1937523e24ea128c130f4e38b2a9fd888e9ed8c15",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-6.json": {
+      "sha256": "4819ea42764be5e58116ff3141f09e8b349e7baf79b4337a563a416e331267d5",
+      "bytes": 6096
+    },
+    "verification/audio/fallback/api35/receipt-60.json": {
+      "sha256": "97e2db8771d225ed3f3da40dfe8949568a6ec4fcda183c206254c3c06d5aa9fb",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-61.json": {
+      "sha256": "e4cf0adfe97937b70e619fe22006d9aedc6ece23a6422b3f6cd3a35a55429c51",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-62.json": {
+      "sha256": "fefc707a31ab10d7d6948e2bded0dfbaecdbb55b8f9026f863ce5678f7762ccd",
+      "bytes": 6825
+    },
+    "verification/audio/fallback/api35/receipt-63.json": {
+      "sha256": "9ab606151462b3c88c9efe8fead5020e3db4ad4276d9bb4e7528693e16de15ed",
+      "bytes": 6826
+    },
+    "verification/audio/fallback/api35/receipt-64.json": {
+      "sha256": "5fd6c4ea9271f789858f3c3fe17a9142e3622278880d5025d1e3063bb7d796d1",
+      "bytes": 6825
+    },
+    "verification/audio/fallback/api35/receipt-65.json": {
+      "sha256": "4ea8301d1c90caded212ba960ef154b862a8b2a86a138484b99c82d543140996",
+      "bytes": 6051
+    },
+    "verification/audio/fallback/api35/receipt-66.json": {
+      "sha256": "ca420956c41f22b24961e875a2f1340633cfe69b6ceaa57ac17d95eff48421dd",
+      "bytes": 6051
+    },
+    "verification/audio/fallback/api35/receipt-67.json": {
+      "sha256": "b525621424376927332f5a2f65c44fe463a602e8fd73403450bfc6091e58f946",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-68.json": {
+      "sha256": "6541daabc2487f05d59dd168390202357295b75becbc05c50bc9925aaf041675",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-69.json": {
+      "sha256": "4ebc334d8b491ee162cc407ab37abebc24c14bfbebc9965a3440ec79f11e3a3c",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-7.json": {
+      "sha256": "8497156f21efad33062c16966297eeabc2eb67d12d72bd1725cbb1973a209ff2",
+      "bytes": 6103
+    },
+    "verification/audio/fallback/api35/receipt-70.json": {
+      "sha256": "fdf680653d8c2e7fa2f963e7ab05d86be5d33440ea15558f729079d8a4e8c02f",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-71.json": {
+      "sha256": "5534d915f53d675cb75aed39a8a6c63533356995707e3708b4f0d7079330c848",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-72.json": {
+      "sha256": "4659367235ad72d7dc41f7764e3081bd43558caa7e21d365c59dca9ecf3902db",
+      "bytes": 6783
+    },
+    "verification/audio/fallback/api35/receipt-73.json": {
+      "sha256": "067592550e715d9332e569ff19d3a3150915bd712526a238c40a7f7c57c59b48",
+      "bytes": 6825
+    },
+    "verification/audio/fallback/api35/receipt-74.json": {
+      "sha256": "6b0517c7eaf497c904f50c27dcf423adc2c5fb57776bf63fdc10419813fd1e34",
+      "bytes": 6946
+    },
+    "verification/audio/fallback/api35/receipt-75.json": {
+      "sha256": "ea99f58e43a25b49c0c9f04a0eb4921be546876907b5f36f5637cff4cec4ae20",
+      "bytes": 6990
+    },
+    "verification/audio/fallback/api35/receipt-76.json": {
+      "sha256": "d014da152fcd5d158ebd5ff3045e9d425f7294eca7685ef8df089c7b583118c0",
+      "bytes": 6990
+    },
+    "verification/audio/fallback/api35/receipt-77.json": {
+      "sha256": "47fa306dcc7edb49213b30e56222f0ebfb4c9a4e4f6f22b499bd44acf19584ee",
+      "bytes": 6157
+    },
+    "verification/audio/fallback/api35/receipt-78.json": {
+      "sha256": "6b58590a93dfb81568db37fdec68217a6486ca3ae33c33d8a3f8334b7b8d6f3b",
+      "bytes": 6155
+    },
+    "verification/audio/fallback/api35/receipt-8.json": {
+      "sha256": "7877b4e02ec140ef63ef9ed9576a1b465609d06c7f2b3c9a25a1c1149bdf34e8",
+      "bytes": 5851
+    },
+    "verification/audio/fallback/api35/receipt-9.json": {
+      "sha256": "010ff082ed30017dd451e392b7ef4c88bbf93905e5203f88c242b9b250176eb1",
+      "bytes": 5884
+    },
+    "verification/audio/fallback/api35/recognize": {
+      "sha256": "26e95858e8ff66ebf85204fd27dbd582e3d57bcdd70a818d08329a966cd1a5f4",
+      "bytes": 78168
+    },
+    "verification/audio/fallback/api35/recognize.swift": {
+      "sha256": "4f0923157c593da0e9f63d0003fdb42a675955da5f1a830e38b91ed3b71a04af",
+      "bytes": 624
+    },
+    "verification/audio/fallback/api35/resource-observations.json": {
+      "sha256": "9631616c05ff72307a63e0efde23763fca1b6df9e65ee23baf08634808e4154e",
+      "bytes": 559
+    },
+    "verification/audio/fallback/api35/result.json": {
+      "sha256": "2cb145f07826c7d625ef250ddf9fcc74c0dc40e63f9164dd953413386d500dfc",
+      "bytes": 13570
+    },
+    "verification/audio/fallback/api35/retry-B-1499-metrics.json": {
+      "sha256": "b913f4508e886ef437850bd2fea0b22d24b15ede16d0bde05ed8c2cf31513f4d",
+      "bytes": 2061
+    },
+    "verification/audio/fallback/api35/retry-play-B-decode-attempt.json": {
+      "sha256": "05b6848fe4c22d61396684d30e454d29924cc465d4d50bbf8a3e6e312d69f12c",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/retry-play-B-ocr.json": {
+      "sha256": "0c44fabbdf4b908b4d8e8cea018481b1a575904c2f867af5dbe4f3b17c95d0a3",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/retry-play-B-video-frame.json": {
+      "sha256": "49cb5d1e14359b3839dd629cb2c81f2a75dd7e6d052b169635902d22ae914dd8",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/retry-play-B.png": {
+      "sha256": "d6a825011c00b27f8573bfb1d6e9c3f2ec2f48c2e9749f96cb5df0acaae84834",
+      "bytes": 81349
+    },
+    "verification/audio/fallback/api35/retry-stop-B-decode-attempt.json": {
+      "sha256": "05b6848fe4c22d61396684d30e454d29924cc465d4d50bbf8a3e6e312d69f12c",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/retry-stop-B-ocr.json": {
+      "sha256": "0c44fabbdf4b908b4d8e8cea018481b1a575904c2f867af5dbe4f3b17c95d0a3",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/retry-stop-B-video-frame.json": {
+      "sha256": "49cb5d1e14359b3839dd629cb2c81f2a75dd7e6d052b169635902d22ae914dd8",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/retry-stop-B.png": {
+      "sha256": "d6a825011c00b27f8573bfb1d6e9c3f2ec2f48c2e9749f96cb5df0acaae84834",
+      "bytes": 81349
+    },
+    "verification/audio/fallback/api35/samples.dylib": {
+      "sha256": "28c8435584e8be92d8b6fefc087da016588ec25bf5747df26d41d0f4a5f669c3",
+      "bytes": 51104
+    },
+    "verification/audio/fallback/api35/samples.jsonl": {
+      "sha256": "f82e8068d9eaa251c086887f1f7bea211dcded6cc3eb0bebbe6e82c6247393be",
+      "bytes": 148293
+    },
+    "verification/audio/fallback/api35/session-638C8B83-95A6-4FF0-9C6E-93C59800DF90.log": {
+      "sha256": "3936bccc6f3858c624f222e745ba3ad6362eb6dd8c3df99ab5098c0c400fecd3",
+      "bytes": 1929
+    },
+    "verification/audio/fallback/api35/session-638C8B83-95A6-4FF0-9C6E-93C59800DF90.log.jsonl": {
+      "sha256": "3d3281d2ef7889da590f0f120a49e8bd3bdecceb4b66ee9787f7751e3dd31aa1",
+      "bytes": 1022
+    },
+    "verification/audio/fallback/api35/session-AA8B76ED-E426-4F5C-B3C2-26FEF85496DB.log": {
+      "sha256": "baee0ce5266b2e2660615a8b0d16f7442487378db16e2a6c5e459ede5540a3c6",
+      "bytes": 1795
+    },
+    "verification/audio/fallback/api35/session-AA8B76ED-E426-4F5C-B3C2-26FEF85496DB.log.jsonl": {
+      "sha256": "6f62249e7750e7c6930d49dfc92f071b0c05c544e82db4cc753e430083d1249c",
+      "bytes": 1027
+    },
+    "verification/audio/fallback/api35/stop-A-decode-attempt.json": {
+      "sha256": "96b89f509068c6d3aac5b75b164ff8c8650bfe2e069d9251ac52f245a4649a32",
+      "bytes": 195
+    },
+    "verification/audio/fallback/api35/stop-A-ocr.json": {
+      "sha256": "f83fefa5c2abe6c33472cd73f282fec3103ff05f36cddf27548bab893499b9bb",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api35/stop-A-video-frame.json": {
+      "sha256": "3c5b658534ddc5a440f885f29768b09eae6ef0e6b980101b4352f196dc765639",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/stop-A.png": {
+      "sha256": "2ae050c4b5d4799b09fa9ce3df74f24ff5ad85ef17a86f3b5872e2e790320569",
+      "bytes": 91164
+    },
+    "verification/audio/fallback/api35/stop-B-decode-attempt.json": {
+      "sha256": "dd1fb6ceac149f1486d5aad09ef35c999065056d32f88389a4096e1c6040207a",
+      "bytes": 195
+    },
+    "verification/audio/fallback/api35/stop-B-ocr.json": {
+      "sha256": "858c2a100ca53e46c528a6a6a6e09a09473c17656a0636827ddbd3b0c2d8009c",
+      "bytes": 1395
+    },
+    "verification/audio/fallback/api35/stop-B-video-frame.json": {
+      "sha256": "cb6da3260e0638488f32b5f8e2303d6c53da5e6519af71c03c64e7295f82b368",
+      "bytes": 243
+    },
+    "verification/audio/fallback/api35/stop-B.png": {
+      "sha256": "b7d0e0bc11de151a70d786afbc749be0faecbef06bdef8d373fd424f1955b81f",
+      "bytes": 91438
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-testapp-decode-attempt.json": {
+      "sha256": "96b89f509068c6d3aac5b75b164ff8c8650bfe2e069d9251ac52f245a4649a32",
+      "bytes": 195
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-testapp-ocr.json": {
+      "sha256": "f83fefa5c2abe6c33472cd73f282fec3103ff05f36cddf27548bab893499b9bb",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-testapp-video-frame.json": {
+      "sha256": "3c5b658534ddc5a440f885f29768b09eae6ef0e6b980101b4352f196dc765639",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-testapp.png": {
+      "sha256": "2ae050c4b5d4799b09fa9ce3df74f24ff5ad85ef17a86f3b5872e2e790320569",
+      "bytes": 91164
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-testapp2-decode-attempt.json": {
+      "sha256": "1f92ae8dc88d37758cc3b811f7314674ad33f082ec3bb4de32f71f361a7f1e1b",
+      "bytes": 196
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-testapp2-ocr.json": {
+      "sha256": "c692d9a15727a801b1e5e73cc84c8c0503cb577cf4f01486b7348eef28779594",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-testapp2-video-frame.json": {
+      "sha256": "597d78e5b5fd709780f9d874d9cbd7c17220eb651f99d881cf00517697606707",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-testapp2.png": {
+      "sha256": "cea4415fb4dfa0fac4e88275bc6ed6442fe95a7091b5b494b581e73f8b09bd9d",
+      "bytes": 81675
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-updated-testapp-decode-attempt.json": {
+      "sha256": "c2f4ba974953e4a9de61b122e5a028985b6c37d799c0cd442ef55c8376a73175",
+      "bytes": 196
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-updated-testapp-ocr.json": {
+      "sha256": "e5ccec8cc41e01eb4b27ee4ff51cbea9167591ea33879dee73b91e460560ce41",
+      "bytes": 1395
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-updated-testapp-video-frame.json": {
+      "sha256": "6c55a374a59fa536079a420c545ef1990332c1dd31d6a967e975c2811d41c39c",
+      "bytes": 242
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-updated-testapp.png": {
+      "sha256": "0fbce46dacd51756ac5e5da90cc4b92b14e08fc0f132ea96e9ff10e84668a32f",
+      "bytes": 82151
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-updated-testapp2-decode-attempt.json": {
+      "sha256": "f2fcd7106f533fd23d278b904583dc972dd7208c8a948612337873cfa6f292b4",
+      "bytes": 196
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-updated-testapp2-ocr.json": {
+      "sha256": "22bdbd482a3fefd8f8aae9c588df46f76155b4fb5b1f07be9ad871d6024f64aa",
+      "bytes": 1394
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-updated-testapp2-video-frame.json": {
+      "sha256": "b86fc0780e9c5ca9846ff604223cefee6a100acf7d7b4f274a4cef3a123bec2e",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/two-fallback-with-one-audio-updated-testapp2.png": {
+      "sha256": "c5c8e4a635bdbcb89f1042ef65ec6c7f4e60b8acdac5d958d296e0e1a52adba0",
+      "bytes": 81980
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-testapp-decode-attempt.json": {
+      "sha256": "a1047fbc33ceb0a6a711aa518d21f1175d3cf336e9d55198a8b93b1d74fb0b87",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-testapp-ocr.json": {
+      "sha256": "d13c137638533a6b301036863a6d966e6e152bb265cebb6d662d5a1e470fa9a7",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-testapp-video-frame.json": {
+      "sha256": "e52af42e39280dc3a2bc761560980211c97167493a5c8d963b58df4e843e3065",
+      "bytes": 243
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-testapp.png": {
+      "sha256": "695100da29f2000f1fa2cec59738cedafc239e66c06f93635c3b0de640cbbced",
+      "bytes": 83063
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-testapp2-decode-attempt.json": {
+      "sha256": "a4fe1ae9a16d0a9c966d6d9bf57de2247ec6113ffca980227562c0fd43665143",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-testapp2-ocr.json": {
+      "sha256": "05587cf4c2828937f521f658f8b1cee692d9527878ff805f19b78af26dbc2314",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-testapp2-video-frame.json": {
+      "sha256": "3f3eb7275913a18965ddbcdc79c4a79e8837450847c49aa5865b10f2ec40c8c2",
+      "bytes": 244
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-testapp2.png": {
+      "sha256": "d7811149b9024a65e60c9675f57d78d338bb7d5799b8f1ffb73a4b4ff88a8b29",
+      "bytes": 84013
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-updated-testapp-decode-attempt.json": {
+      "sha256": "11f1ae558caff17a809de3bb5e38435df9286e20cf989863f24922bf2695d1a0",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-updated-testapp-ocr.json": {
+      "sha256": "5c9c3eaf9b7003013f59132719ffe864bdf6c108f5c8a6105db2441ef5afb0bb",
+      "bytes": 1407
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-updated-testapp-video-frame.json": {
+      "sha256": "019b9d8f9b15bca86d7e5b9ed6c3f1a5ee8ea1b33580fd8578641b5b12f705da",
+      "bytes": 241
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-updated-testapp.png": {
+      "sha256": "3f64c5a6545ae0a15df3f4d17231ab495b9431fff3d026ec906cd57895351b82",
+      "bytes": 83734
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-updated-testapp2-decode-attempt.json": {
+      "sha256": "b9cff1ecd8da43228b759f19369c60ecdf39215042ef91f1992dee6da6ca320b",
+      "bytes": 198
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-updated-testapp2-ocr.json": {
+      "sha256": "5ca4cb17205cca2b0fe2f1770b69ded6755eb5fed21c574c83c1461976bc4a75",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-updated-testapp2-video-frame.json": {
+      "sha256": "8c3fa8c9aa79904c659d435cee5a7821c085907fa4f0028b28ea3f65266a09d8",
+      "bytes": 244
+    },
+    "verification/audio/fallback/api35/use-phone-recovery-videos-continue-updated-testapp2.png": {
+      "sha256": "5fc7401ce6b2d3d5a1a6fdab067d599fca2279fa8dbb66ce93a20365705bc0d4",
+      "bytes": 83231
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/actions.dylib": {
+      "sha256": "d7b8e64a48541cfd389ed4c2ba397057c8f8400f4a4dfea7abb4836c336959d8",
+      "bytes": 75616
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/android-input-current.log": {
+      "sha256": "55ff8901ebdaf637ebadb35aed7989d1726b2b3451a0697d7ee5344a8cfbd899",
+      "bytes": 2091
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/android-input.log": {
+      "sha256": "d523f39914f8f161813cf5c2730fd4debcf9d9c5b356dcbbbe596b03b05db4b7",
+      "bytes": 2166
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/android-settings-after.json": {
+      "sha256": "2474cf9eec0c1bc671147bbab1332de407697722a9bc54fe7421000832f365a7",
+      "bytes": 287
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/audio-argv.jsonl": {
+      "sha256": "1d22775f0065519dffaa64a0a1d924bda0c7d55f9a1c0ea101ec4e138f8f996d",
+      "bytes": 361
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/audio-client-proxy": {
+      "sha256": "56f5331c693c07f13a5bd8e750ef3a7b01376db773ad1a634d02fd75b7ab29e8",
+      "bytes": 1020
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/command.json": {
+      "sha256": "3db2cf646dc8112cd6acce4e92b621baab33ab2349fff7acae203a29cf3a727e",
+      "bytes": 72
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/fallback-driver-snapshot.py": {
+      "sha256": "fd7e489ddd8a8c1527dd701aac3029a7652624e278f0e36b29aec4304f0d54f7",
+      "bytes": 41774
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/fallback-instrument-sources.json": {
+      "sha256": "e345320be715115a9d855223138dfa9c6fea3920cdddd762300b1bd267d36dd0",
+      "bytes": 591
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/host-unsigned-test-copy": {
+      "sha256": "79c36d972d1fe466ef1942b7f5794217d345cbfaa7875f0bcdfb9a0a6b807212",
+      "bytes": 2937552
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/host.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/actions.dylib": {
+      "sha256": "2594a3cee4a8e20c4d448355663c8ebf7e9bde19e24dfa10c06beee0bdb03f2d",
+      "bytes": 75616
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/audio-argv.jsonl": {
+      "sha256": "6283c6182f7ab4f2a4e606283bbe99d56831a4f20829e3e0ee49b46a80ed12c3",
+      "bytes": 873
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/audio-client-proxy": {
+      "sha256": "eca4588044a84a302835520f6ff572c50436c776ba1cbe064c118398d31add5a",
+      "bytes": 1214
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/command.json": {
+      "sha256": "84e2b00470c5d5adb39084eb69a63480941258e1f8235a2cc43602aed015bf98",
+      "bytes": 28
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/host.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/observer-linkage.txt": {
+      "sha256": "3220f1867e07de9b9926deee94273cab9e4c0f7e167c70b4b391d44a91be532d",
+      "bytes": 473
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-1.json": {
+      "sha256": "c0f23c5f544175adafd469d95b549dcc4464add0f25ba619faf2b7b46d4d0ce0",
+      "bytes": 6264
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-10.json": {
+      "sha256": "c1e457f58eceb1c143bdd30525a859358fd30b8fc47a4d5ac937f76ee40f5b88",
+      "bytes": 6654
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-11.json": {
+      "sha256": "b4c03c640b8d4314783e4b952cd4ff438baa1322e77c568beee788d599d94016",
+      "bytes": 6652
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-12.json": {
+      "sha256": "e92a4120ed4393da126d6f208e15f42bd59955a5d392e2810d46811374a3f568",
+      "bytes": 6248
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-13.json": {
+      "sha256": "2bbb5c31ba5daeee63b25a9fd0f1b584d81e521b6dd45d1123d36fe406168e01",
+      "bytes": 5949
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-14.json": {
+      "sha256": "476e329f5b831e17d8e7dc8e167ea6ac288a49177f14c2339e1ccea2196e9577",
+      "bytes": 6533
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-15.json": {
+      "sha256": "87b3fe2d9c68dd4e8e5dbbf97460a59c7a046f705705885d7676dc8bced99306",
+      "bytes": 6530
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-16.json": {
+      "sha256": "990b8dfd542918ceea07c096e7ce16e4f018c317fd4650c7a766a06af652f89d",
+      "bytes": 6528
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-17.json": {
+      "sha256": "052ebdbe5cb173587a5f75a9126cbcf097ffd00465fae8327adb20bf3df5c362",
+      "bytes": 6164
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-18.json": {
+      "sha256": "072b76ba4379951624c6b2cda07b3dbeabb0143d45beabf41eb6d5b53e98bc6d",
+      "bytes": 6160
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-19.json": {
+      "sha256": "22c21a194addf310813d66ab19e39250d704dfc03bad47734bd6bfe4822988e8",
+      "bytes": 6160
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-2.json": {
+      "sha256": "1f7d0eaf32acc40feb498c74c588e87b5113550610fb6b0e63780a05155d7ec4",
+      "bytes": 6268
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-20.json": {
+      "sha256": "388c10ecc46643769288c0c68a1db95c0614c66ded3dcead94d4aff92239dc04",
+      "bytes": 6157
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-3.json": {
+      "sha256": "6c1dbdd64529f59872a6bd03107d4c7ebd313fce74b78bf09b44389a45a632b9",
+      "bytes": 6265
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-4.json": {
+      "sha256": "fcb448767120b8504033fbd7e624b2b47bc0e53fc7e57d540dcbbc3834e7234a",
+      "bytes": 6263
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-5.json": {
+      "sha256": "ea2f240cc13489dfee35844a27eb3ff211bfce8e52348b8e3f23a437586e97c2",
+      "bytes": 5924
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-6.json": {
+      "sha256": "be6e09321acb8efdc41848ecdefa407f02c380e458cf0b2600b4eb81a36b239c",
+      "bytes": 5924
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-7.json": {
+      "sha256": "0c554a1e7b0f69975e913d698ddb906b2d61bb5a5a49fd30bfa4034124a24a9a",
+      "bytes": 6656
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-8.json": {
+      "sha256": "9d88f47462c91eae3c1fa4e93d4b8b534010329b39b6f2a1bbcbed325e1be91f",
+      "bytes": 6653
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/receipt-9.json": {
+      "sha256": "90b2cecf59cbb1a971a24868f267d1f75efcea496ecd8f5aba476e6341211878",
+      "bytes": 6652
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/recognize": {
+      "sha256": "26e95858e8ff66ebf85204fd27dbd582e3d57bcdd70a818d08329a966cd1a5f4",
+      "bytes": 78168
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/recognize.swift": {
+      "sha256": "4f0923157c593da0e9f63d0003fdb42a675955da5f1a830e38b91ed3b71a04af",
+      "bytes": 624
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/running-identity.json": {
+      "sha256": "34af4451bce5cb9bfe213fd47635982de0261a3bab38df16648821e60ace692a",
+      "bytes": 279
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/samples.dylib": {
+      "sha256": "81de0d627fbd994e36a1c593a12b8c7677b1299ddae6c0aea013c4322506b67c",
+      "bytes": 51104
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/samples.jsonl": {
+      "sha256": "4a71b0c0be116f0496d2b1ebaf98f04d0785459e2f220088f9f3a80cf06ab8ad",
+      "bytes": 15346
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-dup-997-ocr.json": {
+      "sha256": "d2ef52f631885d49623366cb1382d7475853ee040d6df93f718d2e9869e04b99",
+      "bytes": 1414
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-dup-997.png": {
+      "sha256": "e4206f42a40f2187a8311223b25791c4b471b9279eaff7657fb2f0e2de8979b1",
+      "bytes": 248503
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-owner-997-ocr.json": {
+      "sha256": "a96e4fba3b8793d220c5ddb4f2497f9704d47873f4c347eb25bbb8fb5cf88f33",
+      "bytes": 1413
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-owner-997.png": {
+      "sha256": "87e25d6bd674ccae59353a52b80beace84637178cc271fa32374386768fe89a6",
+      "bytes": 252138
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-phone-video-still-live-ocr.json": {
+      "sha256": "304355c0a976e846287e0c92d5a8004fe1a08dd08a223ac0efe1e240268722b0",
+      "bytes": 1414
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-phone-video-still-live-updated-ocr.json": {
+      "sha256": "28c05ef65c6a913e11dfeb52923e97a59f6ba740e4c81810aea08b97bedfcb63",
+      "bytes": 1414
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-phone-video-still-live-updated.png": {
+      "sha256": "816e1fd5570ad2e0d1a45b0e6525696c51d7287e7984d6f4ed58ce6fc8f182cb",
+      "bytes": 249228
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-phone-video-still-live.png": {
+      "sha256": "a2bb0b243d105df93902d27367f32d729b16a34c5fdcbe79f852c97abd38563f",
+      "bytes": 248915
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-shared-997-ocr.json": {
+      "sha256": "e00de78987035b8d477a06aea43f50d0cd93e02700bbe19fc6fd0c5c8378e7ef",
+      "bytes": 1407
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-shared-997.png": {
+      "sha256": "d2a82fc63991704d5f7e76f7ae6f4a567936a8635580c209ee3711513b74e7b5",
+      "bytes": 253177
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-survives-owner-crash-ocr.json": {
+      "sha256": "7010f353203e4e6755052a23fecce16f052989eb2cc9d63a97cbf38eac757bf6",
+      "bytes": 1413
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-survives-owner-crash-updated-ocr.json": {
+      "sha256": "c4ab8a46572e849c523615c0a34decf2e2a04b219760cd3325b492fe6d59354f",
+      "bytes": 1413
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-survives-owner-crash-updated.png": {
+      "sha256": "220008bae52ad1995741a55a1b3e72c033555a2457fc57c80aa92ab816ffb950",
+      "bytes": 252283
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/wrapper-survives-owner-crash.png": {
+      "sha256": "b2262f3501d9ae59fc9f279dca79f935ea674da4b226329d6e4096913d6636f4",
+      "bytes": 251823
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/launched-testapp2-ocr.json": {
+      "sha256": "fe58e87decf952d6a3d0249d3d82eb9a990e4351702bebb19b38aa233f2cb9dc",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/launched-testapp2-video-frame.json": {
+      "sha256": "f191ad104427a9d3fc3acac566652b90321d33103b9161736f0aae81fa99caf9",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/launched-testapp2.png": {
+      "sha256": "f60534408aee2b32ae430996090b23183e8d1bcc350d86efec9c1a2a22cf8eb3",
+      "bytes": 338556
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/launcher-route-mac-22.png": {
+      "sha256": "e2ad5b75fda8b4fac22607090d1096eeaa2f95f0afcfc5d4fca9a0ea2c5e7f0b",
+      "bytes": 304294
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/launcher-route-phone-10.png": {
+      "sha256": "3c8792998963863249c5d6d0adafb0ad47048b9f00a69717293274a78958bb7e",
+      "bytes": 302619
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/loaded-images-20366.txt": {
+      "sha256": "43cf66d313faa6ddbc9dcd7ec3061cfac1dd5003226ca11b6212d8100be6235b",
+      "bytes": 619361
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/loaded-images-20757.txt": {
+      "sha256": "7921aa950809c889d480820872bc77d2c843811ad085044586c9d75dc6cd0aa9",
+      "bytes": 624774
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/loaded-images-21154.txt": {
+      "sha256": "6e1d08fcd4230cbb1a59a97b977457f87796093fddb4fdeb540ebe95b75e9ac8",
+      "bytes": 624132
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/main-1499-ocr.json": {
+      "sha256": "a98e5fc626b92383d5df508e69ffe33e9876ff7dbb2c0a9e63cc93251216c067",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/main-1499-video-frame.json": {
+      "sha256": "3ef5f5c4b3cabcd5d120ce3723aadd3ca59115d643694fe93a5b99b1fba6361e",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/main-1499.png": {
+      "sha256": "449b6b347da1947682a131ea19cd1a9d7481718e4c2ced8ff7b16cdf380a8d78",
+      "bytes": 312068
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/main-owner-fallback-1499-metrics.json": {
+      "sha256": "3143241718e0c60fc3ff036f06d231bc77895e49c86ffc633a9e7d9ee684aeee",
+      "bytes": 2287
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/main-shared-1499-ocr.json": {
+      "sha256": "e82bf8073b3320f748bf7b06867bf076ed4b8890bca0984d6312d2b5c9876fff",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/main-shared-1499-video-frame.json": {
+      "sha256": "373973452a9e5c963a7fd350385fc5ac33bc7e82bf3db70864bd57894cc7dc38",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/main-shared-1499.png": {
+      "sha256": "189187a3f59dd333c0eae8143fe9dfe42b368f2e4bfcf67963d6f238bb2da841",
+      "bytes": 312336
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/observer-linkage.txt": {
+      "sha256": "c01ca14257c5340394b5cc8241d2bd8ec67f091714322b5225083130de9f77e3",
+      "bytes": 433
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/player-actions.dylib": {
+      "sha256": "65aa5876dae994cedf98b35354d78348d2ed5c34d7518fdda90961dd4dc8ef98",
+      "bytes": 92608
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/player-capture.dylib": {
+      "sha256": "9d8c84b883ca302cf27ee3bdc76b7348b38ad8190d1ddeb63aceccc643844539",
+      "bytes": 70048
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/player-proxy": {
+      "sha256": "1b9d06f5dc2ad862c14e63c0b8ceb42ddccde7d93c6321d9868e5cc163589039",
+      "bytes": 1592
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/player-pump.dylib": {
+      "sha256": "84e7814a56fd5b4964406cb0bdd9466028fe83750189cca67373bb44c25546c0",
+      "bytes": 51616
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/capture-ack.json": {
+      "sha256": "6d094b801e0f8f81d717c6da8f15ab0d4aa46a5630a5e3bd54002732bdedb137",
+      "bytes": 250
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/capture-request": {
+      "sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+      "bytes": 2
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/frame.bmp": {
+      "sha256": "d9a2a85611ef41172cc31a50b565215d6cc2f5e864dd5208bf2de2fde4ab37cc",
+      "bytes": 10437258
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/launched-argv.json": {
+      "sha256": "8e544d099c50430022d464c19d47f3aa0e927539cf34a7dbfca88270e0542a0a",
+      "bytes": 498
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/player-command.json": {
+      "sha256": "30a03585424bd986adc82da7a19622d41f04cd72aeae89e68a72465fe159d747",
+      "bytes": 78
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/player-receipt-1.json": {
+      "sha256": "8799e76b650be63110f17c6d684abeecd4bd57e656be9621b2e2190a7e3a49b2",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/player-receipt-2.json": {
+      "sha256": "49310a62b790455ac558dafd0bb9bb6a614d6ad39ec12dbff00fe06a0a0b6cb7",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/player-receipt-3.json": {
+      "sha256": "450595574638d680063fa96156f4e5fa77f6c8e0886da63145bed65d4f353dc5",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/player-receipt-4.json": {
+      "sha256": "2bc665b08c8a3c7d762cff7eead5aebc390ce82b7efd332bad2c9f5c43361863",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/production-argv.json": {
+      "sha256": "fb64335519fd297c60b5b77c98bfe8b9efc0b4c72aa75a91a2156e348f64667d",
+      "bytes": 352
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/started.json": {
+      "sha256": "f169eefa29d4d6798bda9074cade4f044c5b2f718825ce2c19a928dc45e91aa7",
+      "bytes": 158
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/video.mkv": {
+      "sha256": "2692cc96fa8f210628839bb8673446e3e37d3710c999dd02cdd5fdd17c2405b4",
+      "bytes": 569468
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-1.json": {
+      "sha256": "641eb5d24f3a9575b96985859b0ba01303fc71ebf9c5f43139df0b04bc0c86f9",
+      "bytes": 5577
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-10.json": {
+      "sha256": "23259e9ca345c0d17e47c242475e663e67264c61bf3cdf88504a0fb65e834c80",
+      "bytes": 5902
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-11.json": {
+      "sha256": "5745a37092067a658d9d133416c9a0faa41e3a1fd202829cdd6e8e045305e727",
+      "bytes": 6146
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-12.json": {
+      "sha256": "9b2f51cd85f6d39c8231cf6fe86e6ca697b6ce62197ba4dbdd333480d59b7420",
+      "bytes": 6145
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-13.json": {
+      "sha256": "a04e3c17d4142cebf912da01bc96aabbdc24ae6fc1e53f10e9f0ee8fd444e92b",
+      "bytes": 5942
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-14.json": {
+      "sha256": "00e7226dff8f5cd75c530199297b302f27619a6ed2d0efb1f95e52b19e37b309",
+      "bytes": 5942
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-15.json": {
+      "sha256": "e9ce240e0268c81520f976266c047665660276229fa5bb7d3c259a069a457354",
+      "bytes": 6227
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-16.json": {
+      "sha256": "f98e6969662369ba4a4000ea1e39f80ecdf43359b7fc390c3b080ecb5d0c34b2",
+      "bytes": 6275
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-17.json": {
+      "sha256": "75827dff262418fca74d9a5164e92cf5b390b0b8fb901dd2cb58b4b7d7f5780d",
+      "bytes": 6275
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-18.json": {
+      "sha256": "420dc85558bfcda83d9d572910e888c1b8fb54337b3a5a1fe2a8133c6b365bfd",
+      "bytes": 6275
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-19.json": {
+      "sha256": "3fbd97418d46f225d4ff9d90a69ded4e5309d1aa9eaa891a0e508106b9bcda77",
+      "bytes": 5968
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-2.json": {
+      "sha256": "4e72be1d007081aabe6933aca37bd139eb07c46b77b56e56b29bdb0515ad4d11",
+      "bytes": 5577
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-20.json": {
+      "sha256": "bb7c1773f2f0a6c1f517ccc16fcbe3dc5786bb4401c4571cd247014f2a00875a",
+      "bytes": 5968
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-21.json": {
+      "sha256": "f0db782f1d4e7933885c206281aba79c02c76842dc51a138ce9bf2829baca110",
+      "bytes": 5968
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-22.json": {
+      "sha256": "3a6e7011a3c7f433856b92de9c50e2b09d66560238bc40ce15bc1d7ada0c2214",
+      "bytes": 6700
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-23.json": {
+      "sha256": "89e7e200b60b8e05c280782477bb709a86f48164e488a12420ba5a4ff3c90c59",
+      "bytes": 6701
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-3.json": {
+      "sha256": "1cbd3fc4601832ba0a52f1893707621ec87a0359acb74de4c33138ddf0c891df",
+      "bytes": 5828
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-4.json": {
+      "sha256": "1fefc06df2617e559b62016fe6dd520ac1efd0ab314eaf086789c5a1a7e8ed09",
+      "bytes": 5855
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-5.json": {
+      "sha256": "ddd0158888243a9dc1aebd23800b37ff38b95ababd015578cacced8492461a43",
+      "bytes": 5855
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-6.json": {
+      "sha256": "8a787997d574279828208966371b2aeb74a01d4b8e595aa6de20905def15e7e0",
+      "bytes": 6097
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-7.json": {
+      "sha256": "1189b726b1aa4678445440297af0eddcb854bac5ee7400a5cc2584e366dd5f66",
+      "bytes": 6104
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-8.json": {
+      "sha256": "a84b61322f69ed7847c1e712c26d5131c10c4b31608dcf0fdc2cb3da6a666d19",
+      "bytes": 5852
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/receipt-9.json": {
+      "sha256": "7bde2cf0691a86ebb729be1d6a7d764dea90690fce5beb79ccaac88013bace9f",
+      "bytes": 5885
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/recognize": {
+      "sha256": "26e95858e8ff66ebf85204fd27dbd582e3d57bcdd70a818d08329a966cd1a5f4",
+      "bytes": 78168
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/recognize.swift": {
+      "sha256": "4f0923157c593da0e9f63d0003fdb42a675955da5f1a830e38b91ed3b71a04af",
+      "bytes": 624
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/result.json": {
+      "sha256": "a467b2a307a4239d89f97904e958a396b48aa130f413ce230b3936e0898b995a",
+      "bytes": 8966
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/samples.dylib": {
+      "sha256": "2d97c04e284a1d9c7a828c5c38fd8d0e82ec75f0d4572e844d3552c4818c8d15",
+      "bytes": 51104
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/samples.jsonl": {
+      "sha256": "843cef7eef3ebc38ffb5f0e0bd24fa5595fc29f83668433b4d224ee2a5528614",
+      "bytes": 13262
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/session-06A0F56D-F548-4A8B-9CA2-DFF6184C1235.log": {
+      "sha256": "401463455fe2dced52ffc4e89e66ea6cda64a7acdbc86104608eaf7309fe6600",
+      "bytes": 581
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/session-06A0F56D-F548-4A8B-9CA2-DFF6184C1235.log.jsonl": {
+      "sha256": "15e93e9cf2492ddaf21866a3ae965cad9376bd9382556fd46cf2c1572be08c01",
+      "bytes": 2548
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/session-D92CE97B-CE77-42AD-AD58-4313C32BA269.log": {
+      "sha256": "f7a3d064cce4914819a63ae9b5b8d11380ac7df029f7398c5628a17780e43d25",
+      "bytes": 1507
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/session-D92CE97B-CE77-42AD-AD58-4313C32BA269.log.jsonl": {
+      "sha256": "61547f5a41783ab4425c61e963af166ed2c820b8f46ca870099b5939500c1b82",
+      "bytes": 393
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/shared-independent-apps-one-mixed-stream-metrics.json": {
+      "sha256": "1ab45b645c7a0c345b807d3f0e7c87116cdbc1001d5b46c5c3f1c4a9fc367a86",
+      "bytes": 2345
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/wrapper-factory": {
+      "sha256": "9bae3a54e7dd566b25073edcc215161331d852f288ed00c6dee5428119521c12",
+      "bytes": 1917104
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/wrapper-factory.json": {
+      "sha256": "c217638ae991a6d27adb04fdb0741e0aa11ecb033949210810d06d24f024d2f6",
+      "bytes": 420
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/wrapper-menu-MacAndPhone-997-metrics.json": {
+      "sha256": "1ad672048feedc26c2fbe06fce4396b31e939810e4713ce37dd684243013f45c",
+      "bytes": 2088
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/wrapper-successor-997-after-main-crash-metrics.json": {
+      "sha256": "b75eb0ad710ff9736d69bbc838fd46fe459c9d7c6e83dfc5c5100bf99133fa14",
+      "bytes": 10245
+    },
+    "verification/audio/fallback/api35/wrapper-ownership/wrapper-unsigned-test-copy": {
+      "sha256": "79c36d972d1fe466ef1942b7f5794217d345cbfaa7875f0bcdfb9a0a6b807212",
+      "bytes": 2937552
+    },
+    "verification/audio/fallback/api37/actions.dylib": {
+      "sha256": "c4b2efcd884dd1cb9bb4c54198028c3066c3b8a6450399e1eef49466636ceb83",
+      "bytes": 75616
+    },
+    "verification/audio/fallback/api37/android-input-current.log": {
+      "sha256": "0a24a54f75f0eb89c9de2881d021e09a6df457d50601f52dc7ccd1d67a21f987",
+      "bytes": 840
+    },
+    "verification/audio/fallback/api37/android-input.log": {
+      "sha256": "0a24a54f75f0eb89c9de2881d021e09a6df457d50601f52dc7ccd1d67a21f987",
+      "bytes": 840
+    },
+    "verification/audio/fallback/api37/android-settings-after.json": {
+      "sha256": "5b70236d47a744bd028bf10abbf38b670a35cc728444b590aba0f655e61fd648",
+      "bytes": 484
+    },
+    "verification/audio/fallback/api37/android-settings-before.json": {
+      "sha256": "5b70236d47a744bd028bf10abbf38b670a35cc728444b590aba0f655e61fd648",
+      "bytes": 484
+    },
+    "verification/audio/fallback/api37/audio-19EDF977-145A-4BFE-BD71-C98AB6504B57.failed.log": {
+      "sha256": "4fc739a52e10a1dabf30fd7cd0f25defaeb5d25950cef17c6a383cb1c8379cb7",
+      "bytes": 929
+    },
+    "verification/audio/fallback/api37/audio-AF1AA768-694F-4D51-9263-CDE7B9E8ED7F.failed.log": {
+      "sha256": "6bcd9b21e0d825d848df087607adc4b6cb2362e16706ceb71253236a848db3b6",
+      "bytes": 929
+    },
+    "verification/audio/fallback/api37/audio-argv.jsonl": {
+      "sha256": "b75202e7bb90e7b90191e6938152deef6aa481f01e67d38178088a592035038f",
+      "bytes": 1462
+    },
+    "verification/audio/fallback/api37/audio-client-proxy": {
+      "sha256": "40c6700ab143435435e4cdc13807b0b380eb19e83217effe44ca1c9c2f0db8fd",
+      "bytes": 966
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-testapp-ocr.json": {
+      "sha256": "89d128b8f3e50fe6279d81cd3736987dc984a1d8e24f028cccf61417579c083a",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-testapp-video-frame.json": {
+      "sha256": "cf530ebb626c874ad972ef97bc0b493d9d697f8bbdc158eca2a366eb4dbc9e03",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-testapp.png": {
+      "sha256": "fbdb24f0b1a9aea9ad1be6a6ef1b315eb1b8865c78d5d7dd49cd0250baae7dbd",
+      "bytes": 342378
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-testapp2-ocr.json": {
+      "sha256": "69a803d8230568208921fc384ab09400298d6c2ee8715c3f53c206ea2d744783",
+      "bytes": 1405
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-testapp2-video-frame.json": {
+      "sha256": "40144cb890a41645dfc226568df2ef5c27117b1626f204461b3248793f2741fe",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-testapp2.png": {
+      "sha256": "63fe7011015767acdb870dd9ea9c71d8ac7f30304a2ecd68b08bbf013e8d86f3",
+      "bytes": 347496
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-updated-testapp-ocr.json": {
+      "sha256": "10a2d7ed582e21b57774fbab7935b2e12850eab60bb234d77abc2a827a40f679",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-updated-testapp-video-frame.json": {
+      "sha256": "eac2aa0a66c5e01c62b8a9130240cb78d41e350e73e732121517477080254c25",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-updated-testapp.png": {
+      "sha256": "ea9fb01fd25577b00c29b94e7862463e2e12557e726e7d45be7ceb2945e39185",
+      "bytes": 341183
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-updated-testapp2-ocr.json": {
+      "sha256": "2a71ed4670436df368fd3b1be079f7f1713afb6b2816e82cb22b8e445e8b7bb0",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-updated-testapp2-video-frame.json": {
+      "sha256": "14c19d1f951a490f3ad3c500c1535f198fa1ce7049ab4927765fdf0b781c2f8a",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/audio-failed-video-continues-updated-testapp2.png": {
+      "sha256": "445638b09003b6d2d47333af3683bcd14890bae9ee0c73342d945e5a70db123e",
+      "bytes": 342888
+    },
+    "verification/audio/fallback/api37/command.json": {
+      "sha256": "8bbf57f766210998e537e06e45ea61ac990ee77f6dce1f2b5dcf5811b1b66649",
+      "bytes": 28
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/actions.dylib": {
+      "sha256": "58942e8b5225c507d1a4125e6231e710e448485c8d849b1b0f5a96da196576f4",
+      "bytes": 75616
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-real-emulator-reconnect-testapp2-ocr.json": {
+      "sha256": "c5f1d482068e834e2fc155a12c5f94b4ca5636c2a8d56ab93f1f6b6a8ba2ef8d",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-real-emulator-reconnect-testapp2-video-frame.json": {
+      "sha256": "84abc294a4209fc98d2d1d850d3e9e9ec026e21cbd5e3bac78ac88af25ec7fcf",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-real-emulator-reconnect-testapp2.png": {
+      "sha256": "6d955301e172a6cf6cd4fc6df2c64ad877b36f825b4c1a4b7c4d3b188e263947",
+      "bytes": 343823
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-real-emulator-reconnect-updated-testapp2-ocr.json": {
+      "sha256": "459142f6979c9019996c0c4a2bf3ce6a0b4adcb2d58ecea40b051d8749d21a25",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-real-emulator-reconnect-updated-testapp2-video-frame.json": {
+      "sha256": "f120c9a5370ba8e214ca41a60ec0eadf354a6aa5cc363a7cfcff792c220f9bf2",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-real-emulator-reconnect-updated-testapp2.png": {
+      "sha256": "8dc9fea507bca01a807bd36186385bbbe7b9c61f33b4da4dc3b6802fa745b738",
+      "bytes": 343058
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-real-reconnect-and-explicit-retry-1499-metrics.json": {
+      "sha256": "ea293681fd7a2bf2cad09b6fc4750e489ab7ede8e1e0f3b17655a5dc53a5ebf7",
+      "bytes": 2342
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-reboot-1499-ocr.json": {
+      "sha256": "d2ad0aad9687fb63a6d02009071cee5f4e8f928dcce78699095c512295bf976c",
+      "bytes": 1403
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-reboot-1499-video-frame.json": {
+      "sha256": "49b1c1ce32d36bb368fb9c10b4e04ed84ff9790f4ecfbaa907879dcda3fe250e",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/after-reboot-1499.png": {
+      "sha256": "2bbba3147815088be0bc2a63f0ed17ecd6a42bd7c66063f9fec595994d9843ab",
+      "bytes": 294413
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/android-input-current.log": {
+      "sha256": "ebdc4f14ef64db5467e0540a267cc36d2a796103eba55e4fe032f44a60a6ebb9",
+      "bytes": 117
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/android-input.log": {
+      "sha256": "1be12807ecb8331eeef9f9af22606d8a632d2ec3fc6e4e29dda19c72d600b564",
+      "bytes": 191
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/android-settings-after.json": {
+      "sha256": "5b70236d47a744bd028bf10abbf38b670a35cc728444b590aba0f655e61fd648",
+      "bytes": 484
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/audio-argv.jsonl": {
+      "sha256": "d1a8f48f194c64a76c0581bcdd9efc3b8532768d30ba5617c479f7cb8ac923ae",
+      "bytes": 722
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/audio-client-proxy": {
+      "sha256": "3a92c8bb5bc66a153e4c30e7ae8ba8658d15dd66303d919edd00753f4a95a690",
+      "bytes": 1026
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-emulator-disconnect-1499-metrics.json": {
+      "sha256": "6d6bba99c231e41e9da704597cdd605e55d013d8f9a45072e971d942cd82e816",
+      "bytes": 2567
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-real-emulator-disconnect-testapp2-ocr.json": {
+      "sha256": "736ecde58040fbe512a75a8426fd0b62e9024d2b47d211340391e63401544f15",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-real-emulator-disconnect-testapp2-video-frame.json": {
+      "sha256": "55f9c57b40f0075e6d4c3bed5ef3ad5881817c111f606212ebfbb60116fa55ee",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-real-emulator-disconnect-testapp2.png": {
+      "sha256": "1db7fd8184722298683dcc864b9f0338846a7d86949c9636ebf62cc8477c91bc",
+      "bytes": 329667
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-real-emulator-disconnect-updated-testapp2-ocr.json": {
+      "sha256": "13ee8d3225222867c9cb44ed7b6d9e7f505572e2e308bddb94c8e166eaaf86af",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-real-emulator-disconnect-updated-testapp2-video-frame.json": {
+      "sha256": "2f84de99dcb59e66ae767d3efce9c614701b9afb949d2d83c80056946d36c4fa",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-real-emulator-disconnect-updated-testapp2.png": {
+      "sha256": "9951c655d09a4180c363ed50fc15b722828d736397108b52f9f1a498e2555ab6",
+      "bytes": 329320
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-reboot-1499-ocr.json": {
+      "sha256": "5ce4d1e7ed30f3475ea26fae5cb90b94c9c7a06c05fa70e1a95fe26fa880cd2c",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-reboot-1499-video-frame.json": {
+      "sha256": "ca4c2e2fce4129eb95172c797932d5cbdcbf7ef8f72ff1aa36bf4a85246a9912",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/before-reboot-1499.png": {
+      "sha256": "a761b0559ef3e27c2ad0a1bc90ce0e2cb98a1fce42e5f3b3ab2202a3bcca3e8e",
+      "bytes": 362119
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/command.json": {
+      "sha256": "29aaebcd5f69200504e9db8cd3a9f3061884f33c71892beb25d7fde34bda43c4",
+      "bytes": 28
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/disconnect-silence-baseline-metrics.json": {
+      "sha256": "100206dfdaf73584dac35bcc233dfbc9b741a3958bb293c6226fd64d099bad19",
+      "bytes": 2295
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/emulator-restart.log": {
+      "sha256": "5a530f86d3259c9201964c4341afd3bc7c9b6fd12f3310c9b428e0f464b38c7e",
+      "bytes": 19573
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/fallback-driver-snapshot.py": {
+      "sha256": "fd7e489ddd8a8c1527dd701aac3029a7652624e278f0e36b29aec4304f0d54f7",
+      "bytes": 41774
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/fallback-instrument-sources.json": {
+      "sha256": "e345320be715115a9d855223138dfa9c6fea3920cdddd762300b1bd267d36dd0",
+      "bytes": 591
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/host.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/launched-testapp2-ocr.json": {
+      "sha256": "f15a9a22d58ebdf77d9a9c7c8f47727c532ee6e4c2b436aea193fe18b8c4fdb3",
+      "bytes": 1411
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/launched-testapp2-video-frame.json": {
+      "sha256": "cd301120460a87a9197574629695ffebf34e164390212e77f8292914c9692a6f",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/launched-testapp2.png": {
+      "sha256": "845f33124050b0ba7115723c940dd4b0790ca59d20c53c0f77e9919791f796d3",
+      "bytes": 329015
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/launcher-route-mac-22.png": {
+      "sha256": "d60c2bed87520286216780c08074491767f68c9744770d969690351829172f73",
+      "bytes": 303745
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/launcher-route-phone-10.png": {
+      "sha256": "fcc5974e41eed46d61e7aee4943a481b05507e423c9672061cbf2870da8861d4",
+      "bytes": 305716
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/loaded-images-24849.txt": {
+      "sha256": "a66b60f2ac09ec25679ef1b5257805d437802a3d19a5add3a84486ba60be2f61",
+      "bytes": 620778
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/loaded-images-25987.txt": {
+      "sha256": "2cf5b4c5317d46d325ee944d84b20a6ffde51e8f3c55550b0497797eb23f4753",
+      "bytes": 619956
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/observer-linkage.txt": {
+      "sha256": "a28b118dcd257dfe6a153d70b99c42f567d620f5d0cf57a88aecfe24e5e9f111",
+      "bytes": 437
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/player-actions.dylib": {
+      "sha256": "06003e51c5a1a145c81f5bf7dd6ea2835cf99b79ff51661c6de6fbdff48ae87a",
+      "bytes": 92608
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/player-capture.dylib": {
+      "sha256": "c530ca0c5f7dcaeaeaf940fd1139395ea7b09841adc52f0094d5163fb36fb9ba",
+      "bytes": 70048
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/player-proxy": {
+      "sha256": "7bde79dc81d9a265e4d40dbc0a24f92ec97a9d849c08b5c58006bc3859d87c73",
+      "bytes": 1600
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/player-pump.dylib": {
+      "sha256": "45bc577bd8818254c5e17c9b4a49b72211386b5f2c852b0dd66507099bf6dc12",
+      "bytes": 51616
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/capture-ack.json": {
+      "sha256": "c05e55657329aac2ee4c65bf171988096aeaac4a4a10ba01b346fd481a233c4b",
+      "bytes": 250
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/capture-request": {
+      "sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+      "bytes": 2
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/frame.bmp": {
+      "sha256": "a7e470accb65f2f013777561d13013e801483e910df09bfca7ae2fef1b25344f",
+      "bytes": 10437258
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/launched-argv.json": {
+      "sha256": "f8994ff909fc94325158951d5b817b822684df9fcb3b09bef412c077bdb22908",
+      "bytes": 478
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/player-command.json": {
+      "sha256": "788699a5754ed929042f3cb4c6ddeafce4b104f87e9aa4a4c4ea11723bed6a79",
+      "bytes": 29
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/player-receipt-1.json": {
+      "sha256": "73a124ed215cd60263fe68acd2d357aaf56b36bc0f4fb691d1d233869da73728",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/player-receipt-2.json": {
+      "sha256": "e7661f7e067b443a24facedff920ff9469c1b81c4806120ddd816931a39e6038",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/player-receipt-3.json": {
+      "sha256": "784fdef7db1d1a69b371d133b22d442da69b0f1ff7c34e3243aaebacd7eb78a6",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/player-receipt-4.json": {
+      "sha256": "ebadbd6c67583cde848327d9c6b455abbbabf9550fe3248196a96dc1c9a22e20",
+      "bytes": 156
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/player-receipt-5.json": {
+      "sha256": "24dcab9f6eae69c2a80039cf3488dcafe4d322628ba0ec2091a265ffd692334d",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/player-receipt-6.json": {
+      "sha256": "4e74665b8d5bbad2ce7c2abe39a7e0d3b5fa790c4f7d1104314b0986f55f55dd",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/player-receipt-7.json": {
+      "sha256": "b086335fd9beefbd6e49cd9d31feb76a5ea9eddaa46a675737ea4561b022d17c",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/player-receipt-8.json": {
+      "sha256": "df65eae564814dc747e3d6b78483518c7a59fdfd596e0c674e89a17674e2df43",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/production-argv.json": {
+      "sha256": "689c3cda8ab802a9a463f11c6be795952816122cc88f94240b4132f008cde3a8",
+      "bytes": 330
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/started.json": {
+      "sha256": "29dfe3bb15682bfc967e06f85a6573d75a95e2a94fbe2fc840892f62814f3d64",
+      "bytes": 158
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/players/dev.droidbridge.testapp2/video.mkv": {
+      "sha256": "adbc3dec0b93e00458cafa0dfc2983dd3331eb580933bfe9f6eb4c9680e2a27f",
+      "bytes": 309176
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-1.json": {
+      "sha256": "62681c92bbdae1af8daa8adaaceda1047f1b5ddc4fbfbe1162a58b9d9ecd796b",
+      "bytes": 5578
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-10.json": {
+      "sha256": "52d5c0eb427752f94b1dffa6f2d8dcd4c35a162ae5addcdebe83293daa1d3372",
+      "bytes": 6114
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-11.json": {
+      "sha256": "72808d8d53fedd748f7e8c92965cafafdbac7a8567fa2382c54e1c4a1773aa4c",
+      "bytes": 6115
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-12.json": {
+      "sha256": "6211abfec50fdf142c7890bc297cd4e9494bcdb12a440ca5bbe9434d3ebe6c6d",
+      "bytes": 6114
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-13.json": {
+      "sha256": "12428b31bb30094a777c66ea5d77b9b6cf9fef16aa1be4a477df06d4c1a4d416",
+      "bytes": 5894
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-14.json": {
+      "sha256": "f2c6c6a04c00418ba66b1d530afb1fb494e7f7b1d06b5694dbe985e87a483adf",
+      "bytes": 5894
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-15.json": {
+      "sha256": "8ebdb2d1e4efd0c0928305dfeab2a56bdcc576e84e6f5089ebf075653844b575",
+      "bytes": 6172
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-16.json": {
+      "sha256": "de7ded2716d680525c57526a88c3de31b5f637c2e7424ac4c803deeb11a21560",
+      "bytes": 6220
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-17.json": {
+      "sha256": "67bb1a6aeb87c81aaa9d11289aa595ebdef69dfec22b4dffd2fbfff50d845eae",
+      "bytes": 6220
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-18.json": {
+      "sha256": "98325c9e0402085c6e6917c6528cf25fe1886d4029fd225f91e2b94b45204b26",
+      "bytes": 6220
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-19.json": {
+      "sha256": "2c7dd8f991e6f5382373e34115b40cd8b3b7fb89092e61cca1591d8553724cbb",
+      "bytes": 5913
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-2.json": {
+      "sha256": "ee90e2208949a9d9c93bc6389d8e3dc071694eb3e0b965b406632a2c9c1d1983",
+      "bytes": 5577
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-20.json": {
+      "sha256": "208c892eafbb5986830ba3181a6cd38e33cb73446bd1f783e0d4a6a749b1cca5",
+      "bytes": 5913
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-21.json": {
+      "sha256": "d2f97114f9b4eb0c3af001906bb7f0bd62ce3de7610843724958db64a1fd2adf",
+      "bytes": 5913
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-22.json": {
+      "sha256": "8f6604810d1ae90f9eb9b000cc26272e3785505f03661253e7127a0ff408c87f",
+      "bytes": 6645
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-23.json": {
+      "sha256": "9123a5b39c8893596077235357119e59a165cb276a2ba8e242760da7716fb546",
+      "bytes": 6646
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-24.json": {
+      "sha256": "78f1d33f312fc272e4a6b83f74e98240b45e735cca6410d451c4f45e1a350cd9",
+      "bytes": 6053
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-25.json": {
+      "sha256": "85dedc2376fa37e106d832e2587571eac46341d4ef13a4e8c1cad8b81f5bb5b9",
+      "bytes": 6263
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-26.json": {
+      "sha256": "68e2cf6cec68d4e70fdf7f10f97160e3938d1dd75a08e2e2ecc60a19dc632c64",
+      "bytes": 6270
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-27.json": {
+      "sha256": "a279eaebf4c42f704839e6850e7d065f76eae83c1a5fd598f3720491d6ef143c",
+      "bytes": 5913
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-28.json": {
+      "sha256": "0ef79c14b69e039ddec80b2a600723d23ceeab4702a04de5611b302a04e8d7a6",
+      "bytes": 6645
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-29.json": {
+      "sha256": "350a62094addcb0d2a6f41fa974257ce527651852d18dc6aefaea097ad04e734",
+      "bytes": 6642
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-3.json": {
+      "sha256": "c2e8f6888f2fcb80193835725fd8509474d0db3bffb603a276e2e9f414512f19",
+      "bytes": 5828
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-4.json": {
+      "sha256": "017cc215acda8c80935d8e764f7d714b3bf580037c7c338549311161d7d55090",
+      "bytes": 5799
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-5.json": {
+      "sha256": "13fb1f6cf57466f5ee0fbddf2b15b5a1e8490f7784b963c35755038b3be40723",
+      "bytes": 5799
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-6.json": {
+      "sha256": "0ec443048bf5b0ed517e644af9bfa1ad941877b16115ddf54f4d4bb792f8e25c",
+      "bytes": 6066
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-7.json": {
+      "sha256": "9dfa7c5752e2ba1232679a7ea5f781194345c62cee904bd13eec1a46aa52ae42",
+      "bytes": 6073
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-8.json": {
+      "sha256": "15a76ffd596ed373d7e4d8c98297f83dee3b5d6b3e73e2224b87ae0008cfae3e",
+      "bytes": 5798
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/receipt-9.json": {
+      "sha256": "45bbdf9691166d2de7e5b4bbc4e30e5a1c98648ffcae1a622aa863e1be5a5a5a",
+      "bytes": 5829
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/recognize": {
+      "sha256": "26e95858e8ff66ebf85204fd27dbd582e3d57bcdd70a818d08329a966cd1a5f4",
+      "bytes": 78168
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/recognize.swift": {
+      "sha256": "4f0923157c593da0e9f63d0003fdb42a675955da5f1a830e38b91ed3b71a04af",
+      "bytes": 624
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/reconnected-silence-baseline-metrics.json": {
+      "sha256": "7e4844df9e089dcab937553b2f941e6107859532daa115ef3a68f8a6ba3beb6a",
+      "bytes": 2511
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/result.json": {
+      "sha256": "2c40ae3ce1ff906a77ad22a573156d0350816fcb21d017ca4df9dbbea3dc2b3f",
+      "bytes": 7640
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/samples.dylib": {
+      "sha256": "077f32716075eac69946d85af0820d10c17edd484bffd0ee5f9280923243564e",
+      "bytes": 51104
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/samples.jsonl": {
+      "sha256": "beabe291c4b0e789eb110423f7f5d2164ebf1000cbd82308446d212372c78eaf",
+      "bytes": 15346
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/session-6C5B2F47-DEFB-4E78-AAF8-AE3061D169EF.log": {
+      "sha256": "188a1fa48f66cd56cb26922af86c21e4acfdea1358315cd10ddd4467c7d5b046",
+      "bytes": 1350
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/session-6C5B2F47-DEFB-4E78-AAF8-AE3061D169EF.log.jsonl": {
+      "sha256": "18cc13b67038f4f5e57833accfd54637922a5988c41503ccf3bb50dd69381e65",
+      "bytes": 1027
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/session-C85FAD25-BBB9-4F98-A571-9B6041B0CA1B.log": {
+      "sha256": "dd48b54504c238173fc02c6651e04a6f2c958fe47f34111406748eeba78a1d72",
+      "bytes": 1567
+    },
+    "verification/audio/fallback/api37/disconnect-recovery/session-C85FAD25-BBB9-4F98-A571-9B6041B0CA1B.log.jsonl": {
+      "sha256": "357cbb9ba9cf7a37909c1329ec793125efdacde56f44008102fe537e23bb84bf",
+      "bytes": 2259
+    },
+    "verification/audio/fallback/api37/dup-play-A-ocr.json": {
+      "sha256": "89593f1297c990f2ab4162b247c7943d2d42ac90b03287fd201666280a9f7dcc",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api37/dup-play-A-video-frame.json": {
+      "sha256": "0dae8bbbc2920fe8bdee53c448be427ab8fd79c14f578a39b17d120d92d0df65",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/dup-play-A.png": {
+      "sha256": "3fddbd7fc4974a6fdfc627fd161f4dfac917f76bbc2ee2c738c38db9da100612",
+      "bytes": 327060
+    },
+    "verification/audio/fallback/api37/dup-stop-A-ocr.json": {
+      "sha256": "42887368c4d59a0ae3bb6a48c60d99a3725aadcb0109ee64c804cad9d92ee7c0",
+      "bytes": 1567
+    },
+    "verification/audio/fallback/api37/dup-stop-A-video-frame.json": {
+      "sha256": "c3d8c2f3da3d4e2debe4c82f6518ca913d47580ad46ea7db2843d84058f12400",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/dup-stop-A.png": {
+      "sha256": "ff1539b5ae54d024770075d939947f99d06d3f098e9e3bb41d2cbd40619bfc9b",
+      "bytes": 393255
+    },
+    "verification/audio/fallback/api37/fallback-driver-snapshot.py": {
+      "sha256": "fd7e489ddd8a8c1527dd701aac3029a7652624e278f0e36b29aec4304f0d54f7",
+      "bytes": 41774
+    },
+    "verification/audio/fallback/api37/fallback-instrument-sources.json": {
+      "sha256": "e345320be715115a9d855223138dfa9c6fea3920cdddd762300b1bd267d36dd0",
+      "bytes": 591
+    },
+    "verification/audio/fallback/api37/host.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "verification/audio/fallback/api37/launched-testapp-ocr.json": {
+      "sha256": "9d8d319f07d49bc767a1af738d1d88def4f97d88b0e8af73fd66215e86f0713f",
+      "bytes": 1724
+    },
+    "verification/audio/fallback/api37/launched-testapp-video-frame.json": {
+      "sha256": "89985e88923ed7c80c6856c9eb6d3f1bcb0ab22ed8491228ca71d99e0ad80034",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/launched-testapp.png": {
+      "sha256": "5b886dae0bf89afc06cd8b928521888bfe1fd1ce925dd2672aa1d5951838990f",
+      "bytes": 238115
+    },
+    "verification/audio/fallback/api37/launched-testapp2-ocr.json": {
+      "sha256": "1d5472b18659479c224bc303ebff249982ccccbbd9ee07ccdfeb5f0f1d0753eb",
+      "bytes": 1568
+    },
+    "verification/audio/fallback/api37/launched-testapp2-video-frame.json": {
+      "sha256": "73f01c1c3100d87f4664df5b199e646827a2ff0b823eec1da450f238d1b5ddea",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/launched-testapp2.png": {
+      "sha256": "b3f160032f423b5ec8cdd3d0876dc05df7085dd5911dce877bd80ccb95ccffdc",
+      "bytes": 282370
+    },
+    "verification/audio/fallback/api37/launcher-audio-failed.png": {
+      "sha256": "4c570edcc08aed75e79e1948cd12fdc952dfd78c75752f4817f4b3ff50d4d7c4",
+      "bytes": 312159
+    },
+    "verification/audio/fallback/api37/launcher-route-mac-24.png": {
+      "sha256": "d149a83f140e4f49343ec5118108a277fbca6c54862546e486a0b9ab643f9aca",
+      "bytes": 310890
+    },
+    "verification/audio/fallback/api37/launcher-route-mac-57.png": {
+      "sha256": "e3a762d0c3f0754c8befc3c0ded73c9a042afc282a212e3da6b9bddc0f6fa12e",
+      "bytes": 311669
+    },
+    "verification/audio/fallback/api37/launcher-route-macAndPhone-37.png": {
+      "sha256": "5521b83e2c33512de0e77a1c86a6b777a7485f32f9744a53ef1b81285f645438",
+      "bytes": 309766
+    },
+    "verification/audio/fallback/api37/launcher-route-phone-10.png": {
+      "sha256": "fcc5974e41eed46d61e7aee4943a481b05507e423c9672061cbf2870da8861d4",
+      "bytes": 305716
+    },
+    "verification/audio/fallback/api37/launcher-route-phone-50.png": {
+      "sha256": "8ddd30f57b4bbae77b6fc1088d0adccd15cd04d2773da55f6f27ceab24d8e001",
+      "bytes": 304174
+    },
+    "verification/audio/fallback/api37/loaded-images-22380.txt": {
+      "sha256": "5695d21714a71736629b2c37902799034c81c577f4a994815ef85c26c9f9b85b",
+      "bytes": 619949
+    },
+    "verification/audio/fallback/api37/loaded-images-22916.txt": {
+      "sha256": "83cd67f32c9ab56f8f465164dfc3e75f5264e05f645c8063db1267256c5b0024",
+      "bytes": 619382
+    },
+    "verification/audio/fallback/api37/loaded-images-23656.txt": {
+      "sha256": "301c1c1558ddb9e6bc343d69ea7fc17da8b5c70212d6019b594f5ab06907b25e",
+      "bytes": 619160
+    },
+    "verification/audio/fallback/api37/mac-A-997-metrics.json": {
+      "sha256": "60db8481f00d3fa782502df2f01cba1c206f9b4e37b095a7a6aef0c19a412ce3",
+      "bytes": 2304
+    },
+    "verification/audio/fallback/api37/mac-B-1499-metrics.json": {
+      "sha256": "736322d4a425b6b66246c132e54555369c5999b860f398a7d08a1f7eed27d5e4",
+      "bytes": 2309
+    },
+    "verification/audio/fallback/api37/mac-overlapping-A-B-metrics.json": {
+      "sha256": "b1aac93013bead894c05b72b1b8e589b7f91af92f57f11bfc3baddcdb43f4813",
+      "bytes": 4484
+    },
+    "verification/audio/fallback/api37/mac-silence-baseline-metrics.json": {
+      "sha256": "a3580cca714c7bca7985ce72ac008fa321fbddd806ae213a863e79dc03944226",
+      "bytes": 2288
+    },
+    "verification/audio/fallback/api37/mac-stopped-silence-metrics.json": {
+      "sha256": "d6bbb7c7eec049f1c766c6cb52d3281ad4fcadd6faeafcd174632f964fec1143",
+      "bytes": 2119
+    },
+    "verification/audio/fallback/api37/macAndPhone-A-997-metrics.json": {
+      "sha256": "a7c3330217fd17a966516242886e10cc0810de8120ff4940937cde6836d3b1d9",
+      "bytes": 2329
+    },
+    "verification/audio/fallback/api37/macAndPhone-silence-baseline-metrics.json": {
+      "sha256": "985712c9f71d062331126d3637404147f3e988097ed1935fee6c390a0f73c885",
+      "bytes": 2296
+    },
+    "verification/audio/fallback/api37/macAndPhone-stopped-silence-metrics.json": {
+      "sha256": "05e33c9cc8ae53cf14a36e01968f0eb5cc5ae2cecb009f26d1f353ee0bf2f84f",
+      "bytes": 2378
+    },
+    "verification/audio/fallback/api37/observer-linkage.txt": {
+      "sha256": "ce83107b753003a40a202b24dccaa7366ff2596b56c52dd59d6d48e1b0ae223f",
+      "bytes": 397
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-testapp-ocr.json": {
+      "sha256": "201dc8b836c91b84385833a230cc393c14d31d5cff08b26d82d18d430cf8ddb7",
+      "bytes": 1411
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-testapp-video-frame.json": {
+      "sha256": "92839b586e766549439621bd13c74784d8d2e433025902f2b40a0025566c9c6b",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-testapp.png": {
+      "sha256": "302986a7065841d47884d5645deb5e83c9094847b4bcec56974eeac763d79537",
+      "bytes": 332932
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-testapp2-ocr.json": {
+      "sha256": "02c97d2c0896cfa837b676268a593f79f2dec4d285a9231a1b95c5d26acddc4b",
+      "bytes": 1412
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-testapp2-video-frame.json": {
+      "sha256": "74fb84d35766577c65ef09907c127e35f4611f8cb63a052ed29c657c8b50e29a",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-testapp2.png": {
+      "sha256": "e95d1d93ae9e165d749e5ced0d6cb3b8716df155716df8269e78740b17ce6f19",
+      "bytes": 337202
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-updated-testapp-ocr.json": {
+      "sha256": "e18ebf96d06873373441ca083eac5d7bfcb35677c776ba25882c002bbfeb8d50",
+      "bytes": 1568
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-updated-testapp-video-frame.json": {
+      "sha256": "036e0d874aa25f4ca579c66816543433c86fd1aa4a65b2a421b2be30346721e8",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-updated-testapp.png": {
+      "sha256": "de37204b2e4c86d48ea05cbd4c78e1025f02f1ec575f90f4867bc63c21253068",
+      "bytes": 395724
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-updated-testapp2-ocr.json": {
+      "sha256": "6ef9687de142dd374da78f2c9e5dbba650a9207adcf91bc741641c99f67ef9fb",
+      "bytes": 1570
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-updated-testapp2-video-frame.json": {
+      "sha256": "3e507eac13202b6dd0f416b8416ba27f0091d134bfdccca8e7b4f048de27b448",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/panel-off-continued-frames-updated-testapp2.png": {
+      "sha256": "f59e0d5ed5b8330ad385ed4ca88552de83bc49b800da03350abc0c22d5048b01",
+      "bytes": 394483
+    },
+    "verification/audio/fallback/api37/panel-off-replay-A-ocr.json": {
+      "sha256": "9335e6da93eb50635f895ab6fb30dcbff9606d93c2753e56c1935ce96cb383a1",
+      "bytes": 1411
+    },
+    "verification/audio/fallback/api37/panel-off-replay-A-video-frame.json": {
+      "sha256": "93d653f235c144fe22ec432a43b154b50e58986b06b930f3d43c044b1b075c3f",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/panel-off-replay-A.png": {
+      "sha256": "09a1f1d1169247680d54243106d3db6f6faf35d5a17d7f1c617442cf3a0b82c6",
+      "bytes": 327206
+    },
+    "verification/audio/fallback/api37/panel-off-video-and-tone-metrics.json": {
+      "sha256": "da4fca319331e1fe34c938f078b6c64bdef2d89e8c7e11d6dc5f429af50ed821",
+      "bytes": 2093
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-testapp-ocr.json": {
+      "sha256": "c7d06a42e93e93434ab97fbd10feee2f58f01fe4ee11630a488868b718e61218",
+      "bytes": 1405
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-testapp-video-frame.json": {
+      "sha256": "90619c51893e9038f407b54637134b511a9242097754fb5f4bbe83a24f117105",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-testapp.png": {
+      "sha256": "ac6b995d29e1eedb0a122a955be94d51f554a3e5969e4d91cdfce0f8146b861f",
+      "bytes": 343642
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-testapp2-ocr.json": {
+      "sha256": "411804ad7d3bdf68e0762bbed9e847728847ca7ebc3744a9dbd08520d09978ea",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-testapp2-video-frame.json": {
+      "sha256": "560a47a0fe48bffc4ac081c712a6c4f35dca570c1a4b0cced737bdc13091472b",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-testapp2.png": {
+      "sha256": "8cc120d7ce1dc56c9fa14b9bcdc0eb48f4fc3fb3054f83ab150ed1060ac7a627",
+      "bytes": 344300
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-updated-testapp-ocr.json": {
+      "sha256": "ec36c5a4c740d31fa8348533e7251510cd85cea386ce4defa3f1b46bd6f715b5",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-updated-testapp-video-frame.json": {
+      "sha256": "79daf5fc14578a8802d0e6bdc7b40cd30deb7b952aafa4b7a7b7c15bc7d2eabd",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-updated-testapp.png": {
+      "sha256": "0d990ab3f565fda39ee2f6787c1db6850e3b955f9645c3cdaaee988fb5e46a3d",
+      "bytes": 343280
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-updated-testapp2-ocr.json": {
+      "sha256": "3e6be753cf551c2ce89cebe9bafd6eddd89a31cca82a59ea5e5290964273e675",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-updated-testapp2-video-frame.json": {
+      "sha256": "75ea3cd768d7e0a1884d479846031cb9423c3af3e9a2a4f45381d087f8170b2f",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/phone-again-videos-continue-updated-testapp2.png": {
+      "sha256": "876451f1785e220619156e2b152d1a449d99173953a7595d2217fd272680b588",
+      "bytes": 346403
+    },
+    "verification/audio/fallback/api37/phone-no-capture-testapp-ocr.json": {
+      "sha256": "ea456a756f48b4f45aa019f75cad601f0d9444ba5f1b231730687f85655d2704",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api37/phone-no-capture-testapp-video-frame.json": {
+      "sha256": "23fe47f30f5be95a19d9a9bd955fefcc44337a320175279e6ac28ff4797f43de",
+      "bytes": 561
+    },
+    "verification/audio/fallback/api37/phone-no-capture-testapp.png": {
+      "sha256": "45393cb59f2ab89d29d8b046e08daf0360b304001be15676387253e026253d01",
+      "bytes": 360543
+    },
+    "verification/audio/fallback/api37/phone-no-capture-testapp2-ocr.json": {
+      "sha256": "590bb181ab0a9e6cd017858a7429c70c85f5c0b65ec0e21caeaed64d0a98c163",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/phone-no-capture-testapp2-video-frame.json": {
+      "sha256": "4cd01309c7c9cf2a5f2a843c350f317cbc336356392e7580b2489dde68c1e48b",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/phone-no-capture-testapp2.png": {
+      "sha256": "1fc3afd3c0d18dffc927ca40d6e54f2c0f841e20b30b87c2f2878c68633f4022",
+      "bytes": 402574
+    },
+    "verification/audio/fallback/api37/phone-no-capture-updated-testapp-ocr.json": {
+      "sha256": "f6f0d7986592fcc14c6ebfa076416a3ccb381ada842e90b9f6e1adeb27d49f46",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api37/phone-no-capture-updated-testapp-video-frame.json": {
+      "sha256": "dfeb534fe2276d9908b9d5abe0d452b38b6e2dd07cbf683d872a7d0e6911a0e3",
+      "bytes": 561
+    },
+    "verification/audio/fallback/api37/phone-no-capture-updated-testapp.png": {
+      "sha256": "b329fc128f1ace456e21d2b4f4db845b4e3a62e02b2ea8dba65863d17e79b70f",
+      "bytes": 330123
+    },
+    "verification/audio/fallback/api37/phone-no-capture-updated-testapp2-ocr.json": {
+      "sha256": "0c082215ab83bb2175d48d2d26ff163f32d5158e1f13ad91eb3ecef68dc7d1db",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api37/phone-no-capture-updated-testapp2-video-frame.json": {
+      "sha256": "edf49f0b327994a8be1e7c0c8a1cf81b94488a71d9957c71881c214f1a093bb8",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/phone-no-capture-updated-testapp2.png": {
+      "sha256": "8f679eca29cfaa18f4dbb975c07ddc7d02322a3cf0fa3d31738de38c3d949281",
+      "bytes": 401779
+    },
+    "verification/audio/fallback/api37/play-A-ocr.json": {
+      "sha256": "4c0e788f2eba0dbc1ad44a9db4bac9042417d3fa2a8d1a1a68ec558743e8e0cb",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api37/play-A-video-frame.json": {
+      "sha256": "4772152e1385cbc4705d67e8b1d4a4ff9e414fc480a72eab7e5703a9e6b9f031",
+      "bytes": 561
+    },
+    "verification/audio/fallback/api37/play-A.png": {
+      "sha256": "834eb2703f5a02c940dc6f90dd42b02706f1c23c108883ac664b863434d3cec0",
+      "bytes": 326972
+    },
+    "verification/audio/fallback/api37/play-B-ocr.json": {
+      "sha256": "43adff89de368a84df4a68880b2d69742603b5e3f7ce602acf39ef611ff3ac31",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/play-B-video-frame.json": {
+      "sha256": "4042474ce40e8eae4919621927284140f193d9db8cb88322458d57600fad1dad",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/play-B.png": {
+      "sha256": "d8d6ac795aef48b7b086c677f5cb771c595feb84b0cebf0e5585c61a60d602df",
+      "bytes": 368348
+    },
+    "verification/audio/fallback/api37/player-actions.dylib": {
+      "sha256": "b4c0bb2f8c238e3f030be43b47a5ae21fbaa2e58a8dcff9061193b742977bbb7",
+      "bytes": 92608
+    },
+    "verification/audio/fallback/api37/player-capture.dylib": {
+      "sha256": "264f0e25f83179765c66b2e42661e09b3d5cfe326b849fdbca81ad1d9683c222",
+      "bytes": 70048
+    },
+    "verification/audio/fallback/api37/player-proxy": {
+      "sha256": "472e8619203a1bf5de548d51526ee9990aa77d13bd3bbe82bb782a950ba3b7e7",
+      "bytes": 1520
+    },
+    "verification/audio/fallback/api37/player-pump.dylib": {
+      "sha256": "304be137abd03ff2a090ed7405e3cf37af5ad888b8ccebd5eefe67e22d3fcda4",
+      "bytes": 51616
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/capture-ack.json": {
+      "sha256": "9932dc6900c60a11c5e4d04ae1acdab1a87597986c90585956fedca37ffdbe27",
+      "bytes": 251
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/capture-request": {
+      "sha256": "ea243e5457028e97f9bc93b37a72f8e80ea61ae081911bb037765590ee6aa435",
+      "bytes": 3
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/frame.bmp": {
+      "sha256": "b757c5af6ace853737bed86fd274353f58b1f82fd9eede7df1a84e5cc6fa850e",
+      "bytes": 12176778
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/launched-argv.json": {
+      "sha256": "43d260d0d5714858d9fb8716ce7246933b6099fb3a805810b0b80c448cce1290",
+      "bytes": 456
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-command.json": {
+      "sha256": "637f8508d5b6342e9b5e1baddd4a9ced7a0e32490472a7aec1d0dd76f09e66dc",
+      "bytes": 30
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-1.json": {
+      "sha256": "40b91c988fee1801e10ce51354cfd3ce61310cd715fc30408a9ebc3fd1379f0c",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-11.json": {
+      "sha256": "50410ae5d65dd443071d3e584092a33e291ef447f206dec9ca20bd5130f53b21",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-13.json": {
+      "sha256": "80460b94c905b4fd0d695e2735bf2b7f13d076d1e82edbb64aa9bf4c7e548d7a",
+      "bytes": 365
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-14.json": {
+      "sha256": "d2e10b268d7f1195f2251416f13c943f2b728c79dfa0ceff65ab013c7af9fd8b",
+      "bytes": 365
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-15.json": {
+      "sha256": "4d7b6dd575bc2a30330a6069fab7825fb323402f75514b8eca19e92e99e042db",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-17.json": {
+      "sha256": "c3968d4c9124c41e99ff7a8ad1a88e2668befa2e6340938f1c8325b576e75eab",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-19.json": {
+      "sha256": "80a772924853d7e1ed6d59825bb11c2cf5c4cf82cd968caf8088361fdf2163f9",
+      "bytes": 365
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-2.json": {
+      "sha256": "b4acb1ccfffae708d31f4cc3c38331ad4405dccb93a289477c5c0df79b330fba",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-20.json": {
+      "sha256": "e5c5d013a75eff339b07900cb8986e9860050fe61407ce1c0c5eed1f3aafbed2",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-22.json": {
+      "sha256": "2e14bb9f97147220bc5b1d48711d4d96d3ab562c791c44c430413ddf937023da",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-26.json": {
+      "sha256": "53e51d10336065f76ac28a32d15718c463aef6a825969a2bd5de2e07f07ca4b0",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-5.json": {
+      "sha256": "6554a4cdc8a9d1ccc2c4f11fada049abe9d3ac67a1859f92416424f806bbb48a",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-7.json": {
+      "sha256": "41a467db77741e62b147e0733823cc4188a9287501e49c7baabe2d904da3e6ef",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/player-receipt-9.json": {
+      "sha256": "bc0caa68ed1bf4fe470a7eb052683af160df07e032cdb90b6a0ec8ca52abc925",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/production-argv.json": {
+      "sha256": "7edabe335a7ca67edad595348a925ec32f9256985001204e0df6a7628a6cfc7e",
+      "bytes": 329
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/started.json": {
+      "sha256": "370133a3302196c900a4a9c86cb98b6746940a89ffc9b3775226edbebe1ca002",
+      "bytes": 159
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp/video.mkv": {
+      "sha256": "1be30eeeb56e88464883af665680ef891167ca042a8c94655128510a5c402bdc",
+      "bytes": 1506809
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/capture-ack.json": {
+      "sha256": "4186c87423c38d9a4f20fe3ca171ac87d1107a9b591f306b49b5fb8f80feacb6",
+      "bytes": 251
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/capture-request": {
+      "sha256": "a4b2c5db15348c29451e18b8307e5ef81625ea638e807935f39ceaa8d9ac7758",
+      "bytes": 3
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/frame.bmp": {
+      "sha256": "5a3ac5e137485c86f44bcb318f205af59f45cbde8fcf7152976231fccdbe4bb5",
+      "bytes": 12176778
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/launched-argv.json": {
+      "sha256": "bd7e7587c2d431e6c57bcb67b23bc776020669077b924f6457af12327c4d40ab",
+      "bytes": 458
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-command.json": {
+      "sha256": "89bf148a591a8a8e55c88ab17b4dcbe958571992d433b7eeaa0794a3864398e1",
+      "bytes": 30
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-10.json": {
+      "sha256": "b68ea46a412299df2dd75a25230f2fdcd1789150f5214609cd6cd8bffccd3f77",
+      "bytes": 365
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-12.json": {
+      "sha256": "3faee806c683a49f9fadccc761563754116893c5d837d2cbfccf672c31b27d96",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-16.json": {
+      "sha256": "4a2259ed7dcfe6860fd0bc4d6436a48892b1f2996b78877ca0ee4c62046aef7c",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-18.json": {
+      "sha256": "9bd5cf6c2d5940dcb257965a25278e5027013a4268623b6a85df283c8e723e17",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-21.json": {
+      "sha256": "0529d91db19cb54198c0f529e46f38a1bed7890872468ac2ac74ee82f46763ea",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-23.json": {
+      "sha256": "57090afba797f7c91cd310d5b0e6a6dca8bf80625e9347a15735d31923f9d65c",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-24.json": {
+      "sha256": "30fc072be14d3ecc5be1dc21770cc0b6090f538afdedf9e72f45d12127ef83bc",
+      "bytes": 365
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-25.json": {
+      "sha256": "844e80fd02745767a1bd4d64edcbfa6306b6c74de6da52f54b29cab05b396d0c",
+      "bytes": 365
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-27.json": {
+      "sha256": "56fa44354c78d713ff90a6f54c8d07e396e02d8a6459a5b348a470cce068b74e",
+      "bytes": 323
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-3.json": {
+      "sha256": "a01e58495af4b3911818722468e1214150d0456661f9afc4d062b7c78c3faf5d",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-4.json": {
+      "sha256": "79fd37db995e65cc8ab06af0bcdf79a28819a98c89318a07ebc2d0082dd24048",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-6.json": {
+      "sha256": "aac04c4dc96521f6027bab32ec57ec7c61db6179bd5ddeb6bc829bc67e302ac9",
+      "bytes": 322
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/player-receipt-8.json": {
+      "sha256": "8e53eed3267c191e0b74ea4f21c7fde09c50059638c17247866b33986b5bf4fb",
+      "bytes": 364
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/production-argv.json": {
+      "sha256": "689c3cda8ab802a9a463f11c6be795952816122cc88f94240b4132f008cde3a8",
+      "bytes": 330
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/started.json": {
+      "sha256": "1e9c7c9c4d7b79cb8cf17c87687dc9460ed1e8054d39952d0197629bacd4c55e",
+      "bytes": 158
+    },
+    "verification/audio/fallback/api37/players/dev.droidbridge.testapp2/video.mkv": {
+      "sha256": "65b8553a9741f06c257b071721aa85b2e37478ad426f3e8161964b2937f0cd0b",
+      "bytes": 1468275
+    },
+    "verification/audio/fallback/api37/receipt-1.json": {
+      "sha256": "4e98d311e10a026035ad8672ee3b0ef40de8f8dc99ecba615f5d2cbd24b714fb",
+      "bytes": 5577
+    },
+    "verification/audio/fallback/api37/receipt-10.json": {
+      "sha256": "d2a29629d0f5bb917b8947af866dadd0858585ac4cd61156141598a4d1322fb4",
+      "bytes": 5846
+    },
+    "verification/audio/fallback/api37/receipt-11.json": {
+      "sha256": "5d840247f4aa4982a7b7cece6605174c623faa38a23337c25f50f6df89598337",
+      "bytes": 6115
+    },
+    "verification/audio/fallback/api37/receipt-12.json": {
+      "sha256": "559c2382a83bb39766f800586e6ccc50e052be19c025286e6135ef2957db4861",
+      "bytes": 6114
+    },
+    "verification/audio/fallback/api37/receipt-13.json": {
+      "sha256": "c4859c47c00826303aa2c8782c42092c85db4cdaecf36957af8cece6e4d95a61",
+      "bytes": 6003
+    },
+    "verification/audio/fallback/api37/receipt-14.json": {
+      "sha256": "d27525f8bc893ecc0c879efe164ece1c6dac0c461182b605040bde0624b83a87",
+      "bytes": 6003
+    },
+    "verification/audio/fallback/api37/receipt-15.json": {
+      "sha256": "54a4343a24e32d00c5738731de85742c13925a96be03cbe89918f17a96e297dd",
+      "bytes": 6128
+    },
+    "verification/audio/fallback/api37/receipt-16.json": {
+      "sha256": "7f7d44b17a228af1d712bfa42c92b15d2e8e30ec2aac76ef51a3723b920b96d8",
+      "bytes": 6019
+    },
+    "verification/audio/fallback/api37/receipt-17.json": {
+      "sha256": "3f140e81f4532282fe227d3c92999c6d3f2a8869ea11a38c57100394fba0f5b6",
+      "bytes": 6019
+    },
+    "verification/audio/fallback/api37/receipt-18.json": {
+      "sha256": "43a38b7f013beb9c845390632a3a428486274d6a0b434e4a29fa22bf12e54566",
+      "bytes": 6247
+    },
+    "verification/audio/fallback/api37/receipt-19.json": {
+      "sha256": "f7b9c22f3743dfe3a644af70bf52f70f395cf1ba8db956dd8b59d8026c3cc456",
+      "bytes": 5988
+    },
+    "verification/audio/fallback/api37/receipt-2.json": {
+      "sha256": "274680d1fa4fa76e90e33c68930222d30e3086241f1a9ef1b9d4e54836af0a26",
+      "bytes": 5577
+    },
+    "verification/audio/fallback/api37/receipt-20.json": {
+      "sha256": "7595be33181fa7f5f608ce0bcb5a0fe8748dcd0a5aee6819cc5f1ffe6be83306",
+      "bytes": 5988
+    },
+    "verification/audio/fallback/api37/receipt-21.json": {
+      "sha256": "a6b3caeb63b2af8f0a32e9ccb771f301e53eb9ffab06b24caa3ccfa7da7ec741",
+      "bytes": 5988
+    },
+    "verification/audio/fallback/api37/receipt-22.json": {
+      "sha256": "213731d49fbeaf4dde4ae6b0a38e2baf98c86aa6186071087e0ede9f9c5e7453",
+      "bytes": 5988
+    },
+    "verification/audio/fallback/api37/receipt-23.json": {
+      "sha256": "374493714ceb7a455fe3006bd59ea3ba1fb650b65edb4f61394e756289281f2f",
+      "bytes": 5988
+    },
+    "verification/audio/fallback/api37/receipt-24.json": {
+      "sha256": "fe15c63da660391ca699fc257d4b26d517197bc2ad9423ef929477638e35197c",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-25.json": {
+      "sha256": "09ea08204600a3736958a757da507b0e6774f4db206cea062331690109fcb446",
+      "bytes": 6721
+    },
+    "verification/audio/fallback/api37/receipt-26.json": {
+      "sha256": "977ddb2b9733818b29d4100fdb0e39b59835e1d9f0411636e568a92bf7cd5247",
+      "bytes": 6310
+    },
+    "verification/audio/fallback/api37/receipt-27.json": {
+      "sha256": "7d5db3e70d134e17e562f47cb96bd4f8b151e92d8c54af5b16ac024de4c0b269",
+      "bytes": 6319
+    },
+    "verification/audio/fallback/api37/receipt-28.json": {
+      "sha256": "3d44f40649bd9c4eb88e66e3c8856cd3c001c26837eef2d9d0fccb3e6fd6e36f",
+      "bytes": 6319
+    },
+    "verification/audio/fallback/api37/receipt-29.json": {
+      "sha256": "388b0c9250ed2ce03828cd39cddf48ef775b8406949ed4b72422d40b3c0956f5",
+      "bytes": 6319
+    },
+    "verification/audio/fallback/api37/receipt-3.json": {
+      "sha256": "7e0b859eb7cec4dde2017fdaad24aeb5ee3f9e116be8a71f0d9b51a3dc4b9659",
+      "bytes": 6101
+    },
+    "verification/audio/fallback/api37/receipt-30.json": {
+      "sha256": "d5c06171213182683bc42e7210a405ac6ad8b664ad9638dfd8adb9c1bc66e8c4",
+      "bytes": 6319
+    },
+    "verification/audio/fallback/api37/receipt-31.json": {
+      "sha256": "f73c14b91a4e60a64c733f5fb04a1272aa45e7113b4a33962d6fab656e9dda47",
+      "bytes": 6319
+    },
+    "verification/audio/fallback/api37/receipt-32.json": {
+      "sha256": "c28b12a529979e4f72dcbbcdf4be1a693aa33719ec4dbaf95d931b402123fc11",
+      "bytes": 6319
+    },
+    "verification/audio/fallback/api37/receipt-33.json": {
+      "sha256": "e544a32c61cb836e20c4277d777f8cde630eb16f601c4edd36b25227c5e2edf5",
+      "bytes": 6319
+    },
+    "verification/audio/fallback/api37/receipt-34.json": {
+      "sha256": "e6ca8792a88880bd0fc501663f03b1def711a3c2b1df3113db3657b657da8ce1",
+      "bytes": 6319
+    },
+    "verification/audio/fallback/api37/receipt-35.json": {
+      "sha256": "57e5057a9398d2e9a9d944ab172edc94b8f04d7963f9415b971424fd4bad9975",
+      "bytes": 6012
+    },
+    "verification/audio/fallback/api37/receipt-36.json": {
+      "sha256": "13ee767329b55da06a33a296a54c0ca8cb4b225a5deb99ae883c1e0b6d14babb",
+      "bytes": 6012
+    },
+    "verification/audio/fallback/api37/receipt-37.json": {
+      "sha256": "407dd3453ad5ad1f5a766151dc86b236ce9b2ed4565ad4a4361a33c5be19988c",
+      "bytes": 6596
+    },
+    "verification/audio/fallback/api37/receipt-38.json": {
+      "sha256": "b892d5f3e95a226fd15d6b9368069c17464535b54a0ca95618e3f7e918e4e472",
+      "bytes": 6597
+    },
+    "verification/audio/fallback/api37/receipt-39.json": {
+      "sha256": "658814cddf42d9fbd4693a0499dd07fa736f8f6cbc896406d5599e4ea7ab4dc3",
+      "bytes": 6596
+    },
+    "verification/audio/fallback/api37/receipt-4.json": {
+      "sha256": "7754e03b870740f6cddfa027f317877e1a8ff4e7cfa14a726a2acf04ffa37297",
+      "bytes": 5799
+    },
+    "verification/audio/fallback/api37/receipt-40.json": {
+      "sha256": "89566b8e80bb4dff39fcf871118bd8723b039d1524cd45d1d7e27ad9e432350c",
+      "bytes": 6596
+    },
+    "verification/audio/fallback/api37/receipt-41.json": {
+      "sha256": "cb7a8928d3b66554a3aa20dae82f952865fc12587bdf83e0e204dcf5de682bcc",
+      "bytes": 6226
+    },
+    "verification/audio/fallback/api37/receipt-42.json": {
+      "sha256": "40b2d72c40a80901877a2facf32acbf176cca77f721cf45858b50c5a3b02111c",
+      "bytes": 6226
+    },
+    "verification/audio/fallback/api37/receipt-43.json": {
+      "sha256": "476cb45e6e1fb8395cd1a61c40b420a9bcf268283439180015cd37df0adc6cba",
+      "bytes": 6226
+    },
+    "verification/audio/fallback/api37/receipt-44.json": {
+      "sha256": "fcda6b6c23192984e641decbfdf2809947d856d28f7229d42410effc8c8cb549",
+      "bytes": 6226
+    },
+    "verification/audio/fallback/api37/receipt-45.json": {
+      "sha256": "ffbc5a1e30de7d9c3eb20483b15638f7978ae029a32e63e12b051dc005e38075",
+      "bytes": 6226
+    },
+    "verification/audio/fallback/api37/receipt-46.json": {
+      "sha256": "bee5c9b17c316413791900f11e6eb11c975b0ddbad6547ba515d4f802427fce2",
+      "bytes": 6226
+    },
+    "verification/audio/fallback/api37/receipt-47.json": {
+      "sha256": "f730cc64aa8b6c2c5fbcf0b387c9f1ce228552f736f889da43f44259eb81c46c",
+      "bytes": 6226
+    },
+    "verification/audio/fallback/api37/receipt-48.json": {
+      "sha256": "7432e76065bf71b2fdc82c6343046c4d164832940cfed9e3db28df23cf25b365",
+      "bytes": 6226
+    },
+    "verification/audio/fallback/api37/receipt-49.json": {
+      "sha256": "8f759a29157e52415c5d5d87ed5c92dbe940132dfdf470ad11032b0c4491166b",
+      "bytes": 6226
+    },
+    "verification/audio/fallback/api37/receipt-5.json": {
+      "sha256": "f83abe46abeef074c69430982f147c55a0b5ce0cd16d4560482c948475ae7425",
+      "bytes": 5799
+    },
+    "verification/audio/fallback/api37/receipt-50.json": {
+      "sha256": "00efb39de49b5ba2ad1f4f36aa3eff61e0b13a0f25862adc4efd266d7d498515",
+      "bytes": 6094
+    },
+    "verification/audio/fallback/api37/receipt-51.json": {
+      "sha256": "93832ee06a3b52e7513e8592055233aab1972851f559130fd77c0d8f2cfb513e",
+      "bytes": 6095
+    },
+    "verification/audio/fallback/api37/receipt-52.json": {
+      "sha256": "1231433820950ffed5cafff707315ef5d199265cc0998476ef3e4d91af248c04",
+      "bytes": 6247
+    },
+    "verification/audio/fallback/api37/receipt-53.json": {
+      "sha256": "cee6fb1d68f9f0a1389cb2026407bdfbcfc9251d9956be5ed68a6a66b212e2fb",
+      "bytes": 6295
+    },
+    "verification/audio/fallback/api37/receipt-54.json": {
+      "sha256": "ad01b47cfc152c6154721b879e379d8d1f54d0100cffb418dbe92be43304f0e8",
+      "bytes": 5988
+    },
+    "verification/audio/fallback/api37/receipt-55.json": {
+      "sha256": "feac35127b9b243aacafea601179ffe8169c6c79658a4339cf223be822bedbfb",
+      "bytes": 5988
+    },
+    "verification/audio/fallback/api37/receipt-56.json": {
+      "sha256": "d108d2966cfacc002e918cc60d76a1181e84f22b62a08cc1f0c0bc129336e6a4",
+      "bytes": 5988
+    },
+    "verification/audio/fallback/api37/receipt-57.json": {
+      "sha256": "49c0214e661b93d0587d2dba5b3dba4318859a0b8130fc16ddca65aacf6b205d",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-58.json": {
+      "sha256": "b71596619db8b96a30a45d330e37e1d964c65e7744db0ffd172f7f958049e9ff",
+      "bytes": 6721
+    },
+    "verification/audio/fallback/api37/receipt-59.json": {
+      "sha256": "ee83ebed72418b9f4f409f68c727b1d05e8838e44a2d5f2e45232e02db9cccdc",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-6.json": {
+      "sha256": "e87c3713cb17fcaafb4f85214d71d132430101b759bebad352b17d85ffb8a720",
+      "bytes": 6066
+    },
+    "verification/audio/fallback/api37/receipt-60.json": {
+      "sha256": "efaf6b37064d94ce99a6e0754d46f67505adebd696fc92c573831c04e9693de0",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-61.json": {
+      "sha256": "1006e36284e0f35310a43ec6dbb798a04f7d39b6f796888bdae2859cc6f46d36",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-62.json": {
+      "sha256": "0af3368f30ad1963251e05ae69aa05a7bee315eb5aa704a005a2bd210c33edb0",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-63.json": {
+      "sha256": "9ac4db10693a764df5d5335a9439bd26ae732c66a782a617b974e2fa6dc32c0d",
+      "bytes": 6762
+    },
+    "verification/audio/fallback/api37/receipt-64.json": {
+      "sha256": "7464722ab25c5976fba769b54225eac5dca8e83556d1b09cd5be27a40112eba5",
+      "bytes": 6763
+    },
+    "verification/audio/fallback/api37/receipt-65.json": {
+      "sha256": "404446292500d767d8db6b49337b081bcf06e13f5c11d2843dc38988c666b45a",
+      "bytes": 6762
+    },
+    "verification/audio/fallback/api37/receipt-66.json": {
+      "sha256": "2601a5e5a2e2b7677096eb65d315021ddead8de9aa015626223ccbd6742aa0cc",
+      "bytes": 6762
+    },
+    "verification/audio/fallback/api37/receipt-67.json": {
+      "sha256": "dd0137e4aa9b016d47697c1de7be994968c6fa843004df0c2d10f695f0fe1fb7",
+      "bytes": 6762
+    },
+    "verification/audio/fallback/api37/receipt-68.json": {
+      "sha256": "8a4d17ed714ae48b6d764c7fc1fc6175eb859b1d5b60a8e2169961dfef111744",
+      "bytes": 5988
+    },
+    "verification/audio/fallback/api37/receipt-69.json": {
+      "sha256": "a6d228db531a1543bafee0ca0957bc48b923781978834ca9aef3ae3c3ddd620a",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-7.json": {
+      "sha256": "37943ba807be58e2e59c6662227c8aa0653abd98550a008ca61a6187664286b4",
+      "bytes": 6073
+    },
+    "verification/audio/fallback/api37/receipt-70.json": {
+      "sha256": "a215052e5913f5f9aa942db2f796dcdf4d44579529d46ddf95a134b2f9798d8e",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-71.json": {
+      "sha256": "66b024744e466d52d5fcb755615038b7d08c341d6c6c60189492b329f8913640",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-72.json": {
+      "sha256": "0cdefbe57f4311b6687243035b933478ebcda53b395cd57eea60654c8f6b96e1",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-73.json": {
+      "sha256": "89d9067ad98734a35c6e3ef4b93c19737ed24954f91d30c156ca5827e65973ae",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-74.json": {
+      "sha256": "a8a221e5a6d8d0e9c3fb3e730ba3b2f682f60f34f5ffe579200eff057b2caa96",
+      "bytes": 6720
+    },
+    "verification/audio/fallback/api37/receipt-75.json": {
+      "sha256": "8cb445a8d1ddd9ac151787680317ddcaeeffa62ce9f47435d7584ae47aa58551",
+      "bytes": 6762
+    },
+    "verification/audio/fallback/api37/receipt-76.json": {
+      "sha256": "df2fe5d5aa04ec94b982e3bc4797bea2b6de5ed5fe6ede0ca7906f470130f509",
+      "bytes": 6883
+    },
+    "verification/audio/fallback/api37/receipt-77.json": {
+      "sha256": "fbe330e448afd4eee73a805d9578e09c4e85c6507575b4206600fb66428fd9bf",
+      "bytes": 6927
+    },
+    "verification/audio/fallback/api37/receipt-78.json": {
+      "sha256": "9f9f43de1ae074ee187caeae06f9bbc6b82e2210a1e09357f07ac01f30747acf",
+      "bytes": 6927
+    },
+    "verification/audio/fallback/api37/receipt-79.json": {
+      "sha256": "13a6e2a852c7dbda621261875c3a4189ee8dc2ad7e1dbcdebfef62873c917b8f",
+      "bytes": 6094
+    },
+    "verification/audio/fallback/api37/receipt-8.json": {
+      "sha256": "11b91e44bcd5e144dcae2cd13eb23630cd5c4e38a20ad6be7a1364bb06f63519",
+      "bytes": 5804
+    },
+    "verification/audio/fallback/api37/receipt-80.json": {
+      "sha256": "0dc53a3bac99bd6b111ccb8a8bb8713ece90d744f0bc72bb469d73f31547077f",
+      "bytes": 6092
+    },
+    "verification/audio/fallback/api37/receipt-9.json": {
+      "sha256": "4f55e0582f170c94a94b4c246e1c67aded923b72269ccf25c30d2e2e427de604",
+      "bytes": 5829
+    },
+    "verification/audio/fallback/api37/recognize": {
+      "sha256": "26e95858e8ff66ebf85204fd27dbd582e3d57bcdd70a818d08329a966cd1a5f4",
+      "bytes": 78168
+    },
+    "verification/audio/fallback/api37/recognize.swift": {
+      "sha256": "4f0923157c593da0e9f63d0003fdb42a675955da5f1a830e38b91ed3b71a04af",
+      "bytes": 624
+    },
+    "verification/audio/fallback/api37/result.json": {
+      "sha256": "1056c5b5f638401d65daf07ee32dfbac4993d090f44501775cabfbfa275b6bb6",
+      "bytes": 20834
+    },
+    "verification/audio/fallback/api37/retry-B-1499-metrics.json": {
+      "sha256": "5820b30c7ece1bde730a2445a0f2a15d63cb2e73014b213579b5c63633dfe601",
+      "bytes": 2297
+    },
+    "verification/audio/fallback/api37/retry-play-B-ocr.json": {
+      "sha256": "5a5da076308aef1bc74a0fd2ac4cd882d4ca3d364ade3eae9034692bbc13e331",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/retry-play-B-video-frame.json": {
+      "sha256": "6e86846740088c1918ed3b60eeb1576839a03abdb536efd426941bf03dbf6e54",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/retry-play-B.png": {
+      "sha256": "455bc0dc5bae768cae9c540fabfe15add32f98c303fea4cb1f63997aa193b358",
+      "bytes": 346443
+    },
+    "verification/audio/fallback/api37/retry-stop-B-ocr.json": {
+      "sha256": "cfd399e039af112631dcdba3528108e096b5e63bd3d24426a48cab9811ad8ebc",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/retry-stop-B-video-frame.json": {
+      "sha256": "3df56df04ed21a3e797cde785c28e16c98502c3c555e12afe14dd62034ae0e81",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/retry-stop-B.png": {
+      "sha256": "4609343575c6db99faad2753f17025d31089022b5ff595cc901c4211beef6287",
+      "bytes": 341389
+    },
+    "verification/audio/fallback/api37/samples.dylib": {
+      "sha256": "48e136411eb26b9aa9c334dc0e8b30bc2564f42e43e333ea2167b793f4c669ba",
+      "bytes": 51104
+    },
+    "verification/audio/fallback/api37/samples.jsonl": {
+      "sha256": "45bff3886900adb15f2edf2cead3a41241e7d87d100197f608cac388efd1a0d3",
+      "bytes": 43340
+    },
+    "verification/audio/fallback/api37/session-2D1AB686-29A8-4403-AAEE-352319B449D8.log": {
+      "sha256": "76af961b42fca52acb730b9eaba5d7f7ffba31bf861b414c2c0c657006deb7a9",
+      "bytes": 1777
+    },
+    "verification/audio/fallback/api37/session-2D1AB686-29A8-4403-AAEE-352319B449D8.log.jsonl": {
+      "sha256": "4ad0b3c3330018b17313f0bc108450529da65285c2aeac34e1eac6043682f874",
+      "bytes": 1027
+    },
+    "verification/audio/fallback/api37/session-83B77EC2-0F54-4420-B889-218BD8E8D001.log": {
+      "sha256": "89d00d1cde0304d0eaab0fcb3796f2384e7090bd9f28f31f8b6182a079237890",
+      "bytes": 1910
+    },
+    "verification/audio/fallback/api37/session-83B77EC2-0F54-4420-B889-218BD8E8D001.log.jsonl": {
+      "sha256": "ff2f86a9e760afedabfcbc41ce9e747232905423aa2406ccb4a03511de27cd30",
+      "bytes": 1022
+    },
+    "verification/audio/fallback/api37/stop-A-ocr.json": {
+      "sha256": "e74eca3646aeae32db8d37f8c8cc3b68048ef333e0e07ce4c34ac511c0f3991b",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api37/stop-A-video-frame.json": {
+      "sha256": "c24e5b35ee410d957ad68d6fe622d223c57aae61ded09f30996ba7d00a61b645",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/stop-A.png": {
+      "sha256": "f14a7785d5cb077f5c7183e2c8ce8511ae5c2e309b7b023885b4b255f85a55ca",
+      "bytes": 327407
+    },
+    "verification/audio/fallback/api37/stop-B-ocr.json": {
+      "sha256": "1f9351ce4518ff3f76993e0abc18e22cefc4102e63b42ae62b74311f0d790605",
+      "bytes": 1405
+    },
+    "verification/audio/fallback/api37/stop-B-video-frame.json": {
+      "sha256": "ef208621b8498fcab5301dd81966ab8b8c3bcf5e283a9e8595104cad44f91d80",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/stop-B.png": {
+      "sha256": "54b3d543ed3255e3031580209a40afec710b8b86df05cebe0f5153c5ed27742c",
+      "bytes": 361794
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-testapp-ocr.json": {
+      "sha256": "b7deab3bf6f6556b6da2b653af9e30b6a66a91aab26f4d59d3ad4487bd3b7f28",
+      "bytes": 1409
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-testapp-video-frame.json": {
+      "sha256": "7d1582da1e0a5516878501e8957c3367f52c15942ed598af090d3c11ffb9d099",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-testapp.png": {
+      "sha256": "036f5c01a5dbd1e84480ab7f4d6c3dab83b14e35f5a197f7245c424f7954782a",
+      "bytes": 327400
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-testapp2-ocr.json": {
+      "sha256": "3948306558116db2eea461f040c9e8b483328313ae82a397516de89d90cf0e3c",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-testapp2-video-frame.json": {
+      "sha256": "26f66e9d7d9b2b0f8f39c9584a19db29f626fddedc4f0fa08e7a9103d39e89b3",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-testapp2.png": {
+      "sha256": "b704a8a5284d39d31c9a5dcaa8fcdf6f2c5e5bda4c8b0cf384bfd4d8873bb8c2",
+      "bytes": 356247
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-updated-testapp-ocr.json": {
+      "sha256": "9de2a9319abbdee16ac22159299487fd9438c32a2242e877d1841640ffce91d7",
+      "bytes": 1408
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-updated-testapp-video-frame.json": {
+      "sha256": "579be6a776c8adbc3e09de56b37eacd077ff27fc3ca15a463f5ef0e2cf065124",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-updated-testapp.png": {
+      "sha256": "2a8e949dc8905b9738c15143f6f9cad0600cdadff3a5882f0fd4f7f62df16b8d",
+      "bytes": 323727
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-updated-testapp2-ocr.json": {
+      "sha256": "4f281e4721cc0ca2173454191636213a95d63fc1ffc227aeaeedf767a6c80051",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-updated-testapp2-video-frame.json": {
+      "sha256": "22f7ba778365501c5f90b1ac8447da712163d7849f75115d2d3ce557ca6a1fae",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/two-fallback-with-one-audio-updated-testapp2.png": {
+      "sha256": "1eed074a938bbf48780663ac836fbd172f95f56b3553a7c4cdb10b5a68b16c09",
+      "bytes": 355581
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-testapp-ocr.json": {
+      "sha256": "401f991100f7e3318d4b811c8b60db467dd793746b99505a7e9af0fb8682b9e3",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-testapp-video-frame.json": {
+      "sha256": "d2731d1cc7637eb16f6ba865ee87fd8aaadd3196446eb592db7c2adb0eb18f71",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-testapp.png": {
+      "sha256": "37650e48d07b287529a866db8d561c601955084fb4307ab3a64b33844986aff5",
+      "bytes": 346235
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-testapp2-ocr.json": {
+      "sha256": "674a863786ff32bde00fc1e42c7d9d4fcacb467aa527ac1e9c69473c15d2f9fa",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-testapp2-video-frame.json": {
+      "sha256": "fdf08ffd5aad8a74f4d3d42782b3d9a97d444d453bc99fa1f9108de8dffa7a9d",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-testapp2.png": {
+      "sha256": "76db4462878a62ecb0ee6fac83e5576b8ecd1b13011f9dc534961f9225fa518b",
+      "bytes": 339080
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-updated-testapp-ocr.json": {
+      "sha256": "69ae34e087f7bc7889b59556852a26c856db2f24e0c705cd56a0d84d8ab66446",
+      "bytes": 1405
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-updated-testapp-video-frame.json": {
+      "sha256": "7c1845a4c96e47585b23a331f7599ca02494ef947bcc32aaa36842002d23791e",
+      "bytes": 562
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-updated-testapp.png": {
+      "sha256": "aa08d0f1d7a2c5822311d4e50c86553b3f75e802d6e55cea327c9c9203efbb5e",
+      "bytes": 343589
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-updated-testapp2-ocr.json": {
+      "sha256": "2248c46808b98ae72b96b28378fe01cd1882c7c15d54f21121e3693c7aa4d722",
+      "bytes": 1406
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-updated-testapp2-video-frame.json": {
+      "sha256": "1abaf076fc9eb0d10a0c76e3a36d5097761cf09cf756ac270ddea444419ac4b1",
+      "bytes": 563
+    },
+    "verification/audio/fallback/api37/use-phone-recovery-videos-continue-updated-testapp2.png": {
+      "sha256": "a2ee95ff509b5314408af45571d96f530337dfa04cc7ca3b2eee653d88f7f2b8",
+      "bytes": 338649
+    },
+    "scripts/verify-audio-fallback.py": {
+      "sha256": "fd7e489ddd8a8c1527dd701aac3029a7652624e278f0e36b29aec4304f0d54f7",
+      "bytes": 41774
+    },
+    "scripts/verify-audio-wrappers.swift": {
+      "sha256": "e21c915b4ac274c34677257b9a52cc5f5e661f33d745d060a443bc74e60f6dba",
+      "bytes": 3420
+    },
+    "scripts/verify-audio-player-capture.c": {
+      "sha256": "a2aa44465531a267c5448d9b61fdb3cd0ab971fe2ef74e8cb15a6eb66e729237",
+      "bytes": 7350
+    },
+    "scripts/verify-audio-native.py": {
+      "sha256": "1bc4b0c099f3a28869e89c9b80e14f36ffa4e0d120db10b4c784d3cb62967dc1",
+      "bytes": 36331
+    },
+    "scripts/verify-audio-samples.c": {
+      "sha256": "3df36e0053b36e5367f6ff9c76d7871834c5cdd2d8946331df9b0f916bb7e425",
+      "bytes": 4183
+    },
+    "scripts/verify-audio-actions.m": {
+      "sha256": "77d1532316e8fdb6a9bb388bef23ea6451552cf5a32ac0460f864318c87a0294",
+      "bytes": 11209
+    },
+    "verification/audio/fallback/REPORT.md": {
+      "sha256": "d9e997e834c9263348c9b77f61f12c3183bcd61c7426d550908566dbecc991e9",
+      "bytes": 6176
+    }
+  }
+}

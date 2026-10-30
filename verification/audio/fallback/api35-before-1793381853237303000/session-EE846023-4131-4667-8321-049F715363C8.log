@@ -1,0 +1,18 @@
+{"event":"supervisor_started","parent":88418,"child":88498}
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+[22;2t]0;scrcpyINFO: ADB device found:
+[REDACTED unrelated ADB inventory row]
+[REDACTED unrelated ADB inventory row]
+INFO:     --> (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+[REDACTED unrelated ADB inventory row]
+/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 1391.3 MB/s (733930 bytes in 0.001s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+]0;scrcpy - DroidBridge · DroidBridge TestINFO: Recording started to matroska file: /Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/players/dev.droidbridge.testapp/video.mkv
+[server] INFO: New display: 720x1080/240 (id=10)
+INFO: Renderer: metal
+INFO: Interop: videotoolbox
+INFO: Video decoding: videotoolbox
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 10...
+INFO: Texture (VideoToolbox): 720x1080
+INFO: Texture (VideoToolbox): 720x906
+{"event":"supervisor_stopped","reason":"stop_signal","exit_status":2,"signal":null,"requested_signal":15}

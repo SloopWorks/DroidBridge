@@ -1,0 +1,61 @@
+{
+  "passed": false,
+  "acceptance": false,
+  "app": "/Users/patrick/Applications/DroidBridge.app",
+  "serial": "emulator-5580",
+  "version": "0.1.8",
+  "build": "13",
+  "installed_sha256": "2fea8581f8cb372e63d306b69c6cabe0013876592b6e91a78b983f4b0e8debc0",
+  "physical_audibility_verified": false,
+  "physical_focus_verified": false,
+  "instrumentation": "Public AppKit actions, local Vision OCR, aggregate successful SDL PCM only",
+  "phases": [
+    {
+      "phase": "phone-no-capture",
+      "passed": true,
+      "windows": {
+        "dev.droidbridge.testapp": {
+          "window": 12128,
+          "session": "31E23CBD-0E45-4204-95CC-E9EA1FCA7C5D",
+          "display": 2
+        },
+        "dev.droidbridge.testapp2": {
+          "window": 12129,
+          "session": "5AB486CB-0322-400F-866F-E439B8E49D81",
+          "display": 3
+        }
+      }
+    }
+  ],
+  "signature_verified": true,
+  "instrument_hashes": {
+    "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+    "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/lib/libSDL3.0.dylib": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6",
+    "/Users/patrick/workspace/DroidBridge/verification/audio/native/api35/actions.dylib": "9e14b8a18396d5fb87353ef61286b3835f01aaef8ff83107a55047a52f5b3bea",
+    "/Users/patrick/workspace/DroidBridge/verification/audio/native/api35/samples.dylib": "309944d59cd804f8fda2ecd2c7c2ab069fc1d507b2eab7aa0f21c126da26971e",
+    "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-actions.m": "77d1532316e8fdb6a9bb388bef23ea6451552cf5a32ac0460f864318c87a0294",
+    "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-samples.c": "3df36e0053b36e5367f6ff9c76d7871834c5cdd2d8946331df9b0f916bb7e425",
+    "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py": "47bcfac979a5b48b749c18da66b3dd3d9ec46b1ad8f4fc46c64c15e6dd57b338"
+  },
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_before": "644",
+  "failure": "Timeout: audio UI Mac output initialized",
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_after": "644",
+  "state_restored": true,
+  "android_global_input_settings_unchanged": true,
+  "unrelated_adb_inventory_rows_redacted": {
+    "session-31E23CBD-0E45-4204-95CC-E9EA1FCA7C5D.log": 0,
+    "session-5AB486CB-0322-400F-866F-E439B8E49D81.log": 0,
+    "audio-FEA2E09B-0337-46C7-B61E-834781211A47.failed.log": 3
+  },
+  "cleanup_errors": []
+}

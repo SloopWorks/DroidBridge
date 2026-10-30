@@ -1,0 +1,612 @@
+{
+  "passed": true,
+  "scope": "Raw recorded request/PID/readback/PNG/OCR and Android receipts; physical display/focus not verified",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "frames": [
+    {
+      "file": "phone-again-videos-continue-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 23,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "audio-failed-video-continues-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 29,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "stop-A-video-frame.json",
+      "pid": 21996,
+      "id": 10,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "use-phone-recovery-videos-continue-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 33,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "panel-off-replay-A-video-frame.json",
+      "pid": 21996,
+      "id": 17,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "phone-no-capture-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 6,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "phone-no-capture-updated-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 5,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "retry-stop-B-video-frame.json",
+      "pid": 22062,
+      "id": 32,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "audio-failed-video-continues-updated-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 30,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "two-fallback-with-one-audio-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 14,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "use-phone-recovery-videos-continue-updated-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 36,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "use-phone-recovery-videos-continue-updated-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 34,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "launched-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 3,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "phone-again-videos-continue-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 25,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "play-B-video-frame.json",
+      "pid": 22062,
+      "id": 9,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "use-phone-recovery-videos-continue-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 35,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "dup-play-A-video-frame.json",
+      "pid": 21996,
+      "id": 16,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "phone-again-videos-continue-updated-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 24,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "two-fallback-with-one-audio-updated-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 15,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "two-fallback-with-one-audio-updated-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 13,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "panel-off-continued-frames-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 18,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "launched-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 1,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "1080"
+      ]
+    },
+    {
+      "file": "play-A-video-frame.json",
+      "pid": 21996,
+      "id": 8,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "audio-failed-video-continues-updated-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 28,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "phone-no-capture-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 4,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "panel-off-continued-frames-updated-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 19,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "two-fallback-with-one-audio-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 12,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "stop-B-video-frame.json",
+      "pid": 22062,
+      "id": 11,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "dup-stop-A-video-frame.json",
+      "pid": 21996,
+      "id": 22,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "panel-off-continued-frames-updated-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 21,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "phone-again-videos-continue-updated-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 26,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "audio-failed-video-continues-testapp-video-frame.json",
+      "pid": 21996,
+      "id": 27,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "phone-no-capture-updated-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 7,
+      "size": [
+        1440,
+        1812
+      ],
+      "texture": [
+        "720",
+        "906"
+      ]
+    },
+    {
+      "file": "retry-play-B-video-frame.json",
+      "pid": 22062,
+      "id": 31,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    },
+    {
+      "file": "panel-off-continued-frames-testapp2-video-frame.json",
+      "pid": 22062,
+      "id": 20,
+      "size": [
+        1680,
+        1812
+      ],
+      "texture": [
+        "840",
+        "906"
+      ]
+    }
+  ],
+  "actual_tick_advances": [
+    {
+      "label": "phone-no-capture",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 4 \u2022 ticks 21"
+      ],
+      "after": [
+        "Display 4 \u2022 ticks 23"
+      ],
+      "wait_seconds": 0.473
+    },
+    {
+      "label": "phone-no-capture",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 5 \u2022 ticks 15"
+      ],
+      "after": [
+        "Display 5 \u2022 ticks 17"
+      ],
+      "wait_seconds": 0.479
+    },
+    {
+      "label": "two-fallback-with-one-audio",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 4 \u2022 ticks 69"
+      ],
+      "after": [
+        "Display 4 \u2022 ticks 71"
+      ],
+      "wait_seconds": 0.45
+    },
+    {
+      "label": "two-fallback-with-one-audio",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 5 \u2022 ticks 63"
+      ],
+      "after": [
+        "Display 5 \u2022 ticks 65"
+      ],
+      "wait_seconds": 0.471
+    },
+    {
+      "label": "panel-off-continued-frames",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 4 \u2022 ticks 111"
+      ],
+      "after": [
+        "Display 4 \u2022 ticks 122"
+      ],
+      "wait_seconds": 0.473
+    },
+    {
+      "label": "panel-off-continued-frames",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 5 \u2022 ticks 109"
+      ],
+      "after": [
+        "Display 5 \u2022 ticks 119"
+      ],
+      "wait_seconds": 0.469
+    },
+    {
+      "label": "phone-again-videos-continue",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 4 \u2022 ticks 150"
+      ],
+      "after": [
+        "Display 4 \u2022 ticks 152"
+      ],
+      "wait_seconds": 0.465
+    },
+    {
+      "label": "phone-again-videos-continue",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 5 \u2022 ticks 144"
+      ],
+      "after": [
+        "Display 5 \u2022 ticks 146"
+      ],
+      "wait_seconds": 0.497
+    },
+    {
+      "label": "audio-failed-video-continues",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 4 \u2022 ticks 175"
+      ],
+      "after": [
+        "Display 4 \u2022 ticks 177"
+      ],
+      "wait_seconds": 0.465
+    },
+    {
+      "label": "audio-failed-video-continues",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 5 \u2022 ticks 169"
+      ],
+      "after": [
+        "Display 5 \u2022 ticks 171"
+      ],
+      "wait_seconds": 0.462
+    },
+    {
+      "label": "use-phone-recovery-videos-continue",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 4 \u2022 ticks 208"
+      ],
+      "after": [
+        "Display 4 \u2022 ticks 210"
+      ],
+      "wait_seconds": 0.467
+    },
+    {
+      "label": "use-phone-recovery-videos-continue",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 5 \u2022 ticks 202"
+      ],
+      "after": [
+        "Display 5 \u2022 ticks 204"
+      ],
+      "wait_seconds": 0.454
+    }
+  ],
+  "tone_receipts": [
+    {
+      "package": "dev.droidbridge.testapp",
+      "display": 4,
+      "frequency": 997,
+      "count": 3
+    },
+    {
+      "package": "dev.droidbridge.testapp2",
+      "display": 5,
+      "frequency": 1499,
+      "count": 2
+    }
+  ],
+  "state_restored": true,
+  "resources_restored": true
+}

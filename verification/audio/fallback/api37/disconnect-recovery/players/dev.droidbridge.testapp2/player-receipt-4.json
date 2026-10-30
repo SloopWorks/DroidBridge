@@ -1,0 +1,9 @@
+{
+  "action" : "status",
+  "passed" : false,
+  "id" : 4,
+  "role" : "player",
+  "physical_focus_verified" : false,
+  "main_thread" : true,
+  "pid" : 25700
+}

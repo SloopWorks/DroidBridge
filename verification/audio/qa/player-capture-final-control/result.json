@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "scope": "Offline independent current-helper software-renderer control; no Android/shared state/physical screen",
+  "helper_sha256": "a2aa44465531a267c5448d9b61fdb3cd0ab971fe2ef74e8cb15a6eb66e729237",
+  "control_sha256": "2ac5b5d58e32e79f3c873fce3b140e24e573cbf673684d939e999a5049696e32",
+  "sdl_sha256": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6",
+  "ack": {
+    "id": 2,
+    "pid": 27719,
+    "passed": true,
+    "width": 16,
+    "height": 12,
+    "output_width": 16,
+    "output_height": 12,
+    "main_thread": true,
+    "physical_screen_verified": false,
+    "capture_method": "SDL_RenderReadPixels-before-SDL_RenderPresent",
+    "renderer": "software",
+    "error": ""
+  },
+  "console": "PASS: no unsolicited capture; fresh red/blue before-present pixels; duplicate/stale requests refused\n",
+  "run": "/Users/patrick/workspace/DroidBridge/verification/audio/qa/player-capture-final-control/1793382667431861000"
+}

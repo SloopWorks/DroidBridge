@@ -1,0 +1,21 @@
+{
+  "id": 33,
+  "pid": 21996,
+  "passed": true,
+  "width": 1680,
+  "height": 1812,
+  "output_width": 1680,
+  "output_height": 1812,
+  "main_thread": true,
+  "physical_screen_verified": false,
+  "capture_method": "SDL_RenderReadPixels-before-SDL_RenderPresent",
+  "renderer": "metal",
+  "error": "",
+  "last_android_texture": [
+    "840",
+    "906"
+  ],
+  "capture": "SDL_RenderReadPixels before original SDL_RenderPresent",
+  "production_player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "package": "dev.droidbridge.testapp"
+}

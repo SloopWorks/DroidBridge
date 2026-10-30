@@ -1,0 +1,10 @@
+{
+  "app": "/Users/patrick/Applications/DroidBridge.app",
+  "version": "0.1.8",
+  "build": "14",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "audio_client_sha256": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+  "prior_app": "/Users/patrick/workspace/DroidBridge/.build/install-backups/DroidBridge-audio-interim-readiness-b13.app",
+  "installed_from_dmg": true,
+  "strict_signature_verified": true
+}

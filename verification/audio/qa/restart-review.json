@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "scope": "Actual owned AVD restart, same GUI source/runtime receipts, queued PCM/raw and fresh renderer artifacts; no physical audibility/focus claim",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "boot": {
+    "before_boot_id": "71dc91cd-1acf-4e5f-92b1-7a9b26cf6956",
+    "after_boot_id": "f4dcdfd9-0d4c-4d89-a6fb-813cd34ae4e9",
+    "new_host_pid": 25229,
+    "prior_system_server_pid": "682"
+  },
+  "offline": {
+    "phase": "actual-emulator-offline-GUI-alive-no-audio",
+    "passed": true,
+    "gui_pid": 24464,
+    "old_audio_pid": 24849
+  },
+  "recovery": {
+    "phase": "same-GUI-video-and-audio-recovery-after-real-reboot",
+    "passed": true,
+    "explicit_audio_retry": false,
+    "first_audio_pid": 24849,
+    "successor_audio_pid": 25987
+  },
+  "video_recovery": "automatic retained video intent",
+  "frames": [
+    {
+      "file": "after-real-emulator-reconnect-updated-testapp2-video-frame.json",
+      "pid": 25700,
+      "id": 8
+    },
+    {
+      "file": "before-reboot-1499-video-frame.json",
+      "pid": 24675,
+      "id": 2
+    },
+    {
+      "file": "launched-testapp2-video-frame.json",
+      "pid": 25700,
+      "id": 5
+    },
+    {
+      "file": "before-real-emulator-disconnect-updated-testapp2-video-frame.json",
+      "pid": 24675,
+      "id": 4
+    },
+    {
+      "file": "before-real-emulator-disconnect-testapp2-video-frame.json",
+      "pid": 24675,
+      "id": 3
+    },
+    {
+      "file": "after-real-emulator-reconnect-testapp2-video-frame.json",
+      "pid": 25700,
+      "id": 7
+    },
+    {
+      "file": "after-reboot-1499-video-frame.json",
+      "pid": 25700,
+      "id": 6
+    }
+  ],
+  "video_updates": [
+    {
+      "label": "before-real-emulator-disconnect",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 6 \u2022 ticks 22"
+      ],
+      "after": [
+        "Display 6 \u2022 ticks 25"
+      ],
+      "wait_seconds": 0.464
+    },
+    {
+      "label": "after-real-emulator-reconnect",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 2 \u2022 ticks 15"
+      ],
+      "after": [
+        "Display 2 \u2022 ticks 17"
+      ],
+      "wait_seconds": 0.47
+    }
+  ],
+  "resources_restored": true,
+  "state_restored": true
+}

@@ -1,0 +1,6 @@
+{
+  "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py": "fd7e489ddd8a8c1527dd701aac3029a7652624e278f0e36b29aec4304f0d54f7",
+  "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-player-capture.c": "a2aa44465531a267c5448d9b61fdb3cd0ab971fe2ef74e8cb15a6eb66e729237",
+  "/Users/patrick/workspace/DroidBridge/scripts/verify-hidden-ime-fallback.m": "5aae2ae4f3912e0aedc7fa2447063df60a8b3165d94562fb6f84be94ce0c3f7a",
+  "/Users/patrick/workspace/DroidBridge/scripts/verify-hidden-ime-fallback-sdl.c": "6f61c4096ef2fa3c01abcf6f04ba807db39ac31551d83cad53e6d8a4d8370314"
+}

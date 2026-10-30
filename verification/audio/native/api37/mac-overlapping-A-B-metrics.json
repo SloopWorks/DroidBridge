@@ -1,0 +1,162 @@
+{
+  "summary": {
+    "phase": "mac-overlapping-A-B",
+    "passed": true,
+    "audio_pid": 83053,
+    "samples": 12,
+    "matching": 7,
+    "tone_presence_thresholds": {
+      "997": 2e-05,
+      "1499": 2e-05
+    },
+    "maximum_absent_to_wanted_ratio": 0.02,
+    "silence_rms_limit": 2e-05,
+    "minimum_wanted_to_rms_ratio": 0.25,
+    "wanted_hz": [
+      997,
+      1499
+    ],
+    "absent_hz": [],
+    "silence": false,
+    "max_dropped_frames": 0,
+    "max_tone997": 0.00148215,
+    "max_tone1499": 0.00148108,
+    "min_rms": 0.00147472,
+    "max_rms": 0.00147933,
+    "one_audio_client": true
+  },
+  "samples": [
+    {
+      "pid": 83053,
+      "accepted_frames": 177600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147485,
+      "peak": 0.00295824,
+      "tone997": 9.82e-06,
+      "tone1499": 7.09e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 182400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147554,
+      "peak": 0.00296493,
+      "tone997": 1.055e-05,
+      "tone1499": 5.29e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 187200,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147929,
+      "peak": 0.00296415,
+      "tone997": 2.33e-06,
+      "tone1499": 7.51e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 192000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147925,
+      "peak": 0.00296235,
+      "tone997": 2.73e-06,
+      "tone1499": 4.09e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 196800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147841,
+      "peak": 0.00296261,
+      "tone997": 8.43e-06,
+      "tone1499": 6.57e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 201600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147472,
+      "peak": 0.00296311,
+      "tone997": 0.00147231,
+      "tone1499": 0.00147158,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 206400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147576,
+      "peak": 0.00296502,
+      "tone997": 0.00147264,
+      "tone1499": 0.00147542,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 211200,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147929,
+      "peak": 0.00296271,
+      "tone997": 0.00148215,
+      "tone1499": 0.00147993,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 216000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147933,
+      "peak": 0.00296462,
+      "tone997": 0.00148103,
+      "tone1499": 0.00148108,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 220800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147837,
+      "peak": 0.00296232,
+      "tone997": 0.00147898,
+      "tone1499": 0.00147966,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 225600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147472,
+      "peak": 0.00296311,
+      "tone997": 0.00147231,
+      "tone1499": 0.00147158,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 230400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147575,
+      "peak": 0.00296502,
+      "tone997": 0.00147263,
+      "tone1499": 0.00147541,
+      "dropped_frames": 0
+    }
+  ]
+}
