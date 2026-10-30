@@ -61,7 +61,7 @@ public struct AndroidIconProvider {
     }
 
     private static var defaultReceiptDirectory: URL {
-        FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/icon-receipts")
+        CompanionQAScope.current?.iconReceiptDirectory ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/icon-receipts")
     }
 
     /// A startup recovery pass never deletes by prefix. Invalid receipts remain

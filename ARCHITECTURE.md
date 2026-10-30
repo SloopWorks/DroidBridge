@@ -87,3 +87,88 @@ client uses no-rebind and delegates supervised forward cleanup to the owner.
 Launcher and native-wrapper menus share atomic audio-preferences.json independently of the older screen/Spotlight settings file; legacy wrappers cannot erase audio intent. Audio work and
 failure are independent of video sessions. See AUDIO_DESIGN.md and
 verification/audio/ for contracts, limits and executable evidence.
+
+## Android companion boundary (0.2 development candidate)
+
+The companion extends discovery, explicit sharing and controls; scrcpy remains
+the video, input, display-power and audio implementation. No video or PCM crosses
+the companion API. The ordinary Android foreground service listens only on
+`127.0.0.1:37841` using TLS1.2/1.3 and an installation-stable Android Keystore
+P-256 identity. Mac transport uses an exact-owned ADB forward over USB/emulator
+or Android's authenticated wireless-debugging transport. It never opens an
+unauthenticated LAN listener or enables debugging silently.
+
+Enrollment starts with the complete phone-generated URI: a short-lived secret,
+expiry, installation UUID and exact certificate fingerprint. The Mac verifies
+that pin, certificate validity and loopback hostname before sending HTTP bytes,
+then matches the installation UUID before submitting the secret. The phone
+requires explicit approval of the named Mac and comparison code. Saved trust
+binds installation UUID, trust ID, credential and pin in one Keychain record;
+Android persists sensitive state encrypted with Keystore-backed AES-GCM. No
+TOFU, bare-secret enrollment or plaintext fallback is supported. Ad-hoc updates
+can make an old Mac Keychain ACL inaccessible; the store fails promptly without
+UI, and explicit Forget/re-pair preserves separate export/profile intent.
+
+`DroidBridgeCompanionBroker` is a per-user NSXPC service and the single owner of
+companion credentials, pinned connections and event polling. Its private runtime
+is installed independently of the GUI bundle. Requests are bounded JSON,
+authenticated by same-user peer identity plus a private nonce. The broker owns a
+private, bounded journal published through file fsync, rename and directory
+fsync. Immutable request IDs and canonical receipts distinguish accepted,
+applied, rejected and unknown outcomes; an uncertain external effect is not
+reported as exactly-once execution. Per-trust event epochs/cursors force a
+snapshot after expiry and fence revocation. Read-only status does not start a
+new phone operation.
+
+Verified phone installation UUIDs are canonical identities; ADB serials are
+transport aliases. Cross-process filesystem leases admit concurrent video/audio
+sessions on one selected alias and refuse another alias until cleanup drains.
+Supervisors retain ownership through GUI crashes and exact process/forward/JAR
+teardown. Session registry entries bind process start identity and generation.
+This protocol applies to updated hosts; close old0.1 hosts/audio and update
+wrappers before pairing or switching aliases. Old executables cannot acquire the
+new canonical leases. Companion revocation does not revoke ADB authorization or
+terminate an otherwise independent ADB capture.
+
+Transport reservation registers a recoverable ownership receipt before ADB
+allocation. Failed close remains owned and retries with finite backoff even
+when journal publication is unavailable. Removal checks the exact
+serial/local/remote tuple and preserves a replaced mapping. Shutdown fences late
+hello/identity/admission replies, policy/credential publication and journal
+writes. The owner lock remains until accepted requests drain; it cannot authorize
+a second writer while late work can still publish.
+
+Control scheduling permits one request per canonical phone and four globally,
+with bounded fair eligible queues. Bulk work has a separate global limit of two
+and profile-specific per-phone capacity. Catalog pages contain at most64 apps;
+JSON, icons, file sizes, staged bytes, transfer slots and event retention have
+hard bounds in `docs/companion/BOUNDARY_CONTRACT.md`. Files use64KiB raw chunks,
+SHA-256 verification and explicit Open/Save decisions. Shared files are not
+executed or automatically opened; received Mac files retain quarantine. Clipboard
+handoff is an explicit user action with foreground Android access. Optional
+notification access is granted through Android settings; replies bind the current
+notification generation and actual RemoteInput action.
+
+Phone export selections bind monotonic policy revisions to managed Mac wrapper
+admission. Reconciliation preserves names/icons, offline hiding and stale-result
+refusal. The phone dashboard uses the cross-process host registry, so typed
+Open/Stop/Audio/Screen requests can target independent wrappers. Profiles select
+15/30/60fps for new streams,1/2/5s publication/status cadence and bounded asset
+work without changing global Android settings. Unchanged peer-state heartbeats
+are capability-negotiated; older protocol1 peers receive complete state.
+
+The phone offers an explicit official Mac release lookup. Its versioned manifest
+pins architecture, minimum OS, artifact size, SHA-256 and fixed GitHub URLs.
+Missing or invalid metadata disables download controls. An ordinary phone app
+cannot install or approve a Mac application. Publication and installed-flow
+acceptance are tracked separately from implementation in
+`verification/companion/PROGRAM_STATUS.md` and `docs/companion/ROADMAP.md`.
+
+Source-built ADB37 ships as a separately signed flat cohort with a hash-bound
+inventory, exact sibling dynamic dependencies and upstream notices. Private
+broker and availability generations copy and verify that complete cohort
+without changing bytes. Availability keeps its eight-generation cap; broker
+keeps four. Their bounded recovery journals preserve validated current plist
+pins, live process/lease owners and unverified bytes rather than deleting an
+unknown generation. Exact source archives, patches, build recipes and provenance
+are prepared alongside release artifacts; see `docs/companion/ADB_RUNTIME.md`.

@@ -1,0 +1,157 @@
+import AppKit
+import DroidBridgeCore
+import DroidBridgeStreaming
+
+/// Shipping AppKit screens with an anonymous in-process NSXPC peer. No ADB,
+/// launch agent, phone credential, user's clipboard or persistent policy writes.
+private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBrokerXPCProtocol {
+    let device = "ac147b36-e0b4-48fa-965c-c694a98ed5d0"
+    private let lock = NSLock()
+    private var connections: [NSXPCConnection] = []
+    private var transferBytes = Data()
+    private var metadata: [String: CompanionJSON] = [:]
+    private var recoveryFinished = false
+    private var activeProfile = "balanced"
+    var operations: [String] = []
+    func setProfile(_ profile: String) { lock.lock(); activeProfile = profile; lock.unlock() }
+    func count(_ operation: String) -> Int { lock.lock(); defer { lock.unlock() }; return operations.filter { $0 == operation }.count }
+    func listener(_ listener: NSXPCListener, shouldAcceptNewConnection connection: NSXPCConnection) -> Bool {
+        connection.exportedInterface = NSXPCInterface(with: CompanionBrokerXPCProtocol.self); connection.exportedObject = self; connection.resume(); lock.lock(); connections.append(connection); lock.unlock(); return true
+    }
+    func exchange(_ bytes: Data, reply: @escaping (Data) -> Void) {
+        lock.lock(); defer { lock.unlock() }
+        do {
+            let input = try JSONDecoder().decode(CompanionBrokerRequest.self, from: bytes); operations.append(input.operation)
+            guard input.nonce == "fixture-nonce" else { throw CompanionBoundaryError("unauthorized", "Fixture nonce mismatch") }
+            let p = input.payload
+            var data: [String: CompanionJSON] = [:]
+            switch input.operation {
+            case "status": data = ["devices": .array([.object(["device_id": .string(device), "device_name": .string("QA Phone with a Long Readable Name"), "serial": .string("qa-companion-ui"), "aliases": .array([.string("qa-companion-ui")]), "connected": .bool(true), "paired": .bool(true), "profile": .string("balanced"), "capabilities": .array(["catalog", "icons", "share", "clipboard", "notifications", "profiles"].map(CompanionJSON.string))])]), "sessions": .array([.object(["session_id": .string("6803ee5e-496c-413e-ac22-e740b23043eb"), "device_id": .string(device), "label": .string("Independent wrapper fixture"), "backend": .string("native"), "phase": .string("running")])])]
+            case "export_selection_get": data = ["selection": .object([:])]
+            case "recover_pairing":
+                guard p["device_id"]?.string == device else { throw CompanionBoundaryError("invalid_recovery", "Recovery must target the exact pending phone") }
+                recoveryFinished = true; data = ["status": .string("approved"), "device_id": .string(device)]
+            case "catalog":
+                let start = Int(p["cursor"]?.string ?? "0") ?? 0, end = min(start + 64, 1000)
+                data = ["generation": .string("fixture-generation"), "items": .array((start..<end).map { .object(["package_name": .string("dev.droidbridge.fixture.app\($0)"), "label": .string($0 == 17 ? "Distinct Companion Search" : "Android Application \($0)"), "launchable": .bool(true), "export_to_mac": .bool(true)]) }), "next_cursor": end < 1000 ? .string(String(end)) : .null]
+            case "inbox_list": data = ["items": .array([.object(["id": .string("d39a1ccc-7d17-4839-a17e-671b18e6ea93"), "device_id": .string(device), "kind": .string("share_text"), "payload": .object(["text": .string("Fixture text stays in the inbox until Copy is clicked.")])]), .object(["id": .string("9444cc0e-bd58-44bc-aa6c-7c23a05b7c85"), "kind": .string("notification_posted"), "payload": .object(["title": .string("Fixture notification"), "text": .string("In-app only, no OS permission requested."), "package_name": .string("dev.droidbridge.fixture"), "can_reply": .bool(false)])])])]
+            case "host_command", "export_selection_set", "profile_set": data = ["status": .string("accepted")]
+            case "command_status": data = ["status": .string("applied"), "result": .object(["phase": .string("fixture_effect")])]
+            case "trust_list": data = ["items": .array([.object(["trust_id": .string("9bf0e385-15bd-4d61-9650-26221a8af695"), "mac_name": .string("QA Mac")])])]
+            case "transfer_begin": metadata = p; transferBytes = Data(); data = ["status": .string("receiving")]
+            case "transfer_chunk": guard let text = p["bytes"]?.string, let chunk = Data(base64Encoded: text), chunk.count <= 65_536 else { throw CompanionBoundaryError("invalid_chunk", "Bad fixture chunk") }; transferBytes.append(chunk); data = ["accepted_bytes": .number(Double(transferBytes.count))]
+            case "transfer_commit": guard metadata["sha256"]?.string == CompanionClient.sha256(transferBytes), metadata["size"]?.number == Double(transferBytes.count) else { throw CompanionBoundaryError("integrity", "Fixture transfer mismatch") }; data = ["committed": .bool(true), "transfer_id": metadata["transfer_id"]!, "accepted_bytes": .number(Double(transferBytes.count))]
+            case "transfer_receipt": guard p["accepted_bytes"]?.number == Double(transferBytes.count), p["sha256"]?.string == CompanionClient.sha256(transferBytes) else { throw CompanionBoundaryError("integrity", "Fixture download receipt mismatch") }; data = ["status": .string("downloaded"), "transfer_id": p["transfer_id"]!, "accepted_bytes": p["accepted_bytes"]!]
+            case "transfer_download": let index = Int(p["index"]?.number ?? 0), start = index * 65_536; data = ["bytes": .string(transferBytes.subdata(in: start..<min(start + 65_536, transferBytes.count)).base64EncodedString())]
+            default: break
+            }
+            if input.operation == "status", !recoveryFinished {
+                data["pending_pairings"] = .array([.object(["device_id": .string(device), "serial": .string("qa-companion-ui"), "phase": .string("staged"), "expires": .number(Date().addingTimeInterval(1200).timeIntervalSinceReferenceDate)])])
+            }
+            if input.operation == "status", var devices = data["devices"]?.array, var device = devices.first?.object {
+                device["profile"] = .string(activeProfile); devices[0] = .object(device); data["devices"] = .array(devices)
+            }
+            reply(try JSONEncoder().encode(CompanionBrokerReply(requestID: input.requestID, data: data)))
+        } catch { let id = (try? JSONDecoder().decode(CompanionBrokerRequest.self, from: bytes).requestID) ?? UUID(); reply((try? JSONEncoder().encode(CompanionBrokerReply(requestID: id, error: error as? CompanionBoundaryError ?? .init("fixture_error", "Fixture failed")))) ?? Data()) }
+    }
+}
+
+@main struct VerifyCompanionGUI {
+    @MainActor static func main() {
+        NSApplication.shared.setActivationPolicy(.regular); NSApplication.shared.finishLaunching()
+        Task { @MainActor in do { try await run(); print("PASS: companion native UI, bounded catalog, action receipt and file transfer fixtures"); fflush(stdout); exit(0) } catch { fputs("FAIL: companion GUI \(error)\n", stderr); exit(1) } }
+        NSApplication.shared.run()
+    }
+    static func require(_ value: Bool, _ message: String) throws { if !value { throw BridgeError.message(message) } }
+    @MainActor static func descendants(_ view: NSView) -> [NSView] { [view] + view.subviews.flatMap(descendants) }
+    @MainActor static func capture(_ view: NSView, to url: URL) throws {
+        view.layoutSubtreeIfNeeded(); for child in descendants(view) { child.needsDisplay = true }; view.displayIfNeeded()
+        guard let bitmap = view.bitmapImageRepForCachingDisplay(in: view.bounds) else { throw BridgeError.message("No AppKit capture") }; view.cacheDisplay(in: view.bounds, to: bitmap)
+        try require(bitmap.representation(using: .png, properties: [:])?.write(to: url) != nil, "Unable to write capture")
+    }
+    @MainActor static func wait(_ condition: () -> Bool) async throws {
+        for _ in 0..<300 { if condition() { return }; try await Task.sleep(nanoseconds: 20_000_000) }; throw BridgeError.message("Fixture operation timed out")
+    }
+    @MainActor static func run() async throws {
+        let output = URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent("verification/companion/macos-ui")
+        try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)
+        let peer = FixtureBroker(), listener = NSXPCListener.anonymous(); listener.delegate = peer; listener.resume(); defer { listener.invalidate() }
+        let broker = CompanionBrokerIPCClient(endpoint: listener.endpoint, nonce: "fixture-nonce")
+        let launcher = LauncherController(); launcher.onboardingPending = true
+        launcher.devices = [AndroidDevice(serial: "qa-companion-ui", model: "QA Phone")]; launcher.readySerials = ["qa-companion-ui"]
+        let adapter = CompanionDesktopAdapter(launcher: launcher, broker: broker)
+        try await adapter.refreshStatus(); adapter.show()
+        let controller = try XCT(adapter.windowController, "Companion controller missing"), window = try XCT(controller.window, "Companion window missing"), content = try XCT(window.contentView, "Companion content missing")
+        let tabs = try XCT(descendants(content).compactMap { $0 as? NSTabView }.first, "Companion tabs missing")
+        try require(tabs.numberOfTabViewItems == 8, "Expected eight complete companion surfaces")
+        controller.loadCatalog()
+        let table = try XCT(descendants(tabs.tabViewItems[1].view!).compactMap { $0 as? NSTableView }.first, "Catalog table missing")
+        try await wait { table.numberOfRows == 1000 }
+        let search = try XCT(descendants(tabs.tabViewItems[1].view!).compactMap { $0 as? NSSearchField }.first, "Catalog search missing")
+        search.stringValue = "distinct companion"; controller.controlTextDidChange(Notification(name: NSControl.textDidChangeNotification, object: search))
+        try require(table.numberOfRows == 1, "Companion local search did not match")
+        search.stringValue = ""; controller.controlTextDidChange(Notification(name: NSControl.textDidChangeNotification, object: search))
+        var captures: [String] = []
+        for width in [900, 700] {
+            window.setContentSize(NSSize(width: width, height: width == 900 ? 760 : 570))
+            for (index, item) in tabs.tabViewItems.enumerated() {
+                let nav = try XCT(descendants(content).compactMap { $0 as? NSButton }.first { $0.accessibilityLabel() == "Companion section \(item.label)" }, "Missing native navigation action")
+                nav.performClick(nil); try require(tabs.selectedTabViewItem === item, "Section navigation selected wrong surface")
+                content.layoutSubtreeIfNeeded(); try await Task.sleep(nanoseconds: 50_000_000)
+                let name = "\(width)-\(index)-\(item.label.replacingOccurrences(of: " ", with: "-")).png"
+                try capture(content, to: output.appendingPathComponent(name)); captures.append(name)
+                try require(tabs.frame.width > 600 && tabs.frame.height > 200, "Companion tab content collapsed at \(width)")
+            }
+        }
+        try require(!peer.operations.contains("recover_pairing"), "Approved pairing recovery must require an explicit action")
+        tabs.selectTabViewItem(at: 0)
+        let finishPairing = try XCT(descendants(content).compactMap { $0 as? NSButton }.first { $0.title == "Finish Approved Pairing" }, "Pending pairing completion action missing")
+        finishPairing.performClick(nil)
+        try await wait { peer.operations.contains("recover_pairing") && adapter.pendingPairings.isEmpty }
+        tabs.selectTabViewItem(at: 2)
+        let stop = try XCT(descendants(tabs.tabViewItems[2].view!).compactMap { $0 as? NSButton }.first { $0.title == "Stop" }, "Registered wrapper Stop missing")
+        stop.performClick(nil); try await wait { peer.operations.contains("command_status") }
+        try require(peer.operations.contains("host_command"), "Stop did not dispatch to broker-local exact-owner command")
+        let transfer = CompanionTransfers(broker: broker)
+        let source = output.appendingPathComponent(".fixture-source"), saved = output.appendingPathComponent(".fixture-received")
+        defer { try? FileManager.default.removeItem(at: source); try? FileManager.default.removeItem(at: saved) }
+        let fixture = Data((0..<160_123).map { UInt8($0 % 251) }); try fixture.write(to: source)
+        transfer.send(source, device: peer.device); try await wait { !transfer.running }
+        try require(transfer.message.contains("received and verified"), "Upload did not confirm actual final hash: \(transfer.message)")
+        transfer.receive(["transfer_id": .string(UUID().uuidString), "size": .number(Double(fixture.count)), "sha256": .string(CompanionClient.sha256(fixture))], destination: saved, device: peer.device)
+        try await wait { !transfer.running }; try require((try? Data(contentsOf: saved)) == fixture, "Downloaded fixture bytes differ")
+        try require(transfer.message.contains("SHA-256 verification"), "Download incorrectly reported completion")
+        let wireless = CompanionWirelessSetup(tools: Toolchain()); wireless.showWindow(nil)
+        let wirelessWindow = try XCT(wireless.window, "Wireless setup missing"), wirelessContent = try XCT(wireless.window?.contentView, "Wireless content missing")
+        wirelessWindow.setContentSize(NSSize(width: 500, height: 380))
+        let pair = try XCT(descendants(wirelessContent).compactMap { $0 as? NSButton }.first { $0.title == "Pair" }, "Native ADB pairing action missing")
+        pair.performClick(nil); wirelessContent.layoutSubtreeIfNeeded(); try capture(wirelessContent, to: output.appendingPathComponent("wireless-narrow-validation.png"))
+        try require(descendants(wirelessContent).compactMap { $0 as? NSScrollView }.contains { $0.hasVerticalScroller }, "Wireless setup cannot scroll its long explanations")
+        wireless.close()
+        let scanner = CompanionPairingScanner(); scanner.showWindow(nil); scanner.window?.setContentSize(NSSize(width: 480, height: 380))
+        let scannerContent = try XCT(scanner.window?.contentView, "Scanner missing")
+        let use = try XCT(descendants(scannerContent).compactMap { $0 as? NSButton }.first { $0.title == "Use Pairing Link" }, "Manual pairing alternate missing")
+        use.performClick(nil); scannerContent.layoutSubtreeIfNeeded(); try capture(scannerContent, to: output.appendingPathComponent("scanner-narrow-validation.png"))
+        try require(descendants(scannerContent).compactMap { $0 as? NSScrollView }.contains { $0.hasVerticalScroller }, "Scanner alternates cannot scroll")
+        scanner.close()
+        peer.setProfile("battery"); try await adapter.refreshStatus()
+        try require(adapter.statusWorkInterval == 5, "Battery profile did not select its actual status cadence")
+        let batteryStatusBefore = peer.count("status"), batteryPublishBefore = peer.count("session_publish"), batteryCommandsBefore = peer.count("command_poll")
+        adapter.start(installService: false)
+        for _ in 0..<50 { adapter.markSessionsChanged() }
+        try await Task.sleep(nanoseconds: 6_200_000_000)
+        let batteryStatus = peer.count("status") - batteryStatusBefore, batteryPublish = peer.count("session_publish") - batteryPublishBefore, batteryCommands = peer.count("command_poll") - batteryCommandsBefore
+        peer.setProfile("responsive"); try await adapter.refreshStatus()
+        try require(adapter.statusWorkInterval == 1, "Responsive profile did not select its actual status cadence")
+        let responsiveStatusBefore = peer.count("status"), responsivePublishBefore = peer.count("session_publish"), responsiveCommandsBefore = peer.count("command_poll")
+        try await Task.sleep(nanoseconds: 6_200_000_000)
+        let responsiveStatus = peer.count("status") - responsiveStatusBefore, responsivePublish = peer.count("session_publish") - responsivePublishBefore, responsiveCommands = peer.count("command_poll") - responsiveCommandsBefore
+        try require(batteryStatus <= 2 && batteryPublish <= 2 && responsiveStatus >= 5 && responsivePublish >= 5 && batteryCommands >= 10 && responsiveCommands >= 10, "Actual profile cadence did not reduce status work while preserving command polling")
+        let cadence: [String: Any] = ["scope": "Actual shipping desktop adapter timers over anonymous NSXPC; no battery-savings claim", "observation_seconds_each": 6.2, "battery": ["status": batteryStatus, "publish": batteryPublish, "command_poll": batteryCommands], "responsive": ["status": responsiveStatus, "publish": responsivePublish, "command_poll": responsiveCommands], "unchanged_session_marks": 50]
+        try JSONSerialization.data(withJSONObject: cadence, options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("profile-cadence.json"))
+        await adapter.shutdown(); window.orderOut(nil); launcher.window?.orderOut(nil)
+        let result: [String: Any] = ["passed": true, "scope": "Shipping AppKit + anonymous NSXPC fixture; no Android or installed-app acceptance", "surfaces": 8, "catalog_count": 1000, "local_search": true, "exact_owner_command_route": true, "explicit_pending_pairing_recovery": true, "chunked_file_roundtrip_bytes": fixture.count, "sha256_match": true, "camera_capture_verified": false, "phone_pairing_verified": false, "physical_focus_verified": false, "clipboard_read": false, "setup_narrow_validation_scroll": true, "captures": captures + ["wireless-narrow-validation.png", "scanner-narrow-validation.png"]]
+        try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("results.json"))
+    }
+    static func XCT<T>(_ value: T?, _ message: String) throws -> T { guard let value else { throw BridgeError.message(message) }; return value }
+}

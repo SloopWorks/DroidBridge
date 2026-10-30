@@ -63,6 +63,7 @@ import DroidBridgeStreaming
         c.devicePicker.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
         connection.font = .systemFont(ofSize:11);connection.maximumNumberOfLines=3;connection.textColor = .secondaryLabelColor
         let refresh=c.button("Refresh Devices",#selector(c.refreshAction));refresh.image=NSImage(systemSymbolName:"arrow.clockwise",accessibilityDescription:nil);refresh.imagePosition = .imageLeading
+        let companion=c.button("Phone Companion…",#selector(c.showCompanion));companion.setAccessibilityLabel("Open Android companion setup and handoff")
         c.backendPicker.addItems(withTitles:["Native AppKit","scrcpy fallback"]);c.backendPicker.setAccessibilityLabel("Rendering backend")
         for button in [c.bulkPreference,c.decorationsPreference] {button.target=c;button.action=#selector(c.sharedPreferenceChanged(_:))}
         c.bulkPreference.state=c.sharedPreferences.bulkWrapperOnboardingEnabled ? .on : .off
@@ -92,7 +93,7 @@ import DroidBridgeStreaming
         let audioActions=NSStackView(views:[c.audioRetry,c.audioUsePhone]);audioActions.spacing=6;audioActions.distribution = .fillEqually
         let audioGroup=Self.group("AUDIO",[c.audioRoutePicker,Self.label("Device-wide Android audio, including apps outside DroidBridge. Mac routing silences phone playback.",size:11,secondary:true),c.audioStatus,audioActions])
         audioGroup.identifier=NSUserInterfaceItemIdentifier("launcher.audio")
-        let sidebarContent=Self.column([branding,Self.group("DEVICE",[c.devicePicker,connection,refresh]),Self.group("RENDERING",[c.backendPicker,Self.label("Used for new app windows.",size:11,secondary:true),c.phoneScreenPreference,c.decorationsPreference,c.reconnect]),audioGroup,Self.group("SPOTLIGHT",[c.bulkPreference,Self.label("Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",size:11,secondary:true),c.onboardingButton,c.onboardingProgress,c.onboardingStatus,onboardingActions])],spacing:22)
+        let sidebarContent=Self.column([branding,Self.group("DEVICE",[c.devicePicker,connection,refresh,companion]),Self.group("RENDERING",[c.backendPicker,Self.label("Used for new app windows.",size:11,secondary:true),c.phoneScreenPreference,c.decorationsPreference,c.reconnect]),audioGroup,Self.group("SPOTLIGHT",[c.bulkPreference,Self.label("Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",size:11,secondary:true),c.onboardingButton,c.onboardingProgress,c.onboardingStatus,onboardingActions])],spacing:22)
         Self.document(sidebarContent,in:sidebarScroll,padding:16)
 
         let title=Self.label("Applications",size:25,weight:.bold)

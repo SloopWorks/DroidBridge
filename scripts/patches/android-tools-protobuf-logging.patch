@@ -1,0 +1,29 @@
+--- a/vendor/CMakeLists.adb.txt
++++ b/vendor/CMakeLists.adb.txt
+@@ -222,6 +222,13 @@
+ 		"-framework IOKit")
+ endif()
+ 
++# DroidBridge: Protobuf 36 imports Abseil LOG macros. Parse those headers first,
++# then install Android's DEBUG-capable logging macros consistently for ADB.
++foreach(droidbridge_adb_target libadb libadb_crypto_defaults libadb_tls_connection_defaults adb)
++	target_compile_options(${droidbridge_adb_target} PRIVATE
++		-include "${CMAKE_CURRENT_SOURCE_DIR}/droidbridge_protobuf_logging.h")
++endforeach()
++
+ if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/adb/docs/user/adb.1)
+ 	install(FILES adb/docs/user/adb.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+ endif()
+--- /dev/null
++++ b/vendor/droidbridge_protobuf_logging.h
+@@ -0,0 +1,10 @@
++// SPDX-License-Identifier: Apache-2.0
++// DroidBridge build compatibility shim, 2026-10-30. No Android runtime behavior
++// changes: preserve Android's logging API after contemporary Protobuf headers.
++#pragma once
++#include <google/protobuf/text_format.h>
++#undef LOG
++#undef LOG_IF
++#undef PLOG
++#undef PLOG_IF
++#include <android-base/logging.h>

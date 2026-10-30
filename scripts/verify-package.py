@@ -2,7 +2,9 @@
 """Fail closed if a locally installed bundle relies on external dylib paths.
 Does not assert Gatekeeper trust or notarization from ad-hoc codesigning.
 """
-import argparse, json, os, pathlib, subprocess
+import argparse, hashlib, json, os, pathlib, plistlib, subprocess, zipfile
+if not __debug__:
+    raise SystemExit('Package validation requires Python assertions; remove -O/PYTHONOPTIMIZE.')
 p=argparse.ArgumentParser(); p.add_argument('app',type=pathlib.Path); p.add_argument('--output',type=pathlib.Path,default=pathlib.Path('verification/review/package.json')); args=p.parse_args()
 app=args.app.resolve(); assert app.is_dir() and app.suffix=='.app'
 def run(*command): return subprocess.check_output(command,text=True,stderr=subprocess.STDOUT)
@@ -20,6 +22,7 @@ for file in app.rglob('*'):
             assert resolved.exists(),f'missing dependency {resolved}'
     report['dependencies'][str(file.relative_to(app))]=deps
 runtime=app/'Contents/Resources/Runtime'
+report['adb_portable_inventory']=subprocess.check_output(['python3',str(pathlib.Path(__file__).with_name('stage-adb-runtime.py')),'--adb',str(runtime/'bin/adb')],text=True,stderr=subprocess.STDOUT,timeout=30)
 for binary in ('adb','scrcpy'):
     environment=os.environ.copy(); environment['PATH']='/usr/bin:/bin'; environment['HOME']=str(pathlib.Path.home())
     report[binary]=subprocess.check_output([str(runtime/'bin'/binary),'--version' if binary=='scrcpy' else 'version'],env=environment,text=True,stderr=subprocess.STDOUT)
@@ -35,6 +38,25 @@ assert helper.is_file() and os.access(helper,os.X_OK), 'missing device availabil
 report['availability_helper']=subprocess.check_output([str(helper),'--version'],env=environment,text=True,stderr=subprocess.STDOUT,timeout=5)
 assert 'DroidBridgeAvailability' in report['availability_helper']
 assert (runtime/'bin/DroidBridgeSupervisor').is_file(), 'missing session supervisor'
+broker=runtime/'bin/DroidBridgeCompanionBroker'
+assert broker.is_file() and os.access(broker,os.X_OK), 'missing companion broker'
+report['companion_broker']=subprocess.check_output([str(broker),'--version'],env=environment,text=True,stderr=subprocess.STDOUT,timeout=5)
+assert 'DroidBridgeCompanionBroker protocol 1' in report['companion_broker']
+apk=app/'Contents/Resources/Companion/DroidBridgeCompanion.apk'
+assert apk.is_file() and 0 < apk.stat().st_size <= 32*1024*1024, 'missing/oversized companion APK'
+report['companion_apk_sha256']=hashlib.sha256(apk.read_bytes()).hexdigest()
+assert (apk.parent/'APK-SHA256.txt').read_text().split()[0] == report['companion_apk_sha256'], 'companion APK hash mismatch'
+report['companion_notices'] = {}
+with zipfile.ZipFile(apk) as archive:
+    for name in ('Apache-2.0.txt', 'COMPONENTS.txt', 'NOTICE.txt', 'zxing-NOTICE.txt', 'kotlin-NOTICE.txt', 'SOURCES.json'):
+        entry=archive.getinfo('assets/licenses/'+name)
+        assert 0 < entry.file_size <= 65_536, 'oversized companion notice'
+        data=archive.read(entry)
+        assert data == (app/'Contents/Resources/licenses/android-companion'/name).read_bytes(), 'companion APK/bundle notices differ'
+        report['companion_notices'][name]=hashlib.sha256(data).hexdigest()
+info=plistlib.loads((app/'Contents/Info.plist').read_bytes())
+assert info.get('NSCameraUsageDescription'), 'missing explicit pairing camera usage explanation'
+report['version']=info['CFBundleShortVersionString']; report['build']=info['CFBundleVersion']
 player=runtime/'Player.app/Contents/MacOS/scrcpy'
 if player.exists():
     report['player']=subprocess.check_output([str(player),'--version'],env=environment,text=True,stderr=subprocess.STDOUT)

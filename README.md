@@ -9,6 +9,8 @@ Use the packaged application in `dist/` after building. See [BUILD.md](BUILD.md)
 
 Device content stays on the Mac and Android device. No account, cloud service, root, or Android system modification is required. USB debugging grants broad device access: authorize only Macs you trust. Apps that prohibit capture, secondary displays, or additional tasks may not work; see [COMPATIBILITY.md](COMPATIBILITY.md).
 
+The Android companion program is under active development. Its full scope, ownership, boundary budgets and end-to-end release gates are tracked in [the companion roadmap](docs/companion/ROADMAP.md); those planned features are not yet part of the verified 0.1.8 release.
+
 ## Use
 
 Open DroidBridge and choose a connected device in the sidebar. The **Rendering** section offers **Native AppKit** or **scrcpy fallback**. Search by app name or package, select an app, and click **Launch App** (or double-click it). Launch another app the same way. Close a native window or use the session's Close button to release its display. Use **Restore Previous Sessions** after relaunch; the reconnect checkbox controls restoration after an interrupted connection. **Create / Update Mac App…** creates a separate launchable wrapper under `~/Applications/DroidBridge Apps` for Finder, Dock, and Spotlight indexing.

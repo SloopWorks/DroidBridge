@@ -24,3 +24,10 @@ Automatic reconnection waits for full Android readiness. Three failed launches p
 Wrapper loading uses a local screen manufactured from the Android launcher icon; Android controls its own in-app splash afterward. Fallback size tracking relies on public WindowServer metadata and local optical-frame calibration; if metadata is unavailable, the previous known geometry is retained. Changing macOS style/monitor scale during a running fallback session has not been exercised. No screen recording or accessibility permission is requested for this metadata path.
 
 Initial native blank-frame detection uses an 8×8 thumbnail and a small brightness threshold; very dark or sparse legitimate UI can also look blank. After 5 seconds, an explanation and **Show Android Screen** button let you reveal the actual stream and interact. This is a presentation heuristic, not evidence that an app blocks capture; it never bypasses Android capture policy.
+
+
+The companion0.2 program requires updating/quitting older copied hosts before
+pairing or switching USB/Wi-Fi. Pre-companion wrappers do not publish dashboard
+sessions or hold canonical alias leases. Their absence from the new dashboard
+is not evidence that they stopped, and companion Forget/Revoke does not revoke
+Android debugging. See the upgrade boundary in COMPATIBILITY.md.

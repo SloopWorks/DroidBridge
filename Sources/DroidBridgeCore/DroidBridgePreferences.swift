@@ -17,7 +17,7 @@ public struct DroidBridgePreferences: Codable, Equatable {
         self.deviceAudioRoutes = deviceAudioRoutes
     }
     public static var defaultURL: URL {
-        FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/preferences.json")
+        CompanionQAScope.current?.preferencesURL ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/preferences.json")
     }
     private enum CodingKeys: String, CodingKey { case bulkWrapperOnboardingEnabled, showAndroidSystemDecorations, screenOffDeviceSerials, deviceAudioRoutes }
     public init(from decoder: Decoder) throws {

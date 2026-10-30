@@ -24,8 +24,11 @@ final class NativeStartupExitTests: XCTestCase {
         try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
         defer { try? FileManager.default.removeItem(at:directory) }
         let tool = directory.appendingPathComponent("fixture-tool")
+        let calls = directory.appendingPathComponent("calls")
         let script = """
         #!/bin/sh
+        echo "$*" >> '\(calls.path)'
+        if [ "$1" = forward ] && [ "$2" = --list ]; then printf 'qa-owned-loopback tcp:\(port) localabstract:scrcpy_7654abcd\\n'; exit 0; fi
         if [ "$4" = getprop ] && [ "$5" = ro.build.version.sdk ]; then printf '35\\n'; exit 0; fi
         if [ "$1" = --version ]; then printf 'scrcpy 5.0.1\\n'; exit 0; fi
         if [ "$3" = forward ] && [ "$4" = tcp:0 ]; then printf '\(port)\\n'; exit 0; fi
@@ -44,5 +47,8 @@ final class NativeStartupExitTests: XCTestCase {
         }
         XCTAssertEqual(session.state,.failed)
         await session.stopAndWait()
+        let output=try String(contentsOf:calls)
+        XCTAssertTrue(output.contains("forward --list"))
+        XCTAssertFalse(output.contains("forward --remove tcp:\(port)"),"A newer foreign socket on the same native tcp:0 port must survive both supervisor and GUI cleanup")
     }
 }

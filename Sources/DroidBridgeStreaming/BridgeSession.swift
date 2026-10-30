@@ -26,6 +26,10 @@ public final class BridgeSession {
     private let toolchain: Toolchain
     private var process: Process?
     private var externalPortLease: ScrcpyPortLease?
+    private var canonicalAliasLease: CanonicalAliasLease?
+    #if DEBUG
+    var testingAliasAdmission: (@MainActor () async throws -> CanonicalAliasLease?)?
+    #endif
     private var logHandle: FileHandle?
     private var transport: NativeTransport?
     private var frameMailbox: FrameMailbox?
@@ -41,7 +45,7 @@ public final class BridgeSession {
     private var startupTerminalMessage: String?
     public init(descriptor: SessionDescriptor, toolchain: Toolchain) {
         self.descriptor = descriptor; self.toolchain = toolchain
-        let directory = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Logs/DroidBridge",isDirectory:true)
+        let directory = CompanionQAScope.current?.logDirectory ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Logs/DroidBridge",isDirectory:true)
         try? FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
         logURL = directory.appendingPathComponent("session-\(descriptor.id.uuidString).log")
     }
@@ -76,6 +80,7 @@ public final class BridgeSession {
         guard descriptor.device.serial.range(of:"^[A-Za-z0-9._:-]+$",options:.regularExpression) != nil else { throw BridgeError.message("Invalid Android device serial") }
         let c = descriptor.configuration
         guard (160...4096).contains(c.width), (160...4096).contains(c.height), (72...640).contains(c.density) else { throw BridgeError.message("Display size must be 160–4096 pixels and density 72–640 dpi") }
+        guard (15...60).contains(c.maximumFramesPerSecond) else { throw BridgeError.message("Frame rate must be between 15 and 60 fps") }
         startupInFlight += 1
         defer {
             startupInFlight -= 1
@@ -83,6 +88,15 @@ public final class BridgeSession {
         }
         let token = UUID(); generation = token; transition(.starting)
         do {
+            let admittedAlias: CanonicalAliasLease?
+            #if DEBUG
+            if let testingAliasAdmission {admittedAlias=try await testingAliasAdmission()}
+            else {admittedAlias=try await CanonicalAliasAdmission.acquire(serial:descriptor.device.serial)}
+            #else
+            admittedAlias=try await CanonicalAliasAdmission.acquire(serial:descriptor.device.serial)
+            #endif
+            try check(token)
+            canonicalAliasLease = admittedAlias
             onStartupProgress?("Preparing Android connection…")
             let sdk = try await adb(["shell","getprop","ro.build.version.sdk"])
             try check(token)
@@ -116,11 +130,15 @@ public final class BridgeSession {
         let explicit = ProcessInfo.processInfo.environment["DROIDBRIDGE_SUPERVISOR"]
         let paths = [explicit,bundled,sibling,FileManager.default.currentDirectoryPath + "/.build/debug/DroidBridgeSupervisor",FileManager.default.currentDirectoryPath + "/.build/release/DroidBridgeSupervisor"].compactMap { $0 }
         guard let supervisor = paths.first(where:{ FileManager.default.isExecutableFile(atPath:$0) }) else { throw BridgeError.message("DroidBridgeSupervisor is missing; rebuild or reinstall DroidBridge") }
-        var supervised = ["--parent",String(getpid())]
+        var supervised = ["--parent",String(getpid())] + (canonicalAliasLease?.supervisorArguments ?? [])
         if descriptor.configuration.backend == .scrcpy {supervised += ["--terminal-output","1"]}
         if descriptor.configuration.backend == .native {
             supervised += ["--adb",toolchain.adb,"--serial",descriptor.device.serial]
-            if let forward { supervised += ["--forward",forward] }
+            if let forward {
+                supervised += ["--forward",forward]
+                guard let socket = Self.remoteSocket(remotePath) else { throw BridgeError.message("Cannot verify the native session's exact Android socket") }
+                supervised += ["--forward-remote",socket]
+            }
             if let remotePath { supervised += ["--remote",remotePath] }
         }
         supervised += ["--",executable] + arguments
@@ -162,7 +180,7 @@ public final class BridgeSession {
         // Its initial content points come from new-display dimensions instead.
         if let frame=placement {config.width=Int(frame.width)/2*2;config.height=Int(frame.height)/2*2}
         let lease = try ScrcpyPortLease.acquire(); externalPortLease = lease
-        var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=30","--video-codec=h264","--keep-active","--no-power-on","--display-ime-policy=hide"]
+        var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=\(config.maximumFramesPerSecond)","--video-codec=h264","--keep-active","--no-power-on","--display-ime-policy=hide"]
         // Android 15's InputDispatcher can abort on hover followed by a click
         // across virtual-display navigation windows (upstream scrcpy #5477).
         // Clicks, drags and scrolling remain enabled; later Android keeps hover.
@@ -250,7 +268,7 @@ public final class BridgeSession {
         guard let port = UInt16(result.output.trimmingCharacters(in:.whitespacesAndNewlines)), port > 0 else { throw BridgeError.message("ADB did not allocate a video port") }
         localForward = "tcp:\(port)"; try check(token); forward = localForward
         let c = descriptor.configuration
-        let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=30","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_system_decorations=\(c.showSystemDecorations)","vd_destroy_content=true","clipboard_autosync=false","keep_active=true","power_on=false","display_ime_policy=hide","cleanup=true"]
+        let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=\(c.maximumFramesPerSecond)","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_system_decorations=\(c.showSystemDecorations)","vd_destroy_content=true","clipboard_autosync=false","keep_active=true","power_on=false","display_ime_policy=hide","cleanup=true"]
         try spawn(toolchain.adb,arguments:arguments,token:token)
         let transport = NativeTransport(); self.transport = transport
         let mailbox = FrameMailbox { [weak self] frame in
@@ -288,18 +306,25 @@ public final class BridgeSession {
             throw error
         }
     }
-    private func cleanup(forward: String?, remote: String?, receipt: URL? = nil) {
+    nonisolated private static func remoteSocket(_ remote:String?) ->String? {
+        guard let remote,remote.hasPrefix("/data/local/tmp/droidbridge-"),remote.hasSuffix(".jar") else {return nil}
+        let scid=String(remote.dropFirst("/data/local/tmp/droidbridge-".count).dropLast(4))
+        guard scid.range(of:"^[0-7][0-9a-f]{7}$",options:.regularExpression) != nil else {return nil}
+        return "localabstract:scrcpy_"+scid
+    }
+    private func cleanup(forward: String?, remote: String?, receipt: URL? = nil, aliasLease: CanonicalAliasLease? = nil) {
         let tools = toolchain; let serial = descriptor.device.serial
         let taskID = UUID()
         cleanupTasks[taskID] = Task.detached(priority:.utility) {
+            defer { withExtendedLifetime(aliasLease) {} }
             var complete = true
             if let forward {
-                do { _ = try await ProcessRunner.run(tools.adb,arguments:["-s",serial,"forward","--remove",forward],environment:tools.environment,timeout:5) }
-                catch {
-                    if let list = try? await ProcessRunner.run(tools.adb,arguments:["forward","--list"],environment:tools.environment,timeout:5) {
-                        complete = !list.output.components(separatedBy:.newlines).contains { line in let fields = line.split(whereSeparator:{$0.isWhitespace}); return fields.count == 3 && fields[0] == serial && fields[1] == forward }
-                    } else { complete = false }
-                }
+                do {
+                    guard let expected = Self.remoteSocket(remote) else {throw BridgeError.message("Missing native session socket identity")}
+                    let list = try await ProcessRunner.run(tools.adb,arguments:["forward","--list"],environment:tools.environment,timeout:5)
+                    let exact = list.output.components(separatedBy:.newlines).contains { line in let fields=line.split(whereSeparator:{$0.isWhitespace});return fields.count==3 && fields[0]==serial && fields[1]==forward && fields[2]==expected }
+                    if exact {_ = try await ProcessRunner.run(tools.adb,arguments:["-s",serial,"forward","--remove",forward],environment:tools.environment,timeout:5)}
+                } catch {complete=false}
             }
             if let remote {
                 do { _ = try await ProcessRunner.run(tools.adb,arguments:["-s",serial,"shell","rm","-f",remote],environment:tools.environment,timeout:5) } catch { complete = false }
@@ -330,6 +355,7 @@ public final class BridgeSession {
         frameMailbox?.cancel(); frameMailbox = nil
         transport?.stop(); transport = nil
         let portLease = externalPortLease; externalPortLease = nil
+        let aliasLease = canonicalAliasLease; canonicalAliasLease = nil
         if let process,process.isRunning {
             process.terminate()
             let taskID = UUID()
@@ -339,13 +365,14 @@ public final class BridgeSession {
                 if process.isRunning { kill(process.processIdentifier,SIGKILL) }
                 process.waitUntilExit()
                 withExtendedLifetime(portLease) {}
+                withExtendedLifetime(aliasLease) {}
             }
         }
         process = nil; try? logHandle?.close(); logHandle = nil
         let cleanupForward = forward; let cleanupRemote = remotePath
         let cleanupReceipt = startupInFlight == 0 ? receiptURL : nil
         forward = nil; remotePath = nil; receiptURL = nil
-        cleanup(forward:cleanupForward,remote:cleanupRemote,receipt:cleanupReceipt)
+        cleanup(forward:cleanupForward,remote:cleanupRemote,receipt:cleanupReceipt,aliasLease:aliasLease)
         transition(.stopped)
     }
 }

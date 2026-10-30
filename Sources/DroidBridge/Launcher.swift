@@ -5,6 +5,7 @@ import DroidBridgeStreaming
 @MainActor
 final class LauncherController: NSWindowController, NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate {
     let toolchain = Toolchain()
+    lazy var companion = CompanionDesktopAdapter(launcher: self)
     lazy var discovery = AndroidDiscovery(toolchain: toolchain)
     var devices: [AndroidDevice] = []
     var applications: [AndroidApplication] = []
@@ -13,14 +14,18 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var retiring: [UUID: BridgeSession] = [:]
     var hosts: [UUID: NativeWindowController] = [:]
     var sessionStates: [UUID: String] = [:]
-    let devicePicker = NSPopUpButton()
-    let backendPicker = NSPopUpButton()
-    let search = NSSearchField()
-    let table = LauncherAppTable()
-    let sessionList = NSStackView()
-    let status = LauncherStatusField(wrappingLabelWithString: "Looking for Android devices…")
+    lazy var devicePicker = NSPopUpButton()
+    lazy var backendPicker = NSPopUpButton()
+    lazy var search = NSSearchField()
+    lazy var table = LauncherAppTable()
+    lazy var sessionList = NSStackView()
+    lazy var status = LauncherStatusField(wrappingLabelWithString: "Looking for Android devices…")
     var launcherUI: LauncherUI?
-    let reconnect = NSButton(checkboxWithTitle: "Reconnect interrupted sessions automatically", target: nil, action: nil)
+    lazy var reconnect: NSButton = {
+        let button = NSButton(checkboxWithTitle: "Reconnect interrupted sessions automatically", target: nil, action: nil)
+        button.state = .on
+        return button
+    }()
     var timer: Timer?
     var refreshTask: Task<Void, Never>?
     var refreshing = false
@@ -48,13 +53,13 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var iconRecency: [String] = []
     var iconRecoveryMessages: [String] = []
     lazy var iconProvider = AndroidIconProvider(toolchain: toolchain)
-    var sharedPreferences = (try? DroidBridgePreferences.load()) ?? DroidBridgePreferences(bulkWrapperOnboardingEnabled:false)
-    let bulkPreference = NSButton(checkboxWithTitle:"Enable device apps in Spotlight",target:nil,action:nil)
-    let phoneScreenPreference = NSButton(checkboxWithTitle:"Keep phone screen off during Mac sessions",target:nil,action:nil)
-    let audioRoutePicker = NSPopUpButton()
-    let audioStatus = NSTextField(wrappingLabelWithString:"Mac audio starts when an app is running.")
-    let audioRetry = NSButton(title:"Retry Audio",target:nil,action:nil)
-    let audioUsePhone = NSButton(title:"Use Phone",target:nil,action:nil)
+    lazy var sharedPreferences = (try? DroidBridgePreferences.load()) ?? DroidBridgePreferences(bulkWrapperOnboardingEnabled:false)
+    lazy var bulkPreference = NSButton(checkboxWithTitle:"Enable device apps in Spotlight",target:nil,action:nil)
+    lazy var phoneScreenPreference = NSButton(checkboxWithTitle:"Keep phone screen off during Mac sessions",target:nil,action:nil)
+    lazy var audioRoutePicker = NSPopUpButton()
+    lazy var audioStatus = NSTextField(wrappingLabelWithString:"Mac audio starts when an app is running.")
+    lazy var audioRetry = NSButton(title:"Retry Audio",target:nil,action:nil)
+    lazy var audioUsePhone = NSButton(title:"Use Phone",target:nil,action:nil)
     lazy var audioControls: AudioControls = {
         let controls = AudioControls(toolchain: toolchain)
         controls.onChange = { [weak self] _ in self?.updateAudioPresentation() }
@@ -68,11 +73,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         }
         return controls
     }()
-    let decorationsPreference = NSButton(checkboxWithTitle:"Show Android system decorations",target:nil,action:nil)
-    let onboardingButton = NSButton(title:"Add All Device Apps to Spotlight",target:nil,action:nil)
-    let onboardingCancel = NSButton(title:"Cancel",target:nil,action:nil)
-    let onboardingProgress = NSProgressIndicator()
-    let onboardingStatus = NSTextField(wrappingLabelWithString:"Ready to add all launchable apps from the selected device.")
+    lazy var decorationsPreference = NSButton(checkboxWithTitle:"Show Android system decorations",target:nil,action:nil)
+    lazy var onboardingButton = NSButton(title:"Add All Device Apps to Spotlight",target:nil,action:nil)
+    lazy var onboardingCancel = NSButton(title:"Cancel",target:nil,action:nil)
+    lazy var onboardingProgress = NSProgressIndicator()
+    lazy var onboardingStatus = NSTextField(wrappingLabelWithString:"Ready to add all launchable apps from the selected device.")
     var onboardingAdmissionTask: Task<Void,Never>?
     var onboardingPending = false
     var managedNameRepair: ManagedAppNameRepair?
@@ -110,6 +115,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     @discardableResult func prepareWrapperLaunch() -> Bool {
         guard isWrapper, let package=launchOptions()["package"] else {return false}
         guard launchPreview == nil, !wrapperLaunchCancelled else {return true}
+        CompanionLaunchTrace.record("wrapper_preview_begin")
         let options=launchOptions()
         let app=AndroidApplication(packageName:package,name:options["name"] ?? package)
         let config=SessionConfiguration(backend:BackendKind(rawValue:options["backend"] ?? "native") ?? .native)
@@ -124,6 +130,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         launchPreview=preview
         preview.showWindow(nil);preview.window?.makeKeyAndOrderFront(nil)
         window?.orderOut(nil)
+        CompanionLaunchTrace.record("wrapper_preview_visible")
         return true
     }
     func showLaunchProblem(_ message:String) {
@@ -140,12 +147,16 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var selectedApp: AndroidApplication? { filtered.indices.contains(table.selectedRow) ? filtered[table.selectedRow] : nil }
     var backend: BackendKind { backendPicker.indexOfSelectedItem == 0 ? .native : .scrcpy }
     var persistenceURL: URL {
+        if let scope = CompanionQAScope.current { return scope.sessionsURL }
         let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("DroidBridge")
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         return directory.appendingPathComponent(isWrapper ? "sessions-\(Bundle.main.bundleIdentifier ?? "wrapper").json" : "sessions.json")
     }
+    private var launcherUIReady = false
     init(audioControls providedAudioControls: AudioControls? = nil) {
-        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1160, height: 780), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
+        CompanionLaunchTrace.record("launcher_init_begin")
+        let wrapper = Bundle.main.url(forResource: "launch", withExtension: "json") != nil || ProcessInfo.processInfo.arguments.contains("--wrapper")
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1160, height: 780), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: wrapper)
         window.title = "DroidBridge"
         window.contentMinSize = NSSize(width: 920, height: 640)
         window.titlebarSeparatorStyle = .line
@@ -155,11 +166,22 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
             audioControls = providedAudioControls
             audioControls.onChange = { [weak self] _ in self?.updateAudioPresentation() }
         }
+        if !wrapper { prepareLauncherUIIfNeeded() }
+        CompanionLaunchTrace.record("launcher_init_ready")
+    }
+    private func prepareLauncherUIIfNeeded() {
+        guard !launcherUIReady else { return }
+        launcherUIReady = true
+        CompanionLaunchTrace.record("launcher_ui_begin")
         buildUI()
-        window.center()
-        if let data = try? Data(contentsOf: persistenceURL), let descriptors = try? JSONDecoder().decode([SessionDescriptor].self, from: data) { pending = descriptors }
+        window?.center()
+        if sessions.isEmpty, let data = try? Data(contentsOf: persistenceURL), let descriptors = try? JSONDecoder().decode([SessionDescriptor].self, from: data) { pending = descriptors }
         updateLauncherPresentation()
-
+        CompanionLaunchTrace.record("launcher_ui_ready")
+    }
+    override func showWindow(_ sender: Any?) {
+        prepareLauncherUIIfNeeded()
+        super.showWindow(sender)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
     func button(_ title: String, _ action: Selector) -> NSButton { let button = NSButton(title: title, target: self, action: action); button.bezelStyle = .rounded; return button }
@@ -169,7 +191,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         status.onChange={ [weak self] in self?.updateLauncherPresentation() }
         updateSessions()
     }
-    func updateLauncherPresentation() {launcherUI?.refresh();updateAudioPresentation()}
+    func updateLauncherPresentation() {guard let launcherUI else { return };launcherUI.refresh();updateAudioPresentation()}
     func tableViewSelectionDidChange(_ notification:Notification) {updateLauncherPresentation()}
     var canLaunchSelectedApp:Bool {
         guard let device=selectedDevice else {return false}
@@ -258,7 +280,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     func refresh() { refreshDevices(forceApps: true) }
     func refreshDevices(forceApps: Bool = false) {
         guard !refreshing, !quitting else { return }; refreshing = true
-        scheduleManagedNameRepair()
+        if CompanionQAScope.current == nil { scheduleManagedNameRepair() }
         sharedPreferences=(try? DroidBridgePreferences.load()) ?? DroidBridgePreferences(bulkWrapperOnboardingEnabled:false)
         bulkPreference.state=sharedPreferences.bulkWrapperOnboardingEnabled ? .on : .off
         decorationsPreference.state=sharedPreferences.showAndroidSystemDecorations ? .on : .off
@@ -268,10 +290,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         refreshTask = Task {
             defer { refreshing = false; refreshTask = nil;updateLauncherPresentation() }
             do {
-                let recovered = isWrapper ? [] : await AndroidIconProvider.recoverAbandonedRequests(toolchain: toolchain)
+                let recovered = isWrapper || CompanionQAScope.current != nil ? [] : await AndroidIconProvider.recoverAbandonedRequests(toolchain: toolchain)
                 if !recovered.isEmpty { iconRecoveryMessages = recovered }
                 guard !quitting, !Task.isCancelled else { return }
-                let found = try await discovery.devices()
+                let discovered = try await discovery.devices()
+                let found = CompanionQAScope.current?.filterDevices(discovered) ?? discovered
                 guard !quitting else { return }
                 let connected = Set(found.filter { $0.state == "device" }.map(\.serial))
                 if onboarding.isRunning, let captured=onboarding.capturedSerial, !connected.contains(captured) { onboarding.cancel() }
@@ -357,6 +380,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     }
     @objc func launchAction() {
         guard canLaunchSelectedApp,let device=selectedDevice,let app=selectedApp else {status.stringValue="Select an app from a connected, ready device first.";return}
+        status.stringValue="Opening \(app.name) on \(device.model)…"
         Task { await launch(device: device, app: app, configuration: SessionConfiguration(backend: backend,showSystemDecorations:(try? DroidBridgePreferences.load().showAndroidSystemDecorations) ?? true)) }
     }
     @discardableResult
@@ -380,6 +404,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         if let replacing, sessions[replacing] !== predecessor {return nil}
         if let restoring, !pending.contains(where:{$0.id==restoring}) {return nil}
         var initialConfiguration=configuration
+        initialConfiguration=companion.configuration(initialConfiguration,serial:device.serial)
         if let preview=launchPreview {
             let size=preview.video.bounds.size
             let scale=min(1.5,1600 / max(size.width,size.height))
@@ -526,6 +551,8 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         else if session.descriptor.configuration.backend == .native,let window=hosts[id]?.window {window.deminiaturize(nil);window.makeKeyAndOrderFront(nil);NSApp.activate(ignoringOtherApps:true)}
     }
     func updateSessions() {
+        companion.markSessionsChanged()
+        guard launcherUI != nil else { return }
         let presentation=sessions.values.map {LauncherSessionPresentation(controller:self,session:$0)}.sorted {$0.id.uuidString<$1.id.uuidString}
         guard presentation != sessionPresentation else {updateLauncherPresentation();return}
         sessionPresentation=presentation
@@ -579,7 +606,8 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                 if let cached = iconData[iconKey(device, app)] { png = cached }
                 else { png = try await iconProvider.icon(device: device, application: app) }
                 guard !quitting, !Task.isCancelled else { return }
-                let url = try await MacAppWrapper.create(application: app, device: device, backend: chosenBackend, iconPNG: png)
+                let qaDestination = CompanionQAScope.current?.root.appendingPathComponent("ManualApps", isDirectory: true)
+                let url = try await MacAppWrapper.create(application: app, device: device, backend: chosenBackend, iconPNG: png, destinationRoot: qaDestination)
                 status.stringValue = "Created or updated \(url.path). Existing launch settings are preserved; the previous generation is retained under .DroidBridge Backups."
                 NSWorkspace.shared.activateFileViewerSelecting([url])
             } catch { status.stringValue = "Mac app was not changed: " + error.localizedDescription }
@@ -613,6 +641,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     }
     func shutdownAndWait() async {
         quitting = true
+        await companion.shutdown()
         for task in deviceSelectionTasks.values {task.cancel()}
         if let preview=launchPreview {preview.onClose=nil;preview.close();launchPreview=nil}
         phoneDisplayControls.cancel(); managedNameRepair?.cancel(); restoreTask?.cancel(); onboardingAdmissionTask?.cancel(); onboarding.cancel()

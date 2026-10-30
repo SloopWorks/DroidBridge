@@ -22,6 +22,7 @@ public struct ManagedAppsPaths: Sendable {
         return result
     }
     public static var userDefault: Self {
+        if let scope = CompanionQAScope.current { return scope.managedPaths }
         let home = FileManager.default.homeDirectoryForCurrentUser
         return Self(privateRoot: home.appendingPathComponent("Library/Application Support/DroidBridge/ManagedApps.noindex"), activeRoot: home.appendingPathComponent("Applications/DroidBridge Apps/Devices"))
     }
@@ -108,6 +109,8 @@ public final class ManagedAppCatalog: @unchecked Sendable {
     }
     private var cachedManifest: Manifest?
     private var cachedFingerprint: ManifestFingerprint?
+    private var exportSnapshot = CompanionExportPolicy.Snapshot.unrestricted
+    private var exportFingerprint: ManifestFingerprint?
 
     private struct Publication: Codable {
         let reservation: ManagedAppReservation
@@ -144,6 +147,118 @@ public final class ManagedAppCatalog: @unchecked Sendable {
         }
     }
     public init(paths: ManagedAppsPaths = .userDefault) { self.paths = paths }
+    /// A trusted broker publishes the complete accepted selection for all
+    /// verified aliases under the same lock used by wrapper admission.
+    public func updateCompanionExports(deviceID: String, aliases: [String], selection: [String: Bool]) throws {
+        try locked { manifest in
+            let url = CompanionExportPolicy.url(paths: paths)
+            var policy = try CompanionExportPolicy.read(url)
+            guard let id = UUID(uuidString: deviceID)?.uuidString.lowercased() else { throw ManagedAppCatalogError.invalid("companion phone identity") }
+            guard policy.devices[id]?.authorityTrustID == nil else { throw ManagedAppCatalogError.invalid("companion export requires revision authority") }
+            try advanceCompanionPolicyFence(&manifest)
+            policy.devices[id] = .init(aliases: aliases, selection: selection)
+            try CompanionExportPolicy.write(policy, to: url)
+            exportSnapshot = CompanionExportPolicy.Snapshot(policy)
+            exportFingerprint = nil
+        }
+    }
+    /// Only call after authenticating the exact phone installation and trust.
+    /// Re-pairing preserves export choices, but starts a fresh revision authority.
+    public func bindCompanionExportAuthority(deviceID: String, trustID: String, aliases: [String], allowingForgottenAliasTransfer: Bool = false) throws {
+        try locked { _ in
+            guard let id = UUID(uuidString: deviceID)?.uuidString.lowercased(),
+                  let trust = UUID(uuidString: trustID)?.uuidString.lowercased() else { throw ManagedAppCatalogError.invalid("companion export identity") }
+            return try CanonicalAliasAdmission.withPolicyFence(paths: paths) {
+            let url = CompanionExportPolicy.url(paths: paths)
+            var policy = try CompanionExportPolicy.read(url)
+            let priorAliases = Set(policy.devices.values.flatMap { $0.aliases })
+            let newAliases = aliases.filter { !priorAliases.contains($0) }
+            try CanonicalAliasAdmission.requireDrained(Set(newAliases.map { CanonicalAliasAdmission.serialIdentity($0) }), paths: paths)
+            var device = policy.devices[id] ?? .init(aliases: aliases, selection: [:])
+            var inherited: [String: Bool] = [:]
+            var inheritedCapture = Set<String>()
+            for oldID in policy.devices.keys.sorted() where oldID != id {
+                guard var old = policy.devices[oldID], !Set(old.aliases).isDisjoint(with: aliases) else { continue }
+                guard allowingForgottenAliasTransfer, old.forgotten == true else { throw ManagedAppCatalogError.invalid("companion alias belongs to another installation; explicitly forget its pairing before re-pairing") }
+                inheritedCapture.insert(old.captureIdentity ?? oldID)
+                for (package, selected) in old.selection { inherited[package] = (inherited[package] ?? true) && selected }
+                old.aliases.removeAll { aliases.contains($0) }; policy.devices[oldID] = old
+            }
+            // New installation's deliberate choices win; otherwise retain the
+            // most restrictive historical choice across explicitly moved aliases.
+            let previousCapture = device.captureIdentity ?? id
+            if !inheritedCapture.isEmpty {
+                try CanonicalAliasAdmission.requireDrained(inheritedCapture.union([previousCapture]), paths: paths)
+                device.captureIdentity = policy.devices[id] != nil ? previousCapture : inheritedCapture.sorted().first
+            } else { device.captureIdentity = previousCapture }
+            device.selection = inherited.merging(device.selection) { _, current in current }
+            device.aliases = aliases; device.forgotten = false
+            if device.authorityTrustID != trust { device.authorityTrustID = trust; device.revisions = [:] }
+            policy.devices[id] = device
+            try CompanionExportPolicy.write(policy, to: url)
+            exportSnapshot = CompanionExportPolicy.Snapshot(policy); exportFingerprint = nil
+            }
+        }
+    }
+    /// Local explicit consent only. Keep historical choices and revision bytes;
+    /// no wrapper, app preference, publication or accepted selection is deleted.
+    public func forgetCompanionExportAuthority(deviceID: String) throws {
+        try locked { _ in
+            guard let id = UUID(uuidString: deviceID)?.uuidString.lowercased() else { throw ManagedAppCatalogError.invalid("companion phone identity") }
+            let url = CompanionExportPolicy.url(paths: paths)
+            var policy = try CompanionExportPolicy.read(url)
+            if var device = policy.devices[id] { device.forgotten = true; policy.devices[id] = device; try CompanionExportPolicy.write(policy, to: url) }
+            exportSnapshot = CompanionExportPolicy.Snapshot(policy); exportFingerprint = nil
+        }
+    }
+    public func companionExportWasForgotten(deviceID: String) throws -> Bool {
+        try locked { _ in
+            guard let id = UUID(uuidString: deviceID)?.uuidString.lowercased() else { throw ManagedAppCatalogError.invalid("companion phone identity") }
+            return try CompanionExportPolicy.read(CompanionExportPolicy.url(paths: paths)).devices[id]?.forgotten == true
+        }
+    }
+    /// Per-package fences retain independent choices when events arrive out of
+    /// order. False means a newer choice already won; equal conflicting bytes fail.
+    @discardableResult
+    public func applyCompanionExport(deviceID: String, trustID: String, packageName: String, selected: Bool, revision: Int64) throws -> Bool {
+        try AndroidDiscovery.validatePackage(packageName)
+        return try locked { manifest in
+            guard let id = UUID(uuidString: deviceID)?.uuidString.lowercased(),
+                  let trust = UUID(uuidString: trustID)?.uuidString.lowercased(), revision > 0,
+                  revision <= 9_007_199_254_740_991 else { throw ManagedAppCatalogError.invalid("companion export identity/revision") }
+            let url = CompanionExportPolicy.url(paths: paths)
+            var policy = try CompanionExportPolicy.read(url)
+            guard var device = policy.devices[id], device.authorityTrustID == trust else { throw ManagedAppCatalogError.invalid("companion export authority changed") }
+            let previous = device.revisions?[packageName] ?? 0
+            if revision < previous { return false }
+            if revision == previous {
+                guard device.selection[packageName] == selected else { throw ManagedAppCatalogError.invalid("companion export revision conflict") }
+                return true
+            }
+            try advanceCompanionPolicyFence(&manifest)
+            device.selection[packageName] = selected
+            var revisions = device.revisions ?? [:]; revisions[packageName] = revision; device.revisions = revisions
+            policy.devices[id] = device
+            try CompanionExportPolicy.write(policy, to: url)
+            exportSnapshot = CompanionExportPolicy.Snapshot(policy); exportFingerprint = nil
+            return true
+        }
+    }
+    /// Version 2 is an intentional forward-compatibility fence. Legacy helpers
+    /// reject it before moving or registering wrappers, including after restart.
+    /// Publish this first; a crash may defer a choice, but cannot accept a choice
+    /// while retaining a legacy writer that ignores the separate policy.
+    private func advanceCompanionPolicyFence(_ manifest: inout Manifest) throws {
+        if manifest.version < 2 { manifest.version = 2; try save(manifest) }
+    }
+    /// The separate policy is authoritative after a broker crash between policy
+    /// publication and its own cached-state write.
+    public func companionExportSelection(deviceID: String) throws -> [String: Bool] {
+        try locked { _ in
+            guard let id = UUID(uuidString: deviceID)?.uuidString.lowercased() else { throw ManagedAppCatalogError.invalid("companion phone identity") }
+            return try CompanionExportPolicy.read(CompanionExportPolicy.url(paths: paths)).devices[id]?.selection ?? [:]
+        }
+    }
     public static func bundleFilename(_ package: String, name: String? = nil) -> String {
         filenameStem(name ?? package) + ".app"
     }
@@ -249,11 +364,16 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             return (try? validateBundle(record.bundleURL, record: record)) != nil
         }
     }
+    public func companionExportAllowed(serial: String, packageName: String) throws -> Bool {
+        try AndroidDiscovery.validateSerial(serial); try AndroidDiscovery.validatePackage(packageName)
+        return try locked { _ in exportSnapshot.allows(serial: serial, packageName: packageName) }
+    }
     public func reserve(device: AndroidDevice, application: AndroidApplication, backend: BackendKind, runningBundlePaths: Set<String> = [], adoptManualWrappers: Bool = false, preserveLegacyFilename: Bool = false) throws -> ManagedAppReservation {
         try AndroidDiscovery.validateSerial(device.serial); try AndroidDiscovery.validatePackage(application.packageName)
         guard !application.name.isEmpty, application.name.utf8.count <= 1024 else { throw ManagedAppCatalogError.invalid("application name") }
         let normalizedRunning = Set(runningBundlePaths.map { Self.canonical(URL(fileURLWithPath:$0)) })
         return try locked { manifest in
+            guard exportSnapshot.allows(serial: device.serial, packageName: application.packageName) else { throw ManagedAppCatalogError.invalid("This app is excluded from Mac export") }
             let hash = Self.deviceHash(device.serial), key = hash + ":" + application.packageName
             guard manifest.publications[key] == nil else { throw ManagedAppCatalogError.busy }
             if let reservation = manifest.reservations[key], kill(reservation.ownerPID, 0) == 0 || errno == EPERM { throw ManagedAppCatalogError.busy }
@@ -326,7 +446,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             manifest.actions.removeAll { action in
                 guard action.register else { return false }
                 guard let record = manifest.records[action.key] else { return true }
-                return !enabled || !availableSerials.contains(record.deviceSerial) || record.generation != action.generation || record.availability != .active || record.location != .active || manifest.publications[action.key] != nil
+                return !enabled || !availableSerials.contains(record.deviceSerial) || !exportSnapshot.allows(serial: record.deviceSerial, packageName: record.packageName) || record.generation != action.generation || record.availability != .active || record.location != .active || manifest.publications[action.key] != nil
             }
             // A malformed/missing owned row may refuse its move, but cannot
             // roll back a newer cohort-wide deny decision for unrelated rows.
@@ -343,7 +463,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                 guard manifest.publications[key] == nil, (manifest.issues[key]?.retryAfter ?? .distantPast) <= now else { continue }
                 var record = manifest.records[key]!
                 do {
-                    let desired: ManagedAppAvailability = enabled && availableSerials.contains(record.deviceSerial) ? .active : .inactive
+                    let desired: ManagedAppAvailability = enabled && availableSerials.contains(record.deviceSerial) && exportSnapshot.allows(serial: record.deviceSerial, packageName: record.packageName) ? .active : .inactive
                     if !fm.fileExists(atPath:record.bundleURL.path) {
                         let other = record.location == .active ? record.inactiveBundleURL : record.activeBundleURL
                         guard fm.fileExists(atPath:other.path) else { throw ManagedAppCatalogError.invalid("Mac app bundle is missing. Use Add All Device Apps to repair it.") }
@@ -380,7 +500,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             var count = manifest.publications.keys.filter { (manifest.issues[$0]?.retryAfter ?? .distantPast) <= now }.count
             for record in manifest.records.values {
                 guard (manifest.issues[record.key]?.retryAfter ?? .distantPast) <= now else { continue }
-                let desired: ManagedAppAvailability = manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) ? .active : .inactive
+                let desired: ManagedAppAvailability = manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) && exportSnapshot.allows(serial: record.deviceSerial, packageName: record.packageName) ? .active : .inactive
                 if record.availability != desired || record.location != desired || !fm.fileExists(atPath:record.bundleURL.path) { count += 1 }
             }
             return count
@@ -405,7 +525,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                 return true
             }
             guard let record = manifest.records[action.key] else { return false }
-            return (manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) && record.generation == action.generation && record.availability == .active && record.location == .active && manifest.publications[action.key] == nil && (try? validateBundle(record.activeBundleURL, record: record)) != nil)
+            return (manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) && exportSnapshot.allows(serial: record.deviceSerial, packageName: record.packageName) && record.generation == action.generation && record.availability == .active && record.location == .active && manifest.publications[action.key] == nil && (try? validateBundle(record.activeBundleURL, record: record)) != nil)
         }
     }
     /// Returns false when an effect became stale during dispatch. A durable
@@ -430,20 +550,20 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                     if action.bundleURL.path != record.activeBundleURL.path {
                         guard let retired = manifest.retiredNames[action.generation.uuidString], retired.key == action.key, retired.activeBundleURL.path == action.bundleURL.path else { throw ManagedAppCatalogError.invalid("completed registration path") }
                         enqueueUnregister(url:action.bundleURL,key:action.key,generation:action.generation,manifest:&manifest,supersedeRegistrations:false)
-                        if manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) && record.availability == .active && record.location == .active && manifest.publications[action.key] == nil { enqueue(register:true,record:record,manifest:&manifest) }
+                        if manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) && exportSnapshot.allows(serial: record.deviceSerial, packageName: record.packageName) && record.availability == .active && record.location == .active && manifest.publications[action.key] == nil { enqueue(register:true,record:record,manifest:&manifest) }
                         results[action.id] = false
                         continue
                     }
-                    if !manifest.policyEnabled || !manifest.availableSerials.contains(record.deviceSerial) || record.generation != action.generation || record.availability != .active || record.location != .active || manifest.publications[action.key] != nil {
+                    if !manifest.policyEnabled || !manifest.availableSerials.contains(record.deviceSerial) || !exportSnapshot.allows(serial: record.deviceSerial, packageName: record.packageName) || record.generation != action.generation || record.availability != .active || record.location != .active || manifest.publications[action.key] != nil {
                         enqueueUnregister(url:action.bundleURL,key:action.key,generation:action.generation,manifest:&manifest,supersedeRegistrations:false)
-                        if manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) && record.availability == .active && record.location == .active && manifest.publications[action.key] == nil { enqueue(register:true,record:record,manifest:&manifest) }
+                        if manifest.policyEnabled && manifest.availableSerials.contains(record.deviceSerial) && exportSnapshot.allows(serial: record.deviceSerial, packageName: record.packageName) && record.availability == .active && record.location == .active && manifest.publications[action.key] == nil { enqueue(register:true,record:record,manifest:&manifest) }
                         results[action.id] = false
                     }
                 } else if let record = manifest.records[action.key], action.bundleURL.path == record.activeBundleURL.path, record.availability == .inactive && record.location == .active && manifest.publications[action.key] == nil {
                     var successor = record; successor.location = .inactive; manifest.records[action.key] = successor
                     moves.append((successor,record.activeBundleURL,record.inactiveBundleURL))
                 }
-                if !action.register, let current = manifest.records[action.key], manifest.policyEnabled, manifest.availableSerials.contains(current.deviceSerial), current.availability == .active, current.location == .active, action.bundleURL.path == current.activeBundleURL.path, manifest.publications[action.key] == nil {
+                if !action.register, let current = manifest.records[action.key], manifest.policyEnabled, manifest.availableSerials.contains(current.deviceSerial), exportSnapshot.allows(serial: current.deviceSerial, packageName: current.packageName), current.availability == .active, current.location == .active, action.bundleURL.path == current.activeBundleURL.path, manifest.publications[action.key] == nil {
                     enqueue(register:true,record:current,manifest:&manifest)
                 }
             }
@@ -463,7 +583,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
     public func isLaunchAllowed(bundleURL: URL, serial: String, packageName: String) throws -> Bool {
         try locked { manifest in
             let key = Self.deviceHash(serial) + ":" + packageName
-            guard let record = manifest.records[key], manifest.policyEnabled, manifest.availableSerials.contains(serial), record.availability == .active, record.location == .active,
+            guard let record = manifest.records[key], manifest.policyEnabled, manifest.availableSerials.contains(serial), exportSnapshot.allows(serial: serial, packageName: packageName), record.availability == .active, record.location == .active,
                   manifest.publications[key] == nil, Self.canonical(bundleURL) == Self.canonical(record.activeBundleURL) else { return false }
             return (try? validateBundle(record.activeBundleURL, record: record)) != nil
         }
@@ -593,6 +713,18 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             Thread.sleep(forTimeInterval:0.005)
         }
         try Task.checkCancellation()
+        let policyURL = CompanionExportPolicy.url(paths: paths)
+        var policyMetadata = stat()
+        if lstat(policyURL.path, &policyMetadata) == 0 {
+            let fingerprint = ManifestFingerprint(policyMetadata)
+            if exportFingerprint != fingerprint {
+                exportSnapshot = (try? CompanionExportPolicy.read(policyURL)).map(CompanionExportPolicy.Snapshot.init) ?? .unavailable
+                exportFingerprint = fingerprint
+            }
+        } else {
+            exportSnapshot = errno == ENOENT ? .unrestricted : .unavailable
+            exportFingerprint = nil
+        }
         var manifest = Manifest()
         let url = paths.privateRoot.appendingPathComponent("catalog.json")
         if fm.fileExists(atPath: url.path) {
@@ -605,7 +737,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                 manifest = cachedManifest
             } else {
             manifest = try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: url))
-            guard manifest.version == 1, manifest.records.count <= 10_000, manifest.reservations.count <= 10_000, manifest.actions.count <= 30_000, manifest.publications.count <= 10_000, manifest.availableSerials.count <= 10_000, manifest.issues.count <= 10_000, manifest.missingHistory.count <= 10_000, manifest.retiredNames.count <= 10_000 else { throw ManagedAppCatalogError.invalid("manifest limits/version") }
+            guard [1, 2].contains(manifest.version), manifest.records.count <= 10_000, manifest.reservations.count <= 10_000, manifest.actions.count <= 30_000, manifest.publications.count <= 10_000, manifest.availableSerials.count <= 10_000, manifest.issues.count <= 10_000, manifest.missingHistory.count <= 10_000, manifest.retiredNames.count <= 10_000 else { throw ManagedAppCatalogError.invalid("manifest limits/version") }
             for serial in manifest.availableSerials { try AndroidDiscovery.validateSerial(serial) }
             for (id,record) in manifest.missingHistory {
                 guard id == record.generation.uuidString else { throw ManagedAppCatalogError.invalid("missing history identity") }

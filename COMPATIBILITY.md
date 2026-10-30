@@ -33,3 +33,22 @@ See `verification/REPORT.md` and independent QA evidence for the final backend-s
 ## Phone screen off
 
 Physical screen controls require Android 15/API35 or newer and advertised shell display-power commands. Android 17 removes `power-on`; DroidBridge detects `power-reset` and display-scoped `cmd power wakeup --display-id 0` instead of assuming API level alone defines syntax. Stock Android15 help omits its functioning legacy power commands; only that observed API35 compatibility path uses the known legacy syntax, with strict command and actual state verification. Actual main display state must be verified. Both backends select hidden IME policy, avoiding a software keyboard inside Mac windows and the physical-display fallback that prevented Android17 typing with the panel off. Native and fallback virtual displays use scrcpy5.0.1 keep-active/no-power-on behavior without changing global stay-awake or timeout settings. Turning the main panel off is separate from locking the device; Android authentication, enterprise policy and capture restrictions still apply. Physical Pixel behavior remains an owner verification stage.
+
+
+## Companion upgrade boundary
+
+The0.2 companion broker, dashboard and canonical USB/Wi-Fi capture leases apply
+to updated0.2 launcher/wrapper/audio hosts. Before installing or pairing, quit
+older DroidBridge main apps and copied wrappers, then open the updated host and
+allow managed wrapper maintenance to finish. Running wrappers are preserved and
+wait for a later retry. Independently created manual wrappers need Create / Update
+Mac App again before using companion controls.
+
+Older hosts lack the companion registry and canonical alias lease protocol.
+Their independent Android debugging sessions are not implicitly stopped by
+forgetting companion trust, and mixing old capture hosts with the new cohort
+has no cross-version duplicate-capture guarantee. Do not switch USB/Wi-Fi while
+an old host is still running. The new cohort's two-alias/audio/crash fences are
+separately verified; they do not establish interoperability with an unmodified
+older executable. Android debugging authorization remains separate from
+companion trust and must be revoked separately when removing that access.

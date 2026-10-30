@@ -1,0 +1,15 @@
+DroidBridge Android companion — third-party components
+
+ZXing Core 3.5.3 — Copyright ZXing authors. Apache License 2.0.
+https://github.com/zxing/zxing/tree/zxing-3.5.3
+See Apache-2.0.txt and zxing-NOTICE.txt.
+
+Kotlin standard library 2.3.21 — Copyright JetBrains s.r.o. and contributors. Apache License 2.0.
+https://github.com/JetBrains/kotlin/tree/v2.3.21
+See Apache-2.0.txt and kotlin-NOTICE.txt.
+
+IntelliJ IDEA annotations 13.0 — Copyright 2000-2012 JetBrains s.r.o. Apache License 2.0.
+https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/
+See Apache-2.0.txt.
+
+The Android framework is supplied by the device. Instrumentation, attacker and QA fixture dependencies are not included in the production APK.

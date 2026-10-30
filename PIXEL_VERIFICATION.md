@@ -35,3 +35,53 @@ is one playback stream, no echo, and audio survives quitting its first owner.
 Test phone panel OFF, disconnect/reconnect, and Retry / Use Phone after a failure.
 An initialized output label does not replace listening to real speakers/headphones.
 No microphone or call-audio forwarding is promised.
+
+## Companion acceptance
+
+Use this section with the0.2 companion candidate identified by the release
+checksums. Close older main apps, wrappers and audio hosts first. Update managed
+wrappers and recreate/update manual wrappers before testing USB/Wi-Fi aliases;
+old executables cannot participate in the new cross-process ownership protocol.
+
+1. In **Phone → Companion…**, select the authorized Pixel and choose
+   **Install / Update Android Companion**, then **Open Android Companion**. On
+   the phone explicitly start its connection service. This uses the existing ADB
+   authorization; pairing is a separate permission.
+2. Choose **Pair a new Mac** on the phone. Scan/import its QR or paste its full
+   pairing link in the Mac pairing window. Compare the named Mac and displayed
+   code on both screens, then approve on the phone. Confirm the connected state
+   and app names/icons; neither approval nor optional permissions are automatic.
+3. Select a few phone apps for Mac export, run explicit onboarding and check real
+   Spotlight results/icons. Launch two from their Mac wrappers. Check focus,
+   typing, resizing and clean close on both rendering backends. Disconnect:
+   managed apps should become unavailable and stale search results must refuse
+   new launches. Reconnect and check their return.
+4. From the phone open an app on the selected Mac. Check dashboard sessions while
+   the main Mac launcher is closed; stop a session and then Stop All. Test audio
+   routes and physical-screen Off/On with real playback/input. Audio is
+   device-wide; screen-off does not unlock the phone.
+5. Explicitly share disposable text, a link, an image and a small file to the
+   selected Mac. Save with the native panel and compare file contents. Send a
+   file back. Test explicit clipboard copy in each direction while the phone app
+   is foreground; no continuous clipboard collection is expected.
+6. Optionally enable notification mirroring and grant notification access in
+   Android settings. Test a disposable supported message notification, its update,
+   dismissal and reply. Sensitive/unsupported notifications may omit content or
+   reply actions. Revoke access and verify new content stops.
+7. Apply each performance profile and open a new app window; existing streams
+   retain their launch settings. Test disconnect/reconnect and Mac quit/relaunch.
+   For wireless, use Android's **Wireless debugging** pairing-code UI and Mac
+   setup controls. Stop USB sessions before switching aliases; expect a visible
+   reconnect gap, not seamless migration.
+8. Check **Get Mac App** on the phone: refresh official metadata, compare version,
+   architecture, SHA-256 and signing status, then open/copy the download link.
+   Installation/approval occurs on the Mac. Finally revoke/forget the test Mac
+   and confirm companion commands/sharing stop. Existing ADB windows have a
+   separate authorization: revoke USB/wireless debugging in developer settings
+   to remove that access too.
+
+For failures export the bounded companion diagnostics and include release/build,
+Android version, connection type, feature and time. Review exports/screenshots
+before sharing. Never include a QR/pairing link, credential, private clipboard,
+notification body or personal file in a public report. Keep physical Pixel
+results separate from emulator evidence.

@@ -37,7 +37,10 @@ if notice.exists():
 source = repo / 'Vendor/scrcpy/LICENSE'
 if source.exists():
     shutil.copy2(source, output / 'scrcpy-Apache-2.0.txt')
-metadata = subprocess.check_output(['brew', 'info', '--json=v2', *sorted(formulae)], text=True)
+recipes = [str(pathlib.Path(formulae[name]['installed_origin']) / '.brew' / (name + '.rb')) for name in sorted(formulae)]
+if not all(pathlib.Path(recipe).is_file() for recipe in recipes):
+    raise RuntimeError('Exact installed runtime formula recipe is missing')
+metadata = subprocess.check_output(['brew', 'info', '--json=v2', '--formula', *recipes], text=True)
 (output / 'homebrew-formulae.json').write_text(metadata)
 (output / 'runtime-notices.json').write_text(json.dumps(formulae, indent=2) + '\n')
 print(f'Collected runtime notices for {len(formulae)} formulae. Corresponding-source review remains required before public redistribution.')

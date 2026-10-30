@@ -1,0 +1,15 @@
+--- a/vendor/CMakeLists.adb.txt
++++ b/vendor/CMakeLists.adb.txt
+@@ -70,6 +70,12 @@
+ add_library(libadb STATIC ${libadb_SOURCES})
+ target_compile_definitions(libadb PRIVATE -D_GNU_SOURCE)
+ target_compile_definitions(libadb PUBLIC -DADB_HOST=1)
++# DroidBridge: do not depend on Protobuf's include directory incidentally being
++# the same Homebrew prefix as ADB's compression and test-friend headers.
++target_include_directories(libadb PRIVATE
++	${libbrotlicommon_INCLUDE_DIRS} ${libbrotlidec_INCLUDE_DIRS}
++	${libbrotlienc_INCLUDE_DIRS} ${liblz4_INCLUDE_DIRS} ${libzstd_INCLUDE_DIRS}
++	${libusb-1.0_INCLUDEDIR})
+ target_include_directories(libadb PUBLIC
+ 	boringssl/include
+ 	adb

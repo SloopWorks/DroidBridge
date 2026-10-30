@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <application>
+  <provider android:name="dev.droidbridge.companion.StalledTransferProvider" android:authorities="dev.droidbridge.companion.test.staging" android:exported="false" android:grantUriPermissions="true"/>
+  <activity android:name="dev.droidbridge.companion.StagingGrantActivity" android:exported="true" android:theme="@android:style/Theme.Material.Light.NoActionBar"/>
+ </application>
+</manifest>

@@ -19,7 +19,7 @@ import DroidBridgeCore
     private var closing=false
 
     public convenience init(toolchain:Toolchain) {
-        self.init(toolchain:toolchain,directory:FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/AudioRoutes.noindex"),supervisor:Self.defaultSupervisor(),outputAvailable:Self.hasOutputDevice)
+        self.init(toolchain:toolchain,directory:CompanionQAScope.current?.audioDirectory ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/AudioRoutes.noindex"),supervisor:Self.defaultSupervisor(),outputAvailable:Self.hasOutputDevice)
     }
     // Injectable paths/output check support isolated executable lifecycle tests.
     public init(toolchain:Toolchain,directory:URL,supervisor:String,outputAvailable:@escaping ()->Bool,startupTimeout:TimeInterval=20) {
@@ -71,7 +71,7 @@ import DroidBridgeCore
         statuses[serial]=value; onStatusChange?(serial,value)
     }
     nonisolated private static func effectiveRoute(_ serial:String,_ routes:[String:DeviceAudioRoute])->DeviceAudioRoute {
-        routes[serial] ?? (routes.count >= DroidBridgePreferences.maximumAudioDevices ? .phone : .mac)
+        routes[serial] ?? (DeviceAudioPreferences.capacityCount(routes) >= DroidBridgePreferences.maximumAudioDevices ? .phone : .mac)
     }
     private func route(for serial:String)->DeviceAudioRoute {Self.effectiveRoute(serial,routes)}
     private func run(_ serial:String) async {
@@ -99,7 +99,7 @@ import DroidBridgeCore
             let owner=try ownerReceipt(serial)
             if owner.busy {set(serial,owner.receipt?.route ?? .mac,.shared,"Another DroidBridge host is releasing or updating device-wide audio. Phone routing is requested.")}
             else {
-                let message=routes[serial]==nil && routes.count >= DroidBridgePreferences.maximumAudioDevices
+                let message=routes[serial]==nil && DeviceAudioPreferences.capacityCount(routes) >= DroidBridgePreferences.maximumAudioDevices
                     ? "Phone audio. Audio settings already contain 32 devices; this device cannot start Mac capture until a setting slot is available. Existing settings were preserved."
                     : "Phone audio. No DroidBridge audio owner was active at the last check."
                 set(serial,.phone,.phone,message)
@@ -108,10 +108,11 @@ import DroidBridgeCore
     }
     private enum Outcome {case changed, shared, failed}
     private struct FailureReceipt:Codable {let tag:String}
-    private func deviceKey(_ serial:String)->String {SHA256.hash(data:Data(serial.utf8)).map {String(format:"%02x",$0)}.joined()}
+    private func deviceKey(_ serial:String)->String {(try? CanonicalAliasAdmission.audioKey(for:serial)) ?? "unavailable-alias-policy"}
     private func retryURL(_ serial:String)->URL {directory.appendingPathComponent(deviceKey(serial)+".retry")}
     private struct Control:Codable {let route:DeviceAudioRoute,token:String}
     private func updateControl(serial:String,route:DeviceAudioRoute,retry:Bool) throws {
+        _ = try CanonicalAliasAdmission.identity(for:serial)
         try AndroidDiscovery.validateSerial(serial)
         try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true,attributes:[.posixPermissions:0o700])
         let path=directory.appendingPathComponent(deviceKey(serial)+".control.lock")
@@ -134,6 +135,7 @@ import DroidBridgeCore
     }
     private func play(serial:String,route:DeviceAudioRoute,revision:Int) async -> Outcome {
         var child:Process?, lease:ScrcpyPortLease?, output:FileHandle?
+        var aliasLease:CanonicalAliasLease?
         let token=UUID().uuidString
         let scid=String(format:"%08x",UInt32.random(in:1...0x7fffffff))
         let key=deviceKey(serial)
@@ -152,6 +154,8 @@ import DroidBridgeCore
                 return .failed
             }
             try AndroidDiscovery.validateSerial(serial)
+            aliasLease = try await CanonicalAliasAdmission.acquire(serial:serial)
+            try Task.checkCancellation()
             let owner=try ownerReceipt(serial)
             if owner.busy {
                 set(serial,owner.receipt?.route ?? route,.shared,"Another DroidBridge host owns this device's audio. Routing is device-wide; changes apply when that owner refreshes.")
@@ -175,7 +179,7 @@ import DroidBridgeCore
             output=try FileHandle(forWritingTo:log)
             let process=Process(); child=process
             process.executableURL=URL(fileURLWithPath:supervisor)
-            process.arguments=["--parent",String(getpid()),"--owner-lock",lock.path,"--owner-token",token,"--failure-file",failureURL.path,"--failure-tag",failureTag,"--terminal-output","1","--adb",toolchain.adb,"--serial",serial,"--forward","tcp:\(lease.port)","--forward-remote","localabstract:scrcpy_\(scid)","--remote","/data/local/tmp/droidbridge-audio-\(scid).jar","--",toolchain.audioClient]+Self.arguments(serial:serial,route:route,port:lease.port)
+            process.arguments=["--parent",String(getpid())] + (aliasLease?.supervisorArguments ?? []) + ["--owner-lock",lock.path,"--owner-token",token,"--failure-file",failureURL.path,"--failure-tag",failureTag,"--terminal-output","1","--adb",toolchain.adb,"--serial",serial,"--forward","tcp:\(lease.port)","--forward-remote","localabstract:scrcpy_\(scid)","--remote","/data/local/tmp/droidbridge-audio-\(scid).jar","--",toolchain.audioClient]+Self.arguments(serial:serial,route:route,port:lease.port)
             var environment=ProcessInfo.processInfo.environment.merging(toolchain.environment) {$1}
             environment["DROIDBRIDGE_AUDIO_SCID"]=scid
             process.environment=environment
@@ -229,6 +233,7 @@ import DroidBridgeCore
         try? output?.close()
         // Keep the inherited port pinned until the supervisor finishes cleanup.
         withExtendedLifetime(lease) {}
+        withExtendedLifetime(aliasLease) {}
         if (try? Self.readReceipt(receiptURL).token)==token {try? FileManager.default.removeItem(at:receiptURL)}
         try? FileManager.default.removeItem(at:log)
         return outcome
@@ -281,6 +286,7 @@ import DroidBridgeCore
         }.value
     }
     private func ownerReceipt(_ serial:String) throws ->(busy:Bool,receipt:Receipt?) {
+        _ = try CanonicalAliasAdmission.identity(for:serial)
         let path=directory.appendingPathComponent(deviceKey(serial)+".lock")
         let fd=open(path.path,O_RDONLY|O_CLOEXEC|O_NOFOLLOW)
         if fd<0 {if errno==ENOENT {return (false,nil)};throw BridgeError.message("Cannot open audio owner lock")}
