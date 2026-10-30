@@ -13,7 +13,8 @@ final class CompanionTLSFixture: @unchecked Sendable {
     private let lock = NSLock()
     private var stopped = false
     var request: String { (try? String(contentsOf: directory.appendingPathComponent("request.bin"), encoding: .utf8)) ?? "" }
-    init(delay: TimeInterval = 0, handshakeDelay: TimeInterval = 0, portPublicationDelay: TimeInterval = 0, certificateIP: String = "127.0.0.1", response: @escaping @Sendable (String) -> Data) throws {
+    init(delay: TimeInterval = 0, handshakeDelay: TimeInterval = 0, portPublicationDelay: TimeInterval = 0, certificateIP: String = "127.0.0.1", maximumRequests: Int = 1, requestResponse: (@Sendable (String, String) -> Data)? = nil, response: @escaping @Sendable (String) -> Data) throws {
+        guard (1...64).contains(maximumRequests) else { throw NSError(domain: "TLSFixture", code: 2) }
         directory = FileManager.default.temporaryDirectory.appendingPathComponent("companion-tls-\(UUID().uuidString)")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
         func openssl(_ arguments: [String]) throws {
@@ -42,6 +43,7 @@ final class CompanionTLSFixture: @unchecked Sendable {
         (root/'port.tmp').write_text(str(server.getsockname()[1]))
         (root/'port.tmp').replace(root/'port')
         try:
+          for index in range(int(sys.argv[4])):
             client,_=server.accept();client.settimeout(5)
             time.sleep(float(sys.argv[2]))
             with context.wrap_socket(client,server_side=True) as stream:
@@ -56,14 +58,15 @@ final class CompanionTLSFixture: @unchecked Sendable {
                         if len(body)>=length: break
                 if data:
                     (root/'request.bin').write_bytes(data)
+                    (root/('request-'+str(index)+'.bin')).write_bytes(data)
                     deadline=time.monotonic()+5
-                    while not (root/'response.bin').exists() and time.monotonic()<deadline: time.sleep(.002)
-                    if (root/'response.bin').exists(): stream.sendall((root/'response.bin').read_bytes())
+                    while not (root/('response-'+str(index)+'.bin')).exists() and time.monotonic()<deadline: time.sleep(.002)
+                    if (root/('response-'+str(index)+'.bin')).exists(): stream.sendall((root/('response-'+str(index)+'.bin')).read_bytes())
         except (ssl.SSLError,OSError,ValueError) as exc: (root/'error.txt').write_text(repr(exc))
         finally: server.close()
         """#
         let script = directory.appendingPathComponent("server.py"); try Data(source.utf8).write(to: script)
-        process = Process(); process.executableURL = URL(fileURLWithPath: "/usr/bin/env"); process.arguments = ["python3", script.path, directory.path, String(handshakeDelay), String(portPublicationDelay)]
+        process = Process(); process.executableURL = URL(fileURLWithPath: "/usr/bin/env"); process.arguments = ["python3", script.path, directory.path, String(handshakeDelay), String(portPublicationDelay), String(maximumRequests)]
         let stderrURL = directory.appendingPathComponent("startup-error.txt")
         FileManager.default.createFile(atPath: stderrURL.path, contents: nil)
         let stderrHandle = try FileHandle(forWritingTo: stderrURL)
@@ -95,13 +98,16 @@ final class CompanionTLSFixture: @unchecked Sendable {
         url = URL(string: "https://127.0.0.1:\(port)")!
         DispatchQueue.global().async { [weak self] in
             guard let self else { return }
-            let requestFile = self.directory.appendingPathComponent("request.bin"), deadline = Date().addingTimeInterval(7)
-            while !FileManager.default.fileExists(atPath: requestFile.path), self.process.isRunning, Date() < deadline { Thread.sleep(forTimeInterval: 0.003) }
-            guard let bytes = try? Data(contentsOf: requestFile) else { return }
-            let headers = String(decoding: bytes, as: UTF8.self).components(separatedBy: "\r\n")
-            let id = headers.first { $0.lowercased().hasPrefix("x-request-id:") }?.split(separator: ":", maxSplits: 1).last?.trimmingCharacters(in: .whitespaces) ?? UUID().uuidString
-            if delay > 0 { Thread.sleep(forTimeInterval: delay) }
-            try? response(id).write(to: self.directory.appendingPathComponent("response.bin"), options: .atomic)
+            for index in 0..<maximumRequests {
+                let requestFile = self.directory.appendingPathComponent("request-\(index).bin"), deadline = Date().addingTimeInterval(7)
+                while !FileManager.default.fileExists(atPath: requestFile.path), self.process.isRunning, Date() < deadline { Thread.sleep(forTimeInterval: 0.003) }
+                guard let bytes = try? Data(contentsOf: requestFile) else { return }
+                let raw = String(decoding: bytes, as: UTF8.self), headers = raw.components(separatedBy: "\r\n")
+                let id = headers.first { $0.lowercased().hasPrefix("x-request-id:") }?.split(separator: ":", maxSplits: 1).last?.trimmingCharacters(in: .whitespaces) ?? UUID().uuidString
+                if delay > 0 { Thread.sleep(forTimeInterval: delay) }
+                let output = requestResponse?(id, raw) ?? response(id)
+                try? output.write(to: self.directory.appendingPathComponent("response-\(index).bin"), options: .atomic)
+            }
         }
     }
     func close() {

@@ -252,3 +252,97 @@ use Swift camelCase fields and snake_case wire fields. Dynamic bounded payloads
 use `CompanionJSON`, never untyped executable strings. UI owns operation lifetime
 and explicit cancellation. Keychain and ADB-forward APIs remain separate from
 protocol parsing to permit deterministic negative tests.
+
+## Authenticated monotonic clocks and action admission
+
+`clock_anchor_v1` is required for timed companion actions. A pinned, identity-bound
+`GET /v1/hello` includes `clock_epoch` (service-process UUID), `server_uptime_ms`
+(Android elapsedRealtime, including sleep), and `server_time` (integer Unix seconds).
+The Mac binds the expected installation UUID before accepting the sample. TLS pin,
+protocol, request correlation and identity checks remain mandatory. A public hello
+without an expected installation may be inspected but cannot authorize a clock.
+Samples require a measured round trip of at most 2,000ms and age at most 30,000ms.
+No machine wall clock is adjusted.
+
+Mac commands carry `clock_epoch`, integer `issued_uptime_ms`, and
+`expires_uptime_ms`. The difference is exactly 30,000ms. The Mac estimates issue
+time conservatively from the sample's lower bound; Android requires the exact
+current epoch, issue time no later than its current uptime, and an unexpired budget
+of at most 30,000ms. The Mac retains the original body and a local continuous
+expiry for canonical retries. Retries cannot mint a fresh expiry for the same ID;
+service epoch changes invalidate pending bodies. Bounded client history refuses
+new actions when full instead of evicting active retry identities.
+
+For phone-origin commands the Mac samples hello after receiving the event (a
+long-poll wait is not a clock RTT). It translates the remaining phone budget using
+an upper bound of sampled uptime plus RTT and local continuous elapsed time. Future
+issue times, expired or enlarged budgets, stale samples, identity changes, and old
+epochs fail closed. Local queue deadlines use sleep-inclusive mach_continuous_time
+and the Mac boot-session UUID. Persisted old-format or other-boot deadlines cannot
+be admitted. Date/ISO expiry fields are presentation metadata only.
+
+QR parsing validates the four structural fields without trusting the Mac wall
+clock. Before posting a pairing secret, the broker compares its original `expires`
+with a fresh pinned phone `server_time`; a delayed/retried handshake cannot reset
+the original 120-second window. Pair responses additionally include `clock_epoch`
+and `expires_uptime_ms`. The local pairing budget is the smaller translated QR and
+phone monotonic budget. IPC exposes `expires_continuous_ms` and `deadline_boot_id`
+for the UI countdown. A phone wall-clock change during an existing QR window may
+require a fresh QR; it does not change command deadlines. Android's own monotonic
+pairing window remains authoritative. Pending Mac admission recovery is separately
+bounded to 600 seconds and the exact Mac boot, with legacy records requiring fresh
+explicit pairing rather than interpreting old wall expiry as authority.
+
+A 30-second command budget limits **new effect admission**, not completion time.
+An owner calls authenticated local `command_admit` with the exact command UUID and
+registered generation. The broker persists `admitted` before replying, sends the
+phone an admitted receipt, and stops polling that command to other tasks. The owner
+executes only when the reply additionally carries `execution_granted:true`.
+That grant is returned once. Repeating either the same IPC request UUID or a new
+IPC request for an already admitted command returns canonical state with the grant
+false; an accepted non-grant response must not execute or manufacture a rejection.
+Losing the grant reply can leave an unknown result, never permission to replay.
+Current Mac owners publish `command_protocol:2` with session facts. Older or
+missing owner capabilities remain visible in the dashboard, but cannot satisfy
+launcher readiness, receive polled commands, admit effects, or be selected as a
+new command owner. Update the app and copied wrappers before controlling them;
+the broker never reroutes a stop command away from its exact owning process.
+Unresolved rows pinned to legacy owners, or lacking a monotonic admission
+deadline, settle as unknown. An upgrade cannot retract work already delivered to
+an older executable; close those processes before using the updated controls.
+The owner
+rechecks its local deadline after readiness awaits and immediately before starting
+a new effect. Already admitted work may complete after the initial deadline and
+must report its actual result. A late acknowledgment is fenced by the same PID,
+process-start identity, generation, and boot. Owner/generation loss or reboot makes
+an admitted outcome `unknown`; it never requeues the action. An unresponsive live
+owner has at most 120 seconds of admitted in-flight receipt state before `unknown`.
+That does not cancel a possibly running effect. Terminal receipts remain immutable;
+a result arriving after that transition cannot overwrite the unknown receipt.
+For direct inbox receipt and saved export intent, durable Mac publication can
+precede the phone's admission acknowledgment. Lost or delayed receipt transport
+can therefore leave the phone expired while the inbox/selection already exists.
+Expiry means no confirmed completion, not proof of absence. Inspect that durable
+Mac state before a new deliberate request; no automatic effect replay is allowed.
+History is bounded to 512 records, with at most 64 accepted commands; terminal
+receipt delivery retries are bounded and never replay effects.
+
+Spotlight selection publication is itself durable intent admission. A monotonic
+check precedes catalog revision publication. If wrapper materialization later
+fails, expires before owner admission, or is explicitly refused, the receipt is an
+applied **selection intent** with `intent_committed:true`,
+`materialization_pending:true`, `wrapper_created:false`,
+`phase:"selection_saved_wrapper_pending"`, and `retryable:true`. It must not claim
+an active wrapper. Ambiguous owner loss after effect admission remains unknown.
+Retrying derived materialization is a deliberate new user request with a new UUID
+and revision; replay of the old request returns its canonical receipt.
+
+The atomic catalog outcome distinguishes a new revision (`committed`), equal
+canonical bytes (`replayed`), and an older revision (`stale`). A replayed revision
+without its exact broker command receipt is a crash gap: it records unknown intent
+with materialization-pending guidance and cannot launch wrapper work. Conflicting
+bytes at an equal revision fail closed. Terminal receipt delivery has one tracked,
+generation-fenced background wave of at most eight receipts, with finite exponential
+backoff (1/2/4/8/16/30 seconds). Shutdown cancels and awaits that wave before releasing
+broker ownership; neither late responses nor task cleanup can publish or clear a
+successor task after shutdown.

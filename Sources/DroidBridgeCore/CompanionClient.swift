@@ -9,8 +9,9 @@ public actor CompanionClient {
     private let serverPin: String
     private var credential: String?
     private var expectedDeviceID: UUID?
-    private var commandBodies: [UUID: (Date, [String: CompanionJSON], Int)] = [:]
-    private var usedCommandIDs: [UUID: Date] = [:]
+    private var commandBodies: [UUID: (Double, [String: CompanionJSON], Int, UUID)] = [:]
+    private var usedCommandIDs = Set<UUID>()
+    private var peerClock: CompanionPeerClockAnchor?
     private let encoder: JSONEncoder
     private let decoder: JSONDecoder
     public static let jsonLimit = 262_144
@@ -31,20 +32,66 @@ public actor CompanionClient {
     }
     public func setCredential(_ value: String?) throws {
         if let value { try Self.validateSecret(value) }
+        if credential != value { commandBodies.removeAll() }
         credential = value
     }
     public func hello() async throws -> CompanionHello {
+        let sentMS = CompanionClock.nowMS()
         let value: CompanionHello = try await json("GET", "/v1/hello", authenticated: false)
+        let receivedMS = CompanionClock.nowMS()
         guard value.protocolMin > 0, value.protocolMin <= value.protocolMax, value.protocolMin <= 1, value.protocolMax >= 1,
               UUID(uuidString: value.deviceId) != nil, value.deviceName.utf8.count <= 256, value.capabilities.count <= 32,
               value.capabilities.allSatisfy({ $0.utf8.count <= 64 }), value.permissions?.count ?? 0 <= 32 else {
             throw CompanionBoundaryError("unsupported_protocol", "This companion protocol is unsupported. Update both applications.")
         }
-        if let expectedDeviceID, UUID(uuidString: value.deviceId) != expectedDeviceID { throw CompanionBoundaryError("identity_changed", "This connection belongs to another companion installation.") }
+        if let expectedDeviceID, UUID(uuidString: value.deviceId) != expectedDeviceID { peerClock = nil; throw CompanionBoundaryError("identity_changed", "This connection belongs to another companion installation.") }
+        if expectedDeviceID != nil, value.capabilities.contains("clock_anchor_v1") {
+            let sample = try CompanionPeerClockAnchor(hello: value, sentMS: sentMS, receivedMS: receivedMS)
+            if let previous = peerClock, previous.epoch == sample.epoch, sample.uptimeMS < previous.uptimeMS {
+                peerClock = nil
+                throw CompanionBoundaryError("clock_rollback", "The phone clock changed without a new service epoch. Reconnect before sending actions.")
+            }
+            if let previous = peerClock, previous.epoch != sample.epoch {
+                // Keep tombstones, but never mint a new expiry for an old ID.
+                commandBodies.removeAll()
+            }
+            peerClock = sample
+        } else { peerClock = nil }
         return value
     }
     public func setExpectedDeviceID(_ deviceID: String) throws {
-        guard let value = UUID(uuidString: deviceID) else { throw CompanionBoundaryError("invalid_identity", "Invalid companion installation identity.") }; expectedDeviceID = value
+        guard let value = UUID(uuidString: deviceID) else { throw CompanionBoundaryError("invalid_identity", "Invalid companion installation identity.") }
+        if let previous = expectedDeviceID, previous != value { peerClock = nil; commandBodies.removeAll() }
+        expectedDeviceID = value
+    }
+    private func freshClock() async throws -> CompanionPeerClockAnchor {
+        guard expectedDeviceID != nil else { throw CompanionBoundaryError("clock_unavailable", "Verify this companion installation identity before sending timed actions.") }
+        _ = try await hello()
+        guard let sample = peerClock, sample.deviceID == expectedDeviceID else { throw CompanionBoundaryError("clock_unavailable", "Update both applications to use bounded companion command clocks.") }
+        _ = try sample.elapsed(nowMS: CompanionClock.nowMS())
+        return sample
+    }
+    /// Returns a local continuous deadline for the original QR window. This
+    /// happens before its secret is posted, after pin and UUID verification.
+    public func validatePairingCodeExpiry(expiresSeconds: Double) async throws -> Double {
+        let sample = try await freshClock(), now = CompanionClock.nowMS()
+        return now + (try sample.pairingCodeRemaining(expiresSeconds: expiresSeconds, nowMS: now))
+    }
+    public func pairingExpiryMS(_ response: CompanionPairing) async throws -> Double {
+        let sample = try await freshClock(), now = CompanionClock.nowMS()
+        guard let epoch = response.clockEpoch, let expires = response.expiresUptimeMs else { throw CompanionBoundaryError("clock_unavailable", "The phone did not provide a bounded pairing deadline.") }
+        return now + (try sample.remaining(epoch: epoch, issuedMS: nil, expiresMS: Double(expires), maximumMS: 120_000, nowMS: now))
+    }
+    public func phoneCommandDeadline(_ body: [String: CompanionJSON]) async throws -> CompanionCommandDeadline {
+        // Sample after receiving the event, so a genuine command's issue time
+        // precedes the lower bound. Long-poll wait is not mistaken for RTT.
+        let sample = try await freshClock(), now = CompanionClock.nowMS()
+        guard let epoch = body["clock_epoch"]?.string,
+              let issued = body["issued_uptime_ms"]?.number, issued.rounded(.down) == issued,
+              let expires = body["expires_uptime_ms"]?.number, expires.rounded(.down) == expires,
+              issued <= 9_007_199_254_740_991, expires <= 9_007_199_254_740_991 else { throw CompanionBoundaryError("invalid_command", "The phone command has no valid monotonic time budget.") }
+        let remaining = try sample.remaining(epoch: epoch, issuedMS: issued, expiresMS: expires, maximumMS: 30_000, nowMS: now)
+        return try CompanionCommandDeadline(issuedMS: now, expiresMS: now + remaining)
     }
     public func identity() async throws -> CompanionIdentity {
         let value: CompanionIdentity = try await json("GET", "/v1/identity")
@@ -89,27 +136,40 @@ public actor CompanionClient {
     public func sendCommand(kind: String, payload: [String: CompanionJSON], requestID: UUID = UUID()) async throws -> CompanionReceipt {
         guard Self.commandKinds.contains(kind) else { throw CompanionBoundaryError("unsupported_command", "Unsupported companion command.") }
         try Self.validateCommand(kind, payload)
-        let now = Date()
+        let initial = CompanionClock.nowMS()
+        commandBodies = commandBodies.filter { $0.value.0 > initial }
+        // Fast reject expired/conflicting canonical retries before any I/O.
+        if let existing = commandBodies[requestID] {
+            guard existing.1["kind"] == .string(kind), existing.1["payload"] == .object(payload) else { throw CompanionBoundaryError("request_conflict", "This command ID already belongs to different content.") }
+        } else if usedCommandIDs.contains(requestID) { throw CompanionBoundaryError("request_expired", "This command has expired. Start a new deliberate action.") }
+        let sample: CompanionPeerClockAnchor
+        if let existing = commandBodies[requestID], let current = peerClock, existing.3 == current.epoch {
+            sample = current
+        } else { sample = try await freshClock() }
+        try Task.checkCancellation()
+        let now = CompanionClock.nowMS()
         commandBodies = commandBodies.filter { $0.value.0 > now }
-        usedCommandIDs = usedCommandIDs.filter { $0.value > now.addingTimeInterval(-86_400) }
         let body: [String: CompanionJSON]
         if let existing = commandBodies[requestID] {
             guard existing.1["kind"] == .string(kind), existing.1["payload"] == .object(payload) else { throw CompanionBoundaryError("request_conflict", "This command ID already belongs to different content.") }
+            guard existing.3 == sample.epoch else { throw CompanionBoundaryError("clock_epoch_changed", "The phone restarted. Start a new deliberate action.") }
             body = existing.1
         } else {
-            guard usedCommandIDs[requestID] == nil else { throw CompanionBoundaryError("request_expired", "This command has expired. Start a new deliberate action.") }
-            guard commandBodies.count < 512, usedCommandIDs.count < 4096 else { throw CompanionBoundaryError("command_capacity", "Wait for pending companion commands to expire.") }
-            let expiry = now.addingTimeInterval(30)
-            body = ["request_id": .string(requestID.uuidString), "kind": .string(kind), "payload": .object(payload), "expires_at": .string(ISO8601DateFormatter().string(from: expiry))]
+            guard !usedCommandIDs.contains(requestID) else { throw CompanionBoundaryError("request_expired", "This command has expired. Start a new deliberate action.") }
+            guard commandBodies.count < 512, usedCommandIDs.count < 4096 else { throw CompanionBoundaryError("command_capacity", "The bounded command retry history is full. Reconnect before starting more actions.") }
+            let timing = try sample.outgoing(nowMS: now)
+            body = ["request_id": .string(requestID.uuidString), "kind": .string(kind), "payload": .object(payload),
+                    "clock_epoch": .string(sample.epoch.uuidString.lowercased()), "issued_uptime_ms": .number(Double(timing.issued)), "expires_uptime_ms": .number(Double(timing.expires))]
             let count = try encoder.encode(body).count
             guard count <= Self.jsonLimit, commandBodies.values.reduce(0, { $0 + $1.2 }) + count <= 1_048_576 else { throw CompanionBoundaryError("command_capacity", "Pending companion command payloads exceed the memory budget.") }
-            commandBodies[requestID] = (expiry, body, count); usedCommandIDs[requestID] = now
+            let remaining = try sample.remaining(epoch: sample.epoch.uuidString, issuedMS: Double(timing.issued), expiresMS: Double(timing.expires), maximumMS: 30_000, nowMS: now)
+            commandBodies[requestID] = (now + remaining, body, count, sample.epoch); usedCommandIDs.insert(requestID)
         }
         return try await json("POST", "/v1/commands", body: body)
     }
     public func acknowledge(commandID: String, status: String, result: [String: CompanionJSON] = [:], message: String? = nil) async throws {
         try Self.validateID(commandID)
-        guard ["applied", "rejected", "unknown"].contains(status) else { throw CompanionBoundaryError("invalid_status", "Invalid command receipt status.") }
+        guard ["admitted", "applied", "rejected", "unknown"].contains(status) else { throw CompanionBoundaryError("invalid_status", "Invalid command receipt status.") }
         var body: [String: CompanionJSON] = ["request_id": .string(commandID), "status": .string(status), "result": .object(result)]
         if let message { body["message"] = .string(String(message.prefix(512))) }
         let _: CompanionJSON = try await json("POST", "/v1/commands/\(commandID)/receipt", body: body)

@@ -31,6 +31,7 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
         ctx.load_cert_chain(str(root/'cert.pem'),str(root/'key.pem'))
         server=socket.socket();server.bind(('127.0.0.1',0));server.listen(8)
         (root/'port.tmp').write_text(str(server.getsockname()[1]));(root/'port.tmp').replace(root/'port')
+        clock_epoch=device;pair_expiry=int(time.monotonic()*1000)+120000
         def handle(client):
           try:
             client.settimeout(5)
@@ -53,8 +54,8 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
                 (root/'blocked').write_text('1');deadline=time.monotonic()+5
                 while not (root/'release').exists() and time.monotonic()<deadline:time.sleep(.002)
               status=200
-              if path=='/v1/hello':data={'device_id':device,'device_name':'TLS broker fixture','protocol_min':1,'protocol_max':1,'capabilities':['state_heartbeat'] if heartbeat else [],'pairing_available':True}
-              elif path=='/v1/pair':data={'pairing_id':pair,'status':'pending','expires_at':(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(seconds=120)).isoformat().replace('+00:00','Z'),'comparison_code':'ABCDEF12'}
+              if path=='/v1/hello':data={'device_id':device,'device_name':'TLS broker fixture','protocol_min':1,'protocol_max':1,'capabilities':['clock_anchor_v1']+(['state_heartbeat'] if heartbeat else []),'pairing_available':True,'clock_epoch':clock_epoch,'server_uptime_ms':int(time.monotonic()*1000),'server_time':int(time.time())}
+              elif path=='/v1/pair':data={'pairing_id':pair,'status':'pending','expires_at':(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(seconds=120)).isoformat().replace('+00:00','Z'),'comparison_code':'ABCDEF12','clock_epoch':clock_epoch,'expires_uptime_ms':pair_expiry}
               elif path=='/v1/pair/'+pair:data={'pairing_id':pair,'status':'approved','credential':'A'*43,'trust_id':trust,'device_id':device,'capabilities':[]}
               elif path=='/v1/identity':data={'device_id':device,'trust_id':trust,'protocol':1}
               elif path.startswith('/v1/events'):data={'epoch':device,'events':[],'next_sequence':0,'reset_required':False}

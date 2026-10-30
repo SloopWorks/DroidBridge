@@ -37,6 +37,8 @@ class InstalledFlow:
         self.launch_started_at = None
         self.root.mkdir(mode=0o700, exist_ok=True)
     def adb(self, *parts, binary=False, timeout=20):
+        if parts[:2] == ('shell', 'input'):
+            parts = ('shell', 'input', '-d', '0', *parts[2:])
         result = subprocess.run([str(self.args.adb), '-s', self.args.serial, *parts], check=True, capture_output=True, timeout=timeout)
         return result.stdout if binary else result.stdout.decode('utf-8', 'strict')
     def nodes(self):
@@ -105,7 +107,7 @@ class InstalledFlow:
         for path in [self.root/'command.json', self.root/'receipt.json']:
             path.unlink(missing_ok=True)
         self.log = (self.root/'installed-host.log').open('wb')
-        self.process = subprocess.Popen([str(executable), '--companion-qa-root', str(self.root), '--serial', self.args.serial], env=environment, stdout=self.log, stderr=subprocess.STDOUT)
+        self.process = subprocess.Popen([str(executable), '--companion-qa-root', str(self.root), '--serial', self.args.serial] + (['--companion-launch-trace'] if self.args.trace else []), env=environment, stdout=self.log, stderr=subprocess.STDOUT)
         (self.root/'installed-host.pid').write_text(str(self.process.pid))
         self.events.append({'kind': 'installed_host_started', 'pid': self.process.pid, 'executable_sha256': hashlib.sha256(executable.read_bytes()).hexdigest(), 'qa_scope': True})
         self.action('status', window='DroidBridge')
@@ -188,7 +190,7 @@ try Data(link.utf8).write(to: URL(fileURLWithPath: CommandLine.arguments[2]), op
             self.phone_click('Trust Mac')
             self.wait_text('Authenticated companion connected', timeout=30)
             self.events.append({'kind': 'actual_phone_approved_pairing', 'tls_pinned': True, 'pairing_path': self.args.pairing_path, 'camera_verified': False})
-            self.capture('paired-native-window.png')
+            self.capture('authenticated-companion-window.png')
         finally:
             qr.unlink(missing_ok=True)
         # Close the original expiring QR sheet only after credential acceptance.
@@ -273,10 +275,18 @@ def main():
     parser.add_argument('--leave-running', action='store_true')
     parser.add_argument('--pairing-path', choices=['manual', 'image'], default='manual')
     parser.add_argument('--reuse-pairing', action='store_true')
+    parser.add_argument('--trace', action='store_true', help='Record bounded QA-only startup and decoder metadata')
+    parser.add_argument('--interactive', action='store_true', help='Prepare installed GUI, then retain it for real CUA actions; does not claim flow acceptance')
     args = parser.parse_args()
     flow = InstalledFlow(args)
     try:
         flow.start(); flow.prepare_phone()
+        if args.interactive:
+            assert args.leave_running, 'Interactive verification requires --leave-running'
+            print('Installed GUI prepared for CUA; no acceptance claim. Waiting for exact owned app exit.', flush=True)
+            flow.hold()
+            flow.finish(False, 'Interactive session requires separately recorded actual flow evidence')
+            return
         if args.reuse_pairing: flow.reconnect()
         else: flow.pair_by_import()
         flow.launch_fixture(); flow.finish(True)

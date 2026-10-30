@@ -12,8 +12,18 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
     private var metadata: [String: CompanionJSON] = [:]
     private var recoveryFinished = false
     private var activeProfile = "balanced"
+    private var registrationFailures = 0
+    private var queuedCommands: [[String: CompanionJSON]] = []
+    private var admissionStatuses: [String: String] = [:]
+    private var admissionGrants: [String: Bool] = [:]
+    private var admissionCalls = Set<String>()
+    private var acknowledgments: [String: [String: CompanionJSON]] = [:]
     var operations: [String] = []
     func setProfile(_ profile: String) { lock.lock(); activeProfile = profile; lock.unlock() }
+    func failRegistrations(_ count: Int) { lock.lock(); registrationFailures = count; lock.unlock() }
+    func enqueue(_ command: [String: CompanionJSON], admission: String = "accepted", executionGranted: Bool = true) { lock.lock(); queuedCommands.append(command); let id = command["id"]!.string!; admissionStatuses[id] = admission; admissionGrants[id] = executionGranted; lock.unlock() }
+    func admissionCalled(_ id: String) -> Bool { lock.lock(); defer { lock.unlock() }; return admissionCalls.contains(id) }
+    func acknowledgment(_ id: String) -> [String: CompanionJSON]? { lock.lock(); defer { lock.unlock() }; return acknowledgments[id] }
     func count(_ operation: String) -> Int { lock.lock(); defer { lock.unlock() }; return operations.filter { $0 == operation }.count }
     func listener(_ listener: NSXPCListener, shouldAcceptNewConnection connection: NSXPCConnection) -> Bool {
         connection.exportedInterface = NSXPCInterface(with: CompanionBrokerXPCProtocol.self); connection.exportedObject = self; connection.resume(); lock.lock(); connections.append(connection); lock.unlock(); return true
@@ -26,6 +36,19 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
             let p = input.payload
             var data: [String: CompanionJSON] = [:]
             switch input.operation {
+            case "session_publish":
+                guard p["command_protocol"]?.number == 2 else { throw CompanionBoundaryError("legacy_host", "Current adapter must advertise command execution protocol2") }
+            case "command_poll": data = ["commands": .array(queuedCommands.isEmpty ? [] : [.object(queuedCommands.removeFirst())])]
+            case "command_admit":
+                let id = p["command_id"]?.string ?? "", status = admissionStatuses[id] ?? "unknown"; admissionCalls.insert(id)
+                data = ["status": .string(status), "admitted": .bool(status == "accepted"), "execution_granted": .bool(status == "accepted" && admissionGrants[id] == true), "result": .object(["phase": .string("canonical_prior_effect")])]
+            case "command_ack":
+                let id = p["command_id"]!.string!; acknowledgments[id] = p
+                data = ["status": p["status"] ?? .string("unknown"), "result": p["result"] ?? .object([:])]
+            case "host_register":
+                guard p["app_path"]?.string == "/Fixture.app" else { throw CompanionBoundaryError("host_identity_mismatch", "Only the expected fixture host may register") }
+                if registrationFailures > 0 { registrationFailures -= 1; throw CompanionBoundaryError("broker_unavailable", "Fixture first bootstrap not ready", retryable: true) }
+                data = ["status": .string("registered")]
             case "status": data = ["devices": .array([.object(["device_id": .string(device), "device_name": .string("QA Phone with a Long Readable Name"), "serial": .string("qa-companion-ui"), "aliases": .array([.string("qa-companion-ui")]), "connected": .bool(true), "paired": .bool(true), "profile": .string("balanced"), "capabilities": .array(["catalog", "icons", "share", "clipboard", "notifications", "profiles"].map(CompanionJSON.string))])]), "sessions": .array([.object(["session_id": .string("6803ee5e-496c-413e-ac22-e740b23043eb"), "device_id": .string(device), "label": .string("Independent wrapper fixture"), "backend": .string("native"), "phase": .string("running")])])]
             case "export_selection_get": data = ["selection": .object([:])]
             case "recover_pairing":
@@ -69,18 +92,36 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         guard let bitmap = view.bitmapImageRepForCachingDisplay(in: view.bounds) else { throw BridgeError.message("No AppKit capture") }; view.cacheDisplay(in: view.bounds, to: bitmap)
         try require(bitmap.representation(using: .png, properties: [:])?.write(to: url) != nil, "Unable to write capture")
     }
-    @MainActor static func wait(_ condition: () -> Bool) async throws {
-        for _ in 0..<300 { if condition() { return }; try await Task.sleep(nanoseconds: 20_000_000) }; throw BridgeError.message("Fixture operation timed out")
+    @MainActor static func wait(seconds: Double = 6, _ condition: () -> Bool) async throws {
+        for _ in 0..<Int(seconds * 50) { if condition() { return }; try await Task.sleep(nanoseconds: 20_000_000) }; throw BridgeError.message("Fixture operation timed out")
     }
     @MainActor static func run() async throws {
-        let output = URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent("verification/companion/macos-ui")
+        let output = URL(fileURLWithPath: ProcessInfo.processInfo.environment["DROIDBRIDGE_GUI_EVIDENCE"] ?? URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent("verification/companion/macos-ui").path)
         try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)
         let peer = FixtureBroker(), listener = NSXPCListener.anonymous(); listener.delegate = peer; listener.resume(); defer { listener.invalidate() }
         let broker = CompanionBrokerIPCClient(endpoint: listener.endpoint, nonce: "fixture-nonce")
         let launcher = LauncherController(); launcher.onboardingPending = true
         launcher.devices = [AndroidDevice(serial: "qa-companion-ui", model: "QA Phone")]; launcher.readySerials = ["qa-companion-ui"]
+        var admissionChecks = 0
+        let refused = await launcher.launch(device: launcher.devices[0], app: AndroidApplication(packageName: "dev.droidbridge.fixture.expired", name: "Expired fixture"), configuration: SessionConfiguration(backend: .native), readinessChecked: true, admissionCheck: {
+            admissionChecks += 1
+            throw CompanionBoundaryError("command_expired", "Expired before session admission")
+        })
+        try require(refused == nil && launcher.sessions.isEmpty && admissionChecks == 1, "Expired post-readiness admission created an Android session")
         let adapter = CompanionDesktopAdapter(launcher: launcher, broker: broker)
         try await adapter.refreshStatus(); adapter.show()
+        try require(peer.count("host_register") == 0, "A status read must not register a host")
+        peer.failRegistrations(2); adapter.retryHostRegistration(bundleURL: URL(fileURLWithPath: "/Fixture.app"))
+        try await wait { adapter.hostRegistrationMessage.contains("can reopen") }
+        try require(peer.count("host_register") == 3, "Fresh bootstrap did not retry exactly twice before success")
+        try await adapter.refreshStatus()
+        try require(adapter.hostRegistrationMessage.contains("can reopen"), "Status polling erased the independent registration result")
+        peer.failRegistrations(20); let registrationBefore = peer.count("host_register")
+        adapter.retryHostRegistration(bundleURL: URL(fileURLWithPath: "/Fixture.app"))
+        try await wait(seconds: 16) { adapter.hostRegistrationMessage.contains("registration failed") }
+        try require(peer.count("host_register") - registrationBefore == 8, "Registration retry budget was not finite")
+        try await adapter.refreshStatus()
+        try require(adapter.hostRegistrationMessage.contains("Retry Mac Launch Registration"), "Status polling hid actionable exhausted registration")
         let controller = try XCT(adapter.windowController, "Companion controller missing"), window = try XCT(controller.window, "Companion window missing"), content = try XCT(window.contentView, "Companion content missing")
         let tabs = try XCT(descendants(content).compactMap { $0 as? NSTabView }.first, "Companion tabs missing")
         try require(tabs.numberOfTabViewItems == 8, "Expected eight complete companion surfaces")
@@ -149,8 +190,36 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         try require(batteryStatus <= 2 && batteryPublish <= 2 && responsiveStatus >= 5 && responsivePublish >= 5 && batteryCommands >= 10 && responsiveCommands >= 10, "Actual profile cadence did not reduce status work while preserving command polling")
         let cadence: [String: Any] = ["scope": "Actual shipping desktop adapter timers over anonymous NSXPC; no battery-savings claim", "observation_seconds_each": 6.2, "battery": ["status": batteryStatus, "publish": batteryPublish, "command_poll": batteryCommands], "responsive": ["status": responsiveStatus, "publish": responsivePublish, "command_poll": responsiveCommands], "unchanged_session_marks": 50]
         try JSONSerialization.data(withJSONObject: cadence, options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("profile-cadence.json"))
+        func command(_ kind: String, deadline: [String: CompanionJSON]?, payload: [String: CompanionJSON]) -> [String: CompanionJSON] {
+            var value: [String: CompanionJSON] = ["id": .string(UUID().uuidString), "device_id": .string(peer.device), "generation": .number(1), "kind": .string(kind), "payload": .object(payload)]
+            if let deadline { value["continuous_deadline"] = .object(deadline) }; return value
+        }
+        let now = CompanionClock.nowMS()
+        let expired = command("open_app", deadline: ["boot_id": .string(CompanionClock.bootID), "issued_ms": .number(now - 31_000), "expires_ms": .number(now - 1_000)], payload: ["package_name": .string("dev.droidbridge.fixture.expired")])
+        peer.enqueue(expired); let expiredID = expired["id"]!.string!
+        try await wait { peer.acknowledgment(expiredID) != nil }
+        try require(peer.acknowledgment(expiredID)?["result"]?.object?["code"]?.string == "command_expired" && launcher.sessions.isEmpty, "Expired continuous command admitted an Android session")
+        let completed = command("open_app", deadline: nil, payload: ["package_name": .string("invalid package must never execute")])
+        peer.enqueue(completed, admission: "applied"); let completedID = completed["id"]!.string!
+        try await wait { peer.acknowledgment(completedID) != nil }
+        try require(peer.acknowledgment(completedID)?["status"]?.string == "applied" && peer.acknowledgment(completedID)?["result"]?.object?["phase"]?.string == "canonical_prior_effect" && launcher.sessions.isEmpty, "Canonical prior result replayed its effect")
+        let fresh = CompanionClock.nowMS()
+        let noGrant = command("open_app", deadline: ["boot_id": .string(CompanionClock.bootID), "issued_ms": .number(fresh), "expires_ms": .number(fresh + 30_000)], payload: ["package_name": .string("dev.droidbridge.fixture.repeatedadmission")])
+        peer.enqueue(noGrant, executionGranted: false); let noGrantID = noGrant["id"]!.string!
+        try await wait { peer.admissionCalled(noGrantID) }; try await Task.sleep(nanoseconds: 600_000_000)
+        try require(peer.acknowledgment(noGrantID) == nil && launcher.sessions.isEmpty, "Repeated durable admission executed or acknowledged an existing effect")
+        try JSONEncoder().encode(["scope": CompanionJSON.string("Actual shipping adapter over anonymous NSXPC fixture; no Android acceptance"), "command": .object(noGrant), "execution_granted": .bool(false), "command_admit_called": .bool(peer.admissionCalled(noGrantID)), "acknowledged": .bool(peer.acknowledgment(noGrantID) != nil), "sessions_created": .number(Double(launcher.sessions.count))]).write(to: output.appendingPathComponent("one-time-admission-no-replay.json"))
+        let valid = command("set_profile", deadline: ["boot_id": .string(CompanionClock.bootID), "issued_ms": .number(fresh), "expires_ms": .number(fresh + 30_000)], payload: ["profile": .string("battery")])
+        peer.setProfile("battery"); peer.enqueue(valid); let validID = valid["id"]!.string!
+        try await wait { peer.acknowledgment(validID) != nil }
+        try require(peer.acknowledgment(validID)?["status"]?.string == "applied" && peer.acknowledgment(validID)?["result"]?.object?["profile"]?.string == "battery", "Valid snake-case boot-bound command was not applied")
+        let wrongBoot = command("open_app", deadline: ["boot_id": .string(UUID().uuidString), "issued_ms": .number(fresh), "expires_ms": .number(fresh + 30_000)], payload: ["package_name": .string("dev.droidbridge.fixture.wrongboot")])
+        peer.enqueue(wrongBoot); let wrongBootID = wrongBoot["id"]!.string!
+        try await wait { peer.acknowledgment(wrongBootID) != nil }
+        try require(peer.acknowledgment(wrongBootID)?["result"]?.object?["code"]?.string == "command_expired" && launcher.sessions.isEmpty, "A deadline from another boot caused an effect")
+        try JSONEncoder().encode([expiredID, completedID, validID, wrongBootID].compactMap(peer.acknowledgment)).write(to: output.appendingPathComponent("adapter-admission-receipts.json"))
         await adapter.shutdown(); window.orderOut(nil); launcher.window?.orderOut(nil)
-        let result: [String: Any] = ["passed": true, "scope": "Shipping AppKit + anonymous NSXPC fixture; no Android or installed-app acceptance", "surfaces": 8, "catalog_count": 1000, "local_search": true, "exact_owner_command_route": true, "explicit_pending_pairing_recovery": true, "chunked_file_roundtrip_bytes": fixture.count, "sha256_match": true, "camera_capture_verified": false, "phone_pairing_verified": false, "physical_focus_verified": false, "clipboard_read": false, "setup_narrow_validation_scroll": true, "captures": captures + ["wireless-narrow-validation.png", "scanner-narrow-validation.png"]]
+        let result: [String: Any] = ["passed": true, "scope": "Shipping AppKit + anonymous NSXPC fixture; no Android or installed-app acceptance", "surfaces": 8, "catalog_count": 1000, "local_search": true, "exact_owner_command_route": true, "explicit_pending_pairing_recovery": true, "registration_transient_retry": true, "registration_exhaustion_attempts": 8, "registration_result_survives_status_read": true, "post_readiness_admission_refused_without_session": true, "chunked_file_roundtrip_bytes": fixture.count, "sha256_match": true, "camera_capture_verified": false, "phone_pairing_verified": false, "physical_focus_verified": false, "clipboard_read": false, "setup_narrow_validation_scroll": true, "captures": captures + ["wireless-narrow-validation.png", "scanner-narrow-validation.png"]]
         try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("results.json"))
     }
     static func XCT<T>(_ value: T?, _ message: String) throws -> T { guard let value else { throw BridgeError.message(message) }; return value }

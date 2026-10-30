@@ -110,7 +110,7 @@ final class CompanionCleanupSecurityTests: XCTestCase {
         let owner = try XCTUnwrap(CompanionBrokerOwner.live(getpid()))
         // Keep the real TLS connection unapproved so no background event
         // poller can consume the deliberately armed persistence fault first.
-        let connected = await broker.exchange(.init(operation: "begin_pair", payload: ["serial": .string("emulator-5580"), "expected_device_id": .string(peer.deviceID), "server_pin": .string(peer.serverPin), "secret": .string(String(repeating: "A", count: 43))], nonce: "independent-test"), owner: owner)
+        let connected = await broker.exchange(.init(operation: "begin_pair", payload: ["serial": .string("emulator-5580"), "expected_device_id": .string(peer.deviceID), "server_pin": .string(peer.serverPin), "secret": .string(String(repeating: "A", count: 43)), "pairing_expires": .number(Date().timeIntervalSince1970.rounded(.down) + 120)], nonce: "independent-test"), owner: owner)
         XCTAssertNil(connected.error)
         XCTAssertEqual(connected.data["status"], .string("pending"))
         faults.arm(["persist_before_write", "forward_close"])

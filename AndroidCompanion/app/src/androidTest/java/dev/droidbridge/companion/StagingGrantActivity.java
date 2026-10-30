@@ -11,7 +11,7 @@ public final class StagingGrantActivity extends Activity {
         super.onCreate(state);
         String token=getIntent().getStringExtra("token");
         if(token==null || !UUID.fromString(token).toString().equals(token))throw new IllegalArgumentException("Invalid nonce");
-        String[] paths={"stall/"+token+"/a","stall/"+token+"/b","small/"+token,"status/"+token,"cleanup/"+token};
+        String[] paths={"stall/"+token+"/a","stall/"+token+"/b","small/"+token,"status/"+token,"cleanup/"+token,"query-stall/"+token};
         ClipData clip=null;
         for(String path:paths){
             Uri uri=Uri.parse("content://dev.droidbridge.companion.test.staging/"+path);

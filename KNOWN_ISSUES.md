@@ -31,3 +31,10 @@ pairing or switching USB/Wi-Fi. Pre-companion wrappers do not publish dashboard
 sessions or hold canonical alias leases. Their absence from the new dashboard
 is not evidence that they stopped, and companion Forget/Revoke does not revoke
 Android debugging. See the upgrade boundary in COMPATIBILITY.md.
+
+The companion distinguishes an expired request from confirmed absence of an
+effect. Shared text can already be saved in the Mac inbox, or an export choice
+committed, before the phone receives its admission/completion receipt. If that
+receipt is lost or arrives after the phone's deadline, inspect the Mac inbox or
+saved app selection before starting a new deliberate request. Expired/unknown
+does not prove nothing happened; there is no automatic effect replay.

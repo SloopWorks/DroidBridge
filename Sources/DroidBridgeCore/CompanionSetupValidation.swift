@@ -24,8 +24,10 @@ public struct CompanionPairCode: Equatable {
               let seconds = query.first(where: { $0.name == "expires" })?.value, seconds.allSatisfy({ $0.isASCII && $0.isNumber }),
               let epoch = TimeInterval(seconds), epoch.isFinite else { throw BridgeError.message("Use the complete current DroidBridge pairing link or QR, including its server fingerprint. A secret alone cannot authenticate the phone.") }
         let expiry = Date(timeIntervalSince1970: epoch)
-        guard expiry > now else { throw BridgeError.message("This pairing code has expired. Open a new pairing window on the phone.") }
-        guard expiry.timeIntervalSince(now) <= 180 else { throw BridgeError.message("The phone and Mac clocks differ. Correct their time, then open a new pairing link on the phone.") }
+        // Structural admission only. Phone and Mac wall clocks may differ by
+        // hours. The broker compares this hint with a fresh pinned phone clock
+        // before sending the secret; the phone's monotonic window is authority.
+        guard epoch > 0, epoch <= 9_007_199_254_740 else { throw BridgeError.message("The pairing link expiry is invalid.") }
         secret = value; deviceID = device.lowercased(); expires = expiry; serverPin = pin
     }
 }

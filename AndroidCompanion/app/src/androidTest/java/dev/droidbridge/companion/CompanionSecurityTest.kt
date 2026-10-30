@@ -37,7 +37,7 @@ class CompanionSecurityTest {
             val secret = store.startPairing(); val mac = UUID.randomUUID().toString()
             val pending = request("/v1/pair", JSONObject().put("request_id", UUID.randomUUID().toString()).put("pairing_secret", secret).put("mac_id", mac).put("mac_name", "Security test"))
             assertEquals(202, pending.first); val id = pending.second.getJSONObject("data").getString("pairing_id")
-            store.approvePair(); val paired = store.pollPair(id, secret)
+            store.approvePair(id); val paired = store.pollPair(id, secret)
             return paired.getString("credential") to paired.getString("trust_id")
         }
         override fun close() { server.close(); directory.deleteRecursively() }
@@ -56,7 +56,7 @@ class CompanionSecurityTest {
     }
     @Test fun receiptsRetainUnexpiredIdentitiesAndRejectCapacity() = Peer().use { p ->
         val a = p.pair(); val b = p.pair()
-        fun ping(id: String = UUID.randomUUID().toString()) = JSONObject().put("request_id", id).put("kind", "ping").put("payload", JSONObject()).put("expires_at", java.time.Instant.now().plusSeconds(29).toString())
+        fun ping(id: String = UUID.randomUUID().toString()) = clockedCommand(p.store, JSONObject().put("request_id", id).put("kind", "ping").put("payload", JSONObject()).put("expires_at", java.time.Instant.now().plusSeconds(29).toString()), 29_000)
         val first = ping(); assertEquals(200, p.request("/v1/commands", first, a.first).first)
         assertEquals(409, p.request("/v1/commands", first, b.first).first)
         val changed = JSONObject(first.toString()).put("payload", JSONObject().put("changed", true))
@@ -64,8 +64,8 @@ class CompanionSecurityTest {
         repeat(511) { assertEquals(200, p.request("/v1/commands", ping(), a.first).first) }
         assertEquals(429, p.request("/v1/commands", ping(), a.first).first)
         assertEquals(200, p.request("/v1/commands", first, a.first).first)
-        val expired = ping().put("expires_at", java.time.Instant.now().minusSeconds(1).toString())
-        assertEquals(400, p.request("/v1/commands", expired, a.first).first)
+        val expired = ping().put("issued_uptime_ms", android.os.SystemClock.elapsedRealtime() - 2).put("expires_uptime_ms", android.os.SystemClock.elapsedRealtime() - 1)
+        assertEquals(409, p.request("/v1/commands", expired, a.first).first)
     }
     @Test fun transferHashesOrderingTrustAndTraversal() = Peer().use { p ->
         val a = p.pair(); val b = p.pair(); val bytes = "synthetic-file-test".toByteArray(); val sha = ProtocolRules.hash(bytes); val id = UUID.randomUUID().toString()
@@ -82,7 +82,7 @@ class CompanionSecurityTest {
     }
     @Test fun profileAndExportCommandsUpdateRealPhoneState() = Peer().use { p ->
         val pair = p.pair(); p.store.refreshCatalog()
-        fun command(kind: String, payload: JSONObject) = JSONObject().put("request_id", UUID.randomUUID().toString()).put("kind", kind).put("payload", payload).put("expires_at", java.time.Instant.now().plusSeconds(25).toString())
+        fun command(kind: String, payload: JSONObject) = clockedCommand(p.store, JSONObject().put("request_id", UUID.randomUUID().toString()).put("kind", kind).put("payload", payload).put("expires_at", java.time.Instant.now().plusSeconds(25).toString()))
         assertEquals(200, p.request("/v1/commands", command("set_profile", JSONObject().put("profile", "responsive")), pair.first).first)
         assertEquals("responsive", p.store.status().getString("profile"))
         val app = p.store.catalogLocal().getJSONObject(0).getString("package_name")
@@ -98,6 +98,8 @@ class CompanionSecurityTest {
         val accepted = JSONObject().put("request_id", id).put("status", "accepted").put("result", JSONObject())
         assertEquals(401, p.request("/v1/commands/$id/receipt", accepted, b.first).first)
         assertEquals(200, p.request("/v1/commands/$id/receipt", accepted, a.first).first)
+        val admitted = JSONObject().put("request_id", id).put("status", "admitted").put("result", JSONObject())
+        assertEquals(200, p.request("/v1/commands/$id/receipt", admitted, a.first).first)
         val applied = JSONObject().put("request_id", id).put("status", "applied").put("result", JSONObject().put("state", "received"))
         assertEquals(200, p.request("/v1/commands/$id/receipt", applied, a.first).first)
         assertEquals("applied", p.store.commandOutcomes().getJSONObject(0).getString("status"))
@@ -109,7 +111,8 @@ class CompanionSecurityTest {
         p.restart()
         val events = p.request("/v1/events?after=0&epoch=old-service&wait_ms=0", token = a.first).second.getJSONObject("data")
         assertTrue(events.getBoolean("reset_required"))
-        assertTrue((0 until events.getJSONArray("events").length()).map { events.getJSONArray("events").getJSONObject(it) }.any { it.getJSONObject("payload").optString("request_id") == fresh })
+        assertFalse("New epoch never replays queued prior-epoch work", (0 until events.getJSONArray("events").length()).map { events.getJSONArray("events").getJSONObject(it) }.any { it.getJSONObject("payload").optString("request_id") == fresh })
+        assertEquals("expired", (0 until p.store.commandOutcomes().length()).map { p.store.commandOutcomes().getJSONObject(it) }.single { it.getString("request_id") == fresh }.getString("status"))
     }
     @Test fun peerStateAndExportPreferencesAreScopedToTheSelectedMac() = Peer().use { p ->
         val a = p.pair(); val b = p.pair(); p.store.running = true; p.store.refreshCatalog()
@@ -147,6 +150,98 @@ class CompanionSecurityTest {
         assertEquals("received", p.store.transfers.listLocal().getJSONObject(0).getString("status"))
         p.store.transfers.cancelLocal(id)
         assertEquals("cancelled", p.store.transfers.listLocal().getJSONObject(0).getString("status"))
+    }
+
+    @Test fun wallClockOffsetsDoNotWidenMonotonicDeadlinesOrReopenReceipts() = Peer().use { p ->
+        val pair = p.pair()
+        fun ping() = clockedCommand(p.store, JSONObject().put("request_id", UUID.randomUUID().toString()).put("kind", "ping").put("payload", JSONObject()))
+        for (offset in listOf(-172800L, 172800L)) {
+            val request = ping().put("expires_at", java.time.Instant.now().plusSeconds(offset).toString())
+            assertEquals("Diagnostic wall-clock skew is irrelevant", 200, p.request("/v1/commands", request, pair.first).first)
+        }
+        val long = clockedCommand(p.store, ping(), 30_001)
+        assertEquals(400, p.request("/v1/commands", long, pair.first).first)
+        val future = ping().put("issued_uptime_ms", android.os.SystemClock.elapsedRealtime() + 5000).put("expires_uptime_ms", android.os.SystemClock.elapsedRealtime() + 10000)
+        assertEquals(400, p.request("/v1/commands", future, pair.first).first)
+        assertEquals(409, p.request("/v1/commands", ping().put("clock_epoch", UUID.randomUUID().toString()), pair.first).first)
+        assertEquals(400, p.request("/v1/commands", ping().put("issued_uptime_ms", "123"), pair.first).first)
+        val original = ping(); assertEquals(200, p.request("/v1/commands", original, pair.first).first)
+        p.restart()
+        assertEquals("Canonical completed receipt survives epoch change", 200, p.request("/v1/commands", original, pair.first).first)
+        val rewritten = clockedCommand(p.store, JSONObject(original.toString()))
+        assertEquals("New clock cannot rewrite an accepted UUID", 409, p.request("/v1/commands", rewritten, pair.first).first)
+        val oldEpochNewID = JSONObject(original.toString()).put("request_id", UUID.randomUUID().toString())
+        assertEquals(409, p.request("/v1/commands", oldEpochNewID, pair.first).first)
+        p.store.revoke(pair.second)
+        try { p.store.command(original, pair.second); fail("Revoked trust used a cached receipt") } catch (_: SecurityException) {}
+    }
+    @Test fun pairingApprovalRejectsMissingDismissedAndReplacedRequests() = Peer().use { p ->
+        fun rejected(id: String, code: String) {
+            try { p.store.approvePair(id); fail("Unavailable consent was treated as approval") }
+            catch (failure: BridgeFailure) { assertEquals(code, failure.code) }
+        }
+        fun pending(): JSONObject {
+            val secret = p.store.startPairing()
+            return p.store.requestPair(JSONObject().put("request_id", UUID.randomUUID().toString()).put("pairing_secret", secret)
+                .put("mac_id", UUID.randomUUID().toString()).put("mac_name", "Pairing consent fixture"))
+        }
+        rejected(UUID.randomUUID().toString(), "pairing_unavailable")
+        val dismissed = pending(); p.store.denyPair(); rejected(dismissed.getString("pairing_id"), "pairing_unavailable")
+        val replaced = pending(); val current = pending(); rejected(replaced.getString("pairing_id"), "pairing_changed")
+        assertEquals(0, p.store.trusted().length())
+        val actual = p.store.approvePair(current.getString("pairing_id"))
+        assertEquals(current.getString("pairing_id"), actual.pairingId)
+        assertTrue(p.store.trusted().has(actual.trustId))
+    }
+
+    @Test fun committedSpotlightIntentRetainsPendingMaterializationAndExplicitRetry() = Peer().use { p ->
+        val pair = p.pair(); p.store.refreshCatalog()
+        val pkg = p.store.catalogLocal().getJSONObject(0).getString("package_name")
+        val original = p.store.chooseExport(pkg, true, pair.second)
+        fun receipt(status: String, result: JSONObject) = JSONObject().put("request_id", original).put("status", status).put("result", result)
+        assertEquals(200, p.request("/v1/commands/$original/receipt", receipt("admitted", JSONObject()), pair.first).first)
+        val result = JSONObject().put("intent_committed", true).put("materialization_pending", true).put("wrapper_created", false)
+            .put("phase", "selection_saved_wrapper_pending").put("retryable", true)
+        val applied = receipt("applied", result)
+        assertEquals(200, p.request("/v1/commands/$original/receipt", applied, pair.first).first)
+        val saved = p.store.commandOutcomes().getJSONObject(0)
+        assertEquals("applied", saved.getString("status")); assertTrue(saved.getJSONObject("result").getBoolean("materialization_pending"))
+        val successor = p.store.retrySpotlight(original, pair.second)
+        assertNotEquals("Explicit retry has a successor UUID", original, successor)
+        assertEquals(200, p.request("/v1/commands/$original/receipt", applied, pair.first).first)
+        val events = p.request("/v1/events?after=0&wait_ms=0", token = pair.first).second.getJSONObject("data").getJSONArray("events")
+        val commands = (0 until events.length()).map { events.getJSONObject(it) }.filter { it.getString("kind") == "command" }.map { it.getJSONObject("payload") }
+        val first = commands.single { it.getString("request_id") == original }.getJSONObject("payload").getLong("selection_revision")
+        val next = commands.single { it.getString("request_id") == successor }.getJSONObject("payload").getLong("selection_revision")
+        assertTrue("Successor advances selection revision", next > first)
+    }
+
+    @Test fun admittedCapacityIsBoundedAndRestartRecoversWithoutReplaying() = Peer().use { p ->
+        val pair = p.pair()
+        val ids = (0 until 32).map {
+            val id = p.store.phoneCommand("open_app", JSONObject().put("package_name", "com.android.settings"), pair.second)
+            val receipt = JSONObject().put("request_id", id).put("status", "admitted").put("result", JSONObject())
+            p.store.commandReceipt(id, receipt, pair.second)
+            val first = p.store.commandOutcomes().let { rows -> (0 until rows.length()).map { rows.getJSONObject(it) }.single { it.getString("request_id") == id } }.getLong("admitted_uptime_ms")
+            p.store.commandReceipt(id, receipt, pair.second)
+            val again = p.store.commandOutcomes().let { rows -> (0 until rows.length()).map { rows.getJSONObject(it) }.single { it.getString("request_id") == id } }.getLong("admitted_uptime_ms")
+            assertEquals(first, again)
+            id
+        }
+        try { p.store.phoneCommand("open_app", JSONObject().put("package_name", "com.android.settings"), pair.second); fail("More than32 live admissions accepted") }
+        catch (failure: BridgeFailure) { assertEquals("phone_command_capacity", failure.code) }
+        p.restart()
+        val outcomes = p.store.commandOutcomes()
+        assertEquals(32, outcomes.length())
+        for (i in 0 until outcomes.length()) assertEquals("unknown", outcomes.getJSONObject(i).getString("status"))
+        val events = p.request("/v1/events?after=0&wait_ms=0", token = pair.first).second.getJSONObject("data").getJSONArray("events")
+        assertEquals("Restart never re-emits old admitted effects", 0, events.length())
+        val old = ids.last()
+        try { p.store.commandReceipt(old, JSONObject().put("request_id", old).put("status", "applied").put("result", JSONObject()), pair.second); fail("Restarted unknown was overwritten") }
+        catch (failure: BridgeFailure) { assertEquals("command_outcome_retired", failure.code) }
+        val successor = p.store.phoneCommand("open_app", JSONObject().put("package_name", "com.android.settings"), pair.second)
+        assertFalse(ids.contains(successor))
+        assertEquals("Capacity returns through a new explicit UUID", 32, p.store.commandOutcomes().length())
     }
 
 }

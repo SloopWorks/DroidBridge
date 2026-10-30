@@ -157,3 +157,28 @@ extension ManagedAppsTests {
         XCTAssertEqual(try catalog.companionExportSelection(deviceID: newID), [application.packageName: true, pkg: false])
     }
 }
+
+extension ManagedAppsTests {
+    func testCompanionExportAtomicOutcomePreservesCanonicalBooleanCompatibility() throws {
+        let id = UUID().uuidString, trust = UUID().uuidString
+        try catalog.bindCompanionExportAuthority(deviceID: id, trustID: trust, aliases: [device.serial])
+        XCTAssertEqual(try catalog.applyCompanionExportOutcome(deviceID: id, trustID: trust, packageName: application.packageName, selected: true, revision: 10), .committed)
+        XCTAssertEqual(try catalog.applyCompanionExportOutcome(deviceID: id, trustID: trust, packageName: application.packageName, selected: true, revision: 10), .replayed)
+        XCTAssertEqual(try catalog.applyCompanionExportOutcome(deviceID: id, trustID: trust, packageName: application.packageName, selected: false, revision: 9), .stale)
+        XCTAssertThrowsError(try catalog.applyCompanionExportOutcome(deviceID: id, trustID: trust, packageName: application.packageName, selected: false, revision: 10))
+        XCTAssertTrue(try catalog.applyCompanionExport(deviceID: id, trustID: trust, packageName: application.packageName, selected: true, revision: 10))
+        XCTAssertFalse(try catalog.applyCompanionExport(deviceID: id, trustID: trust, packageName: application.packageName, selected: false, revision: 9))
+    }
+    func testCompanionExportConcurrentOutcomeCommitsExactlyOnce() async throws {
+        let id = UUID().uuidString, trust = UUID().uuidString, package = application.packageName, paths = try XCTUnwrap(self.paths)
+        try catalog.bindCompanionExportAuthority(deviceID: id, trustID: trust, aliases: [device.serial])
+        let outcomes = try await withThrowingTaskGroup(of: ManagedAppCatalog.CompanionExportOutcome.self) { group in
+            for _ in 0..<2 { group.addTask { try ManagedAppCatalog(paths: paths).applyCompanionExportOutcome(deviceID: id, trustID: trust, packageName: package, selected: true, revision: 10) } }
+            var values: [ManagedAppCatalog.CompanionExportOutcome] = []
+            for try await value in group { values.append(value) }
+            return values
+        }
+        XCTAssertEqual(outcomes.filter { $0 == .committed }.count, 1)
+        XCTAssertEqual(outcomes.filter { $0 == .replayed }.count, 1)
+    }
+}

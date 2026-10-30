@@ -42,9 +42,11 @@ struct CompanionDesktopPendingPairing: Equatable {
     private(set) var pendingPairings: [CompanionDesktopPendingPairing] = []
     private(set) var sessionSnapshot: [[String: CompanionJSON]] = []
     private(set) var statusMessage = "Companion not connected. Existing Android app windows work independently."
+    private(set) var hostRegistrationMessage = ""
     var onChange: (() -> Void)?
     var windowController: CompanionWindowController?
     private var lifecycle: Task<Void, Never>?
+    private var hostRegistration: Task<Void, Never>?
     private var commands: [String: Task<Void, Never>] = [:]
     private var receipts: [String: (String, [String: CompanionJSON])] = [:]
     private var receiptOrder: [String] = []
@@ -69,7 +71,7 @@ struct CompanionDesktopPendingPairing: Equatable {
                 let candidate = FileManager.default.isExecutableFile(atPath: executable.path) ? executable : development
                 do {
                     try await CompanionBrokerInstaller.ensureInstalled(executable: candidate, adb: URL(fileURLWithPath: launcher.toolchain.adb))
-                    if Bundle.main.bundleURL.pathExtension == "app" { _ = try await self.broker.request(operation: "host_register", payload: ["app_path": .string(Bundle.main.bundleURL.path)]) }
+                    self.retryHostRegistration()
                 }
                 catch { self.statusMessage = "Companion service unavailable: \(String(error.localizedDescription.prefix(350)))"; self.onChange?() }
             }
@@ -83,6 +85,34 @@ struct CompanionDesktopPendingPairing: Equatable {
                     try? await Task.sleep(nanoseconds: 1_500_000_000)
                 }
                 try? await Task.sleep(nanoseconds: 500_000_000)
+            }
+        }
+    }
+
+    /// Fresh LaunchAgent bootstrap can precede its first usable IPC connection.
+    /// This explicit mutation retries finitely; status reads never register a host.
+    func retryHostRegistration(bundleURL: URL = Bundle.main.bundleURL) {
+        guard !stopped, hostRegistration == nil, let launcher, !launcher.isWrapper,
+              bundleURL.pathExtension == "app" else { return }
+        hostRegistrationMessage = "Registering this installed Mac app for phone launch requests…"; onChange?()
+        hostRegistration = Task { [weak self] in
+            guard let self else { return }
+            defer { self.hostRegistration = nil }
+            for attempt in 0..<8 {
+                guard !Task.isCancelled, !self.stopped, !launcher.quitting else { return }
+                do {
+                    let reply = try await self.broker.request(operation: "host_register", payload: ["app_path": .string(bundleURL.path)])
+                    guard !Task.isCancelled, !self.stopped else { return }
+                    guard reply.data["status"]?.string == "registered" else { throw CompanionBoundaryError("host_registration_unconfirmed", "The local service did not confirm Mac launch registration.") }
+                    self.hostRegistrationMessage = "This installed DroidBridge app can reopen for phone launch requests."; self.onChange?(); return
+                } catch {
+                    guard !Task.isCancelled, !self.stopped else { return }
+                    if attempt == 7 {
+                        self.hostRegistrationMessage = "Phone launch registration failed: \(String(error.localizedDescription.prefix(250))). Keep DroidBridge open, then choose Retry Mac Launch Registration."; self.onChange?(); return
+                    }
+                    do { try await Task.sleep(nanoseconds: UInt64(min(2.0, 0.25 * pow(2.0, Double(attempt))) * 1_000_000_000)) }
+                    catch { return }
+                }
             }
         }
     }
@@ -134,7 +164,7 @@ struct CompanionDesktopPendingPairing: Equatable {
                 return .object(["session_id": .string(d.id.uuidString), "package_name": .string(d.application.packageName), "label": .string(d.application.name), "backend": .string(d.configuration.backend.rawValue), "phase": .string(phase)])
             }
             let audio = launcher.audioControls.presentation(for: serial)
-            _ = try await broker.request(operation: "session_publish", payload: ["device_id": .string(phone.id), "serial": .string(serial), "role": .string(launcher.isWrapper ? "wrapper" : "launcher"), "generation": .number(generation), "sessions": .array(rows), "audio_status": .object(["route": .string(audio.route == .macAndPhone ? "mac_and_phone" : audio.route.rawValue), "phase": .string(audio.phase.rawValue), "message": .string(String(audio.message.prefix(512)))])])
+            _ = try await broker.request(operation: "session_publish", payload: ["device_id": .string(phone.id), "serial": .string(serial), "role": .string(launcher.isWrapper ? "wrapper" : "launcher"), "command_protocol": .number(2), "generation": .number(generation), "sessions": .array(rows), "audio_status": .object(["route": .string(audio.route == .macAndPhone ? "mac_and_phone" : audio.route.rawValue), "phase": .string(audio.phase.rawValue), "message": .string(String(audio.message.prefix(512)))])])
             publishedDeviceIDs.insert(phone.id)
         }
         lastPublish = revision == publishRevision ? Date() : .distantPast
@@ -148,26 +178,46 @@ struct CompanionDesktopPendingPairing: Equatable {
             guard commands.count < 4 else { break }
             commands[id] = Task { [weak self] in
                 guard let self else { return }
+                defer { self.commands.removeValue(forKey: id); self.lastPublish = .distantPast }
                 var status = "rejected", result: [String: CompanionJSON] = ["code": .string("cancelled")]
-                do { result = try await self.apply(command); status = "applied" }
+                do {
+                    let admission = try await self.broker.request(operation: "command_admit", payload: ["command_id": .string(id), "generation": .number(self.generation)])
+                    let phase = admission.data["status"]?.string ?? "unknown"
+                    if phase == "accepted", admission.data["admitted"]?.bool == true, admission.data["execution_granted"]?.bool == true {
+                        result = try await self.apply(command); status = "applied"
+                    } else if phase == "accepted" {
+                        // Admission is durable, but only its first one-time grant
+                        // may execute. Another delivery cannot acknowledge or
+                        // reject an effect that may already be in progress.
+                        return
+                    } else if ["applied", "rejected", "unknown"].contains(phase) {
+                        // A durable prior outcome never causes an effect replay.
+                        status = phase; result = admission.data["result"]?.object ?? [:]
+                    } else { throw CompanionBoundaryError("command_not_admitted", "The local service did not admit this exact pending command.") }
+                }
                 catch { result = ["code": .string((error as? CompanionBoundaryError)?.code ?? "host_action_failed"), "message": .string(String(error.localizedDescription.prefix(350)))] }
                 self.receipts[id] = (status, result); self.receiptOrder.append(id)
                 if self.receiptOrder.count > 256 { self.receipts.removeValue(forKey: self.receiptOrder.removeFirst()) }
                 if !self.stopped { do { try await self.acknowledge(id, status: status, result: result) } catch { /* Replay returns the saved result; action is never rerun. */ } }
-                self.commands.removeValue(forKey: id); self.lastPublish = .distantPast
             }
         }
     }
     private func acknowledge(_ id: String, status: String, result: [String: CompanionJSON]) async throws {
-        _ = try await broker.request(operation: "command_ack", payload: ["command_id": .string(id), "generation": .number(generation), "status": .string(status), "result": .object(result)])
+        let reply = try await broker.request(operation: "command_ack", payload: ["command_id": .string(id), "generation": .number(generation), "status": .string(status), "result": .object(result)])
+        guard let canonical = reply.data["status"]?.string, ["applied", "rejected", "unknown"].contains(canonical) else { throw CompanionBoundaryError("invalid_command_receipt", "The local service did not confirm this action outcome.") }
+        receipts[id] = (canonical, reply.data["result"]?.object ?? [:])
     }
     private func apply(_ command: [String: CompanionJSON]) async throws -> [String: CompanionJSON] {
         guard !stopped, !Task.isCancelled, let launcher, !launcher.quitting,
               let deviceID = command["device_id"]?.string, let phone = devices.first(where: { $0.id == deviceID && $0.connected && $0.paired }),
               let kind = command["kind"]?.string, let payload = command["payload"]?.object,
               let device = launcher.devices.first(where: { phone.aliases.contains($0.serial) && $0.state == "device" }) else { throw CompanionBoundaryError("phone_unavailable", "The paired authorized Android device is unavailable.") }
-        guard command["generation"]?.number == generation, let expiry = command["expires"]?.number,
-              expiry.isFinite, Date(timeIntervalSinceReferenceDate: expiry) > Date() else { throw CompanionBoundaryError("command_expired", "This command expired or belongs to an older Mac owner.") }
+        guard command["generation"]?.number == generation, let rawDeadline = command["continuous_deadline"]?.object,
+              let bootID = rawDeadline["boot_id"]?.string, let issuedMS = rawDeadline["issued_ms"]?.number, let expiresMS = rawDeadline["expires_ms"]?.number,
+              let deadline = try? CompanionCommandDeadline(issuedMS: issuedMS, expiresMS: expiresMS, bootID: bootID), deadline.isValid else { throw CompanionBoundaryError("command_expired", "This command expired or belongs to an older Mac owner.") }
+        let checkAdmission: () throws -> Void = { [weak self] in
+            guard let self, !self.stopped, !Task.isCancelled, !launcher.quitting, deadline.isValid else { throw CompanionBoundaryError("command_expired", "The command expired before a new Android session could be admitted.") }
+        }
         // Commands carry only the canonical phone ID; the explicit serial is
         // selected from that broker-verified alias set, never from the payload.
         switch kind {
@@ -177,7 +227,7 @@ struct CompanionDesktopPendingPairing: Equatable {
             let app = launcher.appsDeviceSerial == device.serial ? launcher.applications.first(where: { $0.packageName == package }) : nil
             let value = app ?? AndroidApplication(packageName: package, name: package)
             let config = configuration(SessionConfiguration(backend: launcher.backend, showSystemDecorations: (try? DroidBridgePreferences.load().showAndroidSystemDecorations) ?? true), serial: device.serial)
-            guard let session = await launcher.launch(device: device, app: value, configuration: config), session.state == .running else { throw CompanionBoundaryError("launch_failed", "The Android app did not reach a running Mac window. See DroidBridge diagnostics.") }
+            guard let session = await launcher.launch(device: device, app: value, configuration: config, admissionCheck: checkAdmission), session.state == .running else { throw CompanionBoundaryError("launch_failed", "The Android app did not reach a running Mac window. See DroidBridge diagnostics.") }
             return ["session_id": .string(session.descriptor.id.uuidString), "phase": .string("running")]
         case "stop_session":
             guard let raw = payload["session_id"]?.string, let id = UUID(uuidString: raw), let session = launcher.sessions[id], phone.aliases.contains(session.descriptor.device.serial) else { throw CompanionBoundaryError("session_unavailable", "This process no longer owns that Android session.") }
@@ -213,9 +263,11 @@ struct CompanionDesktopPendingPairing: Equatable {
         }
     }
     private func waitForAudio(_ route: DeviceAudioRoute, serial: String, launcher: LauncherController) async throws -> [String: CompanionJSON] {
-            let deadline = Date().addingTimeInterval(24)
+            let deadline = CompanionClock.nowMS() + 24_000
             repeat {
-                try Task.checkCancellation(); launcher.pollAudioControls()
+                try Task.checkCancellation()
+                guard !stopped, !launcher.quitting else { throw CancellationError() }
+                launcher.pollAudioControls()
                 let state = launcher.audioControls.presentation(for: serial)
                 if state.phase == .failed { throw CompanionBoundaryError("audio_unavailable", state.message) }
                 if (route == .phone && state.phase == .phone) || (route != .phone && [.ready, .shared].contains(state.phase)) { return ["route": .string(route == .macAndPhone ? "mac_and_phone" : route.rawValue), "phase": .string(state.phase.rawValue)] }
@@ -223,16 +275,19 @@ struct CompanionDesktopPendingPairing: Equatable {
                 let sharedRunning = sessionSnapshot.contains { $0["serial"]?.string == serial && $0["phase"]?.string == "running" }
                 if !ownRunning && !sharedRunning { return ["route": .string(route == .macAndPhone ? "mac_and_phone" : route.rawValue), "phase": .string("saved_for_next_session")] }
                 try await Task.sleep(nanoseconds: 150_000_000)
-            } while Date() < deadline
-            throw CompanionBoundaryError("audio_timeout", "Audio output did not initialize. Video continues; use Phone audio or Retry Audio.")
+            } while CompanionClock.nowMS() < deadline
+            // The routing intent was already saved before waiting for output.
+            // A completion timeout cannot truthfully reject that committed intent.
+            return ["route": .string(route == .macAndPhone ? "mac_and_phone" : route.rawValue), "phase": .string("output_not_confirmed"), "intent_committed": .bool(true), "output_confirmed": .bool(false), "message": .string("Routing preference saved; Mac output was not confirmed. Video continues. Use Phone audio or Retry Audio.")]
     }
 
     func shutdown() async {
-        guard !stopped else { return }; stopped = true; lifecycle?.cancel()
+        guard !stopped else { return }; stopped = true; lifecycle?.cancel(); hostRegistration?.cancel()
         windowController?.shutdown()
         for task in commands.values { task.cancel() }
         await broker.invalidate()
         for task in commands.values { await task.value }
         if let lifecycle { await lifecycle.value }
+        if let hostRegistration { await hostRegistration.value }
     }
 }

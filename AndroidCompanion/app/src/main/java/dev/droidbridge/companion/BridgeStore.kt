@@ -31,6 +31,8 @@ class BridgeStore private constructor(val context: Context) {
     private val events = ArrayDeque<JSONObject>()
     private var sequence = 0L
     private val epoch = java.util.UUID.randomUUID().toString()
+    private val startedUptime = android.os.SystemClock.elapsedRealtime()
+    private val bootCount = runCatching { Settings.Global.getInt(context.contentResolver, Settings.Global.BOOT_COUNT, -1) }.getOrDefault(-1)
     private var pairingSecret: String? = null
     private var pairingDeadline = 0L
     private var pendingPair: JSONObject? = null
@@ -52,13 +54,15 @@ class BridgeStore private constructor(val context: Context) {
                 for (i in 0 until stored.length()) {
                     val value = stored.getJSONObject(i); val id = value.getString("request_id")
                     require(runCatching { java.util.UUID.fromString(id) }.isSuccess)
-                    val expiry = java.time.Instant.parse(value.getString("expires_at"))
-                    if (value.getString("status") in listOf("queued", "accepted")) {
-                        if (expiry.isAfter(java.time.Instant.now())) event("command", value.getJSONObject("command"), value.getString("trust_id"))
-                        else value.put("status", "expired")
+                    if (value.getString("status") in listOf("queued", "accepted", "admitted")) {
+                        // A new process epoch invalidates old monotonic anchors. Accepted
+                        // work may already have acted remotely; never silently replay it.
+                        value.put("status", if (value.getString("status") in listOf("accepted", "admitted")) "unknown" else "expired")
+                            .put("error_code", "clock_epoch_changed").put("locally_retired", true)
                     }
                     outcomes[id] = value
                 }
+                phoneJournal.write(JSONArray(outcomes.values.toList()).toString())
             }
         }.onFailure { phoneJournalHealthy = false }
         runCatching {
@@ -122,20 +126,26 @@ class BridgeStore private constructor(val context: Context) {
         val existing = pendingPair
         if (existing != null) {
             require(existing.getString("mac_id") == macId && existing.getString("request_id") == request.getString("request_id")) { "Pairing in progress" }
-            return JSONObject().put("pairing_id", existing.getString("pairing_id")).put("status", "pending").put("expires_at", existing.getString("expires_at"))
+            return JSONObject().put("pairing_id", existing.getString("pairing_id")).put("status", "pending").put("expires_at", existing.getString("expires_at")).put("clock_epoch", epoch).put("expires_uptime_ms", pairingDeadline)
         }
         val id = java.util.UUID.randomUUID().toString()
         val expiry = java.time.Instant.now().plusMillis(pairingDeadline - now).toString()
         val comparison = ProtocolRules.hash((secret + ":" + macId).toByteArray()).take(8).uppercase()
         pendingPair = JSONObject().put("pairing_id", id).put("request_id", request.getString("request_id")).put("mac_id", macId).put("mac_name", name).put("expires_at", expiry).put("status", "pending").put("comparison_code", comparison)
-        return JSONObject().put("pairing_id", id).put("status", "pending").put("expires_at", expiry).put("comparison_code", comparison)
+        return JSONObject().put("pairing_id", id).put("status", "pending").put("expires_at", expiry).put("comparison_code", comparison).put("clock_epoch", epoch).put("expires_uptime_ms", pairingDeadline)
     }
     @Synchronized fun pendingPair(): JSONObject? = pendingPair?.takeIf { pairing() != null && it.optString("status") == "pending" }
-    @Synchronized fun approvePair() {
-        val pending = pendingPair ?: return
-        val secret = pairing() ?: return
-        val credential = issueCredential(secret, pending.getString("mac_id"), pending.getString("mac_name"))
-        pending.put("status", "approved").put("response", credential)
+    data class PairApproval(val pairingId: String, val trustId: String, val macName: String)
+    @Synchronized fun approvePair(expectedPairingId: String): PairApproval {
+        val pending = pendingPair ?: throw BridgeFailure(409, "pairing_unavailable")
+        if (pending.getString("pairing_id") != expectedPairingId) throw BridgeFailure(409, "pairing_changed")
+        val secret = pairing() ?: throw BridgeFailure(410, "pairing_expired")
+        if (pending.getString("status") == "pending") {
+            val credential = issueCredential(secret, pending.getString("mac_id"), pending.getString("mac_name"))
+            pending.put("status", "approved").put("response", credential)
+        }
+        require(pending.getString("status") == "approved")
+        return PairApproval(expectedPairingId, pending.getJSONObject("response").getString("trust_id"), pending.getString("mac_name"))
     }
     @Synchronized fun denyPair() { pendingPair = null; pairingSecret = null }
     @Synchronized fun pollPair(id: String, secret: String): JSONObject {
@@ -143,7 +153,8 @@ class BridgeStore private constructor(val context: Context) {
         if (!ProtocolRules.secureEqual(current, secret)) throw SecurityException("Pairing denied")
         val pending = pendingPair ?: throw SecurityException("Pairing unavailable")
         require(pending.getString("pairing_id") == id)
-        return if (pending.getString("status") == "approved") JSONObject(pending.getJSONObject("response").toString()).put("status", "approved") else JSONObject().put("status", "pending")
+        return (if (pending.getString("status") == "approved") JSONObject(pending.getJSONObject("response").toString()).put("status", "approved") else JSONObject().put("status", "pending"))
+            .put("clock_epoch", epoch).put("expires_uptime_ms", pairingDeadline)
     }
     @Synchronized fun trustPublic(requestingTrust: String? = null): JSONObject {
         val records = trusted()
@@ -159,14 +170,18 @@ class BridgeStore private constructor(val context: Context) {
         val value = trusted(); value.remove(macId); credentials.write(value.toString())
         peerStates.remove(macId); catalogViews.remove(macId)
         received.entries.removeAll { it.value.getString("trust_id") == macId }; runCatching { receivedJournal.write(JSONArray(received.values.toList()).toString()) }
-        outcomes.values.filter { it.getString("trust_id") == macId && it.getString("status") in listOf("queued", "accepted") }.forEach { it.put("status", "rejected").put("error_code", "trust_revoked") }
+        outcomes.values.filter { it.getString("trust_id") == macId && it.getString("status") in listOf("queued", "accepted", "admitted") }.forEach {
+            val admitted = it.getString("status") == "admitted"
+            it.put("status", if (admitted) "unknown" else "rejected").put("error_code", if (admitted) "trust_revoked_after_admission" else "trust_revoked")
+        }
         runCatching { savePhoneCommands(); transfers.revoke(macId) }.onFailure { lastError = "Revoked trust; staged cleanup requires retry." }
         synchronized(eventLock) { val retained = events.filter { it.optString("target_trust_id") != macId }; events.clear(); events.addAll(retained); eventBytes = events.sumOf { it.toString().toByteArray().size }; eventLock.notifyAll() }
     }
 
     fun hello(): JSONObject = JSONObject().put("protocol_min", 1).put("protocol_max", 1).put("device_id", deviceId)
         .put("device_name", "${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}")
-        .put("capabilities", JSONArray(listOf("catalog", "icons", "events", "commands", "sessions", "share", "files", "clipboard", "notifications", "notification_replies", "profiles", "diagnostics", "delivery", "state_heartbeat")))
+        .put("capabilities", JSONArray(listOf("catalog", "icons", "events", "commands", "sessions", "share", "files", "clipboard", "notifications", "notification_replies", "profiles", "diagnostics", "delivery", "state_heartbeat", "clock_anchor_v1")))
+        .put("server_time", java.time.Instant.now().epochSecond).put("server_uptime_ms", android.os.SystemClock.elapsedRealtime()).put("clock_epoch", epoch)
         .put("catalog_revision", revision).put("pairing_available", pairing() != null).put("permissions", JSONObject().put("notifications", setting("notifications_enabled").toString()).put("clipboard", setting("clipboard_enabled").toString()))
     fun event(kind: String, payload: JSONObject, recipient: String? = null): Long = synchronized(eventLock) {
         require(payload.toString().toByteArray().size <= 70_000)
@@ -286,12 +301,14 @@ class BridgeStore private constructor(val context: Context) {
         repairExportIntents(trust)
         expireOutcomes()
         if (outcomes.size >= 32) {
-            val removable = outcomes.entries.firstOrNull { it.value.getString("status") !in listOf("queued", "accepted") }?.key
+            val removable = outcomes.entries.firstOrNull { it.value.getString("status") !in listOf("queued", "accepted", "admitted") }?.key
                 ?: throw BridgeFailure(429, "phone_command_capacity")
             outcomes.remove(removable)
         }
         val id = java.util.UUID.randomUUID().toString(); val now = java.time.Instant.now()
+        val issued = android.os.SystemClock.elapsedRealtime()
         val command = JSONObject().put("request_id", id).put("kind", kind).put("payload", payload).put("expires_at", now.plusSeconds(30).toString())
+            .put("clock_epoch", epoch).put("issued_uptime_ms", issued).put("expires_uptime_ms", issued + 30_000)
         val value = JSONObject().put("request_id", id).put("kind", kind).put("trust_id", trust).put("status", "queued")
             .put("created_at", now.toString()).put("expires_at", now.plusSeconds(30).toString()).put("command", command)
         outcomes[id] = value
@@ -300,32 +317,98 @@ class BridgeStore private constructor(val context: Context) {
         return id
     }
     private fun expireOutcomes() {
-        val now = java.time.Instant.now()
-        outcomes.values.filter { it.getString("status") in listOf("queued", "accepted") && !java.time.Instant.parse(it.getString("expires_at")).isAfter(now) }
-            .forEach { it.put("status", "expired") }
+        val now = android.os.SystemClock.elapsedRealtime()
+        val previous = linkedMapOf<String, JSONObject>()
+        for ((id, value) in outcomes) {
+            val status = value.getString("status")
+            val command = value.getJSONObject("command")
+            val unadmittedExpired = status in listOf("queued", "accepted") &&
+                (command.optString("clock_epoch") != epoch || command.optLong("expires_uptime_ms", -1) <= now)
+            val admittedLost = status == "admitted" && (value.optString("admission_epoch") != epoch ||
+                value.optLong("admitted_uptime_ms", -1).let { it < 0 || now < it || now - it >= 120_000 })
+            if (!unadmittedExpired && !admittedLost) continue
+            previous[id] = JSONObject(value.toString())
+            value.put("status", if (admittedLost) "unknown" else "expired").put("locally_retired", true)
+                .put("error_code", if (admittedLost) "admission_outcome_unknown" else "phone_command_expired")
+        }
+        if (previous.isNotEmpty()) {
+            try { savePhoneCommands() }
+            catch (failure: Exception) {
+                previous.forEach { (id, value) -> outcomes[id] = value }
+                throw BridgeFailure(503, "receipt_persistence_failed")
+            }
+        }
+    }
+    private fun monotonicInteger(request: JSONObject, key: String): Long {
+        val value = request.get(key)
+        require(value is Int || value is Long) { "Clock timestamps must be integers" }
+        return (value as Number).toLong().also { require(it >= 0) }
+    }
+    private fun validateCommandClock(request: JSONObject) {
+        if (request.optString("clock_epoch") != epoch) throw BridgeFailure(409, "clock_epoch_mismatch")
+        val issued = monotonicInteger(request, "issued_uptime_ms")
+        val expires = monotonicInteger(request, "expires_uptime_ms")
+        val now = android.os.SystemClock.elapsedRealtime()
+        require(issued <= now && expires > issued && expires - issued <= 30_000)
+        if (expires <= now || expires - now > 30_000) throw BridgeFailure(409, "command_expired")
+    }
+    private fun receiptIsStale(receipt: JSONObject, now: Long): Boolean {
+        val created = receipt.optLong("created_uptime_ms", -1)
+        val boot = receipt.optInt("boot_count", -1)
+        val day = 86_400_000L
+        if (bootCount >= 0 && boot == bootCount && created >= 0) return now >= created && now - created >= day
+        if (bootCount >= 0 && boot >= 0 && bootCount > boot) return now >= day
+        // Legacy/unknown boot metadata cannot be aged from a mutable wall clock.
+        return now >= startedUptime && now - startedUptime >= day
     }
     @Synchronized fun commandOutcomes(): JSONArray {
         expireOutcomes()
         return JSONArray(outcomes.values.map { value -> JSONObject(value.toString()).apply { remove("command"); remove("receipt_hash") } })
     }
     @Synchronized fun commandReceipt(id: String, request: JSONObject, trustId: String): JSONObject {
+        if (!trusted().has(trustId)) throw SecurityException("Trust revoked")
+        val original = outcomes[id] ?: throw BridgeFailure(409, "unknown_phone_command")
+        if (original.getString("trust_id") != trustId) throw SecurityException("Wrong command recipient")
+        expireOutcomes()
         val value = outcomes[id] ?: throw BridgeFailure(409, "unknown_phone_command")
-        if (value.getString("trust_id") != trustId) throw SecurityException("Wrong command recipient")
+        if (value.getString("status") == "expired") throw BridgeFailure(409, "phone_command_expired")
+        if (value.optBoolean("locally_retired")) throw BridgeFailure(409, "command_outcome_retired")
         require(request.getString("request_id") == id)
-        require(request.getString("status") in listOf("accepted", "applied", "rejected", "unknown"))
+        require(request.getString("status") in listOf("accepted", "admitted", "applied", "rejected", "unknown"))
         val hash = ProtocolRules.hash(canonical(request).toByteArray())
-        if (value.has("receipt_hash") && value.getString("status") != "accepted") {
+        if (value.has("receipt_hash") && value.getString("status") !in listOf("accepted", "admitted")) {
             if (value.getString("receipt_hash") != hash) throw BridgeFailure(409, "receipt_conflict")
             return JSONObject().put("accepted", true).put("command_id", id).put("status", value.getString("status"))
         }
-        expireOutcomes()
-        if (value.getString("status") == "expired") throw BridgeFailure(409, "phone_command_expired")
         val status = request.getString("status")
+        val current = value.getString("status")
+        if (current == "admitted" && status == "accepted") throw BridgeFailure(409, "receipt_regression")
+        if (status == current && value.has("receipt_hash") && value.getString("receipt_hash") != hash) throw BridgeFailure(409, "receipt_conflict")
         val previous = JSONObject(value.toString())
-        value.put("receipt_hash", hash).put("status", status).put("error_code", request.optString("error_code", request.optJSONObject("result")?.optString("code", "") ?: "").take(80))
+        val summary = JSONObject()
+        val result = request.optJSONObject("result") ?: JSONObject()
+        for (key in listOf("intent_committed", "materialization_pending", "wrapper_created", "retryable")) {
+            if (result.has(key)) { require(result.get(key) is Boolean); summary.put(key, result.getBoolean(key)) }
+        }
+        if (result.has("phase")) { val phase = result.get("phase"); require(phase is String && phase.length <= 80); summary.put("phase", phase) }
+        if (status == "admitted" && current != "admitted") {
+            value.put("admission_epoch", epoch).put("admitted_uptime_ms", android.os.SystemClock.elapsedRealtime())
+        }
+        value.put("receipt_hash", hash).put("status", status).put("result", summary)
+            .put("error_code", request.optString("error_code", result.optString("code", "")).take(80))
         try { savePhoneCommands() } catch (failure: Exception) { outcomes[id] = previous; throw BridgeFailure(503, "receipt_persistence_failed") }
-        // // Receipt publication follows durable original outcome.
+        // Receipt publication follows durable original outcome.
         return JSONObject().put("accepted", true).put("command_id", id).put("status", status)
+    }
+    @Synchronized fun retrySpotlight(requestId: String, expectedTrustId: String): String {
+        val outcome = outcomes[requestId] ?: throw BridgeFailure(409, "unknown_phone_command")
+        require(outcome.getString("trust_id") == expectedTrustId && trusted().has(expectedTrustId))
+        require(outcome.getString("kind") == "set_export" && outcome.getString("status") == "applied")
+        val result = outcome.optJSONObject("result") ?: throw BridgeFailure(409, "not_retryable")
+        require(result.optBoolean("materialization_pending") && result.optBoolean("retryable"))
+        val payload = outcome.getJSONObject("command").getJSONObject("payload")
+        // Explicitly admitted successor UUID/revision; never rewrite/replay the old receipt.
+        return chooseExport(payload.getString("package_name"), payload.getBoolean("selected"), expectedTrustId)
     }
     @Synchronized fun updatePeerState(trustId: String, request: JSONObject): JSONObject {
         // Serialize with revoke(): an earlier HTTP authentication must not
@@ -433,6 +516,7 @@ class BridgeStore private constructor(val context: Context) {
         check(temporary.renameTo(receiptsFile))
     }
     @Synchronized fun command(request: JSONObject, trustId: String): JSONObject {
+        if (!trusted().has(trustId)) throw SecurityException("Trust revoked")
         if (!receiptsHealthy) throw BridgeFailure(503, "receipt_store_unavailable")
         val id = request.getString("request_id"); require(runCatching { java.util.UUID.fromString(id) }.isSuccess)
         val hash = ProtocolRules.hash((trustId + ":" + canonical(request)).toByteArray())
@@ -440,8 +524,9 @@ class BridgeStore private constructor(val context: Context) {
             val receipt = JSONObject(it); if (receipt.getString("hash") != hash) throw BridgeFailure(409, "request_conflict")
             return JSONObject().put("accepted", true).put("request_id", id).put("status", receipt.optString("status", "unknown")).put("result", receipt.optJSONObject("result") ?: JSONObject())
         }
-        val now = java.time.Instant.now(); val expiry = java.time.Instant.parse(request.getString("expires_at"))
-        require(expiry.isAfter(now) && !expiry.isAfter(now.plusSeconds(30))) { "Command expired" }
+        validateCommandClock(request)
+        val now = java.time.Instant.now()
+        val nowUptime = android.os.SystemClock.elapsedRealtime()
         val kind = request.getString("kind"); val payload = request.optJSONObject("payload") ?: JSONObject()
         require(kind in listOf("clipboard_text", "share_text", "share_url", "notification_reply", "dismiss_notification", "set_profile", "set_export", "notification_preferences", "ping"))
         when (kind) {
@@ -449,10 +534,11 @@ class BridgeStore private constructor(val context: Context) {
             "set_export" -> { require(ProtocolRules.packageName(payload.getString("package_name"))); require(payload.get("selected") is Boolean) }
             "notification_preferences" -> { require(payload.get("enabled") is Boolean); val packages = payload.getJSONArray("packages"); require(packages.length() <= 256); for (i in 0 until packages.length()) require(ProtocolRules.packageName(packages.getString(i))); if (payload.getBoolean("enabled")) require(setting("notifications_enabled")) { "Enable notification sharing on phone" } }
         }
-        val stale = commandReceipts.filterValues { runCatching { java.time.Instant.parse(JSONObject(it).getString("created_at")).isBefore(now.minusSeconds(86400)) }.getOrDefault(false) }.keys
+        val stale = commandReceipts.filterValues { runCatching { receiptIsStale(JSONObject(it), nowUptime) }.getOrDefault(false) }.keys
         stale.forEach { commandReceipts.remove(it) }
         if (commandReceipts.size >= 512) throw BridgeFailure(429, "receipt_capacity")
         val receipt = JSONObject().put("hash", hash).put("status", "unknown").put("created_at", now.toString())
+            .put("clock_epoch", epoch).put("created_uptime_ms", nowUptime).put("boot_count", bootCount)
         commandReceipts[id] = receipt.toString()
         persistReceipts() // Durable intent precedes effects; uncertain retries never replay an effect.
         var effectResult = JSONObject()

@@ -192,7 +192,9 @@ class MainActivity : Activity() {
                     if (next != presentation) { presentation = next; updateVisible() }
                     (0 until outcomes.length()).map { outcomes.getJSONObject(it) }.lastOrNull { it.optString("trust_id") == selected && previousOutcomes[it.optString("request_id")] != it.optString("status") }?.let { changed ->
                         when (changed.optString("status")) {
-                            "applied" -> announce("Completed on ${name()}: ${changed.optString("kind").replace('_', ' ')}")
+                            "applied" -> if (changed.optJSONObject("result")?.optBoolean("materialization_pending") == true)
+                                announce("Spotlight choice saved on ${name()}; its Mac app is pending. Use Retry Spotlight in Recent actions.")
+                            else announce("Completed on ${name()}: ${changed.optString("kind").replace('_', ' ')}")
                             "rejected" -> announce("Rejected by ${name()}: ${changed.optString("error_code", "check Diagnostics")}")
                             "unknown" -> announce("Outcome not confirmed on ${name()}. Do not repeat this action until its receipt is resolved.")
                             "expired" -> announce("Action expired without confirmed completion. Check Recent actions before trying again.")
@@ -208,7 +210,7 @@ class MainActivity : Activity() {
         if (pairDialogId == pair.getString("pairing_id")) return; pairDialogId = pair.getString("pairing_id")
         AlertDialog.Builder(this).setTitle("Trust ${pair.getString("mac_name")}?")
             .setMessage("This Mac can read your app catalog and control its DroidBridge sessions. Sharing permissions remain separate.\n\nComparison code: ${pair.optString("comparison_code", "Unavailable — do not approve")}. Check the same code on the Mac.")
-            .setPositiveButton("Trust Mac") { _, _ -> work.execute { val r = runCatching { store.approvePair() }; handler.post { announce(if (r.isSuccess) "Mac approved. Waiting for pairing to finish." else "Pairing expired or failed. Start a new attempt."); snapshot() } } }
+            .setPositiveButton("Trust Mac") { _, _ -> work.execute { val r = runCatching { store.approvePair(pair.getString("pairing_id")) }; handler.post { announce(if (r.isSuccess) "Mac approved. Waiting for pairing to finish." else "Pairing expired or failed. Start a new attempt."); snapshot() } } }
             .setNegativeButton("Deny") { _, _ -> store.denyPair(); announce("Pairing denied") }.setOnCancelListener { store.denyPair() }.showAccessible()
     }
     private fun send(kind: String, payload: JSONObject, description: String) {
@@ -218,7 +220,7 @@ class MainActivity : Activity() {
         val key = "$target:$kind:$payload"
         pendingRequests[key]?.let { id ->
             val outcome = (0 until outcomes.length()).map { outcomes.getJSONObject(it) }.firstOrNull { it.optString("request_id") == id }
-            if (id == "admitting" || outcome == null || outcome.optString("status") in listOf("queued", "accepted", "unknown")) { announce("This action is already pending. Check Recent actions; no duplicate was sent."); return }
+            if (id == "admitting" || outcome == null || outcome.optString("status") in listOf("queued", "accepted", "admitted", "unknown")) { announce("This action is already pending. Check Recent actions; no duplicate was sent."); return }
             pendingRequests.remove(key)
         }
         if (pendingRequests.size >= 32) { announce("Too many unresolved actions. Wait for their receipts or expiry before trying again."); return }
@@ -305,7 +307,25 @@ class MainActivity : Activity() {
     private fun sharing() {
         card("Send selected text", "To ${name()}. Paste reads clipboard only after your action. Received text needs an explicit Copy.") {
             val input = EditText(this@MainActivity).apply { hint = "Text or https:// link"; minLines = 2; maxLines = 6; setText(draft); contentDescription = "Text to send to Mac" }; input.addTextChangedListener(watcher { draft = it }); addView(input)
-            addView(button("Paste clipboard") { input.setText(getSystemService(ClipboardManager::class.java).primaryClip?.getItemAt(0)?.coerceToText(this@MainActivity) ?: "") })
+            addView(button("Paste clipboard") {
+                val clip = getSystemService(ClipboardManager::class.java).primaryClip
+                val item = clip?.takeIf { it.itemCount > 0 }?.getItemAt(0)
+                val plain = item?.text
+                when {
+                    item?.uri != null || item?.intent != null -> {
+                        input.error = "Text only. Share this file to DroidBridge instead; your draft is unchanged."
+                        announce("Clipboard file or intent was not read. Share this file instead.")
+                    }
+                    plain == null || plain.isEmpty() -> { input.error = "No clipboard text; your draft is unchanged."; announce("No text to paste.") }
+                    plain.length > 65536 -> { input.error = "Clipboard text exceeds 64 KiB; your draft is unchanged."; announce("Clipboard text is too large; 64 KiB maximum.") }
+                    else -> {
+                        val value = plain.toString()
+                        if (value.toByteArray(Charsets.UTF_8).size > 65536) {
+                            input.error = "Clipboard text exceeds 64 KiB; your draft is unchanged."; announce("Clipboard text is too large; 64 KiB maximum.")
+                        } else { input.error = null; input.setText(value); announce("Text pasted. Review it before sending.") }
+                    }
+                }
+            })
             addView(button("Send to ${name()}") { val value = input.text.toString(); val url = value.startsWith("https://") || value.startsWith("http://"); val limit = if (url) 8192 else 65536; if (value.toByteArray().size !in 1..limit) input.error = "Enter 1–${limit / 1024} KiB; your draft is unchanged." else send(if (url) "share_url" else "share_text", JSONObject().put("text", value), "Send selected text") }.apply { isEnabled = selected != null && store.running })
         }
         card("Files and photos", "From an Android app, choose Share → DroidBridge. Review the receiver first. Two files, 50 MiB each.") {
@@ -342,8 +362,20 @@ class MainActivity : Activity() {
         val selectedOutcomes = (0 until outcomes.length()).map { outcomes.getJSONObject(it) }.filter { it.optString("trust_id") == selected }
         if (selectedOutcomes.isEmpty()) list.addView(text("No recent commands", 14f))
         selectedOutcomes.forEach { o ->
-            val state = when (o.optString("status")) { "queued" -> "Waiting for Mac"; "accepted" -> "Accepted · completing"; "applied" -> "Completed"; "rejected" -> "Rejected"; "expired" -> "Expired · try original action again"; else -> "Outcome not confirmed" }
+            val state = when (o.optString("status")) { "queued" -> "Waiting for Mac"; "accepted", "admitted" -> "Accepted · completing"; "applied" -> if (o.optJSONObject("result")?.optBoolean("materialization_pending") == true) "Selection saved · Mac app pending" else "Completed"; "rejected" -> "Rejected"; "expired" -> "Expired · try original action again"; else -> "Outcome not confirmed" }
             list.addView(text("${o.optString("kind").replace('_', ' ')} · $state${o.optString("error_code").takeIf { it.isNotBlank() }?.let { " · $it" } ?: ""}", 14f))
+            if (o.optString("kind") == "set_export" && o.optString("status") == "applied" && o.optJSONObject("result")?.optBoolean("materialization_pending") == true && o.optJSONObject("result")?.optBoolean("retryable") == true) {
+                val originalId = o.getString("request_id"); val trust = o.getString("trust_id"); val key = "retry_spotlight:$originalId"
+                list.addView(button("Retry Spotlight on ${trusts.optJSONObject(trust)?.optString("name", "Mac") ?: "Mac"}") {
+                    if (selected != trust || pendingRequests.containsKey(key)) { announce("Check the selected receiver and pending action first."); return@button }
+                    pendingRequests[key] = "admitting"
+                    work.execute {
+                        val result = runCatching { store.retrySpotlight(originalId, trust) }
+                        handler.post { if (!alive) return@post; result.onSuccess { id -> pendingRequests[key] = id; announce("Spotlight retry queued for ${trusts.optJSONObject(trust)?.optString("name", "Mac") ?: "Mac"}; completion is not confirmed."); snapshot() }
+                            .onFailure { pendingRequests.remove(key); announce("Spotlight retry was not queued. Check the receiver and try again.") } }
+                    }
+                }.apply { isEnabled = store.running && !pendingRequests.containsKey(key) })
+            }
         }
     }
     private fun notificationAccess() = Settings.Secure.getString(contentResolver, "enabled_notification_listeners")?.split(':')?.any { it.startsWith("$packageName/") } == true
@@ -417,22 +449,11 @@ class MainActivity : Activity() {
         val uris = if (intent.action == Intent.ACTION_SEND_MULTIPLE) intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM, Uri::class.java) ?: arrayListOf() else arrayListOf<Uri>().apply { intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)?.let { add(it) } }
         if (uris.any { it.scheme != "content" } || uris.size > 2) { announce("Share up to two Android content files, 50 MiB each. Nothing was sent."); return }
         if (uris.isNotEmpty()) {
-            announce("Checking ${uris.size} selected files for $receiverName…")
-            fileWork.execute {
-                val details = runCatching { uris.map { uri ->
-                    var label = "Shared file"; var size = -1L
-                    contentResolver.query(uri, arrayOf(android.provider.OpenableColumns.DISPLAY_NAME, android.provider.OpenableColumns.SIZE), null, null, null)?.use { cursor ->
-                        if (cursor.moveToFirst()) { label = ProtocolRules.safeName(cursor.getString(0) ?: label); if (!cursor.isNull(1)) size = cursor.getLong(1) }
-                    }
-                    require(size < 0 || size <= ProtocolRules.MAX_FILE) { "A selected file exceeds 50 MiB. Nothing was sent." }
-                    "$label · ${if (size < 0) "Size unknown; checked during preparation" else formatBytes(size)}"
-                } }
-                handler.post {
-                    if (!alive) return@post
-                    details.onSuccess { rows -> showFileReview(uris, recipient, receiverName, rows.joinToString("\n")) }
-                        .onFailure { announce(it.message?.take(180) ?: "Unable to inspect the selected files. Nothing was sent.") }
-                }
-            }
+            // Never call an external provider before the user approves this named receiver.
+            val summary = "${uris.size} selected ${if (uris.size == 1) "file" else "files"}\n" +
+                uris.indices.joinToString("\n") { "File ${it + 1}" } +
+                "\nFile names and sizes are checked after you approve."
+            showFileReview(uris, recipient, receiverName, summary)
         } else if (value != null) {
             if (value.toByteArray().size !in 1..65536) { announce("Text exceeds the 64 KiB limit. Nothing was sent."); return }
             AlertDialog.Builder(this).setTitle("Send text to $receiverName?").setMessage(value.take(2048)).setNegativeButton("Cancel", null)

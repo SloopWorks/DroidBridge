@@ -17,8 +17,11 @@ import DroidBridgeStreaming
    let root=scope.root
    let wireless=try JSONSerialization.jsonObject(with:Data(contentsOf:root.appendingPathComponent("wireless-owned.json"))) as! [String:Any]
    let alias=wireless["serial"] as! String
-   let toolsRoot=URL(fileURLWithPath:FileManager.default.currentDirectoryPath).appendingPathComponent("dist/DroidBridge.app/Contents/Resources/Runtime")
-   let toolchain=Toolchain(adb:FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".local/bin/adb").path,scrcpy:toolsRoot.appendingPathComponent("Player.app/Contents/MacOS/scrcpy").path,server:toolsRoot.appendingPathComponent("share/scrcpy/scrcpy-server").path,audioClient:toolsRoot.appendingPathComponent("bin/DroidBridgeAudioClient").path)
+   let candidate=try JSONSerialization.jsonObject(with:Data(contentsOf:root.appendingPathComponent("candidate.json"))) as! [String:Any]
+   guard let appPath=candidate["app_path"] as? String,appPath.hasPrefix("/") else {throw BridgeError.message("Exact signed installed candidate required")}
+   let toolsRoot=URL(fileURLWithPath:appPath).appendingPathComponent("Contents/Resources/Runtime")
+   let packagedSupervisor=toolsRoot.appendingPathComponent("bin/DroidBridgeSupervisor").path
+   let toolchain=Toolchain(adb:toolsRoot.appendingPathComponent("bin/adb").path,scrcpy:toolsRoot.appendingPathComponent("Player.app/Contents/MacOS/scrcpy").path,server:toolsRoot.appendingPathComponent("share/scrcpy/scrcpy-server").path,audioClient:toolsRoot.appendingPathComponent("bin/DroidBridgeAudioClient").path)
    if CommandLine.arguments.contains("--crash-child") {
     let session=BridgeSession(descriptor:.init(device:.init(serial:scope.serial,model:"QA35"),application:.init(packageName:"dev.droidbridge.companionfixture",name:"M6 crash fixture"),configuration:.init(width:480,height:720,backend:.native)),toolchain:toolchain)
     sessions=[session];session.onFrame={_ in}
@@ -38,7 +41,8 @@ import DroidBridgeStreaming
    let q=URLComponents(string:link)!.queryItems!.reduce(into:[String:String]()){$0[$1.name]=$1.value}
    try FileManager.default.removeItem(at:linkURL)
    let id=q["device_id"]!,pin=q["server_pin"]!,secret=q["secret"]!
-   let pending=try await call("begin_pair",["serial":.string(scope.serial),"expected_device_id":.string(id),"server_pin":.string(pin),"secret":.string(secret)])
+   guard let rawExpiry=q["expires"],let expiry=Double(rawExpiry),expiry.isFinite,expiry.rounded()==expiry else {throw BridgeError.message("Complete phone pairing link expiry required")}
+   let pending=try await call("begin_pair",["serial":.string(scope.serial),"expected_device_id":.string(id),"server_pin":.string(pin),"secret":.string(secret),"pairing_expires":.number(expiry)])
    let pair=pending["pairing_id"]!.string!
    try JSONSerialization.data(withJSONObject:["comparison_code":pending["comparison_code"]!.string!]).write(to:root.appendingPathComponent("engine-pending.json"))
    var approved=false
@@ -54,7 +58,7 @@ import DroidBridgeStreaming
    let firstCounts=[settings.metrics.frames,fixture.metrics.frames]
    try await refuses(alias:alias)
    settings.resize(width:640,height:800);try await until{settings.metrics.width==640 && settings.metrics.height==800}
-   let router=DeviceAudioRouter(toolchain:toolchain,directory:scope.audioDirectory,supervisor:FileManager.default.currentDirectoryPath+"/.build/debug/DroidBridgeSupervisor",outputAvailable:{true},startupTimeout:20);audio=router
+   let router=DeviceAudioRouter(toolchain:toolchain,directory:scope.audioDirectory,supervisor:packagedSupervisor,outputAvailable:{true},startupTimeout:20);audio=router
    let routes=try DeviceAudioPreferences.setRoute(.mac,for:scope.serial)
    router.reconcile(activeSerials:[scope.serial],connectedSerials:[scope.serial,alias],routes:routes)
    try await until(timeout:25){router.status(for:scope.serial).phase == .ready || router.status(for:scope.serial).phase == .failed}
@@ -83,11 +87,20 @@ import DroidBridgeStreaming
    let leaseDrainSeconds=Date().timeIntervalSince(crashStart)
    child.waitUntilExit();crashHost=nil;guard drained,refused>0 else {throw BridgeError.message("GUI crash did not demonstrate retained teardown lease")}
    let recovered=make(alias,"dev.droidbridge.companionfixture");try await recovered.start();try await until{recovered.metrics.frames>0};await recovered.stopAndWait()
+   var cycles:[[String:Any]]=[]
+   for index in 0..<5 {
+    let serial=index.isMultiple(of:2) ? scope.serial : alias
+    let session=make(serial,"dev.droidbridge.companionfixture"),started=Date()
+    try await session.start();try await until{session.metrics.frames>0}
+    let firstFrameSeconds=Date().timeIntervalSince(started),frames=session.metrics.frames
+    let stopped=Date();await session.stopAndWait()
+    cycles.append(["cycle":index+1,"alias":serial==scope.serial ? "USB/emulator" : "wireless TLS","decoded_frames":frames,"first_frame_seconds":firstFrameSeconds,"awaited_stop_seconds":Date().timeIntervalSince(stopped)])
+   }
    let finalStatus=try await call("status"),trust=finalStatus["devices"]!.array!.compactMap(\.object).first{$0["device_id"]?.string==id}!["trust_id"]!.string!
    _ = try await call("revoke",["device_id":.string(id),"trust_id":.string(trust)])
    await engine.shutdown();broker=nil
-   let report:[String:Any]=["test":"M6 actual Core/Streaming harness with real Android TLS wireless alias","result":"PASS","installed_gui_acceptance":false,"physical_wifi_verified":false,"real_broker_authenticates_both_aliases":true,"same_alias_concurrent_native_apps":2,"first_frame_counts":firstCounts,"adaptive_resize_verified":true,"audio_initialized":true,"audio_only_blocks_other_alias":true,"phone_intent_shared_across_aliases":true,"wireless_native_frames_verified":true,"gui_sigkill_retained_lease_refusals":refused,"lease_drain_seconds":leaseDrainSeconds,"host_sigkill_to_recovered_stream_and_cleanup_seconds":Date().timeIntervalSince(crashStart),"lease_refusal_poll_interval_seconds":0.02,"post_crash_wireless_capture_verified":true,"scope":"Private QA35 Keychain/catalog/receipts; unchanged shipping pin/identity/authentication and real ADB forwards"]
-   try JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys]).write(to:URL(fileURLWithPath:FileManager.default.currentDirectoryPath+"/verification/companion/broker/m6-actual-alias-runtime.json"))
+   let report:[String:Any]=["test":"Final candidate5 Core/Streaming with packaged runtimes and actual Android TLS wireless alias","launch_close_cycles":cycles,"packaged_app_path":appPath,"result":"PASS","installed_gui_acceptance":false,"physical_wifi_verified":false,"real_broker_authenticates_both_aliases":true,"same_alias_concurrent_native_apps":2,"first_frame_counts":firstCounts,"adaptive_resize_verified":true,"audio_initialized":true,"audio_only_blocks_other_alias":true,"phone_intent_shared_across_aliases":true,"wireless_native_frames_verified":true,"gui_sigkill_retained_lease_refusals":refused,"lease_drain_seconds":leaseDrainSeconds,"host_sigkill_to_recovered_stream_and_cleanup_seconds":Date().timeIntervalSince(crashStart),"lease_refusal_poll_interval_seconds":0.02,"post_crash_wireless_capture_verified":true,"scope":"Private QA35 Keychain/catalog/receipts; unchanged shipping pin/identity/authentication and real ADB forwards"]
+   try JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys]).write(to:root.appendingPathComponent("runtime-report.json"))
    print("PASS actual M6 runtime");fflush(stdout);exit(0)
   } catch {
    if let child=crashHost,child.isRunning {

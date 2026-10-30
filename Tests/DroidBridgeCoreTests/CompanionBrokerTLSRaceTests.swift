@@ -55,7 +55,7 @@ final class CompanionBrokerTLSRaceTests:XCTestCase {
         let endpoint=BrokerEndpointSwitch(first.url),gates=PairRaceGates()
         let hooks=CompanionBrokerTestingHooks(endpoint:{_ in await endpoint.get()},checkpoint:{name,_ in if name=="before_pair_transport_bind"{try await gates.enter()}})
         let broker=CompanionBrokerEngine(directory:directory,managedPaths:paths,testingHooks:hooks);await broker.start();let owner=CompanionBrokerOwner.live(getpid())!
-        func payload(_ pin:String,_ secret:String)->[String:CompanionJSON]{["serial":.string("emulator-5580"),"expected_device_id":.string(id),"server_pin":.string(pin),"secret":.string(secret)]}
+        func payload(_ pin:String,_ secret:String)->[String:CompanionJSON]{["serial":.string("emulator-5580"),"expected_device_id":.string(id),"server_pin":.string(pin),"secret":.string(secret),"pairing_expires":.number(Date().timeIntervalSince1970.rounded(.down)+120)]}
         let a=Task{await broker.exchange(.init(operation:"begin_pair",payload:payload(first.serverPin,String(repeating:"A",count:43)),nonce:"test"),owner:owner)}
         try await wait(gates.first);await endpoint.set(second.url)
         let b=Task{await broker.exchange(.init(operation:"begin_pair",payload:payload(second.serverPin,String(repeating:"B",count:43)),nonce:"test"),owner:owner)}
@@ -65,6 +65,31 @@ final class CompanionBrokerTLSRaceTests:XCTestCase {
         b.cancel();await gates.second.release();_ = await b.value
         XCTAssertFalse(first.request.contains(String(repeating:"A",count:43)));XCTAssertFalse(second.request.contains(String(repeating:"B",count:43)))
         XCTAssertTrue(first.request.hasPrefix("GET /v1/hello"));XCTAssertTrue(second.request.hasPrefix("GET /v1/hello"));await broker.shutdown()
+    }
+    func testBlockedTerminalReceiptShutdownCancelsWaveBeforeOwnerLeaseRelease() async throws {
+        let (directory, paths) = try root(); defer { try? FileManager.default.removeItem(at: directory) }
+        let commandID = UUID().uuidString.lowercased()
+        let peer = try BrokerAdmissionTLSPeer(blockedPath: "/v1/commands/\(commandID)/receipt")
+        defer { peer.releaseBlocked(); peer.close(); try? CompanionCredentialStore.remove(deviceID: peer.deviceID) }
+        let owner = try XCTUnwrap(CompanionBrokerOwner.live(getpid()))
+        try CompanionCredentialStore.save(.init(deviceID: peer.deviceID, trustID: peer.trustID, credential: String(repeating: "A", count: 43), serverPin: peer.serverPin))
+        let now = CompanionClock.nowMS(), boot = CompanionClock.bootID
+        let state: [String: Any] = ["macID": UUID().uuidString, "devices": [["deviceID": peer.deviceID, "name": "Receipt shutdown fixture", "aliases": ["emulator-5580"], "preferredSerial": "emulator-5580", "trustID": peer.trustID, "sequence": 0, "profile": "balanced", "exportSelection": [:], "enabled": true]], "registry": ["hosts": [["owner": ["pid": owner.pid, "start": owner.start], "generation": 1, "role": "launcher", "deviceID": peer.deviceID, "serial": "emulator-5580", "updated": Date().timeIntervalSinceReferenceDate]], "sessions": [], "commands": [["id": commandID, "deviceID": peer.deviceID, "kind": "open_app", "payload": [:], "owner": ["pid": owner.pid, "start": owner.start], "generation": 1, "expires": Date().timeIntervalSinceReferenceDate, "continuousDeadline": ["bootID": boot, "issuedMS": now - 121000, "expiresMS": now - 91000], "admitted": true, "admittedAtMS": now - 121000, "status": "accepted", "result": [:]]]], "inbox": []]
+        let stateURL = directory.appendingPathComponent("state.json")
+        try JSONSerialization.data(withJSONObject: state).write(to: stateURL)
+        try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: stateURL.path)
+        let broker = CompanionBrokerEngine(directory: directory, managedPaths: paths, testingHooks: .init(endpoint: { _ in peer.url }))
+        await broker.start()
+        let connected = await broker.exchange(.init(operation: "connect", payload: ["serial": .string("emulator-5580")], nonce: "test"), owner: owner)
+        XCTAssertNil(connected.error)
+        for _ in 0..<300 { if peer.blockedRequestSeen { break }; try await Task.sleep(nanoseconds: 10_000_000) }
+        XCTAssertTrue(peer.blockedRequestSeen)
+        let start = CompanionClock.nowMS(); await broker.shutdown()
+        XCTAssertLessThan(CompanionClock.nowMS() - start, 1000, "Shutdown cancels the in-flight TLS wave rather than draining eight timeouts")
+        let stoppedBytes = try Data(contentsOf: stateURL), pathsAtStop = peer.requestedPaths
+        peer.releaseBlocked(); try await Task.sleep(nanoseconds: 150_000_000)
+        XCTAssertEqual(try Data(contentsOf: stateURL), stoppedBytes, "A late TLS reply cannot publish after shutdown")
+        XCTAssertEqual(peer.requestedPaths, pathsAtStop, "The stopped delivery task cannot send another receipt")
     }
     func testRealAdmissionPeerProtocol() async throws {
         let peer=try BrokerAdmissionTLSPeer();defer{peer.close()}
@@ -78,7 +103,7 @@ final class CompanionBrokerTLSRaceTests:XCTestCase {
             let(directory,paths)=try root();defer{try? FileManager.default.removeItem(at:directory)}
             let peer=try BrokerAdmissionTLSPeer(heartbeat:heartbeat);defer{peer.close();try? CompanionCredentialStore.remove(deviceID:peer.deviceID)}
             let broker=CompanionBrokerEngine(directory:directory,managedPaths:paths,testingHooks:.init(endpoint:{_ in peer.url}));await broker.start();let owner=CompanionBrokerOwner.live(getpid())!
-            let begun=await broker.exchange(.init(operation:"begin_pair",payload:["serial":.string("emulator-5580"),"expected_device_id":.string(peer.deviceID),"server_pin":.string(peer.serverPin),"secret":.string(String(repeating:"Q",count:43))],nonce:"test"),owner:owner);XCTAssertNil(begun.error)
+            let begun=await broker.exchange(.init(operation:"begin_pair",payload:["serial":.string("emulator-5580"),"expected_device_id":.string(peer.deviceID),"server_pin":.string(peer.serverPin),"secret":.string(String(repeating:"Q",count:43)),"pairing_expires":.number(Date().timeIntervalSince1970.rounded(.down)+120)],nonce:"test"),owner:owner);XCTAssertNil(begun.error)
             let approved=await broker.exchange(.init(operation:"poll_pair",payload:["pairing_id":.string(peer.pairingID.uuidString.lowercased())],nonce:"test"),owner:owner);XCTAssertNil(approved.error)
             let metadata:[String:CompanionJSON]=["device_id":.string(peer.deviceID),"serial":.string("emulator-5580"),"role":.string("launcher"),"generation":.number(1),"sessions":.array([])]
             let first=await broker.exchange(.init(operation:"session_publish",payload:metadata,nonce:"test"),owner:owner);XCTAssertNil(first.error)
@@ -109,12 +134,12 @@ final class CompanionBrokerTLSRaceTests:XCTestCase {
         let broker=CompanionBrokerEngine(directory:directory,managedPaths:paths,testingHooks:.init(endpoint:{$0=="qa-blocked" ? blocked.url : healthy.url}));await broker.start();let owner=CompanionBrokerOwner.live(getpid())!
         let first=Task {
             if storedCredential{return await broker.exchange(.init(operation:"connect",payload:["serial":.string("qa-blocked")],nonce:"test"),owner:owner)}
-            return await broker.exchange(.init(operation:"begin_pair",payload:["serial":.string("qa-blocked"),"expected_device_id":.string(blocked.deviceID),"server_pin":.string(blocked.serverPin),"secret":.string(String(repeating:"Q",count:43))],nonce:"test"),owner:owner)
+            return await broker.exchange(.init(operation:"begin_pair",payload:["serial":.string("qa-blocked"),"expected_device_id":.string(blocked.deviceID),"server_pin":.string(blocked.serverPin),"secret":.string(String(repeating:"Q",count:43)),"pairing_expires":.number(Date().timeIntervalSince1970.rounded(.down)+120)],nonce:"test"),owner:owner)
         }
         for _ in 0..<200 {if blocked.blockedRequestSeen{break};try await Task.sleep(nanoseconds:5_000_000)}
         XCTAssertTrue(blocked.blockedRequestSeen)
         let start=Date()
-        let response=await broker.exchange(.init(operation:"begin_pair",payload:["serial":.string("qa-healthy"),"expected_device_id":.string(healthy.deviceID),"server_pin":.string(healthy.serverPin),"secret":.string(String(repeating:"R",count:43))],nonce:"test"),owner:owner)
+        let response=await broker.exchange(.init(operation:"begin_pair",payload:["serial":.string("qa-healthy"),"expected_device_id":.string(healthy.deviceID),"server_pin":.string(healthy.serverPin),"secret":.string(String(repeating:"R",count:43)),"pairing_expires":.number(Date().timeIntervalSince1970.rounded(.down)+120)],nonce:"test"),owner:owner)
         XCTAssertNil(response.error);XCTAssertEqual(response.data["status"]?.string,"pending")
         XCTAssertLessThan(Date().timeIntervalSince(start),1,"A blocked phone must not consume every other phone's control lane")
         first.cancel();blocked.releaseBlocked();_ = await first.value;await broker.shutdown()
@@ -126,7 +151,7 @@ final class CompanionBrokerTLSRaceTests:XCTestCase {
             let failures=BrokerFaultSwitch(fault)
             let hooks=CompanionBrokerTestingHooks(endpoint:{_ in peer.url},fault:{try failures.check($0)})
             let broker=CompanionBrokerEngine(directory:directory,managedPaths:paths,testingHooks:hooks);await broker.start();let owner=CompanionBrokerOwner.live(getpid())!
-            let begun=await broker.exchange(.init(operation:"begin_pair",payload:["serial":.string("emulator-5580"),"expected_device_id":.string(peer.deviceID),"server_pin":.string(peer.serverPin),"secret":.string(String(repeating:"Q",count:43))],nonce:"test"),owner:owner)
+            let begun=await broker.exchange(.init(operation:"begin_pair",payload:["serial":.string("emulator-5580"),"expected_device_id":.string(peer.deviceID),"server_pin":.string(peer.serverPin),"secret":.string(String(repeating:"Q",count:43)),"pairing_expires":.number(Date().timeIntervalSince1970.rounded(.down)+120)],nonce:"test"),owner:owner)
             XCTAssertNil(begun.error)
             let approved=await broker.exchange(.init(operation:"poll_pair",payload:["pairing_id":.string(peer.pairingID.uuidString.lowercased())],nonce:"test"),owner:owner)
             XCTAssertEqual(approved.error?.code,"injected_"+fault)

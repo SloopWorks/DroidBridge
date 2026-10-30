@@ -10,7 +10,7 @@ android {
         applicationId = "dev.droidbridge.companion"
         minSdk = 33
         targetSdk = 35
-        versionCode = 6
+        versionCode = 8
         versionName = "0.2.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

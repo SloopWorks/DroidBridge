@@ -219,8 +219,13 @@ public final class ManagedAppCatalog: @unchecked Sendable {
     }
     /// Per-package fences retain independent choices when events arrive out of
     /// order. False means a newer choice already won; equal conflicting bytes fail.
+    public enum CompanionExportOutcome: Equatable, Sendable { case committed, replayed, stale }
     @discardableResult
     public func applyCompanionExport(deviceID: String, trustID: String, packageName: String, selected: Bool, revision: Int64) throws -> Bool {
+        try applyCompanionExportOutcome(deviceID: deviceID, trustID: trustID, packageName: packageName, selected: selected, revision: revision) != .stale
+    }
+    @discardableResult
+    public func applyCompanionExportOutcome(deviceID: String, trustID: String, packageName: String, selected: Bool, revision: Int64) throws -> CompanionExportOutcome {
         try AndroidDiscovery.validatePackage(packageName)
         return try locked { manifest in
             guard let id = UUID(uuidString: deviceID)?.uuidString.lowercased(),
@@ -230,10 +235,10 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             var policy = try CompanionExportPolicy.read(url)
             guard var device = policy.devices[id], device.authorityTrustID == trust else { throw ManagedAppCatalogError.invalid("companion export authority changed") }
             let previous = device.revisions?[packageName] ?? 0
-            if revision < previous { return false }
+            if revision < previous { return .stale }
             if revision == previous {
                 guard device.selection[packageName] == selected else { throw ManagedAppCatalogError.invalid("companion export revision conflict") }
-                return true
+                return .replayed
             }
             try advanceCompanionPolicyFence(&manifest)
             device.selection[packageName] = selected
@@ -241,7 +246,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
             policy.devices[id] = device
             try CompanionExportPolicy.write(policy, to: url)
             exportSnapshot = CompanionExportPolicy.Snapshot(policy); exportFingerprint = nil
-            return true
+            return .committed
         }
     }
     /// Version 2 is an intentional forward-compatibility fence. Legacy helpers

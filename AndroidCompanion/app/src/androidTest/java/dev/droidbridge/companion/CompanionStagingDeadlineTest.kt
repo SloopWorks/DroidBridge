@@ -39,7 +39,7 @@ class CompanionStagingDeadlineTest {
         val secret = store.startPairing()
         val pending = store.requestPair(JSONObject().put("request_id", UUID.randomUUID().toString()).put("pairing_secret", secret)
             .put("mac_id", UUID.randomUUID().toString()).put("mac_name", "Staging deadline fixture"))
-        store.approvePair()
+        store.approvePair(pending.getString("pairing_id"))
         val trust = store.pollPair(pending.getString("pairing_id"), secret).getString("trust_id")
         store.denyPair()
         val workers = Executors.newFixedThreadPool(2)
@@ -72,8 +72,14 @@ class CompanionStagingDeadlineTest {
             val cancelElapsed = SystemClock.elapsedRealtime() - cancelStart
             assertEquals(1, pipeCount()); cleanupProvider()
             val afterCancel = ready(); store.transfers.cancelLocal(afterCancel.getString("transfer_id"))
+            val queryStart = SystemClock.elapsedRealtime()
+            val stalledQuery = workers.submit<Boolean> { runCatching { store.transfers.stage(uri("query-stall/$token"), trust) }.isFailure }
+            assertTrue("Deadline cancels actual external provider query", stalledQuery.get(37, TimeUnit.SECONDS))
+            val queryElapsed = SystemClock.elapsedRealtime() - queryStart
+            assertTrue("Actual query exercised production 30s budget", queryElapsed in 29000..37000)
+            val afterQuery = ready(); store.transfers.cancelLocal(afterQuery.getString("transfer_id"))
             instrumentation.addResults(android.os.Bundle().apply { putString("droidbridge_staging_evidence", JSONObject()
-                .put("deadline_ms", elapsed).put("cancel_ms", cancelElapsed).put("stalled_pipes", 2)
+                .put("deadline_ms", elapsed).put("cancel_ms", cancelElapsed).put("query_deadline_ms", queryElapsed).put("stalled_pipes", 2)
                 .put("deadline_freed_capacity", true).put("cancel_freed_capacity", true).put("provider_eof_before_cleanup", false).toString()) })
         } finally {
             cleanupProvider(); workers.shutdownNow(); workers.awaitTermination(5, TimeUnit.SECONDS); directory.deleteRecursively()

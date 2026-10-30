@@ -58,9 +58,12 @@ private struct BrokerInbox: Codable {
 }
 private struct BrokerStopAll: Codable {
     let id: String; let deviceID: String; let children: [String]; let expires: Date; var delivered: Bool; let phoneReceipt: Bool?
+    var terminalStatus: String? = nil
 }
 private struct BrokerPendingAdmission: Codable {
     let id: UUID; let deviceID: String; let trustID: String; let serverPin: String; let serial: String; let expires: Date
+    var deadlineBootID: String? = nil
+    var deadlineMS: Double? = nil
     var phase: String
 }
 private struct BrokerStorage: Codable {
@@ -109,10 +112,13 @@ private enum BrokerOwnedForward {
 private struct BrokerTransport {
     let serial: String; let hello: CompanionHello; let forward: BrokerOwnedForward; let client: CompanionClient; let generation: UUID; let serverPin: String
     var verified: Bool
-    var admissionExpiry = Date().addingTimeInterval(120)
+    var admissionExpiryMS = CompanionClock.nowMS() + 120_000
 }
 private struct BrokerPair {
     let id: String; let serial: String; let secret: String; let deviceID: String; let expires: Date
+    let expiresContinuousMS: Double
+    let deadlineBootID: String
+    var isValid: Bool { deadlineBootID == CompanionClock.bootID && CompanionClock.nowMS() < expiresContinuousMS }
     let comparisonCode: String
     let macName: String
     let transportGeneration: UUID
@@ -130,6 +136,9 @@ public actor CompanionBrokerEngine {
     private var pairings: [String: BrokerPair] = [:]
     private var pollers: [String: Task<Void, Never>] = [:]
     private var maintenance: Task<Void, Never>?
+    private var receiptDelivery: Task<Void, Never>?
+    private var receiptDeliveryGeneration: UUID?
+    private var receiptRetry: [String: (attempt: Int, nextMS: Double)] = [:]
     private var retiringForwards: [UUID: BrokerOwnedForward] = [:]
     private var startingForwards: [UUID: BrokerOwnedForward] = [:]
     private var forwardRetries: [UUID: (attempt: Int, next: Date)] = [:]
@@ -195,7 +204,8 @@ public actor CompanionBrokerEngine {
         }
     }
     public func shutdown() async {
-        stopping = true; maintenance?.cancel(); for task in pollers.values { task.cancel() }; pollers.removeAll()
+        stopping = true; maintenance?.cancel(); receiptDelivery?.cancel(); for task in pollers.values { task.cancel() }; pollers.removeAll()
+        await receiptDelivery?.value; receiptDelivery = nil
         for serial in Array(transports.keys) { _ = removeTransport(serial: serial) }
         for (generation, forward) in startingForwards { retiringForwards[generation] = forward }
         startingForwards.removeAll()
@@ -216,7 +226,9 @@ public actor CompanionBrokerEngine {
         guard !stopping else { return .init(requestID: input.requestID, error: .init("broker_stopping", "Companion service is stopping. Retry after it restarts.", retryable: true)) }
         if let receipt = receipts[input.requestID] {
             guard receipt.owner == owner, receipt.request.operation == input.operation, receipt.request.payload == input.payload else { return .init(requestID: input.requestID, error: .init("request_conflict", "A request identity was reused with different content.")) }
-            return receipt.reply
+            // An execution grant is a one-time delivery, not a replayable
+            // receipt. Recompute canonical state without granting it again.
+            if input.operation != "command_admit" { return receipt.reply }
         }
         guard !pending.contains(input.requestID), pending.count < 64 else { return .init(requestID: input.requestID, error: .init("request_pending", "Companion request is already running or the service is busy.", retryable: true)) }
         guard !persistenceFailure else { return .init(requestID: input.requestID, error: .init("broker_storage_unavailable", "Companion state is unavailable. Existing Android windows remain usable.")) }
@@ -254,7 +266,9 @@ public actor CompanionBrokerEngine {
             let deviceID = try uuid(p, "device_id"), serial = try string(p, "serial")
             guard let device = storage.devices.first(where: { $0.deviceID == deviceID }), device.trustID != nil, device.enabled, device.aliases.contains(serial) else { throw CompanionBoundaryError("unverified_alias", "Connect and pair this phone before publishing companion sessions.") }
             let generation = try integer(p, "generation")
-            try storage.registry.publish(owner: owner, generation: generation, role: string(p, "role"), deviceID: deviceID, serial: serial, values: (p["sessions"]?.array ?? []).compactMap(\.object))
+            let commandProtocol = p["command_protocol"] == nil ? 1 : try integer(p, "command_protocol")
+            guard [1, 2].contains(commandProtocol) else { throw CompanionBoundaryError("owner_update_required", "This Mac process uses an unsupported command protocol. Update DroidBridge and its wrappers.") }
+            try storage.registry.publish(owner: owner, generation: generation, role: string(p, "role"), deviceID: deviceID, serial: serial, values: (p["sessions"]?.array ?? []).compactMap(\.object), commandProtocol: Int(commandProtocol))
             if let audio = p["audio_status"]?.object {
                 guard let route = audio["route"]?.string, ["mac", "phone", "mac_and_phone"].contains(route), let phase = audio["phase"]?.string, ["phone", "starting", "ready", "shared", "failed", "unavailable"].contains(phase), (audio["message"]?.string?.utf8.count ?? 0) <= 2048 else { throw CompanionBoundaryError("invalid_audio_status", "Invalid Mac audio status metadata.") }
                 audioStatuses[deviceID] = (owner, generation, Date(), audio)
@@ -263,23 +277,56 @@ public actor CompanionBrokerEngine {
         }
         if operation == "command_poll" {
             storage.registry.prune()
-            return ["commands": try json(storage.registry.poll(owner: owner, generation: integer(p, "generation")))]
+            let generation = try integer(p, "generation")
+            guard storage.registry.supportsCommandProtocol(owner: owner, generation: generation) else { throw CompanionBoundaryError("owner_update_required", "Open the updated DroidBridge app and update or recreate older wrappers before controlling their sessions.") }
+            return ["commands": try json(storage.registry.poll(owner: owner, generation: generation))]
+        }
+        if operation == "command_admit" {
+            let commandID = try uuid(p, "command_id")
+            let generation = try integer(p, "generation")
+            let deviceID = storage.registry.commands.first(where: { $0.id == commandID })?.deviceID
+            let admissionTrust = storage.devices.first(where: { $0.deviceID == deviceID && $0.enabled })?.trustID
+            guard admissionTrust != nil else { throw CompanionBoundaryError("trust_changed", "The phone is no longer enabled and paired for this command.") }
+            let wasAdmitted = storage.registry.commands.first(where: { $0.id == commandID })?.admitted == true
+            let receipt = try storage.registry.admit(id: commandID, owner: owner, generation: generation)
+            try persist()
+            if receipt.status == "accepted", receipt.admitted == true, !storage.localCommands.contains(receipt.id) {
+                let parent = storage.stopAll.first(where: { $0.children.contains(receipt.id) })
+                if parent?.phoneReceipt != false, let transport = verified(receipt.deviceID) {
+                    let phoneID = parent?.id ?? receipt.id
+                    try await control(deviceID:receipt.deviceID) { try await transport.client.acknowledge(commandID: phoneID, status: "admitted") }
+                }
+            }
+            guard !stopping else { throw CancellationError() }
+            storage.registry.prune()
+            guard let current = storage.registry.commands.first(where: { $0.id == commandID }) else { throw CompanionBoundaryError("receipt_unavailable", "The command receipt is no longer available.") }
+            let currentTrust = storage.devices.first(where: { $0.deviceID == deviceID && $0.enabled })?.trustID
+            let ownerPresent = storage.registry.hosts.contains { $0.owner == owner && $0.generation == generation && $0.deviceID == deviceID && $0.commandProtocol == 2 }
+            let executionGranted = !wasAdmitted && current.status == "accepted" && current.admitted == true &&
+                current.owner == owner && current.generation == generation && ownerPresent &&
+                currentTrust == admissionTrust && current.continuousDeadline?.isValid == true
+            try persist()
+            return ["status": .string(current.status), "admitted": .bool(current.admitted == true), "execution_granted": .bool(executionGranted), "result": .object(current.result)]
         }
         if operation == "command_ack" {
             let receipt = try storage.registry.acknowledge(id: uuid(p, "command_id"), owner: owner, generation: integer(p, "generation"), status: string(p, "status"), result: p["result"]?.object ?? [:])
             try persist()
             if storage.stopAll.contains(where: { $0.children.contains(receipt.id) }) { await finishStopAll() }
-            else if !storage.localCommands.contains(receipt.id), let transport = verified(receipt.deviceID) { try await control(deviceID:receipt.deviceID) { try await transport.client.acknowledge(commandID: receipt.id, status: receipt.status, result: receipt.result) } }
-            return ["status": .string(receipt.status)]
+            else if !storage.localCommands.contains(receipt.id), let transport = verified(receipt.deviceID) { try await control(deviceID:receipt.deviceID) { try await transport.client.acknowledge(commandID: receipt.id, status: receipt.status, result: receipt.result) }; storage.registry.markReceiptDelivered(id: receipt.id); try persist() }
+            return ["status": .string(receipt.status), "result": .object(receipt.result)]
         }
         let deviceID = try uuid(p, "device_id")
         if operation == "host_command" {
-            markLocalCommand(requestID)
+            let commandID = requestID.uuidString.lowercased()
+            if storage.registry.commands.contains(where: { $0.id == commandID }) || storage.stopAll.contains(where: { $0.id == commandID }) {
+                guard storage.localCommands.contains(commandID) else { throw CompanionBoundaryError("request_conflict", "A phone command identity cannot be reused for a local action.") }
+            }
             guard storage.devices.contains(where: { $0.deviceID == deviceID && $0.trustID != nil }) else { throw CompanionBoundaryError("unpaired_device", "Pair this phone before controlling its Mac sessions.") }
             let kind = try string(p, "kind"), payload = p["payload"]?.object ?? [:]
             guard ["open_app", "stop_session", "stop_all", "set_audio_route", "retry_audio", "set_profile", "set_screen_power", "set_export", "diagnostics_request"].contains(kind) else { throw CompanionBoundaryError("unsupported_command", "Unsupported Mac session action.") }
-            if kind == "stop_all" { try await enqueueStopAll(id: requestID.uuidString.lowercased(), deviceID: deviceID, deadline: Date().addingTimeInterval(30), phoneReceipt: false); return ["request_id": .string(requestID.uuidString.lowercased()), "status": .string("accepted")] }
+            if kind == "stop_all" { try await enqueueStopAll(id: commandID, deviceID: deviceID, deadline: Date().addingTimeInterval(30), phoneReceipt: false); markLocalCommand(requestID); try persist(); return ["request_id": .string(commandID), "status": .string("accepted")] }
             let receipt = try await enqueueHost(id: requestID.uuidString, deviceID: deviceID, kind: kind, payload: payload)
+            markLocalCommand(requestID)
             try persist()
             return ["request_id": .string(receipt.id), "status": .string(receipt.status), "result": .object(receipt.result)]
         }
@@ -315,9 +362,8 @@ public actor CompanionBrokerEngine {
             let id = try uuid(p, "request_id")
             if let parent = storage.stopAll.first(where: { $0.id.lowercased() == id && $0.deviceID == deviceID }) {
                 let children = storage.registry.commands.filter { parent.children.contains($0.id) }
-                let complete = children.count == parent.children.count && children.allSatisfy { $0.status != "accepted" }
-                let status = complete ? (children.allSatisfy { $0.status == "applied" } ? "applied" : "rejected") : "accepted"
-                return ["request_id": .string(id), "status": .string(status), "result": .object(["sessions": .number(Double(children.count))])]
+                let status = stopAllStatus(parent: parent, children: children) ?? "accepted"
+                return ["request_id": .string(id), "status": .string(status), "result": .object(["sessions": .number(Double(parent.children.count))])]
             }
             guard let command = storage.registry.commands.first(where: { $0.id.lowercased() == id && $0.deviceID == deviceID }) else { throw CompanionBoundaryError("receipt_unavailable", "This Mac command receipt is unavailable.", retryable: true) }
             return ["request_id": .string(command.id), "status": .string(command.status), "result": .object(command.result)]
@@ -493,6 +539,7 @@ public actor CompanionBrokerEngine {
             var lastError: Error = CompanionBoundaryError("server_pin_mismatch", "The phone certificate does not match any approved installation. Pair explicitly to trust a new installation.")
             for (expectedID, pin, record, epoch) in candidates {
                 let client = try CompanionClient(baseURL: forward.baseURL, serverPin: pin)
+                try await client.setExpectedDeviceID(expectedID)
                 let hello: CompanionHello
                 do { hello = try await control(deviceID:expectedID) { try await client.hello() } }
                 catch {
@@ -590,7 +637,7 @@ public actor CompanionBrokerEngine {
     private func recoverPairing(_ deviceID:String) async throws -> [String:CompanionJSON] {
         guard let pending = storage.pendingAdmissions.first(where: { $0.deviceID == deviceID }) else { throw CompanionBoundaryError("no_pending_pairing", "There is no approved pairing to recover.") }
         if pending.phase == "committed" { try clearCommittedCandidate(pending.id); return ["status":.string("approved"),"device_id":.string(deviceID)] }
-        guard pending.expires > Date(), let candidate = try CompanionPendingCredentialStore.load(id:pending.id), candidate.record.deviceID == deviceID, candidate.record.trustID == pending.trustID.lowercased(), candidate.record.serverPin == pending.serverPin else { throw CompanionBoundaryError("pairing_recovery_expired", "This pending pairing cannot be recovered. Forget it on this Mac, revoke the old trust on the phone, then approve a fresh link.") }
+        guard pending.deadlineBootID == CompanionClock.bootID, let deadlineMS = pending.deadlineMS, deadlineMS > CompanionClock.nowMS(), let candidate = try CompanionPendingCredentialStore.load(id:pending.id), candidate.record.deviceID == deviceID, candidate.record.trustID == pending.trustID.lowercased(), candidate.record.serverPin == pending.serverPin else { throw CompanionBoundaryError("pairing_recovery_expired", "This pending pairing cannot be recovered. Forget it on this Mac, revoke the old trust on the phone, then approve a fresh link.") }
         trustEpochs[deviceID] = UUID(); pairings = pairings.filter { $0.value.deviceID != deviceID }
         if let current = removeTransport(serial:pending.serial) { guard await retireForward(current) else { throw CompanionBoundaryError("forward_cleanup_pending", "The old pairing connection is still closing. Retry recovery shortly.",retryable:true) } }
         _ = try await connect(serial:pending.serial,enrollment:.init(deviceID:deviceID,serverPin:pending.serverPin,candidateID:pending.id))
@@ -601,6 +648,7 @@ public actor CompanionBrokerEngine {
         let serial = try string(p, "serial"), secret = try string(p, "secret"); try CompanionClient.validateSecret(secret)
         guard let pin = p["server_pin"]?.string else { throw CompanionBoundaryError("missing_server_pin", "Scan or paste the complete pairing link from the phone.") }; try CompanionClient.validateServerPin(pin)
         let expectedID = try uuid(p, "expected_device_id")
+        guard let pairingExpires = p["pairing_expires"]?.number, pairingExpires.isFinite, pairingExpires.rounded() == pairingExpires else { throw CompanionBoundaryError("invalid_pairing", "The complete phone pairing link expiry is required.") }
         let epoch = trustEpoch(expectedID)
         guard !storage.pendingAdmissions.contains(where: { $0.deviceID == expectedID && $0.phase != "committed" }) else { throw CompanionBoundaryError("pairing_admission_pending", "Finish the approved pairing recovery or Forget it before using a fresh phone link.") }
         if let pending = transports[serial], !pending.verified,
@@ -618,29 +666,35 @@ public actor CompanionBrokerEngine {
         // suspends. Bind the secret to the original QR pin, not only public UUID.
         guard transport.serverPin == pin, canonical == expectedID, trustEpochs[expectedID] == epoch else { throw CompanionBoundaryError("pairing_superseded", "The pairing server identity changed. Start a new phone pairing window.") }
         if let expected = p["expected_device_id"]?.string, UUID(uuidString: expected)?.uuidString.lowercased() != canonical { throw CompanionBoundaryError("identity_mismatch", "The pairing QR belongs to a different Android installation.") }
+        let qrDeadline = try await control(deviceID:expectedID) { try await transport.client.validatePairingCodeExpiry(expiresSeconds: pairingExpires) }
+        guard !stopping, transports[serial]?.generation == transport.generation, trustEpochs[expectedID] == epoch, qrDeadline > CompanionClock.nowMS() else { throw CompanionBoundaryError("pairing_expired", "The phone pairing link expired or changed.") }
         let response = try await control(deviceID:expectedID) { try await transport.client.beginPair(secret: secret, macID: storage.macID, name: Host.current().localizedName ?? "Mac") }
         guard transports[serial]?.generation == transport.generation else { throw CompanionBoundaryError("pairing_superseded", "The pairing connection changed. Start a new pairing window.") }
-        guard let id = response.pairingId else { throw CompanionBoundaryError("invalid_pairing", "The phone did not return a pairing request.") }
-        let formatter = ISO8601DateFormatter(); formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        guard let rawExpiry = response.expiresAt, let expiry = formatter.date(from: rawExpiry) ?? ISO8601DateFormatter().date(from: rawExpiry), expiry > Date() else { throw CompanionBoundaryError("pairing_expired", "Open a new pairing window on the phone.") }
+        guard let rawID = response.pairingId, let id = UUID(uuidString: rawID)?.uuidString.lowercased() else { throw CompanionBoundaryError("invalid_pairing", "The phone did not return a pairing request.") }
+        let phoneDeadline = try await control(deviceID:expectedID) { try await transport.client.pairingExpiryMS(response) }
+        let expiresContinuous = min(qrDeadline, phoneDeadline)
+        guard !stopping, transports[serial]?.generation == transport.generation, trustEpochs[expectedID] == epoch, expiresContinuous > CompanionClock.nowMS() else { throw CompanionBoundaryError("pairing_expired", "Open a new pairing window on the phone.") }
+        let expiry = Date().addingTimeInterval((expiresContinuous - CompanionClock.nowMS()) / 1000)
+        let rawExpiry = ISO8601DateFormatter().string(from: expiry)
         let comparison = response.comparisonCode ?? String(CompanionClient.sha256(Data((secret + ":" + storage.macID.uuidString).utf8)).prefix(8)).uppercased()
         guard comparison.range(of: "^[A-F0-9]{8}$", options: .regularExpression) != nil else { throw CompanionBoundaryError("invalid_pairing", "The phone returned an invalid comparison code.") }
         let name = Host.current().localizedName ?? "Mac"
-        pairings[id] = .init(id: id, serial: serial, secret: secret, deviceID: canonical, expires: min(expiry, Date().addingTimeInterval(120)), comparisonCode: comparison, macName: name, transportGeneration: transport.generation, serverPin: transport.serverPin, trustEpoch: epoch)
-        return ["pairing_id": .string(id), "status": .string(response.status), "device_id": .string(canonical), "comparison_code": .string(comparison), "mac_name": .string(name), "expires_at": .string(rawExpiry)]
+        pairings[id] = .init(id: id, serial: serial, secret: secret, deviceID: canonical, expires: expiry, expiresContinuousMS: expiresContinuous, deadlineBootID: CompanionClock.bootID, comparisonCode: comparison, macName: name, transportGeneration: transport.generation, serverPin: transport.serverPin, trustEpoch: epoch)
+        return ["pairing_id": .string(id), "status": .string(response.status), "device_id": .string(canonical), "comparison_code": .string(comparison), "mac_name": .string(name), "expires_at": .string(rawExpiry), "expires_continuous_ms": .number(expiresContinuous), "deadline_boot_id": .string(CompanionClock.bootID)]
     }
     private func pollPair(_ p: [String: CompanionJSON]) async throws -> [String: CompanionJSON] {
         let id = try uuid(p, "pairing_id")
-        guard let pair = pairings[id], pair.expires > Date(), var transport = transports[pair.serial],
+        guard let pair = pairings[id], pair.isValid, var transport = transports[pair.serial],
               transport.generation == pair.transportGeneration, transport.serverPin == pair.serverPin, trustEpochs[pair.deviceID] == pair.trustEpoch,
               UUID(uuidString: transport.hello.deviceId)?.uuidString.lowercased() == pair.deviceID else { pairings.removeValue(forKey: id); throw CompanionBoundaryError("pairing_expired", "Open a new pairing window on the phone.") }
         let response = try await control(deviceID:pair.deviceID) { try await transport.client.pollPair(id: id, secret: pair.secret) }
-        guard transports[pair.serial]?.generation == pair.transportGeneration, trustEpochs[pair.deviceID] == pair.trustEpoch else { throw CompanionBoundaryError("pairing_superseded", "The pairing connection changed. Start a new pairing window.") }
+        guard pair.isValid, transports[pair.serial]?.generation == pair.transportGeneration, trustEpochs[pair.deviceID] == pair.trustEpoch else { throw CompanionBoundaryError("pairing_superseded", "The pairing connection changed. Start a new pairing window.") }
+        guard response.pairingId.flatMap(UUID.init(uuidString:))?.uuidString.lowercased() == pair.id else { throw CompanionBoundaryError("invalid_pairing", "The phone returned a different pairing request.") }
         if response.status == "approved" {
             guard let credential = response.credential, let responseID = response.deviceId, UUID(uuidString: responseID)?.uuidString.lowercased() == pair.deviceID, let trust = response.trustId else { throw CompanionBoundaryError("invalid_pairing", "Phone pairing identity did not match.") }
             try await transport.client.setCredential(credential)
             let identity = try await control(deviceID:pair.deviceID) { try await transport.client.identity() }
-            guard transports[pair.serial]?.generation == pair.transportGeneration, trustEpochs[pair.deviceID] == pair.trustEpoch else { throw CompanionBoundaryError("pairing_superseded", "The pairing connection changed. Start a new pairing window.") }
+            guard pair.isValid, transports[pair.serial]?.generation == pair.transportGeneration, trustEpochs[pair.deviceID] == pair.trustEpoch else { throw CompanionBoundaryError("pairing_superseded", "The pairing connection changed. Start a new pairing window.") }
             guard UUID(uuidString: identity.deviceId)?.uuidString.lowercased() == pair.deviceID, identity.trustId == trust else { throw CompanionBoundaryError("identity_mismatch", "The approved phone identity did not match.") }
             try await transport.client.setExpectedDeviceID(pair.deviceID)
             guard !stopping, transports[pair.serial]?.generation == pair.transportGeneration, trustEpochs[pair.deviceID] == pair.trustEpoch else { throw CancellationError() }
@@ -649,7 +703,7 @@ public actor CompanionBrokerEngine {
             let record = try CompanionCredentialRecord(deviceID:pair.deviceID,trustID:trust,credential:credential,serverPin:transport.serverPin)
             if !storage.pendingAdmissions.contains(where: { $0.id == candidateUUID }) {
                 guard storage.pendingAdmissions.count < 32 else { throw CompanionBoundaryError("admission_capacity", "Recover or Forget an earlier pending pairing before adding another.") }
-                storage.pendingAdmissions.append(.init(id:candidateUUID,deviceID:pair.deviceID,trustID:trust,serverPin:transport.serverPin,serial:pair.serial,expires:Date().addingTimeInterval(600),phase:"staged"))
+                storage.pendingAdmissions.append(.init(id:candidateUUID,deviceID:pair.deviceID,trustID:trust,serverPin:transport.serverPin,serial:pair.serial,expires:Date().addingTimeInterval(600),deadlineBootID:CompanionClock.bootID,deadlineMS:CompanionClock.nowMS()+600_000,phase:"staged"))
                 try persist()
             }
             guard let pending = storage.pendingAdmissions.first(where: { $0.id == candidateUUID }) else { throw CompanionBoundaryError("candidate_unavailable", "The pending pairing journal is unavailable.") }
@@ -659,12 +713,12 @@ public actor CompanionBrokerEngine {
             try CompanionPendingCredentialStore.stage(.init(record:record,expires:pending.expires),id:candidateUUID)
             transport.verified = true; try await admit(transport, deviceID: pair.deviceID, trustID: trust, explicitRePair: true,candidateID:candidateUUID)
             try clearCommittedCandidate(candidateUUID)
-            guard transports[pair.serial]?.generation == pair.transportGeneration, trustEpochs[pair.deviceID] == pair.trustEpoch else { throw CompanionBoundaryError("pairing_superseded", "The pairing connection changed. Reconnect explicitly.") }
+            guard pair.isValid, transports[pair.serial]?.generation == pair.transportGeneration, trustEpochs[pair.deviceID] == pair.trustEpoch else { throw CompanionBoundaryError("pairing_superseded", "The pairing connection changed. Reconnect explicitly.") }
             transports[pair.serial] = transport
             pairings.removeValue(forKey: id); startPoller(pair.deviceID)
         }
         // Pairing credential is deliberately omitted from IPC replies.
-        return ["pairing_id": .string(id), "status": .string(response.status), "device_id": .string(pair.deviceID), "comparison_code": .string(pair.comparisonCode), "mac_name": .string(pair.macName), "expires_at": .string(ISO8601DateFormatter().string(from: pair.expires))]
+        return ["pairing_id": .string(id), "status": .string(response.status), "device_id": .string(pair.deviceID), "comparison_code": .string(pair.comparisonCode), "mac_name": .string(pair.macName), "expires_at": .string(ISO8601DateFormatter().string(from: pair.expires)), "expires_continuous_ms": .number(pair.expiresContinuousMS), "deadline_boot_id": .string(pair.deadlineBootID)]
     }
     private func startPoller(_ deviceID: String) {
         pollers.removeValue(forKey: deviceID)?.cancel()
@@ -695,9 +749,9 @@ public actor CompanionBrokerEngine {
         if event.kind == "command" {
             let payload = event.payload["payload"]?.object ?? [:], kind = event.payload["kind"]?.string ?? "", id = event.payload["request_id"]?.string ?? event.eventId
             do {
-                let formatter = ISO8601DateFormatter(); formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-                let basicFormatter = ISO8601DateFormatter()
-                guard let rawExpiry = event.payload["expires_at"]?.string, let expiry = formatter.date(from: rawExpiry) ?? basicFormatter.date(from: rawExpiry), expiry > Date(), expiry.timeIntervalSinceNow <= 31 else { throw CompanionBoundaryError("command_expired", "This phone command expired before the Mac could apply it.") }
+                guard !storage.localCommands.contains(id.lowercased()) else { throw CompanionBoundaryError("request_conflict", "A local command identity cannot be reused for a phone action.") }
+                let budget = try await control(deviceID:deviceID) { try await transport.client.phoneCommandDeadline(event.payload) }
+                guard !stopping, verified(deviceID)?.generation == transport.generation, budget.isValid else { throw CompanionBoundaryError("command_expired", "The phone command expired or its connection changed.") }
                 if ["share_text", "share_url", "clipboard_text"].contains(kind) {
                     guard let text = payload["text"]?.string, text.utf8.count <= (kind == "share_url" ? 8192 : 65_536) else { throw CompanionBoundaryError("invalid_content", "Shared text exceeds its limit.") }
                     if kind == "share_url" { guard let url = URL(string: text), ["https", "http"].contains(url.scheme?.lowercased() ?? "") else { throw CompanionBoundaryError("invalid_url", "Only HTTP and HTTPS links can be received.") } }
@@ -705,17 +759,17 @@ public actor CompanionBrokerEngine {
                     try await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: "applied", result: ["state": .string("received_inbox")]) }
                     return
                 }
-                if kind == "stop_all" { try await enqueueStopAll(id: id, deviceID: deviceID, deadline: expiry); return }
+                if kind == "stop_all" { try await enqueueStopAll(id: id, deviceID: deviceID, continuousDeadline: budget); return }
                 if kind == "set_export" {
-                    if let receipt = try await applyExport(deviceID: deviceID, id: id, payload: payload, deadline: expiry), receipt.status != "accepted" { try await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: receipt.status, result: receipt.result) } }
+                    if let receipt = try await applyExport(deviceID: deviceID, id: id, payload: payload, continuousDeadline: budget), receipt.status != "accepted" { try await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: receipt.status, result: receipt.result) } }
                     return
                 }
                 guard ["open_app", "stop_session", "stop_all", "set_audio_route", "retry_audio", "set_profile", "set_screen_power", "set_export", "diagnostics_request"].contains(kind) else { throw CompanionBoundaryError("unsupported_command", "The phone requested an unsupported Mac action.") }
-                let receipt = try await enqueueHost(id: id, deviceID: deviceID, kind: kind, payload: payload, deadline: expiry)
+                let receipt = try await enqueueHost(id: id, deviceID: deviceID, kind: kind, payload: payload, continuousDeadline: budget)
                 try persist()
                 if receipt.status != "accepted" { try await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: receipt.status, result: receipt.result) } }
             } catch {
-                try? await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: "rejected", result: ["code": .string((error as? CompanionBoundaryError)?.code ?? "host_unavailable")]) }
+                try? await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: (error as? CompanionBoundaryError)?.code == "selection_outcome_unknown" ? "unknown" : "rejected", result: ["code": .string((error as? CompanionBoundaryError)?.code ?? "host_unavailable")]) }
             }
         } else if event.kind == "catalog_preferences" {
             guard let id = event.payload["request_id"]?.string else { return }
@@ -723,7 +777,7 @@ public actor CompanionBrokerEngine {
             catch {
                 // Accepted policy remains authoritative, but an unavailable host is an explicit failed receipt.
                 guard !storage.localCommands.contains(id.lowercased()) else { return }
-                try? await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: "rejected", result: ["code": .string((error as? CompanionBoundaryError)?.code ?? "export_apply_failed")]) }
+                try? await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: (error as? CompanionBoundaryError)?.code == "selection_outcome_unknown" ? "unknown" : "rejected", result: ["code": .string((error as? CompanionBoundaryError)?.code ?? "export_apply_failed")]) }
             }
         } else if ["clipboard", "clipboard_text", "share", "share_text", "share_url", "file_shared", "notification_posted", "notification_removed", "catalog_changed"].contains(event.kind) {
             guard !storage.inbox.contains(where: { $0.id == event.eventId }) else { return }
@@ -768,6 +822,25 @@ public actor CompanionBrokerEngine {
             return false
         }
     }
+    private func deliverTerminalReceipts(generation: UUID) async {
+        defer { if receiptDeliveryGeneration == generation { receiptDelivery = nil; receiptDeliveryGeneration = nil } }
+        for receipt in storage.registry.commands.filter({ command in command.status != "accepted" && command.receiptDelivered != true && (receiptRetry[command.id]?.nextMS ?? 0) <= CompanionClock.nowMS() && !storage.localCommands.contains(command.id) && !storage.stopAll.contains(where: { $0.children.contains(command.id) }) }).prefix(8) {
+            guard !stopping, !Task.isCancelled else { return }
+            guard let transport = verified(receipt.deviceID) else { continue }
+            do {
+                try await control(deviceID:receipt.deviceID) {
+                    guard !stopping, !Task.isCancelled, receiptDeliveryGeneration == generation, verified(receipt.deviceID)?.generation == transport.generation else { throw CancellationError() }
+                    try await transport.client.acknowledge(commandID: receipt.id, status: receipt.status, result: receipt.result)
+                }
+                guard !stopping, !Task.isCancelled, receiptDeliveryGeneration == generation, verified(receipt.deviceID)?.generation == transport.generation else { return }
+                storage.registry.markReceiptDelivered(id: receipt.id); try persist(); receiptRetry.removeValue(forKey: receipt.id)
+            } catch {
+                guard !stopping, !Task.isCancelled, receiptDeliveryGeneration == generation else { return }
+                let attempt = min(6, (receiptRetry[receipt.id]?.attempt ?? 0) + 1)
+                receiptRetry[receipt.id] = (attempt, CompanionClock.nowMS() + min(30_000, pow(2, Double(attempt - 1)) * 1000))
+            }
+        }
+    }
     private func maintain() async {
         // Slow offline cleanup must not block healthy phones' state publication.
         if forwardReaper == nil, !retiringForwards.isEmpty {
@@ -778,9 +851,16 @@ public actor CompanionBrokerEngine {
         }
         guard !stopping, !persistenceFailure else { return }
         for pending in storage.pendingAdmissions where pending.phase=="committed" {try? clearCommittedCandidate(pending.id)}
-        storage.registry.prune(); await finishStopAll(); pairings = pairings.filter { $0.value.expires > Date() }
-        for (serial, transport) in transports.filter({ !$0.value.verified && $0.value.admissionExpiry <= Date() }) {
-            guard let current = transports[serial], current.generation == transport.generation, !current.verified, current.admissionExpiry <= Date() else { continue }
+        storage.registry.prune(); await finishStopAll()
+        guard !stopping, !persistenceFailure else { return }
+        pairings = pairings.filter { $0.value.isValid }
+        if receiptDelivery == nil {
+            let generation = UUID(); receiptDeliveryGeneration = generation
+            receiptRetry = receiptRetry.filter { id, _ in storage.registry.commands.contains(where: { $0.id == id }) }
+            receiptDelivery = Task { [weak self] in await self?.deliverTerminalReceipts(generation: generation) }
+        }
+        for (serial, transport) in transports.filter({ !$0.value.verified && $0.value.admissionExpiryMS <= CompanionClock.nowMS() }) {
+            guard let current = transports[serial], current.generation == transport.generation, !current.verified, current.admissionExpiryMS <= CompanionClock.nowMS() else { continue }
             removeTransport(serial: serial)
             pairings = pairings.filter { $0.value.serial != serial }
             _ = await retireForward(transport)
@@ -841,18 +921,19 @@ public actor CompanionBrokerEngine {
     }
     private func ensureLauncher(_ deviceID: String) async throws {
         storage.registry.prune()
-        if storage.registry.hosts.contains(where: { $0.deviceID == deviceID && $0.role == "launcher" && $0.owner.isAlive }) { return }
+        if storage.registry.hosts.contains(where: { $0.deviceID == deviceID && $0.role == "launcher" && $0.commandProtocol == 2 && $0.owner.isAlive }) { return }
+        if storage.registry.hosts.contains(where: { $0.deviceID == deviceID && $0.role == "launcher" && $0.commandProtocol != 2 && $0.owner.isAlive }) { throw CompanionBoundaryError("owner_update_required", "Quit the older DroidBridge launcher and open the updated installed application before phone control.") }
         if let boot = hostBootstrap { try await boot.value }
         else {
             guard let host = storage.hostApplication else { throw CompanionBoundaryError("launcher_not_registered", "Open the installed DroidBridge application once to enable phone launch.") }
             let boot = Task {
                 try await Task.detached(priority: .utility) { try host.revalidate() }.value
                 _ = try await ProcessRunner.run("/usr/bin/open", arguments: host.openArguments(), timeout: 5)
-                let deadline = Date().addingTimeInterval(20)
-                while Date() < deadline {
+                let deadline = CompanionClock.nowMS() + 20_000
+                while CompanionClock.nowMS() < deadline {
                     try Task.checkCancellation()
                     self.storage.registry.prune()
-                    if self.storage.registry.hosts.contains(where: { $0.deviceID == deviceID && $0.role == "launcher" && $0.owner.isAlive }) { return }
+                    if self.storage.registry.hosts.contains(where: { $0.deviceID == deviceID && $0.role == "launcher" && $0.commandProtocol == 2 && $0.owner.isAlive }) { return }
                     try await Task.sleep(nanoseconds: 100_000_000)
                 }
                 throw CompanionBoundaryError("launcher_start_timeout", "DroidBridge opened but did not become ready for this phone. Open the Mac app and retry.", retryable: true)
@@ -860,33 +941,74 @@ public actor CompanionBrokerEngine {
             hostBootstrap = boot
             do { try await boot.value; hostBootstrap = nil } catch { hostBootstrap = nil; throw error }
         }
-        guard storage.registry.hosts.contains(where: { $0.deviceID == deviceID && $0.role == "launcher" && $0.owner.isAlive }) else { throw CompanionBoundaryError("launcher_unavailable", "The Mac launcher is unavailable for this phone.", retryable: true) }
+        guard storage.registry.hosts.contains(where: { $0.deviceID == deviceID && $0.role == "launcher" && $0.commandProtocol == 2 && $0.owner.isAlive }) else { throw CompanionBoundaryError("launcher_unavailable", "The updated Mac launcher is unavailable for this phone.", retryable: true) }
     }
-    private func enqueueHost(id: String, deviceID: String, kind: String, payload: [String: CompanionJSON], deadline: Date? = nil) async throws -> CompanionBrokerCommand {
+    private func enqueueHost(id: String, deviceID: String, kind: String, payload: [String: CompanionJSON], deadline: Date? = nil, continuousDeadline: CompanionCommandDeadline? = nil) async throws -> CompanionBrokerCommand {
+        guard !storage.stopAll.contains(where: { $0.id == id.lowercased() }) else { throw CompanionBoundaryError("request_conflict", "A stop-all command identity cannot be reused for another action.") }
+        let budget = try continuousDeadline ?? CompanionCommandDeadline(issuedMS: CompanionClock.nowMS(), expiresMS: CompanionClock.nowMS() + 29_999)
         if ["open_app", "set_export"].contains(kind) { try await ensureLauncher(deviceID) }
         guard !stopping else { throw CancellationError() }
-        return try storage.registry.enqueue(id: id, deviceID: deviceID, kind: kind, payload: payload, deadline: deadline)
+        guard !storage.stopAll.contains(where: { $0.id == id.lowercased() }) else { throw CompanionBoundaryError("request_conflict", "A stop-all command identity cannot be reused for another action.") }
+        return try storage.registry.enqueue(id: id, deviceID: deviceID, kind: kind, payload: payload, deadline: deadline, continuousDeadline: budget)
     }
-    private func applyExport(deviceID: String, id: String, payload: [String: CompanionJSON], deadline: Date? = nil) async throws -> CompanionBrokerCommand? {
+    private func applyExport(deviceID: String, id: String, payload: [String: CompanionJSON], deadline: Date? = nil, continuousDeadline: CompanionCommandDeadline? = nil) async throws -> CompanionBrokerCommand? {
+        guard !storage.stopAll.contains(where: { $0.id == id.lowercased() }) else { throw CompanionBoundaryError("request_conflict", "A stop-all command identity cannot be reused for an export action.") }
+        let budget = try continuousDeadline ?? CompanionCommandDeadline(issuedMS: CompanionClock.nowMS(), expiresMS: CompanionClock.nowMS() + 29_999)
         guard let deviceIndex = storage.devices.firstIndex(where: { $0.deviceID == deviceID }), let trust = storage.devices[deviceIndex].trustID,
               let selected = payload["selected"]?.bool, let package = payload["package_name"]?.string else { throw CompanionBoundaryError("invalid_selection", "Missing export selection identity.") }
         let revision = try integer(payload, "selection_revision")
+        let canonical: [String: CompanionJSON] = ["package_name": .string(package), "selected": .bool(selected), "selection_revision": .number(Double(revision))]
+        if let prior = storage.registry.commands.first(where: { $0.id == id.lowercased() }) {
+            guard prior.deviceID == deviceID, prior.kind == "set_export", prior.payload == canonical else { throw CompanionBoundaryError("request_conflict", "An export command identity was reused.") }
+            return prior
+        }
         do { try await CoreAvailabilityAuthority.requireCompanionPolicySafe() }
         catch { throw CompanionBoundaryError("availability_update_required", "Open DroidBridge on the Mac and finish Spotlight setup to update its availability service before changing exported apps.", retryable: true) }
         guard !stopping else { throw CancellationError() }
+        guard !storage.stopAll.contains(where: { $0.id == id.lowercased() }) else { throw CompanionBoundaryError("request_conflict", "A stop-all command identity cannot be reused for an export action.") }
         guard storage.devices.first(where: { $0.deviceID == deviceID })?.trustID == trust else { throw CompanionBoundaryError("trust_changed", "Pairing authority changed while applying app visibility.") }
-        let applied = try catalog.applyCompanionExport(deviceID: deviceID, trustID: trust, packageName: package, selected: selected, revision: revision)
-        storage.devices[deviceIndex].exportSelection = try catalog.companionExportSelection(deviceID: deviceID)
-        try persist()
-        // Reduce both command and catalog_preferences to identical origin bytes.
-        let canonical: [String: CompanionJSON] = ["package_name": .string(package), "selected": .bool(selected), "selection_revision": .number(Double(revision))]
-        guard applied else { let rejected = try storage.registry.reject(id: id, deviceID: deviceID, kind: "set_export", payload: canonical, code: "stale_selection"); try persist(); return rejected }
-        let receipt = try await enqueueHost(id: id, deviceID: deviceID, kind: "set_export", payload: canonical, deadline: deadline)
-        try persist(); return receipt
+        guard budget.isValid else { throw CompanionBoundaryError("command_expired", "App selection expired before admission.") }
+        let outcome = try catalog.applyCompanionExportOutcome(deviceID: deviceID, trustID: trust, packageName: package, selected: selected, revision: revision)
+        do {
+            storage.devices[deviceIndex].exportSelection = try catalog.companionExportSelection(deviceID: deviceID)
+            try persist()
+        } catch { throw CompanionBoundaryError("selection_outcome_unknown", "The selection may be saved, but its Mac receipt could not be published. Inspect its state before a new explicit retry.") }
+        // An equal policy revision without its exact broker receipt is a crash
+        // gap, not permission to repeat wrapper materialization.
+        if outcome == .replayed {
+            let receipt = try storage.registry.recordCommittedIntent(id: id, deviceID: deviceID, kind: "set_export", payload: canonical, ambiguous: true)
+            try persist(); return receipt
+        }
+        guard outcome != .stale else { let rejected = try storage.registry.reject(id: id, deviceID: deviceID, kind: "set_export", payload: canonical, code: "stale_selection"); try persist(); return rejected }
+        do {
+            // Selection publication is already durable admission. A later host
+            // readiness/expiry failure cannot undo it or truthfully reject it.
+            if !storage.localCommands.contains(id.lowercased()), let transport = verified(deviceID) {
+                try await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: "admitted") }
+            }
+            let receipt = try await enqueueHost(id: id, deviceID: deviceID, kind: "set_export", payload: canonical, deadline: deadline, continuousDeadline: budget)
+            storage.registry.markIntentCommitted(id: id)
+            try persist(); return receipt
+        } catch {
+            let receipt = try storage.registry.recordCommittedIntent(id: id, deviceID: deviceID, kind: "set_export", payload: canonical)
+            do { try persist() } catch { throw CompanionBoundaryError("selection_outcome_unknown", "The selection was saved but its final receipt is unavailable.") }
+            return receipt
+        }
     }
-    private func enqueueStopAll(id: String, deviceID: String, deadline: Date, phoneReceipt: Bool = true) async throws {
+    private func enqueueStopAll(id: String, deviceID: String, deadline: Date? = nil, continuousDeadline: CompanionCommandDeadline? = nil, phoneReceipt: Bool = true) async throws {
+        let budget = try continuousDeadline ?? CompanionCommandDeadline(issuedMS: CompanionClock.nowMS(), expiresMS: CompanionClock.nowMS() + 29_999)
+        let expiry = deadline ?? Date().addingTimeInterval(budget.remainingMS / 1000)
         let id = UUID(uuidString: id)?.uuidString.lowercased() ?? id
+        guard UUID(uuidString: id) != nil else { throw CompanionBoundaryError("invalid_command", "Invalid stop-all command identity.") }
+        guard !storage.registry.commands.contains(where: { $0.id == id }) else { throw CompanionBoundaryError("request_conflict", "A command identity cannot be reused for stop-all.") }
+        if let previous = storage.stopAll.first(where: { $0.id == id }) {
+            guard previous.deviceID == deviceID, (previous.phoneReceipt != false) == phoneReceipt else { throw CompanionBoundaryError("request_conflict", "A stop-all identity was reused with another device or origin.") }
+        }
         if !storage.stopAll.contains(where: { $0.id == id }) {
+            if storage.stopAll.count >= 64 {
+                guard let removable = storage.stopAll.firstIndex(where: { $0.delivered }) else { throw CompanionBoundaryError("command_capacity", "Too many stop-all receipts are pending.") }
+                storage.stopAll.remove(at: removable)
+            }
             let sessions = storage.registry.sessions.filter { $0.deviceID == deviceID && !["stopped", "failed"].contains($0.phase) }
             guard storage.registry.commands.filter({ $0.status == "accepted" }).count + sessions.count <= 64 else { throw CompanionBoundaryError("command_capacity", "Too many Mac commands are pending.") }
             let original = storage.registry
@@ -894,12 +1016,11 @@ public actor CompanionBrokerEngine {
             do {
                 for session in sessions {
                     let child = UUID().uuidString.lowercased()
-                    _ = try storage.registry.enqueue(id: child, deviceID: deviceID, kind: "stop_session", payload: ["session_id": .string(session.sessionID)], deadline: deadline)
+                    _ = try storage.registry.enqueue(id: child, deviceID: deviceID, kind: "stop_session", payload: ["session_id": .string(session.sessionID)], continuousDeadline: budget)
                     children.append(child)
                 }
             } catch { storage.registry = original; throw error }
-            storage.stopAll.append(.init(id: id, deviceID: deviceID, children: children, expires: deadline, delivered: false, phoneReceipt: phoneReceipt))
-            if storage.stopAll.count > 64 { storage.stopAll.removeFirst(storage.stopAll.count - 64) }
+            storage.stopAll.append(.init(id: id, deviceID: deviceID, children: children, expires: expiry, delivered: false, phoneReceipt: phoneReceipt))
             try persist()
         }
         await finishStopAll()
@@ -933,17 +1054,28 @@ public actor CompanionBrokerEngine {
         let url = folder.appendingPathComponent(hash + ".png")
         try bytes.write(to: url, options: .atomic); try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: url.path)
     }
+    private func stopAllStatus(parent: BrokerStopAll, children: [CompanionBrokerCommand]) -> String? {
+        if let terminal = parent.terminalStatus, ["applied", "rejected", "unknown"].contains(terminal) { return terminal }
+        guard children.allSatisfy({ $0.status != "accepted" }) else { return nil }
+        // A pruned or legacy missing child is unavailable evidence, never a
+        // reason to revive the action or leave its parent accepted forever.
+        guard children.count == parent.children.count else { return "unknown" }
+        return children.contains(where: { $0.status == "unknown" }) ? "unknown" : (children.allSatisfy({ $0.status == "applied" }) ? "applied" : "rejected")
+    }
     private func finishStopAll() async {
         for parent in storage.stopAll where !parent.delivered {
             let children = storage.registry.commands.filter { parent.children.contains($0.id) }
-            guard children.count == parent.children.count, children.allSatisfy({ $0.status != "accepted" }) else { continue }
-            let status = children.allSatisfy({ $0.status == "applied" }) ? "applied" : "rejected"
+            guard let status = stopAllStatus(parent: parent, children: children) else { continue }
             do {
+                if let index = storage.stopAll.firstIndex(where: { $0.id == parent.id && $0.deviceID == parent.deviceID && $0.children == parent.children }) {
+                    storage.stopAll[index].terminalStatus = status
+                    try persist()
+                } else { continue }
                 if parent.phoneReceipt != false {
                     guard let transport = verified(parent.deviceID) else { continue }
-                    try await control(deviceID:parent.deviceID) { try await transport.client.acknowledge(commandID: parent.id, status: status, result: ["sessions": .number(Double(children.count))]) }
+                    try await control(deviceID:parent.deviceID) { try await transport.client.acknowledge(commandID: parent.id, status: status, result: ["sessions": .number(Double(parent.children.count))]) }
                 }
-                if let index = storage.stopAll.firstIndex(where: { $0.id == parent.id }) { storage.stopAll[index].delivered = true; try persist() }
+                if let index = storage.stopAll.firstIndex(where: { $0.id == parent.id && $0.deviceID == parent.deviceID && $0.children == parent.children }) { storage.stopAll[index].delivered = true; try persist() }
             } catch { /* Receipt remains durable and retries without repeating host actions. */ }
         }
     }

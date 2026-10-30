@@ -143,7 +143,13 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         if let resource = Bundle.main.url(forResource: "launch", withExtension: "json"), let data = try? Data(contentsOf: resource), let options = try? JSONDecoder().decode([String: String].self, from: data) { return options["serial"] }
         return nil
     }
-    var selectedDevice: AndroidDevice? { devices.indices.contains(devicePicker.indexOfSelectedItem) ? devices[devicePicker.indexOfSelectedItem] : nil }
+    var selectedDevice: AndroidDevice? {
+        if isWrapper, !launcherUIReady {
+            if let preferredSerial { return devices.first { $0.serial == preferredSerial } }
+            return devices.first
+        }
+        return devices.indices.contains(devicePicker.indexOfSelectedItem) ? devices[devicePicker.indexOfSelectedItem] : nil
+    }
     var selectedApp: AndroidApplication? { filtered.indices.contains(table.selectedRow) ? filtered[table.selectedRow] : nil }
     var backend: BackendKind { backendPicker.indexOfSelectedItem == 0 ? .native : .scrcpy }
     var persistenceURL: URL {
@@ -153,15 +159,18 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         return directory.appendingPathComponent(isWrapper ? "sessions-\(Bundle.main.bundleIdentifier ?? "wrapper").json" : "sessions.json")
     }
     private var launcherUIReady = false
-    init(audioControls providedAudioControls: AudioControls? = nil) {
-        CompanionLaunchTrace.record("launcher_init_begin")
-        let wrapper = Bundle.main.url(forResource: "launch", withExtension: "json") != nil || ProcessInfo.processInfo.arguments.contains("--wrapper")
-        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1160, height: 780), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: wrapper)
+    private static func makeLauncherWindow() -> NSWindow {
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1160, height: 780), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         window.title = "DroidBridge"
         window.contentMinSize = NSSize(width: 920, height: 640)
         window.titlebarSeparatorStyle = .line
         window.isReleasedWhenClosed = false
-        super.init(window: window)
+        return window
+    }
+    init(audioControls providedAudioControls: AudioControls? = nil) {
+        CompanionLaunchTrace.record("launcher_init_begin")
+        let wrapper = Bundle.main.url(forResource: "launch", withExtension: "json") != nil || ProcessInfo.processInfo.arguments.contains("--wrapper")
+        super.init(window: wrapper ? nil : Self.makeLauncherWindow())
         if let providedAudioControls {
             audioControls = providedAudioControls
             audioControls.onChange = { [weak self] _ in self?.updateAudioPresentation() }
@@ -172,8 +181,15 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     private func prepareLauncherUIIfNeeded() {
         guard !launcherUIReady else { return }
         launcherUIReady = true
+        if window == nil { window = Self.makeLauncherWindow() }
         CompanionLaunchTrace.record("launcher_ui_begin")
         buildUI()
+        if !devices.isEmpty {
+            devicePicker.removeAllItems()
+            devicePicker.addItems(withTitles: devices.map { "\($0.model) · \($0.serial)\($0.state == "device" ? "" : " (\($0.state))")" })
+            if let index = DeviceSelection.index(in: devices, currentSerial: nil, preferredSerial: preferredSerial) { devicePicker.selectItem(at: index) }
+            else { devicePicker.selectItem(at: -1) }
+        }
         window?.center()
         if sessions.isEmpty, let data = try? Data(contentsOf: persistenceURL), let descriptors = try? JSONDecoder().decode([SessionDescriptor].self, from: data) { pending = descriptors }
         updateLauncherPresentation()
@@ -282,10 +298,12 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         guard !refreshing, !quitting else { return }; refreshing = true
         if CompanionQAScope.current == nil { scheduleManagedNameRepair() }
         sharedPreferences=(try? DroidBridgePreferences.load()) ?? DroidBridgePreferences(bulkWrapperOnboardingEnabled:false)
-        bulkPreference.state=sharedPreferences.bulkWrapperOnboardingEnabled ? .on : .off
-        decorationsPreference.state=sharedPreferences.showAndroidSystemDecorations ? .on : .off
-        onboardingButton.isEnabled=sharedPreferences.bulkWrapperOnboardingEnabled && !onboardingPending && !onboarding.isRunning && managedNameRepair?.isRunning != true
-        if !sharedPreferences.bulkWrapperOnboardingEnabled && onboarding.isRunning { onboarding.cancel() }
+        if launcherUIReady {
+            bulkPreference.state=sharedPreferences.bulkWrapperOnboardingEnabled ? .on : .off
+            decorationsPreference.state=sharedPreferences.showAndroidSystemDecorations ? .on : .off
+            onboardingButton.isEnabled=sharedPreferences.bulkWrapperOnboardingEnabled && !onboardingPending && !onboarding.isRunning && managedNameRepair?.isRunning != true
+            if !sharedPreferences.bulkWrapperOnboardingEnabled && onboarding.isRunning { onboarding.cancel() }
+        }
         let selected = selectedDevice?.serial
         refreshTask = Task {
             defer { refreshing = false; refreshTask = nil;updateLauncherPresentation() }
@@ -297,7 +315,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                 let found = CompanionQAScope.current?.filterDevices(discovered) ?? discovered
                 guard !quitting else { return }
                 let connected = Set(found.filter { $0.state == "device" }.map(\.serial))
-                if onboarding.isRunning, let captured=onboarding.capturedSerial, !connected.contains(captured) { onboarding.cancel() }
+                if launcherUIReady, onboarding.isRunning, let captured=onboarding.capturedSerial, !connected.contains(captured) { onboarding.cancel() }
                 for session in Array(sessions.values) where !connected.contains(session.descriptor.device.serial) {
                     let id = session.descriptor.id
                     if sessionStates[id] != "disconnected" || previousSerials.contains(session.descriptor.device.serial) {
@@ -306,7 +324,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                 }
                 let changed = found != devices
                 devices = found
-                if changed || devicePicker.numberOfItems == 0 {
+                if launcherUIReady && (changed || devicePicker.numberOfItems == 0) {
                     devicePicker.removeAllItems()
                     devicePicker.addItems(withTitles: devices.map { "\($0.model) · \($0.serial)\($0.state == "device" ? "" : " (\($0.state))")" })
                     if let index = DeviceSelection.index(in: devices, currentSerial: selected, preferredSerial: preferredSerial) { devicePicker.selectItem(at: index) }
@@ -384,7 +402,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         Task { await launch(device: device, app: app, configuration: SessionConfiguration(backend: backend,showSystemDecorations:(try? DroidBridgePreferences.load().showAndroidSystemDecorations) ?? true)) }
     }
     @discardableResult
-    func launch(device: AndroidDevice, app: AndroidApplication, configuration: SessionConfiguration, readinessChecked: Bool = false,replacing:UUID? = nil,restoring:UUID? = nil,replacementReason:String = "session_replacement") async -> BridgeSession? {
+    func launch(device: AndroidDevice, app: AndroidApplication, configuration: SessionConfiguration, readinessChecked: Bool = false,replacing:UUID? = nil,restoring:UUID? = nil,replacementReason:String = "session_replacement", admissionCheck: (() throws -> Void)? = nil) async -> BridgeSession? {
         guard !quitting,!Task.isCancelled,!wrapperLaunchCancelled else { return nil }
         let predecessor=replacing.flatMap {sessions[$0]}
         if replacing != nil && predecessor == nil {return nil}
@@ -403,6 +421,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         // termination can never observe a destructive intermediate empty state.
         if let replacing, sessions[replacing] !== predecessor {return nil}
         if let restoring, !pending.contains(where:{$0.id==restoring}) {return nil}
+        // A phone command may have expired while readiness/catalog admission
+        // awaited. Check at the transition from pending to an owned session.
+        // Once admitted, the session keeps its existing lifecycle/cleanup owner.
+        do { try admissionCheck?() }
+        catch { status.stringValue = error.localizedDescription; return nil }
         var initialConfiguration=configuration
         initialConfiguration=companion.configuration(initialConfiguration,serial:device.serial)
         if let preview=launchPreview {

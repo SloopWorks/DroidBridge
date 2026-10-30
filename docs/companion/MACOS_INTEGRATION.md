@@ -260,3 +260,39 @@ in responsive over 6.2 s each, while command polls stayed at 12/11. This proves
 less status work in that local component; it does not establish battery savings.
 Icon work uses the profile's one/two-request asset budget. New session encoder
 ceilings still require installed 15/30/60 verification in the next candidate.
+
+## Installed build-3 findings and remediation
+
+The installed code-6 companion and Mac build 3 exercised actual CUA QR-image
+selection, comparison/phone approval, local Forget plus phone revoke/re-pair,
+and two live native displays accepting independent WindowServer keyboard and
+pointer input. Evidence is under `installed-api37-tls-build3-*`. A visible,
+private QA root outside `.build` isolates purpose-created Spotlight wrappers.
+The initial fresh-broker host registration raced IPC readiness; a second main
+launch registered successfully and the phone then bootstrapped the exact
+installed host after Command-Q. The pending fix retries registration eight
+times with capped backoff and exposes persistent failure plus an explicit retry.
+Its anonymous-XPC regression covers transient success, exact exhaustion, and
+status reads preserving the result; installed fresh-root acceptance is pending.
+
+A seven-second phone/Mac wall-clock difference rejected Mac-to-phone commands
+whose absolute expiry appeared too far in the future. The clock-anchor upgrade
+uses pinned peer time only for QR validation and sleep-inclusive local deadlines
+for pending commands. The UI countdown consumes the broker's local boot-bound
+deadline and never compares a phone QR expiry to the Mac clock. Legacy missing
+deadline fields fail closed rather than extending a command's lifetime.
+
+The 30-second command budget governs **pending admission**, not completion of
+an already admitted durable intent. The desktop adapter validates its exact
+owner generation and continuous deadline at entry; Android-session launch checks
+again after readiness and policy awaits immediately before session insertion.
+Audio/screen desired intents are committed at valid admission, and their later
+verified completion can truthfully be applied. A late acknowledgment does not
+turn an effect that occurred into a rejected action. Wrapper publication remains
+fenced by the accepted persistent export revision independently of command age.
+
+The quiet build-3 ABBA cohort improved local preview median to 226 ms paired and
+207 ms disconnected (n=5 each), with p95 504/388 ms. The proposed 100 ms cold
+target still fails. First-video medians were 1952/1665 ms, so the paired overhead
+also fails the proposed 10%/200 ms regression budget. Raw phase attribution and
+both failures are retained; further startup changes need a new installed cohort.

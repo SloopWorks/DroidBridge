@@ -6,6 +6,17 @@ import DroidBridgeStreaming
 final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, NSMenuDelegate {
     var launcher: LauncherController!
     let audioMenu = NSMenu(title:"Audio")
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        // A wrapper needs only its local identity and one window. Present it
+        // before menu construction and the rest of AppKit launch completion.
+        do { _ = try CompanionQAScope.parse(arguments: ProcessInfo.processInfo.arguments) }
+        catch { return } // didFinishLaunching presents the existing error path.
+        guard Bundle.main.url(forResource: "launch", withExtension: "json") != nil || ProcessInfo.processInfo.arguments.contains("--wrapper") else { return }
+        CompanionLaunchTrace.record("will_finish_launching")
+        NSApp.setActivationPolicy(.regular)
+        launcher = LauncherController()
+        _ = launcher.prepareWrapperLaunch()
+    }
     func applicationDidFinishLaunching(_ notification: Notification) {
         do { _ = try CompanionQAScope.parse(arguments: ProcessInfo.processInfo.arguments) }
         catch { let alert = NSAlert(); alert.messageText = "Invalid companion verification scope"; alert.informativeText = error.localizedDescription; alert.runModal(); NSApp.terminate(nil); return }
@@ -47,7 +58,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         windowMenu.addItem(withTitle: "Bring All to Front", action: #selector(NSApplication.arrangeInFront(_:)), keyEquivalent: "")
         windowItem.submenu = windowMenu; menu.addItem(windowItem); NSApp.windowsMenu = windowMenu
         NSApp.mainMenu = menu
-        launcher = LauncherController()
+        if launcher == nil { launcher = LauncherController() }
         if !launcher.prepareWrapperLaunch() { launcher.showWindow(nil) }
         NSApp.activate(ignoringOtherApps: true)
         launcher.companion.start()

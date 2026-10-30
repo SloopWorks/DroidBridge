@@ -79,17 +79,28 @@ final class CompanionBoundaryTests: XCTestCase {
         }
     }
     func testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry() async throws {
-        let id = UUID()
-        let peer = try BoundaryPeer { request in .json(["request_id": request, "status": "applied"], request) }; defer { peer.close() }
+        let id = UUID(), device = UUID().uuidString, epoch = UUID().uuidString
+        let peer = try CompanionTLSFixture(maximumRequests: 3, requestResponse: { request, raw in
+            let data: [String: Any]
+            if raw.hasPrefix("GET /v1/hello") {
+                data = ["device_id": device, "device_name": "Owned clock", "protocol_min": 1, "protocol_max": 1, "capabilities": ["clock_anchor_v1"], "clock_epoch": epoch, "server_uptime_ms": 123456, "server_time": 1800000000]
+            } else { data = ["request_id": id.uuidString, "status": "applied"] }
+            return CompanionTLSFixture.response(try! JSONSerialization.data(withJSONObject: ["protocol": 1, "request_id": request, "data": data]))
+        }, response: { _ in Data() }); defer { peer.close() }
         let client = try CompanionClient(baseURL: peer.url, serverPin: peer.serverPin, credential: credential)
+        try await client.setExpectedDeviceID(device)
         let receipt = try await client.sendCommand(kind: "clipboard_text", payload: ["text": .string("owned synthetic fixture")], requestID: id)
         XCTAssertEqual(receipt.requestId, id.uuidString)
         let request = peer.request
         XCTAssertTrue(request.contains("X-Request-ID: \(id.uuidString)"))
         let body = try XCTUnwrap(request.components(separatedBy: "\r\n\r\n").last?.data(using: .utf8))
         let object = try XCTUnwrap(JSONSerialization.jsonObject(with: body) as? [String: Any])
-        let expiry = try XCTUnwrap(ISO8601DateFormatter().date(from: try XCTUnwrap(object["expires_at"] as? String)))
-        XCTAssertGreaterThan(expiry.timeIntervalSinceNow, 25); XCTAssertLessThanOrEqual(expiry.timeIntervalSinceNow, 30)
+        XCTAssertNil(object["expires_at"])
+        XCTAssertEqual(object["clock_epoch"] as? String, epoch.lowercased())
+        let issued = try XCTUnwrap(object["issued_uptime_ms"] as? Int), expires = try XCTUnwrap(object["expires_uptime_ms"] as? Int)
+        XCTAssertEqual(expires - issued, 30_000)
+        _ = try await client.sendCommand(kind: "clipboard_text", payload: ["text": .string("owned synthetic fixture")], requestID: id)
+        XCTAssertEqual(peer.request.components(separatedBy: "\r\n\r\n").last, request.components(separatedBy: "\r\n\r\n").last)
         await expect("request_conflict") { try await client.sendCommand(kind: "clipboard_text", payload: ["text": .string("different fixture")], requestID: id) }
     }
     func testTransferReceiptAcknowledgesOnlyVerifiedWholeFileMetadata() async throws {

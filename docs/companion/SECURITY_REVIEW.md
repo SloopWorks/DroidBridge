@@ -595,3 +595,98 @@ pairing/repair/update workflows remain a separate acceptance gate. S07's stalled
 provider tests are still pending; the implementation bounds reader admission and
 refuses late publication, but it must not promise a hard timeout for a provider
 that ignores cancellation while metadata/open/close is blocked.
+
+### Continuous clock and command admission re-review (2026-10-30)
+
+The new clock boundary uses sleep-inclusive Mac continuous ticks plus a boot UUID,
+and a pinned, installation-bound Android elapsed-realtime/service-epoch sample.
+The conservative clock interval includes RTT and quantization; stale samples,
+changed epochs, rollback, future/widened budgets and expired actions fail closed.
+Canonical command retries retain their original timing/body and cannot mint a
+new window. Wall clocks remain display/QR metadata; QR expiry is compared with
+the pinned phone's sampled wall time before its secret is sent. Source review
+found no clock arithmetic escape in the finite/range checks. Device-clock
+mutation and physical sleep behavior are not claimed by deterministic tests.
+
+Additional command findings were remediated during independent review:
+
+- **S22, aggregate identity/scope:** stop-all parents previously reused an ID
+  without checking its phone/origin and could collide with ordinary/child IDs.
+  Parent identity now binds its original phone/origin and immutable captured
+  child cohort; conflicting kind/scope cannot reuse it in either direction.
+  Aggregate unknown outcomes remain unknown, and a persisted terminal aggregate
+  survives child-receipt eviction. Missing legacy child evidence settles unknown
+  once remaining accepted children finish; it never recreates work or remains
+  indefinitely accepted solely because a child receipt vanished.
+- **S23, replayable effect grant:** a prior accepted/admitted registry state was
+  sufficient for desktop execution. Admission now returns a distinct one-time
+  `execution_granted` signal, durably commits before returning it and never
+  re-grants it on either a new IPC ID or an identical cached IPC ID. The desktop
+  requires this signal; an in-progress replay neither executes nor acknowledges
+  a fabricated rejection. Terminal history remains queryable.
+- **S24, suspended admission:** the broker formerly returned a grant from a
+  captured accepted receipt after awaiting the phone's admitted-receipt response.
+  Forget, owner replacement or shutdown could supersede it during that wait.
+  After the await, the broker now rechecks stopping, exact owner/generation/phone,
+  current trust, canonical command state and deadline before granting execution.
+  An independent real pinned TLS peer suspends that actual receipt route across
+  both Forget and shutdown and proves neither late response grants an effect.
+- **S25, legacy owner and cross-phone generations:** older running executables do
+  not implement durable owner admission. Missing/legacy command capability now
+  allows dashboard publication while refusing new command assignment, polling
+  and admission. Exact stop-session ownership cannot be rerouted to another
+  compatible process. Persisted legacy accepted rows become unknown without
+  resumption. Generation replacement and host/session pruning now include the
+  phone identity even when one process hosts several phones. This cannot retract
+  work already delivered to old code before upgrade; do not claim cancellation
+  or retroactive enforcement of that code's behavior.
+
+The previous final clock suite lost its parent Swift process and left an orphan
+XCTest process. It was independently identified by exact PID, PPID and command,
+then only that root-authorized orphan was signalled. Its truncated log is
+preserved and hash-bound by `security/clock-final-interrupted.json`; it was not
+counted as a pass. A subsequent source-changing pre-final run is likewise not the
+final candidate gate. The final focused/full outcomes are recorded below only
+once their processes actually finish.
+
+Android code8's first admission epoch/timestamp is persisted once. A duplicate
+admission cannot refresh its 120-second outcome window. Expiry/epoch loss becomes
+durable unknown with rollback on journal failure, and a late terminal result
+cannot overwrite that retirement. Independent inspection of raw instrumentation
+logs confirms 28 API35 tests passed in234.42s and seven 320dp/200%-text tests in
+20.205s (`android/code8-api35-full-attempt1.log` and
+`android/code8-api35-large7-attempt1.log`). They include actual120302ms
+pairing/admission expiry, timely completion after the original30s admission
+window, unknown retirement, stalled-pipe30039ms and cancellation-aware-query30007ms
+deadlines, explicit Cancel6ms and worker capacity recovery. No device operation
+was performed by this reviewer. S07 is closed for these cancellable pipe/query
+cases on the recorded signed APK; a hostile provider that ignores cancellation
+in Binder metadata/open/close still retains bounded reader capacity and has no
+promised hard execution-time bound. Exact code8 APK and installed-state bindings
+are retained in `android/code8-final-checkpoint.json`; final Mac/APK interoperation
+and API37 code8 remain separate gates.
+
+
+Accepted completion-visibility limitation: direct text/link/clipboard inbox
+receipt and export-selection intent can commit durably before the phone receives
+its admitted/final acknowledgement. A deadline or transport loss at that boundary
+can therefore leave the phone without confirmed completion although Mac state
+changed. Expiry is not proof that the effect did not occur. Inspect the Mac inbox
+or current selection/Recent actions before a new deliberate action; do not
+silently retry. Canonical inbox identity and selection revision prevent ordinary
+replay, but this candidate does not claim distributed exactly-once execution or
+an atomic transaction spanning both devices. The coordinator chose explicit
+user-visible uncertainty and documented inspection over a new wire change for
+this candidate; wrapper execution still requires its durable one-time grant.
+
+
+Final native command checkpoint: all 15 independent focused security regressions
+passed (`security/command-identity-security-tests.log`). The fully awaited final
+Swift suite exited zero: 311 tests, four explicit opt-in device skips, zero
+failures in155.261s (`security/clock-command-full-tests.log`). Every captured
+Sources/Tests/Package.swift hash remained unchanged across this run; exact
+manifest/log hashes and scope are in `security/clock-command-full-result.json`.
+The earlier completed pre-final run is preserved separately with its changed
+source cohort and is not substituted for this gate. No orphan was left by either
+of this reviewer's completed suite runs. Installed release and corresponding
+source archive verification remain separate acceptance gates.

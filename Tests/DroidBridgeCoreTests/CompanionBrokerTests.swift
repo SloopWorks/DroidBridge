@@ -41,6 +41,7 @@ final class CompanionBrokerTests: XCTestCase {
         XCTAssertTrue(registry.poll(owner: owner, generation: 1).isEmpty)
         XCTAssertThrowsError(try registry.acknowledge(id: command, owner: owner, generation: 4, status: "applied", result: [:]))
         XCTAssertThrowsError(try registry.acknowledge(id: command, owner: other, generation: 3, status: "applied", result: [:]))
+        _ = try registry.admit(id: command, owner: other, generation: 4)
         _ = try registry.acknowledge(id: command, owner: other, generation: 4, status: "applied", result: [:])
         XCTAssertTrue(registry.poll(owner: other, generation: 4).isEmpty)
         _ = try registry.acknowledge(id: command, owner: other, generation: 4, status: "applied", result: [:])
@@ -78,7 +79,7 @@ final class CompanionBrokerTests: XCTestCase {
         XCTAssertThrowsError(try registry.enqueue(id: UUID().uuidString, deviceID: device, kind: "open_app", payload: [:], deadline: now.addingTimeInterval(120), now: now))
         let command = try registry.enqueue(id: UUID().uuidString, deviceID: device, kind: "open_app", payload: [:], deadline: now.addingTimeInterval(3), now: now)
         XCTAssertEqual(command.expires, now.addingTimeInterval(3))
-        XCTAssertTrue(registry.poll(owner: owner, generation: 1, now: now.addingTimeInterval(4)).isEmpty)
+        XCTAssertTrue(registry.poll(owner: owner, generation: 1, nowMS: command.continuousDeadline!.expiresMS + 1).isEmpty)
     }
     func testOnlyRegisteredLauncherCanOpenAndNoCrossPhoneStop() throws {
         var registry = CompanionBrokerRegistry(); let id = UUID()
@@ -116,7 +117,7 @@ final class CompanionBrokerTests: XCTestCase {
         let bad = CompanionBrokerIPCClient(endpoint: listener.endpoint, nonce: "wrong")
         do { _ = try await bad.request(operation: "status"); XCTFail("Wrong nonce was admitted") }
         catch { XCTAssertEqual((error as? CompanionBoundaryError)?.code, "unauthorized_ipc") }
-        let metadata: [String: CompanionJSON] = ["device_id": .string(device), "serial": .string("emulator-5580"), "generation": .number(2), "role": .string("launcher"), "sessions": .array([]), "pid": .number(999_999)]
+        let metadata: [String: CompanionJSON] = ["device_id": .string(device), "serial": .string("emulator-5580"), "generation": .number(2), "command_protocol": .number(2), "role": .string("launcher"), "sessions": .array([]), "pid": .number(999_999)]
         _ = try await client.request(operation: "session_publish", payload: metadata)
         var stale = metadata; stale["generation"] = .number(1)
         do { _ = try await client.request(operation: "session_publish", payload: stale); XCTFail("Stale generation was admitted") }
@@ -126,6 +127,19 @@ final class CompanionBrokerTests: XCTestCase {
         XCTAssertEqual(cancelled.data["status"]?.string, "cancellation_requested")
         do { _ = try await client.request(operation: "status", payload: ["oversized": .string(String(repeating: "x", count: 262_144))]); XCTFail("Oversized IPC request admitted") }
         catch { XCTAssertEqual((error as? CompanionBoundaryError)?.code, "payload_too_large") }
+        let queued = try await client.request(operation: "host_command", payload: ["device_id": .string(device), "kind": .string("set_profile"), "payload": .object(["profile": .string("balanced")])])
+        let commandID = try XCTUnwrap(queued.data["request_id"]?.string)
+        let polled = try await client.request(operation: "command_poll", payload: ["generation": .number(2)])
+        let command = try XCTUnwrap(polled.data["commands"]?.array?.first?.object)
+        XCTAssertNotNil(command["continuous_deadline"]?.object?["boot_id"]?.string)
+        let admitted = try await client.request(operation: "command_admit", payload: ["command_id": .string(commandID), "generation": .number(2)])
+        XCTAssertEqual(admitted.data["status"]?.string, "accepted"); XCTAssertEqual(admitted.data["admitted"]?.bool, true)
+        let afterAdmission = try await client.request(operation: "command_poll", payload: ["generation": .number(2)])
+        XCTAssertTrue(afterAdmission.data["commands"]?.array?.isEmpty == true)
+        let completed = try await client.request(operation: "command_ack", payload: ["command_id": .string(commandID), "generation": .number(2), "status": .string("applied"), "result": .object([:])])
+        XCTAssertEqual(completed.data["status"]?.string, "applied")
+        let replay = try await client.request(operation: "command_admit", payload: ["command_id": .string(commandID), "generation": .number(2)])
+        XCTAssertEqual(replay.data["status"]?.string, "applied", "A canonical admit retry returns history, not new work")
         let persisted = try JSONSerialization.jsonObject(with: Data(contentsOf: url)) as! [String: Any]
         let registry = persisted["registry"] as! [String: Any]
         let hosts = registry["hosts"] as! [[String: Any]]

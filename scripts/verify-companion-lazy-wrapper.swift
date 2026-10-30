@@ -11,8 +11,8 @@ import DroidBridgeCore
             do {
                 guard CompanionQAScope.current != nil, ProcessInfo.processInfo.arguments.contains("--wrapper") else { throw BridgeError.message("An explicit isolated wrapper scope is required") }
                 let controller = LauncherController()
-                guard controller.launcherUI == nil else { throw BridgeError.message("A wrapper eagerly built the hidden launcher") }
-                guard controller.prepareWrapperLaunch(), controller.launchPreview?.window?.isVisible == true, controller.launcherUI == nil else { throw BridgeError.message("The local wrapper preview did not precede launcher UI construction") }
+                guard controller.launcherUI == nil, controller.window == nil else { throw BridgeError.message("A wrapper eagerly built the hidden launcher or its window") }
+                guard controller.prepareWrapperLaunch(), controller.launchPreview?.window?.isVisible == true, controller.launcherUI == nil, controller.window == nil else { throw BridgeError.message("The local wrapper preview did not precede launcher UI/window construction") }
                 guard controller.reconnect.state == .on else { throw BridgeError.message("Deferred UI changed the reconnect default") }
                 controller.showWindow(nil)
                 guard let originalUI = controller.launcherUI, controller.window?.isVisible == true, controller.devicePicker.accessibilityLabel() == "Android device" else { throw BridgeError.message("Explicit Window → Launcher did not build a functional launcher") }

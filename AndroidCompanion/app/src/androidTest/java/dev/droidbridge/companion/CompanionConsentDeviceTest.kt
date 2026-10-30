@@ -23,7 +23,7 @@ class CompanionConsentDeviceTest {
         val secret = store.startPairing()
         val pairing = store.requestPair(JSONObject().put("request_id", UUID.randomUUID().toString())
             .put("pairing_secret", secret).put("mac_id", UUID.randomUUID().toString()).put("mac_name", "Consent regression Mac"))
-        store.approvePair()
+        store.approvePair(pairing.getString("pairing_id"))
         val temporary = store.pollPair(pairing.getString("pairing_id"), secret).getString("trust_id")
         store.denyPair()
         val activity = instrumentation.startActivitySync(Intent(instrumentation.targetContext, MainActivity::class.java)

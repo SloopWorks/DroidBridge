@@ -16,10 +16,8 @@ final class CompanionSetupValidationTests: XCTestCase {
         XCTAssertThrowsError(try CompanionPairCode(secret))
     }
 
-    func testRejectExpiredAmbiguousOrNetworkBearingQR() {
+    func testRejectAmbiguousOrNetworkBearingQR() {
         for value in [
-            "droidbridge://pair?secret=\(secret)&expires=1800000000&device_id=\(id)&server_pin=\(pin)",
-            "droidbridge://pair?secret=\(secret)&expires=1800001000&device_id=\(id)&server_pin=\(pin)",
             "droidbridge://pair?secret=\(secret)&expires=1800000120&device_id=\(id)&server_pin=\(pin)&host=192.168.0.1",
             "droidbridge://pair?secret=\(secret)&expires=1800000120&secret=\(secret)",
             "droidbridge://user@pair?secret=\(secret)&expires=1800000120&device_id=\(id)&server_pin=\(pin)",
