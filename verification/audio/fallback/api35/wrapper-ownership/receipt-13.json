@@ -1,0 +1,235 @@
+{
+  "id" : 13,
+  "texts" : [
+    "DroidBridge",
+    "Android apps on your Mac",
+    "DEVICE",
+    "Connected and ready\nemulator-5580",
+    "RENDERING",
+    "Used for new app windows.",
+    "AUDIO",
+    "Device-wide Android audio, including apps outside DroidBridge. Mac routing silences phone playback.",
+    "Phone audio\nPhone route selected. Audio follows Android’s normal output.",
+    "SPOTLIGHT",
+    "Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",
+    "Existing Mac app name repair will retry: Eight availability runtime generations are retained. Uninstall the availability agent before installing another generation.",
+    "Applications",
+    "1 of 17 apps · Android SDK built for arm64",
+    "dev.droidbridge.testapp2",
+    "DroidBridge Test",
+    "dev.droidbridge.testapp2",
+    "Loading applications…",
+    "Reading the launchable apps on this device.",
+    "DroidBridge Test",
+    "dev.droidbridge.testapp2",
+    "Sessions",
+    "",
+    "No active sessions. Launch an app to open its own Mac window.",
+    "17 apps ready. Double-click an app to open it."
+  ],
+  "backend" : "Native AppKit",
+  "audio_menu" : [
+    {
+      "separator" : false,
+      "title" : "Audio for Android SDK built for arm64",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Device-wide · includes other Android apps",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : true,
+      "title" : "",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Mac",
+      "enabled" : true,
+      "state" : 0,
+      "route" : "mac"
+    },
+    {
+      "separator" : false,
+      "title" : "Phone",
+      "enabled" : true,
+      "state" : 1,
+      "route" : "phone"
+    },
+    {
+      "separator" : false,
+      "title" : "Mac + Phone",
+      "enabled" : true,
+      "state" : 0,
+      "route" : "macAndPhone"
+    },
+    {
+      "separator" : true,
+      "title" : "",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Phone audio",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Phone route selected. Audio follows Android’s normal output.",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    }
+  ],
+  "physical_focus_verified" : false,
+  "menus" : {
+    "Audio" : [
+      {
+        "separator" : false,
+        "title" : "Audio for Android SDK built for arm64",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Device-wide · includes other Android apps",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : true,
+        "title" : "",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Mac",
+        "enabled" : true,
+        "state" : 0,
+        "route" : "mac"
+      },
+      {
+        "separator" : false,
+        "title" : "Phone",
+        "enabled" : true,
+        "state" : 1,
+        "route" : "phone"
+      },
+      {
+        "separator" : false,
+        "title" : "Mac + Phone",
+        "enabled" : true,
+        "state" : 0,
+        "route" : "macAndPhone"
+      },
+      {
+        "separator" : true,
+        "title" : "",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Phone audio",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Phone route selected. Audio follows Android’s normal output.",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      }
+    ]
+  },
+  "selected_row" : 0,
+  "buttons" : {
+    "" : true,
+    "Restore Previous Sessions" : false,
+    "Use Phone" : false,
+    "Create \/ Update Mac App…" : true,
+    "Enable device apps in Spotlight" : true,
+    "Phone" : true,
+    "Show Android system decorations" : true,
+    "Refresh Devices" : true,
+    "Retry Audio" : false,
+    "Native AppKit" : true,
+    "Keep phone screen off during Mac sessions" : true,
+    "Reconnect interrupted sessions automatically" : true,
+    "Add Device Apps…" : true,
+    "Android SDK built for arm64 · emulator-5580" : true,
+    "Details…" : true,
+    "search" : true,
+    "Launch App" : true,
+    "Diagnostics…" : true,
+    "Cancel" : false
+  },
+  "passed" : true,
+  "launch_enabled" : true,
+  "audio_status" : "Phone audio\nPhone route selected. Audio follows Android’s normal output.",
+  "action" : "status",
+  "rows" : 1,
+  "audio_route" : "phone",
+  "button_states" : {
+    "" : 1,
+    "Restore Previous Sessions" : 0,
+    "Use Phone" : 0,
+    "Create \/ Update Mac App…" : 0,
+    "Enable device apps in Spotlight" : 1,
+    "Phone" : 1,
+    "Show Android system decorations" : 1,
+    "Refresh Devices" : 0,
+    "Retry Audio" : 0,
+    "Native AppKit" : 1,
+    "Keep phone screen off during Mac sessions" : 0,
+    "Reconnect interrupted sessions automatically" : 1,
+    "Add Device Apps…" : 0,
+    "Android SDK built for arm64 · emulator-5580" : 1,
+    "Details…" : 0,
+    "search" : 0,
+    "Launch App" : 0,
+    "Diagnostics…" : 0,
+    "Cancel" : 0
+  },
+  "windows" : [
+    {
+      "number" : 12253,
+      "height" : 780,
+      "visible" : true,
+      "title" : "DroidBridge",
+      "width" : 1160,
+      "minimized" : false,
+      "key" : true
+    },
+    {
+      "number" : 12254,
+      "height" : 500,
+      "visible" : false,
+      "title" : "",
+      "width" : 500,
+      "minimized" : false,
+      "key" : false
+    }
+  ],
+  "device" : "Android SDK built for arm64 · emulator-5580",
+  "pid" : 19970
+}

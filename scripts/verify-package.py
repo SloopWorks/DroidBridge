@@ -24,6 +24,12 @@ for binary in ('adb','scrcpy'):
     environment=os.environ.copy(); environment['PATH']='/usr/bin:/bin'; environment['HOME']=str(pathlib.Path.home())
     report[binary]=subprocess.check_output([str(runtime/'bin'/binary),'--version' if binary=='scrcpy' else 'version'],env=environment,text=True,stderr=subprocess.STDOUT)
 assert 'scrcpy 5.0.1' in report['scrcpy']
+audio=runtime/'bin/DroidBridgeAudioClient'
+assert audio.is_file() and os.access(audio,os.X_OK), 'missing audio client'
+report['audio_client']=subprocess.check_output([str(audio),'--version'],env=environment,text=True,stderr=subprocess.STDOUT,timeout=5)
+assert 'scrcpy 5.0.1' in report['audio_client']
+audio_strings=run('/usr/bin/strings',str(audio))
+assert 'DROIDBRIDGE_AUDIO_OUTPUT_READY' in audio_strings and 'DROIDBRIDGE_AUDIO_SCID' in audio_strings
 helper=runtime/'bin/DroidBridgeAvailability'
 assert helper.is_file() and os.access(helper,os.X_OK), 'missing device availability helper'
 report['availability_helper']=subprocess.check_output([str(helper),'--version'],env=environment,text=True,stderr=subprocess.STDOUT,timeout=5)

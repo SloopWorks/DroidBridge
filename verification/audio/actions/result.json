@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "scope": "No-device public AppKit target/action fixture only",
+  "run": "/Users/patrick/workspace/DroidBridge/verification/audio/actions/1793378926808734000",
+  "actions": 5,
+  "clipboard_operations": false,
+  "physical_focus_verified": false
+}

@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 555, in <module>
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 543, in main
+    if not args.wrappers_only and not args.disconnect_only:
+                                     ^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 214, in execute
+    super().execute()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py", line 428, in execute
+    self.video_alive('two-native-with-one-audio')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 189, in video_alive
+    current=wait('NEW recorded video tick '+package,changed,20)
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py", line 36, in wait
+    value = predicate()
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 186, in changed
+    second=self.capture(item['window'],label+'-updated-'+package.rsplit('.',1)[-1])
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 123, in capture
+    rows = wait('actual recorded frame '+label, decode, 25)
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py", line 40, in wait
+    raise AssertionError('Timeout: ' + label)
+AssertionError: Timeout: actual recorded frame two-fallback-with-one-audio-updated-testapp

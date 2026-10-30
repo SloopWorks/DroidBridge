@@ -1,0 +1,1 @@
+PASS: launch UX synchronous preview, restored geometry, same window through decoded video, input fence, reopen reuse, and close/admission fences

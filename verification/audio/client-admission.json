@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "client_sha256": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+  "scope": "Real client refusal before any ADB invocation; not live audio acceptance",
+  "cases": [
+    {
+      "name": "short",
+      "passed": true,
+      "exit": 1,
+      "output": "scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>\nERROR: Invalid supervised audio session configuration\n"
+    },
+    {
+      "name": "high-bit",
+      "passed": true,
+      "exit": 1,
+      "output": "scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>\nERROR: Invalid supervised audio session configuration\n"
+    },
+    {
+      "name": "uppercase",
+      "passed": true,
+      "exit": 1,
+      "output": "scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>\nERROR: Invalid supervised audio session identity\n"
+    },
+    {
+      "name": "nonhex",
+      "passed": true,
+      "exit": 1,
+      "output": "scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>\nERROR: Invalid supervised audio session identity\n"
+    },
+    {
+      "name": "metacharacters",
+      "passed": true,
+      "exit": 1,
+      "output": "scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>\nERROR: Invalid supervised audio session identity\n"
+    },
+    {
+      "name": "video-enabled",
+      "passed": true,
+      "exit": 1,
+      "output": "scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>\nERROR: Invalid supervised audio session configuration\n"
+    },
+    {
+      "name": "control-enabled",
+      "passed": true,
+      "exit": 1,
+      "output": "scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>\n2026-10-30 10:28:07.411 DroidBridgeAudioClient[76168:145893113] No video mirroring, SDK mouse disabled\nERROR: Invalid supervised audio session configuration\n"
+    },
+    {
+      "name": "reverse-enabled",
+      "passed": true,
+      "exit": 1,
+      "output": "scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>\nERROR: Invalid supervised audio session configuration\n"
+    }
+  ]
+}

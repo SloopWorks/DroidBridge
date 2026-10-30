@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 547, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 535, in main
+    test=FallbackAudioTest(args);test.execute()
+                                 ~~~~~~~~~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 206, in execute
+    super().execute()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py", line 414, in execute
+    self.video_alive('phone-no-capture')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 182, in video_alive
+    assert [r['text'] for r in second if 'ticks' in r['text'].lower()] != ticks,'Real recorded video content stopped updating'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Real recorded video content stopped updating

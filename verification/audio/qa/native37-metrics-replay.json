@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "scope": "Raw aggregate metrics, PID and phase controls only; no physical speaker proof",
+  "evidence": "verification/audio/native/api37",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "driver_sha256": "1bc4b0c099f3a28869e89c9b80e14f36ffa4e0d120db10b4c784d3cb62967dc1",
+  "checks": [
+    {
+      "phase": "mac-A-997",
+      "audio_pid": 83053,
+      "samples": 6,
+      "matching": 6,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "mac-B-1499",
+      "audio_pid": 83053,
+      "samples": 14,
+      "matching": 7,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "mac-overlapping-A-B",
+      "audio_pid": 83053,
+      "samples": 12,
+      "matching": 7,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "mac-silence-baseline",
+      "audio_pid": 83053,
+      "samples": 8,
+      "matching": 8,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "mac-stopped-silence",
+      "audio_pid": 83053,
+      "samples": 7,
+      "matching": 6,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "macAndPhone-A-997",
+      "audio_pid": 83485,
+      "samples": 7,
+      "matching": 7,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "macAndPhone-silence-baseline",
+      "audio_pid": 83485,
+      "samples": 7,
+      "matching": 7,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "macAndPhone-stopped-silence",
+      "audio_pid": 83485,
+      "samples": 7,
+      "matching": 6,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "panel-off-video-and-tone",
+      "audio_pid": 83485,
+      "samples": 6,
+      "matching": 6,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "retry-B-1499",
+      "audio_pid": 84239,
+      "samples": 6,
+      "matching": 6,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    }
+  ]
+}

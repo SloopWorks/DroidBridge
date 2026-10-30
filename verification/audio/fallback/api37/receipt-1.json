@@ -1,0 +1,231 @@
+{
+  "id" : 1,
+  "texts" : [
+    "DroidBridge",
+    "Android apps on your Mac",
+    "DEVICE",
+    "Connect a phone with USB debugging enabled, or start an emulator.",
+    "RENDERING",
+    "Used for new app windows.",
+    "AUDIO",
+    "Device-wide Android audio, including apps outside DroidBridge. Mac routing silences phone playback.",
+    "Audio waiting\nSelect a device to choose its audio output.",
+    "SPOTLIGHT",
+    "Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",
+    "Ready to add all launchable apps from the selected device.",
+    "Applications",
+    "Connect a device to see its applications.",
+    "",
+    "Connect your Android device",
+    "Enable USB debugging and connect over USB, or start an Android emulator.",
+    "Select an app",
+    "Launch it here or create a Mac app for Spotlight.",
+    "Sessions",
+    "",
+    "No active sessions. Launch an app to open its own Mac window.",
+    "Looking for Android devices…"
+  ],
+  "backend" : "Native AppKit",
+  "audio_menu" : [
+    {
+      "separator" : false,
+      "title" : "Select an Android device",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Device-wide · includes other Android apps",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : true,
+      "title" : "",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Mac",
+      "enabled" : false,
+      "state" : 1,
+      "route" : "mac"
+    },
+    {
+      "separator" : false,
+      "title" : "Phone",
+      "enabled" : false,
+      "state" : 0,
+      "route" : "phone"
+    },
+    {
+      "separator" : false,
+      "title" : "Mac + Phone",
+      "enabled" : false,
+      "state" : 0,
+      "route" : "macAndPhone"
+    },
+    {
+      "separator" : true,
+      "title" : "",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Audio waiting",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Select a device to choose its audio output.",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    }
+  ],
+  "physical_focus_verified" : false,
+  "menus" : {
+    "Audio" : [
+      {
+        "separator" : false,
+        "title" : "Select an Android device",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Device-wide · includes other Android apps",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : true,
+        "title" : "",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Mac",
+        "enabled" : false,
+        "state" : 1,
+        "route" : "mac"
+      },
+      {
+        "separator" : false,
+        "title" : "Phone",
+        "enabled" : false,
+        "state" : 0,
+        "route" : "phone"
+      },
+      {
+        "separator" : false,
+        "title" : "Mac + Phone",
+        "enabled" : false,
+        "state" : 0,
+        "route" : "macAndPhone"
+      },
+      {
+        "separator" : true,
+        "title" : "",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Audio waiting",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Select a device to choose its audio output.",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      }
+    ]
+  },
+  "selected_row" : -1,
+  "buttons" : {
+    "" : true,
+    "Restore Previous Sessions" : false,
+    "Use Phone" : false,
+    "Create \/ Update Mac App…" : false,
+    "Enable device apps in Spotlight" : true,
+    "Add Device Apps…" : false,
+    "Show Android system decorations" : true,
+    "Refresh Devices" : true,
+    "Retry Audio" : false,
+    "Reconnect interrupted sessions automatically" : true,
+    "Native AppKit" : true,
+    "Keep phone screen off during Mac sessions" : false,
+    "Details…" : true,
+    "search" : true,
+    "Mac" : false,
+    "Launch App" : false,
+    "Diagnostics…" : true,
+    "Cancel" : false
+  },
+  "passed" : true,
+  "launch_enabled" : false,
+  "audio_status" : "Audio waiting\nSelect a device to choose its audio output.",
+  "action" : "status",
+  "rows" : 0,
+  "audio_route" : "mac",
+  "button_states" : {
+    "" : 1,
+    "Restore Previous Sessions" : 0,
+    "Use Phone" : 0,
+    "Create \/ Update Mac App…" : 0,
+    "Enable device apps in Spotlight" : 1,
+    "Add Device Apps…" : 0,
+    "Show Android system decorations" : 1,
+    "Refresh Devices" : 0,
+    "Retry Audio" : 0,
+    "Reconnect interrupted sessions automatically" : 1,
+    "Native AppKit" : 1,
+    "Keep phone screen off during Mac sessions" : 0,
+    "Details…" : 0,
+    "search" : 0,
+    "Mac" : 1,
+    "Launch App" : 0,
+    "Diagnostics…" : 0,
+    "Cancel" : 0
+  },
+  "windows" : [
+    {
+      "number" : 12270,
+      "height" : 780,
+      "visible" : true,
+      "title" : "DroidBridge",
+      "width" : 1160,
+      "minimized" : false,
+      "key" : true
+    },
+    {
+      "number" : 12271,
+      "height" : 500,
+      "visible" : false,
+      "title" : "",
+      "width" : 500,
+      "minimized" : false,
+      "key" : false
+    }
+  ],
+  "device" : "",
+  "pid" : 21887
+}

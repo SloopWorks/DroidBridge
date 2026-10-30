@@ -1,0 +1,15 @@
+{
+  "id" : 14,
+  "main_thread" : true,
+  "physical_focus_verified" : false,
+  "content_height" : 906,
+  "passed" : true,
+  "content_width" : 720,
+  "title" : "DroidBridge · DroidBridge Test",
+  "action" : "click",
+  "first_responder" : "SDL3TranslatorResponder",
+  "window" : 12234,
+  "role" : "player",
+  "pid" : 8699,
+  "input_path" : "public SDL event queue"
+}

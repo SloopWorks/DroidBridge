@@ -1,0 +1,8 @@
+#!/Library/Frameworks/Python.framework/Versions/3.14/bin/python3
+config={'client': '/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient', 'argv_log': '/Users/patrick/workspace/DroidBridge/verification/audio/native/api35/audio-argv.jsonl', 'observer': '/Users/patrick/workspace/DroidBridge/verification/audio/native/api35/samples.dylib', 'library_path': '/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/lib', 'metrics': '/Users/patrick/workspace/DroidBridge/verification/audio/native/api35/samples.jsonl'}
+import json,os,sys,time
+client=config["client"]
+with open(config["argv_log"],"a") as log:
+ log.write(json.dumps(dict(pid=os.getpid(),client=client,argv=sys.argv[1:],time=time.time()))+"\n")
+env=dict(os.environ,DYLD_INSERT_LIBRARIES=config["observer"],DYLD_LIBRARY_PATH=config["library_path"],DROIDBRIDGE_AUDIO_PROBE_OUTPUT=config["metrics"])
+os.execve(client,[client]+sys.argv[1:],env)

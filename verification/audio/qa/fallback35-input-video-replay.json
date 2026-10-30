@@ -1,0 +1,151 @@
+{
+  "passed": true,
+  "receipts": [
+    {
+      "package": "dev.droidbridge.testapp",
+      "display": 16,
+      "frequency": 997,
+      "tone_start_receipts": 3
+    },
+    {
+      "package": "dev.droidbridge.testapp2",
+      "display": 17,
+      "frequency": 1499,
+      "tone_start_receipts": 2
+    }
+  ],
+  "actual_tick_advances": [
+    {
+      "label": "phone-no-capture",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 16 \u2022 ticks 4"
+      ],
+      "after": [
+        "Display 16 \u2022 ticks 103"
+      ],
+      "wait_seconds": 1.87
+    },
+    {
+      "label": "phone-no-capture",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 17 \u2022 ticks 78"
+      ],
+      "after": [
+        "Display 17 \u2022 ticks 180"
+      ],
+      "wait_seconds": 27.238
+    },
+    {
+      "label": "two-fallback-with-one-audio",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 16 \u2022 ticks 191"
+      ],
+      "after": [
+        "Display 16 \u2022 ticks 270"
+      ],
+      "wait_seconds": 0.977
+    },
+    {
+      "label": "two-fallback-with-one-audio",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 17 \u2022 ticks 237"
+      ],
+      "after": [
+        "Display 17 \u2022 ticks 333"
+      ],
+      "wait_seconds": 24.475
+    },
+    {
+      "label": "panel-off-continued-frames",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 16 \u2022 ticks 431"
+      ],
+      "after": [
+        "Display 16 \u2022 ticks 507"
+      ],
+      "wait_seconds": 15.368
+    },
+    {
+      "label": "panel-off-continued-frames",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 17 \u2022 ticks 472"
+      ],
+      "after": [
+        "Display 17 \u2022 ticks 548"
+      ],
+      "wait_seconds": 18.945
+    },
+    {
+      "label": "phone-again-videos-continue",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 16 \u2022 ticks 583"
+      ],
+      "after": [
+        "Display 16 \u2022 ticks 640"
+      ],
+      "wait_seconds": 8.334
+    },
+    {
+      "label": "phone-again-videos-continue",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 17 \u2022 ticks 548"
+      ],
+      "after": [
+        "Display 17 \u2022 ticks 619"
+      ],
+      "wait_seconds": 5.736
+    },
+    {
+      "label": "audio-failed-video-continues",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 16 \u2022 ticks 640"
+      ],
+      "after": [
+        "Display 16 \u2022 ticks 732"
+      ],
+      "wait_seconds": 13.996
+    },
+    {
+      "label": "audio-failed-video-continues",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 17 \u2022 ticks 619"
+      ],
+      "after": [
+        "Display 17 \u2022 ticks 711"
+      ],
+      "wait_seconds": 0.797
+    },
+    {
+      "label": "use-phone-recovery-videos-continue",
+      "package": "dev.droidbridge.testapp",
+      "before": [
+        "Display 16 \u2022 ticks 732"
+      ],
+      "after": [
+        "Display 16 \u2022 ticks 809"
+      ],
+      "wait_seconds": 11.108
+    },
+    {
+      "label": "use-phone-recovery-videos-continue",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 17 \u2022 ticks 769"
+      ],
+      "after": [
+        "Display 17 \u2022 ticks 856"
+      ],
+      "wait_seconds": 18.208
+    }
+  ]
+}

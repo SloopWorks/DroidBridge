@@ -1,0 +1,108 @@
+{
+  "summary": {
+    "phase": "macAndPhone-A-997",
+    "passed": true,
+    "audio_pid": 22916,
+    "samples": 7,
+    "matching": 7,
+    "tone_presence_thresholds": {
+      "997": 2e-05,
+      "1499": 2e-05
+    },
+    "maximum_absent_to_wanted_ratio": 0.02,
+    "silence_rms_limit": 2e-05,
+    "minimum_wanted_to_rms_ratio": 0.25,
+    "wanted_hz": [
+      997
+    ],
+    "absent_hz": [
+      1499
+    ],
+    "silence": false,
+    "max_dropped_frames": 0,
+    "max_tone997": 0.06257537,
+    "max_tone1499": 0.00030772,
+    "min_rms": 0.04415087,
+    "max_rms": 0.04421451,
+    "one_audio_client": true
+  },
+  "samples": [
+    {
+      "pid": 22916,
+      "accepted_frames": 120000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.04419831,
+      "peak": 0.06247959,
+      "tone997": 0.0625294,
+      "tone1499": 0.00027832,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22916,
+      "accepted_frames": 124800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.04415087,
+      "peak": 0.06250218,
+      "tone997": 0.06239547,
+      "tone1499": 0.00016617,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22916,
+      "accepted_frames": 129600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.04421451,
+      "peak": 0.06247935,
+      "tone997": 0.06257537,
+      "tone1499": 0.00030772,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22916,
+      "accepted_frames": 134400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.04415887,
+      "peak": 0.06247982,
+      "tone997": 0.06241804,
+      "tone1499": 0.00019004,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22916,
+      "accepted_frames": 139200,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.04418526,
+      "peak": 0.0624796,
+      "tone997": 0.06249277,
+      "tone1499": 0.00025284,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22916,
+      "accepted_frames": 144000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.04419831,
+      "peak": 0.06247959,
+      "tone997": 0.0625294,
+      "tone1499": 0.00027832,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 22916,
+      "accepted_frames": 148800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.04415087,
+      "peak": 0.06250218,
+      "tone997": 0.06239547,
+      "tone1499": 0.00016617,
+      "dropped_frames": 0
+    }
+  ]
+}

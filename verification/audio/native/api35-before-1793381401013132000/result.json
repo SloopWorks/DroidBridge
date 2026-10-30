@@ -1,0 +1,182 @@
+{
+  "passed": false,
+  "acceptance": false,
+  "app": "/Users/patrick/Applications/DroidBridge.app",
+  "serial": "emulator-5580",
+  "version": "0.1.8",
+  "build": "14",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "physical_audibility_verified": false,
+  "physical_focus_verified": false,
+  "instrumentation": "Public AppKit actions, local Vision OCR, aggregate successful SDL PCM only",
+  "phases": [
+    {
+      "phase": "phone-no-capture",
+      "passed": true,
+      "windows": {
+        "dev.droidbridge.testapp": {
+          "window": 12166,
+          "session": "DCDE8F25-3A22-4458-A3B5-870B4FF237CE",
+          "display": 6
+        },
+        "dev.droidbridge.testapp2": {
+          "window": 12167,
+          "session": "9B9C40B4-144B-4C13-951F-4DF936DA76A7",
+          "display": 7
+        }
+      }
+    },
+    {
+      "phase": "mac-silence-baseline",
+      "passed": true,
+      "audio_pid": 76606,
+      "samples": 8,
+      "matching": 8,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.12,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [],
+      "absent_hz": [],
+      "silence": true,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.0,
+      "max_tone1499": 0.0,
+      "min_rms": 0.0,
+      "max_rms": 0.0,
+      "one_audio_client": true
+    },
+    {
+      "phase": "mac-A-997",
+      "passed": true,
+      "audio_pid": 76606,
+      "samples": 7,
+      "matching": 7,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.12,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        997
+      ],
+      "absent_hz": [
+        1499
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.00147852,
+      "max_tone1499": 7.29e-06,
+      "min_rms": 0.0010432,
+      "max_rms": 0.00104473,
+      "one_audio_client": true
+    },
+    {
+      "phase": "mac-overlapping-A-B",
+      "passed": true,
+      "audio_pid": 76606,
+      "samples": 6,
+      "matching": 6,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.12,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        997,
+        1499
+      ],
+      "absent_hz": [],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.0014834,
+      "max_tone1499": 0.00148376,
+      "min_rms": 0.00121185,
+      "max_rms": 0.00148058,
+      "one_audio_client": true
+    },
+    {
+      "phase": "mac-B-1499",
+      "passed": true,
+      "audio_pid": 76606,
+      "samples": 7,
+      "matching": 7,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.12,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        1499
+      ],
+      "absent_hz": [
+        997
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 7.27e-06,
+      "max_tone1499": 0.00147733,
+      "min_rms": 0.00104364,
+      "max_rms": 0.00104434,
+      "one_audio_client": true
+    },
+    {
+      "phase": "mac-stopped-silence",
+      "passed": true,
+      "audio_pid": 76606,
+      "samples": 6,
+      "matching": 6,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.12,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [],
+      "absent_hz": [],
+      "silence": true,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.0,
+      "max_tone1499": 0.0,
+      "min_rms": 0.0,
+      "max_rms": 0.0,
+      "one_audio_client": true
+    }
+  ],
+  "signature_verified": true,
+  "instrument_hashes": {
+    "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+    "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/lib/libSDL3.0.dylib": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6",
+    "/Users/patrick/workspace/DroidBridge/verification/audio/native/api35/actions.dylib": "9e14b8a18396d5fb87353ef61286b3835f01aaef8ff83107a55047a52f5b3bea",
+    "/Users/patrick/workspace/DroidBridge/verification/audio/native/api35/samples.dylib": "309944d59cd804f8fda2ecd2c7c2ab069fc1d507b2eab7aa0f21c126da26971e",
+    "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-actions.m": "77d1532316e8fdb6a9bb388bef23ea6451552cf5a32ac0460f864318c87a0294",
+    "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-samples.c": "3df36e0053b36e5367f6ff9c76d7871834c5cdd2d8946331df9b0f916bb7e425",
+    "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py": "f58df6c58684d2e9f6b9082c69f009ae409c09cd0d53783561e0693f132bc1ea"
+  },
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_before": "644",
+  "failure": "Timeout: aggregate PCM macAndPhone-A-997",
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_after": "644",
+  "state_restored": true,
+  "android_global_input_settings_unchanged": true,
+  "unrelated_adb_inventory_rows_redacted": {
+    "session-9B9C40B4-144B-4C13-951F-4DF936DA76A7.log": 0,
+    "session-DCDE8F25-3A22-4458-A3B5-870B4FF237CE.log": 0,
+    "host.log": 0
+  },
+  "cleanup_errors": []
+}

@@ -1,0 +1,17 @@
+[
+  "--serial",
+  "emulator-5580",
+  "--no-audio",
+  "--new-display=720x1080/240",
+  "--flex-display",
+  "--start-app=dev.droidbridge.testapp2",
+  "--window-title=DroidBridge \u00b7 DroidBridge Test",
+  "--max-fps=30",
+  "--video-codec=h264",
+  "--keep-active",
+  "--no-power-on",
+  "--display-ime-policy=hide",
+  "--no-mouse-hover",
+  "--port=46002",
+  "--record=/Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/video.mkv"
+]

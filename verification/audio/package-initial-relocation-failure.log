@@ -1,0 +1,46 @@
+ninja: Entering directory `/Users/patrick/workspace/DroidBridge/.build/audio-client/build'
+ninja: no work to do.
+INFO: autodetecting backend as ninja
+INFO: calculating backend command to run: /opt/homebrew/bin/ninja -C /Users/patrick/workspace/DroidBridge/.build/audio-client/build
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+
+Dependencies (compiled / linked):
+ - SDL: 3.4.18 / 3.4.18
+ - libavcodec: 63.1.102 / 63.1.102
+ - libavformat: 63.1.102 / 63.1.102
+ - libavutil: 61.1.102 / 61.1.102
+Pinned source a60891aea193d92e7e5c3942700eca63f9d19a5f; audio readiness patch d9d91f9b6e416a4b583f81bae1adeb8ee80ed4c5d4f0ac16bf689d11a4272c5a
+Another instance of SwiftPM (PID: 7161) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for production...
+[0/11] Write sources
+[4/11] Write swift-version--58304C5D6DBC2206.txt
+[5/11] Compiling DroidBridgeSupervisor main.c
+[6/12] Write Objects.LinkFileList
+[7/13] Linking DroidBridgeSupervisor
+[9/13] Compiling DroidBridgeCore AndroidDiscovery.swift
+[10/15] Compiling DroidBridgeAvailability main.swift
+[10/15] Write Objects.LinkFileList
+[11/15] Linking DroidBridgeAvailability
+[13/15] Compiling DroidBridgeStreaming BridgeSession.swift
+[14/16] Compiling DroidBridge AudioControls.swift
+[14/16] Write Objects.LinkFileList
+[15/16] Linking DroidBridge
+Build complete! (18.02s)
+warning: [options] bootstrap class path not set in conjunction with -source 8
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+Note: /Users/patrick/workspace/DroidBridge/android/icon-helper/dev/droidbridge/icons/IconHelper.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+4 warnings
+/Users/patrick/workspace/DroidBridge/.build/icon-helper/icon-helper.jar
+error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: can't create output file: /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient.XXXXXX (Operation not permitted)
+fatal error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: cannot rename /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient to /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient.XXXXXX (No such file or directory)
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/bundle-dylibs.py", line 31, in <module>
+    subprocess.run(['install_name_tool', '-change', dependency, relative, str(binary)], check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 692, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['install_name_tool', '-change', '/opt/homebrew/opt/ffmpeg/lib/libswresample.7.dylib', '@loader_path/../lib/libswresample.7.dylib', '/Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient']' returned non-zero exit status 1.

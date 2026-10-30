@@ -1,0 +1,81 @@
+[0/1] Planning build
+Building for debugging...
+[0/12] Write sources
+[3/12] Write swift-version--58304C5D6DBC2206.txt
+[5/14] Emitting module DroidBridgeCore
+[6/14] Compiling DroidBridgeCore DeviceAudioPreferences.swift
+[7/23] Emitting module DroidBridgeAvailability
+[8/23] Compiling DroidBridgeAvailability main.swift
+[8/23] Write Objects.LinkFileList
+[10/23] Compiling DroidBridgeStreaming H264Decoder.swift
+[11/23] Compiling DroidBridgeStreaming SessionRecovery.swift
+[12/23] Compiling DroidBridgeStreaming SocketTransport.swift
+[13/23] Compiling DroidBridgeStreaming DeviceAudioArtifacts.swift
+[13/23] Linking DroidBridgeAvailability
+[14/23] Applying DroidBridgeAvailability
+[16/23] Compiling DroidBridgeStreaming DeviceAudioRouter.swift
+[17/23] Emitting module DroidBridgeStreaming
+[18/23] Compiling DroidBridgeStreaming BridgeSession.swift
+[19/60] Compiling DroidBridgeCoreTests StartupFrameVisibilityTests.swift
+[20/61] Compiling DroidBridgeCoreTests ScrcpyStartupLeaseTests.swift
+[21/61] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[22/61] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[23/61] Compiling DroidBridgeCoreTests ScrcpyPortLeaseTests.swift
+[24/61] Compiling DroidBridgeCoreTests InputGeometryTests.swift
+[25/61] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[26/61] Compiling DroidBridgeCoreTests SupervisorDiagnosticsTests.swift
+[27/61] Compiling DroidBridge NativeWindow.swift
+[28/61] Compiling DroidBridge PhoneDisplayControls.swift
+[29/61] Compiling DroidBridge main.swift
+[30/61] Compiling DroidBridgeCoreTests StreamingTests.swift
+[31/61] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[32/61] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[33/61] Compiling DroidBridgeCoreTests PhoneDisplayPowerQATests.swift
+[34/61] Compiling DroidBridgeCoreTests PhoneDisplayPowerTests.swift
+[35/61] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[36/61] Compiling DroidBridgeCoreTests DeviceAudioPreferencesTests.swift
+[37/61] Emitting module DroidBridgeCoreTests
+[38/61] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[39/61] Compiling DroidBridgeCoreTests AndroidIconProviderTests.swift
+[40/61] Compiling DroidBridgeCoreTests DeviceAudioQATests.swift
+[41/61] Compiling DroidBridgeCoreTests DeviceAudioTests.swift
+[42/61] Compiling DroidBridgeCoreTests ManagedAppNamingQATests.swift
+[43/61] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[44/61] Compiling DroidBridgeCoreTests DeviceReadinessTests.swift
+[45/61] Compiling DroidBridgeCoreTests DeviceSelectionTests.swift
+[46/61] Compiling DroidBridgeCoreTests DroidBridgePreferencesTests.swift
+[47/61] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[47/61] Write Objects.LinkFileList
+[49/61] Compiling DroidBridge ManagedAppNameRepair.swift
+[50/61] Compiling DroidBridge DeviceOnboardingUI.swift
+[51/61] Compiling DroidBridge MacAppWrapper.swift
+[52/61] Compiling DroidBridge DeviceOnboardingAgent.swift
+[53/61] Emitting module DroidBridge
+[54/61] Compiling DroidBridge DeviceOnboarding.swift
+[55/61] Compiling DroidBridge AudioControls.swift
+[56/61] Compiling DroidBridge LauncherUI.swift
+[57/61] Compiling DroidBridge Launcher.swift
+[57/61] Write Objects.LinkFileList
+[58/61] Linking DroidBridgePackageTests
+[59/61] Linking DroidBridge
+[60/61] Applying DroidBridge
+Build complete! (3.05s)
+Test Suite 'Selected tests' started at 2026-10-30 10:01:55.941.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 10:01:55.942.
+Test Suite 'DeviceAudioPreferencesTests' started at 2026-10-30 10:01:55.942.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testConcurrentIndependentChoicesMergeAndKeepAcceptedPhone]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testConcurrentIndependentChoicesMergeAndKeepAcceptedPhone]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testInvalidSerialNeverCreatesOrChangesAudioStore]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testInvalidSerialNeverCreatesOrChangesAudioStore]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testMissingStoreStartsEmptyAndMalformedStoreNeverFallsBackToGlobal]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testMissingStoreStartsEmptyAndMalformedStoreNeverFallsBackToGlobal]' passed (0.001 seconds).
+Test Suite 'DeviceAudioPreferencesTests' passed at 2026-10-30 10:01:55.949.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.007 (0.007) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 10:01:55.949.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.007 (0.007) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 10:01:55.949.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.007 (0.008) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

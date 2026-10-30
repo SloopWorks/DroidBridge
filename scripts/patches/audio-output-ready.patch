@@ -1,0 +1,163 @@
+--- a/app/src/audio_player.c
++++ b/app/src/audio_player.c
+@@ -1,3 +1,4 @@
++/* Modified for DroidBridgeAudioClient; see scripts/patches/audio-output-ready.patch. */
+ #include "audio_player.h"
+ 
+ #include "util/log.h"
+@@ -125,6 +126,10 @@
+         return false;
+     }
+ 
++    // DroidBridge needs a positive output-initialization receipt. Decoder
++    // creation alone occurs before SDL opens or resumes an output device.
++    LOGI("DROIDBRIDGE_AUDIO_OUTPUT_READY");
++
+     return true;
+ }
+ 
+--- a/app/src/scrcpy.c
++++ b/app/src/scrcpy.c
+@@ -1,3 +1,4 @@
++/* Modified for DroidBridgeAudioClient; see scripts/patches/audio-output-ready.patch. */
+ #include "scrcpy.h"
+ 
+ #include <assert.h>
+@@ -375,6 +376,25 @@
+ 
+ enum scrcpy_exit_code
+ scrcpy(struct scrcpy_options *options) {
++    // DroidBridge's independent supervisor owns the exact forward identity.
++    const char *owned_scid = getenv("DROIDBRIDGE_AUDIO_SCID");
++    uint32_t audio_scid = 0;
++    if (owned_scid) {
++        if (options->video || !options->audio || options->control
++                || !options->force_adb_forward || strlen(owned_scid) != 8
++                || owned_scid[0] < '0' || owned_scid[0] > '7') {
++            LOGE("Invalid supervised audio session configuration");
++            return SCRCPY_EXIT_FAILURE;
++        }
++        for (unsigned i = 0; i < 8; ++i) {
++            const char *digit = strchr("0123456789abcdef", owned_scid[i]);
++            if (!digit) {
++                LOGE("Invalid supervised audio session identity");
++                return SCRCPY_EXIT_FAILURE;
++            }
++            audio_scid = (audio_scid << 4) | (uint32_t) (owned_scid[i] <= '9' ? owned_scid[i] - '0' : owned_scid[i] - 'a' + 10);
++        }
++    }
+     static struct scrcpy scrcpy;
+ #ifndef NDEBUG
+     // Detect missing initializations
+@@ -423,7 +443,7 @@
+ 
+     struct sc_acksync *acksync = NULL;
+ 
+-    uint32_t scid = scrcpy_generate_scid();
++    uint32_t scid = owned_scid ? audio_scid : scrcpy_generate_scid();
+ 
+     struct sc_server_params params = {
+         .scid = scid,
+--- a/app/src/adb/adb_tunnel.c
++++ b/app/src/adb/adb_tunnel.c
+@@ -1,7 +1,9 @@
++/* Modified for DroidBridgeAudioClient; see scripts/patches/audio-output-ready.patch. */
+ #include "adb_tunnel.h"
+ 
+ #include <assert.h>
+ #include <inttypes.h>
++#include <stdlib.h>
+ 
+ #include "adb/adb.h"
+ #include "util/log.h"
+@@ -151,8 +153,11 @@
+ 
+     bool ret;
+     if (tunnel->forward) {
+-        ret = sc_adb_forward_remove(intr, serial, tunnel->local_port,
+-                                    SC_ADB_NO_STDOUT);
++        // Supervised audio delegates cleanup to its crash-independent owner,
++        // which checks both the local port and the exact remote session ID.
++        ret = getenv("DROIDBRIDGE_AUDIO_SCID") ? true
++            : sc_adb_forward_remove(intr, serial, tunnel->local_port,
++                                     SC_ADB_NO_STDOUT);
+     } else {
+         ret = sc_adb_reverse_remove(intr, serial, device_socket_name,
+                                     SC_ADB_NO_STDOUT);
+--- a/app/src/adb/adb.c
++++ b/app/src/adb/adb.c
+@@ -1,3 +1,4 @@
++/* Modified for DroidBridgeAudioClient; see scripts/patches/audio-output-ready.patch. */
+ #include "adb.h"
+ 
+ #include <assert.h>
+@@ -263,7 +264,7 @@
+ 
+     assert(serial);
+     const char *const argv[] =
+-        SC_ADB_COMMAND("-s", serial, "forward", local, remote);
++        SC_ADB_COMMAND("-s", serial, "forward", "--no-rebind", local, remote);
+ 
+     sc_pid pid = sc_adb_execute(argv, flags);
+     return process_check_success_intr(intr, pid, "adb forward", flags);
+--- a/app/src/server.c
++++ b/app/src/server.c
+@@ -1,3 +1,4 @@
++/* Modified for DroidBridgeAudioClient; see scripts/patches/audio-output-ready.patch. */
+ #include "server.h"
+ 
+ #include <assert.h>
+@@ -18,7 +19,7 @@
+ #define SC_SERVER_FILENAME "scrcpy-server"
+ 
+ #define SC_SERVER_PATH_DEFAULT PREFIX "/share/scrcpy/" SC_SERVER_FILENAME
+-#define SC_DEVICE_SERVER_PATH "/data/local/tmp/scrcpy-server.jar"
++#define SC_DEVICE_SERVER_PATH "/data/local/tmp/droidbridge-audio-%08x.jar"
+ 
+ #define SC_ADB_PORT_DEFAULT 5555
+ #define SC_SOCKET_NAME_PREFIX "scrcpy_"
+@@ -54,7 +55,7 @@
+ }
+ 
+ static bool
+-push_server(struct sc_intr *intr, const char *serial) {
++push_server(struct sc_intr *intr, const char *serial, uint32_t scid) {
+     char *server_path = get_server_path();
+     if (!server_path) {
+         return false;
+@@ -64,7 +65,11 @@
+         free(server_path);
+         return false;
+     }
+-    bool ok = sc_adb_push(intr, serial, server_path, SC_DEVICE_SERVER_PATH, 0);
++    char remote[64];
++    int length = snprintf(remote, sizeof(remote), SC_DEVICE_SERVER_PATH, scid);
++    assert(length > 0 && (size_t) length < sizeof(remote));
++    (void) length;
++    bool ok = sc_adb_push(intr, serial, server_path, remote, 0);
+     free(server_path);
+     return ok;
+ }
+@@ -219,7 +224,12 @@
+     cmd[count++] = "-s";
+     cmd[count++] = serial;
+     cmd[count++] = "shell";
+-    cmd[count++] = "CLASSPATH=" SC_DEVICE_SERVER_PATH;
++    char classpath[80];
++    int length = snprintf(classpath, sizeof(classpath),
++                          "CLASSPATH=" SC_DEVICE_SERVER_PATH, params->scid);
++    assert(length > 0 && (size_t) length < sizeof(classpath));
++    (void) length;
++    cmd[count++] = classpath;
+     cmd[count++] = "app_process";
+ 
+ #ifdef SERVER_DEBUGGER
+@@ -1052,7 +1062,7 @@
+     assert(serial);
+     LOGD("Device serial: %s", serial);
+ 
+-    ok = push_server(&server->intr, serial);
++    ok = push_server(&server->intr, serial, params->scid);
+     if (!ok) {
+         goto error_connection_failed;
+     }

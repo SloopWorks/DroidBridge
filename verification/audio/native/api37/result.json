@@ -1,0 +1,346 @@
+{
+  "passed": true,
+  "acceptance": true,
+  "app": "/Users/patrick/Applications/DroidBridge.app",
+  "serial": "emulator-5582",
+  "version": "0.1.8",
+  "build": "14",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "physical_audibility_verified": false,
+  "physical_focus_verified": false,
+  "instrumentation": "Public AppKit actions, local Vision OCR, aggregate successful SDL PCM only",
+  "phases": [
+    {
+      "phase": "phone-no-capture",
+      "passed": true,
+      "windows": {
+        "dev.droidbridge.testapp": {
+          "window": 12186,
+          "session": "A136DD09-606D-4499-938C-CE0167111F8B",
+          "display": 2
+        },
+        "dev.droidbridge.testapp2": {
+          "window": 12187,
+          "session": "340909C5-0958-4825-8793-9098944CBD7C",
+          "display": 3
+        }
+      }
+    },
+    {
+      "phase": "mac-silence-baseline",
+      "passed": true,
+      "audio_pid": 83053,
+      "samples": 8,
+      "matching": 8,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 0.0001,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [],
+      "absent_hz": [],
+      "silence": true,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.0,
+      "max_tone1499": 0.0,
+      "min_rms": 0.0,
+      "max_rms": 0.0,
+      "one_audio_client": true
+    },
+    {
+      "phase": "mac-A-997",
+      "passed": true,
+      "audio_pid": 83053,
+      "samples": 6,
+      "matching": 6,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        997
+      ],
+      "absent_hz": [
+        1499
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.00147833,
+      "max_tone1499": 7.19e-06,
+      "min_rms": 0.00104322,
+      "max_rms": 0.00104466,
+      "one_audio_client": true
+    },
+    {
+      "phase": "mac-overlapping-A-B",
+      "passed": true,
+      "audio_pid": 83053,
+      "samples": 12,
+      "matching": 7,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        997,
+        1499
+      ],
+      "absent_hz": [],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.00148215,
+      "max_tone1499": 0.00148108,
+      "min_rms": 0.00147472,
+      "max_rms": 0.00147933,
+      "one_audio_client": true
+    },
+    {
+      "phase": "mac-B-1499",
+      "passed": true,
+      "audio_pid": 83053,
+      "samples": 14,
+      "matching": 7,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        1499
+      ],
+      "absent_hz": [
+        997
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.00012034,
+      "max_tone1499": 0.00147709,
+      "min_rms": 0.0009958,
+      "max_rms": 0.00131392,
+      "one_audio_client": true
+    },
+    {
+      "phase": "mac-stopped-silence",
+      "passed": true,
+      "audio_pid": 83053,
+      "samples": 7,
+      "matching": 6,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [],
+      "absent_hz": [],
+      "silence": true,
+      "max_dropped_frames": 0,
+      "max_tone997": 9.69e-06,
+      "max_tone1499": 0.00104882,
+      "min_rms": 0.0,
+      "max_rms": 0.0008799,
+      "one_audio_client": true
+    },
+    {
+      "phase": "macAndPhone-silence-baseline",
+      "passed": true,
+      "audio_pid": 83485,
+      "samples": 7,
+      "matching": 7,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 0.0001,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [],
+      "absent_hz": [],
+      "silence": true,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.0,
+      "max_tone1499": 0.0,
+      "min_rms": 0.0,
+      "max_rms": 0.0,
+      "one_audio_client": true
+    },
+    {
+      "phase": "macAndPhone-A-997",
+      "passed": true,
+      "audio_pid": 83485,
+      "samples": 7,
+      "matching": 7,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        997
+      ],
+      "absent_hz": [
+        1499
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.06256741,
+      "max_tone1499": 0.00030297,
+      "min_rms": 0.04277536,
+      "max_rms": 0.04421168,
+      "one_audio_client": true
+    },
+    {
+      "phase": "panel-off-video-and-tone",
+      "passed": true,
+      "audio_pid": 83485,
+      "samples": 6,
+      "matching": 6,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        997
+      ],
+      "absent_hz": [
+        1499
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.0625711,
+      "max_tone1499": 0.00030599,
+      "min_rms": 0.04414887,
+      "max_rms": 0.04421282,
+      "one_audio_client": true
+    },
+    {
+      "phase": "macAndPhone-stopped-silence",
+      "passed": true,
+      "audio_pid": 83485,
+      "samples": 7,
+      "matching": 6,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [],
+      "absent_hz": [],
+      "silence": true,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.03770042,
+      "max_tone1499": 0.00035769,
+      "min_rms": 0.0,
+      "max_rms": 0.03431876,
+      "one_audio_client": true
+    },
+    {
+      "phase": "phone-releases-audio-keeps-two-videos",
+      "passed": true
+    },
+    {
+      "phase": "retry-B-1499",
+      "passed": true,
+      "audio_pid": 84239,
+      "samples": 6,
+      "matching": 6,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        1499
+      ],
+      "absent_hz": [
+        997
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 8.32e-06,
+      "max_tone1499": 0.00147656,
+      "min_rms": 0.00104352,
+      "max_rms": 0.00104432,
+      "one_audio_client": true
+    },
+    {
+      "phase": "audio-only-crash-retry-and-phone-recovery",
+      "passed": true,
+      "failed_status": "Audio unavailable\nAudio unavailable: WARN: Killing the server... Video continues. Retry or choose Phone.",
+      "crashed_pid": 83971,
+      "retry_pid": 84239
+    }
+  ],
+  "signature_verified": true,
+  "instrument_hashes": {
+    "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+    "/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/lib/libSDL3.0.dylib": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6",
+    "/Users/patrick/workspace/DroidBridge/verification/audio/native/api37/actions.dylib": "b828152f62891c1a80b5e89976247a6385486565b08b209ace99d44ec250159a",
+    "/Users/patrick/workspace/DroidBridge/verification/audio/native/api37/samples.dylib": "c013cfc0aaaed1a6e36ca12e49fd36eda1d6a49ae025bba6ae5d6e118209c62f",
+    "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-actions.m": "77d1532316e8fdb6a9bb388bef23ea6451552cf5a32ac0460f864318c87a0294",
+    "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-samples.c": "3df36e0053b36e5367f6ff9c76d7871834c5cdd2d8946331df9b0f916bb7e425",
+    "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py": "1bc4b0c099f3a28869e89c9b80e14f36ffa4e0d120db10b4c784d3cb62967dc1"
+  },
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_before": "682",
+  "windows": {
+    "dev.droidbridge.testapp": {
+      "window": 12186,
+      "session": "A136DD09-606D-4499-938C-CE0167111F8B",
+      "display": 2
+    },
+    "dev.droidbridge.testapp2": {
+      "window": 12187,
+      "session": "340909C5-0958-4825-8793-9098944CBD7C",
+      "display": 3
+    }
+  },
+  "metric_samples": 217,
+  "dropped_frames": 0,
+  "distinct_audio_pids": [
+    83053,
+    83485,
+    83971,
+    84239
+  ],
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_after": "682",
+  "state_restored": true,
+  "android_global_input_settings_unchanged": true,
+  "unrelated_adb_inventory_rows_redacted": {
+    "session-340909C5-0958-4825-8793-9098944CBD7C.log": 0,
+    "session-A136DD09-606D-4499-938C-CE0167111F8B.log": 0,
+    "audio-AFBDC66C-14D4-48BA-941E-90C9FE7F7C73.failed.log": 3,
+    "audio-56E821C4-7F86-4921-B98C-8AB83F223E3F.failed.log": 3,
+    "host.log": 0
+  },
+  "cleanup_errors": []
+}

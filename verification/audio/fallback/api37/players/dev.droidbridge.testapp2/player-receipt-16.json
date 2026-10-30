@@ -1,0 +1,14 @@
+{
+  "id" : 16,
+  "main_thread" : true,
+  "physical_focus_verified" : false,
+  "content_height" : 906,
+  "passed" : true,
+  "content_width" : 840,
+  "first_responder" : "SDL3TranslatorResponder",
+  "action" : "resize",
+  "title" : "DroidBridge · DroidBridge Test",
+  "window" : 12279,
+  "role" : "player",
+  "pid" : 22062
+}

@@ -1,0 +1,179 @@
+{
+  "passed": false,
+  "acceptance": false,
+  "app": "/Users/patrick/Applications/DroidBridge.app",
+  "serial": "emulator-5580",
+  "version": "0.1.8",
+  "build": "14",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "physical_audibility_verified": false,
+  "physical_focus_verified": false,
+  "instrumentation": "Public launcher actions; public SDL event queue; actual recorded video; successful SDL PCM aggregates",
+  "phases": [
+    {
+      "phase": "main-owner-fallback-1499",
+      "passed": true,
+      "audio_pid": 18016,
+      "samples": 8,
+      "matching": 7,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        1499
+      ],
+      "absent_hz": [
+        997
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 8.63e-06,
+      "max_tone1499": 0.00147722,
+      "min_rms": 0.00104366,
+      "max_rms": 0.0010443,
+      "one_audio_client": true
+    },
+    {
+      "phase": "shared-independent-apps-one-mixed-stream",
+      "passed": true,
+      "audio_pid": 18016,
+      "samples": 46,
+      "matching": 6,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        997,
+        1499
+      ],
+      "absent_hz": [],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.00118408,
+      "max_tone1499": 0.00085896,
+      "min_rms": 0.00144587,
+      "max_rms": 0.00148301,
+      "one_audio_client": true
+    },
+    {
+      "phase": "copied-native-wrapper-shared-with-main-fallback",
+      "passed": true,
+      "identity": {
+        "activation_policy": 0,
+        "bundle": "/Users/patrick/Applications/DroidBridge Audio QA/39ad22f4-f425-4a5c-bd6b-8258466657b2/DroidBridge Audio QA.app",
+        "bundle_identifier": "app.droidbridge.wrapper.dev.droidbridge.testapp3",
+        "pid": 18086,
+        "terminated": false
+      },
+      "shared_menu": [
+        {
+          "separator": false,
+          "title": "Audio for Android SDK built for arm64",
+          "enabled": false,
+          "state": 0,
+          "route": ""
+        },
+        {
+          "separator": false,
+          "title": "Device-wide \u00b7 includes other Android apps",
+          "enabled": false,
+          "state": 0,
+          "route": ""
+        },
+        {
+          "separator": true,
+          "title": "",
+          "enabled": false,
+          "state": 0,
+          "route": ""
+        },
+        {
+          "separator": false,
+          "title": "Mac",
+          "enabled": true,
+          "state": 1,
+          "route": "mac"
+        },
+        {
+          "separator": false,
+          "title": "Phone",
+          "enabled": true,
+          "state": 0,
+          "route": "phone"
+        },
+        {
+          "separator": false,
+          "title": "Mac + Phone",
+          "enabled": true,
+          "state": 0,
+          "route": "macAndPhone"
+        },
+        {
+          "separator": true,
+          "title": "",
+          "enabled": false,
+          "state": 0,
+          "route": ""
+        },
+        {
+          "separator": false,
+          "title": "Shared device audio",
+          "enabled": false,
+          "state": 0,
+          "route": ""
+        },
+        {
+          "separator": false,
+          "title": "Another DroidBridge host owns this device's audio. Routing is device-wide; changes apply when that owner refreshes.",
+          "enabled": false,
+          "state": 0,
+          "route": ""
+        }
+      ]
+    }
+  ],
+  "backend": "mixed-fallback-and-native-copied-wrapper",
+  "driver_sha256": "b56976bf741c710da3fae30ba6a991a9c68a11a130e1088ae763c2f6a7b494ea",
+  "player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "wrapper_unsigned_payload_sha256": "79c36d972d1fe466ef1942b7f5794217d345cbfaa7875f0bcdfb9a0a6b807212",
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_before": "644",
+  "factory": {
+    "backend": "native",
+    "bundle": "/Users/patrick/Applications/DroidBridge Audio QA/39ad22f4-f425-4a5c-bd6b-8258466657b2/DroidBridge Audio QA.app",
+    "bundle_identifier": "app.droidbridge.wrapper.dev.droidbridge.testapp3",
+    "factory": "MacAppWrapper.create",
+    "icon_bytes": 60776,
+    "package": "dev.droidbridge.testapp3",
+    "passed": true,
+    "serial": "emulator-5580",
+    "signed_and_verified": true
+  },
+  "failure": "Bundled SDL mapping not proven loaded",
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_after": "644",
+  "state_restored": true,
+  "android_global_input_settings_unchanged": true,
+  "unrelated_adb_inventory_rows_redacted": {
+    "session-7CA12EAD-55A8-4BF1-8372-A191D3714402.log": 3,
+    "session-BE3234FE-E187-4DF9-B10B-4002EC47A907.log": 0,
+    "host.log": 0
+  },
+  "cleanup_errors": []
+}

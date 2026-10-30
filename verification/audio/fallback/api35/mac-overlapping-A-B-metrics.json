@@ -1,0 +1,96 @@
+{
+  "summary": {
+    "phase": "mac-overlapping-A-B",
+    "passed": true,
+    "audio_pid": 11019,
+    "samples": 6,
+    "matching": 6,
+    "tone_presence_thresholds": {
+      "997": 2e-05,
+      "1499": 2e-05
+    },
+    "maximum_absent_to_wanted_ratio": 0.02,
+    "silence_rms_limit": 2e-05,
+    "minimum_wanted_to_rms_ratio": 0.25,
+    "wanted_hz": [
+      997,
+      1499
+    ],
+    "absent_hz": [],
+    "silence": false,
+    "max_dropped_frames": 0,
+    "max_tone997": 0.00148303,
+    "max_tone1499": 0.00148064,
+    "min_rms": 0.00147457,
+    "max_rms": 0.00147961,
+    "one_audio_client": true
+  },
+  "samples": [
+    {
+      "pid": 11019,
+      "accepted_frames": 182400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147961,
+      "peak": 0.00296255,
+      "tone997": 0.00148303,
+      "tone1499": 0.00148064,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 11019,
+      "accepted_frames": 187200,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147891,
+      "peak": 0.00296226,
+      "tone997": 0.00148006,
+      "tone1499": 0.00148054,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 11019,
+      "accepted_frames": 192000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147845,
+      "peak": 0.00296173,
+      "tone997": 0.00147902,
+      "tone1499": 0.00147951,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 11019,
+      "accepted_frames": 196800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147457,
+      "peak": 0.00296176,
+      "tone997": 0.00147212,
+      "tone1499": 0.00147136,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 11019,
+      "accepted_frames": 201600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.001476,
+      "peak": 0.00296085,
+      "tone997": 0.00147293,
+      "tone1499": 0.00147571,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 11019,
+      "accepted_frames": 206400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00147961,
+      "peak": 0.00296255,
+      "tone997": 0.00148303,
+      "tone1499": 0.00148064,
+      "dropped_frames": 0
+    }
+  ]
+}

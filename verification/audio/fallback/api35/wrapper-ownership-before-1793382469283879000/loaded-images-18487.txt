@@ -1,0 +1,123 @@
+Process exists but has not fully started -- dyld has initialized but libSystem has not
+2026-10-30 10:47:14.434 vmmap[18493:146107769] *** task_malloc_get_all_zones: couldn't find libsystem_malloc dylib in target task
+2026-10-30 10:47:14.436 vmmap[18493:146107769] *** task_malloc_get_all_zones: couldn't find libsystem_malloc dylib in target task
+2026-10-30 10:47:14.437 vmmap[18493:146107769] *** task_malloc_get_all_zones: couldn't find libsystem_malloc dylib in target task
+Process:         DroidBridgeAudioClient [18487]
+Path:            /Users/USER/*/DroidBridge Audio QA.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient
+Load Address:    0x104e58000
+Identifier:      DroidBridgeAudioClient
+Version:         ???
+Code Type:       ARM64
+Platform:        macOS
+Parent Process:  DroidBridgeSupervisor [18486]
+Target Type:     live task
+
+Date/Time:       2026-10-30 10:47:14.171 -0700
+Launch Time:     2026-10-30 10:47:13.846 -0700
+OS Version:      macOS 26.2 (25C56)
+Report Version:  7
+Analysis Tool:   /usr/bin/vmmap
+
+Physical footprint:         208K
+Physical footprint (peak):  288K
+Idle exit:                  untracked
+----
+
+Virtual Memory Map of process 18487 (DroidBridgeAudioClient)
+Output report format:  2.4  -- 64-bit process
+VM page size:  16384 bytes
+Collected with PhysFootprint mode enabled
+
+==== Non-writable regions for process 18487
+REGION TYPE                    START - END         [ VSIZE  RSDNT  DIRTY   SWAP] PRT/MAX SHRMOD PURGE    REGION DETAIL
+__TEXT                      104e58000-104e84000    [  176K    16K     0K     0K] r-x/r-x SM=COW          /Users/patrick/Applications/DroidBridge Audio QA/39ad22f4-f425-4a5c-bd6b-8258466657b2/DroidBridge Audio QA.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient
+__LINKEDIT                  104f0c000-104f1c000    [   64K     0K     0K     0K] r--/r-- SM=COW          /Users/patrick/Applications/DroidBridge Audio QA/39ad22f4-f425-4a5c-bd6b-8258466657b2/DroidBridge Audio QA.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient
+mapped file                 104f20000-104f30000    [   64K    16K     0K     0K] r--/rwx SM=COW          /Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/wrapper-ownership/independent-wrapper/samples.dylib
+STACK GUARD                 166fa8000-16a7ac000    [ 56.0M     0K     0K     0K] ---/rwx SM=NUL          stack guard for thread 0
+__TEXT                      186a3d000-186adc000    [  636K   636K     0K     0K] r-x/r-x SM=COW          /usr/lib/dyld
+__DATA_CONST                1f530dde8-1f53155e8    [   30K    30K     0K     0K] r--/rw- SM=COW          /usr/lib/dyld
+__LINKEDIT                  206240000-22afbc000    [589.5M  52.0M     0K     0K] r--/r-- SM=COW          dyld shared cache combined __LINKEDIT
+unused __TEXT               2d78d4000-2d78d8000    [   16K    16K    16K     0K] r--/r-- SM=COW          on dirty page  unused system shared lib __DATA
+
+==== Writable regions for process 18487
+REGION TYPE                    START - END         [ VSIZE  RSDNT  DIRTY   SWAP] PRT/MAX SHRMOD PURGE    REGION DETAIL
+__DATA_CONST                104e84000-104e88000    [   16K     0K     0K     0K] rw-/rw- SM=COW          /Users/patrick/Applications/DroidBridge Audio QA/39ad22f4-f425-4a5c-bd6b-8258466657b2/DroidBridge Audio QA.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient
+__DATA                      104e88000-104f0c000    [  528K     0K     0K     0K] rw-/rw- SM=NUL          /Users/patrick/Applications/DroidBridge Audio QA/39ad22f4-f425-4a5c-bd6b-8258466657b2/DroidBridge Audio QA.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient
+dyld private memory         104f1c000-104f20000    [   16K    16K    16K     0K] rw-/rwx SM=PRV  
+Stack                       16a7ac000-16afa8000    [ 8176K    32K    32K     0K] rw-/rwx SM=PRV          thread 0
+unused __DATA               1f3a80000-1f3a80010    [    16     16     16     0K] rw-/rw- SM=COW          on dirty page  unused system shared lib __DATA
+unused __TPRO_CONST         1f3a80010-1f3a80018    [     8      8      8     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libdyld.dylib
+unused __DATA               1f3a80018-1f3a80020    [     8      8      8     0K] rw-/rw- SM=COW          on dirty page  unused system shared lib __DATA
+__TPRO_CONST                1f3a80020-1f3aa00a0    [  128K    80K    16K     0K] rw-/rw- SM=COW          /usr/lib/dyld
+unused __DATA_DIRTY         1f3d2c000-1f3d2cd50    [  3408   3408   3408     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/libobjc.A.dylib
+unused __DATA_DIRTY         1f3d2cd50-1f3d2cdd0    [   128    128    128     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libdyld.dylib
+unused __DATA               1f3d2cdd0-1f3d2ce00    [    48     48     48     0K] rw-/rw- SM=COW          on dirty page  unused system shared lib __DATA
+__DATA_DIRTY                1f3d2ce00-1f3d30534    [   14K    14K    14K     0K] rw-/rw- SM=COW          /usr/lib/dyld
+unused __DATA               1f3d30534-1f3d30538    [     4      4      4     0K] rw-/rw- SM=COW          on dirty page  unused system shared lib __DATA
+unused __DATA_DIRTY         1f3d30538-1f3d30730    [   504    504    504     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libsystem_blocks.dylib
+unused __DATA_DIRTY         1f3d30730-1f3d31328    [  3064   3064   3064     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libxpc.dylib
+unused __DATA_DIRTY         1f3d31328-1f3d31a50    [  1832   1832   1832     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libsystem_trace.dylib
+unused __DATA_DIRTY         1f3d31a50-1f3d32490    [  2624   2624   2624     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libcorecrypto.dylib
+unused __DATA_DIRTY         1f3d32490-1f3d32774    [   740    740    740     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libsystem_malloc.dylib
+unused __DATA               1f3d32774-1f3d32780    [    12     12     12     0K] rw-/rw- SM=COW          on dirty page  unused system shared lib __DATA
+unused __DATA_DIRTY         1f3d32780-1f3d34000    [    6K     6K     6K     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libdispatch.dylib
+unused __DATA_DIRTY         1f499c000-1f499c860    [  2144   2144   2144     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/PrivateFrameworks/XCTAutomationSupport.framework/Versions/A/XCTAutomationSupport
+unused __DATA_DIRTY         1f499c860-1f499d8c0    [    4K     4K     4K     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/PrivateFrameworks/ANECompiler.framework/Versions/A/ANECompiler
+unused __DATA_DIRTY         1f499d8c0-1f499db10    [   592    592    592     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/Frameworks/DeviceCheck.framework/Versions/A/DeviceCheck
+unused __DATA_DIRTY         1f499db10-1f499db30    [    32     32     32     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/PrivateFrameworks/oncrpc.framework/Versions/A/oncrpc
+unused __DATA_DIRTY         1f499db30-1f499db80    [    80     80     80     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/libcryptex_interface.dylib
+unused __DATA_DIRTY         1f499db80-1f499e218    [  1688   1688   1688     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/libcryptex_core.dylib
+unused __DATA_DIRTY         1f499e218-1f499e2e8    [   208    208    208     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/Extensions/AppleMultitouchDriver.kext/Contents/PlugIns/MultitouchHID.plugin/Contents/MacOS/MultitouchHID
+unused __DATA_DIRTY         1f499e2e8-1f499e2ec    [     4      4      4     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/Extensions/IOUSBDeviceFamily.kext/Contents/PlugIns/IOUSBDeviceLib.plugin/Contents/MacOS/IOUSBDeviceLib
+unused __DATA_DIRTY         1f499e2ec-1f499e2f0    [     4      4      4     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/Libraries/libmetallinker.dylib
+unused __DATA_DIRTY         1f499e2f0-1f499e5c4    [   724    724    724     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/PrivateFrameworks/GPUCompiler.framework/Versions/A/Libraries/libairutility.dylib
+unused __DATA               1f499e5c4-1f499e5c8    [     4      4      4     0K] rw-/rw- SM=COW          on dirty page  unused system shared lib __DATA
+unused __DATA_DIRTY         1f499e5c8-1f499e618    [    80     80     80     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreVMClient.dylib
+unused __DATA_DIRTY         1f499e618-1f499e710    [   248    248    248     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL
+unused __DATA_DIRTY         1f499e710-1f499e7f0    [   224    224    224     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCVMSPluginSupport.dylib
+unused __DATA_DIRTY         1f499e7f0-1f499e970    [   384    384    384     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGFXShared.dylib
+unused __DATA_DIRTY         1f499e970-1f499e9c8    [    88     88     88     0K] rw-/rw- SM=COW          on dirty page  unused /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLImage.dylib
+unused __AUTH               1f499e9c8-1f499ea60    [   152    152    152     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/libobjc.A.dylib
+unused __AUTH               1f499ea60-1f499ea68    [     8      8      8     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libdyld.dylib
+unused __DATA               1f499ea68-1f499ea80    [    24     24     24     0K] rw-/rw- SM=COW          on dirty page  unused system shared lib __DATA
+__DATA                      1f499ea80-1f499fcd8    [    5K     5K     5K     0K] rw-/rw- SM=COW          /usr/lib/dyld
+unused __AUTH               1f499fcd8-1f499fd28    [    80     80     80     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libxpc.dylib
+unused __AUTH               1f499fd28-1f499ffd0    [   680    680    680     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libsystem_trace.dylib
+unused __AUTH               1f499ffd0-1f49a0000    [    48     48     48     0K] rw-/rw- SM=COW          on dirty page  unused /usr/lib/system/libcorecrypto.dylib
+page table in kernel           kernel-kernel       [   96K    96K    96K     0K] rw-/rw- SM=PRV          charged to process physical footprint
+
+==== Legend
+SM=sharing mode:  
+	COW=copy_on_write PRV=private NUL=empty ALI=aliased 
+	SHM=shared ZER=zero_filled S/A=shared_alias
+PURGE=purgeable mode:  
+	V=volatile N=nonvolatile E=empty   otherwise is unpurgeable
+
+==== Summary for process 18487
+ReadOnly portion of Libraries: Total=590.3M resident=52.7M(9%) swapped_out_or_unallocated=537.7M(91%)
+Writable regions: Total=8816K written=144K(2%) resident=144K(2%) swapped_out=0K(0%) unallocated=8672K(98%)
+
+                                VIRTUAL RESIDENT    DIRTY  SWAPPED VOLATILE   NONVOL    EMPTY   REGION 
+REGION TYPE                        SIZE     SIZE     SIZE     SIZE     SIZE     SIZE     SIZE    COUNT (non-coalesced) 
+===========                     ======= ========    =====  ======= ========   ======    =====  ======= 
+STACK GUARD                       56.0M       0K       0K       0K       0K       0K       0K        1 
+Stack                             8176K      32K      32K       0K       0K       0K       0K        1 
+__DATA                             533K       5K       5K       0K       0K       0K       0K        2 
+__DATA_CONST                        46K      30K       0K       0K       0K       0K       0K        2 
+__DATA_DIRTY                        14K      14K      14K       0K       0K       0K       0K        1 
+__LINKEDIT                       589.5M    52.0M       0K       0K       0K       0K       0K        2 
+__TEXT                             812K     652K       0K       0K       0K       0K       0K        2 
+__TPRO_CONST                       128K      80K      16K       0K       0K       0K       0K        1 
+dyld private memory                 16K      16K      16K       0K       0K       0K       0K        1 
+mapped file                         64K      16K       0K       0K       0K       0K       0K        1 
+page table in kernel                96K      96K      96K       0K       0K       0K       0K        1 
+unused but dirty shlib __DATA       46K      46K      46K       0K       0K       0K       0K       37 
+===========                     ======= ========    =====  ======= ========   ======    =====  ======= 
+TOTAL                            655.3M    53.0M     224K       0K       0K       0K       0K       52 
+
+               VIRTUAL   RESIDENT      DIRTY    SWAPPED ALLOCATION      BYTES DIRTY+SWAP          REGION
+MALLOC ZONE       SIZE       SIZE       SIZE       SIZE      COUNT  ALLOCATED  FRAG SIZE  % FRAG   COUNT
+===========    =======  =========  =========  =========  =========  =========  =========  ======  ======
+No malloc zones in target process
+Process exists but has not fully started -- dyld has initialized but libSystem has not
+

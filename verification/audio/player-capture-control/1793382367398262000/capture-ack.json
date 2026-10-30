@@ -1,0 +1,1 @@
+{"id":2,"pid":16096,"passed":true,"width":16,"height":12,"output_width":16,"output_height":12,"main_thread":true,"physical_screen_verified":false,"capture_method":"SDL_RenderReadPixels-before-SDL_RenderPresent","renderer":"software","error":""}

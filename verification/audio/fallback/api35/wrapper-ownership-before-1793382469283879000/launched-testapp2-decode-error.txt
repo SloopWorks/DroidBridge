@@ -1,0 +1,16 @@
+Command '['/opt/homebrew/bin/ffmpeg', '-v', 'info', '-y', '-i', '/Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/video.mkv', '-vf', 'fps=2,showinfo,scale=720:906', '-update', '1', '/Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/wrapper-ownership/launched-testapp2.png']' returned non-zero exit status 183.
+ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers
+  built with Apple clang version 21.0.0 (clang-2100.3.34.2)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/9.0.2_1 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags= --enable-ffplay --enable-gpl --enable-libsvtav1 --enable-libopus --enable-libx264 --enable-libmp3lame --enable-libdav1d --enable-libvmaf --enable-libvpx --enable-libx265 --enable-openssl --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+[in#0 @ 0x9e0c1c000] Format matroska,webm detected only with low score of 1, misdetection possible!
+[in#0 @ 0x9e0c1c000] EBML header parsing failed
+[in#0 @ 0x9e0c14000] Error opening input: Invalid data found when processing input
+Error opening input file /Users/patrick/workspace/DroidBridge/verification/audio/fallback/api35/wrapper-ownership/players/dev.droidbridge.testapp2/video.mkv.
+Error opening input files: Invalid data found when processing input

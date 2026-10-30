@@ -1,0 +1,74 @@
+{
+  "scope": "test-only SDL metric observer fault, not product acceptance",
+  "exception": {
+    "codes": "0x0000000000000002, 0x000000016f3dbf30",
+    "message": "Thread stack size exceeded due to excessive recursion",
+    "rawCodes": [
+      2,
+      6161284912
+    ],
+    "type": "EXC_BAD_ACCESS",
+    "signal": "SIGBUS",
+    "subtype": "KERN_PROTECTION_FAILURE at 0x000000016f3dbf30"
+  },
+  "termination": {
+    "flags": 0,
+    "code": 10,
+    "namespace": "SIGNAL",
+    "indicator": "Bus error: 10",
+    "byProc": "exc handler",
+    "byPid": 70143
+  },
+  "triggered_frames": [
+    {
+      "imageOffset": 1588,
+      "symbol": "observe_put",
+      "symbolLocation": 4,
+      "imageIndex": 1
+    },
+    {
+      "imageOffset": 1716,
+      "symbol": "observe_put",
+      "symbolLocation": 132,
+      "imageIndex": 1
+    },
+    {
+      "imageOffset": 1716,
+      "symbol": "observe_put",
+      "symbolLocation": 132,
+      "imageIndex": 1
+    },
+    {
+      "imageOffset": 1716,
+      "symbol": "observe_put",
+      "symbolLocation": 132,
+      "imageIndex": 1
+    },
+    {
+      "imageOffset": 1716,
+      "symbol": "observe_put",
+      "symbolLocation": 132,
+      "imageIndex": 1
+    },
+    {
+      "imageOffset": 1716,
+      "symbol": "observe_put",
+      "symbolLocation": 132,
+      "imageIndex": 1
+    },
+    {
+      "imageOffset": 1716,
+      "symbol": "observe_put",
+      "symbolLocation": 132,
+      "imageIndex": 1
+    },
+    {
+      "imageOffset": 17720,
+      "symbol": "sc_audio_player_stream_callback",
+      "symbolLocation": 84,
+      "imageIndex": 0
+    }
+  ],
+  "cause": "dlsym RTLD_NEXT reapplies dyld interposition: observer recursion",
+  "correction": "direct original function reference in interposer image"
+}

@@ -1,0 +1,93 @@
+{
+  "summary": {
+    "phase": "macAndPhone-stopped-silence",
+    "passed": true,
+    "audio_pid": 12429,
+    "samples": 6,
+    "matching": 6,
+    "tone_presence_thresholds": {
+      "997": 2e-05,
+      "1499": 2e-05
+    },
+    "maximum_absent_to_wanted_ratio": 0.02,
+    "silence_rms_limit": 2e-05,
+    "minimum_wanted_to_rms_ratio": 0.25,
+    "wanted_hz": [],
+    "absent_hz": [],
+    "silence": true,
+    "max_dropped_frames": 0,
+    "max_tone997": 0.0,
+    "max_tone1499": 0.0,
+    "min_rms": 0.0,
+    "max_rms": 0.0,
+    "one_audio_client": true
+  },
+  "samples": [
+    {
+      "pid": 12429,
+      "accepted_frames": 2544000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 12429,
+      "accepted_frames": 2548800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 12429,
+      "accepted_frames": 2553600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 12429,
+      "accepted_frames": 2558400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 12429,
+      "accepted_frames": 2563200,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 12429,
+      "accepted_frames": 2568000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0,
+      "peak": 0.0,
+      "tone997": 0.0,
+      "tone1499": 0.0,
+      "dropped_frames": 0
+    }
+  ]
+}

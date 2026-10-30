@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "candidate_entries": 201,
+  "candidate_mismatches": [
+    "scripts/verify-audio-fallback.py",
+    "scripts/verify-audio-native.py"
+  ],
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "audio_client_sha256": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+  "production_inputs_passed": true,
+  "verification_manifest_refresh_pending": true
+}

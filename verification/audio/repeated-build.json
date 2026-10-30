@@ -1,0 +1,17 @@
+{
+  "scope": "two consecutive release package runs; archive container timestamps may differ",
+  "first_build14_host_sha256": "007506d5032b3b3fcbf634b7ee33fb357a02c24ecdb11730a270636d3e095e15",
+  "second_build14_host_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "host_identical": false,
+  "changed_files": [
+    "Contents/_CodeSignature/CodeResources",
+    "Contents/MacOS/DroidBridge",
+    "Contents/Resources/Runtime/versions.txt",
+    "Contents/Resources/Runtime/share/droidbridge/icon-helper.jar"
+  ],
+  "unsigned_host_payload_sha256": [
+    "79c36d972d1fe466ef1942b7f5794217d345cbfaa7875f0bcdfb9a0a6b807212",
+    "79c36d972d1fe466ef1942b7f5794217d345cbfaa7875f0bcdfb9a0a6b807212"
+  ],
+  "unsigned_host_payload_identical": true
+}

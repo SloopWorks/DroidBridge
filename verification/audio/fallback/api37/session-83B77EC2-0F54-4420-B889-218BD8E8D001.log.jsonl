@@ -1,0 +1,5 @@
+{"backend": "scrcpy", "device": "emulator-5582", "package": "dev.droidbridge.testapp", "session": "83B77EC2-0F54-4420-B889-218BD8E8D001", "state": "starting", "timestamp": "2026-10-30T17:48:42Z"}
+{"backend": "scrcpy", "device": "emulator-5582", "package": "dev.droidbridge.testapp", "session": "83B77EC2-0F54-4420-B889-218BD8E8D001", "state": "running", "timestamp": "2026-10-30T17:48:44Z"}
+{"backend": "scrcpy", "device": "emulator-5582", "event": "session_stop_requested", "package": "dev.droidbridge.testapp", "reason": "application_quit", "session": "83B77EC2-0F54-4420-B889-218BD8E8D001", "timestamp": "2026-10-30T17:49:39Z"}
+{"backend": "scrcpy", "device": "emulator-5582", "package": "dev.droidbridge.testapp", "session": "83B77EC2-0F54-4420-B889-218BD8E8D001", "state": "stopping", "timestamp": "2026-10-30T17:49:39Z"}
+{"backend": "scrcpy", "device": "emulator-5582", "package": "dev.droidbridge.testapp", "session": "83B77EC2-0F54-4420-B889-218BD8E8D001", "state": "stopped", "timestamp": "2026-10-30T17:49:39Z"}

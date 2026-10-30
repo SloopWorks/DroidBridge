@@ -1,0 +1,11 @@
+{
+  "backend" : "native",
+  "bundle" : "\/Users\/patrick\/Applications\/DroidBridge Audio QA\/39ad22f4-f425-4a5c-bd6b-8258466657b2\/DroidBridge Audio QA.app",
+  "bundle_identifier" : "app.droidbridge.wrapper.dev.droidbridge.testapp3",
+  "factory" : "MacAppWrapper.create",
+  "icon_bytes" : 60776,
+  "package" : "dev.droidbridge.testapp3",
+  "passed" : true,
+  "serial" : "emulator-5580",
+  "signed_and_verified" : true
+}

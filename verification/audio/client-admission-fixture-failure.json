@@ -1,0 +1,7 @@
+{
+  "scope": "negative client test fixture, no real ADB/device access",
+  "failed_case": "video-enabled omitted only --no-video",
+  "observed": "pinned CLI normalizes --no-window without another video sink into video-disabled, so configuration is valid audio-only and reaches fake ADB",
+  "correction": "omit both --no-video and --no-window to actually request video",
+  "product_defect": false
+}

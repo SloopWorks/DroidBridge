@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "scope": "Actual installed/copied-wrapper source receipts and artifacts, raw metric replay separate; no OS focus or gapless handoff claim",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "wrapper_identity": {
+    "activation_policy": 0,
+    "bundle": "/Users/patrick/Applications/DroidBridge Audio QA/29e219e4-50db-4f40-96b1-f4ae5d130374/DroidBridge Audio QA.app",
+    "bundle_identifier": "app.droidbridge.wrapper.dev.droidbridge.testapp3",
+    "pid": 20654,
+    "terminated": false
+  },
+  "normalized_main_payload_sha256": "79c36d972d1fe466ef1942b7f5794217d345cbfaa7875f0bcdfb9a0a6b807212",
+  "handoff": {
+    "phase": "owner-crash-lease-handoff-and-native-menu-route-release",
+    "passed": true,
+    "crashed_gui_pid": 19970,
+    "first_audio_pid": 20366,
+    "successor_audio_pid": 20757
+  },
+  "tone_receipts": [
+    {
+      "frequency": 1499,
+      "display": 20,
+      "count": 2
+    },
+    {
+      "frequency": 997,
+      "display": 21,
+      "count": 3
+    }
+  ],
+  "actual_retina_renderer_capture": {
+    "id": 2,
+    "pid": 20316,
+    "passed": true,
+    "width": 1440,
+    "height": 1812,
+    "output_width": 1440,
+    "output_height": 1812,
+    "main_thread": true,
+    "physical_screen_verified": false,
+    "capture_method": "SDL_RenderReadPixels-before-SDL_RenderPresent",
+    "renderer": "metal",
+    "error": "",
+    "last_android_texture": [
+      "720",
+      "906"
+    ],
+    "capture": "SDL_RenderReadPixels before original SDL_RenderPresent",
+    "production_player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+    "package": "dev.droidbridge.testapp2"
+  },
+  "state_restored": true,
+  "resources_restored": true
+}

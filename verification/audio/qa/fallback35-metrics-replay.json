@@ -1,0 +1,232 @@
+{
+  "passed": true,
+  "scope": "Raw aggregate metrics, PID and phase controls only; no physical speaker proof",
+  "evidence": "verification/audio/fallback/api35",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "driver_sha256": "1bc4b0c099f3a28869e89c9b80e14f36ffa4e0d120db10b4c784d3cb62967dc1",
+  "checks": [
+    {
+      "phase": "mac-A-997",
+      "audio_pid": 11019,
+      "samples": 7,
+      "matching": 7,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "mac-B-1499",
+      "audio_pid": 11019,
+      "samples": 7,
+      "matching": 7,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "mac-overlapping-A-B",
+      "audio_pid": 11019,
+      "samples": 6,
+      "matching": 6,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "mac-silence-baseline",
+      "audio_pid": 11019,
+      "samples": 8,
+      "matching": 8,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "mac-stopped-silence",
+      "audio_pid": 11019,
+      "samples": 7,
+      "matching": 6,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "macAndPhone-A-997",
+      "audio_pid": 12429,
+      "samples": 7,
+      "matching": 7,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "macAndPhone-silence-baseline",
+      "audio_pid": 12429,
+      "samples": 8,
+      "matching": 8,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "macAndPhone-stopped-silence",
+      "audio_pid": 12429,
+      "samples": 6,
+      "matching": 6,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "panel-off-video-and-tone",
+      "audio_pid": 12429,
+      "samples": 17,
+      "matching": 6,
+      "final_six_consecutive_match": false,
+      "adjacent_raw_blocks": [
+        {
+          "pid": 12429,
+          "accepted_frames": 278400,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04419664,
+          "peak": 0.06249984,
+          "tone997": 0.06252537,
+          "tone1499": 0.00027625,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 283200,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04415116,
+          "peak": 0.06249897,
+          "tone997": 0.0623967,
+          "tone1499": 0.00016855,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 288000,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04377139,
+          "peak": 0.0625028,
+          "tone997": 0.06131986,
+          "tone1499": 0.00030417,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 292800,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04415577,
+          "peak": 0.06250429,
+          "tone997": 0.06240983,
+          "tone1499": 0.00018259,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 297600,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04418885,
+          "peak": 0.06250471,
+          "tone997": 0.06250325,
+          "tone1499": 0.00026048,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 302400,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04419434,
+          "peak": 0.06249984,
+          "tone997": 0.06251887,
+          "tone1499": 0.0002719,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 307200,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04415238,
+          "peak": 0.06249897,
+          "tone997": 0.06240016,
+          "tone1499": 0.00017231,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 312000,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04241354,
+          "peak": 0.0625028,
+          "tone997": 0.05742579,
+          "tone1499": 0.00029016,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 316800,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04415036,
+          "peak": 0.06250429,
+          "tone997": 0.06239451,
+          "tone1499": 0.00016621,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 321600,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04419826,
+          "peak": 0.06250471,
+          "tone997": 0.06252983,
+          "tone1499": 0.00027885,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 326400,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04418459,
+          "peak": 0.06249984,
+          "tone997": 0.06249124,
+          "tone1499": 0.00025224,
+          "dropped_frames": 0
+        },
+        {
+          "pid": 12429,
+          "accepted_frames": 331200,
+          "rate": 48000,
+          "channels": 2,
+          "rms": 0.04415884,
+          "peak": 0.06249897,
+          "tone997": 0.06241843,
+          "tone1499": 0.00019099,
+          "dropped_frames": 0
+        }
+      ],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "retry-B-1499",
+      "audio_pid": 15750,
+      "samples": 6,
+      "matching": 6,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    }
+  ]
+}

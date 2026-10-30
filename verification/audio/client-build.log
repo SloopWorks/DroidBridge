@@ -1,0 +1,131 @@
+patching file 'app/src/audio_player.c'
+patching file 'app/src/scrcpy.c'
+patching file 'app/src/adb/adb_tunnel.c'
+patching file 'app/src/adb/adb.c'
+patching file 'app/src/server.c'
+The Meson build system
+Version: 1.12.1
+Source dir: /Users/patrick/workspace/DroidBridge/.build/audio-client/source
+Build dir: /Users/patrick/workspace/DroidBridge/.build/audio-client/build
+Build type: native build
+Project name: scrcpy
+Project version: 5.0.1
+C compiler for the host machine: cc (clang 17.0.0 "Apple clang version 17.0.0 (clang-1700.6.3.2)")
+C linker for the host machine: cc ld64 1230.1
+Host machine cpu family: aarch64
+Host machine cpu: aarch64
+Found pkg-config: YES (/opt/homebrew/bin/pkg-config) 3.0.9
+Run-time dependency libavformat found: YES 63.1.102
+Run-time dependency libavcodec found: YES 63.1.102
+Run-time dependency libavutil found: YES 61.1.102
+Run-time dependency libswresample found: YES 7.1.102
+Run-time dependency sdl3 found: YES 3.4.18
+Checking for function "strdup" : YES 
+Checking for function "asprintf" : YES 
+Checking for function "vasprintf" : YES 
+Checking for function "nrand48" : YES 
+Checking for function "jrand48" : YES 
+Checking for function "reallocarray" : NO 
+Header "sys/socket.h" has symbol "SOCK_CLOEXEC" : NO 
+Configuring config.h using configuration
+Build targets in project: 1
+
+scrcpy 5.0.1
+
+  User defined options
+    buildtype     : release
+    compile_server: false
+    usb           : false
+
+Found ninja-1.13.2 at /opt/homebrew/bin/ninja
+ninja: Entering directory `/Users/patrick/workspace/DroidBridge/.build/audio-client/build'
+[1/75] Compiling C object app/scrcpy.p/src_adb_adb_device.c.o
+[2/75] Compiling C object app/scrcpy.p/src_adb_adb_parser.c.o
+[3/75] Compiling C object app/scrcpy.p/src_audio_player.c.o
+[4/75] Compiling C object app/scrcpy.p/src_clock.c.o
+[5/75] Compiling C object app/scrcpy.p/src_compat.c.o
+[6/75] Compiling C object app/scrcpy.p/src_device_msg.c.o
+[7/75] Compiling C object app/scrcpy.p/src_disconnect.c.o
+[8/75] Compiling C object app/scrcpy.p/src_adb_adb_tunnel.c.o
+[9/75] Compiling C object app/scrcpy.p/src_audio_regulator.c.o
+[10/75] Compiling C object app/scrcpy.p/src_control_msg.c.o
+[11/75] Compiling C object app/scrcpy.p/src_controller.c.o
+[12/75] Compiling C object app/scrcpy.p/src_demuxer.c.o
+[13/75] Compiling C object app/scrcpy.p/src_main.c.o
+[14/75] Compiling C object app/scrcpy.p/src_adb_adb.c.o
+[15/75] Compiling C object app/scrcpy.p/src_decoder.c.o
+[16/75] Compiling C object app/scrcpy.p/src_events.c.o
+[17/75] Compiling C object app/scrcpy.p/src_fps_counter.c.o
+[18/75] Compiling C object app/scrcpy.p/src_options.c.o
+[19/75] Compiling C object app/scrcpy.p/src_frame_buffer.c.o
+[20/75] Compiling C object app/scrcpy.p/src_mouse_capture.c.o
+[21/75] Compiling C object app/scrcpy.p/src_mouse_sdk.c.o
+[22/75] Compiling C object app/scrcpy.p/src_keyboard_sdk.c.o
+[23/75] Compiling C object app/scrcpy.p/src_file_pusher.c.o
+[24/75] Compiling C object app/scrcpy.p/src_hwdec.c.o
+[25/75] Compiling C object app/scrcpy.p/src_packet_merger.c.o
+[26/75] Compiling C object app/scrcpy.p/src_opengl.c.o
+[27/75] Compiling C object app/scrcpy.p/src_egl.c.o
+[28/75] Compiling C object app/scrcpy.p/src_receiver.c.o
+[29/75] Compiling C object app/scrcpy.p/src_icon.c.o
+[30/75] Compiling C object app/scrcpy.p/src_sdl_hints.c.o
+[31/75] Compiling C object app/scrcpy.p/src_cli.c.o
+[32/75] Compiling C object app/scrcpy.p/src_input_manager.c.o
+[33/75] Compiling C object app/scrcpy.p/src_video_regulator.c.o
+[34/75] Compiling C object app/scrcpy.p/src_hid_hid_keyboard.c.o
+[35/75] Compiling C object app/scrcpy.p/src_version.c.o
+[36/75] Compiling C object app/scrcpy.p/src_texture.c.o
+[37/75] Compiling C object app/scrcpy.p/src_hid_hid_mouse.c.o
+[38/75] Compiling C object app/scrcpy.p/src_hid_hid_gamepad.c.o
+[39/75] Compiling C object app/scrcpy.p/src_recorder.c.o
+[40/75] Compiling C object app/scrcpy.p/src_trait_frame_source.c.o
+[41/75] Compiling C object app/scrcpy.p/src_server.c.o
+../source/app/src/server.c:616:75: warning: '_Static_assert' with no message is a C23 extension [-Wc23-extensions]
+  616 |     static_assert(sizeof(info->device_name) == SC_DEVICE_NAME_FIELD_LENGTH);
+      |                                                                           ^
+      |                                                                           , ""
+1 warning generated.
+[42/75] Compiling C object app/scrcpy.p/src_interop_interop_software.c.o
+[43/75] Compiling C object app/scrcpy.p/src_trait_packet_source.c.o
+[44/75] Compiling C object app/scrcpy.p/src_uhid_gamepad_uhid.c.o
+[45/75] Compiling C object app/scrcpy.p/src_interop_interop.c.o
+[46/75] Compiling C object app/scrcpy.p/src_uhid_keyboard_uhid.c.o
+[47/75] Compiling C object app/scrcpy.p/src_screen.c.o
+[48/75] Compiling C object app/scrcpy.p/src_scrcpy.c.o
+[49/75] Compiling C object app/scrcpy.p/src_util_env.c.o
+[50/75] Compiling C object app/scrcpy.p/src_util_acksync.c.o
+[51/75] Compiling C object app/scrcpy.p/src_util_average.c.o
+[52/75] Compiling C object app/scrcpy.p/src_util_audiobuf.c.o
+[53/75] Compiling C object app/scrcpy.p/src_uhid_uhid_output.c.o
+[54/75] Compiling C object app/scrcpy.p/src_util_file.c.o
+[55/75] Compiling C object app/scrcpy.p/src_util_intmap.c.o
+[56/75] Compiling C object app/scrcpy.p/src_util_memory.c.o
+[57/75] Compiling C object app/scrcpy.p/src_uhid_mouse_uhid.c.o
+[58/75] Compiling C object app/scrcpy.p/src_util_intr.c.o
+[59/75] Compiling C object app/scrcpy.p/src_util_net_intr.c.o
+[60/75] Compiling C object app/scrcpy.p/src_util_log.c.o
+[61/75] Compiling C object app/scrcpy.p/src_util_net.c.o
+[62/75] Compiling C object app/scrcpy.p/src_util_process.c.o
+[63/75] Compiling C object app/scrcpy.p/src_util_process_intr.c.o
+[64/75] Compiling C object app/scrcpy.p/src_util_rand.c.o
+[65/75] Compiling C object app/scrcpy.p/src_util_strbuf.c.o
+[66/75] Compiling C object app/scrcpy.p/src_util_sdl.c.o
+[67/75] Compiling C object app/scrcpy.p/src_util_tick.c.o
+[68/75] Compiling C object app/scrcpy.p/src_util_timeout.c.o
+[69/75] Compiling C object app/scrcpy.p/src_util_term.c.o
+[70/75] Compiling C object app/scrcpy.p/src_util_thread.c.o
+[71/75] Compiling C object app/scrcpy.p/src_util_str.c.o
+[72/75] Compiling C object app/scrcpy.p/src_sys_unix_process.c.o
+[73/75] Compiling C object app/scrcpy.p/src_sys_unix_file.c.o
+[74/75] Compiling C object app/scrcpy.p/src_interop_interop_videotoolbox.c.o
+[75/75] Linking target app/scrcpy
+INFO: autodetecting backend as ninja
+INFO: calculating backend command to run: /opt/homebrew/bin/ninja -C /Users/patrick/workspace/DroidBridge/.build/audio-client/build
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+
+Dependencies (compiled / linked):
+ - SDL: 3.4.18 / 3.4.18
+ - libavcodec: 63.1.102 / 63.1.102
+ - libavformat: 63.1.102 / 63.1.102
+ - libavutil: 61.1.102 / 61.1.102
+Pinned source a60891aea193d92e7e5c3942700eca63f9d19a5f; audio readiness patch d9d91f9b6e416a4b583f81bae1adeb8ee80ed4c5d4f0ac16bf689d11a4272c5a

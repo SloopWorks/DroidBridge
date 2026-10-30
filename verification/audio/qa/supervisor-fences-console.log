@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "scope": "real supervisor/fake bounded adb; no Android or audio output acceptance",
+  "cases": [
+    {
+      "case": "exact",
+      "passed": true,
+      "removed": true,
+      "commands": [
+        [
+          "-s",
+          "qa-owned",
+          "forward",
+          "--list"
+        ],
+        [
+          "-s",
+          "qa-owned",
+          "forward",
+          "--remove",
+          "tcp:46062"
+        ]
+      ],
+      "diagnostics": "{\"event\":\"supervisor_started\",\"parent\":32659,\"child\":32819}\n{\"event\":\"supervisor_stopped\",\"reason\":\"child_exit\",\"exit_status\":0,\"signal\":null,\"requested_signal\":null}\n"
+    },
+    {
+      "case": "absent",
+      "passed": true,
+      "removed": false,
+      "commands": [
+        [
+          "-s",
+          "qa-owned",
+          "forward",
+          "--list"
+        ]
+      ],
+      "diagnostics": "{\"event\":\"supervisor_started\",\"parent\":32659,\"child\":32893}\n{\"event\":\"supervisor_cleanup_already_complete\",\"operation\":\"forward\"}\n{\"event\":\"supervisor_stopped\",\"reason\":\"child_exit\",\"exit_status\":0,\"signal\":null,\"requested_signal\":null}\n"
+    },
+    {
+      "case": "foreign-remote",
+      "passed": true,
+      "removed": false,
+      "commands": [
+        [
+          "-s",
+          "qa-owned",
+          "forward",
+          "--list"
+        ]
+      ],
+      "diagnostics": "{\"event\":\"supervisor_started\",\"parent\":32659,\"child\":32902}\n{\"event\":\"supervisor_cleanup_identity_changed\",\"operation\":\"forward\"}\n{\"event\":\"supervisor_stopped\",\"reason\":\"child_exit\",\"exit_status\":0,\"signal\":null,\"requested_signal\":null}\n"
+    },
+    {
+      "case": "foreign-serial",
+      "passed": true,
+      "removed": false,
+      "commands": [
+        [
+          "-s",
+          "qa-owned",
+          "forward",
+          "--list"
+        ]
+      ],
+      "diagnostics": "{\"event\":\"supervisor_started\",\"parent\":32659,\"child\":32905}\n{\"event\":\"supervisor_cleanup_already_complete\",\"operation\":\"forward\"}\n{\"event\":\"supervisor_stopped\",\"reason\":\"child_exit\",\"exit_status\":0,\"signal\":null,\"requested_signal\":null}\n"
+    },
+    {
+      "case": "failure-fence-inside-owner-lock",
+      "passed": true,
+      "exit": 77,
+      "client_not_started": true,
+      "diagnostics": "{\"event\":\"supervisor_failure_latched\"}\n"
+    },
+    {
+      "case": "new-retry-identity-admitted",
+      "passed": true,
+      "exit": 0
+    },
+    {
+      "case": "supervisor-timeout-latches-before-successor-admission",
+      "passed": true,
+      "successor_exit": 77,
+      "diagnostics": "{\"event\":\"supervisor_owner_acquired\"}\n{\"event\":\"supervisor_started\",\"parent\":32659,\"child\":32911}\n{\"event\":\"supervisor_stopped\",\"reason\":\"stop_signal\",\"exit_status\":null,\"signal\":15,\"requested_signal\":30}\n"
+    }
+  ]
+}

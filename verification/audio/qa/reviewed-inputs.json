@@ -1,0 +1,23 @@
+{
+  "Sources/DroidBridgeCore/DeviceAudioRoute.swift": "b9480532a15d256cf42abf580f52f3939b5d73b3514e3959b0bb57dd533c73f1",
+  "Sources/DroidBridgeCore/DeviceAudioPreferences.swift": "42ed21c9560b0f5829d1cf5a4ad8ed2151fdea38fe5cc83b4ee74d2e76162c53",
+  "Sources/DroidBridgeCore/DroidBridgePreferences.swift": "766f6c3f9b91ac9178caf001447bc0a894738943bfce0440d71c61f4060b7323",
+  "Sources/DroidBridgeCore/Toolchain.swift": "5b0f9d1e4ca3f4ae3ab5d7a747dd0a8475976eeb83f7bf223598e3c18267cb8b",
+  "Sources/DroidBridgeStreaming/DeviceAudioRouter.swift": "5a1a9436412449bd08e52c5e04623549e4e780602b9b1d62cd7ee1a2b196bbab",
+  "Sources/DroidBridgeStreaming/DeviceAudioArtifacts.swift": "6d5f678d7f6f965d4186af876b92de1c74a2589a7531abfec60d435d543d569c",
+  "Sources/DroidBridgeSupervisor/main.c": "706e27a0351df4bf627d3bbd093a365d277e370b62e5f730c89e14cd5d3c4ff7",
+  "Sources/DroidBridge/AudioControls.swift": "d639e8c761d27ff01dd85efd30b3d73bdb44d3089d14d6d6dcbe7fa17659fc03",
+  "Sources/DroidBridge/Launcher.swift": "6e385d96ca95e8e3e7e0b583bd6cb6a8a0631f508648e14b5ac465e86785276d",
+  "Sources/DroidBridge/LauncherUI.swift": "0b769d4d902f2decabdf396bf36c26aa46a68402867a70296495dcebdaf20a94",
+  "Sources/DroidBridge/main.swift": "194e7266e7e622655b36e1e3df353b4ac6f22e332535b1f6aad6aaf8f81b469f",
+  "scripts/patches/audio-output-ready.patch": "d9d91f9b6e416a4b583f81bae1adeb8ee80ed4c5d4f0ac16bf689d11a4272c5a",
+  "scripts/build-audio-client.sh": "19cab5cde1f8cdaccaebeaa4af966835768d46e33957927ebcfb51b06c9dd3a3",
+  "scripts/verify-audio-samples.c": "3df36e0053b36e5367f6ff9c76d7871834c5cdd2d8946331df9b0f916bb7e425",
+  "scripts/verify-audio-native.py": "1bc4b0c099f3a28869e89c9b80e14f36ffa4e0d120db10b4c784d3cb62967dc1",
+  "Tests/DroidBridgeCoreTests/DeviceAudioQATests.swift": "4acec08dc47ba9900f8e24ba331fb379b02932ac28c0d341e5ac9a1c582a7bfa",
+  "verification/audio/qa/verify-supervisor-fences.py": "f9fe3725ff845fccd83803e9e0fa04292e34bc514500bff9297ae4f8e225397e",
+  "verification/audio/qa/verify-supervisor-lease.py": "1851dc9b695c689b6b7c2da3b8ec764669cf4e5f5ef6b690a6a7afa811694703",
+  "verification/audio/qa/replay-phase-metrics.py": "492b2b9936828ae856e7199ff11e829fbea793fca5a86821613aff762e5bcf02",
+  "verification/audio/qa/calibrate-audio-oracle.py": "7cfefcc1209e9f2fbd9d503786fee95980131f3b5c8f29c42e9f398d1b81ef6f",
+  "scripts/verify-audio-player-capture.c": "a2aa44465531a267c5448d9b61fdb3cd0ab971fe2ef74e8cb15a6eb66e729237"
+}

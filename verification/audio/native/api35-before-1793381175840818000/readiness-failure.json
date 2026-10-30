@@ -1,0 +1,8 @@
+{
+  "ready_lines": [
+    "\u001b]0;scrcpy - Android SDK built for arm64\u0007INFO: DROIDBRIDGE_AUDIO_OUTPUT_READY"
+  ],
+  "aggregate_pcm_blocks": 191,
+  "only_aggregate_pcm": true,
+  "ready_label_claimed": false
+}

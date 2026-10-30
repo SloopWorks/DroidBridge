@@ -73,3 +73,14 @@ The 0.1.1 wrapper report is [verification/launcher-fix/REPORT.md](verification/l
 ## Hidden Android software keyboard
 
 `swift test --filter HiddenIMEArgumentTests` verifies both actual subprocess argument paths, new/restored configuration and decoration choices, and refusal of unsupported or unreadable Android API levels before staging. These tool fixtures prove policy wiring, not Android behavior. Actual installed local-policy reproduction, per-display IME visibility/insets, host text/raw-key input with the physical panel on/off, resizing and cleanup are recorded under `verification/hidden-ime/`. `scripts/verify-hidden-ime-state.py` checks explicit display-bound evidence and rejects a visible-keyboard positive control; absence of one global `mInputShown` flag is insufficient.
+
+Audio verification lives in `verification/audio/`. Unit tests exercise route
+admission, decoder-only refusal, ownership transfer, explicit retry/failure latch,
+poisoned locks and bounded preferences. Separate real-supervisor tests hold
+cleanup open across GUI death and reject foreign ADB mapping deletion. The
+shipping AppKit UI fixture tests actual controls with an isolated router/store.
+Live tests must use actual installed GUI launches and synthetic Android AudioTrack
+tones; positive audio evidence requires nonzero PCM submitted successfully to SDL,
+tone frequency/ON-OFF contrast and initialized output, not process/window presence.
+The test-only observer records aggregate metrics, never PCM payload. Physical
+speaker audibility and hardware Pixel behavior remain manual acceptance.

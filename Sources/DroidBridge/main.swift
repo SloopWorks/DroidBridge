@@ -3,8 +3,9 @@ import DroidBridgeCore
 import DroidBridgeStreaming
 
 @MainActor
-final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
+final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, NSMenuDelegate {
     var launcher: LauncherController!
+    let audioMenu = NSMenu(title:"Audio")
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.regular)
         let applicationName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "DroidBridge"
@@ -26,6 +27,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         phoneMenu.addItem(withTitle:"Turn Phone Screen Off",action:#selector(turnPhoneScreenOff),keyEquivalent:"").target=self
         phoneMenu.addItem(withTitle:"Turn Phone Screen On",action:#selector(turnPhoneScreenOn),keyEquivalent:"").target=self
         phoneItem.submenu=phoneMenu;menu.addItem(phoneItem)
+        let audioItem=NSMenuItem();audioItem.title="Audio";audioItem.submenu=audioMenu
+        audioMenu.delegate=self;audioMenu.autoenablesItems=false;menu.addItem(audioItem)
         let appActions=NSMenuItem();appActions.title="Apps"
         let appsMenu=NSMenu(title:"Apps")
         appsMenu.addItem(withTitle:"Find App…",action:#selector(findApp),keyEquivalent:"f").target=self
@@ -54,6 +57,34 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     }
     @objc func findApp() {guard let launcher,launcher.window?.isKeyWindow == true || (launcher.sessions.isEmpty && launcher.launchPreview == nil && !launcher.isWrapper) else {return};launcher.focusAppSearch()}
     @objc func showSettings() {launcher?.showLauncherSettings()}
+    func menuNeedsUpdate(_ menu:NSMenu) {if menu === audioMenu {updateAudioMenu()}}
+    func updateAudioMenu() {
+        audioMenu.removeAllItems()
+        guard let launcher else {return}
+        let device=launcher.audioMenuDevice(),state=launcher.audioControls.presentation(for:device?.serial)
+        func note(_ text:String) {let item=NSMenuItem(title:String(text.prefix(180)),action:nil,keyEquivalent:"");item.isEnabled=false;item.toolTip=text;audioMenu.addItem(item)}
+        note(device.map {"Audio for \($0.model)"} ?? "Select an Android device")
+        note("Device-wide · includes other Android apps")
+        audioMenu.addItem(.separator())
+        for (name,route) in [("Mac",DeviceAudioRoute.mac),("Phone",.phone),("Mac + Phone",.macAndPhone)] {
+            let item=NSMenuItem(title:name,action:#selector(selectAudioMenuRoute(_:)),keyEquivalent:"")
+            item.target=self;item.representedObject=route.rawValue;item.state=state.route == route ? .on : .off
+            item.isEnabled=device != nil && (route == .phone || device.map {launcher.readySerials.contains($0.serial)} == true)
+            audioMenu.addItem(item)
+        }
+        audioMenu.addItem(.separator());note(state.title);note(state.message)
+        if state.phase == .ready {note("Output initialized; sound depends on the Android app and Mac volume.")}
+        if state.phase == .failed {
+            let retry=NSMenuItem(title:"Retry Audio",action:#selector(retryMenuAudio),keyEquivalent:"");retry.target=self;retry.isEnabled=state.canRetry && device != nil;audioMenu.addItem(retry)
+            let phone=NSMenuItem(title:"Use Phone",action:#selector(usePhoneMenuAudio),keyEquivalent:"");phone.target=self;phone.isEnabled=state.canUsePhone && device != nil;audioMenu.addItem(phone)
+        }
+    }
+    @objc func selectAudioMenuRoute(_ sender:NSMenuItem) {
+        guard let launcher,let device=launcher.audioMenuDevice(),let raw=sender.representedObject as? String,let route=DeviceAudioRoute(rawValue:raw) else {return}
+        launcher.setAudioRoute(route,device:device)
+    }
+    @objc func retryMenuAudio() {if let launcher,let device=launcher.audioMenuDevice() {launcher.audioControls.retry(serial:device.serial)}}
+    @objc func usePhoneMenuAudio() {if let launcher,let device=launcher.audioMenuDevice() {launcher.setAudioRoute(.phone,device:device)}}
     @objc func turnPhoneScreenOff() {launcher?.turnPhoneScreenOff()}
     @objc func turnPhoneScreenOn() {launcher?.turnPhoneScreenOn()}
     @objc func showLauncher() { launcher?.showWindow(nil); launcher?.window?.makeKeyAndOrderFront(nil);launcher?.refreshDevices(forceApps:true) }

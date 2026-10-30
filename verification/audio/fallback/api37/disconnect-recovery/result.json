@@ -1,0 +1,240 @@
+{
+  "passed": true,
+  "acceptance": true,
+  "app": "/Users/patrick/Applications/DroidBridge.app",
+  "serial": "emulator-5582",
+  "version": "0.1.8",
+  "build": "14",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "physical_audibility_verified": false,
+  "physical_focus_verified": false,
+  "instrumentation": "Public launcher actions; public SDL event queue; fresh public SDL renderer readback; record-only video; successful SDL PCM aggregates",
+  "phases": [
+    {
+      "phase": "disconnect-silence-baseline",
+      "passed": true,
+      "audio_pid": 24849,
+      "samples": 8,
+      "matching": 8,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 0.0001,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [],
+      "absent_hz": [],
+      "silence": true,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.0,
+      "max_tone1499": 0.0,
+      "min_rms": 0.0,
+      "max_rms": 0.0,
+      "one_audio_client": true
+    },
+    {
+      "phase": "before-emulator-disconnect-1499",
+      "passed": true,
+      "audio_pid": 24849,
+      "samples": 8,
+      "matching": 8,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        1499
+      ],
+      "absent_hz": [
+        997
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 9.58e-06,
+      "max_tone1499": 0.00147727,
+      "min_rms": 0.00096033,
+      "max_rms": 0.0010443,
+      "one_audio_client": true
+    },
+    {
+      "phase": "actual-emulator-offline-GUI-alive-no-audio",
+      "passed": true,
+      "gui_pid": 24464,
+      "old_audio_pid": 24849
+    },
+    {
+      "phase": "reconnected-silence-baseline",
+      "passed": true,
+      "audio_pid": 25987,
+      "samples": 9,
+      "matching": 9,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 0.0001,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [],
+      "absent_hz": [],
+      "silence": true,
+      "max_dropped_frames": 0,
+      "max_tone997": 0.0,
+      "max_tone1499": 0.0,
+      "min_rms": 0.0,
+      "max_rms": 0.0,
+      "one_audio_client": true
+    },
+    {
+      "phase": "after-real-reconnect-and-explicit-retry-1499",
+      "passed": true,
+      "audio_pid": 25987,
+      "samples": 7,
+      "matching": 7,
+      "tone_presence_thresholds": {
+        "997": 2e-05,
+        "1499": 2e-05
+      },
+      "maximum_absent_to_wanted_ratio": 0.02,
+      "silence_rms_limit": 2e-05,
+      "minimum_wanted_to_rms_ratio": 0.25,
+      "wanted_hz": [
+        1499
+      ],
+      "absent_hz": [
+        997
+      ],
+      "silence": false,
+      "max_dropped_frames": 0,
+      "max_tone997": 8.53e-06,
+      "max_tone1499": 0.00147725,
+      "min_rms": 0.00103626,
+      "max_rms": 0.00104428,
+      "one_audio_client": true
+    },
+    {
+      "phase": "same-GUI-video-and-audio-recovery-after-real-reboot",
+      "passed": true,
+      "explicit_audio_retry": false,
+      "first_audio_pid": 24849,
+      "successor_audio_pid": 25987
+    }
+  ],
+  "backend": "scrcpy",
+  "driver_sha256": "fd7e489ddd8a8c1527dd701aac3029a7652624e278f0e36b29aec4304f0d54f7",
+  "player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_before": "687",
+  "scenario": "Actual owned emulator shutdown/reboot; explicit audio Retry if latched",
+  "emulator_restart_argv": [
+    "/Users/patrick/Library/Android/sdk/emulator/emulator",
+    "-avd",
+    "DroidBridge_API37",
+    "-port",
+    "5582",
+    "-no-window",
+    "-no-snapshot",
+    "-gpu",
+    "auto"
+  ],
+  "resource_observations": [
+    {
+      "phase": "disconnect-silence-baseline",
+      "processes": [
+        "24464 21574   2.8 191808 00:09 /Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge",
+        "24675 24672   0.9 121968 00:06 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+        "24849 24848   0.6  30880 00:02 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+      ],
+      "rss_unit": "KiB",
+      "cpu_unit": "percent",
+      "observational_not_acceptance": true
+    },
+    {
+      "phase": "before-emulator-disconnect-1499",
+      "processes": [
+        "24464 21574   0.3 165296 00:11 /Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge",
+        "24675 24672   3.0 131264 00:08 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+        "24849 24848   1.2  31008 00:04 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+      ],
+      "rss_unit": "KiB",
+      "cpu_unit": "percent",
+      "observational_not_acceptance": true
+    },
+    {
+      "phase": "reconnected-silence-baseline",
+      "processes": [
+        "24464 21574   0.8 122240 00:37 /Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge",
+        "25700 25699   0.4 121648 00:07 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+        "25987 25986   1.1  30960 00:03 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+      ],
+      "rss_unit": "KiB",
+      "cpu_unit": "percent",
+      "observational_not_acceptance": true
+    },
+    {
+      "phase": "after-real-reconnect-and-explicit-retry-1499",
+      "processes": [
+        "24464 21574   0.5 121008 00:38 /Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge",
+        "25700 25699   2.7 128832 00:08 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+        "25987 25986   1.3  31056 00:04 /Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient"
+      ],
+      "rss_unit": "KiB",
+      "cpu_unit": "percent",
+      "observational_not_acceptance": true
+    }
+  ],
+  "video_updates": [
+    {
+      "label": "before-real-emulator-disconnect",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 6 \u2022 ticks 22"
+      ],
+      "after": [
+        "Display 6 \u2022 ticks 25"
+      ],
+      "wait_seconds": 0.464
+    },
+    {
+      "label": "after-real-emulator-reconnect",
+      "package": "dev.droidbridge.testapp2",
+      "before": [
+        "Display 2 \u2022 ticks 15"
+      ],
+      "after": [
+        "Display 2 \u2022 ticks 17"
+      ],
+      "wait_seconds": 0.47
+    }
+  ],
+  "expected_emulator_restart": {
+    "before_boot_id": "71dc91cd-1acf-4e5f-92b1-7a9b26cf6956",
+    "after_boot_id": "f4dcdfd9-0d4c-4d89-a6fb-813cd34ae4e9",
+    "new_host_pid": 25229,
+    "prior_system_server_pid": "682"
+  },
+  "video_recovery": "automatic retained video intent",
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "system_server_pid_after": "687",
+  "state_restored": true,
+  "android_global_input_settings_unchanged": true,
+  "unrelated_adb_inventory_rows_redacted": {
+    "session-C85FAD25-BBB9-4F98-A571-9B6041B0CA1B.log": 3,
+    "session-6C5B2F47-DEFB-4E78-AAF8-AE3061D169EF.log": 3,
+    "host.log": 0
+  },
+  "cleanup_errors": [],
+  "restarted_emulator_pid": 25229
+}

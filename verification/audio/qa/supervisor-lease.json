@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "real supervisor, fake bounded adb/client, no emulator or audio output",
+  "lease_held_during_client": true,
+  "lease_held_after_gui_sigkill": true,
+  "successor_refused_during_cleanup": true,
+  "lease_released_after_cleanup": true,
+  "child_reaped": true,
+  "supervisor_diagnostics": "{\"event\":\"supervisor_owner_acquired\"}\n{\"event\":\"supervisor_started\",\"parent\":12337,\"child\":12339}\n{\"event\":\"supervisor_stopped\",\"reason\":\"parent_exit\",\"exit_status\":null,\"signal\":15,\"requested_signal\":null}\n"
+}

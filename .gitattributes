@@ -1,3 +1,5 @@
 # Preserve upstream notice bytes and captured command output verbatim.
 Resources/licenses/** -whitespace
 verification/** -whitespace
+# Unified diffs require a space prefix on blank context lines.
+scripts/patches/*.patch -whitespace

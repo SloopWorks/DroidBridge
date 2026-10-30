@@ -1,0 +1,7 @@
+{
+  "secure:show_ime_with_hard_keyboard": "0",
+  "secure:default_input_method": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+  "secure:enabled_input_methods": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME;1594443099:com.google.android.tts/com.google.android.apps.speech.tts.googletts.settings.asr.voiceime.VoiceInputMethodService",
+  "global:stay_on_while_plugged_in": "1",
+  "system:screen_off_timeout": "2147483647"
+}

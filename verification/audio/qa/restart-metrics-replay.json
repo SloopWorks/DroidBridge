@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "scope": "Raw aggregate metrics, PID and phase controls only; no physical speaker proof",
+  "evidence": "verification/audio/fallback/api37/disconnect-recovery",
+  "installed_sha256": "08d5e7011d4febb88d8fc56eab9f65f9bd3ae5525df60d944dcf57bbadc27865",
+  "driver_sha256": "1bc4b0c099f3a28869e89c9b80e14f36ffa4e0d120db10b4c784d3cb62967dc1",
+  "checks": [
+    {
+      "phase": "after-real-reconnect-and-explicit-retry-1499",
+      "audio_pid": 25987,
+      "samples": 7,
+      "matching": 7,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "before-emulator-disconnect-1499",
+      "audio_pid": 24849,
+      "samples": 8,
+      "matching": 8,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "disconnect-silence-baseline",
+      "audio_pid": 24849,
+      "samples": 8,
+      "matching": 8,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    },
+    {
+      "phase": "reconnected-silence-baseline",
+      "audio_pid": 25987,
+      "samples": 9,
+      "matching": 9,
+      "final_six_consecutive_match": true,
+      "adjacent_raw_blocks": [],
+      "ratio_bound": 0.02
+    }
+  ]
+}

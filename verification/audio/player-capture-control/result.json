@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "scope": "Offline SDL software renderer only; no Android/preferences/physicalscreen",
+  "ack": {
+    "id": 2,
+    "pid": 16096,
+    "passed": true,
+    "width": 16,
+    "height": 12,
+    "output_width": 16,
+    "output_height": 12,
+    "main_thread": true,
+    "physical_screen_verified": false,
+    "capture_method": "SDL_RenderReadPixels-before-SDL_RenderPresent",
+    "renderer": "software",
+    "error": ""
+  },
+  "run": "/Users/patrick/workspace/DroidBridge/verification/audio/player-capture-control/1793382367398262000",
+  "helper_sha256": "a2aa44465531a267c5448d9b61fdb3cd0ab971fe2ef74e8cb15a6eb66e729237",
+  "sdl_sha256": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6"
+}

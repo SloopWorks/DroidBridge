@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 564, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 552, in main
+    test=FallbackAudioTest(args);test.execute()
+                                 ~~~~~~~~~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 222, in execute
+    super().execute()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py", line 411, in execute
+    self.launch(package)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 143, in launch
+    self.bind_fallback(package,event)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 161, in bind_fallback
+    wait('actual tone button rendered',lambda:any('play test tone' in r['text'].lower()
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         for r in self.capture(status['window'],'launched-'+package.rsplit('.',1)[-1])),35)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py", line 36, in wait
+    value = predicate()
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 162, in <lambda>
+    for r in self.capture(status['window'],'launched-'+package.rsplit('.',1)[-1])),35)
+             ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-fallback.py", line 131, in capture
+    rows = wait('actual recorded frame '+label, decode, 25)
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-audio-native.py", line 40, in wait
+    raise AssertionError('Timeout: ' + label)
+AssertionError: Timeout: actual recorded frame launched-testapp

@@ -1,0 +1,1 @@
+PASS: shipping audio UI route scope, readiness, transition/error/retry, persistence refusal and shutdown fixtures

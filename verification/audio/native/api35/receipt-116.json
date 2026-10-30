@@ -1,0 +1,280 @@
+{
+  "id" : 116,
+  "texts" : [
+    "DroidBridge",
+    "Android apps on your Mac",
+    "DEVICE",
+    "Connected and ready\nemulator-5580",
+    "RENDERING",
+    "Used for new app windows.",
+    "AUDIO",
+    "Device-wide Android audio, including apps outside DroidBridge. Mac routing silences phone playback.",
+    "Mac output initialized\nMac audio output initialized. Applies to all device audio; audibility depends on Android audio and Mac volume.",
+    "SPOTLIGHT",
+    "Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",
+    "Existing Mac app name repair will retry: Eight availability runtime generations are retained. Uninstall the availability agent before installing another generation.",
+    "Applications",
+    "1 of 17 apps · Android SDK built for arm64",
+    "dev.droidbridge.testapp2",
+    "DroidBridge Test",
+    "dev.droidbridge.testapp2",
+    "Loading applications…",
+    "Reading the launchable apps on this device.",
+    "DroidBridge Test",
+    "dev.droidbridge.testapp2",
+    "Sessions",
+    "2 sessions",
+    "DroidBridge Test",
+    "Running",
+    "Android SDK built for arm64 · Native AppKit",
+    "DroidBridge Test",
+    "Running",
+    "Android SDK built for arm64 · Native AppKit",
+    "DroidBridge Test is running with native AppKit."
+  ],
+  "backend" : "Native AppKit",
+  "audio_menu" : [
+    {
+      "separator" : false,
+      "title" : "Audio for Android SDK built for arm64",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Device-wide · includes other Android apps",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : true,
+      "title" : "",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Mac",
+      "enabled" : true,
+      "state" : 1,
+      "route" : "mac"
+    },
+    {
+      "separator" : false,
+      "title" : "Phone",
+      "enabled" : true,
+      "state" : 0,
+      "route" : "phone"
+    },
+    {
+      "separator" : false,
+      "title" : "Mac + Phone",
+      "enabled" : true,
+      "state" : 0,
+      "route" : "macAndPhone"
+    },
+    {
+      "separator" : true,
+      "title" : "",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Mac output initialized",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Mac audio output initialized. Applies to all device audio; audibility depends on Android audio and Mac volume.",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    },
+    {
+      "separator" : false,
+      "title" : "Output initialized; sound depends on the Android app and Mac volume.",
+      "enabled" : false,
+      "state" : 0,
+      "route" : ""
+    }
+  ],
+  "physical_focus_verified" : false,
+  "menus" : {
+    "Audio" : [
+      {
+        "separator" : false,
+        "title" : "Audio for Android SDK built for arm64",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Device-wide · includes other Android apps",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : true,
+        "title" : "",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Mac",
+        "enabled" : true,
+        "state" : 1,
+        "route" : "mac"
+      },
+      {
+        "separator" : false,
+        "title" : "Phone",
+        "enabled" : true,
+        "state" : 0,
+        "route" : "phone"
+      },
+      {
+        "separator" : false,
+        "title" : "Mac + Phone",
+        "enabled" : true,
+        "state" : 0,
+        "route" : "macAndPhone"
+      },
+      {
+        "separator" : true,
+        "title" : "",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Mac output initialized",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Mac audio output initialized. Applies to all device audio; audibility depends on Android audio and Mac volume.",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      },
+      {
+        "separator" : false,
+        "title" : "Output initialized; sound depends on the Android app and Mac volume.",
+        "enabled" : false,
+        "state" : 0,
+        "route" : ""
+      }
+    ]
+  },
+  "selected_row" : 0,
+  "buttons" : {
+    "" : true,
+    "Focus" : true,
+    "Details…" : true,
+    "Add Device Apps…" : true,
+    "Diagnostics…" : true,
+    "Close" : true,
+    "Show Android system decorations" : true,
+    "Reconnect interrupted sessions automatically" : true,
+    "Enable device apps in Spotlight" : true,
+    "Native AppKit" : true,
+    "Create \/ Update Mac App…" : true,
+    "Keep phone screen off during Mac sessions" : true,
+    "Mac" : true,
+    "Cancel" : false,
+    "Restore Previous Sessions" : false,
+    "Launch App" : true,
+    "Log" : true,
+    "Refresh Devices" : true,
+    "Retry Audio" : false,
+    "Use Phone" : false,
+    "Android SDK built for arm64 · emulator-5580" : true,
+    "search" : true,
+    "Show Android Screen" : true
+  },
+  "passed" : true,
+  "launch_enabled" : true,
+  "audio_status" : "Mac output initialized\nMac audio output initialized. Applies to all device audio; audibility depends on Android audio and Mac volume.",
+  "action" : "status",
+  "rows" : 1,
+  "audio_route" : "mac",
+  "button_states" : {
+    "" : 1,
+    "Focus" : 0,
+    "Details…" : 0,
+    "Add Device Apps…" : 0,
+    "Diagnostics…" : 0,
+    "Close" : 0,
+    "Show Android system decorations" : 1,
+    "Reconnect interrupted sessions automatically" : 1,
+    "Enable device apps in Spotlight" : 1,
+    "Native AppKit" : 1,
+    "Create \/ Update Mac App…" : 0,
+    "Keep phone screen off during Mac sessions" : 1,
+    "Mac" : 1,
+    "Cancel" : 0,
+    "Restore Previous Sessions" : 0,
+    "Launch App" : 0,
+    "Log" : 0,
+    "Refresh Devices" : 0,
+    "Retry Audio" : 1,
+    "Use Phone" : 0,
+    "Android SDK built for arm64 · emulator-5580" : 1,
+    "search" : 0,
+    "Show Android Screen" : 0
+  },
+  "windows" : [
+    {
+      "number" : 12168,
+      "height" : 780,
+      "visible" : true,
+      "title" : "DroidBridge",
+      "width" : 1160,
+      "minimized" : false,
+      "key" : false
+    },
+    {
+      "number" : 12169,
+      "height" : 500,
+      "visible" : false,
+      "title" : "",
+      "width" : 500,
+      "minimized" : false,
+      "key" : false
+    },
+    {
+      "number" : 12176,
+      "height" : 720,
+      "visible" : true,
+      "title" : "DroidBridge Test",
+      "width" : 480,
+      "minimized" : false,
+      "key" : false
+    },
+    {
+      "number" : 12177,
+      "height" : 720,
+      "visible" : true,
+      "title" : "DroidBridge Test",
+      "width" : 480,
+      "minimized" : false,
+      "key" : false
+    }
+  ],
+  "device" : "Android SDK built for arm64 · emulator-5580",
+  "pid" : 80029
+}

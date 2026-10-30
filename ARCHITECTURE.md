@@ -67,3 +67,23 @@ Core `PhoneDisplayPower` serializes actuation across processes with per-device f
 The runtime is pinned to scrcpy 5.0.1 and the captured Homebrew versions. Packaging recursively bundles and relinks Mach-O dependencies, collects notices, ad-hoc signs the application, verifies signatures, and emits a DMG, ZIP and SHA-256 checksums. The packaged runtime requires Apple Silicon/macOS 26; the Swift source's lower deployment target is not a portability claim for those bundled dependencies.
 
 Unit, actual emulator, AppKit event/rendering, lifecycle, recovery, supervisor, installed-bundle and GUI checks are separate evidence layers. See `TESTING.md`, `verification/REPORT.md`, and independent review in `verification/review/`. The physical Pixel 10 Pro stage is explicitly deferred to its owner.
+
+## Device-wide audio
+
+Both video backends keep their own audio disabled and share DeviceAudioRouter.
+For each active device, it starts a separate audio-only pinned scrcpy5.0.1 client
+(raw PCM) with no video, input, window, clipboard or power-on. CoreAudio confirms
+an available output; a tracked client patch emits readiness only after successful
+SDL output open/resume. Mac uses output capture; Mac + Phone uses playback+dup;
+Phone has no capture. No per-app isolation or physical audibility is inferred.
+
+A supervisor-held per-serial lease spans playback and teardown, including GUI
+crashes. Per-attempt receipts are followed through the UUID in that lease inode;
+late old-GUI status cannot publish over a successor. A route/retry-scoped failure
+latch is fenced by the supervisor, preventing wrappers repeatedly restarting a
+failed capture. Explicit Retry or a route change admits a new attempt. Port
+leases persist through exact serial/local/remote forward cleanup. The custom
+client uses no-rebind and delegates supervised forward cleanup to the owner.
+Launcher and native-wrapper menus share atomic audio-preferences.json independently of the older screen/Spotlight settings file; legacy wrappers cannot erase audio intent. Audio work and
+failure are independent of video sessions. See AUDIO_DESIGN.md and
+verification/audio/ for contracts, limits and executable evidence.

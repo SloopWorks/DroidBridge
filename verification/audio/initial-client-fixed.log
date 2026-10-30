@@ -1,0 +1,24 @@
+/opt/homebrew/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 269.2 MB/s (733930 bytes in 0.003s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+[server] WARN: Could not get initial audio timestamp
+WARN: Killing the server...
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+DEBUG: Using adb: /Users/patrick/Library/Android/sdk/platform-tools/adb
+INFO: ADB device found:
+[unrelated ADB device inventory redacted]
+[unrelated ADB device inventory redacted]
+INFO:     --> (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+DEBUG: Device serial: emulator-5580
+DEBUG: Using SCRCPY_SERVER_PATH: /opt/homebrew/share/scrcpy/scrcpy-server
+DEBUG: Remaining connection attempts: 100
+DEBUG: Remaining connection attempts: 99
+DEBUG: Remaining connection attempts: 98
+DEBUG: Server connected
+DEBUG: Demuxer 'audio': starting thread
+DEBUG: Decoder 'audio': pcm_s16le
+INFO: DROIDBRIDGE_AUDIO_OUTPUT_READY
+DEBUG: User requested to quit
+DEBUG: Decoder (audio) thread ended
+DEBUG: Demuxer 'audio': end of frames
+DEBUG: Server disconnected
+DEBUG: Server terminated

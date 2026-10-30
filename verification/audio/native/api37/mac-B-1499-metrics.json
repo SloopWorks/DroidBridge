@@ -1,0 +1,185 @@
+{
+  "summary": {
+    "phase": "mac-B-1499",
+    "passed": true,
+    "audio_pid": 83053,
+    "samples": 14,
+    "matching": 7,
+    "tone_presence_thresholds": {
+      "997": 2e-05,
+      "1499": 2e-05
+    },
+    "maximum_absent_to_wanted_ratio": 0.02,
+    "silence_rms_limit": 2e-05,
+    "minimum_wanted_to_rms_ratio": 0.25,
+    "wanted_hz": [
+      1499
+    ],
+    "absent_hz": [
+      997
+    ],
+    "silence": false,
+    "max_dropped_frames": 0,
+    "max_tone997": 0.00012034,
+    "max_tone1499": 0.00147709,
+    "min_rms": 0.0009958,
+    "max_rms": 0.00131392,
+    "one_audio_client": true
+  },
+  "samples": [
+    {
+      "pid": 83053,
+      "accepted_frames": 264000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00131392,
+      "peak": 0.00296282,
+      "tone997": 0.00012034,
+      "tone1499": 5.51e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 268800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104425,
+      "peak": 0.00147847,
+      "tone997": 6.93e-06,
+      "tone1499": 1.4e-07,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 273600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104409,
+      "peak": 0.00147847,
+      "tone997": 6.03e-06,
+      "tone1499": 1.01e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 278400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104364,
+      "peak": 0.00147856,
+      "tone997": 3.87e-06,
+      "tone1499": 1.91e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 283200,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104368,
+      "peak": 0.00147782,
+      "tone997": 3.87e-06,
+      "tone1499": 1.8e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 288000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104408,
+      "peak": 0.00147805,
+      "tone997": 5.84e-06,
+      "tone1499": 1.08e-06,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 292800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00102059,
+      "peak": 0.00147777,
+      "tone997": 1.61e-05,
+      "tone1499": 0.00023332,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 297600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.0009958,
+      "peak": 0.0014786,
+      "tone997": 1.5e-06,
+      "tone1499": 0.00105329,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 302400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104361,
+      "peak": 0.00147839,
+      "tone997": 3.76e-06,
+      "tone1499": 0.00147538,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 307200,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104379,
+      "peak": 0.00147839,
+      "tone997": 5.17e-06,
+      "tone1499": 0.00147592,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 312000,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104423,
+      "peak": 0.00147839,
+      "tone997": 7e-06,
+      "tone1499": 0.00147708,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 316800,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104421,
+      "peak": 0.00147839,
+      "tone997": 7.17e-06,
+      "tone1499": 0.00147709,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 321600,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104385,
+      "peak": 0.00147839,
+      "tone997": 5.34e-06,
+      "tone1499": 0.00147607,
+      "dropped_frames": 0
+    },
+    {
+      "pid": 83053,
+      "accepted_frames": 326400,
+      "rate": 48000,
+      "channels": 2,
+      "rms": 0.00104361,
+      "peak": 0.00147839,
+      "tone997": 3.76e-06,
+      "tone1499": 0.00147538,
+      "dropped_frames": 0
+    }
+  ]
+}

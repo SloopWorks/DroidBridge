@@ -80,7 +80,19 @@ import DroidBridgeStreaming
         let onboardingActions=NSStackView(views:[c.onboardingCancel,details]);onboardingActions.distribution = .fillEqually;onboardingActions.spacing=8
         c.onboardingProgress.isIndeterminate=false;c.onboardingProgress.minValue=0;c.onboardingProgress.maxValue=1;c.onboardingProgress.setAccessibilityLabel("Spotlight setup progress")
         c.onboardingStatus.font = .systemFont(ofSize:11);c.onboardingStatus.textColor = .secondaryLabelColor;c.onboardingStatus.maximumNumberOfLines=4;c.onboardingStatus.lineBreakMode = .byTruncatingTail;c.onboardingStatus.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
-        let sidebarContent=Self.column([branding,Self.group("DEVICE",[c.devicePicker,connection,refresh]),Self.group("RENDERING",[c.backendPicker,Self.label("Used for new app windows.",size:11,secondary:true),c.phoneScreenPreference,c.decorationsPreference,c.reconnect]),Self.group("SPOTLIGHT",[c.bulkPreference,Self.label("Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",size:11,secondary:true),c.onboardingButton,c.onboardingProgress,c.onboardingStatus,onboardingActions])],spacing:22)
+        c.audioRoutePicker.addItems(withTitles:["Mac","Phone","Mac + Phone"])
+        for (index,route) in [DeviceAudioRoute.mac,.phone,.macAndPhone].enumerated() {c.audioRoutePicker.item(at:index)?.representedObject=route.rawValue}
+        c.audioRoutePicker.autoenablesItems=false;c.audioRoutePicker.setAccessibilityLabel("Device audio route")
+        c.audioRoutePicker.target=c;c.audioRoutePicker.action=#selector(c.audioRouteChanged(_:))
+        c.audioRoutePicker.toolTip="Device-wide audio: Mac silences phone playback; Mac + Phone depends on the Android app allowing capture."
+        c.audioStatus.font = .systemFont(ofSize:11);c.audioStatus.textColor = .secondaryLabelColor;c.audioStatus.maximumNumberOfLines=5;c.audioStatus.lineBreakMode = .byWordWrapping;c.audioStatus.isSelectable=true
+        c.audioStatus.setAccessibilityLabel("Device audio status");c.audioStatus.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
+        c.audioRetry.bezelStyle = .rounded;c.audioRetry.target=c;c.audioRetry.action=#selector(c.retrySelectedAudio)
+        c.audioUsePhone.bezelStyle = .rounded;c.audioUsePhone.target=c;c.audioUsePhone.action=#selector(c.usePhoneAudio)
+        let audioActions=NSStackView(views:[c.audioRetry,c.audioUsePhone]);audioActions.spacing=6;audioActions.distribution = .fillEqually
+        let audioGroup=Self.group("AUDIO",[c.audioRoutePicker,Self.label("Device-wide Android audio, including apps outside DroidBridge. Mac routing silences phone playback.",size:11,secondary:true),c.audioStatus,audioActions])
+        audioGroup.identifier=NSUserInterfaceItemIdentifier("launcher.audio")
+        let sidebarContent=Self.column([branding,Self.group("DEVICE",[c.devicePicker,connection,refresh]),Self.group("RENDERING",[c.backendPicker,Self.label("Used for new app windows.",size:11,secondary:true),c.phoneScreenPreference,c.decorationsPreference,c.reconnect]),audioGroup,Self.group("SPOTLIGHT",[c.bulkPreference,Self.label("Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",size:11,secondary:true),c.onboardingButton,c.onboardingProgress,c.onboardingStatus,onboardingActions])],spacing:22)
         Self.document(sidebarContent,in:sidebarScroll,padding:16)
 
         let title=Self.label("Applications",size:25,weight:.bold)
