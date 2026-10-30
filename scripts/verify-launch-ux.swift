@@ -38,7 +38,7 @@ import DroidBridgeStreaming
         view.keyDown(with:event)
     }
     @MainActor static func run() async throws {
-        let output=URL(fileURLWithPath:FileManager.default.currentDirectoryPath).appendingPathComponent("verification/launch-ux/qa")
+        let output=URL(fileURLWithPath:ProcessInfo.processInfo.environment["DROIDBRIDGE_QA_OUTPUT"] ?? "verification/launch-ux/qa",relativeTo:URL(fileURLWithPath:FileManager.default.currentDirectoryPath))
         let mode=URL(fileURLWithPath:ProcessInfo.processInfo.environment["DROIDBRIDGE_QA_MODE"]!)
         func marker(_ name:String)->URL {URL(fileURLWithPath:mode.path+"."+name)}
         let device=AndroidDevice(serial:"qa-no-device",model:"Explicit no-device fixture")

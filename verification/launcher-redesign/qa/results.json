@@ -1,0 +1,826 @@
+{
+  "actual_android_launch_verified" : false,
+  "application_fixture_count" : 1000,
+  "cases" : [
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "content_size" : [
+        1160,
+        780
+      ],
+      "frames" : [
+        {
+          "frame" : [
+            30,
+            639,
+            180,
+            24
+          ],
+          "hidden" : false,
+          "name" : "device",
+          "visible_rect" : [
+            -30,
+            -117,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            471,
+            180,
+            24
+          ],
+          "hidden" : false,
+          "name" : "backend",
+          "visible_rect" : [
+            -30,
+            -285,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            264,
+            668,
+            872,
+            28
+          ],
+          "hidden" : false,
+          "name" : "search",
+          "visible_rect" : [
+            -264,
+            -116,
+            1160,
+            812
+          ]
+        },
+        {
+          "frame" : [
+            265,
+            343,
+            870,
+            312
+          ],
+          "hidden" : false,
+          "name" : "applications",
+          "visible_rect" : [
+            -265,
+            -157,
+            1160,
+            812
+          ]
+        },
+        {
+          "frame" : [
+            264,
+            73,
+            872,
+            145
+          ],
+          "hidden" : false,
+          "name" : "sessions",
+          "visible_rect" : [
+            -264,
+            -594,
+            1160,
+            812
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            399,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "phone",
+          "visible_rect" : [
+            -30,
+            -343,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            183,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "bulk",
+          "visible_rect" : [
+            -30,
+            -559,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            351,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "decorations",
+          "visible_rect" : [
+            -30,
+            -391,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            63,
+            180,
+            44
+          ],
+          "hidden" : false,
+          "name" : "onboard",
+          "visible_rect" : [
+            -30,
+            -673,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            0,
+            86,
+            24
+          ],
+          "hidden" : false,
+          "name" : "cancel",
+          "visible_rect" : [
+            -30,
+            -756,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            28,
+            34,
+            184,
+            14
+          ],
+          "hidden" : false,
+          "name" : "onboarding_status",
+          "visible_rect" : [
+            -28,
+            -732,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            262,
+            29,
+            84.5,
+            14
+          ],
+          "hidden" : false,
+          "name" : "status",
+          "visible_rect" : [
+            -262,
+            -769,
+            1160,
+            812
+          ]
+        }
+      ],
+      "reachable_buttons" : 215
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "content_size" : [
+        920,
+        640
+      ],
+      "frames" : [
+        {
+          "frame" : [
+            30,
+            499,
+            180,
+            24
+          ],
+          "hidden" : false,
+          "name" : "device",
+          "visible_rect" : [
+            -30,
+            -117,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            331,
+            180,
+            24
+          ],
+          "hidden" : false,
+          "name" : "backend",
+          "visible_rect" : [
+            -30,
+            -285,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            264,
+            528,
+            632,
+            28
+          ],
+          "hidden" : false,
+          "name" : "search",
+          "visible_rect" : [
+            -264,
+            -116,
+            920,
+            672
+          ]
+        },
+        {
+          "frame" : [
+            265,
+            343,
+            630,
+            172
+          ],
+          "hidden" : false,
+          "name" : "applications",
+          "visible_rect" : [
+            -265,
+            -157,
+            920,
+            672
+          ]
+        },
+        {
+          "frame" : [
+            264,
+            73,
+            632,
+            145
+          ],
+          "hidden" : false,
+          "name" : "sessions",
+          "visible_rect" : [
+            -264,
+            -454,
+            920,
+            672
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            259,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "phone",
+          "visible_rect" : [
+            -30,
+            -343,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            43,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "bulk",
+          "visible_rect" : [
+            -30,
+            -559,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            211,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "decorations",
+          "visible_rect" : [
+            -30,
+            -391,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            0,
+            180,
+            44
+          ],
+          "hidden" : false,
+          "name" : "onboard",
+          "visible_rect" : [
+            -30,
+            -596,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            0,
+            86,
+            24
+          ],
+          "hidden" : false,
+          "name" : "cancel",
+          "visible_rect" : [
+            -30,
+            -616,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            28,
+            34,
+            184,
+            14
+          ],
+          "hidden" : false,
+          "name" : "onboarding_status",
+          "visible_rect" : [
+            -28,
+            -592,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            262,
+            29,
+            84.5,
+            14
+          ],
+          "hidden" : false,
+          "name" : "status",
+          "visible_rect" : [
+            -262,
+            -629,
+            920,
+            672
+          ]
+        }
+      ],
+      "reachable_buttons" : 215
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "content_size" : [
+        1160,
+        780
+      ],
+      "frames" : [
+        {
+          "frame" : [
+            30,
+            639,
+            180,
+            24
+          ],
+          "hidden" : false,
+          "name" : "device",
+          "visible_rect" : [
+            -30,
+            -117,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            471,
+            180,
+            24
+          ],
+          "hidden" : false,
+          "name" : "backend",
+          "visible_rect" : [
+            -30,
+            -285,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            264,
+            668,
+            872,
+            28
+          ],
+          "hidden" : false,
+          "name" : "search",
+          "visible_rect" : [
+            -264,
+            -116,
+            1160,
+            812
+          ]
+        },
+        {
+          "frame" : [
+            265,
+            343,
+            870,
+            312
+          ],
+          "hidden" : false,
+          "name" : "applications",
+          "visible_rect" : [
+            -265,
+            -157,
+            1160,
+            812
+          ]
+        },
+        {
+          "frame" : [
+            264,
+            73,
+            872,
+            145
+          ],
+          "hidden" : false,
+          "name" : "sessions",
+          "visible_rect" : [
+            -264,
+            -594,
+            1160,
+            812
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            399,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "phone",
+          "visible_rect" : [
+            -30,
+            -343,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            183,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "bulk",
+          "visible_rect" : [
+            -30,
+            -559,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            351,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "decorations",
+          "visible_rect" : [
+            -30,
+            -391,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            63,
+            180,
+            44
+          ],
+          "hidden" : false,
+          "name" : "onboard",
+          "visible_rect" : [
+            -30,
+            -673,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            0,
+            86,
+            24
+          ],
+          "hidden" : false,
+          "name" : "cancel",
+          "visible_rect" : [
+            -30,
+            -756,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            28,
+            34,
+            184,
+            14
+          ],
+          "hidden" : false,
+          "name" : "onboarding_status",
+          "visible_rect" : [
+            -28,
+            -732,
+            240,
+            780
+          ]
+        },
+        {
+          "frame" : [
+            262,
+            29,
+            84.5,
+            14
+          ],
+          "hidden" : false,
+          "name" : "status",
+          "visible_rect" : [
+            -262,
+            -769,
+            1160,
+            812
+          ]
+        }
+      ],
+      "reachable_buttons" : 215
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "content_size" : [
+        920,
+        640
+      ],
+      "frames" : [
+        {
+          "frame" : [
+            30,
+            499,
+            180,
+            24
+          ],
+          "hidden" : false,
+          "name" : "device",
+          "visible_rect" : [
+            -30,
+            -117,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            331,
+            180,
+            24
+          ],
+          "hidden" : false,
+          "name" : "backend",
+          "visible_rect" : [
+            -30,
+            -285,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            264,
+            528,
+            632,
+            28
+          ],
+          "hidden" : false,
+          "name" : "search",
+          "visible_rect" : [
+            -264,
+            -116,
+            920,
+            672
+          ]
+        },
+        {
+          "frame" : [
+            265,
+            343,
+            630,
+            172
+          ],
+          "hidden" : false,
+          "name" : "applications",
+          "visible_rect" : [
+            -265,
+            -157,
+            920,
+            672
+          ]
+        },
+        {
+          "frame" : [
+            264,
+            73,
+            632,
+            145
+          ],
+          "hidden" : false,
+          "name" : "sessions",
+          "visible_rect" : [
+            -264,
+            -454,
+            920,
+            672
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            259,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "phone",
+          "visible_rect" : [
+            -30,
+            -343,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            43,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "bulk",
+          "visible_rect" : [
+            -30,
+            -559,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            211,
+            180,
+            38
+          ],
+          "hidden" : false,
+          "name" : "decorations",
+          "visible_rect" : [
+            -30,
+            -391,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            0,
+            180,
+            44
+          ],
+          "hidden" : false,
+          "name" : "onboard",
+          "visible_rect" : [
+            -30,
+            -596,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            30,
+            0,
+            86,
+            24
+          ],
+          "hidden" : false,
+          "name" : "cancel",
+          "visible_rect" : [
+            -30,
+            -616,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            28,
+            34,
+            184,
+            14
+          ],
+          "hidden" : false,
+          "name" : "onboarding_status",
+          "visible_rect" : [
+            -28,
+            -592,
+            240,
+            640
+          ]
+        },
+        {
+          "frame" : [
+            262,
+            29,
+            84.5,
+            14
+          ],
+          "hidden" : false,
+          "name" : "status",
+          "visible_rect" : [
+            -262,
+            -629,
+            920,
+            672
+          ]
+        }
+      ],
+      "reachable_buttons" : 215
+    }
+  ],
+  "exact_close_action" : true,
+  "find_menu_context_predicate_guard" : true,
+  "menu_key_state_fixture" : true,
+  "onboarding_admission_readiness_verified" : true,
+  "passed" : true,
+  "physical_focus_verified" : false,
+  "restore_unavailable_preserves_intent" : true,
+  "scope" : "shipping AppKit no-device catalog\/layout\/control-wiring fixture",
+  "session_fixture_count" : 40,
+  "superseded_selection_task_shutdown_drained" : true,
+  "typed_discovery_error_verified" : true,
+  "unchanged_session_controls_preserved" : true
+}

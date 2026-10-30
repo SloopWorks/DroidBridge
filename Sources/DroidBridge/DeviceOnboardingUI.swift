@@ -3,6 +3,7 @@ import DroidBridgeCore
 
 extension LauncherController {
     @objc func sharedPreferenceChanged(_ sender: NSButton) {
+        defer {updateLauncherPresentation()}
         do {
             sharedPreferences=try DroidBridgePreferences.update { preferences in
                 if sender === bulkPreference { preferences.bulkWrapperOnboardingEnabled=bulkPreference.state == .on }
@@ -14,13 +15,13 @@ extension LauncherController {
         } catch { status.stringValue="Could not save shared preferences: "+error.localizedDescription }
     }
     @objc func onboardDeviceApps() {
-        guard !onboardingPending, !onboarding.isRunning, let device=selectedDevice, appsDeviceSerial == device.serial, !applications.isEmpty else { status.stringValue="Wait for the selected device's complete application list before onboarding."; return }
+        guard canOnboardSelectedDevice,let device=selectedDevice else { status.stringValue="Wait for the selected device's complete application list before onboarding."; return }
         let capturedApps=applications, chosenBackend=backend
-        onboardingPending=true; onboardingButton.isEnabled=false; onboardingCancel.isEnabled=true
+        onboardingPending=true; onboardingButton.isEnabled=false; onboardingCancel.isEnabled=true;updateLauncherPresentation()
         onboardingStatus.stringValue="Preparing to add \(capturedApps.count) apps from \(device.model)…"
         onboardingAdmissionTask=Task { [weak self] in
             guard let self else { return }
-            defer { self.onboardingPending=false; self.onboardingButton.isEnabled=self.bulkPreference.state == .on && !self.onboarding.isRunning; self.onboardingCancel.isEnabled=self.onboarding.isRunning; self.pumpIcons() }
+            defer { self.onboardingPending=false; self.onboardingButton.isEnabled=self.bulkPreference.state == .on && !self.onboarding.isRunning; self.onboardingCancel.isEnabled=self.onboarding.isRunning; self.pumpIcons();self.updateLauncherPresentation() }
             self.iconQueue.removeAll()
             let pending=Array(self.iconTasks.values); pending.forEach { $0.cancel() }
             for task in pending { await task.value }

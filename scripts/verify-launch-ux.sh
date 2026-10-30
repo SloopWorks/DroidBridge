@@ -22,8 +22,9 @@ ffmpeg -hide_banner -loglevel error -f lavfi -i color=black:s=64x64 -frames:v 1 
 printf '%s' native-present > "$QA_ROOT/mode"
 swift build
 BIN=$(swift build --show-bin-path)
-swiftc -parse-as-library -I "$BIN/Modules" Sources/DroidBridge/Launcher.swift Sources/DroidBridge/PhoneDisplayControls.swift Sources/DroidBridge/ManagedAppNameRepair.swift Sources/DroidBridge/DeviceOnboarding.swift Sources/DroidBridge/DeviceOnboardingUI.swift Sources/DroidBridge/DeviceOnboardingAgent.swift Sources/DroidBridge/NativeWindow.swift Sources/DroidBridge/MacAppWrapper.swift scripts/verify-launch-ux.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o .build/qa-launch-ux
-mkdir -p verification/launch-ux/qa
-rm -f verification/launch-ux/qa/results.json
-DROIDBRIDGE_ICON_HELPER="$QA_ROOT/server" DROIDBRIDGE_QA_BLACK_H264="$QA_ROOT/black.h264" DROIDBRIDGE_QA_H264="$QA_ROOT/frame.h264" DROIDBRIDGE_ADB="$QA_ROOT/adb" DROIDBRIDGE_SCRCPY="$QA_ROOT/scrcpy" DROIDBRIDGE_SERVER="$QA_ROOT/server" DROIDBRIDGE_QA_MODE="$QA_ROOT/mode" .build/qa-launch-ux --wrapper --launch dev.droidbridge.testapp --serial qa-no-device --name 'Launch UX Probe' 2>&1 | tee verification/launch-ux/qa/run.log
-rg -q '^PASS: launch UX' verification/launch-ux/qa/run.log
+swiftc -parse-as-library -I "$BIN/Modules" Sources/DroidBridge/Launcher.swift Sources/DroidBridge/LauncherUI.swift Sources/DroidBridge/PhoneDisplayControls.swift Sources/DroidBridge/ManagedAppNameRepair.swift Sources/DroidBridge/DeviceOnboarding.swift Sources/DroidBridge/DeviceOnboardingUI.swift Sources/DroidBridge/DeviceOnboardingAgent.swift Sources/DroidBridge/NativeWindow.swift Sources/DroidBridge/MacAppWrapper.swift scripts/verify-launch-ux.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o .build/qa-launch-ux
+QA_OUT="${DROIDBRIDGE_QA_OUTPUT:-verification/launch-ux/qa}"
+mkdir -p "$QA_OUT"
+rm -f "$QA_OUT/results.json"
+DROIDBRIDGE_ICON_HELPER="$QA_ROOT/server" DROIDBRIDGE_QA_BLACK_H264="$QA_ROOT/black.h264" DROIDBRIDGE_QA_H264="$QA_ROOT/frame.h264" DROIDBRIDGE_ADB="$QA_ROOT/adb" DROIDBRIDGE_SCRCPY="$QA_ROOT/scrcpy" DROIDBRIDGE_SERVER="$QA_ROOT/server" DROIDBRIDGE_QA_MODE="$QA_ROOT/mode" .build/qa-launch-ux --wrapper --launch dev.droidbridge.testapp --serial qa-no-device --name 'Launch UX Probe' 2>&1 | tee "$QA_OUT/run.log"
+rg -q '^PASS: launch UX' "$QA_OUT/run.log"

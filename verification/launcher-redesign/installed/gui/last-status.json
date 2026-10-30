@@ -1,0 +1,68 @@
+{
+  "id" : 4,
+  "texts" : [
+    "DroidBridge",
+    "Android apps on your Mac",
+    "DEVICE",
+    "Connect a phone with USB debugging enabled, or start an emulator.",
+    "RENDERING",
+    "Used for new app windows.",
+    "SPOTLIGHT",
+    "Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",
+    "Ready to add all launchable apps from the selected device.",
+    "Applications",
+    "Connect a device to see its applications.",
+    "",
+    "Connect your Android device",
+    "Enable USB debugging and connect over USB, or start an Android emulator.",
+    "Select an app",
+    "Launch it here or create a Mac app for Spotlight.",
+    "Sessions",
+    "",
+    "No active sessions. Launch an app to open its own Mac window.",
+    "Deferred abandoned session 60287cf5: adb failed (1): adb: device 'qa-no-device' not found\n · Deferred abandoned session 5e864be9: adb failed (1): adb: device 'qa-no-device' not found\n · Deferred abandoned session 5374469b: adb failed (1): adb: device 'qa-no-device' not found\n"
+  ],
+  "backend" : "Native AppKit",
+  "physical_focus_verified" : false,
+  "selected_row" : -1,
+  "buttons" : {
+    "" : true,
+    "Restore Previous Sessions" : false,
+    "Create \/ Update Mac App…" : false,
+    "Enable device apps in Spotlight" : true,
+    "Add Device Apps…" : false,
+    "Show Android system decorations" : true,
+    "Refresh Devices" : true,
+    "Native AppKit" : true,
+    "Keep phone screen off during Mac sessions" : false,
+    "Reconnect interrupted sessions automatically" : true,
+    "Details…" : true,
+    "Launch App" : false,
+    "search" : true,
+    "Android SDK built for arm64 · emulator-5580" : true,
+    "Diagnostics…" : true,
+    "Cancel" : false
+  },
+  "passed" : true,
+  "launch_enabled" : false,
+  "action" : "status",
+  "rows" : 0,
+  "pid" : 16286,
+  "windows" : [
+    {
+      "number" : 11758,
+      "title" : "DroidBridge",
+      "width" : 1160,
+      "height" : 780,
+      "visible" : true
+    },
+    {
+      "number" : 11759,
+      "title" : "",
+      "width" : 500,
+      "height" : 500,
+      "visible" : false
+    }
+  ],
+  "device" : "Android SDK built for arm64 · emulator-5580"
+}

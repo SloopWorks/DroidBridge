@@ -1,0 +1,13 @@
+{
+  "passed" : true,
+  "initial_content_height" : 560,
+  "final_content_width" : 420,
+  "final_content_height" : 560,
+  "launcher_visible_during_launch" : false,
+  "physical_focus_verified" : false,
+  "loading_accessibility" : "Loading Launch UX Probe",
+  "first_window_number" : 11811,
+  "first_window_seconds" : 0.24378962512128055,
+  "initial_content_width" : 420,
+  "fallback_handoff" : true
+}

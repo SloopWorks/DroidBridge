@@ -1,0 +1,108 @@
+{
+  "passed": false,
+  "installed_path": "/Users/patrick/Applications/DroidBridge.app",
+  "version": "0.1.6",
+  "build": "11",
+  "installed_sha256": "55fe5f6725dfe5bfbf0c3d9f77aaae93899aecbb54c34f79165e01b97e04811f",
+  "wrapper_path": "/Users/patrick/workspace/DroidBridge/.build/launch-ux-wrappers/Launch UX Probe.app",
+  "real_android_icon_png_sha256": "4988bb6a6cd9e620fdff10113c4ee63e07ec18697ac168180220c08dd26f3a37",
+  "public_appkit_instrumentation": true,
+  "player_instrumentation": false,
+  "physical_spotlight_focus_verified": false,
+  "cases": [
+    {
+      "index": 1,
+      "backend": "native",
+      "launch_services": false,
+      "ui": {
+        "launcher_visible_during_launch": false,
+        "first_window_seconds": 0.4939864582847804,
+        "first_window_number": 11779,
+        "initial_content_width": 468,
+        "physical_focus_verified": false,
+        "passed": true,
+        "initial_content_height": 702,
+        "loading_accessibility": "Loading Launch UX Probe",
+        "live_window_number": 11779,
+        "final_content_width": 420,
+        "live_seconds": 2.398712916765362,
+        "final_content_height": 560,
+        "fallback_handoff": false
+      },
+      "app_exit": 0,
+      "resources_restored": true
+    },
+    {
+      "index": 2,
+      "backend": "native",
+      "launch_services": false,
+      "ui": {
+        "launcher_visible_during_launch": false,
+        "first_window_seconds": 0.2383144167251885,
+        "first_window_number": 11782,
+        "initial_content_width": 420,
+        "physical_focus_verified": false,
+        "passed": true,
+        "initial_content_height": 560,
+        "loading_accessibility": "Loading Launch UX Probe",
+        "live_window_number": 11782,
+        "final_content_width": 420,
+        "live_seconds": 2.018139083404094,
+        "final_content_height": 560,
+        "fallback_handoff": false
+      },
+      "app_exit": 0,
+      "resources_restored": true
+    },
+    {
+      "index": 3,
+      "backend": "scrcpy",
+      "launch_services": false,
+      "ui": {
+        "passed": true,
+        "initial_content_height": 560,
+        "final_content_width": 420,
+        "final_content_height": 560,
+        "launcher_visible_during_launch": false,
+        "physical_focus_verified": false,
+        "loading_accessibility": "Loading Launch UX Probe",
+        "first_window_number": 11785,
+        "first_window_seconds": 0.2787257917225361,
+        "initial_content_width": 420,
+        "fallback_handoff": true
+      },
+      "app_exit": 0,
+      "resources_restored": true
+    },
+    {
+      "index": 4,
+      "backend": "scrcpy",
+      "launch_services": false,
+      "ui": {
+        "passed": true,
+        "initial_content_height": 560,
+        "final_content_width": 420,
+        "final_content_height": 560,
+        "launcher_visible_during_launch": false,
+        "physical_focus_verified": false,
+        "loading_accessibility": "Loading Launch UX Probe",
+        "first_window_number": 11789,
+        "first_window_seconds": 0.28838758333586156,
+        "initial_content_width": 420,
+        "fallback_handoff": true
+      },
+      "app_exit": 0,
+      "resources_restored": true
+    }
+  ],
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  }
+}

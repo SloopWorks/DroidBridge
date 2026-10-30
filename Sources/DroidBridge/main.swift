@@ -3,7 +3,7 @@ import DroidBridgeCore
 import DroidBridgeStreaming
 
 @MainActor
-final class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     var launcher: LauncherController!
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.regular)
@@ -13,6 +13,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let root = NSMenuItem(); root.submenu = appMenu
         let menu = NSMenu(); menu.addItem(root)
         appMenu.addItem(withTitle: "About \(applicationName)", action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: "")
+        appMenu.addItem(withTitle:"Settings…",action:#selector(showSettings),keyEquivalent:",").target=self
         appMenu.addItem(.separator())
         appMenu.addItem(withTitle: "Quit \(applicationName)", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         let edit = NSMenuItem(); edit.title = "Edit"; edit.submenu = NSMenu(title: "Edit")
@@ -25,6 +26,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         phoneMenu.addItem(withTitle:"Turn Phone Screen Off",action:#selector(turnPhoneScreenOff),keyEquivalent:"").target=self
         phoneMenu.addItem(withTitle:"Turn Phone Screen On",action:#selector(turnPhoneScreenOn),keyEquivalent:"").target=self
         phoneItem.submenu=phoneMenu;menu.addItem(phoneItem)
+        let appActions=NSMenuItem();appActions.title="Apps"
+        let appsMenu=NSMenu(title:"Apps")
+        appsMenu.addItem(withTitle:"Find App…",action:#selector(findApp),keyEquivalent:"f").target=self
+        appActions.submenu=appsMenu;menu.addItem(appActions)
         let windowItem = NSMenuItem(); windowItem.title = "Window"
         let windowMenu = NSMenu(title: "Window")
         windowMenu.addItem(withTitle: "Launcher", action: #selector(showLauncher), keyEquivalent: "l").target = self
@@ -43,6 +48,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             launcher.beginPolling()
         }
     }
+    func validateMenuItem(_ item:NSMenuItem)->Bool {
+        if item.action == #selector(findApp) {return launcher?.window?.isKeyWindow == true || (launcher?.sessions.isEmpty == true && launcher?.launchPreview == nil && launcher?.isWrapper == false)}
+        return true
+    }
+    @objc func findApp() {guard let launcher,launcher.window?.isKeyWindow == true || (launcher.sessions.isEmpty && launcher.launchPreview == nil && !launcher.isWrapper) else {return};launcher.focusAppSearch()}
+    @objc func showSettings() {launcher?.showLauncherSettings()}
     @objc func turnPhoneScreenOff() {launcher?.turnPhoneScreenOff()}
     @objc func turnPhoneScreenOn() {launcher?.turnPhoneScreenOn()}
     @objc func showLauncher() { launcher?.showWindow(nil); launcher?.window?.makeKeyAndOrderFront(nil);launcher?.refreshDevices(forceApps:true) }

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-installed-launcher.py", line 73, in <module>
+    first=launched('dev.droidbridge.testapp','native')
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-installed-launcher.py", line 57, in launched
+    return int(shown[-1]['window_number'])
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'window_number'

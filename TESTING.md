@@ -65,3 +65,7 @@ The 0.1.1 wrapper report is [verification/launcher-fix/REPORT.md](verification/l
 ## Launch presentation
 
 `scripts/verify-launch-ux.sh` verifies immediate branded loading, prior geometry, same-window frame handoff, input gating, close cancellation and reopen using shipping UI and an actual decoded fixture frame. `verification/launch-ux/` separately records actual emulator and exact installed-bundle loading-to-video evidence. Public AppKit instrumentation under a locked desktop does not prove an interactive Spotlight/Dock click or OS focus. Android splash pixels are app-controlled; DroidBridge manufactures only the local loading screen from the saved Android launcher icon.
+
+## Launcher redesign
+
+`scripts/verify-launcher-redesign.sh` compiles shipping launcher/UI sources and exercises 1000 apps, 40 session cards, exact selection/search behavior, readiness/error states, actual target/actions, Return/menu routing, scroll/control reachability at default/minimum sizes in Aqua/Dark, unchanged-session focus retention and superseded discovery-task draining. Menu context is explicitly simulated on locked desktops; it does not certify physical focus. Installed real Android, setup/cancel, preference, multi-session and fallback evidence is recorded under `verification/launcher-redesign/`.
