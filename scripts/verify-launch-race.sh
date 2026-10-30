@@ -12,7 +12,7 @@ trap cleanup EXIT
 cat > "$QA_ROOT/adb" <<'ADB'
 #!/bin/sh
 case "$4" in
-getprop) echo 1 ;;
+getprop) if [ "$5" = ro.build.version.sdk ]; then echo 35; else echo 1; fi ;;
 cmd)
   if [ "$6" = resolve-activity ]; then
     touch "$DROIDBRIDGE_QA_MARKER"

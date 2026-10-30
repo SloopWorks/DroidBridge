@@ -1,0 +1,2 @@
+{"event":"supervisor_started","parent":88310,"child":89266}
+{"event":"supervisor_stopped","reason":"child_exit","exit_status":1,"signal":null,"requested_signal":null}

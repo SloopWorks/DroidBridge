@@ -1,0 +1,74 @@
+[
+  {
+    "dimensions": [
+      696,
+      1048
+    ],
+    "editorPoint": {
+      "x": 0.291938994335512,
+      "y": 0.28333333284287765
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 4",
+      "Clicks 0 \u2022 696\u00d71048",
+      "INCREMENT COUNTER",
+      "Type a session-specific word",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  },
+  {
+    "dimensions": [
+      696,
+      1048
+    ],
+    "editorPoint": {
+      "x": 0.291938994335512,
+      "y": 0.28333333284287765
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 4",
+      "Clicks 0 \u2022 696\u00d71048",
+      "INCREMENT COUNTER",
+      "Type a session-specific word",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  },
+  {
+    "dimensions": [
+      720,
+      1080
+    ],
+    "editorPoint": {
+      "x": 0.28431372818930034,
+      "y": 0.27543604640665376
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 14",
+      "Clicks 0 \u2022 720\u00d71080",
+      "INCREMENT COUNTER",
+      "Type a session-specific word",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  },
+  {
+    "dimensions": [
+      720,
+      1080
+    ],
+    "editorPoint": {
+      "x": 0.28431372818930034,
+      "y": 0.27543604640665376
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 16",
+      "Clicks 0 \u2022 720\u00d71080",
+      "INCREMENT COUNTER",
+      "Type a session-specific word",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "Sources/DroidBridgeStreaming/BridgeSession.swift": "410789682e2d8cc0642a02b308172ab2c2c318f46c499348bcad89c23e993d9c",
+  "Sources/DroidBridgeCore/AndroidDiscovery.swift": "f8b00e025baa053e44fe52ca8364669215271aeca62b3449d32bf6f9cb0b3e61",
+  "Sources/DroidBridgeCore/Models.swift": "51676dcc5ab23230d257537e31a2e99a85c81bae5c4a2117ef364b5b749688be",
+  "scripts/verify-hidden-ime-native.py": "02dcaaf1f07c87a08e11008a03277a0792752fa489b007681193816e55a3562c",
+  "scripts/verify-hidden-ime-state.py": "4343e358b26ab11eb8395d2e7c9ccdc436a33debf1b9b7ba13a41fa26911004a",
+  "verification/hidden-ime/qa/native-actions.m": "26accef046b42f0f107badf8132c826fbeae772b15d4362f6b3be968f247dfc1",
+  "verification/hidden-ime/qa/recognize-frame.swift": "3857564a5bdd80cffdc07b6774ad98e0dd8a0e996548a6138732f08c4a98b8fd",
+  "verification/hidden-ime/qa/test_state_parser.py": "9dcaf7221d17c763812cae7366a0914d59627617df11b7b7d7a67f3d8e02e8eb",
+  "scripts/verify-hidden-ime-fallback.py": "bd231c5783b45e11022afa612a6bc2066b489b943c1718043d4c87c5e57797d0",
+  "scripts/verify-hidden-ime-fallback-sdl.c": "6f61c4096ef2fa3c01abcf6f04ba807db39ac31551d83cad53e6d8a4d8370314",
+  "scripts/verify-hidden-ime-fallback.m": "5aae2ae4f3912e0aedc7fa2447063df60a8b3165d94562fb6f84be94ce0c3f7a"
+}

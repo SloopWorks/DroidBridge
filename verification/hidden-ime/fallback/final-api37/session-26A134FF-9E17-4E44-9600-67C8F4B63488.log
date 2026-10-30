@@ -1,0 +1,48 @@
+{"event":"supervisor_started","parent":88351,"child":88388}
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+[22;2t]0;scrcpyINFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:         (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+INFO:     --> (tcpip)  emulator-5582                   device  sdk_gphone16k_arm64
+/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 176.3 MB/s (733930 bytes in 0.004s)
+[server] INFO: Device: [Google] google sdk_gphone16k_arm64 (Android 17)
+]0;scrcpy - DroidBridge · dev.droidbridge.testappINFO: Recording started to matroska file: /Users/patrick/workspace/DroidBridge/verification/hidden-ime/fallback/final-api37/decorations-on/player.mkv
+[server] INFO: New display: 468x702/240 (id=6)
+INFO: Renderer: metal
+INFO: Interop: videotoolbox
+INFO: Video decoding: videotoolbox
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 6...
+INFO: Texture (VideoToolbox): 468x702
+INFO: Texture (VideoToolbox): 720x906
+{"test":"public_SDL_event_consumed","type":1025,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":1026,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":1025,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":1026,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":771,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":768,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":769,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":768,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":769,"main_thread":true}
+[server] INFO: Device clipboard set
+{"test":"public_SDL_event_consumed","type":1025,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":1026,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":1025,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":1026,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":771,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":768,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":769,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":768,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":769,"main_thread":true}
+[server] INFO: Device clipboard set
+INFO: Texture (VideoToolbox): 900x906
+{"test":"public_SDL_event_consumed","type":1025,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":1026,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":1025,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":1026,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":771,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":768,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":769,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":768,"main_thread":true}
+{"test":"public_SDL_event_consumed","type":769,"main_thread":true}
+[server] INFO: Device clipboard set
+{"event":"supervisor_stopped","reason":"stop_signal","exit_status":0,"signal":null,"requested_signal":15}

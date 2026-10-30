@@ -1,0 +1,21 @@
+{
+  "passed": false,
+  "version": "0.1.7",
+  "build": "12",
+  "serial": "emulator-5580",
+  "host_sha256": "a725fcaa790b9aea9d1e95daeb8f43b31a8ba9cc90c4440e66f2b130d3e2cc40",
+  "player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "physical_focus_verified": false,
+  "test_record_flag_added": true,
+  "cases": [],
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": "\n"
+  },
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": "\n"
+  }
+}

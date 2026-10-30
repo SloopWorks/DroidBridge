@@ -84,6 +84,14 @@ public final class BridgeSession {
         let token = UUID(); generation = token; transition(.starting)
         do {
             onStartupProgress?("Preparing Android connection…")
+            let sdk = try await adb(["shell","getprop","ro.build.version.sdk"])
+            try check(token)
+            guard let api = Int(sdk.output.trimmingCharacters(in:.whitespacesAndNewlines)) else {
+                throw BridgeError.message("Cannot verify this device's Android version. DroidBridge requires Android 13 (API 33) or later to keep the software keyboard hidden.")
+            }
+            guard api >= 33 else {
+                throw BridgeError.message("DroidBridge requires Android 13 (API 33) or later to keep the software keyboard hidden. This device reports API \(api).")
+            }
             let version = try await ProcessRunner.run(toolchain.scrcpy, arguments:["--version"],environment:toolchain.environment)
             guard version.output.contains("scrcpy 5.0.1") else { throw BridgeError.message("DroidBridge requires the bundled scrcpy 5.0.1 client and server") }
             try check(token)
@@ -91,7 +99,7 @@ public final class BridgeSession {
             let activity = try await adb(["shell","cmd","package","resolve-activity","--brief","-a","android.intent.action.MAIN","-c","android.intent.category.LAUNCHER",descriptor.application.packageName])
             guard !activity.output.contains("No activity found"), activity.output.contains("/") else { throw BridgeError.message("Android application has no launchable activity") }
             try check(token)
-            if descriptor.configuration.backend == .scrcpy { try await startExternal(token:token) }
+            if descriptor.configuration.backend == .scrcpy { try await startExternal(token:token,androidAPI:api) }
             else { try await startNative(token:token) }
         } catch {
             if generation == token { stop(reason: "startup_failure"); transition(.failed,error.localizedDescription) }
@@ -139,7 +147,7 @@ public final class BridgeSession {
         }
         try process.run(); self.process = process
     }
-    private func startExternal(token: UUID) async throws {
+    private func startExternal(token: UUID,androidAPI:Int) async throws {
         let startup = try await ScrcpyStartupLease.acquire(serial:descriptor.device.serial)
         // Keep the descriptor alive across awaits; it is CLOEXEC and is not
         // passed as child stdin, so readiness releases it while the app runs.
@@ -154,7 +162,11 @@ public final class BridgeSession {
         // Its initial content points come from new-display dimensions instead.
         if let frame=placement {config.width=Int(frame.width)/2*2;config.height=Int(frame.height)/2*2}
         let lease = try ScrcpyPortLease.acquire(); externalPortLease = lease
-        var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=30","--video-codec=h264","--keep-active","--no-power-on","--display-ime-policy=local"]
+        var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=30","--video-codec=h264","--keep-active","--no-power-on","--display-ime-policy=hide"]
+        // Android 15's InputDispatcher can abort on hover followed by a click
+        // across virtual-display navigation windows (upstream scrcpy #5477).
+        // Clicks, drags and scrolling remain enabled; later Android keeps hover.
+        if androidAPI == 35 {args.append("--no-mouse-hover")}
         if !config.showSystemDecorations { args.append("--no-vd-system-decorations") }
         args.append("--port=\(lease.port)")
         if let frame=placement {
@@ -238,7 +250,7 @@ public final class BridgeSession {
         guard let port = UInt16(result.output.trimmingCharacters(in:.whitespacesAndNewlines)), port > 0 else { throw BridgeError.message("ADB did not allocate a video port") }
         localForward = "tcp:\(port)"; try check(token); forward = localForward
         let c = descriptor.configuration
-        let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=30","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_system_decorations=\(c.showSystemDecorations)","vd_destroy_content=true","clipboard_autosync=false","keep_active=true","power_on=false","display_ime_policy=local","cleanup=true"]
+        let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=30","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_system_decorations=\(c.showSystemDecorations)","vd_destroy_content=true","clipboard_autosync=false","keep_active=true","power_on=false","display_ime_policy=hide","cleanup=true"]
         try spawn(toolchain.adb,arguments:arguments,token:token)
         let transport = NativeTransport(); self.transport = transport
         let mailbox = FrameMailbox { [weak self] frame in

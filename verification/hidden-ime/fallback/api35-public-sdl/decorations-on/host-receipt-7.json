@@ -1,0 +1,9 @@
+{
+  "action" : "menu",
+  "passed" : true,
+  "id" : 7,
+  "role" : "host",
+  "physical_focus_verified" : false,
+  "main_thread" : true,
+  "pid" : 26173
+}

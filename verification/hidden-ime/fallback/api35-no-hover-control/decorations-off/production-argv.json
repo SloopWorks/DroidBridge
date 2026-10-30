@@ -1,0 +1,18 @@
+[
+  "--serial",
+  "emulator-5580",
+  "--no-audio",
+  "--new-display=894x896/240",
+  "--flex-display",
+  "--start-app=dev.droidbridge.testapp",
+  "--window-title=DroidBridge \u00b7 dev.droidbridge.testapp",
+  "--max-fps=30",
+  "--video-codec=h264",
+  "--keep-active",
+  "--no-power-on",
+  "--display-ime-policy=hide",
+  "--no-vd-system-decorations",
+  "--port=46000",
+  "--window-x=514",
+  "--window-y=61"
+]

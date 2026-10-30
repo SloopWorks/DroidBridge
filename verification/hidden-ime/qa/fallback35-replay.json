@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "decorations": true,
+      "snapshots": 12,
+      "record_only_proxy": true,
+      "production_hide": true,
+      "production_api35_no_hover": true,
+      "input_receipts": true
+    },
+    {
+      "decorations": false,
+      "snapshots": 12,
+      "record_only_proxy": true,
+      "production_hide": true,
+      "production_api35_no_hover": true,
+      "input_receipts": true
+    }
+  ]
+}

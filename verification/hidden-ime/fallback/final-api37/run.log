@@ -1,0 +1,614 @@
+START decorations=True input=sdl
+PASS panel ON editing
+PASS panel OFF editing
+PASS resized OFF editing
+START decorations=False input=sdl
+PASS panel ON editing
+PASS panel OFF editing
+PASS resized OFF editing
+{
+  "passed": true,
+  "version": "0.1.7",
+  "build": "12",
+  "serial": "emulator-5582",
+  "android_api": 37,
+  "host_sha256": "13ea19c4226f25a132beab2e3ead81d87391ea2c3a46377afc50e374e8cd0c75",
+  "player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "physical_focus_verified": false,
+  "input_path": "sdl",
+  "diagnostic_no_mouse_hover": false,
+  "acceptance": true,
+  "test_record_flag_added": true,
+  "cases": [
+    {
+      "decorations": true,
+      "session": "26A134FF-9E17-4E44-9600-67C8F4B63488",
+      "display": 6,
+      "player_pid": 88388,
+      "production_no_mouse_hover": false,
+      "on": {
+        "word": "1PanelOnText",
+        "raw_key_suffix": "k",
+        "paste": "PastePanelOn",
+        "clipboard_restored": true,
+        "frame_size": [
+          720,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "off": {
+        "word": "1PanelOffText",
+        "raw_key_suffix": "k",
+        "paste": "PastePanelOff",
+        "clipboard_restored": true,
+        "frame_size": [
+          720,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "resized_off": {
+        "word": "1ResizedOffText",
+        "raw_key_suffix": "k",
+        "paste": "PasteResizedOff",
+        "clipboard_restored": true,
+        "frame_size": [
+          900,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 6,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #2 Window{c1a8818 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "recorded_frame_sha256": [
+        "d49272af3769d2870bfe64d1ffc75bad702d02d726e95615b56a62377ef0450c",
+        "84562f968e4154d42d07ffdb46582fd5cca786e50c66385a2f8ccab81fc16dcd"
+      ],
+      "exact_cleanup": true
+    },
+    {
+      "decorations": false,
+      "session": "BAF3DCB2-534A-4BB1-93BF-58B3E4832B0A",
+      "display": 7,
+      "player_pid": 89277,
+      "production_no_mouse_hover": false,
+      "on": {
+        "word": "1PanelOnText",
+        "raw_key_suffix": "k",
+        "paste": "PastePanelOn",
+        "clipboard_restored": true,
+        "frame_size": [
+          720,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "off": {
+        "word": "1PanelOffText",
+        "raw_key_suffix": "k",
+        "paste": "PastePanelOff",
+        "clipboard_restored": true,
+        "frame_size": [
+          720,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "resized_off": {
+        "word": "1ResizedOffText",
+        "raw_key_suffix": "k",
+        "paste": "PasteResizedOff",
+        "clipboard_restored": true,
+        "frame_size": [
+          900,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 7,
+                "package": "dev.droidbridge.testapp",
+                "ime_policy": 2,
+                "ime_source_absent_with_explicit_hide": true,
+                "ime_insets": [],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{d676933 u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "recorded_frame_sha256": [
+        "100256c03d44eca93b3230e506cb639b3085ab56113564756ecd84e0a9d34621",
+        "1e85d07ddb56a48c72f9858caebf9a07f83166666ff85ad2591a3564fe0aec59"
+      ],
+      "exact_cleanup": true
+    }
+  ],
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": "\n"
+  },
+  "before_android_settings": {
+    "secure.show_ime_with_hard_keyboard": "0",
+    "secure.default_input_method": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+    "secure.enabled_input_methods": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME;1594443099:com.google.android.tts/com.google.android.apps.speech.tts.googletts.settings.asr.voiceime.VoiceInputMethodService",
+    "global.stay_on_while_plugged_in": "1",
+    "system.screen_off_timeout": "2147483647"
+  },
+  "before_health": {
+    "system_server_pid": "682",
+    "uptime": "2262.36 4939.16",
+    "boot_complete": "1"
+  },
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": "\n"
+  },
+  "after_host_sha256": "13ea19c4226f25a132beab2e3ead81d87391ea2c3a46377afc50e374e8cd0c75",
+  "after_player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "after_health": {
+    "system_server_pid": "682",
+    "uptime": "2309.94 5020.39",
+    "boot_complete": "1"
+  },
+  "preferences_restored": true,
+  "session_intents_restored": true,
+  "after_android_settings": {
+    "secure.show_ime_with_hard_keyboard": "0",
+    "secure.default_input_method": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+    "secure.enabled_input_methods": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME;1594443099:com.google.android.tts/com.google.android.apps.speech.tts.googletts.settings.asr.voiceime.VoiceInputMethodService",
+    "global.stay_on_while_plugged_in": "1",
+    "system.screen_off_timeout": "2147483647"
+  }
+}

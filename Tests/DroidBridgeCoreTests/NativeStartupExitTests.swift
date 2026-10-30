@@ -26,6 +26,7 @@ final class NativeStartupExitTests: XCTestCase {
         let tool = directory.appendingPathComponent("fixture-tool")
         let script = """
         #!/bin/sh
+        if [ "$4" = getprop ] && [ "$5" = ro.build.version.sdk ]; then printf '35\\n'; exit 0; fi
         if [ "$1" = --version ]; then printf 'scrcpy 5.0.1\\n'; exit 0; fi
         if [ "$3" = forward ] && [ "$4" = tcp:0 ]; then printf '\(port)\\n'; exit 0; fi
         if [ "$3" = shell ] && [ "$4" = cmd ]; then printf 'dev.droidbridge.testapp/.MainActivity\\n'; fi

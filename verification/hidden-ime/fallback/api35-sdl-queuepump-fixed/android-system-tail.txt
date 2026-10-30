@@ -1,0 +1,13 @@
+--------- beginning of system
+10-30 00:54:57.412  6954  7062 D ActivityManager: freezing 7833 android.process.acore
+10-30 00:54:57.416  6954  7062 D ActivityManager: freezing 7994 android.process.media
+10-30 00:57:03.264  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-30 00:57:03.265  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-30 00:57:03.265  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-30 00:57:03.265  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-30 00:57:03.266  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-30 00:57:03.266  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-30 00:57:03.266  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-30 00:57:03.266  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-30 00:57:03.266  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-30 00:57:03.267  6954  6979 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2

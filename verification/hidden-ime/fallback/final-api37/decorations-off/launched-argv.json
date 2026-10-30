@@ -1,0 +1,19 @@
+[
+  "--serial",
+  "emulator-5582",
+  "--no-audio",
+  "--new-display=892x902/240",
+  "--flex-display",
+  "--start-app=dev.droidbridge.testapp",
+  "--window-title=DroidBridge \u00b7 dev.droidbridge.testapp",
+  "--max-fps=30",
+  "--video-codec=h264",
+  "--keep-active",
+  "--no-power-on",
+  "--display-ime-policy=hide",
+  "--no-vd-system-decorations",
+  "--port=46001",
+  "--window-x=514",
+  "--window-y=61",
+  "--record=/Users/patrick/workspace/DroidBridge/verification/hidden-ime/fallback/final-api37/decorations-off/player.mkv"
+]

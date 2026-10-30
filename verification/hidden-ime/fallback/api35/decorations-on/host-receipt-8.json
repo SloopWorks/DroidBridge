@@ -1,0 +1,8 @@
+{
+  "role" : "host",
+  "id" : 8,
+  "action" : "quit",
+  "passed" : true,
+  "pid" : 14873,
+  "physical_focus_verified" : false
+}

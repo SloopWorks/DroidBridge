@@ -46,6 +46,7 @@ if args and args[0] == 'push' and mode == 'icons-slow': time.sleep(.6)
 elif args[:3] == ['shell', 'rm', '-f'] and mode == 'icons-slow':
     time.sleep(.15)
     with open(os.environ['DROIDBRIDGE_QA_MODE'] + '.cleaned', 'a') as log: log.write(json.dumps(args) + '\n')
+elif args[:3] == ['shell', 'getprop', 'ro.build.version.sdk']: print(35)
 elif args[:2] == ['shell', 'getprop']: print(1)
 elif args[:4] == ['shell', 'cmd', 'package', 'resolve-activity']: print('dev.droidbridge.testapp/.MainActivity')
 elif args[:4] == ['shell', 'cmd', 'package', 'path']: print('package:/system/framework/framework-res.apk')

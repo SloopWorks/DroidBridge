@@ -1,0 +1,47 @@
+{
+  "passed": false,
+  "version": "0.1.7",
+  "build": "12",
+  "serial": "emulator-5580",
+  "host_sha256": "a725fcaa790b9aea9d1e95daeb8f43b31a8ba9cc90c4440e66f2b130d3e2cc40",
+  "player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "physical_focus_verified": false,
+  "input_path": "sdl",
+  "test_record_flag_added": true,
+  "cases": [],
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": "\n"
+  },
+  "before_android_settings": {
+    "secure.show_ime_with_hard_keyboard": "1",
+    "secure.default_input_method": "com.android.inputmethod.latin/.LatinIME",
+    "secure.enabled_input_methods": "com.android.inputmethod.latin/.LatinIME",
+    "global.stay_on_while_plugged_in": "1",
+    "system.screen_off_timeout": "2147483647"
+  },
+  "before_health": {
+    "system_server_pid": "6954",
+    "uptime": "1832.77 3489.01",
+    "boot_complete": "1"
+  },
+  "failure": "Timeout new counter click on exact display",
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": "\n"
+  },
+  "after_health": {
+    "system_server_pid": "9550",
+    "uptime": "1852.90 3514.88",
+    "boot_complete": "1"
+  },
+  "after_android_settings": {
+    "secure.show_ime_with_hard_keyboard": "1",
+    "secure.default_input_method": "com.android.inputmethod.latin/.LatinIME",
+    "secure.enabled_input_methods": "com.android.inputmethod.latin/.LatinIME",
+    "global.stay_on_while_plugged_in": "1",
+    "system.screen_off_timeout": "2147483647"
+  }
+}

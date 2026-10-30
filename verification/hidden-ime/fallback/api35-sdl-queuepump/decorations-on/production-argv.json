@@ -1,0 +1,5 @@
+[
+  "--serial",
+  "emulator-5580",
+  "--list-apps"
+]

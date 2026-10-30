@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+import json,os,pathlib,sys
+real='/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy'
+args=sys.argv[1:]
+if any(arg.startswith("--start-app=") for arg in args):
+ pathlib.Path('/Users/patrick/workspace/DroidBridge/verification/hidden-ime/fallback/final-api35/decorations-off/production-argv.json').write_text(json.dumps(args,indent=2))
+ args.append('--record=/Users/patrick/workspace/DroidBridge/verification/hidden-ime/fallback/final-api35/decorations-off/player.mkv')
+ pathlib.Path('/Users/patrick/workspace/DroidBridge/verification/hidden-ime/fallback/final-api35/decorations-off/launched-argv.json').write_text(json.dumps(args,indent=2))
+env=os.environ.copy();env.pop("DYLD_INSERT_LIBRARIES",None)
+if any(arg.startswith("--start-app=") for arg in args):env["DYLD_INSERT_LIBRARIES"]='/Users/patrick/workspace/DroidBridge/.build/hidden-ime-fallback-actions.dylib:/Users/patrick/workspace/DroidBridge/.build/hidden-ime-fallback-sdl.dylib'
+os.execve(real,[real,*args],env)

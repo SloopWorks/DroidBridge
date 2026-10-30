@@ -1,0 +1,8 @@
+{"backend":"scrcpy","details":{"height":"702","launcher_visible":"true","width":"468","window_number":"11842"},"device":"qa-no-device","event":"loading_window_presented","package":"dev.droidbridge.testapp","session":"8002E9FD-17BF-4F15-938B-F71C0A5D78E6","timestamp":"2026-10-30T07:44:57Z"}
+{"backend":"scrcpy","device":"qa-no-device","package":"dev.droidbridge.testapp","session":"8002E9FD-17BF-4F15-938B-F71C0A5D78E6","state":"starting","timestamp":"2026-10-30T07:44:57Z"}
+{"backend":"scrcpy","device":"qa-no-device","package":"dev.droidbridge.testapp","session":"8002E9FD-17BF-4F15-938B-F71C0A5D78E6","state":"running","timestamp":"2026-10-30T07:44:58Z"}
+{"backend":"scrcpy","details":{"native_window_visible":"false"},"device":"qa-no-device","event":"launcher_hidden","package":"dev.droidbridge.testapp","session":"8002E9FD-17BF-4F15-938B-F71C0A5D78E6","timestamp":"2026-10-30T07:44:58Z"}
+{"backend":"scrcpy","device":"qa-no-device","event":"session_stop_requested","package":"dev.droidbridge.testapp","reason":"session_process_exit","session":"8002E9FD-17BF-4F15-938B-F71C0A5D78E6","timestamp":"2026-10-30T07:44:58Z"}
+{"backend":"scrcpy","device":"qa-no-device","package":"dev.droidbridge.testapp","session":"8002E9FD-17BF-4F15-938B-F71C0A5D78E6","state":"stopping","timestamp":"2026-10-30T07:44:58Z"}
+{"backend":"scrcpy","device":"qa-no-device","package":"dev.droidbridge.testapp","session":"8002E9FD-17BF-4F15-938B-F71C0A5D78E6","state":"stopped","timestamp":"2026-10-30T07:44:58Z"}
+{"backend":"scrcpy","device":"qa-no-device","package":"dev.droidbridge.testapp","session":"8002E9FD-17BF-4F15-938B-F71C0A5D78E6","state":"stopped","timestamp":"2026-10-30T07:44:58Z"}
