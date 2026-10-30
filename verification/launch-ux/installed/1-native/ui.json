@@ -1,0 +1,15 @@
+{
+  "launcher_visible_during_launch" : false,
+  "first_window_seconds" : 0.31668183347210288,
+  "first_window_number" : 11665,
+  "initial_content_width" : 468,
+  "physical_focus_verified" : false,
+  "passed" : true,
+  "initial_content_height" : 702,
+  "loading_accessibility" : "Loading Launch UX Probe",
+  "live_window_number" : 11665,
+  "final_content_width" : 420,
+  "live_seconds" : 2.1178437084890902,
+  "final_content_height" : 560,
+  "fallback_handoff" : false
+}

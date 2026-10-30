@@ -51,7 +51,7 @@ import DroidBridgeStreaming
         try require(host.window?.isVisible == false, "Could not establish hidden startup host")
         guard let presented = await starting.value else { throw BridgeError.message("Missing presentation session") }
         try require(presented.state == .running && presented.metrics.frames > 0, "Synthetic fixture did not produce a real decoded first frame")
-        try require(host.window?.isVisible == true && host.window?.isMiniaturized == false, "First decoded frame did not restore visible native host")
+        try require(host.window?.isMiniaturized == true, "First decoded frame undid deliberate loading minimize")
         func presentationEvents() throws -> [[String:Any]] {
             let text = try String(contentsOf:presented.logURL.appendingPathExtension("jsonl"),encoding:.utf8)
             return text.split(separator:"\n").compactMap { try? JSONSerialization.jsonObject(with:Data($0.utf8)) as? [String:Any] }
@@ -59,7 +59,7 @@ import DroidBridgeStreaming
         let firstEvents = try presentationEvents()
         try require(firstEvents.contains { event in
             let details = event["details"] as? [String:String]
-            return event["event"] as? String == "native_window_presented" && details?["reason"] == "first_frame" && details?["visible"] == "true" && details?["minimized"] == "false"
+            return event["event"] as? String == "native_window_presented" && details?["reason"] == "first_frame" && details?["minimized"] == "true"
         }, "Missing accurate first-frame presentation receipt")
         launcher.hideLauncherIfUsable(presented)
         host.window?.orderOut(nil)
@@ -70,7 +70,7 @@ import DroidBridgeStreaming
         try require(reopenEvents.contains { ($0["details"] as? [String:String])?["reason"] == "application_reopen" }, "Missing reopen presentation receipt")
         let output = URL(fileURLWithPath:FileManager.default.currentDirectoryPath).appendingPathComponent("verification/launcher-fix/qa/presentation.json")
         try JSONSerialization.data(withJSONObject:reopenEvents,options:[.prettyPrinted,.sortedKeys]).write(to:output)
-        print("PASS: decoded first frame restores hidden/minimized native host; Reopen reveals same session; accurate receipts; OS foreground focus unasserted")
+        print("PASS: decoded first frame preserves deliberate loading minimize; Reopen reveals same session; accurate receipts; OS foreground focus unasserted")
         launcher.close(presented.descriptor.id)
         await presented.stopAndWait()
         try "native-clean".write(to:modeURL, atomically:true, encoding:.utf8)

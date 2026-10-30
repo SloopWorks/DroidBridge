@@ -1,0 +1,18 @@
+START installed native crash
+PASS installed native crash: cleanup 0.438s
+START installed scrcpy crash
+PASS installed scrcpy crash: cleanup 0.909s
+[
+  {
+    "backend": "native",
+    "mode": "crash",
+    "passed": true,
+    "elapsed_seconds": 0.438
+  },
+  {
+    "backend": "scrcpy",
+    "mode": "crash",
+    "passed": true,
+    "elapsed_seconds": 0.909
+  }
+]

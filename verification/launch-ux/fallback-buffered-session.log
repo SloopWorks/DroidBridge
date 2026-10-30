@@ -1,0 +1,15 @@
+{"event":"supervisor_started","parent":91189,"child":91248}
+/opt/homebrew/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 237.7 MB/s (733930 bytes in 0.003s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+[server] INFO: New display: 480x620/240 (id=2)
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 2...
+WARN: Device disconnected
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+INFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:     --> (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+INFO: Renderer: metal
+INFO: Interop: videotoolbox
+INFO: Video decoding: videotoolbox
+INFO: Texture (VideoToolbox): 480x620
+{"event":"supervisor_stopped","reason":"stop_signal","exit_status":2,"signal":null,"requested_signal":15}

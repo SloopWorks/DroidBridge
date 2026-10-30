@@ -1,0 +1,55 @@
+Another instance of SwiftPM (PID: 8458) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/25] Compiling DroidBridgeCoreTests StreamingTests.swift
+[4/25] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[5/25] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[6/25] Compiling DroidBridgeCoreTests ScrcpyPortLeaseTests.swift
+[7/25] Compiling DroidBridgeCoreTests ScrcpyStartupLeaseTests.swift
+[8/25] Compiling DroidBridgeCoreTests StartupFrameVisibilityTests.swift
+[9/25] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[10/25] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[11/26] Compiling DroidBridgeCoreTests PhoneDisplayPowerQATests.swift
+[12/26] Compiling DroidBridgeCoreTests PhoneDisplayPowerTests.swift
+[13/26] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[14/26] Compiling DroidBridgeCoreTests DeviceReadinessTests.swift
+[15/26] Compiling DroidBridgeCoreTests InputGeometryTests.swift
+[16/26] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[17/26] Compiling DroidBridgeCoreTests DeviceSelectionTests.swift
+[18/26] Compiling DroidBridgeCoreTests DroidBridgePreferencesTests.swift
+[19/26] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[20/26] Compiling DroidBridgeCoreTests AndroidIconProviderTests.swift
+[21/26] Emitting module DroidBridgeCoreTests
+[22/26] Compiling DroidBridgeCoreTests ManagedAppNamingQATests.swift
+[23/26] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[24/26] Compiling DroidBridgeCoreTests SupervisorDiagnosticsTests.swift
+[24/26] Write Objects.LinkFileList
+[25/26] Linking DroidBridgePackageTests
+Build complete! (1.48s)
+Test Suite 'Selected tests' started at 2026-10-29 18:39:57.883.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-29 18:39:57.884.
+Test Suite 'StartupFrameVisibilityTests' started at 2026-10-29 18:39:57.884.
+Test Case '-[DroidBridgeCoreTests.StartupFrameVisibilityTests testColoredAndLightSplashContentIsVisible]' started.
+Test Case '-[DroidBridgeCoreTests.StartupFrameVisibilityTests testColoredAndLightSplashContentIsVisible]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.StartupFrameVisibilityTests testInitialSolidBlackAndNearBlackAreHeld]' started.
+Test Case '-[DroidBridgeCoreTests.StartupFrameVisibilityTests testInitialSolidBlackAndNearBlackAreHeld]' passed (0.000 seconds).
+Test Suite 'StartupFrameVisibilityTests' passed at 2026-10-29 18:39:57.885.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'SupervisorDiagnosticsTests' started at 2026-10-29 18:39:57.885.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testAlreadyAbsentExactListenerIsAnIdempotentSuccess]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testAlreadyAbsentExactListenerIsAnIdempotentSuccess]' passed (0.483 seconds).
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testOtherFailuresRemainVisibleIncludingDifferentListener]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testOtherFailuresRemainVisibleIncludingDifferentListener]' passed (0.744 seconds).
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testTerminalOutputRelaysBufferedClientBeforeItExits]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testTerminalOutputRelaysBufferedClientBeforeItExits]' passed (0.141 seconds).
+Test Suite 'SupervisorDiagnosticsTests' passed at 2026-10-29 18:39:59.255.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 1.369 (1.369) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-29 18:39:59.255.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 1.370 (1.371) seconds
+Test Suite 'Selected tests' passed at 2026-10-29 18:39:59.255.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 1.370 (1.372) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

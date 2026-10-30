@@ -1,0 +1,30 @@
+{
+  "exit_code": 0,
+  "baseline": {
+    "forward": "\n",
+    "reverse": "\n",
+    "display_count": 1
+  },
+  "after": {
+    "forward": "\n",
+    "reverse": "\n",
+    "display_count": 1
+  },
+  "cleanup_restored": true,
+  "command": [
+    "/opt/homebrew/bin/scrcpy",
+    "--serial",
+    "emulator-5580",
+    "--no-audio",
+    "--new-display=480x620/240",
+    "--flex-display",
+    "--start-app=dev.droidbridge.testapp",
+    "--window-title=Geometry Probe",
+    "--window-x=100",
+    "--window-y=100",
+    "--time-limit=4",
+    "--no-power-on",
+    "--keep-active",
+    "--display-ime-policy=local"
+  ]
+}

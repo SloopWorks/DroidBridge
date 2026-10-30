@@ -1,0 +1,68 @@
+[
+  {
+    "backend" : "native",
+    "details" : {
+      "height" : "702",
+      "launcher_visible" : "false",
+      "width" : "468",
+      "window_number" : "11553"
+    },
+    "device" : "qa-no-device",
+    "event" : "loading_window_presented",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "F368D873-B2F4-47BA-B55B-211B2CDD54E3",
+    "timestamp" : "2026-10-30T01:28:43Z"
+  },
+  {
+    "backend" : "native",
+    "device" : "qa-no-device",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "F368D873-B2F4-47BA-B55B-211B2CDD54E3",
+    "state" : "starting",
+    "timestamp" : "2026-10-30T01:28:43Z"
+  },
+  {
+    "backend" : "native",
+    "device" : "qa-no-device",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "F368D873-B2F4-47BA-B55B-211B2CDD54E3",
+    "state" : "running",
+    "timestamp" : "2026-10-30T01:28:44Z"
+  },
+  {
+    "backend" : "native",
+    "details" : {
+      "app_active" : "false",
+      "bundle_id" : "unknown",
+      "key" : "false",
+      "minimized" : "true",
+      "pid" : "90130",
+      "reason" : "first_frame",
+      "visible" : "false",
+      "window_number" : "11553"
+    },
+    "device" : "qa-no-device",
+    "event" : "native_window_presented",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "F368D873-B2F4-47BA-B55B-211B2CDD54E3",
+    "timestamp" : "2026-10-30T01:28:44Z"
+  },
+  {
+    "backend" : "native",
+    "details" : {
+      "app_active" : "false",
+      "bundle_id" : "unknown",
+      "key" : "false",
+      "minimized" : "false",
+      "pid" : "90130",
+      "reason" : "application_reopen",
+      "visible" : "true",
+      "window_number" : "11553"
+    },
+    "device" : "qa-no-device",
+    "event" : "native_window_presented",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "F368D873-B2F4-47BA-B55B-211B2CDD54E3",
+    "timestamp" : "2026-10-30T01:28:45Z"
+  }
+]

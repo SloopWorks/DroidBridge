@@ -1,0 +1,11 @@
+{
+  "Sources/DroidBridge/Launcher.swift": "8ff152e31f9824289a56753a01c7ac9ff1a6fa8fa70571033ac6f32b475c2ebc",
+  "Sources/DroidBridge/NativeWindow.swift": "0a8c3a651073e1a86135ac0616c781d6337e85d9366fad77cdb78608ab5a33fd",
+  "Sources/DroidBridge/main.swift": "31b345a061013348143d835f861d3ce800f6fb03821940c45d23bfc14ad479ae",
+  "Sources/DroidBridgeStreaming/BridgeSession.swift": "2172dc1f31cb2e368c9c39d65000b504b1b24b9d3f054b0b22aa2df256b6a058",
+  "Sources/DroidBridgeCore/StartupFrameVisibility.swift": "0739e4128052cc31d59bc92ce0f4e82ddf76ed8fae98e7394fc37ea85ad90bd5",
+  "Sources/DroidBridgeSupervisor/main.c": "b3621e174dbd9c0046fc4700e98e99c6c1a9c768a8821f0259490f5126b25594",
+  "scripts/verify-launch-ux.swift": "ef5d591f84f81be83e882f8e2d2f07d613b34cd72bfc3d53e51b2eb8d6a1e9f4",
+  "scripts/verify-launch-ux.sh": "13a49d86cd253d43e43fe17d6ee449e008f016e03fac2f7ed1963a7e5125ae7b",
+  "verification/launch-ux/qa/fixture.py": "90c8a2fc4cd1c869e441fef878b71e4b96a3b0325b88c89c8845215f534bb446"
+}

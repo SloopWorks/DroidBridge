@@ -30,7 +30,10 @@ with open(os.environ['DROIDBRIDGE_QA_MODE'] + '.calls', 'a') as log:
     log.write(json.dumps(sys.argv) + '\n')
 if pathlib.Path(sys.argv[0]).name == 'scrcpy':
     if '--version' in args: print('scrcpy 5.0.1')
-    else: time.sleep(.25)
+    else:
+        print('[server] INFO: Starting app "Fixture" [dev.droidbridge.testapp] on display 1...',flush=True)
+        print('INFO: Texture (VideoToolbox): 720x1080',flush=True)
+        time.sleep(.25)
     sys.exit(0)
 if args[:2] == ['forward', '--list']: sys.exit(0)
 if args[:1] == ['devices']:

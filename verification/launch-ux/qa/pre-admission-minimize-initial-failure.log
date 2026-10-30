@@ -1,0 +1,16 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] Write sources
+[1/6] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Compiling DroidBridge NativeWindow.swift
+[4/7] Compiling DroidBridge Launcher.swift
+[5/7] Emitting module DroidBridge
+[6/11] Compiling DroidBridge main.swift
+[7/11] Compiling DroidBridge DeviceOnboardingUI.swift
+[8/11] Compiling DroidBridge PhoneDisplayControls.swift
+[9/11] Compiling DroidBridge ManagedAppNameRepair.swift
+[9/12] Write Objects.LinkFileList
+[10/12] Linking DroidBridge
+[11/12] Applying DroidBridge
+Build complete! (2.62s)
+FAIL: launch UX message("Timed out: deliberate pre-admission minimize")

@@ -8,6 +8,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <util.h>
+#include <fcntl.h>
+#include <termios.h>
 
 /* Independent lifetime owner. A crashed GUI cannot run its own cleanup handler.
  * No shell is used, every child lives in its own process group, and cleanup
@@ -35,7 +38,6 @@ static pid_t launch_output(char *const args[], int output) {
     if (pid > 0) setpgid(pid, pid);
     return pid;
 }
-static pid_t launch(char *const args[]) { return launch_output(args, -1); }
 static int reap(pid_t child, int *status, double seconds) {
     double deadline = monotonic_seconds() + seconds;
     do {
@@ -82,9 +84,26 @@ static void cleanup_command(char *const args[]) {
     if (failed)
         fprintf(stderr, "{\"event\":\"supervisor_cleanup_failed\",\"operation\":\"%s\"}\n", args[3]);
 }
+/* A PTY makes the unmodified client's stdout line buffered. Relay only
+ * bounded diagnostic bytes; it is not an interactive shell/controlling TTY. */
+static void relay_output(int fd) {
+    if (fd < 0) return;
+    char bytes[4096];
+    for (int batch = 0; batch < 16; ++batch) {
+        ssize_t count = read(fd, bytes, sizeof(bytes));
+        if (count <= 0) return;
+        ssize_t sent = 0;
+        while (sent < count) {
+            ssize_t written = write(STDOUT_FILENO, bytes + sent, (size_t)(count - sent));
+            if (written < 0 && errno == EINTR) continue;
+            if (written <= 0) return;
+            sent += written;
+        }
+    }
+}
 int main(int argc, char **argv) {
     pid_t parent = 0; char *adb = NULL, *serial = NULL, *forward = NULL, *remote = NULL;
-    int command = 0;
+    int command = 0, terminal_output = 0;
     for (int i = 1; i < argc; ++i) {
         if (!strcmp(argv[i], "--")) { command = i + 1; break; }
         if (i + 1 >= argc) return 64;
@@ -93,6 +112,9 @@ int main(int argc, char **argv) {
             char *end; long parsed = strtol(value, &end, 10);
             if (*end || parsed <= 1 || parsed > 2147483647) return 64;
             parent = (pid_t)parsed;
+        } else if (!strcmp(option, "--terminal-output")) {
+            if (strcmp(value, "1")) return 64;
+            terminal_output = 1;
         } else if (!strcmp(option, "--adb")) adb = value;
         else if (!strcmp(option, "--serial")) serial = value;
         else if (!strcmp(option, "--forward")) forward = value;
@@ -117,12 +139,25 @@ int main(int argc, char **argv) {
         fprintf(stderr, "{\"event\":\"supervisor_stopped\",\"reason\":\"parent_missing_before_launch\",\"exit_status\":null,\"signal\":null}\n");
         return 75;
     }
-    pid_t child = launch(&argv[command]);
-    if (child < 0) { perror("DroidBridge supervisor fork"); return 71; }
+    int output_master = -1, output_slave = -1;
+    if (terminal_output) {
+        if (openpty(&output_master, &output_slave, NULL, NULL, NULL) < 0) { perror("DroidBridge output terminal"); return 71; }
+        struct termios settings;
+        if (tcgetattr(output_slave, &settings) < 0) return 71;
+        cfmakeraw(&settings);
+        if (tcsetattr(output_slave, TCSANOW, &settings) < 0
+                || fcntl(output_master, F_SETFD, FD_CLOEXEC) < 0
+                || fcntl(output_slave, F_SETFD, FD_CLOEXEC) < 0
+                || fcntl(output_master, F_SETFL, O_NONBLOCK) < 0) return 71;
+    }
+    pid_t child = launch_output(&argv[command], output_slave);
+    if (output_slave >= 0) close(output_slave);
+    if (child < 0) { if (output_master >= 0) close(output_master); perror("DroidBridge supervisor fork"); return 71; }
     fprintf(stderr, "{\"event\":\"supervisor_started\",\"parent\":%d,\"child\":%d}\n", parent, child);
     int status = -1;
     const char *reason = "child_exit";
     for (;;) {
+        relay_output(output_master);
         pid_t result = waitpid(child, &status, WNOHANG);
         if (result == child || (result < 0 && errno == ECHILD)) break;
         if (result < 0 && errno != EINTR) { reason = "wait_error"; stopping = 1; }
@@ -132,6 +167,8 @@ int main(int argc, char **argv) {
         }
         pause_tick();
     }
+    relay_output(output_master);
+    if (output_master >= 0) close(output_master);
     if (forward) {
         char *args[] = {adb, "-s", serial, "forward", "--remove", forward, NULL};
         cleanup_command(args);

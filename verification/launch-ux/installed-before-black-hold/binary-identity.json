@@ -1,0 +1,7 @@
+{
+  "all_file_backed_macho_sections_identical": true,
+  "file_backed_section_count": 32,
+  "host_main_sha256": "65ad68a070a601008e92a88e5802a8eae817636eeec222d0f9ee1b508b05b4ae",
+  "wrapper_main_sha256": "1ddaf4262c4dbcd463ec199381ec7101ad5095d41b1e30c0b4cf8a4879e6e83f",
+  "note": "Whole-file hashes differ because the real factory re-signs the copied executable under its independent wrapper bundle identifier."
+}

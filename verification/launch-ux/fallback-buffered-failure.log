@@ -1,0 +1,1 @@
+FAIL: message("Android did not confirm the fallback application and video renderer within 15 seconds. See /Users/patrick/Library/Logs/DroidBridge/session-0E8F8C30-31BD-4E6D-A08D-A8DC80FCBA21.log")
