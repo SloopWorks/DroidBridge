@@ -2,6 +2,14 @@
 
 This file describes actual limitations, not substitutes for the verification report.
 
+- Companion native Mac alerts, when authorized, contain only the Android package
+  and a generic invitation to open DroidBridge. Notification Center can retain
+  this alert history after Android removes or replaces a notification; the
+  companion's in-app list is the current authority. Old alerts provide no reply
+  or dismissal action. Clear Inbox clears inbox metadata, not Notification Center
+  history. Actual allowed-state banner delivery remains an open installed gate
+  while this test Mac reports notification permission denied.
+
 - The packaged runtime is Apple Silicon/macOS 26. Source-only builds may support older macOS with compatible runtime dependencies.
 - Android 13/API33 or newer is required to enforce hidden software keyboards on secondary virtual displays. Earlier Android versions and unreadable API levels are refused. Apps may enforce task affinity, single-instance behavior, orientation, secure capture, or phone-only layouts. DRM/secure content is intentionally not bypassed.
 - Android package labels are discovered dynamically. Created Mac apps and launcher rows extract the resolved launcher activity/alias icon, including adaptive/vector resources. Unavailable row icons have a diagnostic tooltip; wrapper creation reports extraction failure. Optional wallpaper-themed monochrome tint is not reproduced. A label or valid icon does not imply an app permits secondary-display use.

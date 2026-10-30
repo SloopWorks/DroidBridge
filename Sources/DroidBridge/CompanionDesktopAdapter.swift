@@ -7,6 +7,7 @@ struct CompanionDesktopDevice: Equatable {
     let aliases: [String], capabilities: Set<String>
     let connected: Bool, paired: Bool
     let profile: CompanionPerformanceProfile
+    let trustID: String?
     let error: String?
     init?(_ value: CompanionJSON) {
         guard let o = value.object, let id = o["device_id"]?.string, UUID(uuidString: id) != nil,
@@ -16,6 +17,7 @@ struct CompanionDesktopDevice: Equatable {
         capabilities = Set(o["capabilities"]?.array?.compactMap(\.string) ?? [])
         connected = o["connected"]?.bool == true; paired = o["paired"]?.bool == true
         profile = CompanionPerformanceProfile(rawValue: o["profile"]?.string ?? "balanced") ?? .balanced
+        trustID = o["trust_id"]?.string.flatMap { UUID(uuidString: $0)?.uuidString.lowercased() }
         error = o["connection_error"]?.string
     }
 }

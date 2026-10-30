@@ -104,10 +104,10 @@ final class HiddenIMEArgumentTests:XCTestCase {
         }
     }
     @MainActor
-    func testFallbackHoverMitigationAppliesOnlyToAndroid15() async throws {
+    func testFallbackSuppressesButtonlessHoverAcrossSupportedAndroidVersions() async throws {
         for api in [33,34,35,36,37] {
             let args=try await capturedArguments(.scrcpy,decorations:true,restored:false,api:api)
-            XCTAssertEqual(args.contains("--no-mouse-hover"),api==35,"API \(api)")
+            XCTAssertEqual(args.filter { $0 == "--no-mouse-hover" }.count,1,"API \(api)")
             XCTAssertTrue(args.contains("--display-ime-policy=hide"))
         }
     }

@@ -286,4 +286,105 @@ class CompanionSecurityTest {
         })
     }
 
+    @Test fun notificationScopeIsCanonicalAndCannotReplayAcrossReplacementTrust() = Peer().use { p ->
+        p.store.setting("notifications_enabled", true, Unit)
+        val a = p.pair(); val b = p.pair()
+        fun command(kind: String, payload: JSONObject) = clockedCommand(p.store, JSONObject().put("request_id", UUID.randomUUID().toString()).put("kind", kind).put("payload", payload))
+        fun pref(expected: String) = JSONObject().put("expected_trust_id", expected).put("enabled", true).put("packages", org.json.JSONArray())
+        val original = command("notification_preferences", pref(a.second))
+        assertEquals(200, p.request("/v1/commands", original, a.first).first)
+        assertEquals(200, p.request("/v1/commands", original, a.first).first)
+        for (kind in listOf("notification_preferences", "notification_reply", "dismiss_notification")) {
+            val payload = if (kind == "notification_preferences") pref(a.second) else JSONObject().put("expected_trust_id", a.second).put("notification_key", "0".repeat(64)).put("action_id", UUID.randomUUID().toString()).put("text", "Synthetic test")
+            for (modified in listOf(JSONObject(payload.toString()).apply { remove("expected_trust_id") }, JSONObject(payload.toString()).put("expected_trust_id", b.second), JSONObject(payload.toString()).put("expected_trust_id", a.second.uppercase()))) {
+                val response = p.request("/v1/commands", command(kind, modified), a.first)
+                assertEquals(409, response.first); assertEquals("trust_changed", response.second.getJSONObject("error").getString("code"))
+            }
+        }
+        assertFalse("Mismatched preference never enabled another trust", p.store.notificationsAllowed(b.second))
+        val cross = p.request("/v1/commands", original, b.first)
+        assertEquals(409, cross.first); assertEquals("trust_changed", cross.second.getJSONObject("error").getString("code"))
+        val rewritten = JSONObject(original.toString()).put("payload", pref(b.second))
+        assertEquals("A new trust cannot reuse a prior trust's request UUID", 409, p.request("/v1/commands", rewritten, b.first).first)
+        val mac = p.store.trusted().getJSONObject(a.second).getString("mac_id")
+        p.store.revoke(a.second)
+        val secret = p.store.startPairing()
+        val pending = p.store.requestPair(JSONObject().put("request_id", UUID.randomUUID().toString()).put("pairing_secret", secret).put("mac_id", mac).put("mac_name", "Replacement trust regression"))
+        val replacementId = p.store.approvePair(pending.getString("pairing_id")).trustId
+        val replacementToken = p.store.pollPair(pending.getString("pairing_id"), secret).getString("credential")
+        assertNotEquals(a.second, replacementId)
+        val afterReplacement = p.request("/v1/commands", original, replacementToken)
+        assertEquals(409, afterReplacement.first); assertEquals("trust_changed", afterReplacement.second.getJSONObject("error").getString("code"))
+        assertFalse(p.store.notificationsAllowed(replacementId))
+        assertEquals(200, p.request("/v1/commands", command("notification_preferences", pref(replacementId)), replacementToken).first)
+        assertTrue(p.store.notificationsAllowed(replacementId))
+    }
+
+    @Test fun notificationExposureEvictionCleansOnlyPriorAudienceAndLongPollCannotDeadlock() = Peer().use { p ->
+        p.store.setting("notifications_enabled", true, Unit)
+        val a = p.pair(); val b = p.pair(); p.store.allowNotifications(a.second, true)
+        val pkg = "dev.droidbridge.synthetic"
+        val firstKey = ProtocolRules.hash("notification-0".toByteArray())
+        val unobserved = ProtocolRules.hash("never-selected".toByteArray())
+        p.store.publishNotification(unobserved, pkg, JSONObject().put("notification_key", unobserved).put("package_name", pkg).put("action_id", UUID.randomUUID().toString()).put("title", "Synthetic never selected"))
+        p.store.publishNotification(unobserved, pkg, null)
+        p.store.publishNotification(ProtocolRules.hash("framework-excluded".toByteArray()), "android", null) // Valid internal sender must never crash excluded cleanup.
+        assertEquals("Queued-but-never-observed public replacement leaks no cleanup existence", 0, p.request("/v1/events?after=0&wait_ms=0", token = a.first).second.getJSONObject("data").getJSONArray("events").length())
+        for (index in 0..256) {
+            val key = ProtocolRules.hash("notification-$index".toByteArray())
+            p.store.publishNotification(key, pkg, JSONObject().put("notification_key", key).put("package_name", pkg).put("action_id", UUID.randomUUID().toString()).put("title", "Synthetic public").put("text", "Synthetic public"))
+            // A removal is disclosed only for a row actually selected into a TLS response.
+            if (index == 0) assertEquals(200, p.request("/v1/events?after=0&wait_ms=0", token = a.first).first)
+        }
+        fun pages(peer: Pair<String, String>): Pair<List<JSONObject>, Long> {
+            val all = mutableListOf<JSONObject>(); var after = 0L
+            repeat(16) {
+                val result = p.request("/v1/events?after=$after&wait_ms=0", token = peer.first)
+                assertEquals(200, result.first)
+                val data = result.second.getJSONObject("data"); val next = data.getLong("next_sequence"); val items = data.getJSONArray("events")
+                for (i in 0 until items.length()) all.add(items.getJSONObject(i))
+                if (next == after) return all to next
+                after = next
+            }
+            fail("Bounded notification event paging did not converge"); return all to after
+        }
+        val aEvents = pages(a).first
+        assertTrue("Eviction sends metadata-only cleanup before forgetting old audience", aEvents.any { it.getString("kind") == "notification_removed" && it.getJSONObject("payload").optString("notification_key") == firstKey && it.getJSONObject("payload").keys().asSequence().toSet() == setOf("notification_key") })
+        assertFalse("Evicted old content is not replayed", aEvents.any { it.getString("kind") == "notification_posted" && it.getJSONObject("payload").optString("notification_key") == firstKey })
+        assertTrue("Never opted-in trust sees no notification existence", pages(b).first.isEmpty())
+        val after = pages(a).second
+        val result = java.util.concurrent.atomic.AtomicInteger()
+        val poll = Thread { result.set(p.request("/v1/events?after=$after&wait_ms=2000", token = a.first).first) }.apply { start() }
+        Thread.sleep(100); p.store.allowNotifications(a.second, false)
+        poll.join(3500); assertFalse("Store/event lock order never blocks publisher behind waiting poll", poll.isAlive); assertEquals(200, result.get())
+        val cleanup = pages(a).first
+        assertTrue(cleanup.isNotEmpty())
+        assertTrue("Opt-out allows only key-only prior-audience cleanup", cleanup.all { it.getString("kind") == "notification_removed" && it.getJSONObject("payload").keys().asSequence().toSet() == setOf("notification_key") })
+        assertTrue(pages(b).first.isEmpty())
+        // Exercise the full256×8 reconciliation matrix. A reconstructed isolated
+        // peer models process restart without altering device clocks or rate limits.
+        val peers = mutableListOf(a, b)
+        repeat(3) { peers.add(p.pair()) }
+        p.restart()
+        repeat(3) { peers.add(p.pair()) }
+        peers.forEach { p.store.allowNotifications(it.second, true) }
+        for (index in 0 until 256) {
+            val key = ProtocolRules.hash("matrix-$index".toByteArray())
+            p.store.publishNotification(key, pkg, JSONObject().put("notification_key", key).put("package_name", pkg).put("action_id", UUID.randomUUID().toString()).put("title", "Synthetic matrix").put("text", "Synthetic matrix"))
+            if (index % 64 == 63) peers.forEach { pages(it) } // Each admitted generation really crosses TLS.
+        }
+        val started = android.os.SystemClock.elapsedRealtime()
+        p.store.setting("notifications_enabled", false, Unit)
+        val elapsed = android.os.SystemClock.elapsedRealtime() - started
+        assertTrue("256×8 callback reconciliation stays below3s", elapsed < 3000)
+        val page = p.request("/v1/events?after=0&wait_ms=0", token = a.first).second.getJSONObject("data")
+        assertTrue("Bounded journal reports a gap rather than silently stranding old rows", page.getBoolean("reset_required"))
+        val retained = page.getJSONArray("events")
+        for (i in 0 until retained.length()) {
+            assertEquals("notification_removed", retained.getJSONObject(i).getString("kind"))
+            assertEquals(setOf("notification_key"), retained.getJSONObject(i).getJSONObject("payload").keys().asSequence().toSet())
+        }
+        InstrumentationRegistry.getInstrumentation().addResults(android.os.Bundle().apply { putString("droidbridge_notification_matrix", JSONObject().put("keys", 256).put("trusts", 8).put("reconcile_ms", elapsed).put("threshold_ms", 3000).put("overflow_cleanup", true).put("journal_gap_explicit", true).toString()) })
+    }
+
 }

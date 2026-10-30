@@ -20,7 +20,7 @@ The **scrcpy** backend starts the pinned upstream 5.0.1 client with `--new-displ
 
 The **native** backend pushes the matching scrcpy 5.0.1 server, obtains a random session ID and dynamic loopback ADB forward, and starts the server on Android. Separate video/control connections use scrcpy's version-specific protocol. Session/codec headers and bounded packet lengths are validated. Android MediaCodec emits H.264 Annex-B data; VideoToolbox decodes it, CoreImage creates CGImages, and an AppKit NSView renders those live frames. The native Swift process does not link FFmpeg.
 
-The fallback adds `--no-mouse-hover` only on Android15/API35, using the SDK value already read during mandatory session admission. This avoids an observed upstream InputDispatcher hover/click crash on decorated virtual displays. Other Android versions keep hover, and primary click/drag/scroll input is unchanged. The native backend does not forward hover events.
+The fallback always adds pinned scrcpy's `--no-mouse-hover`. Buttonless motion caused an InputDispatcher crash on Android15/API35 and prevented clicks on Android17/API37 in actual tests; suppressing it restored input. Clicks, drags and scrolling remain enabled. Hover-only tooltips are unavailable. The native backend also does not forward hover events. Argument-policy tests cover API33–37; actual device evidence is limited to the tested emulator versions.
 
 The view uses the same aspect-fit transform for drawing and pointer coordinates. Letterbox clicks are rejected; an active drag can finish outside the image with coordinates clamped to the edge. Mouse, drag, scroll, keys, text, Back and Mac-to-Android clipboard paste become scrcpy control messages. Native resize is debounced, bounded, and sends scrcpy's virtual-display resize message. Initial session startup requires an actual decoded frame, rather than merely a process or empty window.
 
@@ -148,6 +148,15 @@ executed or automatically opened; received Mac files retain quarantine. Clipboar
 handoff is an explicit user action with foreground Android access. Optional
 notification access is granted through Android settings; replies bind the current
 notification generation and actual RemoteInput action.
+
+Notification controls require the `notification_scope_v2` capability and an exact
+expected trust UUID in both IPC and the hashed phone command. The broker fences
+queue admission, original inbox origin and transport generation; the phone checks
+scope before receipt lookup or execution. A reset/changed event epoch or an event
+poll's authorization refusal clears only the affected device's active notification
+projection, preserving shares. Cancelled pollers carry generation/token fences
+and cannot tear down a newer authenticated connection. AppKit permission callbacks
+also bind the current intent, window lifetime, phone, trust and edited filters.
 
 Phone export selections bind monotonic policy revisions to managed Mac wrapper
 admission. Reconciliation preserves names/icons, offline hiding and stale-result

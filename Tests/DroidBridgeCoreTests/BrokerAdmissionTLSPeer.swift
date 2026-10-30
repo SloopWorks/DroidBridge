@@ -11,10 +11,16 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
     private let directory:URL,process:Process
     var requestedPaths:[String] { ((try? String(contentsOf:directory.appendingPathComponent("paths.txt"))) ?? "").split(separator:"\n").map(String.init) }
     var stateBodies:[[String:Any]] { ((try? String(contentsOf:directory.appendingPathComponent("states.jsonl"))) ?? "").split(separator:"\n").compactMap {try? JSONSerialization.jsonObject(with:Data($0.utf8)) as? [String:Any]} }
+    var commandBodies:[[String:Any]] { ((try? String(contentsOf:directory.appendingPathComponent("commands.jsonl"))) ?? "").split(separator:"\n").compactMap {try? JSONSerialization.jsonObject(with:Data($0.utf8)) as? [String:Any]} }
     var blockedRequestSeen:Bool {FileManager.default.fileExists(atPath:directory.appendingPathComponent("blocked").path)}
     func releaseBlocked(){try? Data([1]).write(to:directory.appendingPathComponent("release"))}
     func resetSnapshot(){try? FileManager.default.removeItem(at:directory.appendingPathComponent("snapshot"))}
-    init(heartbeat:Bool=false,blockedPath:String="")throws {
+    func failEventAuthorization() throws { try Data([1]).write(to: directory.appendingPathComponent("events-unauthorized")) }
+    func setEventPage(epoch: String, reset: Bool) throws {
+        let data = try JSONSerialization.data(withJSONObject: ["epoch": epoch, "events": [], "next_sequence": 0, "reset_required": reset])
+        try data.write(to: directory.appendingPathComponent("event-page.json"), options: .atomic)
+    }
+    init(heartbeat:Bool=false,blockedPath:String="",notificationScopeV2:Bool=true)throws {
         directory=FileManager.default.temporaryDirectory.appendingPathComponent("admission-tls-\(UUID().uuidString)")
         try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:false,attributes:[.posixPermissions:0o700])
         func openssl(_ args:[String])throws{let p=Process();p.executableURL=URL(fileURLWithPath:"/usr/bin/openssl");p.arguments=args;p.standardError=FileHandle.nullDevice;p.standardOutput=FileHandle.nullDevice;try p.run();p.waitUntilExit();guard p.terminationStatus==0 else{throw NSError(domain:"TLS",code:1)}}
@@ -25,7 +31,7 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
         try openssl(["x509","-in",cert.path,"-outform","DER","-out",der.path]);serverPin=CompanionClient.sha256(try Data(contentsOf:der))
         let source = #"""
         import socket,ssl,pathlib,sys,json,datetime,threading,time
-        root=pathlib.Path(sys.argv[1]);device,trust,pair=sys.argv[2:5];heartbeat=sys.argv[5]=='1';blocked=sys.argv[6]
+        root=pathlib.Path(sys.argv[1]);device,trust,pair=sys.argv[2:5];heartbeat=sys.argv[5]=='1';blocked=sys.argv[6];notification_scope=sys.argv[7]=='1'
         ctx=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);ctx.minimum_version=ssl.TLSVersion.TLSv1_2
         ctx.set_ecdh_curve('prime256v1')
         ctx.load_cert_chain(str(root/'cert.pem'),str(root/'key.pem'))
@@ -53,14 +59,18 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
               if path==blocked:
                 (root/'blocked').write_text('1');deadline=time.monotonic()+5
                 while not (root/'release').exists() and time.monotonic()<deadline:time.sleep(.002)
+              if path=='/v1/commands':
+                with (root/'commands.jsonl').open('a') as record:record.write(json.dumps(json.loads(body[:length]))+'\n')
               status=200
-              if path=='/v1/hello':data={'device_id':device,'device_name':'TLS broker fixture','protocol_min':1,'protocol_max':1,'capabilities':['clock_anchor_v1']+(['state_heartbeat'] if heartbeat else []),'pairing_available':True,'clock_epoch':clock_epoch,'server_uptime_ms':int(time.monotonic()*1000),'server_time':int(time.time())}
+              if path=='/v1/hello':data={'device_id':device,'device_name':'TLS broker fixture','protocol_min':1,'protocol_max':1,'capabilities':['clock_anchor_v1']+(['notification_scope_v2'] if notification_scope else [])+(['state_heartbeat'] if heartbeat else []),'pairing_available':True,'clock_epoch':clock_epoch,'server_uptime_ms':int(time.monotonic()*1000),'server_time':int(time.time())}
               elif path=='/v1/pair':data={'pairing_id':pair,'status':'pending','expires_at':(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(seconds=120)).isoformat().replace('+00:00','Z'),'comparison_code':'ABCDEF12','clock_epoch':clock_epoch,'expires_uptime_ms':pair_expiry}
               elif path=='/v1/pair/'+pair:data={'pairing_id':pair,'status':'approved','credential':'A'*43,'trust_id':trust,'device_id':device,'capabilities':[]}
+              elif path=='/v1/commands':data={'request_id':request,'status':'applied','result':{}}
               elif path=='/v1/identity':data={'device_id':device,'trust_id':trust,'protocol':1}
-              elif path.startswith('/v1/events'):data={'epoch':device,'events':[],'next_sequence':0,'reset_required':False}
+              elif path.startswith('/v1/events'):data=json.loads((root/'event-page.json').read_text()) if (root/'event-page.json').exists() else {'epoch':device,'events':[],'next_sequence':0,'reset_required':False}
               else:data={'accepted':True}
               error=None
+              if path.startswith('/v1/events') and (root/'events-unauthorized').exists():status=401;error={'code':'unauthorized','message':'QA revoked trust','retryable':False}
               if path=='/v1/state':
                 state=json.loads(body[:length]);
                 with (root/'states.jsonl').open('a') as f:f.write(json.dumps(state)+'\n')
@@ -75,7 +85,7 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
           client,_=server.accept();threading.Thread(target=handle,args=(client,),daemon=True).start()
         """#
         let script=directory.appendingPathComponent("peer.py");try Data(source.utf8).write(to:script)
-        process=Process();process.executableURL=URL(fileURLWithPath:"/usr/bin/env");process.arguments=["python3",script.path,directory.path,deviceID,trustID,pairingID.uuidString.lowercased(),heartbeat ? "1" : "0",blockedPath];process.standardOutput=FileHandle.nullDevice;process.standardError=FileHandle.nullDevice;try process.run()
+        process=Process();process.executableURL=URL(fileURLWithPath:"/usr/bin/env");process.arguments=["python3",script.path,directory.path,deviceID,trustID,pairingID.uuidString.lowercased(),heartbeat ? "1" : "0",blockedPath,notificationScopeV2 ? "1" : "0"];process.standardOutput=FileHandle.nullDevice;process.standardError=FileHandle.nullDevice;try process.run()
         let file=directory.appendingPathComponent("port"),deadline=Date().addingTimeInterval(3)
         var ready:UInt16?
         while Date()<deadline {

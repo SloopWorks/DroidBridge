@@ -26,6 +26,12 @@ public final class StalledTransferProvider extends ContentProvider {
     @Override public Cursor query(Uri uri,String[] projection,String selection,String[] args,String order){return query(uri,projection,selection,args,order,null);}
     @Override public Cursor query(Uri uri,String[] projection,String selection,String[] args,String order,CancellationSignal signal){
         List<String> p=path(uri);AtomicIntegerArray values=counts(p.get(1));
+        if(p.get(0).equals("notification-status")){
+            android.content.SharedPreferences state=getContext().getSharedPreferences("notification-probe-"+p.get(1),0);
+            int active=getContext().getSystemService(android.app.NotificationManager.class).getActiveNotifications().length;
+            MatrixCursor c=new MatrixCursor(new String[]{"deliveries","reply_generation","posted_generation","active_count"});
+            c.addRow(new Object[]{state.getInt("deliveries",0),state.getInt("reply_generation",0),state.getInt("posted_generation",0),active});return c;
+        }
         if(p.get(0).equals("status")){int count=0;synchronized(this){for(String key:writers.keySet())if(key.contains(p.get(1)))count++;}MatrixCursor c=new MatrixCursor(new String[]{"open_pipes","query_count","type_count","open_count"});c.addRow(new Object[]{count,values.get(0),values.get(1),values.get(2)});return c;}
         values.incrementAndGet(0);
         if(p.get(0).equals("query-stall")){

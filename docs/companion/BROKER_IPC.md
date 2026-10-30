@@ -45,9 +45,9 @@ boundary, not isolation from malicious software already running as that user.
 | inbox_clear | device_id, item_id optional | status |
 | clipboard_send | device_id, payload {text} | command receipt |
 | share_send | device_id, kind share_text/share_url, payload {text} | command receipt |
-| notification_reply | device_id,payload {notification_key,action_id,text} | command receipt |
-| notification_dismiss | device_id,payload {notification_key,action_id} | command receipt |
-| notification_preferences | device_id,payload {enabled,...} | command receipt |
+| notification_reply | device_id,expected_trust_id,payload {notification_key,action_id,text} | command receipt |
+| notification_dismiss | device_id,expected_trust_id,payload {notification_key,action_id} | command receipt |
+| notification_preferences | device_id,expected_trust_id,payload {enabled,...} | command receipt |
 | command | device_id,kind,payload | typed allowed remote Android command receipt |
 | host_command | device_id,kind,payload | typed Mac owner action; includes stop_all aggregated across exact session owners |
 | transfer_begin | device_id,transfer_id,direction,display_name,mime_type,size,sha256 | bounded transfer status |

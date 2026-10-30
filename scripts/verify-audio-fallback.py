@@ -193,8 +193,7 @@ class FallbackAudioTest(native.NativeAudioTest):
         launched = json.loads((self.out/'players'/package/'launched-argv.json').read_text())
         assert launched == production+['--record='+str(self.out/'players'/package/'video.mkv')]
         assert '--no-audio' in production and '--display-ime-policy=hide' in production
-        api=int(self.android('shell','getprop','ro.build.version.sdk').strip())
-        assert ('--no-mouse-hover' in production)==(api==35)
+        assert '--no-mouse-hover' in production
         self.player_command(package,'resize',width=720,height=1080)
         wait('actual tone button rendered',lambda:any('play test tone' in r['text'].lower()
              for r in self.capture(status['window'],'launched-'+package.rsplit('.',1)[-1])),35)

@@ -113,7 +113,7 @@ public final class BridgeSession {
             let activity = try await adb(["shell","cmd","package","resolve-activity","--brief","-a","android.intent.action.MAIN","-c","android.intent.category.LAUNCHER",descriptor.application.packageName])
             guard !activity.output.contains("No activity found"), activity.output.contains("/") else { throw BridgeError.message("Android application has no launchable activity") }
             try check(token)
-            if descriptor.configuration.backend == .scrcpy { try await startExternal(token:token,androidAPI:api) }
+            if descriptor.configuration.backend == .scrcpy { try await startExternal(token:token) }
             else { try await startNative(token:token) }
         } catch {
             if generation == token { stop(reason: "startup_failure"); transition(.failed,error.localizedDescription) }
@@ -165,7 +165,7 @@ public final class BridgeSession {
         }
         try process.run(); self.process = process
     }
-    private func startExternal(token: UUID,androidAPI:Int) async throws {
+    private func startExternal(token: UUID) async throws {
         let startup = try await ScrcpyStartupLease.acquire(serial:descriptor.device.serial)
         // Keep the descriptor alive across awaits; it is CLOEXEC and is not
         // passed as child stdin, so readiness releases it while the app runs.
@@ -181,10 +181,10 @@ public final class BridgeSession {
         if let frame=placement {config.width=Int(frame.width)/2*2;config.height=Int(frame.height)/2*2}
         let lease = try ScrcpyPortLease.acquire(); externalPortLease = lease
         var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=\(config.maximumFramesPerSecond)","--video-codec=h264","--keep-active","--no-power-on","--display-ime-policy=hide"]
-        // Android 15's InputDispatcher can abort on hover followed by a click
-        // across virtual-display navigation windows (upstream scrcpy #5477).
-        // Clicks, drags and scrolling remain enabled; later Android keeps hover.
-        if androidAPI == 35 {args.append("--no-mouse-hover")}
+        // Buttonless hover can crash Android 15's virtual-display dispatcher
+        // or prevent Android 17 clicks. Pinned scrcpy suppresses only that
+        // motion; clicks, drags and scrolling remain enabled, like native input.
+        args.append("--no-mouse-hover")
         if !config.showSystemDecorations { args.append("--no-vd-system-decorations") }
         args.append("--port=\(lease.port)")
         if let frame=placement {

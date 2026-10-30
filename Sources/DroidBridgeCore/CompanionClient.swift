@@ -147,6 +147,9 @@ public actor CompanionClient {
             sample = current
         } else { sample = try await freshClock() }
         try Task.checkCancellation()
+        if ["notification_preferences", "notification_reply", "dismiss_notification"].contains(kind), !sample.notificationScopeV2 {
+            throw CompanionBoundaryError("companion_update_required", "Update the Android companion before controlling notification sharing or actions.")
+        }
         let now = CompanionClock.nowMS()
         commandBodies = commandBodies.filter { $0.value.0 > now }
         let body: [String: CompanionJSON]
@@ -333,6 +336,9 @@ public actor CompanionClient {
     private static func validateCommand(_ kind: String, _ payload: [String: CompanionJSON]) throws {
         func text(_ key: String, _ limit: Int) throws -> String {
             guard let value = payload[key]?.string, value.utf8.count <= limit else { throw CompanionBoundaryError("invalid_command", "Companion command payload is invalid.") }; return value
+        }
+        if ["notification_preferences", "notification_reply", "dismiss_notification"].contains(kind) {
+            try validateID(try text("expected_trust_id", 36))
         }
         switch kind {
         case "clipboard_text", "share_text": _ = try text("text", 65_536)

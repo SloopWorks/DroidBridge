@@ -8,7 +8,9 @@ Scope: C01–C15 in `ROADMAP.md`, `BOUNDARY_CONTRACT.md`,
 
 ## Acceptance status
 
-**Final end-to-end release acceptance remains pending.** This document preserves
+**Final end-to-end release acceptance remains pending.** The latest decision is
+in **Installed build6 / current-source review** below; preceding sections are
+historical checkpoints, not a list of still-open bugs. This document preserves
 the first source/layout review and its remediation evidence, followed by the
 current frozen-candidate audit below. The phone and Mac implementation have
 advanced substantially beyond the original findings. Installed Mac build2 has
@@ -327,3 +329,52 @@ actual evidence for these groups; earlier component passes are not erased:
    metadata/artifact, installation outside build output, exact final signatures/
    hashes/source bindings and update/Forget/re-pair/settings preservation. The
    Pixel hardware stage remains the owner's documented final verification.
+
+## Installed build6 / current-source review
+
+This review was read-only: no GUI, device, permission, source or test mutation.
+The reviewer inspected build6's actual installed evidence, its authenticated and
+WindowServer handoff screenshots, canonical owner/export/profile receipts,
+clipboard action record, file hashes/explicit save records, notification reply/
+dismiss/private-replacement results and current Android/Mac source. Full details
+are in `verification/companion/installed-api37-tls-build6-visible/REPORT.md`.
+Installed host/broker/APK hashes are bound in that directory's
+`installed-identity.json`; this is Mac0.2.0/build6 with Android9, not evidence that
+the later notification-hardening candidate has already passed installed tests.
+
+### Scoped acceptance and remaining limits
+
+| Area | Independent conclusion |
+| --- | --- |
+| UX17–UX19 | Remain accepted as remediated for exact/expired consent, no pre-consent provider I/O and bounded direct-text clipboard. Current source retains those guards. The earlier independent code8 device checks and later focused code10 records remain separately bound. |
+| C03 pairing / C15 retained intent | Actual build6 full-URI pairing matched comparison codes and required phone approval. Nonempty Alpha/Beta exports and Balanced profile survived explicit local Forget/re-pair. Camera capture is not claimed. Ad-hoc Keychain recovery remains explicit, not automatic credential continuity. |
+| C05 export effect / UX20 clock | Actual build6 Mac checkbox receipts show exact owner admission, `inactive` after deselection, then `active`/`wrapper_created:true` after recreation. This advances the prior clock-blocked checkpoint. It does not prove Spotlight search visibility; host metadata/UI availability still blocks that distinct acceptance. Phone-side pending/retry source and component receipt evidence remain valid, but real final-cohort indexing must be checked. |
+| C10 sharing | Actual Android share consent → native Mac save and native Mac open → phone inbox → explicit SAF save completed two-direction2MiB transfers with equal expected hashes. The visible UI names the receiver and distinguishes verified receipt from explicit saving. No auto-open/save is claimed. Final changed-cohort smoke and failure/cancel/resume scopes remain separate. |
+| C11 clipboard | Real deliberate Mac Copy/Send Clipboard → phone Copy/Paste/Send → Mac inbox Copy matched the synthetic text. Original Mac clipboard types were restored. This closes the earlier missing actual clipboard direction evidence for build6; no background collection or URI coercion is introduced in current source. |
+| C12 in-app actions | Actual native Reply reached the Android RemoteInput receiver exactly once; Dismiss removed the Android notification and broker row; non-reply notifications had no Reply action. Private replacement did not expose private text or deliver a stale reply, but build6 incorrectly retained the previous public row. That is a real failure, not an accepted pass. |
+| C12 source remediation | Android11 source now publishes cleanup to exact prior recipients for private replacement/filters/revoke/listener changes, filters obsolete posted events, and checks current exposed action/trust. Core clears notification projections on cursor/epoch discontinuity and binds origin. Mac source renders old/missing-origin items inert and fences delayed approval/settings/add callbacks by intent, close/reopen, cancellation, phone, exact trust and edited allowlist. Anonymous-NSXPC deferred-callback tests pass. This source/component evidence still requires an installed new-cohort private replacement/revoke/re-pair regression. |
+| C12 native alerts | Actual installed permission status was **Denied**, despite user intent to allow. Native banner delivery is unverified; no OS permission bypass/reset is permitted or claimed. The working in-app list/reply/dismiss path is the tested alternative. Previous generic package-only Mac alerts may remain as Notification Center history; they contain no body or direct phone action. The in-app list is current authority, and Clear Inbox does not clear Notification Center history. This documented history behavior is acceptable; exact owned-ID reconciliation would improve later UX. |
+| C13 profiles | Actual cold independent windows used configured15/60/30fps ceilings, with observed sustained decoded rates about14.94/34.72/25.52fps. Existing windows retained their earlier configuration after profile changes. This proves profile configuration plus a visible sustained effect, not guaranteed60fps, strict per-second encoder ceilings or battery savings. The old diagnostic `passed:false` records remain; their invented minimum/arrival ceilings were explicitly rejected as a product contract, not silently relaxed. |
+| C08 result truthfulness | Current phone source explicitly says audio preference saved/output unconfirmed for a committed route lacking confirmed output. Code10 preserves unknown/expired uncertainty and asks users to inspect the Mac before a new deliberate request; it does not infer no effect or replay automatically. At32 unknown local keys the Activity may need recreation; this bounded fail-closed usability limit is documented separately. No physical audibility claim. |
+
+### Blocking final acceptance gaps
+
+No new source blocker was found beyond the already assigned notification/private
+replacement and fallback input remediation. Final release acceptance still needs:
+
+1. The new installed artifact cohort to demonstrate current notification origin,
+   private replacement/removal, revoked/changed trust and denied-permission in-app
+   behavior; fixture tests and build6 actions cannot stand in for that smoke test.
+2. Actual Spotlight index/search/activation evidence, or an explicit verified host
+   limitation with the remaining requirement left unproven. Wrapper creation and
+   LaunchServices identity alone do not establish Spotlight discovery.
+3. Updated fallback mouse input on API37. Build6's normal-hover path recorded zero
+   taps while its no-hover diagnostic recorded a real tap; the final integration
+   must demonstrate the fix rather than relabel the failed run.
+4. Final artifact/source/signature binding, public release metadata/download and
+   installed update/recovery checks for C14/C15. Existing source/older artifact
+   passes are useful evidence but are not a public delivery pass.
+
+The complete C01–C15 ledger remains in scope. Successful actual build6 sharing,
+clipboard, in-app replies and profile behavior are accepted at their demonstrated
+boundaries; unresolved final-cohort/indexing/delivery gates remain explicit.

@@ -55,6 +55,7 @@ private struct BrokerDevice: Codable {
 private struct BrokerInbox: Codable {
     let id: String; let deviceID: String; let kind: String; let created: Date
     var payload: [String: CompanionJSON]
+    var trustID: String? = nil
 }
 private struct BrokerStopAll: Codable {
     let id: String; let deviceID: String; let children: [String]; let expires: Date; var delivered: Bool; let phoneReceipt: Bool?
@@ -135,6 +136,7 @@ public actor CompanionBrokerEngine {
     private var connecting = Set<String>()
     private var pairings: [String: BrokerPair] = [:]
     private var pollers: [String: Task<Void, Never>] = [:]
+    private var pollerTokens: [String: UUID] = [:]
     private var maintenance: Task<Void, Never>?
     private var receiptDelivery: Task<Void, Never>?
     private var receiptDeliveryGeneration: UUID?
@@ -204,7 +206,7 @@ public actor CompanionBrokerEngine {
         }
     }
     public func shutdown() async {
-        stopping = true; maintenance?.cancel(); receiptDelivery?.cancel(); for task in pollers.values { task.cancel() }; pollers.removeAll()
+        stopping = true; maintenance?.cancel(); receiptDelivery?.cancel(); for task in pollers.values { task.cancel() }; pollers.removeAll(); pollerTokens.removeAll()
         await receiptDelivery?.value; receiptDelivery = nil
         for serial in Array(transports.keys) { _ = removeTransport(serial: serial) }
         for (generation, forward) in startingForwards { retiringForwards[generation] = forward }
@@ -427,9 +429,36 @@ public actor CompanionBrokerEngine {
                   result["request_id"]?.string.flatMap(UUID.init(uuidString:)) == requestID else { throw CompanionBoundaryError("invalid_selection_receipt", "The phone did not confirm this exact export selection.") }
             let receipt = try await applyExport(deviceID: deviceID, id: requestID.uuidString, payload: result)
             return ["request_id": .string(requestID.uuidString.lowercased()), "status": .string(receipt?.status ?? "applied"), "result": .object(receipt?.result ?? ["stale": .bool(true)])]
-        case "clipboard_send", "share_send", "notification_reply", "notification_dismiss", "notification_preferences", "command":
+        case "notification_preferences", "notification_reply", "notification_dismiss":
+            let expectedTrust = try uuid(p, "expected_trust_id")
+            let epoch = trustEpochs[deviceID]
+            guard storage.devices.contains(where: { $0.deviceID == deviceID && $0.enabled && $0.trustID == expectedTrust }) else { throw CompanionBoundaryError("trust_changed", "The phone pairing changed. Inspect its current state before changing notification sharing.") }
+            guard transport.hello.capabilities.contains("notification_scope_v2") else { throw CompanionBoundaryError("companion_update_required", "Update the Android companion before controlling notification sharing or actions.") }
+            var payload = p["payload"]?.object ?? [:]
+            if let supplied = payload["expected_trust_id"]?.string, UUID(uuidString: supplied)?.uuidString.lowercased() != expectedTrust { throw CompanionBoundaryError("trust_changed", "The notification action belongs to a different pairing.") }
+            payload["expected_trust_id"] = .string(expectedTrust)
+            let kind = operation == "notification_dismiss" ? "dismiss_notification" : operation
+            func hasOrigin() -> Bool {
+                operation == "notification_preferences" || self.storage.inbox.contains { $0.deviceID == deviceID && $0.kind == "notification_posted" && $0.trustID == expectedTrust && $0.payload["notification_key"] == payload["notification_key"] && $0.payload["action_id"] == payload["action_id"] }
+            }
+            guard hasOrigin() else { throw CompanionBoundaryError("notification_unavailable", "This notification belongs to an older pairing or action. Refresh the notification list.") }
+            #if DEBUG
+            try await testingHooks?.checkpoint("notification_preferences_pre_lane", deviceID)
+            #endif
+            return try await control(deviceID: deviceID) {
+                guard !self.stopping, self.trustEpochs[deviceID] == epoch,
+                      self.storage.devices.contains(where: { $0.deviceID == deviceID && $0.enabled && $0.trustID == expectedTrust }),
+                      self.verified(deviceID)?.generation == transport.generation else { throw CompanionBoundaryError("trust_changed", "The phone pairing changed before the notification action was admitted.") }
+                guard hasOrigin() else { throw CompanionBoundaryError("notification_unavailable", "This notification was replaced before the action was admitted.") }
+                let result = try await client.sendCommand(kind: kind, payload: payload, requestID: requestID)
+                guard !self.stopping, self.trustEpochs[deviceID] == epoch,
+                      self.storage.devices.contains(where: { $0.deviceID == deviceID && $0.enabled && $0.trustID == expectedTrust }),
+                      self.verified(deviceID)?.generation == transport.generation else { throw CompanionBoundaryError("notification_outcome_unknown", "Notification sharing may have changed before pairing authority changed. Inspect the phone's current sharing state before retrying.") }
+                return try Self.object(result)
+            }
+        case "clipboard_send", "share_send", "command":
             let kind: String
-            switch operation { case "clipboard_send": kind = "clipboard_text"; case "notification_reply": kind = "notification_reply"; case "notification_dismiss": kind = "dismiss_notification"; case "notification_preferences": kind = "notification_preferences"; default: kind = try string(p, "kind") }
+            switch operation { case "clipboard_send": kind = "clipboard_text"; default: kind = try string(p, "kind") }
             let payload = p["payload"]?.object ?? [:]
             if operation == "command" { guard ["open_app", "stop_session", "set_audio_route", "set_profile", "diagnostics_request", "share_text", "share_url"].contains(kind) else { throw CompanionBoundaryError("unsupported_command", "Unsupported companion command.") } }
             return try await control(deviceID:deviceID) { try Self.object(await client.sendCommand(kind: kind, payload: payload, requestID: requestID)) }
@@ -722,20 +751,40 @@ public actor CompanionBrokerEngine {
     }
     private func startPoller(_ deviceID: String) {
         pollers.removeValue(forKey: deviceID)?.cancel()
+        pollerTokens.removeValue(forKey: deviceID)
+        guard let generation = verified(deviceID)?.generation else { return }
+        let token = UUID(); pollerTokens[deviceID] = token
         pollers[deviceID] = Task { [weak self] in
             while !Task.isCancelled {
-                guard let self else { return }
-                do { try await self.poll(deviceID) }
-                catch { await self.pollFailed(deviceID, error: error); return }
+                guard let self, await self.ownsPoller(deviceID, generation: generation, token: token) else { return }
+                do { try await self.poll(deviceID, expectedGeneration: generation) }
+                catch {
+                    guard !Task.isCancelled else { return }
+                    await self.pollFailed(deviceID, error: error, expectedGeneration: generation, token: token)
+                    return
+                }
             }
         }
     }
-    private func poll(_ deviceID: String) async throws {
-        guard let transport = verified(deviceID), let device = storage.devices.first(where: { $0.deviceID == deviceID }) else { throw CompanionBoundaryError("phone_unavailable", "Phone disconnected.") }
+    private func ownsPoller(_ deviceID: String, generation: UUID, token: UUID) -> Bool {
+        !stopping && pollerTokens[deviceID] == token && verified(deviceID)?.generation == generation
+    }
+    private func poll(_ deviceID: String, expectedGeneration: UUID) async throws {
+        guard let transport = verified(deviceID), transport.generation == expectedGeneration,
+              let device = storage.devices.first(where: { $0.deviceID == deviceID }) else { throw CompanionBoundaryError("phone_unavailable", "Phone disconnected.") }
         let page = try await transport.client.events(after: device.sequence, epoch: device.epoch)
+        #if DEBUG
+        try await testingHooks?.checkpoint("events_received", deviceID)
+        #endif
         guard verified(deviceID)?.generation == transport.generation, !Task.isCancelled else { throw CancellationError() }
         guard let index = storage.devices.firstIndex(where: { $0.deviceID == deviceID }) else { return }
-        if page.resetRequired { storage.devices[index].sequence = 0; storage.devices[index].epoch = page.epoch }
+        if page.resetRequired || (storage.devices[index].epoch != nil && storage.devices[index].epoch != page.epoch) {
+            // A discontinuous stream cannot prove old notifications are still
+            // active. Clear only their local projections before fresh events;
+            // never dismiss on Android or discard explicit shares/files.
+            storage.inbox.removeAll { $0.deviceID == deviceID && $0.kind == "notification_posted" }
+            storage.devices[index].sequence = 0; storage.devices[index].epoch = page.epoch
+        }
         for event in page.events {
             guard verified(deviceID)?.generation == transport.generation, !Task.isCancelled else { throw CancellationError() }
             await receive(event, deviceID: deviceID, transport: transport)
@@ -782,18 +831,27 @@ public actor CompanionBrokerEngine {
         } else if ["clipboard", "clipboard_text", "share", "share_text", "share_url", "file_shared", "notification_posted", "notification_removed", "catalog_changed"].contains(event.kind) {
             guard !storage.inbox.contains(where: { $0.id == event.eventId }) else { return }
             if event.kind == "notification_posted" || event.kind == "notification_removed" {
+                guard let origin = event.targetTrustId.flatMap(UUID.init(uuidString:))?.uuidString.lowercased(),
+                      storage.devices.contains(where: { $0.deviceID == deviceID && $0.enabled && $0.trustID == origin }) else { return }
                 let key = event.payload["notification_key"]?.string
                 storage.inbox.removeAll { $0.deviceID == deviceID && $0.kind == "notification_posted" && $0.payload["notification_key"]?.string == key }
                 if event.kind == "notification_removed" { return }
             }
-            storage.inbox.append(.init(id: event.eventId, deviceID: deviceID, kind: event.kind, created: Date(), payload: event.payload))
+            storage.inbox.append(.init(id: event.eventId, deviceID: deviceID, kind: event.kind, created: Date(), payload: event.payload, trustID: event.kind == "notification_posted" ? event.targetTrustId?.lowercased() : nil))
             boundInbox()
         }
     }
-    private func pollFailed(_ deviceID: String, error: Error) async {
-        guard let device = storage.devices.first(where: { $0.deviceID == deviceID }), let transport = removeTransport(serial: device.preferredSerial) else { return }
+    private func pollFailed(_ deviceID: String, error: Error, expectedGeneration: UUID, token: UUID) async {
+        guard !stopping, pollerTokens[deviceID] == token,
+              let current = verified(deviceID), current.generation == expectedGeneration,
+              let transport = removeTransport(serial: current.serial) else { return }
+        pollerTokens.removeValue(forKey: deviceID)
         pollers.removeValue(forKey: deviceID)
-        if let i = storage.devices.firstIndex(where: { $0.deviceID == deviceID }) { storage.devices[i].lastError = (error as? CompanionBoundaryError)?.code ?? "connection_lost"; try? persist() }
+        let code = (error as? CompanionBoundaryError)?.code ?? "connection_lost"
+        if ["unauthorized", "trust_revoked", "http_401"].contains(code) {
+            storage.inbox.removeAll { $0.deviceID == deviceID && $0.kind == "notification_posted" }
+        }
+        if let i = storage.devices.firstIndex(where: { $0.deviceID == deviceID }) { storage.devices[i].lastError = code; try? persist() }
         _ = await retireForward(transport)
     }
     /// Register cleanup ownership synchronously, before any fallible journal or

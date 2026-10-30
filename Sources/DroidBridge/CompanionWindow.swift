@@ -3,7 +3,7 @@ import UserNotifications
 import UniformTypeIdentifiers
 import DroidBridgeCore
 
-@MainActor final class CompanionWindowController: NSWindowController, NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate {
+@MainActor final class CompanionWindowController: NSWindowController, NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate {
     private let adapter: CompanionDesktopAdapter
     private let phones = NSPopUpButton(), adbDevices = NSPopUpButton()
     private let status = NSTextField(wrappingLabelWithString: "Choose an authorized Android device, start its companion service, then connect and pair.")
@@ -49,15 +49,34 @@ import DroidBridgeCore
     private var presentedSessions: [[String: CompanionJSON]] = []
     private var presentedSessionPhone: String?
     private var presentedProfile: CompanionPerformanceProfile?
+    private var presentedNotificationTrust: String?
     private var favoritePackages = Set<String>()
     private lazy var transfers = CompanionTransfers(broker: adapter.broker)
+    private let authorizeNotifications: @MainActor () async throws -> Bool
+    private var notificationIntent = UUID()
+    private var actionToken = UUID(), windowClosed = false
+    private let notificationsAuthorized: @MainActor () async -> Bool
+    private let postNotification: @MainActor (UNNotificationRequest) async throws -> Void
+    private let removeNotifications: @MainActor ([String]) -> Void
 
-    init(adapter: CompanionDesktopAdapter) {
+    init(adapter: CompanionDesktopAdapter, authorizeNotifications: @escaping @MainActor () async throws -> Bool = {
+        try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
+    }, notificationsAuthorized: @escaping @MainActor () async -> Bool = {
+        await UNUserNotificationCenter.current().notificationSettings().authorizationStatus == .authorized
+    }, postNotification: @escaping @MainActor (UNNotificationRequest) async throws -> Void = {
+        try await UNUserNotificationCenter.current().add($0)
+    }, removeNotifications: @escaping @MainActor ([String]) -> Void = {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: $0)
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: $0)
+    }) {
         self.adapter = adapter
+        self.authorizeNotifications = authorizeNotifications
+        self.notificationsAuthorized = notificationsAuthorized; self.postNotification = postNotification; self.removeNotifications = removeNotifications
         let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 900, height: 760), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         window.title = "DroidBridge Companion"; window.contentMinSize = NSSize(width: 700, height: 570); window.isReleasedWhenClosed = false; window.center()
         window.contentView = LauncherBackground()
         super.init(window: window)
+        window.delegate = self
         build()
         transfers.onChange = { [weak self] in guard let self else { return }; self.transferStatus.stringValue = self.transfers.message }
         adapter.onChange = { [weak self] in self?.refreshState() }
@@ -71,6 +90,11 @@ import DroidBridgeCore
         refreshState()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
+    override func showWindow(_ sender: Any?) { windowClosed = false; super.showWindow(sender) }
+    func windowWillClose(_ notification: Notification) {
+        windowClosed = true; notificationIntent = UUID(); actionToken = UUID()
+        action?.cancel(); action = nil; progress.stopAnimation(nil)
+    }
     private var phone: CompanionDesktopDevice? { adapter.devices.first { $0.id == selectedID } }
     private var localDefaults: UserDefaults { CompanionQAScope.current.flatMap { UserDefaults(suiteName: "dev.droidbridge.companion.qa.\($0.serviceSuffix)") } ?? .standard }
     private var serial: String? { adbDevices.selectedItem?.representedObject as? String ?? adapter.launcher?.selectedDevice?.serial }
@@ -138,7 +162,7 @@ import DroidBridgeCore
     }
     private func buildNotifications() {
         notificationOptIn.target = self; notificationOptIn.action = #selector(setNotifications)
-        notificationFilters.placeholderString = "Advanced: comma-separated package names (optional)"; notificationFilters.setAccessibilityLabel("Advanced notification package allowlist")
+        notificationFilters.placeholderString = "Advanced: comma-separated package names (optional)"; notificationFilters.setAccessibilityLabel("Advanced notification package allowlist"); notificationFilters.delegate = self
         notificationSearch.placeholderString = "Search app names for notification filters"; notificationSearch.delegate = self; notificationSearch.setAccessibilityLabel("Notification app filter search")
         let column = NSTableColumn(identifier: .init("notification-app")); column.width = 600; notificationTable.addTableColumn(column); notificationTable.headerView = nil; notificationTable.rowHeight = 34; notificationTable.delegate = self; notificationTable.dataSource = self; notificationTable.setAccessibilityLabel("Apps permitted to mirror notifications")
         let scroll = NSScrollView(); scroll.documentView = notificationTable; scroll.hasVerticalScroller = true; scroll.heightAnchor.constraint(equalToConstant: 180).isActive = true
@@ -171,6 +195,10 @@ import DroidBridgeCore
         if let previous, let index = phones.itemArray.firstIndex(where: { ($0.representedObject as? String) == previous }) { phones.selectItem(at: index) }
         else if let serial = adapter.launcher?.selectedDevice?.serial, let device = adapter.device(for: serial), let index = adapter.devices.firstIndex(where: { $0.id == device.id }) { phones.selectItem(at: index) }
         selectedID = phones.selectedItem?.representedObject as? String
+        let notificationTrust = phone.flatMap { value in value.trustID.map { value.id + ":" + $0 } }
+        if presentedNotificationTrust != notificationTrust {
+            presentedNotificationTrust = notificationTrust; notificationIntent = UUID(); notificationOptIn.state = .off; renderInbox()
+        }
         let selectedSerial = serial
         if presentedADBDevices != adapter.launcher?.devices ?? [] {
             adbDevices.removeAllItems()
@@ -186,6 +214,7 @@ import DroidBridgeCore
     }
     @objc private func phoneChanged() { selectedID = phones.selectedItem?.representedObject as? String; clearPhoneContent(); refreshState(); loadCatalog(); loadTrusts(); Task { await loadInbox(force: true) } }
     private func clearPhoneContent() {
+        notificationIntent = UUID()
         catalogTask?.cancel(); catalogToken = UUID(); apps = []; filtered = []; selection = [:]; pendingExports.removeAll(); appTable.reloadData(); items = []; renderInbox(); trusts.setViews([]); diagnostics.string = ""; appStatus.stringValue = "Choose Refresh Catalog to read this paired phone's apps."
         for task in iconTasks.values { task.cancel() }; iconTasks.removeAll(); iconQueue.removeAll(); icons.removeAll()
         favoritePackages = Set(localDefaults.stringArray(forKey: "companion-favorites-\(selectedID ?? "none")") ?? [])
@@ -196,10 +225,11 @@ import DroidBridgeCore
     private func run(_ message: String, action work: @escaping () async throws -> String) {
         guard action == nil else { status.stringValue = "Wait for the current action or cancel it first."; return }
         status.stringValue = message; progress.startAnimation(nil)
+        let token = UUID(); actionToken = token
         action = Task { [weak self] in
             do { let result = try await work(); if !Task.isCancelled { self?.status.stringValue = result } }
             catch { if !Task.isCancelled { self?.status.stringValue = error.localizedDescription } }
-            self?.progress.stopAnimation(nil); self?.action = nil
+            if self?.actionToken == token { self?.progress.stopAnimation(nil); self?.action = nil }
         }
     }
     private func connect() {
@@ -376,7 +406,7 @@ import DroidBridgeCore
             } catch { if !Task.isCancelled, self.catalogToken == token { self.appStatus.stringValue = error.localizedDescription + " Existing Android app launching remains available." } }
         }
     }
-    func controlTextDidChange(_ obj: Notification) { if obj.object as? NSSearchField === notificationSearch { filterNotificationApps() } else { filterApps() } }
+    func controlTextDidChange(_ obj: Notification) { if obj.object as? NSTextField === notificationFilters { notificationIntent = UUID() } else if obj.object as? NSSearchField === notificationSearch { filterNotificationApps() } else { filterApps() } }
     private func filterApps() { let query = appSearch.stringValue; filtered = apps.filter { query.isEmpty || $0.label.localizedCaseInsensitiveContains(query) || $0.packageName.localizedCaseInsensitiveContains(query) }.sorted { a, b in let af = favoritePackages.contains(a.packageName), bf = favoritePackages.contains(b.packageName); return af != bf ? af : a.label.localizedStandardCompare(b.label) == .orderedAscending }; appTable.reloadData(); filterNotificationApps() }
     private func filterNotificationApps() { let query = notificationSearch.stringValue; notificationApps = apps.filter { query.isEmpty || $0.label.localizedCaseInsensitiveContains(query) || $0.packageName.localizedCaseInsensitiveContains(query) }; notificationTable.reloadData() }
     func numberOfRows(in tableView: NSTableView) -> Int { tableView === notificationTable ? notificationApps.count : filtered.count }
@@ -387,6 +417,7 @@ import DroidBridgeCore
             return CompanionCheckCell(button: check) { [weak self] selected in
                 guard let self else { return }; if selected { self.notificationSelection.insert(app.packageName) } else { self.notificationSelection.remove(app.packageName) }
                 self.notificationFilters.stringValue = self.notificationSelection.sorted().joined(separator: ", ")
+                self.notificationIntent = UUID()
             }
         }
         guard filtered.indices.contains(index) else { return nil }; let app = filtered[index]
@@ -485,7 +516,7 @@ import DroidBridgeCore
         guard let phone else { return }; let panel = NSOpenPanel(); panel.canChooseDirectories = false; panel.allowsMultipleSelection = false
         if panel.runModal() == .OK, let url = panel.url { transfers.send(url, device: phone.id) }
     }
-    private func loadInbox(force: Bool = false) async {
+    func loadInbox(force: Bool = false) async {
         guard let phone, phone.connected, force || Date().timeIntervalSince(lastInbox) >= 3 else { return }; lastInbox = Date()
         do {
             var result: [[String: CompanionJSON]] = [], cursor: String?
@@ -505,8 +536,11 @@ import DroidBridgeCore
             guard let kind = item["kind"]?.string, let payload = item["payload"]?.object else { continue }
             if kind == "notification_posted" {
                 var controls: [NSView] = [label(String((payload["title"]?.string ?? "Notification").prefix(256))), label(String((payload["text"]?.string ?? "").prefix(2048)))]
-                if payload["can_reply"]?.bool == true { controls.append(button("Reply…") { [weak self] in self?.replyNotification(payload) }) }
-                controls.append(button("Dismiss on Phone") { [weak self] in self?.notificationAction("notification_dismiss", payload: payload) }); noteRows.append(column(controls)); continue
+                if let origin = item["trust_id"]?.string.flatMap({ UUID(uuidString: $0)?.uuidString.lowercased() }), origin == phone?.trustID, phone?.paired == true, phone?.capabilities.contains("notification_scope_v2") == true {
+                    if payload["can_reply"]?.bool == true { controls.append(button("Reply…") { [weak self] in self?.replyNotification(payload, trustID: origin) }) }
+                    controls.append(button("Dismiss on Phone") { [weak self] in self?.notificationAction("notification_dismiss", payload: payload, trustID: origin) })
+                } else { controls.append(label("Historical notification. Phone actions are unavailable for this pairing.")) }
+                noteRows.append(column(controls)); continue
             }
             if kind == "file_shared" { let size = payload["size"]?.number.flatMap { $0.isFinite && $0 >= 0 && $0 <= 52_428_800 && $0.rounded() == $0 ? "\(Int($0)) bytes" : nil } ?? "size unknown"; shareRows.append(row([label("File · \(payload["display_name"]?.string ?? "Shared file") · \(size)"), button("Save File…") { [weak self] in self?.saveReceivedFile(payload) }])); continue }
             guard ["share_text", "share_url", "clipboard", "clipboard_text", "share"].contains(kind), let text = payload["text"]?.string else { continue }
@@ -533,39 +567,56 @@ import DroidBridgeCore
         }
     }
     @objc private func setNotifications() {
-        guard let phone else { return }
+        guard let phone, phone.paired, let trustID = phone.trustID else { notificationStatus.stringValue = "Pair this phone before changing notification sharing."; return }
+        guard phone.capabilities.contains("notification_scope_v2") else { notificationStatus.stringValue = "Update the Android companion to change notification sharing safely."; return }
         let packages = notificationFilters.stringValue.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
         guard packages.count <= 64, packages.allSatisfy({ (try? AndroidDiscovery.validatePackage($0)) != nil }) else { notificationStatus.stringValue = "Use at most 64 valid Android package names separated by commas."; return }
         let enabled = notificationOptIn.state == .on
+        let intent = UUID(); notificationIntent = intent
         run("Updating notification permissions and filters…") { [weak self] in
             guard let self else { throw CancellationError() }
             if enabled {
-                let allowed = try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
+                let allowed = try await self.authorizeNotifications()
+                try Task.checkCancellation()
+                guard self.notificationContextValid(intent: intent, phoneID: phone.id, trustID: trustID), self.notificationPackages == packages, self.notificationOptIn.state == (enabled ? .on : .off) else { throw CancellationError() }
                 self.notificationStatus.stringValue = allowed ? "Mac notification permission granted. Android notification access and app filters still apply." : "Mac notification permission denied. Mirrored items remain available inside DroidBridge; change permission in System Settings if desired."
             }
-            let result = try await self.adapter.broker.request(operation: "notification_preferences", payload: ["device_id": .string(phone.id), "payload": .object(["enabled": .bool(enabled), "packages": .array(packages.map(CompanionJSON.string))])])
+            try Task.checkCancellation()
+            guard self.notificationContextValid(intent: intent, phoneID: phone.id, trustID: trustID), self.notificationPackages == packages, self.notificationOptIn.state == (enabled ? .on : .off) else { throw CancellationError() }
+            let result = try await self.adapter.broker.request(operation: "notification_preferences", payload: ["device_id": .string(phone.id), "expected_trust_id": .string(trustID), "payload": .object(["enabled": .bool(enabled), "packages": .array(packages.map(CompanionJSON.string))])])
             return "Notification preference receipt: \(result.data["status"]?.string ?? "accepted"). The phone's permission state is available in Diagnostics."
         }
     }
-    private func showNotifications() async {
-        guard notificationOptIn.state == .on else { return }
-        let settings = await UNUserNotificationCenter.current().notificationSettings(); guard settings.authorizationStatus == .authorized else { return }
-        for item in items where item["kind"]?.string == "notification_posted" {
+    private var notificationPackages: [String] { notificationFilters.stringValue.split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty } }
+    private func notificationContextValid(intent: UUID, phoneID: String, trustID: String) -> Bool {
+        !stopped && !windowClosed && !Task.isCancelled && notificationIntent == intent && phone?.id == phoneID && phone?.paired == true && phone?.trustID == trustID
+    }
+    func showNotifications() async {
+        guard notificationOptIn.state == .on, let phone, let trustID = phone.trustID, phone.capabilities.contains("notification_scope_v2") else { return }
+        let intent = notificationIntent, snapshot = items
+        guard await notificationsAuthorized(), notificationContextValid(intent: intent, phoneID: phone.id, trustID: trustID), notificationOptIn.state == .on else { return }
+        for item in snapshot where item["kind"]?.string == "notification_posted" {
+            guard notificationContextValid(intent: intent, phoneID: phone.id, trustID: trustID), notificationOptIn.state == .on else { return }
             guard let id = item["id"]?.string, !mirrorShown.contains(id), let p = item["payload"]?.object else { continue }
+            guard item["trust_id"]?.string.flatMap({ UUID(uuidString: $0)?.uuidString.lowercased() }) == trustID else { continue }
+            guard items.contains(where: { $0["id"]?.string == id && $0 == item }) else { continue }
             let content = UNMutableNotificationContent(); content.title = String((p["package_name"]?.string ?? "Android phone").prefix(128)); content.body = "New phone notification. Open DroidBridge to view it."; content.userInfo = ["companion_item": id]; content.threadIdentifier = "droidbridge-companion"
-            try? await UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: "companion-\(id)", content: content, trigger: nil)); mirrorShown.insert(id)
+            let identifier = "companion-\(id)"
+            do { try await postNotification(UNNotificationRequest(identifier: identifier, content: content, trigger: nil)) } catch { continue }
+            guard notificationContextValid(intent: intent, phoneID: phone.id, trustID: trustID), notificationOptIn.state == .on, items.contains(where: { $0["id"]?.string == id && $0 == item }) else { removeNotifications([identifier]); return }
+            mirrorShown.insert(id)
             if mirrorShown.count > 512 { mirrorShown.removeAll(keepingCapacity: true) }
         }
     }
-    private func replyNotification(_ p: [String: CompanionJSON]) {
+    private func replyNotification(_ p: [String: CompanionJSON], trustID: String) {
         let alert = NSAlert(); alert.messageText = "Reply to phone notification"; alert.informativeText = "Android revalidates the current reply action before sending."; let text = NSTextField(frame: NSRect(x: 0, y: 0, width: 420, height: 26)); text.setAccessibilityLabel("Phone notification reply"); alert.accessoryView = text; alert.addButton(withTitle: "Send Reply"); alert.addButton(withTitle: "Cancel")
         guard alert.runModal() == .alertFirstButtonReturn, !text.stringValue.isEmpty, text.stringValue.utf8.count <= 4096 else { return }
-        var payload = p; payload["text"] = .string(text.stringValue); notificationAction("notification_reply", payload: payload)
+        var payload = p; payload["text"] = .string(text.stringValue); notificationAction("notification_reply", payload: payload, trustID: trustID)
     }
-    private func notificationAction(_ operation: String, payload: [String: CompanionJSON]) {
-        guard let phone, let key = payload["notification_key"]?.string, let id = payload["action_id"]?.string else { status.stringValue = "This notification no longer has a usable action. Refresh the inbox."; return }
+    private func notificationAction(_ operation: String, payload: [String: CompanionJSON], trustID: String) {
+        guard let phone, phone.paired, phone.trustID == trustID, phone.capabilities.contains("notification_scope_v2"), let key = payload["notification_key"]?.string, let id = payload["action_id"]?.string else { status.stringValue = "This notification no longer has a usable action for this pairing. Refresh the inbox."; return }
         var p: [String: CompanionJSON] = ["notification_key": .string(key), "action_id": .string(id)]; if operation == "notification_reply" { p["text"] = payload["text"] }
-        run("Sending notification action…") { [weak self] in guard let self else { throw CancellationError() }; let reply = try await self.adapter.broker.request(operation: operation, payload: ["device_id": .string(phone.id), "payload": .object(p)]); return "Notification action: \(reply.data["status"]?.string ?? "accepted")." }
+        run("Sending notification action…") { [weak self] in guard let self else { throw CancellationError() }; let reply = try await self.adapter.broker.request(operation: operation, payload: ["device_id": .string(phone.id), "expected_trust_id": .string(trustID), "payload": .object(p)]); return "Notification action: \(reply.data["status"]?.string ?? "accepted")." }
     }
     private func setProfile() { guard let phone else { return }; let value = ["balanced", "responsive", "battery"][max(0, min(2, profile.indexOfSelectedItem))]; run("Saving performance profile…") { [weak self] in guard let self else { throw CancellationError() }; let id = UUID(); _ = try await self.adapter.broker.request(operation: "profile_set", payload: ["device_id": .string(phone.id), "profile": .string(value)], requestID: id); let result = try await self.waitForHostReceipt(id, device: phone.id, pending: "Profile accepted; waiting for the Mac owner…"); try await self.adapter.refreshStatus(); return result + " · New app windows only; existing frame rates are preserved." } }
     private func loadDiagnostics() {

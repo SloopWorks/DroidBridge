@@ -75,6 +75,9 @@ class BridgeStore private constructor(val context: Context) {
     }
 
 
+    private data class NotificationExposure(val packageName: String, val actionId: String, val recipients: MutableSet<String>, val delivered: MutableSet<String>)
+    private val notificationExposure = LinkedHashMap<String, NotificationExposure>()
+
     val transfers by lazy { BridgeTransfers(context, this) }
     @Volatile var running = false
     @Volatile var lastError: String? = null
@@ -86,7 +89,10 @@ class BridgeStore private constructor(val context: Context) {
     }
     val deviceId: String = prefs.getString("device_id", null) ?: java.util.UUID.randomUUID().toString().also { prefs.edit().putString("device_id", it).apply() }
     fun setting(name: String, default: Boolean = false) = prefs.getBoolean(name, default)
-    fun setting(name: String, value: Boolean, unused: Unit = Unit) { prefs.edit().putBoolean(name, value).apply() }
+    @Synchronized fun setting(name: String, value: Boolean, unused: Unit = Unit) {
+        prefs.edit().putBoolean(name, value).apply()
+        if (name == "notifications_enabled") reconcileNotifications()
+    }
     @Synchronized fun startPairing(): String {
         pendingPair = null; pairingSecret = ProtocolRules.token(); pairingDeadline = android.os.SystemClock.elapsedRealtime() + 120_000
         return pairingSecret!!
@@ -169,6 +175,8 @@ class BridgeStore private constructor(val context: Context) {
     @Synchronized fun revoke(macId: String) {
         val value = trusted(); value.remove(macId); credentials.write(value.toString())
         peerStates.remove(macId); catalogViews.remove(macId)
+        notificationExposure.values.forEach { it.recipients.remove(macId); it.delivered.remove(macId) }
+        notificationExposure.filterValues { it.recipients.isEmpty() }.keys.toList().forEach { key -> notificationExposure.remove(key); BridgeNotifications.forgetAction(key) }
         received.entries.removeAll { it.value.getString("trust_id") == macId }; runCatching { receivedJournal.write(JSONArray(received.values.toList()).toString()) }
         outcomes.values.filter { it.getString("trust_id") == macId && it.getString("status") in listOf("queued", "accepted", "admitted") }.forEach {
             val admitted = it.getString("status") == "admitted"
@@ -180,44 +188,115 @@ class BridgeStore private constructor(val context: Context) {
 
     fun hello(): JSONObject = JSONObject().put("protocol_min", 1).put("protocol_max", 1).put("device_id", deviceId)
         .put("device_name", "${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}")
-        .put("capabilities", JSONArray(listOf("catalog", "icons", "events", "commands", "sessions", "share", "files", "clipboard", "notifications", "notification_replies", "profiles", "diagnostics", "delivery", "state_heartbeat", "clock_anchor_v1")))
+        .put("capabilities", JSONArray(listOf("catalog", "icons", "events", "commands", "sessions", "share", "files", "clipboard", "notifications", "notification_replies", "profiles", "diagnostics", "delivery", "state_heartbeat", "clock_anchor_v1", "notification_scope_v2")))
         .put("server_time", java.time.Instant.now().epochSecond).put("server_uptime_ms", android.os.SystemClock.elapsedRealtime()).put("clock_epoch", epoch)
         .put("catalog_revision", revision).put("pairing_available", pairing() != null).put("permissions", JSONObject().put("notifications", setting("notifications_enabled").toString()).put("clipboard", setting("clipboard_enabled").toString()))
-    fun event(kind: String, payload: JSONObject, recipient: String? = null): Long = synchronized(eventLock) {
+    fun event(kind: String, payload: JSONObject, recipient: String? = null): Long = appendEvent(kind, payload, recipient, false)
+    private fun appendEvent(kind: String, payload: JSONObject, recipient: String?, notificationCleanup: Boolean): Long = synchronized(eventLock) {
         require(payload.toString().toByteArray().size <= 70_000)
         val seq = ++sequence
         val item = JSONObject().put("sequence", seq).put("event_id", java.util.UUID.randomUUID().toString()).put("kind", kind).put("payload", payload).put("created_at", java.time.Instant.now().toString()).put("target_trust_id", recipient ?: JSONObject.NULL)
+        if (notificationCleanup) item.put("notification_cleanup", true)
         events.addLast(item); eventBytes += item.toString().toByteArray().size
         while (events.size > 512 || eventBytes > 1_048_576) eventBytes -= events.removeFirst().toString().toByteArray().size
         eventLock.notifyAll()
         seq
     }
-    fun events(after: Long, limit: Int, waitMs: Long = 0, requestedEpoch: String? = null, trustId: String? = null): JSONObject = synchronized(eventLock) {
+    fun events(after: Long, limit: Int, waitMs: Long = 0, requestedEpoch: String? = null, trustId: String? = null): JSONObject {
         require(after >= 0 && limit in 1..64 && waitMs in 0..25_000)
-        if (sequence <= after && waitMs > 0 && (requestedEpoch == null || requestedEpoch == epoch)) eventLock.wait(waitMs)
+        // Never hold the Store monitor while waiting. Publication and bounded
+        // page filtering consistently acquire Store before eventLock.
+        synchronized(eventLock) {
+            if (sequence <= after && waitMs > 0 && (requestedEpoch == null || requestedEpoch == epoch)) eventLock.wait(waitMs)
+        }
+        return eventPage(after, limit, requestedEpoch, trustId)
+    }
+    @Synchronized private fun eventPage(after: Long, limit: Int, requestedEpoch: String?, trustId: String?): JSONObject = synchronized(eventLock) {
         val mismatch = requestedEpoch != null && requestedEpoch != epoch
         val gap = mismatch || (events.firstOrNull()?.getLong("sequence")?.let { after < it - 1 || after > sequence } ?: (after > sequence))
         val selected = JSONArray(); var bytes = 0; var next = if (mismatch) 0 else after
+        val notificationRecord = trustId?.let { trusted().optJSONObject(it) }
         for (event in events) {
             if (!mismatch && event.getLong("sequence") <= after) continue
             val target = event.optString("target_trust_id", "")
             if (trustId != null && target.isNotEmpty() && target != trustId) { next = event.getLong("sequence"); continue }
-            if (trustId != null && event.getString("kind").startsWith("notification_") && !notificationsAllowed(trustId)) { next = event.getLong("sequence"); continue }
-            val length = event.toString().toByteArray().size
+            val kind = event.getString("kind")
+            if (trustId != null && kind.startsWith("notification_")) {
+                val cleanup = kind == "notification_removed" && target == trustId && event.optBoolean("notification_cleanup")
+                val payload = event.getJSONObject("payload")
+                val exposed = notificationExposure[payload.optString("notification_key")]
+                val contentAllowed = kind == "notification_posted" && exposed?.recipients?.contains(trustId) == true &&
+                    exposed.actionId == payload.optString("action_id") && allowsNotifications(notificationRecord, exposed.packageName)
+                if (!cleanup && !contentAllowed) { next = event.getLong("sequence"); continue }
+            }
+            val publicEvent = JSONObject(event.toString()).apply { remove("notification_cleanup") }
+            val length = publicEvent.toString().toByteArray().size
             if (selected.length() >= limit || bytes + length > 240_000) break
-            selected.put(event); bytes += length; next = event.getLong("sequence")
+            if (trustId != null && kind == "notification_posted") notificationExposure[event.getJSONObject("payload").optString("notification_key")]?.delivered?.add(trustId)
+            selected.put(publicEvent); bytes += length; next = event.getLong("sequence")
         }
         JSONObject().put("events", selected).put("epoch", epoch).put("next_sequence", next).put("reset_required", gap)
     }
     fun selectedTrust(): String? = prefs.getString("selected_trust", null)?.takeIf { trusted().has(it) } ?: trusted().keys().asSequence().singleOrNull()
     fun selectTrust(id: String) { require(trusted().has(id)); prefs.edit().putString("selected_trust", id).apply() }
-    fun notificationsAllowed(id: String, packageName: String? = null): Boolean {
-        val record = trusted().optJSONObject(id) ?: return false
-        if (!setting("notifications_enabled") || !record.optBoolean("notifications", false)) return false
+    private fun allowsNotifications(record: JSONObject?, packageName: String? = null): Boolean {
+        if (record == null || !setting("notifications_enabled") || !record.optBoolean("notifications", false)) return false
         val selected = record.optJSONArray("notification_packages") ?: return true
         return packageName == null || selected.length() == 0 || (0 until selected.length()).any { selected.getString(it) == packageName }
     }
-    @Synchronized fun allowNotifications(id: String, allowed: Boolean) { val value = trusted(); value.getJSONObject(id).put("notifications", allowed); credentials.write(value.toString()) }
+    fun notificationsAllowed(id: String, packageName: String? = null): Boolean = allowsNotifications(trusted().optJSONObject(id), packageName)
+    @Synchronized fun allowNotifications(id: String, allowed: Boolean) {
+        val value = trusted(); value.getJSONObject(id).put("notifications", allowed); credentials.write(value.toString()); reconcileNotifications()
+    }
+    private fun removeExposure(key: String, exposure: NotificationExposure, recipients: Set<String>, liveTrusts: Set<String>) {
+        for (trust in recipients) {
+            if (trust in exposure.delivered && trust in liveTrusts) appendEvent("notification_removed", JSONObject().put("notification_key", key), trust, true)
+            exposure.recipients.remove(trust); exposure.delivered.remove(trust)
+        }
+    }
+    @Synchronized fun publishNotification(key: String, packageName: String, payload: JSONObject?) {
+        require(key.matches(Regex("[a-f0-9]{64}")))
+        if (payload != null) require(ProtocolRules.packageName(packageName))
+        val previous = notificationExposure[key]
+        val records = trusted(); val liveTrusts = records.keys().asSequence().toSet()
+        val recipients = if (payload == null) emptySet() else liveTrusts.filter { allowsNotifications(records.optJSONObject(it), packageName) }.toSet()
+        if (previous != null) removeExposure(key, previous, previous.recipients.toSet() - recipients, liveTrusts)
+        if (recipients.isEmpty()) { notificationExposure.remove(key); BridgeNotifications.forgetAction(key); return }
+        require(payload != null && payload.getString("notification_key") == key && payload.getString("package_name") == packageName)
+        val actionId = payload.getString("action_id"); require(ProtocolRules.identifier(actionId))
+        if (previous == null && notificationExposure.size >= 256) {
+            val oldest = notificationExposure.entries.first()
+            removeExposure(oldest.key, oldest.value, oldest.value.recipients.toSet(), liveTrusts); notificationExposure.remove(oldest.key); BridgeNotifications.forgetAction(oldest.key)
+        }
+        notificationExposure[key] = NotificationExposure(packageName, actionId, recipients.toMutableSet(), previous?.delivered?.intersect(recipients)?.toMutableSet() ?: mutableSetOf())
+        recipients.forEach { event("notification_posted", payload, it) }
+    }
+    @Synchronized fun removeNotification(key: String) {
+        val previous = notificationExposure.remove(key) ?: return
+        removeExposure(key, previous, previous.recipients.toSet(), trusted().keys().asSequence().toSet())
+        BridgeNotifications.forgetAction(key)
+    }
+    @Synchronized fun clearNotificationExposure() {
+        val previous = notificationExposure.toMap(); notificationExposure.clear()
+        val liveTrusts = trusted().keys().asSequence().toSet()
+        previous.forEach { (key, value) -> removeExposure(key, value, value.recipients.toSet(), liveTrusts); BridgeNotifications.forgetAction(key) }
+    }
+    @Synchronized private fun reconcileNotifications() {
+        val records = trusted(); val liveTrusts = records.keys().asSequence().toSet()
+        for ((key, exposure) in notificationExposure.toMap()) {
+            val removed = exposure.recipients.filter { !allowsNotifications(records.optJSONObject(it), exposure.packageName) }.toSet()
+            removeExposure(key, exposure, removed, liveTrusts)
+            if (exposure.recipients.isEmpty()) { notificationExposure.remove(key); BridgeNotifications.forgetAction(key) }
+        }
+    }
+    @Synchronized fun hasNotificationAudience(packageName: String): Boolean {
+        val records = trusted()
+        return records.keys().asSequence().any { allowsNotifications(records.optJSONObject(it), packageName) }
+    }
+    private fun notificationActionAllowed(trust: String, key: String, actionId: String): Boolean {
+        val exposure = notificationExposure[key] ?: return false
+        return trust in exposure.recipients && exposure.actionId == actionId && notificationsAllowed(trust, exposure.packageName)
+    }
     @Synchronized fun refreshCatalog() {
         val pm = context.packageManager
         val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
@@ -519,6 +598,11 @@ class BridgeStore private constructor(val context: Context) {
         if (!trusted().has(trustId)) throw SecurityException("Trust revoked")
         if (!receiptsHealthy) throw BridgeFailure(503, "receipt_store_unavailable")
         val id = request.getString("request_id"); require(runCatching { java.util.UUID.fromString(id) }.isSuccess)
+        val kind = request.getString("kind"); val payload = request.optJSONObject("payload") ?: JSONObject()
+        if (kind in listOf("notification_preferences", "notification_reply", "dismiss_notification")) {
+            val expected = payload.opt("expected_trust_id")
+            if (expected !is String || runCatching { java.util.UUID.fromString(expected).toString() != expected }.getOrDefault(true) || expected != trustId) throw BridgeFailure(409, "trust_changed")
+        }
         val hash = ProtocolRules.hash((trustId + ":" + canonical(request)).toByteArray())
         commandReceipts[id]?.let {
             val receipt = JSONObject(it); if (receipt.getString("hash") != hash) throw BridgeFailure(409, "request_conflict")
@@ -527,10 +611,10 @@ class BridgeStore private constructor(val context: Context) {
         validateCommandClock(request)
         val now = java.time.Instant.now()
         val nowUptime = android.os.SystemClock.elapsedRealtime()
-        val kind = request.getString("kind"); val payload = request.optJSONObject("payload") ?: JSONObject()
         require(kind in listOf("clipboard_text", "share_text", "share_url", "notification_reply", "dismiss_notification", "set_profile", "set_export", "notification_preferences", "ping"))
         when (kind) {
             "set_profile" -> require(payload.getString("profile") in listOf("balanced", "responsive", "battery"))
+            "notification_reply" -> { val text = payload.get("text"); require(text is String && text.length <= 4096 && text.toByteArray(Charsets.UTF_8).size in 1..4096) }
             "set_export" -> { require(ProtocolRules.packageName(payload.getString("package_name"))); require(payload.get("selected") is Boolean) }
             "notification_preferences" -> { require(payload.get("enabled") is Boolean); val packages = payload.getJSONArray("packages"); require(packages.length() <= 256); for (i in 0 until packages.length()) require(ProtocolRules.packageName(packages.getString(i))); if (payload.getBoolean("enabled")) require(setting("notifications_enabled")) { "Enable notification sharing on phone" } }
         }
@@ -549,10 +633,10 @@ class BridgeStore private constructor(val context: Context) {
                 if (kind == "share_url") require(android.net.Uri.parse(text).scheme in listOf("http", "https") && text.length <= 8192)
                 receiveText(trustId, text)
             }
-            "notification_reply" -> { require(notificationsAllowed(trustId)); BridgeNotifications.reply(context, payload.getString("notification_key"), payload.getString("action_id"), payload.getString("text")) }
-            "dismiss_notification" -> { require(notificationsAllowed(trustId)); BridgeNotifications.dismiss(payload.getString("notification_key"), payload.getString("action_id")) }
+            "notification_reply" -> { require(notificationActionAllowed(trustId, payload.getString("notification_key"), payload.getString("action_id"))); BridgeNotifications.reply(context, payload.getString("notification_key"), payload.getString("action_id"), payload.getString("text")) }
+            "dismiss_notification" -> { require(notificationActionAllowed(trustId, payload.getString("notification_key"), payload.getString("action_id"))); BridgeNotifications.dismiss(payload.getString("notification_key"), payload.getString("action_id")) }
             "set_profile" -> profile(payload.getString("profile"))
-            "notification_preferences" -> { val value = trusted(); value.getJSONObject(trustId).put("notifications", payload.getBoolean("enabled")).put("notification_packages", payload.getJSONArray("packages")); credentials.write(value.toString()) }
+            "notification_preferences" -> { val value = trusted(); value.getJSONObject(trustId).put("notifications", payload.getBoolean("enabled")).put("notification_packages", payload.getJSONArray("packages")); credentials.write(value.toString()); reconcileNotifications() }
             "set_export" -> { effectResult = applyExportLocal(payload.getString("package_name"), payload.getBoolean("selected"), trustId, id) }
         }
         receipt.put("status", "applied").put("result", effectResult); commandReceipts[id] = receipt.toString(); persistReceipts()

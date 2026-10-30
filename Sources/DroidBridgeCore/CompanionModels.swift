@@ -52,6 +52,7 @@ struct CompanionPeerClockAnchor: Sendable {
     let wallMS: Double
     let receivedMS: Double
     let roundTripMS: Double
+    let notificationScopeV2: Bool
     init(hello: CompanionHello, sentMS: Double, receivedMS: Double) throws {
         guard hello.capabilities.contains("clock_anchor_v1"), let deviceID = UUID(uuidString: hello.deviceId),
               let rawEpoch = hello.clockEpoch, let epoch = UUID(uuidString: rawEpoch),
@@ -61,6 +62,7 @@ struct CompanionPeerClockAnchor: Sendable {
               receivedMS - sentMS <= 2_000 else { throw CompanionBoundaryError("clock_unavailable", "A fresh bounded phone clock sample is unavailable. Update both applications or reconnect.", retryable: true) }
         self.deviceID = deviceID; self.epoch = epoch; uptimeMS = Double(uptime); wallMS = Double(wall) * 1000
         self.receivedMS = receivedMS; roundTripMS = receivedMS - sentMS
+        notificationScopeV2 = hello.capabilities.contains("notification_scope_v2")
     }
     func elapsed(nowMS: Double) throws -> Double {
         guard nowMS.isFinite, nowMS >= receivedMS, nowMS - receivedMS <= 30_000 else { throw CompanionBoundaryError("clock_stale", "The phone clock sample expired. Refresh the connection.", retryable: true) }
@@ -183,6 +185,7 @@ public struct CompanionEvent: Codable, Sendable {
     public let kind: String
     public let createdAt: String?
     public let payload: [String: CompanionJSON]
+    public var targetTrustId: String? = nil
 }
 public struct CompanionEventPage: Codable, Sendable {
     public let epoch: String

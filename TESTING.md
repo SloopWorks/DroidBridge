@@ -84,3 +84,22 @@ tones; positive audio evidence requires nonzero PCM submitted successfully to SD
 tone frequency/ON-OFF contrast and initialized output, not process/window presence.
 The test-only observer records aggregate metrics, never PCM payload. Physical
 speaker audibility and hardware Pixel behavior remain manual acceptance.
+
+## Companion development candidate
+
+The current Swift source checkpoint passes320 tests, with four explicit opt-in
+live-device skips and zero failures (152.429s). The before/after manifest binds
+126 unchanged source/test files. See
+`verification/companion/security/final-notification-swift-result.json` and its
+full test log. This includes actual pinned-TLS notification-origin, event-reset,
+authorization-failure and cancelled-poller regressions, plus fallback no-hover
+argument-policy tests across API33–37. Tool fixtures do not prove actual Android
+input; the dedicated installed-emulator results remain separate.
+
+Companion program traceability and installed artifact boundaries are maintained
+in `verification/companion/PROGRAM_STATUS.md`. Historical installed build6 proves
+real pairing, retained selections, explicit clipboard/file handoff and in-app
+notification actions. It predates the latest notification hardening and its
+private-replacement and fallback-click failures are retained. Final updated
+artifact, public delivery, performance and platform-blocked checks must be read
+from their exact reports rather than inferred from this source-suite pass.

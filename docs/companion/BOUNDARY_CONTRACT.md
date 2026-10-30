@@ -169,6 +169,25 @@ is opt-in per trust and excludes sensitive/hidden/ongoing categories by default;
 replies invoke only Android's currently advertised RemoteInput action, with
 notification identity revalidated at execution.
 
+The `notification_scope_v2` capability is mandatory for notification preference,
+reply and dismissal commands. Their canonical hashed payload includes
+`expected_trust_id`, a UUID matching the authenticated phone trust. Android checks
+that scope before receipt lookup or effects, including retries. Mac IPC carries
+the same expected trust separately, checks it before and after queue admission,
+and copies it into the wire payload. Replies and dismissals additionally require
+an active inbox row with its original `trust_id`, notification key and action ID;
+legacy rows without origin remain inert. A changed authority after an admitted
+remote effect produces an unknown outcome, not a no-effect rejection.
+
+Notification events retain their original `target_trust_id`. When an exposed
+notification becomes ineligible, cleanup contains only its key and goes only to
+previously exposed recipients; no private replacement content is transmitted.
+The Mac invalidates only that device's active notification rows on a stream reset,
+epoch discontinuity or an event poll's authorization refusal. Explicit shared content history
+and other devices are preserved. This local invalidation never dismisses a phone
+notification. Fresh eligible events may repopulate the view; disconnected rows
+are not evidence that a phone notification remains actionable.
+
 ## File and installer delivery
 
 `POST /v1/transfers` begins an explicit transfer: `{request_id, transfer_id,

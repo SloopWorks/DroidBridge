@@ -727,3 +727,181 @@ Its source never logs decoded barcode payloads and rejects detections for separa
 review. This is a detector result, not proof that arbitrary sensitive content is
 absent; existing text/secret review and deliberate evidence redaction remain
 separate publication controls.
+
+
+### S26 — Notification authorization, origin and asynchronous trust boundaries
+
+The first notification consent patch was rejected: closing the native window did
+not invalidate a pending authorization request; deferred settings/add callbacks
+could post after local opt-out, filter edits or pairing replacement; and a cached
+UI trust check did not bind the eventual Android command. A mutable client can
+refresh its clock or credential between actor suspensions, so broker-only
+preflight checks cannot provide the entire end-to-end trust guarantee.
+
+The reviewed Mac controller now invalidates consent tokens on actual red-close,
+shutdown, filter edits and trust changes, verifies the current normalized filter
+and checkbox snapshot after authorization, and checks current row/origin/context
+before and after each asynchronous banner operation. A stale successful add is
+retracted by its exact own identifier. Historical notification rows with no
+origin or an old trust remain readable but have no phone actions or banners.
+The shipping-controller AppKit/anonymous-XPC harness executes deferred callbacks,
+actual `NSWindow.performClose`/reopen and origin replacement assertions; its
+completed log is `.build/notification-origin-fences.log`, with report under
+`macos-ui-notification-origin-fences/`. These injected OS callback tests requested
+no operating-system notification permission and do not prove installed banners.
+The blocked macOS permission prompt was not bypassed.
+
+Core now requires `notification_scope_v2` and an explicit expected trust UUID for
+preferences, reply and dismiss. It validates the original inbox trust/action,
+fences control-lane admission and completion by epoch/transport/trust, and places
+`expected_trust_id` into the canonical command payload. The client checks the
+fresh peer clock capability, including after any awaited clock refresh.
+Notification event ingestion checks `target_trust_id` and stores that original
+trust in the durable inbox. **Android must advertise this capability only when
+its synchronized admission compares the expected trust against the authenticated
+trust before receipt lookup or effects.** Android11 and real cross-language wire
+proof remain release requirements; earlier Android10 cannot establish this
+stronger contract.
+
+Independent real pinned-HTTPS production-broker regressions are in
+`CompanionNotificationSecurityTests.swift`. They exercise missing/mismatched
+trust without command I/O, canonical original-trust propagation for all three
+operations, stale/originless action refusal, legacy capability refusal, and a
+pre-admitted queued preference crossing Forget without reaching the command
+endpoint. These fixtures contain synthetic QA credentials only and use random
+isolated Keychain records; they neither access Android nor invoke OS permission
+APIs. The current focused result and source bindings are under
+`security/notification-trust-security-*`.
+
+### S27 — Cancelled poller cannot remove its successor
+
+The old poller catch path could call unqualified connection cleanup after a
+successor transport had been installed. The reviewed implementation binds every
+poller to a unique token plus transport generation, checks actor-owned admission
+before polling and after the real event response, and rechecks token/generation
+inside failure cleanup. Cancelled tasks return without cleaning a successor.
+The first frozen patch failed Swift actor-isolation compilation and was corrected
+by moving the check into an awaited actor method; that failed attempt is not a
+passing gate.
+
+The independent regression suspends the old poller at the DEBUG-only checkpoint
+after a real TLS event response, disconnects and reconnects, waits until the
+successor receives its own real TLS page, then deliberately throws from the old
+checkpoint. The successor remains able to send an authenticated notification
+command. This proves the deterministic actor interleaving; actual Android
+service restart, USB and Wi-Fi recovery remain separately evidenced tests.
+
+### Android10 uncertainty copy checkpoint
+
+Independent comparison checked all 59 source files and both signed APK hashes
+against its candidate manifest, with exactly three source changes from code9
+(MainActivity, version metadata and receipt instrumentation). Raw logs show the
+focused four-test and large-layout nine-test gates completed, including actual
+30-second expiry, no automatic successor action, unconfirmed audio wording and
+consent refusal before provider calls. Historical code9 full/backend results
+remain code9 results. Evidence: `security/code10-source-independent.json` and
+`android/code10-api35-focused4.log` / `code10-api35-large9-attempt1.log`. This
+checkpoint is not a claim that the full suite was rerun on code10 or that code10
+implements the later notification trust-scope contract.
+
+
+### S28 — Notification projection invalidation after lost stream or authority
+
+A journal reset or changed persisted event epoch cannot establish whether an old
+notification remains public or actionable. The broker now removes only that
+exact device's `notification_posted` projection before processing a replacement
+page; explicit shares/files and other devices are retained. Authenticated poll
+failures `unauthorized`, `trust_revoked` and `http_401` also clear only that
+device's active notification projection. No Android dismiss is synthesized.
+Transient connection loss retains readable history with unavailable actions and
+banners. A revoked credential must never receive phone cleanup events after
+revocation; local invalidation handles that authority loss.
+
+The current independent gate completed **nine tests, zero failures in1.189s**.
+It adds real pinned-HTTPS reset, changed-epoch-without-reset and authenticated401
+responses to the seven prior notification/poller tests. Assertions verify stale
+notification removal, retained explicit shared content, retained other-device
+notification and refusal of subsequent phone action after401. All eight bound
+source/test/harness hashes were unchanged from the pre-run snapshot through
+completion. Evidence: `security/notification-trust-security-tests.log`,
+`notification-trust-security-result.json`, `notification-reset-before.json`.
+The previous full311-test result predates this new source cohort; a current full
+suite and final installed/Android11 interoperability remain separate gates.
+
+
+### S29 — Android11 notification scope and bounded prior audience review
+
+The Android11 source checkpoint checks canonical `expected_trust_id` against the
+authenticated trust under the Store monitor before command hash/receipt lookup
+or side effects for preferences, reply and dismiss. Its advertised
+`notification_scope_v2` therefore covers the mutable-client suspension race
+identified in S26; actual signed cross-language command tests are still required.
+A per-key generation/recipient index bounds retained exposure to256 keys and
+eight trusted installations. Private/ongoing replacements, opt-out, package
+filter changes and listener loss emit only targeted key-only removal metadata to
+prior audience. New content remains filtered by current preference, package and
+action generation; the internal cleanup marker is removed from wire responses.
+Revoked credentials receive401, never cleanup data. Stream discontinuity and
+local authenticated-failure cleanup cover lost phone-side audience state.
+
+Review required two refinements before accepting a final source freeze: retain
+prior audience only after a content event enters an authorized response page,
+so a queued public-to-private transition cannot disclose its existence to a Mac
+that never fetched it; and bound the separate Android reply/action/body cache,
+which otherwise retained notification objects after exposure eviction. Review
+also rejected thousands of repeated Keystore decryptions in the bounded
+256-key-by-eight-recipient reconciliation loop. One trusted-record snapshot per
+synchronized operation is required; no long-lived plaintext credential cache is
+needed. Independent reinspection accepts the implemented resource refinements:
+a locked256-entry map retains source key/post time/action/generation rather than
+StatusBarNotification or body; publication skips unauthorized audiences and
+clears revoked/evicted actions; each bounded operation snapshots trust records
+once. Reply text is UTF-8 bounded to1…4096 bytes both before receipt admission and
+at the RemoteInput sink. Store→reply-lock ordering has no inverse path in the
+reviewed listener callbacks. Exact source/APK binding and signed runtime
+measurements remain pending at this checkpoint.
+
+The lock-order review found the intended Store→eventLock order consistent: long
+poll waits release the event lock without holding Store, then bounded filtering
+acquires Store before eventLock. A content response selected before opt-out may
+finish in flight; selection is response admission, not proof of network delivery
+and not an absolute retraction guarantee. Already delivered generic Mac banners
+contain only package identity and an invitation to open DroidBridge. Retaining
+that native notification history after later row removal is acceptable when
+explicitly documented; it must not restore content, origin authority or actions.
+
+
+### Android11 candidate2 executed checkpoint
+
+Independent inspection bound all62 source files and both exact APK byte lengths
+and SHA256s to `.build/companion-code11-candidate2/manifest.json`; no source hash
+mismatched. Product SHA256 is
+`6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029`
+(2,869,727 bytes). `apksigner verify` independently confirmed the existing local
+distribution certificate `eb482305…cd98c4`; this is Android local signing, not
+macOS Developer ID or notarization. Product DEX inspection found none of the
+notification/security/provider fixture class descriptors.
+
+The raw signed API35 focused log completed three tests in14.07s. Its source
+assertions exercise the actual notification listener, separate ordinary fixture
+UID, pinned TLS commands/events, all three missing/wrong trust admissions,
+cross-trust/replacement canonical replay, private/ongoing/filter/opt-out/global/
+listener-loss cleanup, listener recovery, actual scoped dismissal and401 after
+revoke. UTF8 payload4097 bytes produced400 and zero deliveries;4096 bytes reached
+real RemoteInput once, with the exact canonical retry leaving deliveries at one.
+This is a tested request receipt behavior, not a general distributed exactly-once
+guarantee. The observed256-key/eight-trust matrix reconciled in21ms against its
+3000ms bound; overflow reported a journal gap and key-only prior-audience cleanup.
+
+The first candidate is preserved as failed: listener replay encountered system
+sender `android`, which cannot satisfy the Android app-package syntax rule, and
+crashed in excluded/null cleanup. Candidate2 permits package-independent key-only
+cleanup while retaining strict validation for content publication; the listener
+explicitly excludes such internal senders before content. This narrow correction
+is accepted; the failed candidate is not relabeled passed. Evidence and hashes:
+`security/code11-candidate2-independent.json`,
+`security/code11-candidate2-apksigner.txt`, and
+`android/code11-api35-focused3-attempt2.log`. Current full34/large9 Android gates,
+installed Mac8/APK11 interoperability and exact final source archive validation
+remain outstanding at this checkpoint. No reviewer device or GUI mutation was
+used to obtain this independent source/log/artifact assessment.

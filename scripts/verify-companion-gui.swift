@@ -12,6 +12,9 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
     private var metadata: [String: CompanionJSON] = [:]
     private var recoveryFinished = false
     private var activeProfile = "balanced"
+    private var activeTrustID = "9bf0e385-15bd-4d61-9650-26221a8af695"
+    private var notificationChoices: [Bool] = []
+    private var notificationOriginTrust: String? = "9bf0e385-15bd-4d61-9650-26221a8af695"
     private var registrationFailures = 0
     private var queuedCommands: [[String: CompanionJSON]] = []
     private var admissionStatuses: [String: String] = [:]
@@ -20,6 +23,10 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
     private var acknowledgments: [String: [String: CompanionJSON]] = [:]
     var operations: [String] = []
     func setProfile(_ profile: String) { lock.lock(); activeProfile = profile; lock.unlock() }
+    func captureNotificationTrust() { lock.lock(); notificationOriginTrust = activeTrustID; lock.unlock() }
+    func omitNotificationTrust() { lock.lock(); notificationOriginTrust = nil; lock.unlock() }
+    func setTrustID(_ id: String) { lock.lock(); activeTrustID = id; lock.unlock() }
+    func notificationRequests() -> [Bool] { lock.lock(); defer { lock.unlock() }; return notificationChoices }
     func failRegistrations(_ count: Int) { lock.lock(); registrationFailures = count; lock.unlock() }
     func enqueue(_ command: [String: CompanionJSON], admission: String = "accepted", executionGranted: Bool = true) { lock.lock(); queuedCommands.append(command); let id = command["id"]!.string!; admissionStatuses[id] = admission; admissionGrants[id] = executionGranted; lock.unlock() }
     func admissionCalled(_ id: String) -> Bool { lock.lock(); defer { lock.unlock() }; return admissionCalls.contains(id) }
@@ -36,6 +43,9 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
             let p = input.payload
             var data: [String: CompanionJSON] = [:]
             switch input.operation {
+            case "notification_preferences":
+                guard p["expected_trust_id"]?.string == activeTrustID else { throw CompanionBoundaryError("trust_superseded", "Exact original trust required") }
+                notificationChoices.append(p["payload"]?.object?["enabled"]?.bool == true); data = ["status": .string("applied")]
             case "session_publish":
                 guard p["command_protocol"]?.number == 2 else { throw CompanionBoundaryError("legacy_host", "Current adapter must advertise command execution protocol2") }
             case "command_poll": data = ["commands": .array(queuedCommands.isEmpty ? [] : [.object(queuedCommands.removeFirst())])]
@@ -49,7 +59,7 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
                 guard p["app_path"]?.string == "/Fixture.app" else { throw CompanionBoundaryError("host_identity_mismatch", "Only the expected fixture host may register") }
                 if registrationFailures > 0 { registrationFailures -= 1; throw CompanionBoundaryError("broker_unavailable", "Fixture first bootstrap not ready", retryable: true) }
                 data = ["status": .string("registered")]
-            case "status": data = ["devices": .array([.object(["device_id": .string(device), "device_name": .string("QA Phone with a Long Readable Name"), "serial": .string("qa-companion-ui"), "aliases": .array([.string("qa-companion-ui")]), "connected": .bool(true), "paired": .bool(true), "profile": .string("balanced"), "capabilities": .array(["catalog", "icons", "share", "clipboard", "notifications", "profiles"].map(CompanionJSON.string))])]), "sessions": .array([.object(["session_id": .string("6803ee5e-496c-413e-ac22-e740b23043eb"), "device_id": .string(device), "label": .string("Independent wrapper fixture"), "backend": .string("native"), "phase": .string("running")])])]
+            case "status": data = ["devices": .array([.object(["device_id": .string(device), "device_name": .string("QA Phone with a Long Readable Name"), "serial": .string("qa-companion-ui"), "aliases": .array([.string("qa-companion-ui")]), "connected": .bool(true), "paired": .bool(true), "profile": .string("balanced"), "capabilities": .array(["catalog", "icons", "share", "clipboard", "notifications", "notification_scope_v2", "profiles"].map(CompanionJSON.string))])]), "sessions": .array([.object(["session_id": .string("6803ee5e-496c-413e-ac22-e740b23043eb"), "device_id": .string(device), "label": .string("Independent wrapper fixture"), "backend": .string("native"), "phase": .string("running")])])]
             case "export_selection_get": data = ["selection": .object([:])]
             case "recover_pairing":
                 guard p["device_id"]?.string == device else { throw CompanionBoundaryError("invalid_recovery", "Recovery must target the exact pending phone") }
@@ -68,11 +78,16 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
             case "transfer_download": let index = Int(p["index"]?.number ?? 0), start = index * 65_536; data = ["bytes": .string(transferBytes.subdata(in: start..<min(start + 65_536, transferBytes.count)).base64EncodedString())]
             default: break
             }
+            if input.operation == "inbox_list", var inbox = data["items"]?.array, var notification = inbox.last?.object {
+                if let notificationOriginTrust { notification["trust_id"] = .string(notificationOriginTrust) }
+                inbox[inbox.count - 1] = .object(notification); data["items"] = .array(inbox)
+            }
             if input.operation == "status", !recoveryFinished {
                 data["pending_pairings"] = .array([.object(["device_id": .string(device), "serial": .string("qa-companion-ui"), "phase": .string("staged"), "expires": .number(Date().addingTimeInterval(1200).timeIntervalSinceReferenceDate)])])
             }
             if input.operation == "status", var devices = data["devices"]?.array, var device = devices.first?.object {
                 device["profile"] = .string(activeProfile); devices[0] = .object(device); data["devices"] = .array(devices)
+                device["trust_id"] = .string(activeTrustID); devices[0] = .object(device); data["devices"] = .array(devices)
             }
             reply(try JSONEncoder().encode(CompanionBrokerReply(requestID: input.requestID, data: data)))
         } catch { let id = (try? JSONDecoder().decode(CompanionBrokerRequest.self, from: bytes).requestID) ?? UUID(); reply((try? JSONEncoder().encode(CompanionBrokerReply(requestID: id, error: error as? CompanionBoundaryError ?? .init("fixture_error", "Fixture failed")))) ?? Data()) }
@@ -218,6 +233,100 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         try await wait { peer.acknowledgment(wrongBootID) != nil }
         try require(peer.acknowledgment(wrongBootID)?["result"]?.object?["code"]?.string == "command_expired" && launcher.sessions.isEmpty, "A deadline from another boot caused an effect")
         try JSONEncoder().encode([expiredID, completedID, validID, wrongBootID].compactMap(peer.acknowledgment)).write(to: output.appendingPathComponent("adapter-admission-receipts.json"))
+        // A native permission sheet can suspend indefinitely. Exercise the
+        // shipping controller with a deferred authorization callback and real
+        // anonymous NSXPC, without requesting any OS permission in this fixture.
+        var authorization: CheckedContinuation<Bool, Error>?
+        let permissionController = CompanionWindowController(adapter: adapter, authorizeNotifications: {
+            try await withCheckedThrowingContinuation { authorization = $0 }
+        })
+        let permissionWindowContent = try XCT(permissionController.window?.contentView, "Notification controller missing")
+        let permissionTabs = try XCT(descendants(permissionWindowContent).compactMap { $0 as? NSTabView }.first, "Notification tabs missing")
+        permissionTabs.selectTabViewItem(at: 4)
+        let permissionContent = try XCT(permissionTabs.tabViewItems[4].view, "Notification content missing")
+        let mirror = try XCT(descendants(permissionContent).compactMap { $0 as? NSButton }.first { $0.title == "Mirror permitted phone notifications" }, "Notification opt-in missing")
+        let applyNotifications = try XCT(descendants(permissionContent).compactMap { $0 as? NSButton }.first { $0.title == "Apply Notification Filters" }, "Notification apply missing")
+        let notificationBefore = peer.notificationRequests().count
+        mirror.performClick(nil); try await wait { authorization != nil }
+        mirror.performClick(nil) // Supersede while the first authorization awaits.
+        authorization?.resume(returning: true); authorization = nil
+        try await Task.sleep(nanoseconds: 150_000_000)
+        try require(peer.notificationRequests().count == notificationBefore, "Late permission approval sent a superseded enabled preference")
+        applyNotifications.performClick(nil)
+        try await wait { peer.notificationRequests().count == notificationBefore + 1 }
+        try require(peer.notificationRequests().last == false, "Explicit retry did not apply the current disabled choice")
+        mirror.performClick(nil); try await wait { authorization != nil }
+        peer.setTrustID(UUID().uuidString.lowercased()); try await adapter.refreshStatus()
+        authorization?.resume(returning: true); authorization = nil
+        try await Task.sleep(nanoseconds: 150_000_000)
+        try require(peer.notificationRequests().count == notificationBefore + 1, "Late approval crossed a replaced phone trust identity")
+        mirror.state = .off; mirror.performClick(nil); try await wait { authorization != nil }
+        let notificationFilter = try XCT(descendants(permissionContent).compactMap { $0 as? NSTextField }.first { $0.accessibilityLabel() == "Advanced notification package allowlist" }, "Notification filter missing")
+        notificationFilter.stringValue = "invalid package"
+        permissionController.controlTextDidChange(Notification(name: NSControl.textDidChangeNotification, object: notificationFilter))
+        authorization?.resume(returning: true); authorization = nil
+        try await Task.sleep(nanoseconds: 150_000_000)
+        try require(peer.notificationRequests().count == notificationBefore + 1, "Invalid edited allowlist resurrected a prior all-app preference")
+        notificationFilter.stringValue = ""
+        mirror.state = .off; mirror.performClick(nil); try await wait { authorization != nil }
+        permissionController.showWindow(nil); permissionController.window?.performClose(nil)
+        permissionController.showWindow(nil) // Reopening must not revive the old intent.
+        authorization?.resume(returning: true); authorization = nil
+        try await Task.sleep(nanoseconds: 150_000_000)
+        try require(peer.notificationRequests().count == notificationBefore + 1, "Red-close/reopen revived a pending notification authorization")
+        // A stopped controller must never publish a preference after its sheet
+        // finishes, even when the OS callback does not honor task cancellation.
+        mirror.state = .off; mirror.performClick(nil); try await wait { authorization != nil }
+        permissionController.shutdown(); authorization?.resume(returning: true); authorization = nil
+        try await Task.sleep(nanoseconds: 150_000_000)
+        try require(peer.notificationRequests().count == notificationBefore + 1, "A shutdown controller published a late notification preference")
+        permissionController.window?.orderOut(nil)
+        let deniedController = CompanionWindowController(adapter: adapter, authorizeNotifications: { false })
+        let deniedTabs = try XCT(descendants(try XCT(deniedController.window?.contentView, "Denied controller missing")).compactMap { $0 as? NSTabView }.first, "Denied tabs missing")
+        deniedTabs.selectTabViewItem(at: 4)
+        let deniedMirror = try XCT(descendants(try XCT(deniedTabs.tabViewItems[4].view, "Denied notification content missing")).compactMap { $0 as? NSButton }.first { $0.title == "Mirror permitted phone notifications" }, "Denied opt-in missing")
+        deniedMirror.performClick(nil); try await wait { peer.notificationRequests().count == notificationBefore + 2 }
+        try require(peer.notificationRequests().last == true, "Denied banner permission incorrectly disabled the explicitly requested in-app notification list")
+        deniedController.shutdown(); deniedController.window?.orderOut(nil)
+        var settingsContinuation: CheckedContinuation<Bool, Never>?
+        var postContinuation: CheckedContinuation<Void, Error>?
+        var postedIdentifiers: [String] = [], removedIdentifiers: [String] = []
+        let bannerController = CompanionWindowController(adapter: adapter, authorizeNotifications: { false }, notificationsAuthorized: {
+            await withCheckedContinuation { settingsContinuation = $0 }
+        }, postNotification: { request in
+            postedIdentifiers.append(request.identifier)
+            try await withCheckedThrowingContinuation { postContinuation = $0 }
+        }, removeNotifications: { removedIdentifiers += $0 })
+        let bannerTabs = try XCT(descendants(try XCT(bannerController.window?.contentView, "Banner controller missing")).compactMap { $0 as? NSTabView }.first, "Banner tabs missing")
+        bannerTabs.selectTabViewItem(at: 4)
+        let bannerMirror = try XCT(descendants(try XCT(bannerTabs.tabViewItems[4].view, "Banner content missing")).compactMap { $0 as? NSButton }.first { $0.title == "Mirror permitted phone notifications" }, "Banner opt-in missing")
+        peer.captureNotificationTrust(); await bannerController.loadInbox(force: true)
+        bannerMirror.state = .on
+        let staleSettings = Task { await bannerController.showNotifications() }
+        try await wait { settingsContinuation != nil }; bannerMirror.state = .off
+        settingsContinuation?.resume(returning: true); settingsContinuation = nil; await staleSettings.value
+        try require(postedIdentifiers.isEmpty, "Late settings callback posted a banner after opt-out")
+        bannerMirror.state = .on
+        let staleAdd = Task { await bannerController.showNotifications() }
+        try await wait { settingsContinuation != nil }; settingsContinuation?.resume(returning: true); settingsContinuation = nil
+        try await wait { postContinuation != nil }
+        bannerController.showWindow(nil); bannerController.window?.performClose(nil); bannerController.showWindow(nil)
+        postContinuation?.resume(); postContinuation = nil; await staleAdd.value
+        try require(postedIdentifiers.count == 1 && removedIdentifiers == postedIdentifiers, "A banner completing after close/reopen was not retracted by its exact identifier")
+        let staleTrust = Task { await bannerController.showNotifications() }
+        try await wait { settingsContinuation != nil }; peer.setTrustID(UUID().uuidString.lowercased()); try await adapter.refreshStatus()
+        settingsContinuation?.resume(returning: true); settingsContinuation = nil; await staleTrust.value
+        try require(postedIdentifiers.count == 1, "A late notification-settings callback crossed a replaced trust")
+        try require(bannerMirror.state == .off, "Trust replacement did not reset local banner opt-in")
+        let historicalContent = try XCT(bannerTabs.tabViewItems[4].view, "Historical content missing")
+        try require(!descendants(historicalContent).compactMap { $0 as? NSButton }.contains { $0.title == "Dismiss on Phone" || $0.title == "Reply…" }, "Old-trust inbox row retained phone actions")
+        peer.omitNotificationTrust(); await bannerController.loadInbox(force: true)
+        bannerMirror.state = .on
+        let missingOrigin = Task { await bannerController.showNotifications() }
+        try await wait { settingsContinuation != nil }; settingsContinuation?.resume(returning: true); settingsContinuation = nil; await missingOrigin.value
+        try require(postedIdentifiers.count == 1, "An originless historical inbox row posted a banner")
+        bannerController.shutdown(); bannerController.window?.orderOut(nil)
+        try JSONSerialization.data(withJSONObject: ["passed": true, "scope": "Shipping AppKit controller + deferred authorization/settings/add seams + anonymous NSXPC; no OS permission requested", "superseded_approval_no_rpc": true, "explicit_off_retry_applied": true, "replaced_trust_no_rpc": true, "invalid_edited_allowlist_no_rpc": true, "red_close_reopen_no_rpc": true, "shutdown_late_approval_no_rpc": true, "denied_banners_preserve_explicit_in_app_list": true, "late_settings_opt_out_no_banner": true, "late_add_close_reopen_exact_retraction": true, "late_settings_replaced_trust_no_banner": true], options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("notification-authorization-fences.json"))
         await adapter.shutdown(); window.orderOut(nil); launcher.window?.orderOut(nil)
         let result: [String: Any] = ["passed": true, "scope": "Shipping AppKit + anonymous NSXPC fixture; no Android or installed-app acceptance", "surfaces": 8, "catalog_count": 1000, "local_search": true, "exact_owner_command_route": true, "explicit_pending_pairing_recovery": true, "registration_transient_retry": true, "registration_exhaustion_attempts": 8, "registration_result_survives_status_read": true, "post_readiness_admission_refused_without_session": true, "chunked_file_roundtrip_bytes": fixture.count, "sha256_match": true, "camera_capture_verified": false, "phone_pairing_verified": false, "physical_focus_verified": false, "clipboard_read": false, "setup_narrow_validation_scroll": true, "captures": captures + ["wireless-narrow-validation.png", "scanner-narrow-validation.png"]]
         try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("results.json"))
