@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-installed-launcher.py", line 92, in <module>
+    assert 'text=LauncherFirst' in inputlog and 'text=LauncherSecond' in inputlog and inputlog.count('click=1')>=2,inputlog
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: --------- beginning of main
+10-29 23:57:17.425  3279  3279 I DroidBridgeProbe: click=1 display=13
+10-29 23:57:17.603  3279  3279 I DroidBridgeProbe: text=L display=13
+10-29 23:57:17.629  3279  3279 I DroidBridgeProbe: text=La display=13
+10-29 23:57:17.633  3279  3279 I DroidBridgeProbe: text=Lau display=13
+10-29 23:57:17.635  3279  3279 I DroidBridgeProbe: text=Laun display=13
+10-29 23:57:17.636  3279  3279 I DroidBridgeProbe: text=Launc display=13
+10-29 23:57:17.637  3279  3279 I DroidBridgeProbe: text=Launch display=13
+10-29 23:57:17.657  3279  3279 I DroidBridgeProbe: text=Launche display=13
+10-29 23:57:17.662  3279  3279 I DroidBridgeProbe: text=Launcher display=13
+10-29 23:57:17.825  3279  3279 I DroidBridgeProbe: text=LauncherF display=13
+10-29 23:57:17.876  3279  3279 I DroidBridgeProbe: text=LauncherFi display=13
+10-29 23:57:18.013  3279  3279 I DroidBridgeProbe: text=LauncherFir display=13
+10-29 23:57:18.068  3635  3635 I DroidBridgeProbe: click=1 display=14
+10-29 23:57:18.121  3279  3279 I DroidBridgeProbe: text=LauncherFirs display=13
+10-29 23:57:18.247  3279  3279 I DroidBridgeProbe: text=LauncherFirst display=13
+10-29 23:57:18.370  3635  3635 I DroidBridgeProbe: text=L display=14
+10-29 23:57:18.438  3635  3635 I DroidBridgeProbe: text=La display=14
+10-29 23:57:18.457  3635  3635 I DroidBridgeProbe: text=Lau display=14
+10-29 23:57:18.459  3635  3635 I DroidBridgeProbe: text=Laun display=14
+10-29 23:57:18.468  3635  3635 I DroidBridgeProbe: text=Launc display=14
+10-29 23:57:18.469  3635  3635 I DroidBridgeProbe: text=Launch display=14
+10-29 23:57:18.512  3635  3635 I DroidBridgeProbe: text=Launche display=14
+10-29 23:57:18.577  3635  3635 I DroidBridgeProbe: text=Launcher display=14
+10-29 23:57:18.750  3635  3635 I DroidBridgeProbe: text=LauncherS display=14
+

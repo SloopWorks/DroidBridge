@@ -1,0 +1,15 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.15s)
+PASS: launch UX synchronous preview, restored geometry, same window through decoded video, input fence, reopen reuse, and close/admission fences
+[0/1] Planning build
+Building for debugging...
+[0/5] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.13s)
+PASS: late cancelled launch preserved disconnected intent
+[0/1] Planning build
+Building for debugging...
+[0/5] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.11s)
+PASS: cancel during readiness never admits onboarding or installs an agent

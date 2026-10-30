@@ -10,6 +10,10 @@ import DroidBridgeCore
     let device=AndroidDevice(serial:"qa-no-device",model:"Synthetic readiness")
     launcher.devices=[device];launcher.devicePicker.removeAllItems();launcher.devicePicker.addItem(withTitle:device.model);launcher.devicePicker.selectItem(at:0)
     launcher.applications=[AndroidApplication(packageName:"dev.example.test",name:"Never admitted")];launcher.appsDeviceSerial=device.serial
+    // Enter through the real UI admission gate; this test interrupts the
+    // subsequent readiness recheck rather than testing a disabled button.
+    launcher.readySerials.insert(device.serial)
+    launcher.sharedPreferences.bulkWrapperOnboardingEnabled=true
     launcher.onboardDeviceApps()
     let marker=ProcessInfo.processInfo.environment["DROIDBRIDGE_QA_MARKER"]!
     for _ in 0..<200 {if FileManager.default.fileExists(atPath:marker){break};try await Task.sleep(for:.milliseconds(5))}

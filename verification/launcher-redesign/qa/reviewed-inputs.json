@@ -1,0 +1,9 @@
+{
+  "Sources/DroidBridge/Launcher.swift": "ec7c8281b90e405f9d60c0e8e304962480c257cdd2953f0bc607b0f698103e00",
+  "Sources/DroidBridge/LauncherUI.swift": "104973e1fb37e41979fd2f220addd80df99607f9dcd7db6a60360939f4be992d",
+  "Sources/DroidBridge/main.swift": "8e08247573ee530871f706e1e0a512f0544a475d3f7d28d4f07e2be2f804b573",
+  "Sources/DroidBridge/DeviceOnboardingUI.swift": "afb29bae11f675e930279136316b3acb9ae29c723f43e5ccf961445bda0e34c0",
+  "Sources/DroidBridge/ManagedAppNameRepair.swift": "57ba7557ea3e1004e9422244df12a035c8a749bea9fbd5bdcb1f7455e70c0594",
+  "scripts/verify-launcher-redesign.swift": "34c85c40ffbe41389dd579ffcaa314fc2616bce17d17679473c7339c01bb9788",
+  "scripts/verify-launcher-redesign.sh": "95e3a0aa1d2c4a563eb6eac8d93795d7c2684140f10cbaaa99a6624c5731515b"
+}

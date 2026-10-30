@@ -1,0 +1,101 @@
+{
+  "id" : 56,
+  "texts" : [
+    "DroidBridge",
+    "Android apps on your Mac",
+    "DEVICE",
+    "Connected and ready\nemulator-5580",
+    "RENDERING",
+    "Used for new app windows.",
+    "SPOTLIGHT",
+    "Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",
+    "16\/16 · 0 added · 16 current · 0 running\/skipped · 0 errors. Finished. 0 Spotlight updates pending in the background.",
+    "Applications",
+    "1 of 16 apps · Android SDK built for arm64",
+    "dev.droidbridge.testapp2",
+    "DroidBridge Test",
+    "dev.droidbridge.testapp2",
+    "No matching applications",
+    "Try another app name or Android package.",
+    "DroidBridge Test",
+    "dev.droidbridge.testapp2",
+    "Sessions",
+    "1 sessions",
+    "Settings",
+    "Running",
+    "Android SDK built for arm64 · scrcpy",
+    "Created or updated \/Users\/patrick\/Applications\/DroidBridge Apps\/DroidBridge Test.app. Existing launch settings are preserved; the previous generation is retained under .DroidBridge Backups.",
+    "Device app onboarding results",
+    "16\/16 · 0 added · 16 current · 0 running\/skipped · 0 errors. Finished. 0 Spotlight updates pending in the background.\n0 earlier details omitted; the most recent 100 are retained."
+  ],
+  "backend" : "scrcpy fallback",
+  "physical_focus_verified" : false,
+  "selected_row" : 0,
+  "buttons" : {
+    "" : true,
+    "Focus" : true,
+    "Details…" : true,
+    "Add Device Apps…" : true,
+    "Diagnostics…" : true,
+    "Close" : true,
+    "Clear Search" : true,
+    "Show Android system decorations" : true,
+    "Reconnect interrupted sessions automatically" : true,
+    "Enable device apps in Spotlight" : true,
+    "Create \/ Update Mac App…" : true,
+    "Keep phone screen off during Mac sessions" : true,
+    "OK" : true,
+    "Cancel" : false,
+    "scrcpy fallback" : true,
+    "Restore Previous Sessions" : false,
+    "Launch App" : true,
+    "Log" : true,
+    "Refresh Devices" : true,
+    "Android SDK built for arm64 · emulator-5580" : true,
+    "search" : true,
+    "Show Android Screen" : true
+  },
+  "passed" : true,
+  "launch_enabled" : true,
+  "action" : "quit",
+  "rows" : 1,
+  "pid" : 16286,
+  "windows" : [
+    {
+      "number" : 11758,
+      "title" : "DroidBridge",
+      "width" : 920,
+      "height" : 640,
+      "visible" : true
+    },
+    {
+      "number" : 11759,
+      "title" : "",
+      "width" : 500,
+      "height" : 500,
+      "visible" : false
+    },
+    {
+      "number" : 11760,
+      "title" : "DroidBridge Test",
+      "width" : 640,
+      "height" : 440,
+      "visible" : false
+    },
+    {
+      "number" : 11761,
+      "title" : "DroidBridge Test",
+      "width" : 480,
+      "height" : 720,
+      "visible" : false
+    },
+    {
+      "number" : 11763,
+      "title" : "",
+      "width" : 672,
+      "height" : 450,
+      "visible" : false
+    }
+  ],
+  "device" : "Android SDK built for arm64 · emulator-5580"
+}

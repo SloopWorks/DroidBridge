@@ -1,0 +1,14 @@
+{"event":"supervisor_started","parent":20104,"child":20146}
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+[22;2t]0;scrcpyINFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:     --> (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+/Users/patrick/workspace/DroidBridge/.build/launch-ux-wrappers/Launch UX Probe.app/Contents/Resources/Runtime/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 1007.2 MB/s (733930 bytes in 0.001s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+[server] INFO: New display: 420x560/240 (id=20)
+]0;scrcpy - DroidBridge · Launch UX ProbeINFO: Renderer: metal
+INFO: Interop: videotoolbox
+INFO: Video decoding: videotoolbox
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 20...
+INFO: Texture (VideoToolbox): 420x560
+{"event":"supervisor_stopped","reason":"stop_signal","exit_status":2,"signal":null,"requested_signal":15}

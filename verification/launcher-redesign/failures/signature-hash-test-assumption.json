@@ -1,0 +1,57 @@
+{
+  "passed": false,
+  "app": "/Users/patrick/Applications/DroidBridge.app",
+  "version": "0.1.6",
+  "build": "11",
+  "executable_sha256": "55fe5f6725dfe5bfbf0c3d9f77aaae93899aecbb54c34f79165e01b97e04811f",
+  "instrumentation": "public AppKit actions in unmodified installed binary; real Android transport and video",
+  "physical_focus_verified": false,
+  "cases": [
+    {
+      "case": "installed_launcher_device_and_apps",
+      "apps": 16,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "passed": true
+    },
+    {
+      "case": "real_catalog_no_match_disables_launch",
+      "passed": true
+    },
+    {
+      "case": "two_native_windows_frames_and_independent_input",
+      "windows": [
+        11750,
+        11751
+      ],
+      "passed": true
+    },
+    {
+      "case": "resize_input_and_independent_close",
+      "passed": true
+    },
+    {
+      "case": "backend_selector_actual_scrcpy_with_native_alive",
+      "session": "A738DFBF-D3C0-43DE-B539-0CF89B99F4DE",
+      "passed": true
+    },
+    {
+      "case": "sidebar_cancel_resume_actual16_apps_and_details",
+      "records": 16,
+      "summary": [
+        "16/16 \u00b7 0 added \u00b7 16 current \u00b7 0 running/skipped \u00b7 0 errors. Finished. 0 Spotlight updates pending in the background."
+      ],
+      "passed": true
+    }
+  ],
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "state_restored": true
+}

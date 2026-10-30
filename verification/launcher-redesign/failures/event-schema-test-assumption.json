@@ -1,0 +1,34 @@
+{
+  "passed": false,
+  "app": "/Users/patrick/Applications/DroidBridge.app",
+  "version": "0.1.6",
+  "build": "11",
+  "executable_sha256": "55fe5f6725dfe5bfbf0c3d9f77aaae93899aecbb54c34f79165e01b97e04811f",
+  "instrumentation": "public AppKit actions in unmodified installed binary; real Android transport and video",
+  "physical_focus_verified": false,
+  "cases": [
+    {
+      "case": "installed_launcher_device_and_apps",
+      "apps": 16,
+      "device": "Android SDK built for arm64 \u00b7 emulator-5580",
+      "passed": true
+    },
+    {
+      "case": "real_catalog_no_match_disables_launch",
+      "passed": true
+    }
+  ],
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": []
+  },
+  "after": {
+    "displays": 2,
+    "forwards": [
+      "emulator-5580 tcp:65337 localabstract:scrcpy_0e1c5729"
+    ],
+    "reverses": []
+  },
+  "state_restored": true
+}

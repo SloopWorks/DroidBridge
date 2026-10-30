@@ -3,10 +3,11 @@
 Preserves exact QA wrapper intent and its sole NSWindow geometry preference.
 Only emulator5580 is used. No Player instrumentation or fake Android transport.
 """
-import hashlib,json,os,pathlib,subprocess,time
+import argparse,hashlib,json,os,pathlib,plistlib,subprocess,time
 repo=pathlib.Path(__file__).resolve().parents[1]
 app=pathlib.Path.home()/'Applications/DroidBridge.app'
-out=repo/'verification/launch-ux/installed';out.mkdir(parents=True,exist_ok=True)
+parser=argparse.ArgumentParser();parser.add_argument('--output',type=pathlib.Path,default=repo/'verification/launch-ux/installed');args=parser.parse_args()
+out=args.output.resolve();out.mkdir(parents=True,exist_ok=True)
 adb=app/'Contents/Resources/Runtime/bin/adb'
 def run(*args):return subprocess.check_output(list(map(str,args)),text=True,stderr=subprocess.STDOUT,timeout=45)
 def android(*args):return run(adb,'-s','emulator-5580',*args)
@@ -17,7 +18,7 @@ objects=list(pathlib.Path(binpath).glob('DroidBridgeCore.build/*.o'))
 run('swiftc','-parse-as-library','-I',binpath+'/Modules',repo/'Sources/DroidBridge/MacAppWrapper.swift',repo/'verification/launch-ux/MakeWrapper.swift',*objects,'-o',repo/'.build/qa-launch-make-wrapper')
 wrapper=pathlib.Path(run(repo/'.build/qa-launch-make-wrapper',app,repo/'.build/launch-ux-wrappers').strip())
 run('codesign','--verify','--deep','--strict',wrapper)
-run('clang','-dynamiclib','-fobjc-arc','-framework','AppKit',out/'observe.m','-o',repo/'.build/qa-launch-ux-observe.dylib')
+run('clang','-dynamiclib','-fobjc-arc','-framework','AppKit',repo/'verification/launch-ux/installed/observe.m','-o',repo/'.build/qa-launch-ux-observe.dylib')
 identifier='app.droidbridge.wrapper.dev.droidbridge.testapp'
 key='NSWindow Frame AndroidApp.'+hashlib.sha256(b'emulator-5580:dev.droidbridge.testapp').hexdigest()
 try:prior_geometry=run('defaults','read',identifier,key).strip()
@@ -26,7 +27,8 @@ intent=pathlib.Path.home()/'Library/Application Support/DroidBridge'/('sessions-
 prior=intent.read_bytes() if intent.exists() else None;mode=intent.stat().st_mode&0o777 if intent.exists() else None
 logs=pathlib.Path.home()/'Library/Logs/DroidBridge'
 before=resources();child=None;cases=[]
-report={'passed':False,'installed_path':str(app),'version':'0.1.5','build':'10','installed_sha256':hashlib.sha256((app/'Contents/MacOS/DroidBridge').read_bytes()).hexdigest(),'wrapper_path':str(wrapper),'real_android_icon_png_sha256':hashlib.sha256((wrapper/'Contents/Resources/AndroidApp.png').read_bytes()).hexdigest(),'public_appkit_instrumentation':True,'player_instrumentation':False,'physical_spotlight_focus_verified':False,'cases':cases}
+metadata=plistlib.loads((app/'Contents/Info.plist').read_bytes())
+report={'passed':False,'installed_path':str(app),'version':metadata['CFBundleShortVersionString'],'build':metadata['CFBundleVersion'],'installed_sha256':hashlib.sha256((app/'Contents/MacOS/DroidBridge').read_bytes()).hexdigest(),'wrapper_path':str(wrapper),'real_android_icon_png_sha256':hashlib.sha256((wrapper/'Contents/Resources/AndroidApp.png').read_bytes()).hexdigest(),'public_appkit_instrumentation':True,'player_instrumentation':False,'physical_spotlight_focus_verified':False,'cases':cases}
 try:
  for index,backend in enumerate(('native','native','scrcpy','scrcpy','native')):
   case=out/f'{index+1}-{backend}';case.mkdir(exist_ok=True);(case/'ui.json').unlink(missing_ok=True)

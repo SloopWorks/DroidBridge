@@ -16,9 +16,10 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     let devicePicker = NSPopUpButton()
     let backendPicker = NSPopUpButton()
     let search = NSSearchField()
-    let table = NSTableView()
+    let table = LauncherAppTable()
     let sessionList = NSStackView()
-    let status = NSTextField(wrappingLabelWithString: "Looking for Android devices…")
+    let status = LauncherStatusField(wrappingLabelWithString: "Looking for Android devices…")
+    var launcherUI: LauncherUI?
     let reconnect = NSButton(checkboxWithTitle: "Reconnect interrupted sessions automatically", target: nil, action: nil)
     var timer: Timer?
     var refreshTask: Task<Void, Never>?
@@ -30,6 +31,12 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var readySerials = Set<String>()
     var reconnectRetries: [UUID: ReconnectRetry] = [:]
     var appsDeviceSerial: String?
+    var loadingAppsSerial: String?
+    var appsLoadToken=UUID()
+    var appsError:(serial:String,message:String)?
+    var deviceSelectionTask:Task<Void,Never>?
+    var deviceSelectionTasks:[UUID:Task<Void,Never>]=[:]
+    var sessionPresentation:[LauncherSessionPresentation]?
     var sessionErrors: [UUID: String] = [:]
     var iconData: [String: Data] = [:]
     var icons: [String: NSImage] = [:]
@@ -72,6 +79,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
             self.onboardingCancel.isEnabled=controller?.isRunning == true
             self.onboardingButton.isEnabled=self.bulkPreference.state == .on && controller?.isRunning != true
             if controller?.isRunning != true { self.pumpIcons() }
+            self.updateLauncherPresentation()
         }
         return controller
     }()
@@ -128,81 +136,62 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         return directory.appendingPathComponent(isWrapper ? "sessions-\(Bundle.main.bundleIdentifier ?? "wrapper").json" : "sessions.json")
     }
     init() {
-        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1000, height: 800), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1160, height: 780), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         window.title = "DroidBridge"
-        window.minSize = NSSize(width: 900, height: 720)
+        window.contentMinSize = NSSize(width: 920, height: 640)
+        window.titlebarSeparatorStyle = .line
         window.isReleasedWhenClosed = false
         super.init(window: window)
         buildUI()
         window.center()
         if let data = try? Data(contentsOf: persistenceURL), let descriptors = try? JSONDecoder().decode([SessionDescriptor].self, from: data) { pending = descriptors }
+        updateLauncherPresentation()
 
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
     func button(_ title: String, _ action: Selector) -> NSButton { let button = NSButton(title: title, target: self, action: action); button.bezelStyle = .rounded; return button }
     func buildUI() {
-        let outer = NSStackView(); outer.orientation = .vertical; outer.alignment = .leading; outer.spacing = 16; outer.translatesAutoresizingMaskIntoConstraints = false
-        window?.contentView?.addSubview(outer)
-        NSLayoutConstraint.activate([outer.leadingAnchor.constraint(equalTo: window!.contentView!.leadingAnchor, constant: 24), outer.trailingAnchor.constraint(equalTo: window!.contentView!.trailingAnchor, constant: -24), outer.topAnchor.constraint(equalTo: window!.contentView!.topAnchor, constant: 24), outer.bottomAnchor.constraint(equalTo: window!.contentView!.bottomAnchor, constant: -20)])
-        let title = NSTextField(labelWithString: "Android apps. Mac windows."); title.font = .systemFont(ofSize: 25, weight: .bold)
-        outer.addArrangedSubview(title)
-        let subtitle = NSTextField(labelWithString: "Connect a USB device with debugging enabled, or start an Android emulator."); subtitle.textColor = .secondaryLabelColor
-        outer.addArrangedSubview(subtitle)
-        devicePicker.target = self; devicePicker.action = #selector(deviceChanged)
-        devicePicker.setAccessibilityLabel("Android device")
-        backendPicker.addItems(withTitles: ["Native AppKit", "scrcpy fallback"]); backendPicker.setAccessibilityLabel("Rendering backend")
-        let controls = NSStackView(views: [NSTextField(labelWithString: "Device"), devicePicker, button("Refresh", #selector(refreshAction)), NSTextField(labelWithString: "Backend"), backendPicker]); controls.spacing = 10; controls.alignment = .centerY
-        outer.addArrangedSubview(controls)
-        search.placeholderString = "Search apps or package names"; search.delegate = self; search.setAccessibilityLabel("Search Android apps")
-        outer.addArrangedSubview(search); search.widthAnchor.constraint(equalTo: outer.widthAnchor).isActive = true
-        let name = NSTableColumn(identifier: NSUserInterfaceItemIdentifier("name")); name.title = "Application"; name.width = 260
-        let package = NSTableColumn(identifier: NSUserInterfaceItemIdentifier("package")); package.title = "Android package"; package.width = 430
-        table.addTableColumn(name); table.addTableColumn(package); table.rowHeight = 34; table.usesAlternatingRowBackgroundColors = true; table.delegate = self; table.dataSource = self; table.target = self; table.doubleAction = #selector(launchAction)
-        table.setAccessibilityLabel("Installed Android applications")
-        let scroll = NSScrollView(); scroll.documentView = table; scroll.hasVerticalScroller = true; scroll.borderType = .bezelBorder
-        outer.addArrangedSubview(scroll); scroll.widthAnchor.constraint(equalTo: outer.widthAnchor).isActive = true; scroll.heightAnchor.constraint(greaterThanOrEqualToConstant: 160).isActive = true
-        let launch = button("Launch App", #selector(launchAction)); launch.keyEquivalent = "\r"
-        let actions = NSStackView(views: [launch, button("Create / Update Mac App…", #selector(createWrapper)), button("Restore Previous Sessions", #selector(restoreAction)), button("Open Diagnostics", #selector(openDiagnostics))]); actions.spacing = 10
-        outer.addArrangedSubview(actions)
-        bulkPreference.state=sharedPreferences.bulkWrapperOnboardingEnabled ? .on : .off
-        decorationsPreference.state=sharedPreferences.showAndroidSystemDecorations ? .on : .off
-        for control in [bulkPreference,decorationsPreference] { control.target=self; control.action=#selector(sharedPreferenceChanged(_:)) }
-        bulkPreference.setAccessibilityLabel("Enable device apps in Spotlight")
-        decorationsPreference.toolTip="Controls Android virtual-display launcher and system navigation. App-drawn controls are unaffected."
-        phoneScreenPreference.target=self;phoneScreenPreference.action=#selector(phoneScreenPreferenceChanged(_:));phoneScreenPreference.isEnabled=false
-        phoneScreenPreference.toolTip="Opt in for this device. Applies only to its physical phone screen while Android apps run on this Mac. Use the Phone menu to turn the screen back on."
-        outer.addArrangedSubview(phoneScreenPreference)
-        let preferences=NSStackView(views:[bulkPreference,decorationsPreference]); preferences.spacing=14; outer.addArrangedSubview(preferences)
-        onboardingButton.target=self; onboardingButton.action=#selector(onboardDeviceApps); onboardingButton.isEnabled=sharedPreferences.bulkWrapperOnboardingEnabled
-        onboardingCancel.target=self; onboardingCancel.action=#selector(cancelOnboarding); onboardingCancel.isEnabled=false
-        onboardingProgress.isIndeterminate=false; onboardingProgress.minValue=0; onboardingProgress.maxValue=1; onboardingProgress.widthAnchor.constraint(equalToConstant:150).isActive=true
-        let onboardingControls=NSStackView(views:[onboardingButton,onboardingCancel,button("Onboarding Details",#selector(showOnboardingDetails)),onboardingProgress]); onboardingControls.spacing=10; outer.addArrangedSubview(onboardingControls)
-        onboardingStatus.font = .systemFont(ofSize:11); onboardingStatus.textColor = .secondaryLabelColor; onboardingStatus.maximumNumberOfLines=3; onboardingStatus.lineBreakMode = .byTruncatingTail; outer.addArrangedSubview(onboardingStatus); onboardingStatus.widthAnchor.constraint(equalTo:outer.widthAnchor).isActive=true
-        reconnect.state = .on; outer.addArrangedSubview(reconnect)
-        let heading = NSTextField(labelWithString: "SESSIONS"); heading.font = .systemFont(ofSize: 11, weight: .semibold); heading.textColor = .secondaryLabelColor; outer.addArrangedSubview(heading)
-        sessionList.orientation = .vertical; sessionList.alignment = .leading; sessionList.spacing = 8
-        let sessionScroll = NSScrollView(); sessionScroll.documentView = sessionList; sessionScroll.hasVerticalScroller = true; sessionScroll.borderType = .noBorder
-        outer.addArrangedSubview(sessionScroll); sessionScroll.heightAnchor.constraint(equalToConstant: 110).isActive = true; sessionScroll.widthAnchor.constraint(equalTo: outer.widthAnchor).isActive = true
-        status.font = .systemFont(ofSize: 12); status.textColor = .secondaryLabelColor; outer.addArrangedSubview(status); status.widthAnchor.constraint(equalTo: outer.widthAnchor).isActive = true
+        launcherUI=LauncherUI(controller:self)
+        launcherUI?.build()
+        status.onChange={ [weak self] in self?.updateLauncherPresentation() }
         updateSessions()
     }
+    func updateLauncherPresentation() {launcherUI?.refresh()}
+    func tableViewSelectionDidChange(_ notification:Notification) {updateLauncherPresentation()}
+    var canLaunchSelectedApp:Bool {
+        guard let device=selectedDevice else {return false}
+        return !quitting && device.state == "device" && readySerials.contains(device.serial) && appsDeviceSerial == device.serial && selectedApp != nil
+    }
+    var canOnboardSelectedDevice:Bool {
+        guard let device=selectedDevice else {return false}
+        return !quitting && device.state == "device" && readySerials.contains(device.serial) && appsDeviceSerial == device.serial && !applications.isEmpty && sharedPreferences.bulkWrapperOnboardingEnabled && !onboardingPending && !onboarding.isRunning && managedNameRepair?.isRunning != true
+    }
+    func control(_ control:NSControl,textView:NSTextView,doCommandBy selector:Selector)->Bool {
+        guard control === search,selector == #selector(NSResponder.insertNewline(_:)) else {return false}
+        if canLaunchSelectedApp {launchAction()} else {NSSound.beep()}
+        return true
+    }
+    @objc func focusAppSearch() {showWindow(nil);window?.makeKeyAndOrderFront(nil);window?.makeFirstResponder(search);refreshDevices(forceApps:true)}
+    @objc func clearAppSearch() {search.stringValue="";filterApps();window?.makeFirstResponder(search)}
+    @objc func showLauncherSettings() {showWindow(nil);window?.makeKeyAndOrderFront(nil);backendPicker.scrollToVisible(backendPicker.bounds);window?.makeFirstResponder(backendPicker);refreshDevices(forceApps:true)}
     func numberOfRows(in tableView: NSTableView) -> Int { filtered.count }
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let app = filtered[row]
+        guard filtered.indices.contains(row) else {return nil}
+        let app=filtered[row]
         if tableColumn?.identifier.rawValue == "name" {
-            let imageView = NSImageView(); imageView.imageScaling = .scaleProportionallyUpOrDown
-            let label = NSTextField(labelWithString: app.name); label.lineBreakMode = .byTruncatingTail
-            let key = selectedDevice.map { iconKey($0, app) }
-            if let key, icons[key] != nil { touchIcon(key) }
-            imageView.image = key.flatMap { icons[$0] } ?? NSImage(systemSymbolName: "app.dashed", accessibilityDescription: "Android icon loading or unavailable")
-            if let device = selectedDevice { requestIcon(device, app) }
-            let row = NSStackView(views: [imageView, label]); row.spacing = 8; row.alignment = .centerY
-            imageView.widthAnchor.constraint(equalToConstant: 28).isActive = true; imageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
-            row.toolTip = key.flatMap { iconFailures[$0] }.map { "Android icon unavailable: " + $0 } ?? app.name
-            return row
+            let identifier=NSUserInterfaceItemIdentifier("launcher.app-cell")
+            let cell=(tableView.makeView(withIdentifier:identifier,owner:nil) as? LauncherAppCell) ?? LauncherAppCell()
+            cell.identifier=identifier
+            let key=selectedDevice.map {iconKey($0,app)}
+            if let key,icons[key] != nil {touchIcon(key)}
+            cell.configure(name:app.name,icon:key.flatMap {icons[$0]},hint:key.flatMap {iconFailures[$0]})
+            if let device=selectedDevice {requestIcon(device,app)}
+            return cell
         }
-        let label = NSTextField(labelWithString: app.packageName); label.lineBreakMode = .byTruncatingMiddle; label.textColor = .secondaryLabelColor; label.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
-        return label
+        let identifier=NSUserInterfaceItemIdentifier("launcher.package-cell")
+        let cell=(tableView.makeView(withIdentifier:identifier,owner:nil) as? LauncherPackageCell) ?? LauncherPackageCell()
+        cell.identifier=identifier;cell.label.stringValue=app.packageName;cell.toolTip=app.packageName
+        return cell
     }
     func iconKey(_ device: AndroidDevice, _ app: AndroidApplication) -> String { device.serial + ":" + app.packageName }
     func requestIcon(_ device: AndroidDevice, _ app: AndroidApplication) {
@@ -217,7 +206,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
                 guard let self else { return }
                 defer {
                     self.iconTasks.removeValue(forKey: key); self.pumpIcons()
-                    if !self.quitting, self.selectedDevice?.serial == device.serial, let row = self.filtered.firstIndex(where: { $0.packageName == app.packageName }) { self.table.reloadData(forRowIndexes: IndexSet(integer: row), columnIndexes: IndexSet(integer: 0)) }
+                    if !self.quitting, self.selectedDevice?.serial == device.serial, let row = self.filtered.firstIndex(where: { $0.packageName == app.packageName }) { self.table.reloadData(forRowIndexes: IndexSet(integer: row), columnIndexes: IndexSet(integer: 0));self.updateLauncherPresentation() }
                 }
                 do {
                     let data = try await self.iconProvider.icon(device: device, application: app)
@@ -239,10 +228,13 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     }
     func controlTextDidChange(_ obj: Notification) { filterApps() }
     func filterApps() {
-        let query = search.stringValue.lowercased()
+        let previousPackage=selectedApp?.packageName
+        let query = search.stringValue.trimmingCharacters(in:.whitespacesAndNewlines).lowercased()
         filtered = applications.filter { query.isEmpty || $0.name.lowercased().contains(query) || $0.packageName.lowercased().contains(query) }
         table.reloadData()
-        if !filtered.isEmpty { table.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false) }
+        if !filtered.isEmpty {table.selectRowIndexes(IndexSet(integer:filtered.firstIndex(where:{$0.packageName==previousPackage}) ?? 0),byExtendingSelection:false)}
+        else {table.deselectAll(nil)}
+        updateLauncherPresentation()
     }
     @objc func refreshAction() { iconFailures.removeAll(); refresh() }
     func beginPolling() {
@@ -261,7 +253,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         if !sharedPreferences.bulkWrapperOnboardingEnabled && onboarding.isRunning { onboarding.cancel() }
         let selected = selectedDevice?.serial
         refreshTask = Task {
-            defer { refreshing = false; refreshTask = nil }
+            defer { refreshing = false; refreshTask = nil;updateLauncherPresentation() }
             do {
                 let recovered = isWrapper ? [] : await AndroidIconProvider.recoverAbandonedRequests(toolchain: toolchain)
                 if !recovered.isEmpty { iconRecoveryMessages = recovered }
@@ -316,18 +308,41 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
             } catch { showLaunchProblem(error.localizedDescription) }
         }
     }
-    @objc func deviceChanged() { pollPhoneDisplayControls();discardStaleIconRequests(); appsDeviceSerial = nil; Task { await loadApps() } }
+    @objc func deviceChanged() {
+        deviceSelectionTask?.cancel();pollPhoneDisplayControls();discardStaleIconRequests()
+        appsDeviceSerial=nil;appsLoadToken=UUID();loadingAppsSerial=nil;appsError=nil;applications=[];filterApps()
+        let id=UUID()
+        let task=Task { [weak self] in
+            guard let self else {return}
+            defer {self.deviceSelectionTasks.removeValue(forKey:id)}
+            guard !Task.isCancelled,!self.quitting else {return}
+            await self.loadApps()
+        }
+        deviceSelectionTask=task;deviceSelectionTasks[id]=task
+    }
     func loadApps(readinessChecked: Bool = false) async {
-        guard let device = selectedDevice, device.state == "device" else { applications = []; appsDeviceSerial = nil; filterApps(); return }
-        let ready = readinessChecked ? readySerials.contains(device.serial) : await DeviceReadiness.isReady(device: device, toolchain: toolchain)
-        guard selectedDevice?.serial == device.serial, !quitting else { return }
-        guard ready else { applications = []; appsDeviceSerial = nil; filterApps(); status.stringValue = "Waiting for Android to finish booting on \(device.model)…"; return }
-        status.stringValue = "Reading apps from \(device.model)…"
-        do { let found = try await discovery.applications(device: device); guard selectedDevice?.serial == device.serial else { return }; applications = found; appsDeviceSerial = device.serial; filterApps(); status.stringValue = "\(applications.count) launchable apps · \(device.serial) · Video remains on this Mac." }
-        catch { guard selectedDevice?.serial == device.serial, !quitting else { return }; applications = []; appsDeviceSerial = nil; filterApps(); status.stringValue = error.localizedDescription }
+        guard !quitting,!Task.isCancelled else {return}
+        guard let device=selectedDevice,device.state == "device" else {applications=[];appsDeviceSerial=nil;filterApps();return}
+        guard loadingAppsSerial != device.serial else {return}
+        let token=UUID();appsLoadToken=token;loadingAppsSerial=device.serial;appsError=nil;updateLauncherPresentation()
+        defer {if appsLoadToken==token {loadingAppsSerial=nil;updateLauncherPresentation()}}
+        let ready=readinessChecked ? readySerials.contains(device.serial) : await DeviceReadiness.isReady(device:device,toolchain:toolchain)
+        guard selectedDevice?.serial==device.serial,appsLoadToken==token,!quitting,!Task.isCancelled else {return}
+        if ready {readySerials.insert(device.serial)} else {readySerials.remove(device.serial)}
+        guard ready else {applications=[];appsDeviceSerial=nil;filterApps();status.stringValue="Waiting for Android to finish booting on \(device.model)…";return}
+        status.stringValue="Reading apps from \(device.model)…"
+        do {
+            let found=try await discovery.applications(device:device)
+            guard selectedDevice?.serial==device.serial,appsLoadToken==token,!quitting,!Task.isCancelled else {return}
+            applications=found;appsDeviceSerial=device.serial;filterApps()
+            status.stringValue="\(applications.count) apps ready. Double-click an app to open it."
+        } catch {
+            guard selectedDevice?.serial==device.serial,appsLoadToken==token,!quitting,!Task.isCancelled else {return}
+            appsError=(device.serial,error.localizedDescription);applications=[];appsDeviceSerial=nil;filterApps();status.stringValue=error.localizedDescription
+        }
     }
     @objc func launchAction() {
-        guard let device = selectedDevice, let app = selectedApp else { status.stringValue = "Select a connected device and an app first."; return }
+        guard canLaunchSelectedApp,let device=selectedDevice,let app=selectedApp else {status.stringValue="Select an app from a connected, ready device first.";return}
         Task { await launch(device: device, app: app, configuration: SessionConfiguration(backend: backend,showSystemDecorations:(try? DroidBridgePreferences.load().showAndroidSystemDecorations) ?? true)) }
     }
     @discardableResult
@@ -490,23 +505,22 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         guard isWrapper, sessions.isEmpty, !quitting else { return }
         NSApp.terminate(nil)
     }
+    func focusSession(_ id:UUID) {
+        guard let session=sessions[id] else {return}
+        if session.descriptor.configuration.backend == .scrcpy,let pid=session.externalApplicationPID {NSRunningApplication(processIdentifier:pid)?.activate(options:.activateAllWindows)}
+        else if session.descriptor.configuration.backend == .native,let window=hosts[id]?.window {window.deminiaturize(nil);window.makeKeyAndOrderFront(nil);NSApp.activate(ignoringOtherApps:true)}
+    }
     func updateSessions() {
-        for view in sessionList.arrangedSubviews { sessionList.removeArrangedSubview(view); view.removeFromSuperview() }
-        if sessions.isEmpty { sessionList.addArrangedSubview(NSTextField(labelWithString: "No running sessions. Select an app above and choose Launch App.")) }
-        for (id, session) in sessions.sorted(by: { $0.value.descriptor.application.name < $1.value.descriptor.application.name }) {
-            let descriptor = session.descriptor
-            let label = NSTextField(labelWithString: "\(descriptor.application.name) · \(descriptor.configuration.backend.rawValue) · \(sessionStates[id] ?? "starting")")
-            let focus = ClosureButton(title: "Focus") { [weak self] in self?.hosts[id]?.window?.makeKeyAndOrderFront(nil) }
-            focus.isEnabled = hosts[id] != nil
-            let close = ClosureButton(title: "Close") { [weak self] in self?.close(id) }
-            var controls: [NSView] = [label, focus]
-            if session.state == .failed || session.state == .stopped {
-                controls += [ClosureButton(title: "Retry") { [weak self] in self?.retry(id) }, ClosureButton(title: descriptor.configuration.backend == .native ? "Try scrcpy" : "Try Native") { [weak self] in self?.retry(id, backend: descriptor.configuration.backend == .native ? .scrcpy : .native) }]
-            }
-            controls += [ClosureButton(title: "Log") { NSWorkspace.shared.open(session.logURL) }, close]
-            let row = NSStackView(views: controls); row.spacing = 10; row.toolTip = sessionErrors[id]; sessionList.addArrangedSubview(row)
+        let presentation=sessions.values.map {LauncherSessionPresentation(controller:self,session:$0)}.sorted {$0.id.uuidString<$1.id.uuidString}
+        guard presentation != sessionPresentation else {updateLauncherPresentation();return}
+        sessionPresentation=presentation
+        for view in sessionList.arrangedSubviews {sessionList.removeArrangedSubview(view);view.removeFromSuperview()}
+        if sessions.isEmpty {sessionList.addArrangedSubview(LauncherUI.sessionEmptyLabel())}
+        for (id,session) in sessions.sorted(by:{$0.value.descriptor.application.name.localizedStandardCompare($1.value.descriptor.application.name) == .orderedAscending}) {
+            let row=LauncherUI.sessionCard(controller:self,id:id,session:session)
+            sessionList.addArrangedSubview(row);row.widthAnchor.constraint(equalTo:sessionList.widthAnchor).isActive=true
         }
-        sessionList.layoutSubtreeIfNeeded(); sessionList.setFrameSize(NSSize(width: 850, height: max(100, sessionList.fittingSize.height)))
+        updateLauncherPresentation()
     }
     func save() {
         var intents=Dictionary(pending.map {($0.id,$0)},uniquingKeysWith:{first,_ in first})
@@ -540,9 +554,9 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         guard let device = selectedDevice, let app = selectedApp, !creatingWrapper else { return }
         guard managedNameRepair?.isRunning != true,!onboardingPending,!onboarding.isRunning else {status.stringValue="Wait for the current Mac app update to finish.";return}
         let chosenBackend = backend
-        creatingWrapper = true; status.stringValue = "Loading Android icon and building \(app.name)'s Mac app…"
+        creatingWrapper = true;updateLauncherPresentation(); status.stringValue = "Loading Android icon and building \(app.name)'s Mac app…"
         wrapperTask = Task {
-            defer { creatingWrapper = false; wrapperTask = nil }
+            defer { creatingWrapper = false; wrapperTask = nil;updateLauncherPresentation() }
             do {
                 let lease=try DeviceOnboardingLease(root:managedCatalog.paths.privateRoot)
                 defer {lease.release()}
@@ -584,6 +598,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     }
     func shutdownAndWait() async {
         quitting = true
+        for task in deviceSelectionTasks.values {task.cancel()}
         if let preview=launchPreview {preview.onClose=nil;preview.close();launchPreview=nil}
         phoneDisplayControls.cancel(); managedNameRepair?.cancel(); restoreTask?.cancel(); onboardingAdmissionTask?.cancel(); onboarding.cancel()
         for session in Array(sessions.values)+Array(retiring.values) {session.stop(reason:"application_quit")}
@@ -599,6 +614,8 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         for task in pendingIcons { await task.value }
         if let task = wrapperTask { await task.value }
         if let task = refreshTask { await task.value }
+        for task in Array(deviceSelectionTasks.values) {await task.value}
+        deviceSelectionTasks.removeAll();deviceSelectionTask=nil
         if let task = restoreTask {await task.value}
         let owned = Array(sessions.values) + Array(retiring.values)
         for session in owned { session.stop(reason: "application_quit") }

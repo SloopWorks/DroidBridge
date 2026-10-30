@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-installed-launcher.py", line 135, in <module>
+    assert hashlib.sha256((wrapper/'Contents/MacOS/DroidBridge').read_bytes()).hexdigest()==report['executable_sha256']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

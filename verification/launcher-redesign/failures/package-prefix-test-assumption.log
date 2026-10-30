@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-installed-launcher.py", line 70, in <module>
+    first=launched('dev.droidbridge.testapp','native')
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-installed-launcher.py", line 48, in launched
+    wait('filtered package',lambda:command('status')['rows']>=1)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-installed-launcher.py", line 38, in wait
+    raise AssertionError('timeout: '+label)
+AssertionError: timeout: filtered package

@@ -167,6 +167,7 @@ extension LauncherController {
                     self.onboardingProgress.maxValue=Double(max(1,progress.total));self.onboardingProgress.doubleValue=Double(progress.completed)
                 }
                 self.onboardingButton.isEnabled=self.bulkPreference.state == .on && repair?.isRunning != true
+                self.updateLauncherPresentation()
             }
             repair.onDetail={ [weak self] message in self?.onboarding.recordMaintenanceMessage("Mac app name repair: "+message) }
             managedNameRepair=repair
