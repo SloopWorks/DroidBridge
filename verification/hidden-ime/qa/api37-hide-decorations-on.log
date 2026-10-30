@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-hidden-ime-native.py", line 81, in <module>
+    text=wait('Mac text reached exact display',lambda:(t if f'text={word} display={display}' in (t:=android('logcat','-d','-s','DroidBridgeProbe:I','*:S')) else None),15)
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-hidden-ime-native.py", line 21, in wait
+    raise AssertionError('Timeout '+label)
+AssertionError: Timeout Mac text reached exact display

@@ -18,7 +18,8 @@ printf '%s' native-clean > "$QA_ROOT/mode"
 swift build
 BIN=$(swift build --show-bin-path)
 swiftc -parse-as-library -I "$BIN/Modules" Sources/DroidBridge/Launcher.swift Sources/DroidBridge/LauncherUI.swift Sources/DroidBridge/PhoneDisplayControls.swift Sources/DroidBridge/ManagedAppNameRepair.swift Sources/DroidBridge/DeviceOnboarding.swift Sources/DroidBridge/DeviceOnboardingUI.swift Sources/DroidBridge/DeviceOnboardingAgent.swift Sources/DroidBridge/NativeWindow.swift Sources/DroidBridge/MacAppWrapper.swift scripts/verify-wrapper-failure.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o .build/qa-wrapper-failure
-mkdir -p verification/launcher-fix/qa
-DROIDBRIDGE_QA_H264="$QA_ROOT/frame.h264" DROIDBRIDGE_ICON_HELPER="$QA_ROOT/server" DROIDBRIDGE_ADB="$QA_ROOT/adb" DROIDBRIDGE_SCRCPY="$QA_ROOT/scrcpy" DROIDBRIDGE_SERVER="$QA_ROOT/server" DROIDBRIDGE_QA_MODE="$QA_ROOT/mode" .build/qa-wrapper-failure --wrapper 2>&1 | tee verification/launcher-fix/qa/failure-retention.log
+QA_OUT="${DROIDBRIDGE_QA_OUTPUT:-verification/launcher-fix/qa}"
+mkdir -p "$QA_OUT"
+DROIDBRIDGE_QA_H264="$QA_ROOT/frame.h264" DROIDBRIDGE_ICON_HELPER="$QA_ROOT/server" DROIDBRIDGE_ADB="$QA_ROOT/adb" DROIDBRIDGE_SCRCPY="$QA_ROOT/scrcpy" DROIDBRIDGE_SERVER="$QA_ROOT/server" DROIDBRIDGE_QA_MODE="$QA_ROOT/mode" .build/qa-wrapper-failure --wrapper 2>&1 | tee "$QA_OUT/failure-retention.log"
 # An erroneous terminate(nil) exits zero before the assertions complete.
-rg -q '^PASS: shipping wrapper retains' verification/launcher-fix/qa/failure-retention.log
+rg -q '^PASS: shipping wrapper retains' "$QA_OUT/failure-retention.log"

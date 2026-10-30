@@ -1,0 +1,24 @@
+test_attached_ime_rejected_with_hide_policy (__main__.StateParserTests.test_attached_ime_rejected_with_hide_policy) ... ok
+test_conflicting_policy_rejected (__main__.StateParserTests.test_conflicting_policy_rejected) ... ok
+test_duplicate_display_fails (__main__.StateParserTests.test_duplicate_display_fails) ... ok
+test_explicit_nonvacuous_hidden (__main__.StateParserTests.test_explicit_nonvacuous_hidden) ... ok
+test_hidden_policy_allows_ime_source_absence (__main__.StateParserTests.test_hidden_policy_allows_ime_source_absence) ... ok
+test_ime_window_missing_visibility_fails (__main__.StateParserTests.test_ime_window_missing_visibility_fails) ... ok
+test_missing_display_fails (__main__.StateParserTests.test_missing_display_fails) ... ok
+test_missing_inset_fails (__main__.StateParserTests.test_missing_inset_fails) ... ok
+test_missing_window_state_fails (__main__.StateParserTests.test_missing_window_state_fails) ... ok
+test_other_display_ime_does_not_claim_target_visible (__main__.StateParserTests.test_other_display_ime_does_not_claim_target_visible) ... ok
+test_package_suffix_not_matching (__main__.StateParserTests.test_package_suffix_not_matching) ... ok
+test_physical_hide_policy_cannot_authorize_target (__main__.StateParserTests.test_physical_hide_policy_cannot_authorize_target) ... ok
+test_real_api37_explicit_hide_without_source (__main__.StateParserTests.test_real_api37_explicit_hide_without_source) ... ok
+test_real_local_bug_control_detected (__main__.StateParserTests.test_real_local_bug_control_detected) ... ok
+test_true_inset_still_rejected_with_hide_policy (__main__.StateParserTests.test_true_inset_still_rejected_with_hide_policy) ... ok
+test_unrelated_display_does_not_hide_target (__main__.StateParserTests.test_unrelated_display_does_not_hide_target) ... ok
+test_visible_ime_window_rejects_false_inset (__main__.StateParserTests.test_visible_ime_window_rejects_false_inset) ... ok
+test_visible_inset_fails (__main__.StateParserTests.test_visible_inset_fails) ... ok
+test_wrong_known_policy_rejects_false_insets (__main__.StateParserTests.test_wrong_known_policy_rejects_false_insets) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.004s
+
+OK

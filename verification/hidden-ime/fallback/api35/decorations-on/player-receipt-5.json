@@ -1,0 +1,14 @@
+{
+  "id" : 5,
+  "client_class" : "SDL3TranslatorResponder",
+  "physical_focus_verified" : false,
+  "content_height" : 906,
+  "passed" : true,
+  "content_width" : 720,
+  "first_responder" : "SDL3TranslatorResponder",
+  "action" : "text",
+  "title" : "DroidBridge · dev.droidbridge.testapp",
+  "window" : 11849,
+  "role" : "player",
+  "pid" : 14910
+}

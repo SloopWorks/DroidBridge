@@ -91,7 +91,8 @@ extension QALifecycleTests {
             echo "removed:$3" >> '\(receipt.path)'
           fi ;;
         shell)
-          if [ "$2" = "cmd" ]; then echo dev.droidbridge.testapp/.MainActivity
+          if [ "$2" = "getprop" ]; then echo 35
+          elif [ "$2" = "cmd" ]; then echo dev.droidbridge.testapp/.MainActivity
           else echo remote-cleaned >> '\(receipt.path)'; fi ;;
         esac
         """

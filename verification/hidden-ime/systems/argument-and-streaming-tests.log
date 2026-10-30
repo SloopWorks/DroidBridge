@@ -1,0 +1,42 @@
+Building for debugging...
+[0/7] Write sources
+[1/7] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Emitting module DroidBridgeCoreTests
+[4/5] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.04s)
+Test Suite 'Selected tests' started at 2026-10-30 00:34:22.683.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 00:34:22.683.
+Test Suite 'HiddenIMEArgumentTests' started at 2026-10-30 00:34:22.683.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testBothActualSpawnPathsAlwaysHideIMEForNewAndRestoredSessions]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testBothActualSpawnPathsAlwaysHideIMEForNewAndRestoredSessions]' passed (40.067 seconds).
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testUnsupportedOrUnknownSDKFailsBeforeAppResolutionStagingOrChildLaunch]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testUnsupportedOrUnknownSDKFailsBeforeAppResolutionStagingOrChildLaunch]' passed (3.333 seconds).
+Test Suite 'HiddenIMEArgumentTests' passed at 2026-10-30 00:35:06.083.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 43.399 (43.400) seconds
+Test Suite 'QALifecycleTests' started at 2026-10-30 00:35:06.083.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testStopAndWaitIncludesLateForwardAllocation]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testStopAndWaitIncludesLateForwardAllocation]' passed (1.510 seconds).
+Test Suite 'QALifecycleTests' passed at 2026-10-30 00:35:07.593.
+	 Executed 1 test, with 0 failures (0 unexpected) in 1.510 (1.510) seconds
+Test Suite 'StreamingTests' started at 2026-10-30 00:35:07.593.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/StreamingTests.swift:29: -[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams] : Test skipped - Set DROIDBRIDGE_INTEGRATION=1 with emulator-5580 running
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' skipped (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' passed (0.000 seconds).
+Test Suite 'StreamingTests' passed at 2026-10-30 00:35:07.597.
+	 Executed 4 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 00:35:07.597.
+	 Executed 7 tests, with 1 test skipped and 0 failures (0 unexpected) in 44.912 (44.913) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 00:35:07.597.
+	 Executed 7 tests, with 1 test skipped and 0 failures (0 unexpected) in 44.912 (44.914) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

@@ -1,0 +1,80 @@
+[
+  {
+    "backend" : "native",
+    "details" : {
+      "height" : "702",
+      "launcher_visible" : "false",
+      "width" : "468",
+      "window_number" : "11925"
+    },
+    "device" : "qa-no-device",
+    "event" : "loading_window_presented",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "27DE6B0B-D7A7-47F4-A968-9835F4D1746C",
+    "timestamp" : "2026-10-30T08:26:10Z"
+  },
+  {
+    "backend" : "native",
+    "device" : "qa-no-device",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "27DE6B0B-D7A7-47F4-A968-9835F4D1746C",
+    "state" : "starting",
+    "timestamp" : "2026-10-30T08:26:10Z"
+  },
+  {
+    "backend" : "native",
+    "device" : "qa-no-device",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "27DE6B0B-D7A7-47F4-A968-9835F4D1746C",
+    "state" : "running",
+    "timestamp" : "2026-10-30T08:26:11Z"
+  },
+  {
+    "backend" : "native",
+    "details" : {
+      "app_active" : "false",
+      "bundle_id" : "unknown",
+      "key" : "false",
+      "minimized" : "true",
+      "pid" : "95533",
+      "reason" : "first_frame",
+      "visible" : "false",
+      "window_number" : "11925"
+    },
+    "device" : "qa-no-device",
+    "event" : "native_window_presented",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "27DE6B0B-D7A7-47F4-A968-9835F4D1746C",
+    "timestamp" : "2026-10-30T08:26:11Z"
+  },
+  {
+    "backend" : "native",
+    "details" : {
+      "initial_blank_frames" : "0",
+      "window_number" : "11925"
+    },
+    "device" : "qa-no-device",
+    "event" : "native_content_presented",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "27DE6B0B-D7A7-47F4-A968-9835F4D1746C",
+    "timestamp" : "2026-10-30T08:26:11Z"
+  },
+  {
+    "backend" : "native",
+    "details" : {
+      "app_active" : "false",
+      "bundle_id" : "unknown",
+      "key" : "false",
+      "minimized" : "false",
+      "pid" : "95533",
+      "reason" : "application_reopen",
+      "visible" : "true",
+      "window_number" : "11925"
+    },
+    "device" : "qa-no-device",
+    "event" : "native_window_presented",
+    "package" : "dev.droidbridge.testapp",
+    "session" : "27DE6B0B-D7A7-47F4-A968-9835F4D1746C",
+    "timestamp" : "2026-10-30T08:26:12Z"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "dimensions": [
+      896,
+      1344
+    ],
+    "editorPoint": {
+      "x": 0.25708061319638964,
+      "y": 0.22093023245431898
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 48",
+      "Clicks 0 \u2022 896\u00d71344",
+      "HiddenlmepaneloffPastepaneloff",
+      "INCREMENT COUNTER",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  },
+  {
+    "dimensions": [
+      896,
+      1344
+    ],
+    "editorPoint": {
+      "x": 0.25708061319638964,
+      "y": 0.22093023245431898
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 50",
+      "Clicks 0 \u2022 896\u00d71344",
+      "HiddenlmepaneloffPastepaneloff",
+      "INCREMENT COUNTER",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  }
+]

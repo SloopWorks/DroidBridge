@@ -1,0 +1,7 @@
+{
+  "show_ime_with_hard_keyboard": "1\n",
+  "default_input_method": "com.android.inputmethod.latin/.LatinIME\n",
+  "enabled_input_methods": "com.android.inputmethod.latin/.LatinIME\n",
+  "stay_on_while_plugged_in": "1\n",
+  "screen_off_timeout": "2147483647\n"
+}

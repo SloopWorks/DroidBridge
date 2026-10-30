@@ -28,7 +28,7 @@ import DroidBridgeStreaming
         try require(NSApp.activationPolicy() == .regular, "\(label): wrapper identity remained accessory")
         let titles = buttons(launcher.sessionList)
         try require(titles.contains("Retry") && titles.contains("Log") && titles.contains(session.descriptor.configuration.backend == .native ? "Try scrcpy" : "Try Native"), "\(label): missing recovery controls \(titles)")
-        let output = URL(fileURLWithPath:FileManager.default.currentDirectoryPath).appendingPathComponent("verification/launcher-fix/qa")
+        let output = URL(fileURLWithPath:ProcessInfo.processInfo.environment["DROIDBRIDGE_QA_OUTPUT"] ?? "verification/launcher-fix/qa",relativeTo:URL(fileURLWithPath:FileManager.default.currentDirectoryPath))
         let name = label.replacingOccurrences(of:" ",with:"-")
         for source in [session.logURL,session.logURL.appendingPathExtension("jsonl")] {
             if FileManager.default.fileExists(atPath:source.path) {
@@ -68,7 +68,7 @@ import DroidBridgeStreaming
         try require(host.window?.isVisible == true && !host.window!.isMiniaturized && Set(launcher.sessions.keys) == previousIDs, "Reopen failed to reveal existing window without admitting another Android session")
         let reopenEvents = try presentationEvents()
         try require(reopenEvents.contains { ($0["details"] as? [String:String])?["reason"] == "application_reopen" }, "Missing reopen presentation receipt")
-        let output = URL(fileURLWithPath:FileManager.default.currentDirectoryPath).appendingPathComponent("verification/launcher-fix/qa/presentation.json")
+        let output = URL(fileURLWithPath:ProcessInfo.processInfo.environment["DROIDBRIDGE_QA_OUTPUT"] ?? "verification/launcher-fix/qa",relativeTo:URL(fileURLWithPath:FileManager.default.currentDirectoryPath)).appendingPathComponent("presentation.json")
         try JSONSerialization.data(withJSONObject:reopenEvents,options:[.prettyPrinted,.sortedKeys]).write(to:output)
         print("PASS: decoded first frame preserves deliberate loading minimize; Reopen reveals same session; accurate receipts; OS foreground focus unasserted")
         launcher.close(presented.descriptor.id)

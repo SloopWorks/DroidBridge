@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "policy": "local",
+  "installed_sha256": "55fe5f6725dfe5bfbf0c3d9f77aaae93899aecbb54c34f79165e01b97e04811f",
+  "physical_focus_verified": false,
+  "before": {
+    "display_count": 1,
+    "forwards": [],
+    "reverses": "\n"
+  },
+  "display": 2,
+  "session": "6201D977-ECB6-4B0C-B4EF-45580C7B643B",
+  "snapshots": [
+    {
+      "passed": false,
+      "reason": "Visible IME inset on display 2: InsetsSource id=3 type=ime frame=[0,503][720,1080] visibleFrame=[0,503][720,1080] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    },
+    {
+      "passed": false,
+      "reason": "Visible IME inset on display 2: InsetsSource id=3 type=ime frame=[0,503][720,1080] visibleFrame=[0,503][720,1080] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    },
+    {
+      "passed": false,
+      "reason": "Visible IME inset on display 2: InsetsSource id=3 type=ime frame=[0,503][720,1080] visibleFrame=[0,503][720,1080] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    },
+    {
+      "passed": false,
+      "reason": "Visible IME inset on display 2: InsetsSource id=3 type=ime frame=[0,503][720,1080] visibleFrame=[0,503][720,1080] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    },
+    {
+      "passed": false,
+      "reason": "Visible IME inset on display 2: InsetsSource id=3 type=ime frame=[0,503][720,1080] visibleFrame=[0,503][720,1080] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    },
+    {
+      "passed": false,
+      "reason": "Visible IME inset on display 2: InsetsSource id=3 type=ime frame=[0,503][720,1080] visibleFrame=[0,503][720,1080] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    },
+    {
+      "passed": false,
+      "reason": "Visible IME inset on display 2: InsetsSource id=3 type=ime frame=[0,503][720,1080] visibleFrame=[0,503][720,1080] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    },
+    {
+      "passed": false,
+      "reason": "Visible IME inset on display 2: InsetsSource id=3 type=ime frame=[0,503][720,1080] visibleFrame=[0,503][720,1080] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    }
+  ],
+  "text_delivery": true,
+  "positive_local_keyboard_observed": true,
+  "sampled_hide_check": false,
+  "after": {
+    "display_count": 1,
+    "forwards": [],
+    "reverses": "\n"
+  }
+}

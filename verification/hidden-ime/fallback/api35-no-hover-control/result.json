@@ -1,0 +1,621 @@
+{
+  "passed": true,
+  "version": "0.1.7",
+  "build": "12",
+  "serial": "emulator-5580",
+  "host_sha256": "a725fcaa790b9aea9d1e95daeb8f43b31a8ba9cc90c4440e66f2b130d3e2cc40",
+  "player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "physical_focus_verified": false,
+  "input_path": "sdl",
+  "diagnostic_no_mouse_hover": true,
+  "acceptance": false,
+  "test_record_flag_added": true,
+  "cases": [
+    {
+      "decorations": true,
+      "session": "0A7398F3-9649-45FC-A0F4-82028358AB5E",
+      "display": 2,
+      "player_pid": 59670,
+      "on": {
+        "word": "1PanelOnText",
+        "raw_key_suffix": "k",
+        "paste": "PastePanelOn",
+        "frame_size": [
+          720,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "off": {
+        "word": "1PanelOffText",
+        "raw_key_suffix": "k",
+        "paste": "PastePanelOff",
+        "frame_size": [
+          720,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "resized_off": {
+        "word": "1ResizedOffText",
+        "raw_key_suffix": "k",
+        "paste": "PasteResizedOff",
+        "frame_size": [
+          900,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 2,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #1 Window{fc33ceb u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "recorded_frame_sha256": [
+        "a5b9a6a42c592bc0a413dadc59ca90ff65fb33c78a78dd89db53e320427a4eb7",
+        "794e6e1a6a2459ecb23064d841f2e1fad59d885761d3216e1c3f1576d71553ca"
+      ],
+      "exact_cleanup": true
+    },
+    {
+      "decorations": false,
+      "session": "F1FBF4B9-8675-4DE6-AD23-AA77BBC3B17C",
+      "display": 3,
+      "player_pid": 60473,
+      "on": {
+        "word": "1PanelOnText",
+        "raw_key_suffix": "k",
+        "paste": "PastePanelOn",
+        "frame_size": [
+          720,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "off": {
+        "word": "1PanelOffText",
+        "raw_key_suffix": "k",
+        "paste": "PastePanelOff",
+        "frame_size": [
+          720,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "resized_off": {
+        "word": "1ResizedOffText",
+        "raw_key_suffix": "k",
+        "paste": "PasteResizedOff",
+        "frame_size": [
+          900,
+          906
+        ],
+        "samples": [
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          },
+          {
+            "passed": true,
+            "scope": "supplied current display/window snapshots only",
+            "continuous_never_visible_proven": false,
+            "text_or_keyboard_delivery_proven": false,
+            "displays": [
+              {
+                "display": 3,
+                "package": "dev.droidbridge.testapp",
+                "ime_insets": [
+                  "InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null",
+                  "mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags= sideHint=NONE boundingRects=null"
+                ],
+                "ime_windows": [],
+                "visible_app_windows": [
+                  "Window #0 Window{4cb748f u0 dev.droidbridge.testapp/dev.droidbridge.testapp.MainActivity}:"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "recorded_frame_sha256": [
+        "f502423cd95b09d90890e6ff5fcb950197458fe3d9d41261a03a75e621d9f45f",
+        "7911966b1cfe8bac9f28d345570634b0c248cecf764cde45d7535529c4eeff99"
+      ],
+      "exact_cleanup": true
+    }
+  ],
+  "before": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": "\n"
+  },
+  "before_android_settings": {
+    "secure.show_ime_with_hard_keyboard": "1",
+    "secure.default_input_method": "com.android.inputmethod.latin/.LatinIME",
+    "secure.enabled_input_methods": "com.android.inputmethod.latin/.LatinIME",
+    "global.stay_on_while_plugged_in": "1",
+    "system.screen_off_timeout": "2147483647"
+  },
+  "before_health": {
+    "system_server_pid": "9550",
+    "uptime": "2379.00 4536.64",
+    "boot_complete": "1"
+  },
+  "after": {
+    "displays": 1,
+    "forwards": [],
+    "reverses": "\n"
+  },
+  "after_host_sha256": "a725fcaa790b9aea9d1e95daeb8f43b31a8ba9cc90c4440e66f2b130d3e2cc40",
+  "after_player_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "after_health": {
+    "system_server_pid": "9550",
+    "uptime": "2425.64 4605.91",
+    "boot_complete": "1"
+  },
+  "preferences_restored": true,
+  "session_intents_restored": true,
+  "after_android_settings": {
+    "secure.show_ime_with_hard_keyboard": "1",
+    "secure.default_input_method": "com.android.inputmethod.latin/.LatinIME",
+    "secure.enabled_input_methods": "com.android.inputmethod.latin/.LatinIME",
+    "global.stay_on_while_plugged_in": "1",
+    "system.screen_off_timeout": "2147483647"
+  }
+}

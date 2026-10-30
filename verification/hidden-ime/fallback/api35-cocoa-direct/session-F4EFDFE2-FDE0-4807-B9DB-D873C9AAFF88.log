@@ -1,0 +1,17 @@
+{"event":"supervisor_started","parent":23426,"child":23477}
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+[22;2t]0;scrcpyINFO: ADB device found:
+INFO:         (tcpip)  emulator-5554                   device  sdk_gphone16k_arm64
+INFO:     --> (tcpip)  emulator-5580                   device  Android_SDK_built_for_arm64
+INFO:         (tcpip)  emulator-5582                   device  sdk_gphone16k_arm64
+/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/share/scrcpy/scrcpy-server: 1 file pushed, 0 skipped. 232.9 MB/s (733930 bytes in 0.003s)
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+]0;scrcpy - DroidBridge · dev.droidbridge.testappINFO: Recording started to matroska file: /Users/patrick/workspace/DroidBridge/verification/hidden-ime/fallback/api35-cocoa-direct/decorations-on/player.mkv
+[server] INFO: New display: 640x440/240 (id=7)
+INFO: Renderer: metal
+INFO: Interop: videotoolbox
+INFO: Video decoding: videotoolbox
+[server] INFO: Starting app "DroidBridge Test" [dev.droidbridge.testapp] on display 7...
+INFO: Texture (VideoToolbox): 640x440
+INFO: Texture (VideoToolbox): 720x906
+{"event":"supervisor_stopped","reason":"stop_signal","exit_status":2,"signal":null,"requested_signal":15}

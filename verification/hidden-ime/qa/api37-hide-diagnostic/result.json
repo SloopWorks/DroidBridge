@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "policy": "hide",
+  "decorations": "on",
+  "installed_sha256": "a725fcaa790b9aea9d1e95daeb8f43b31a8ba9cc90c4440e66f2b130d3e2cc40",
+  "physical_focus_verified": false,
+  "before": {
+    "display_count": 1,
+    "forwards": [],
+    "reverses": "\n"
+  },
+  "failure": "Timeout Mac text reached exact display",
+  "globalSettingsUnchanged": true,
+  "after": {
+    "display_count": 1,
+    "forwards": [],
+    "reverses": "\n"
+  }
+}

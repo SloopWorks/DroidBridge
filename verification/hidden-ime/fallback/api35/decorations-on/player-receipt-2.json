@@ -1,0 +1,13 @@
+{
+  "action" : "resize",
+  "window" : 11849,
+  "first_responder" : "SDL3TranslatorResponder",
+  "id" : 2,
+  "role" : "player",
+  "title" : "DroidBridge · dev.droidbridge.testapp",
+  "content_width" : 720,
+  "physical_focus_verified" : false,
+  "content_height" : 906,
+  "passed" : true,
+  "pid" : 14910
+}

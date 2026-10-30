@@ -1,0 +1,38 @@
+[
+  {
+    "dimensions": [
+      720,
+      1080
+    ],
+    "editorPoint": {
+      "x": 0.31699346722494554,
+      "y": 0.27252906957667156
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 8 \u2022 ticks 27",
+      "Clicks 0 \u2022 720\u00d71080",
+      "INCREMENT COUNTER",
+      "HiddenlmepanelonPastepanelon",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  },
+  {
+    "dimensions": [
+      720,
+      1080
+    ],
+    "editorPoint": {
+      "x": 0.31481481820533774,
+      "y": 0.2754360464298692
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 8 \u2022 ticks 29",
+      "Clicks 0 \u2022 720\u00d71080",
+      "INCREMENT COUNTER",
+      "HiddenlmepanelonPastepanelon",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  }
+]

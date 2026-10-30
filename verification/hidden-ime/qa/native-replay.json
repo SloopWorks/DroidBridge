@@ -1,0 +1,26 @@
+{
+  "final-api35-on": {
+    "passed": true,
+    "independently_replayed_snapshots": 24,
+    "display": 4,
+    "installed_sha256": "13ea19c4226f25a132beab2e3ead81d87391ea2c3a46377afc50e374e8cd0c75"
+  },
+  "final-api35-off": {
+    "passed": true,
+    "independently_replayed_snapshots": 24,
+    "display": 5,
+    "installed_sha256": "13ea19c4226f25a132beab2e3ead81d87391ea2c3a46377afc50e374e8cd0c75"
+  },
+  "final-api37-on": {
+    "passed": true,
+    "independently_replayed_snapshots": 24,
+    "display": 4,
+    "installed_sha256": "13ea19c4226f25a132beab2e3ead81d87391ea2c3a46377afc50e374e8cd0c75"
+  },
+  "final-api37-off": {
+    "passed": true,
+    "independently_replayed_snapshots": 24,
+    "display": 5,
+    "installed_sha256": "13ea19c4226f25a132beab2e3ead81d87391ea2c3a46377afc50e374e8cd0c75"
+  }
+}

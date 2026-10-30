@@ -1,0 +1,14 @@
+{
+  "id" : 38,
+  "main_thread" : true,
+  "physical_focus_verified" : false,
+  "content_height" : 906,
+  "passed" : true,
+  "content_width" : 720,
+  "first_responder" : "SDL3TranslatorResponder",
+  "action" : "capture",
+  "title" : "DroidBridge · dev.droidbridge.testapp",
+  "window" : 11907,
+  "role" : "player",
+  "pid" : 89277
+}

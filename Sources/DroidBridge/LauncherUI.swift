@@ -69,7 +69,7 @@ import DroidBridgeStreaming
         c.decorationsPreference.state=c.sharedPreferences.showAndroidSystemDecorations ? .on : .off
         c.phoneScreenPreference.target=c;c.phoneScreenPreference.action=#selector(c.phoneScreenPreferenceChanged(_:));c.phoneScreenPreference.isEnabled=false
         c.phoneScreenPreference.toolTip="Applies to the selected device during Mac sessions. Use the Phone menu to turn its screen back on."
-        c.decorationsPreference.toolTip="Applies to new Android app windows; app-drawn controls and keyboards are unchanged."
+        c.decorationsPreference.toolTip="Applies to new Android app windows; app-drawn controls are unchanged. The Android software keyboard stays hidden."
         c.reconnect.state = .on
         for button in [c.phoneScreenPreference,c.decorationsPreference,c.bulkPreference,c.reconnect] {Self.wrapCheckbox(button)}
         Self.wrapCheckbox(c.reconnect,height:48)

@@ -1,0 +1,74 @@
+[
+  {
+    "dimensions": [
+      720,
+      1080
+    ],
+    "editorPoint": {
+      "x": 0.32244009172113286,
+      "y": 0.27325581421996126
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 45",
+      "Clicks 0 \u2022 720\u00d71080",
+      "INCREMENT COUNTER",
+      "HiddenlmepaneloffPastepaneloffj",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  },
+  {
+    "dimensions": [
+      720,
+      1080
+    ],
+    "editorPoint": {
+      "x": 0.32244009172113286,
+      "y": 0.27325581421996126
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 45",
+      "Clicks 0 \u2022 720\u00d71080",
+      "INCREMENT COUNTER",
+      "HiddenlmepaneloffPastepaneloffj",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  },
+  {
+    "dimensions": [
+      896,
+      1344
+    ],
+    "editorPoint": {
+      "x": 0.25708061319638964,
+      "y": 0.22093023245431898
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 55",
+      "Clicks 0 \u2022 896\u00d71344",
+      "HiddenlmepaneloffPastepaneloff",
+      "INCREMENT COUNTER",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  },
+  {
+    "dimensions": [
+      896,
+      1344
+    ],
+    "editorPoint": {
+      "x": 0.2581699388453158,
+      "y": 0.218749999752907
+    },
+    "texts": [
+      "DroidBridge input / frame probe",
+      "Display 5 \u2022 ticks 57",
+      "Clicks 0 \u2022 896\u00d71344",
+      "INCREMENT COUNTER",
+      "HiddenlmepaneloffPastepaneloff",
+      "OPEN SECONDARY ACTIVITY"
+    ]
+  }
+]

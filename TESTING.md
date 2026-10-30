@@ -69,3 +69,7 @@ The 0.1.1 wrapper report is [verification/launcher-fix/REPORT.md](verification/l
 ## Launcher redesign
 
 `scripts/verify-launcher-redesign.sh` compiles shipping launcher/UI sources and exercises 1000 apps, 40 session cards, exact selection/search behavior, readiness/error states, actual target/actions, Return/menu routing, scroll/control reachability at default/minimum sizes in Aqua/Dark, unchanged-session focus retention and superseded discovery-task draining. Menu context is explicitly simulated on locked desktops; it does not certify physical focus. Installed real Android, setup/cancel, preference, multi-session and fallback evidence is recorded under `verification/launcher-redesign/`.
+
+## Hidden Android software keyboard
+
+`swift test --filter HiddenIMEArgumentTests` verifies both actual subprocess argument paths, new/restored configuration and decoration choices, and refusal of unsupported or unreadable Android API levels before staging. These tool fixtures prove policy wiring, not Android behavior. Actual installed local-policy reproduction, per-display IME visibility/insets, host text/raw-key input with the physical panel on/off, resizing and cleanup are recorded under `verification/hidden-ime/`. `scripts/verify-hidden-ime-state.py` checks explicit display-bound evidence and rejects a visible-keyboard positive control; absence of one global `mInputShown` flag is insufficient.

@@ -1,0 +1,45 @@
+{
+  "purpose": "Retain only exact tested emulator scrcpy server argument evidence; remove unrelated host inventory. No product or pass assertions changed.",
+  "artifacts": [
+    {
+      "file": "verification/hidden-ime/qa/final-api37-off/processes.txt",
+      "retained_server_rows": 2
+    },
+    {
+      "file": "verification/hidden-ime/qa/final-api35-off/processes.txt",
+      "retained_server_rows": 2
+    },
+    {
+      "file": "verification/hidden-ime/qa/final-api37-on/processes.txt",
+      "retained_server_rows": 2
+    },
+    {
+      "file": "verification/hidden-ime/qa/api37-hide-diagnostic/processes.txt",
+      "retained_server_rows": 2
+    },
+    {
+      "file": "verification/hidden-ime/qa/api37-hide-decorations-on/processes.txt",
+      "retained_server_rows": 2
+    },
+    {
+      "file": "verification/hidden-ime/qa/api35-local-positive/processes.txt",
+      "retained_server_rows": 2
+    },
+    {
+      "file": "verification/hidden-ime/qa/api35-hide-decorations-off/processes.txt",
+      "retained_server_rows": 2
+    },
+    {
+      "file": "verification/hidden-ime/qa/api35-hide-decorations-on/processes.txt",
+      "retained_server_rows": 2
+    },
+    {
+      "file": "verification/hidden-ime/qa/final-api35-on/processes.txt",
+      "retained_server_rows": 2
+    },
+    {
+      "file": "verification/hidden-ime/qa/api35-hide-paste/processes.txt",
+      "retained_server_rows": 2
+    }
+  ]
+}

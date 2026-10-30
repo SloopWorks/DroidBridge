@@ -1,0 +1,45 @@
+{
+  "actual_android_device" : false,
+  "cases" : [
+    {
+      "case" : "synchronous_branded_preview_and_reopen",
+      "frame" : [
+        40,
+        40,
+        450,
+        420
+      ],
+      "passed" : true,
+      "seconds" : 0.0090865001548081636,
+      "window_number" : 11917
+    },
+    {
+      "canonical_startup_control_bytes" : 25,
+      "case" : "same_window_real_first_frame_input_fence",
+      "decoded_black_held_before_visible_video" : true,
+      "decoded_frames" : 6,
+      "deliberate_minimize_preserved_until_reopen" : true,
+      "passed" : true,
+      "postframe_control_bytes" : 113,
+      "preframe_user_input_bytes" : 0,
+      "window_number" : 11917
+    },
+    {
+      "case" : "close_during_delayed_admission_is_terminal",
+      "passed" : true
+    },
+    {
+      "case" : "close_after_attach_before_first_frame_is_terminal",
+      "passed" : true
+    },
+    {
+      "case" : "prolonged_black_notice_public_reveal_and_recovery",
+      "passed" : true,
+      "same_window" : true
+    }
+  ],
+  "passed" : true,
+  "physical_os_focus_verified" : false,
+  "real_h264_decoder_fixture" : true,
+  "shipping_ui_sources" : true
+}

@@ -1,0 +1,45 @@
+--------- beginning of crash
+10-30 01:00:39.569  6954  7075 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 7075 (InputDispatcher), pid 6954 (system_server)
+10-30 01:00:39.699  9385  9385 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+10-30 01:00:39.699  9385  9385 F DEBUG   : Build fingerprint: 'Android/sdk_phone64_arm64/emu64a:15/AE3A.240806.019/12368160:userdebug/test-keys'
+10-30 01:00:39.699  9385  9385 F DEBUG   : Revision: '0'
+10-30 01:00:39.699  9385  9385 F DEBUG   : ABI: 'arm64'
+10-30 01:00:39.699  9385  9385 F DEBUG   : Timestamp: 2026-10-30 01:00:39.605012372-0700
+10-30 01:00:39.699  9385  9385 F DEBUG   : Process uptime: 522s
+10-30 01:00:39.699  9385  9385 F DEBUG   : Cmdline: system_server
+10-30 01:00:39.699  9385  9385 F DEBUG   : pid: 6954, tid: 7075, name: InputDispatcher  >>> system_server <<<
+10-30 01:00:39.699  9385  9385 F DEBUG   : uid: 1000
+10-30 01:00:39.699  9385  9385 F DEBUG   : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+10-30 01:00:39.699  9385  9385 F DEBUG   : pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+10-30 01:00:39.699  9385  9385 F DEBUG   : signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+10-30 01:00:39.699  9385  9385 F DEBUG   : Abort message: 'addPointers - overlap with incoming pointers 00000000000000000000000000000001 in {connection=42f7db NavigationBar2 (server), windowHandle=42f7db NavigationBar2, dispatchMode=OUTSIDE, targetFlags=0x0, pointers=
+10-30 01:00:39.699  9385  9385 F DEBUG   :         default (ROT_0) (TRANSLATE)
+10-30 01:00:39.699  9385  9385 F DEBUG   :             1.0000  0.0000  -0.0000
+10-30 01:00:39.699  9385  9385 F DEBUG   :             0.0000  1.0000  -834.0000
+10-30 01:00:39.699  9385  9385 F DEBUG   :             0.0000  0.0000  1.0000
+10-30 01:00:39.699  9385  9385 F DEBUG   : }'
+10-30 01:00:39.699  9385  9385 F DEBUG   :     x0  0000000000000000  x1  0000000000001ba3  x2  0000000000000006  x3  00000076af887e90
+10-30 01:00:39.699  9385  9385 F DEBUG   :     x4  fefefefefefefeff  x5  fefefefefefefeff  x6  fefefefefefefeff  x7  7f7f7f7f7f7f7f7f
+10-30 01:00:39.699  9385  9385 F DEBUG   :     x8  00000000000000f0  x9  0000007abda2a468  x10 ffffff80fffffb9f  x11 0000000000000001
+10-30 01:00:39.699  9385  9385 F DEBUG   :     x12 00000076af886bd0  x13 00000000000001c5  x14 00000076af886c80  x15 00002187da246044
+10-30 01:00:39.699  9385  9385 F DEBUG   :     x16 0000007abdad9ff8  x17 0000007abdac41c0  x18 00000076af1b4000  x19 0000000000001b2a
+10-30 01:00:39.699  9385  9385 F DEBUG   :     x20 0000000000001ba3  x21 00000000ffffffff  x22 000000000000000b  x23 00000076af888a80
+10-30 01:00:39.700  9385  9385 F DEBUG   :     x24 000000000000016f  x25 b400007997d5ef30  x26 0000000000000000  x27 0000000000000000
+10-30 01:00:39.700  9385  9385 F DEBUG   :     x28 0000000000000001  x29 00000076af887f10
+10-30 01:00:39.700  9385  9385 F DEBUG   :     lr  0000007abda626a4  sp  00000076af887e70  pc  0000007abda626d4  pst 0000000000000000
+10-30 01:00:39.700  9385  9385 F DEBUG   : 14 total frames
+10-30 01:00:39.700  9385  9385 F DEBUG   : backtrace:
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #00 pc 000000000005b6d4  /apex/com.android.runtime/lib64/bionic/libc.so (abort+168) (BuildId: 1b9fecf834d610f77e641f026ca7269b)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #01 pc 00000000009303ac  /apex/com.android.art/lib64/libart.so (art::Runtime::Abort(char const*)+344) (BuildId: 05bfa63ad29b97d7dde4e764ce193f37)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #02 pc 00000000000160fc  /apex/com.android.art/lib64/libbase.so (android::base::SetAborter(std::__1::function<void (char const*)>&&)::$_0::__invoke(char const*)+80) (BuildId: 42d41ca7c77853791d096606e7186547)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #03 pc 00000000000156d0  /system/lib64/libbase.so (android::base::LogMessage::~LogMessage()+516) (BuildId: 42d41ca7c77853791d096606e7186547)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #04 pc 000000000013b0f4  /system/lib64/libinputflinger.so (android::inputdispatcher::InputDispatcher::addPointerWindowTargetLocked(android::sp<android::gui::WindowInfoHandle> const&, android::inputdispatcher::InputTarget::DispatchMode, android::ftl::Flags<android::inputdispatcher::InputTargetFlags>, std::__1::bitset<32ul>, std::__1::optional<long>, std::__1::vector<android::inputdispatcher::InputTarget, std::__1::allocator<android::inputdispatcher::InputTarget>>&) const+1564) (BuildId: 08c5ef9ba838836e6a152a26c54d92e2)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #05 pc 0000000000140dd8  /system/lib64/libinputflinger.so (android::inputdispatcher::InputDispatcher::findTouchedWindowTargetsLocked(long, android::inputdispatcher::MotionEntry const&, android::os::InputEventInjectionResult&)+8252) (BuildId: 08c5ef9ba838836e6a152a26c54d92e2)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #06 pc 0000000000138c14  /system/lib64/libinputflinger.so (android::inputdispatcher::InputDispatcher::dispatchMotionLocked(long, std::__1::shared_ptr<android::inputdispatcher::MotionEntry const>, android::inputdispatcher::InputDispatcher::DropReason*, long&)+272) (BuildId: 08c5ef9ba838836e6a152a26c54d92e2)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #07 pc 0000000000135504  /system/lib64/libinputflinger.so (android::inputdispatcher::InputDispatcher::dispatchOnceInnerLocked(long&)+1376) (BuildId: 08c5ef9ba838836e6a152a26c54d92e2)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #08 pc 0000000000134f00  /system/lib64/libinputflinger.so (android::inputdispatcher::InputDispatcher::dispatchOnce()+80) (BuildId: 08c5ef9ba838836e6a152a26c54d92e2)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #09 pc 000000000000d630  /system/lib64/libinputflinger_base.so (android::(anonymous namespace)::InputThreadImpl::threadLoop()+24) (BuildId: c51a43faae14b9ca0560355afd16784e)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #10 pc 0000000000016b14  /system/lib64/libutils.so (android::Thread::_threadLoop(void*)+368) (BuildId: eb16d925d301dcbe28e761592a8de52d)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #11 pc 00000000000eab08  /system/lib64/libandroid_runtime.so (android::AndroidRuntime::javaThreadShell(void*)+144) (BuildId: 7e2a886b7a4523debea27d91258da727)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #12 pc 000000000006c354  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start(void*)+196) (BuildId: 1b9fecf834d610f77e641f026ca7269b)
+10-30 01:00:39.700  9385  9385 F DEBUG   :       #13 pc 000000000005efc4  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+64) (BuildId: 1b9fecf834d610f77e641f026ca7269b)

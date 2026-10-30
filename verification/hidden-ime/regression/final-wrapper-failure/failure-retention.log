@@ -1,0 +1,7 @@
+PASS: decoded first frame preserves deliberate loading minimize; Reopen reveals same session; accurate receipts; OS foreground focus unasserted
+PASS: clean child exit before first native frame retained with reason: Native session process ended before the first decoded video frame (exit status 0). See /Users/patrick/Library/Logs/DroidBridge/session-E7907B61-D62A-47D6-8EE0-2F0E59201CCA.log
+PASS: specific native transport failure during startup retained with reason: Invalid video packet size (video packets=0, bytes=0, decoded frames=0, announced size=unavailable, decoder errors=0, last decoder status=unavailable)
+PASS: clean child exit after external running admission retained with reason: The Android stream ended without an error message. Its process and Android server output are in the session log.
+PASS: retry successor survives stale close deadline retained with reason: The Android stream ended without an error message. Its process and Android server output are in the session log.
+PASS: icon cache128, queue64, concurrency2, stale-device discard, shutdown awaited two actual provider cleanups, and canceled refresh task drained
+PASS: shipping wrapper retains pre-frame clean exit, post-running clean exit, first failure cause, retry successor beyond stale close timer, and bounded icon shutdown cleanup

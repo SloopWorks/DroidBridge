@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "installed_sha256": "13ea19c4226f25a132beab2e3ead81d87391ea2c3a46377afc50e374e8cd0c75",
+  "version": "0.1.7",
+  "build": "12",
+  "before": [
+    {
+      "package": "com.android.traceur",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.stk",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.calendar",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "org.chromium.webview_shell",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "dev.droidbridge.testapp",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.quicksearchbox",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.settings",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "dev.droidbridge.testapp2",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.gallery3d",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.messaging",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.camera2",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "dev.droidbridge.iconfixture",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.contacts",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.deskclock",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.documentsui",
+      "version": "0.1.6",
+      "build": "11"
+    },
+    {
+      "package": "com.android.dialer",
+      "version": "0.1.6",
+      "build": "11"
+    }
+  ],
+  "updated": 16,
+  "wrapper_path": "/Users/patrick/Applications/DroidBridge Apps/Devices/5e6f2505624f8523ae5b4121/DroidBridge Test.app",
+  "wrapper_sha256": "4f4c0afa32c1f80c9a87485c4df9d65a53e97640b735babf773e30b0342b89c0",
+  "managed_wrapper_result": "managed-wrapper/result.json"
+}

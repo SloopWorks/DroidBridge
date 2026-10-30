@@ -18,8 +18,9 @@ public struct SessionConfiguration: Codable {
     public var height: Int
     public var density: Int
     public var backend: BackendKind
-    /// Applies only to this virtual display. App-drawn controls and IME are
-    /// separate Android policies; the phone's system UI is never changed.
+    /// Applies only to this virtual display. App-drawn controls are separate;
+    /// the session always hides Android's software keyboard on this display.
+    /// The phone's system UI and global keyboard settings are never changed.
     public var showSystemDecorations: Bool
     public init(width: Int = 720, height: Int = 1080, density: Int = 240, backend: BackendKind = .native, showSystemDecorations: Bool = true) {
         self.width = width; self.height = height; self.density = density; self.backend = backend

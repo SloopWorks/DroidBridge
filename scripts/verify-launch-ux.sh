@@ -14,8 +14,8 @@ cleanup() {
   rm -rf "$QA_ROOT"
 }
 trap cleanup EXIT
-ln -s "$PWD/verification/launch-ux/qa/fixture.py" "$QA_ROOT/adb"
-ln -s "$PWD/verification/launch-ux/qa/fixture.py" "$QA_ROOT/scrcpy"
+ln -s "$PWD/scripts/fixtures/launch-ux.py" "$QA_ROOT/adb"
+ln -s "$PWD/scripts/fixtures/launch-ux.py" "$QA_ROOT/scrcpy"
 touch "$QA_ROOT/server"
 ffmpeg -hide_banner -loglevel error -f lavfi -i color=red:s=64x64 -frames:v 1 -c:v libx264 -tune zerolatency -profile:v baseline -pix_fmt yuv420p -f h264 "$QA_ROOT/frame.h264"
 ffmpeg -hide_banner -loglevel error -f lavfi -i color=black:s=64x64 -frames:v 1 -c:v libx264 -tune zerolatency -profile:v baseline -pix_fmt yuv420p -f h264 "$QA_ROOT/black.h264"
