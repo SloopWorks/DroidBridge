@@ -64,4 +64,3 @@ public enum CoreAvailabilityAuthority {
         return false
     }
 }
-

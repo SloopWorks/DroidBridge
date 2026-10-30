@@ -59,4 +59,3 @@ public struct CompanionWirelessEndpoint: Equatable {
         argument = value
     }
 }
-

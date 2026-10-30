@@ -25,7 +25,7 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
         try openssl(["x509","-in",cert.path,"-outform","DER","-out",der.path]);serverPin=CompanionClient.sha256(try Data(contentsOf:der))
         let source = #"""
         import socket,ssl,pathlib,sys,json,datetime,threading,time
-        root=pathlib.Path(sys.argv[1]);device,trust,pair=sys.argv[2:5];heartbeat=sys.argv[5]=='1';blocked=sys.argv[6] 
+        root=pathlib.Path(sys.argv[1]);device,trust,pair=sys.argv[2:5];heartbeat=sys.argv[5]=='1';blocked=sys.argv[6]
         ctx=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);ctx.minimum_version=ssl.TLSVersion.TLSv1_2
         ctx.set_ecdh_curve('prime256v1')
         ctx.load_cert_chain(str(root/'cert.pem'),str(root/'key.pem'))
