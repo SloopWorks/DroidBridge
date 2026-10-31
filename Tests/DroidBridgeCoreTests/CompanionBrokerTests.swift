@@ -27,6 +27,15 @@ final class CompanionBrokerTests: XCTestCase {
         XCTAssertEqual(registry.hosts.first?.generation, 1)
         XCTAssertEqual(registry.sessions.count, 1)
     }
+    func testSessionLabelsUseScalarBoundsRatherThanGraphemeOrByteCounts() throws {
+        var registry = CompanionBrokerRegistry(), value = session()
+        value["label"] = .string(String(repeating: "😀", count: 256))
+        try registry.publish(owner: owner, generation: 1, role: "launcher", deviceID: device, serial: "emulator-5580", values: [value])
+        value["label"] = .string("a" + String(repeating: "\u{301}", count: 256))
+        XCTAssertThrowsError(try registry.publish(owner: owner, generation: 2, role: "launcher", deviceID: device, serial: "emulator-5580", values: [value]))
+        XCTAssertEqual(registry.hosts.first?.generation, 1)
+        XCTAssertEqual(registry.sessions.first?.label, String(repeating: "😀", count: 256))
+    }
     func testPhoneSessionCapacityIsGlobalAcrossProcesses() throws {
         var registry = CompanionBrokerRegistry()
         try registry.publish(owner: owner, generation: 1, role: "launcher", deviceID: device, serial: "emulator-5580", values: (0..<32).map { _ in session() })

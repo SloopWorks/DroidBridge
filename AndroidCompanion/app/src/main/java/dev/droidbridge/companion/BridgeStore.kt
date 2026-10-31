@@ -218,14 +218,18 @@ class BridgeStore private constructor(val context: Context) {
         val notificationRecord = trustId?.let { trusted().optJSONObject(it) }
         for (event in events) {
             if (!mismatch && event.getLong("sequence") <= after) continue
-            val target = event.optString("target_trust_id", "")
-            if (trustId != null && target.isNotEmpty() && target != trustId) { next = event.getLong("sequence"); continue }
+            // JSONObject.NULL.optString is the literal "null", not the fallback.
+            // Only absent/JSON-null means broadcast; malformed/string targets do not.
+            val rawTarget = event.opt("target_trust_id")
+            if (rawTarget != null && rawTarget !== JSONObject.NULL && rawTarget !is String) { next = event.getLong("sequence"); continue }
+            val target = rawTarget as? String
+            if (trustId != null && target != null && target != trustId) { next = event.getLong("sequence"); continue }
             val kind = event.getString("kind")
             if (trustId != null && kind.startsWith("notification_")) {
                 val cleanup = kind == "notification_removed" && target == trustId && event.optBoolean("notification_cleanup")
                 val payload = event.getJSONObject("payload")
                 val exposed = notificationExposure[payload.optString("notification_key")]
-                val contentAllowed = kind == "notification_posted" && exposed?.recipients?.contains(trustId) == true &&
+                val contentAllowed = target == trustId && kind == "notification_posted" && exposed?.recipients?.contains(trustId) == true &&
                     exposed.actionId == payload.optString("action_id") && allowsNotifications(notificationRecord, exposed.packageName)
                 if (!cleanup && !contentAllowed) { next = event.getLong("sequence"); continue }
             }
@@ -309,7 +313,7 @@ class BridgeStore private constructor(val context: Context) {
                 val output = ByteArrayOutputStream(); bitmap.compress(Bitmap.CompressFormat.PNG, 100, output); bitmap.recycle()
                 val data = output.toByteArray(); val hash = ProtocolRules.hash(data)
                 synchronized(icons) { icons[hash] = data }
-                JSONObject().put("package_name", pkg).put("label", activity.loadLabel(pm).toString().take(256))
+                JSONObject().put("package_name", pkg).put("label", ProtocolRules.catalogLabel(activity.loadLabel(pm).toString()))
                     .put("activity_name", activity.activityInfo.name).put("icon_sha256", hash).put("export_to_mac", true).put("version_code", pm.getPackageInfo(pkg, 0).longVersionCode).put("launchable", true)
             }
         val json = JSONArray(records); val next = ProtocolRules.hash(json.toString().toByteArray())
@@ -335,7 +339,14 @@ class BridgeStore private constructor(val context: Context) {
         history.lastOrNull()?.takeIf { it.source == revision && it.selection == selection }?.let { return it }
         val excluded = if (trustId == null) emptySet() else prefs.getStringSet("excluded_$trustId", emptySet()) ?: emptySet()
         val generation = ProtocolRules.hash((revision + ":" + key + ":" + selection).toByteArray())
-        val items = JSONArray((0 until apps.length()).map { i -> JSONObject(apps.getJSONObject(i).toString()).apply { put("export_to_mac", getString("package_name") !in excluded) } })
+        val items = JSONArray((0 until apps.length()).map { i ->
+            // Keep the complete activity identity in private apps for icon lookup.
+            // Oversized/invalid optional wire metadata is omitted, never truncated.
+            JSONObject(apps.getJSONObject(i).toString()).apply {
+                if (ProtocolRules.catalogActivityName(optString("activity_name")) == null) remove("activity_name")
+                put("export_to_mac", getString("package_name") !in excluded)
+            }
+        })
         val view = CatalogView(generation, items, revision, selection); history.addLast(view)
         while (history.size > 2) history.removeFirst()
         while (catalogViews.size > 9) catalogViews.remove(catalogViews.keys.first())

@@ -168,6 +168,22 @@ public struct CompanionApp: Codable, Sendable, Identifiable {
     public let launchable: Bool?
     public let exportToMac: Bool?
     public var id: String { packageName }
+
+    /// Shared wire validation for the transport and visible catalog consumer.
+    /// Labels use Unicode scalars; optional activity identities use UTF-8 bytes
+    /// and must be omitted by the producer rather than truncated.
+    public func validateMetadata() throws {
+        do { try AndroidDiscovery.validatePackage(packageName) }
+        catch { throw CompanionBoundaryError("invalid_app", "Companion application identity is invalid.") }
+        guard label.unicodeScalars.count <= 256, activityName?.utf8.count ?? 0 <= 512 else {
+            throw CompanionBoundaryError("invalid_app", "Companion application metadata is invalid.")
+        }
+        if let hash = iconSha256 {
+            guard hash.utf8.count == 64, hash.utf8.allSatisfy({ (48...57).contains($0) || (97...102).contains($0) }) else {
+                throw CompanionBoundaryError("invalid_hash", "Invalid companion content hash.")
+            }
+        }
+    }
 }
 public struct CompanionCatalogPage: Codable, Sendable {
     public let generation: String

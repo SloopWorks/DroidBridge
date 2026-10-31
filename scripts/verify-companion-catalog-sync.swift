@@ -38,15 +38,19 @@ import DroidBridgeCore
         func require(_ value: Bool, _ text: String) throws { if !value { throw CompanionBoundaryError("fixture_failed", text) } }
         func wait(_ value: () -> Bool) async throws { for _ in 0..<300 { if value() { return }; try await Task.sleep(nanoseconds: 5_000_000) }; throw CompanionBoundaryError("fixture_timeout", "Catalog engine did not settle") }
         let peer = CatalogPeer(); var delivered: [(String, CompanionCatalogSync.Snapshot)] = [], progress: [Int] = [], errors: [String] = [], tick = 0.0
+        let cjkLabel = String(repeating: "界", count: 86), emojiLabel = String(repeating: "😀", count: 256)
+        peer.apps[0]["label"] = .string(cjkLabel); peer.apps[1]["label"] = .string(emojiLabel)
         let sync = CompanionCatalogSync(request: peer.request, deliver: { demand, snapshot in delivered.append((demand.phone.trustID!, snapshot)) }, report: { _, text in errors.append(text) }, progress: { _, snapshot in progress.append(snapshot.apps.count) }, now: { tick })
         sync.reconcile([peer.demand(), peer.demand("launcher")]); try await wait { delivered.count == 2 }
         try require(peer.count("catalog") == 16 && progress.first == 64 && progress.last == 960 && delivered.last?.1.apps.count == 1000, "First-page progress or shared bounded full load failed")
+        try require(delivered.last?.1.apps.first(where: { $0.packageName == "dev.droidbridge.fixture.app0" })?.label == cjkLabel && delivered.last?.1.apps.first(where: { $0.packageName == "dev.droidbridge.fixture.app1" })?.label == emojiLabel, "A valid non-ASCII label rejected or changed the shared full catalog")
         let idle = peer.operations.count; for _ in 0..<100 { sync.reconcile([peer.demand(), peer.demand("launcher")]) }
         try require(peer.operations.count == idle && delivered.count == 2, "Unchanged local token caused catalog traffic or UI churn")
-        peer.generation = "g2"; peer.token = UUID().uuidString.lowercased(); peer.deltaItems = [["package_name": .string("dev.droidbridge.fixture.app0"), "label": .string("Renamed App"), "icon_sha256": .string(String(repeating: "b", count: 64))], ["package_name": .string("dev.droidbridge.fixture.newapp"), "label": .string("New App")]]; peer.deleted = ["dev.droidbridge.fixture.app1"]
+        peer.generation = "g2"; peer.token = UUID().uuidString.lowercased(); peer.deltaItems = [["package_name": .string("dev.droidbridge.fixture.app0"), "label": .string("Renamed App"), "icon_sha256": .string(String(repeating: "b", count: 64))], ["package_name": .string("dev.droidbridge.fixture.newapp"), "label": .string(emojiLabel)]]; peer.deleted = ["dev.droidbridge.fixture.app1"]
         sync.reconcile([peer.demand(), peer.demand("launcher")]); try await wait { delivered.count == 4 }
         let changed = delivered.last!.1
         try require(peer.count("catalog_changes") == 1 && peer.count("catalog") == 16 && changed.apps.count == 1000 && changed.apps.contains { $0.label == "Renamed App" } && !changed.apps.contains { $0.packageName == "dev.droidbridge.fixture.app1" }, "Atomic rename/add/delete delta failed")
+        try require(changed.apps.first(where: { $0.packageName == "dev.droidbridge.fixture.newapp" })?.label == emojiLabel, "A valid supplementary label rejected or changed the shared catalog delta")
         try require(changed.apps.first(where: { $0.packageName == "dev.droidbridge.fixture.app2" })?.iconSha256 == String(repeating: "a", count: 64), "Unchanged icon identity was discarded")
         peer.stale = true; peer.generation = "g3"; peer.token = UUID().uuidString.lowercased()
         sync.reconcile([peer.demand()]); try await wait { delivered.last?.1.generation == "g3" }
@@ -91,7 +95,7 @@ import DroidBridgeCore
         try require(hiddenDeliveries == 0 && visiblePeer.operations.count == noVisibleOps, "Visibility loss without another poll caused a successor loop")
         dynamicVisibility.shutdown()
 
-        let report: [String: Any] = ["passed": true, "scope": "Shipping catalog engine with deterministic peer; no installed/device acceptance", "full_1000_pages": 16, "shared_visible_consumers": 2, "initial_progress_first": progress.first!, "automatic_delta": true, "blocked_pass_100_token_storm_one_successor": true, "unchanged_token_http_reads": 0, "stale_fallback": true, "hidden_and_repair_late_response_fenced": true, "duplicate_pages_rejected": true, "retry_attempts_max": 3, "explicit_retry_recovered": true, "operations": peer.operations]
+        let report: [String: Any] = ["passed": true, "scope": "Shipping catalog engine with deterministic peer; no installed/device acceptance", "full_1000_pages": 16, "shared_visible_consumers": 2, "initial_progress_first": progress.first!, "automatic_delta": true, "unicode_full_and_delta_labels_preserved": true, "blocked_pass_100_token_storm_one_successor": true, "unchanged_token_http_reads": 0, "stale_fallback": true, "hidden_and_repair_late_response_fenced": true, "duplicate_pages_rejected": true, "retry_attempts_max": 3, "explicit_retry_recovered": true, "operations": peer.operations]
         let path = CommandLine.arguments.dropFirst().first ?? ".build/catalog-sync-fixture.json"
         try JSONSerialization.data(withJSONObject: report, options: [.prettyPrinted, .sortedKeys]).write(to: URL(fileURLWithPath: path)); print("PASS: shared bounded catalog synchronization and lifecycle fences")
     }

@@ -150,8 +150,7 @@ import DroidBridgeCore
         return try decoder.decode(type, from: JSONEncoder().encode(data))
     }
     private static func validate(_ app: CompanionApp) throws {
-        try AndroidDiscovery.validatePackage(app.packageName)
-        guard app.label.utf8.count <= 256, app.activityName?.utf8.count ?? 0 <= 512 else { throw CompanionBoundaryError("invalid_catalog", "Invalid app metadata.") }
+        try app.validateMetadata()
     }
     private static func snapshot(generation: String, apps: [CompanionApp], selection: [String: Bool]) throws -> Snapshot {
         guard !generation.isEmpty, generation.utf8.count <= 256, apps.count <= 4096, Set(apps.map(\.packageName)).count == apps.count else { throw CompanionBoundaryError("invalid_catalog", "The app catalog contains invalid or duplicate identities.") }

@@ -113,7 +113,14 @@ pairing does not grant them. No automatic clipboard polling or content upload.
 * `GET /v1/catalog?cursor=<opaque>&limit=64`: `generation`, `items`, `next_cursor`.
   Each app: `package_name`, `label`, `version_code`, `icon_sha256` (or null),
   `launchable`. Package names use the existing Android validator; labels are
-  bounded to 256 Unicode scalars. Default/page cap64; total cap4096. Cursors bind
+  bounded to 256 Unicode scalars (at most1024 UTF-8 bytes), preserving complete
+  supplementary characters. Malformed isolated UTF-16 surrogates at the Android
+  label boundary become U+FFFD. Optional `activity_name` is bounded to512 UTF-8
+  bytes: an oversized activity identity is omitted from wire metadata, never
+  truncated, while the phone retains its actual identity for icon resolution.
+  Both Mac catalog readers share the same entry validation. Session labels also
+  use the256-scalar limit. The hard262144-byte JSON response limit is unchanged.
+  Default/page cap64; total cap4096. Cursors bind
   one immutable catalog generation. A changed snapshot returns409 `stale_cursor`
   and the Mac begins a new bounded snapshot; it never combines generations.
 * `GET /v1/catalog/changes?after=<generation>`: bounded changed entries/deleted

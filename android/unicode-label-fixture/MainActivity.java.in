@@ -1,0 +1,19 @@
+package __PACKAGE__;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.graphics.Color;
+import android.widget.TextView;
+
+/** Original permission-free catalog boundary fixture; never bundled in product. */
+public final class MainActivity extends Activity {
+    @Override public void onCreate(Bundle state) {
+        super.onCreate(state);
+        String label = getApplicationInfo().loadLabel(getPackageManager()).toString();
+        TextView text = new TextView(this);
+        text.setPadding(24, 48, 24, 24); text.setTextSize(20);
+        text.setTextColor(Color.BLACK); text.setBackgroundColor(Color.WHITE);
+        text.setText("Unicode catalog fixture\nScalars: " + label.codePointCount(0, label.length()) + "\n" + label);
+        setContentView(text);
+    }
+}

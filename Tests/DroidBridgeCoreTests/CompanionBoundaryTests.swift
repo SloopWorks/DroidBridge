@@ -26,13 +26,35 @@ final class CompanionBoundaryTests: XCTestCase {
         let other = try CompanionClient(baseURL: wrongMIME.url, serverPin: wrongMIME.serverPin, credential: credential)
         await expect("invalid_mime") { try await other.diagnostics() }
     }
-    func testCatalogDeletedIdentityAndUTF8ByteBound() async throws {
+    func testCatalogDeletedIdentityAndUnicodeScalarBound() async throws {
         let peer = try BoundaryPeer { request in .json(["generation": "v1", "items": [], "deleted": ["../bad"]], request) }; defer { peer.close() }
         let client = try CompanionClient(baseURL: peer.url, serverPin: peer.serverPin, credential: credential)
         await expect("invalid_app") { try await client.catalogChanges(after: "v0") }
-        let unicode = try BoundaryPeer { request in .json(["generation": "v1", "items": [["package_name": "dev.test.app", "label": String(repeating: "😀", count: 100)]], "next_cursor": NSNull()], request) }; defer { unicode.close() }
+        let unicode = try BoundaryPeer { request in .json(["generation": "v1", "items": [["package_name": "dev.test.app", "label": String(repeating: "😀", count: 257)]], "next_cursor": NSNull()], request) }; defer { unicode.close() }
         let second = try CompanionClient(baseURL: unicode.url, serverPin: unicode.serverPin, credential: credential)
         await expect("invalid_app") { try await second.catalog() }
+    }
+    func testCatalogSnapshotAndDeltaPreserveNonASCIILabelsAtScalarBoundary() async throws {
+        let labels = [String(repeating: "界", count: 86), String(repeating: "😀", count: 256), String(repeating: "e\u{301}", count: 128)]
+        let items = labels.enumerated().map { ["package_name": "dev.test.app\($0.offset)", "label": $0.element] }
+        for delta in [false, true] {
+            let peer = try BoundaryPeer { request in .json(["generation": "v1", "items": items, "next_cursor": NSNull(), "deleted": []], request) }; defer { peer.close() }
+            let client = try CompanionClient(baseURL: peer.url, serverPin: peer.serverPin, credential: credential)
+            let actual: [CompanionApp]
+            if delta { actual = try await client.catalogChanges(after: "v0").items }
+            else { actual = try await client.catalog().items }
+            XCTAssertEqual(actual.map(\.label), labels)
+        }
+    }
+    func testCatalogOptionalActivityRetainsUTF8ByteBound() async throws {
+        for extra in ["", "c"] {
+            let activity = String(repeating: "界", count: 170) + "ab" + extra
+            let peer = try BoundaryPeer { request in .json(["generation": "v1", "items": [["package_name": "dev.test.app", "label": "App", "activity_name": activity]], "next_cursor": NSNull()], request) }; defer { peer.close() }
+            let client = try CompanionClient(baseURL: peer.url, serverPin: peer.serverPin, credential: credential)
+            if extra.isEmpty {
+                let result = try await client.catalog(); XCTAssertEqual(result.items.first?.activityName, activity)
+            } else { await expect("invalid_app") { try await client.catalog() } }
+        }
     }
     func testPNGMustActuallyDecodeAndValidPNGPasses() async throws {
         let malformed = Data([137,80,78,71,13,10,26,10, 0,0,0,13, 73,72,68,82, 0,0,0,1, 0,0,0,1])

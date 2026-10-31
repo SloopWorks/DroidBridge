@@ -90,7 +90,7 @@ public struct CompanionBrokerRegistry: Codable, Sendable {
         for value in values {
             guard let id = value["session_id"]?.string, UUID(uuidString: id) != nil, let package = value["package"]?.string ?? value["package_name"]?.string,
                   let backend = value["backend"]?.string, ["native", "scrcpy"].contains(backend), let phase = value["phase"]?.string,
-                  ["starting", "running", "stopping", "stopped", "failed", "reconnecting"].contains(phase), let label = value["label"]?.string, label.count <= 256 else { throw CompanionBoundaryError("invalid_session", "Invalid companion session metadata.") }
+                  ["starting", "running", "stopping", "stopped", "failed", "reconnecting"].contains(phase), let label = value["label"]?.string, label.unicodeScalars.count <= 256 else { throw CompanionBoundaryError("invalid_session", "Invalid companion session metadata.") }
             try AndroidDiscovery.validatePackage(package)
             guard !parsed.contains(where: { $0.sessionID == id }), !sessions.contains(where: { $0.sessionID == id && $0.owner != owner }) else { throw CompanionBoundaryError("session_conflict", "A companion session belongs to another live process.") }
             parsed.append(.init(sessionID: id, deviceID: deviceID, serial: serial, package: package, label: label, backend: backend, phase: phase, owner: owner, generation: generation))

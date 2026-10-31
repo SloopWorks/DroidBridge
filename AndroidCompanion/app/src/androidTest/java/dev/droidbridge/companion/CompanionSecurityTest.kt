@@ -42,6 +42,79 @@ class CompanionSecurityTest {
         }
         override fun close() { server.close(); directory.deleteRecursively() }
     }
+    @Test fun catalogWirePreservesUnicodeScalarsAndOmitsOversizedActivityMetadata() = Peer().use { p ->
+        val trust = p.pair()
+        val emoji = "\uD83D\uDE00"
+        val labels = listOf("界".repeat(86), "界".repeat(256), emoji.repeat(256), "a".repeat(255) + emoji, "\u0001".repeat(256))
+        val oversizedActivity = "界".repeat(171) //513UTF8 bytes; do not truncate its identity.
+        val maximumActivity = emoji.repeat(128) //512UTF8 bytes.
+        val records = org.json.JSONArray()
+        repeat(65) { index ->
+            val activity = when (index) { 0 -> oversizedActivity; 1 -> maximumActivity; 2 -> "dev.example.\uD83DInvalid"; else -> "a".repeat(512) }
+            records.put(JSONObject().put("package_name", "dev.droidbridge.unicode$index")
+                .put("label", ProtocolRules.catalogLabel(labels[index % labels.size]))
+                .put("activity_name", activity).put("icon_sha256", JSONObject.NULL)
+                .put("version_code", 1).put("launchable", true).put("export_to_mac", true))
+        }
+        // Isolated contract fixture exercises the production TLS/JSON route without
+        // installing a test app or adding any production mutation/test endpoint.
+        BridgeStore::class.java.getDeclaredField("apps").apply { isAccessible = true }.set(p.store, records)
+        BridgeStore::class.java.getDeclaredField("revision").apply { isAccessible = true }.set(p.store, ProtocolRules.hash(records.toString().toByteArray(Charsets.UTF_8)))
+        val response = p.request("/v1/catalog?limit=64", token = trust.first)
+        assertEquals(200, response.first)
+        assertTrue("Full64-row Unicode/escaped page stays under unchanged JSON cap", response.second.toString().toByteArray(Charsets.UTF_8).size <= ProtocolRules.MAX_JSON)
+        val data = response.second.getJSONObject("data"); val items = data.getJSONArray("items")
+        assertEquals(64, items.length())
+        repeat(64) { index ->
+            val actual = items.getJSONObject(index).getString("label")
+            assertEquals(labels[index % labels.size], actual)
+            assertTrue(actual.codePointCount(0, actual.length) <= 256)
+            assertFalse(actual.codePoints().anyMatch { it in 0xD800..0xDFFF })
+        }
+        assertFalse(items.getJSONObject(0).has("activity_name"))
+        assertEquals(maximumActivity, items.getJSONObject(1).getString("activity_name"))
+        assertFalse(items.getJSONObject(2).has("activity_name"))
+        assertEquals("Internal identity remains intact for icon resolution", oversizedActivity, records.getJSONObject(0).getString("activity_name"))
+        val next = p.request("/v1/catalog?cursor=${data.getString("next_cursor")}&limit=64", token = trust.first)
+        assertEquals(200, next.first); assertEquals(1, next.second.getJSONObject("data").getJSONArray("items").length())
+        assertTrue(next.second.getJSONObject("data").isNull("next_cursor"))
+        // A real delta uses the same projection and scalar contract as snapshots.
+        val combining = "e\u0301".repeat(128)
+        records.getJSONObject(0).put("label", ProtocolRules.catalogLabel("e\u0301".repeat(129)))
+        BridgeStore::class.java.getDeclaredField("revision").apply { isAccessible = true }.set(p.store, ProtocolRules.hash(records.toString().toByteArray(Charsets.UTF_8)))
+        val delta = p.request("/v1/catalog/changes?after=${data.getString("generation")}", token = trust.first)
+        assertEquals(200, delta.first)
+        val changed = delta.second.getJSONObject("data").getJSONArray("items")
+        assertEquals(1, changed.length()); assertEquals(combining, changed.getJSONObject(0).getString("label"))
+        assertFalse(changed.getJSONObject(0).has("activity_name"))
+        assertEquals(oversizedActivity, records.getJSONObject(0).getString("activity_name"))
+    }
+
+    @Test fun authenticatedBroadcastCatalogHintsRespectNullableTargetsAndPeerIsolation() = Peer().use { p ->
+        val a = p.pair(); val b = p.pair()
+        assertEquals("null", JSONObject().put("target", JSONObject.NULL).optString("target", ""))
+        val global = p.store.event("catalog_changed", JSONObject().put("revision", "synthetic-catalog"))
+        p.store.event("profile_changed", JSONObject().put("profile", "balanced"))
+        p.store.event("clipboard_received", JSONObject().put("event_id", UUID.randomUUID().toString()), a.second)
+        p.store.event("catalog_changed", JSONObject().put("revision", "must-not-broadcast-null-string"), "null")
+        p.store.event("catalog_changed", JSONObject().put("revision", "must-not-broadcast-malformed"), "not-a-trust")
+        p.store.event("catalog_changed", JSONObject().put("revision", "must-not-broadcast-number"), a.second)
+        @Suppress("UNCHECKED_CAST")
+        val journal = BridgeStore::class.java.getDeclaredField("events").apply { isAccessible = true }.get(p.store) as ArrayDeque<JSONObject>
+        journal.last().put("target_trust_id", 7) // Isolated malformed-journal fixture; never a broadcast.
+        fun page(token: String) = p.request("/v1/events?after=0&wait_ms=0", token = token).also { assertEquals(200, it.first) }.second.getJSONObject("data").getJSONArray("events")
+        val first = page(a.first); val second = page(b.first)
+        assertEquals(3, first.length()); assertEquals(2, second.length())
+        for (events in listOf(first, second)) {
+            assertEquals(global, events.getJSONObject(0).getLong("sequence"))
+            assertEquals("catalog_changed", events.getJSONObject(0).getString("kind"))
+            assertTrue(events.getJSONObject(0).isNull("target_trust_id"))
+            assertEquals("synthetic-catalog", events.getJSONObject(0).getJSONObject("payload").getString("revision"))
+            assertEquals("profile_changed", events.getJSONObject(1).getString("kind"))
+        }
+        assertEquals(a.second, first.getJSONObject(2).getString("target_trust_id"))
+        assertEquals(401, p.request("/v1/events?after=0&wait_ms=0").first)
+    }
     @Test fun trustScopedEventsAndRevocationAfterLongPoll() = Peer().use { p ->
         val a = p.pair(); val b = p.pair()
         p.store.event("clipboard_received", JSONObject().put("text", "synthetic-test-only"), a.second)

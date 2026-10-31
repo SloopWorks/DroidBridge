@@ -307,9 +307,7 @@ public actor CompanionClient {
     private static func validateID(_ value: String) throws { guard UUID(uuidString: value) != nil else { throw CompanionBoundaryError("invalid_id", "Invalid companion identifier.") } }
     private static func validateHash(_ value: String) throws { guard value.utf8.count == 64, value.utf8.allSatisfy({ (48...57).contains($0) || (97...102).contains($0) }) else { throw CompanionBoundaryError("invalid_hash", "Invalid companion content hash.") } }
     private static func validateApp(_ app: CompanionApp) throws {
-        try validatePackage(app.packageName)
-        guard app.label.utf8.count <= 256, app.activityName?.utf8.count ?? 0 <= 512 else { throw CompanionBoundaryError("invalid_app", "Companion application metadata is invalid.") }
-        if let hash = app.iconSha256 { try validateHash(hash) }
+        try app.validateMetadata()
     }
     private func validatePairing(_ value: CompanionPairing) throws {
         guard ["pending", "approved", "denied", "expired"].contains(value.status) else { throw CompanionBoundaryError("invalid_pairing", "Invalid companion pairing status.") }

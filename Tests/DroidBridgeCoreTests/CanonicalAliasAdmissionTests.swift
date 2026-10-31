@@ -81,7 +81,8 @@ final class CanonicalAliasAdmissionTests: XCTestCase {
         supervisor.arguments = ["--parent",String(getpid())] + arguments + ["--","/bin/sleep","60"]
         supervisor.standardOutput = file; supervisor.standardError = file; supervisor.standardInput = FileHandle.nullDevice
         try supervisor.run()
-        defer { if supervisor.isRunning { kill(supervisor.processIdentifier,SIGKILL) } }
+        let supervisorIdentity = try XCTUnwrap(CompanionBrokerOwner.live(supervisor.processIdentifier))
+        defer { if supervisorIdentity.isAlive { kill(supervisor.processIdentifier,SIGKILL) } }
         var child:Int32?
         for _ in 0..<100 {
             let text = (try? String(contentsOf:log)) ?? ""
@@ -94,6 +95,7 @@ final class CanonicalAliasAdmissionTests: XCTestCase {
         let childIdentity = try XCTUnwrap(CompanionBrokerOwner.live(childPID))
         withExtendedLifetime(provisional) {}; provisional = nil
         do { _ = try await CanonicalAliasAdmission.acquire(serial:wifi,paths:paths); XCTFail("Live supervisor bypassed") } catch {}
+        guard supervisorIdentity.isAlive else { throw NSError(domain: "OwnedAliasFixtureIdentity", code: Int(ESRCH)) }
         kill(supervisor.processIdentifier,SIGKILL)
         // The guard must keep the alias pinned until that exact process has died.
         var switched:CanonicalAliasLease?
@@ -105,7 +107,18 @@ final class CanonicalAliasAdmissionTests: XCTestCase {
         XCTAssertFalse(childIdentity.isAlive)
         XCTAssertTrue((try String(contentsOf:log)).contains("supervisor_crash_guard_cleanup"))
         withExtendedLifetime(switched) {}
-        supervisor.waitUntilExit()
+        // Foundation can miss the exit run-loop notification after the crash
+        // guard and Process have already observed/reaped this child. Do not
+        // turn a successful cleanup assertion into an unbounded suite hang.
+        var exitStatus: Int32 = 0
+        let reapDeadline = ProcessInfo.processInfo.systemUptime + 2
+        while true {
+            let result = waitpid(supervisor.processIdentifier, &exitStatus, WNOHANG)
+            if result == supervisor.processIdentifier || (result == -1 && errno == ECHILD) { break }
+            if result == -1 && errno != EINTR { throw NSError(domain: "OwnedAliasFixtureReap", code: Int(errno)) }
+            guard ProcessInfo.processInfo.systemUptime < reapDeadline else { throw NSError(domain: "OwnedAliasFixtureReap", code: Int(ETIMEDOUT)) }
+            try await Task.sleep(nanoseconds: 5_000_000)
+        }
     }
 }
 

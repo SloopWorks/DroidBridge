@@ -13,6 +13,42 @@ object ProtocolRules {
     fun hash(data: ByteArray): String = MessageDigest.getInstance("SHA-256").digest(data).joinToString("") { "%02x".format(it) }
     fun identifier(value: String) = value.matches(Regex("[A-Za-z0-9._-]{1,128}"))
     fun packageName(value: String) = value.matches(Regex("[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_]*)+")) && value.length <= 255
+    const val MAX_CATALOG_LABEL_SCALARS = 256
+    const val MAX_CATALOG_ACTIVITY_UTF8 = 512
+
+    /** Wire labels count Unicode scalars, not UTF-16 units, graphemes or bytes. */
+    fun catalogLabel(value: String): String {
+        val result = StringBuilder(minOf(value.length, MAX_CATALOG_LABEL_SCALARS * 2))
+        var index = 0
+        var scalars = 0
+        while (index < value.length && scalars < MAX_CATALOG_LABEL_SCALARS) {
+            val first = value[index++]
+            when {
+                Character.isHighSurrogate(first) -> {
+                    if (index < value.length && Character.isLowSurrogate(value[index])) {
+                        result.append(first).append(value[index++])
+                    } else result.append('\uFFFD')
+                }
+                Character.isLowSurrogate(first) -> result.append('\uFFFD')
+                else -> result.append(first)
+            }
+            scalars++
+        }
+        return result.toString()
+    }
+
+    /** Optional wire metadata: never truncate an Android component identity. */
+    fun catalogActivityName(value: String): String? {
+        if (value.length > MAX_CATALOG_ACTIVITY_UTF8) return null
+        var index = 0
+        while (index < value.length) {
+            val first = value[index++]
+            if (Character.isHighSurrogate(first)) {
+                if (index == value.length || !Character.isLowSurrogate(value[index++])) return null
+            } else if (Character.isLowSurrogate(first)) return null
+        }
+        return value.takeIf { it.toByteArray(Charsets.UTF_8).size <= MAX_CATALOG_ACTIVITY_UTF8 }
+    }
     fun safeName(value: String): String = value.substringAfterLast('/').substringAfterLast('\\').replace(Regex("[\\p{Cntrl}]"), "").take(120).ifBlank { "Shared file" }
     fun validateJSON(value: String) {
         var nodes = 0
