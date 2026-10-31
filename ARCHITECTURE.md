@@ -66,6 +66,8 @@ Core `PhoneDisplayPower` serializes actuation across processes with per-device f
 
 The runtime is pinned to scrcpy 5.0.1 and the captured Homebrew versions. Packaging recursively bundles and relinks Mach-O dependencies, collects notices, ad-hoc signs the application, verifies signatures, and emits a DMG, ZIP and SHA-256 checksums. The packaged runtime requires Apple Silicon/macOS 26; the Swift source's lower deployment target is not a portability claim for those bundled dependencies.
 
+The nested Player has a real internal `Contents/lib` directory containing only its bounded transitive library closure, with a signed hash inventory. Its libraries retain the relocated loader paths and signed bytes. Packaging independently verifies the nested bundle, each Mach-O signature and dependency containment before publishing the outer app; wrappers preserve this self-contained layout when cloning the runtime.
+
 Unit, actual emulator, AppKit event/rendering, lifecycle, recovery, supervisor, installed-bundle and GUI checks are separate evidence layers. See `TESTING.md`, `verification/REPORT.md`, and independent review in `verification/review/`. The physical Pixel 10 Pro stage is explicitly deferred to its owner.
 
 ## Device-wide audio

@@ -93,19 +93,23 @@ shasum -a 256 "$SERVER" >> "$RUNTIME/versions.txt"
 PLAYER="$RUNTIME/Player.app"
 mkdir -p "$PLAYER/Contents/MacOS" "$PLAYER/Contents/Resources"
 cp "$RUNTIME/bin/scrcpy" "$PLAYER/Contents/MacOS/scrcpy"
-ln -s ../../lib "$PLAYER/Contents/lib"
+# A nested signed application must own its libraries; an escaping symlink makes
+# standalone strict signature verification fail even when the outer app passes.
+python3 scripts/verify-package.py "$PLAYER" --stage-player-libraries-from "$RUNTIME" --output "$BUILD_STAGE/player-libraries.json"
 cp "$APP/Contents/Resources/DroidBridge.icns" "$PLAYER/Contents/Resources/"
 cat > "$PLAYER/Contents/Info.plist" <<'PLAYERPLIST'
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>CFBundleIdentifier</key><string>app.droidbridge.player</string><key>CFBundleName</key><string>DroidBridge Player</string><key>CFBundleExecutable</key><string>scrcpy</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>5.0.1</string><key>CFBundleVersion</key><string>1</string><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/></dict></plist>
 PLAYERPLIST
 sign_adhoc "$PLAYER"
+python3 scripts/verify-package.py "$PLAYER" --player-only --output "$BUILD_STAGE/player-verification.json"
 mv "$APP" "$BUILD_STAGE/DroidBridge.app"
 APP="$BUILD_STAGE/DroidBridge.app"
 sign_adhoc "$APP"
-codesign --verify --deep --strict "$APP"
+python3 scripts/verify-package.py "$APP" --signatures-only --output "$BUILD_STAGE/signature-verification.json"
 if [ -e "$PUBLISHED_APP" ]; then mv "$PUBLISHED_APP" ".build/package-backups/DroidBridge.previous.$(date +%s).app"; fi
 mv "$APP" "$PUBLISHED_APP"
 APP="$PUBLISHED_APP"
+rm "$BUILD_STAGE/player-libraries.json" "$BUILD_STAGE/player-verification.json" "$BUILD_STAGE/signature-verification.json"
 rmdir "$BUILD_STAGE"
 codesign --verify --deep --strict "$APP"
 STAGE="$(mktemp -d "$OUT/dmg-stage.XXXXXX")"
