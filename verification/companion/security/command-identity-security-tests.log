@@ -1,0 +1,78 @@
+Another instance of SwiftPM (PID: 37985) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[4/12] Compiling DroidBridgeCore CompanionBrokerRegistry.swift
+[5/12] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[5/16] Write Objects.LinkFileList
+[8/18] Linking DroidBridgeCompanionBroker
+[8/18] Linking DroidBridgeAvailability
+[10/18] Applying DroidBridgeAvailability
+[10/18] Applying DroidBridgeCompanionBroker
+[12/18] Linking DroidBridge
+[13/18] Applying DroidBridge
+[15/18] Emitting module DroidBridgeCoreTests
+[16/18] Compiling DroidBridgeCoreTests CompanionCommandSecurityTests.swift
+[16/18] Write Objects.LinkFileList
+[17/18] Linking DroidBridgePackageTests
+Build complete! (2.82s)
+Test Suite 'Selected tests' started at 2026-10-30 15:03:53.222.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 15:03:53.223.
+Test Suite 'CompanionCommandSecurityTests' started at 2026-10-30 15:03:53.223.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testActualXPCAdmissionGrantsExecutionOnlyOnceAcrossBothRetryIdentities]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testActualXPCAdmissionGrantsExecutionOnlyOnceAcrossBothRetryIdentities]' passed (0.010 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testAggregateChildIdentityCannotBecomeAggregateParent]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testAggregateChildIdentityCannotBecomeAggregateParent]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testAnotherPhoneHostCannotKeepMissingOwnersAdmittedCommandAlive]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testAnotherPhoneHostCannotKeepMissingOwnersAdmittedCommandAlive]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testCompatibleLauncherNeverReroutesStopFromLegacyWindowOwner]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testCompatibleLauncherNeverReroutesStopFromLegacyWindowOwner]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testExactAggregateRetryDoesNotCaptureNewSessions]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testExactAggregateRetryDoesNotCaptureNewSessions]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testLegacyAcceptedRowsSettleUnknownAndNeverResumeBeforeTheirDeadline]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testLegacyAcceptedRowsSettleUnknownAndNeverResumeBeforeTheirDeadline]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testLegacyWireOwnerRetainsDashboardButCannotPollOrReceiveActions]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testLegacyWireOwnerRetainsDashboardButCannotPollOrReceiveActions]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testMissingChildCrashGapSettlesUnknownWithoutRequeue]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testMissingChildCrashGapSettlesUnknownWithoutRequeue]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testOrdinaryCommandIdentityCannotBecomeStopAll]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testOrdinaryCommandIdentityCannotBecomeStopAll]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testPersistedMissingCapabilityCannotBeAssignedOrReceiveAdmittedWork]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testPersistedMissingCapabilityCannotBeAssignedOrReceiveAdmittedWork]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testPublishingAnotherPhoneDoesNotInvalidateSameProcessCommandGeneration]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testPublishingAnotherPhoneDoesNotInvalidateSameProcessCommandGeneration]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testRealTLSDelayedAdmissionCannotGrantAfterForgetOrShutdown]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testRealTLSDelayedAdmissionCannotGrantAfterForgetOrShutdown]' passed (0.222 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testStopAllIdentityCannotBeReusedAsDifferentKind]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testStopAllIdentityCannotBeReusedAsDifferentKind]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testStopAllIdentityCannotBeReusedForAnotherPhone]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testStopAllIdentityCannotBeReusedForAnotherPhone]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testUnknownAggregateOutcomeSurvivesChildReceiptEviction]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testUnknownAggregateOutcomeSurvivesChildReceiptEviction]' passed (0.005 seconds).
+Test Suite 'CompanionCommandSecurityTests' passed at 2026-10-30 15:03:53.488.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 0.264 (0.265) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 15:03:53.488.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 0.264 (0.265) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 15:03:53.488.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 0.264 (0.266) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

@@ -1,0 +1,84 @@
+{
+  "components": {
+    "adb": {
+      "different_paths": [],
+      "entries": 1,
+      "identical": true
+    },
+    "all_bundled_dylibs": {
+      "different_paths": [],
+      "entries": 23,
+      "identical": true
+    },
+    "android_companion": {
+      "different_paths": [
+        "Contents/Resources/Companion/DroidBridgeCompanion.apk"
+      ],
+      "entries": 1,
+      "identical": false
+    },
+    "audio_client": {
+      "different_paths": [],
+      "entries": 1,
+      "identical": true
+    },
+    "broker": {
+      "different_paths": [
+        "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker"
+      ],
+      "entries": 1,
+      "identical": false
+    },
+    "host": {
+      "different_paths": [
+        "Contents/MacOS/DroidBridge"
+      ],
+      "entries": 1,
+      "identical": false
+    },
+    "scrcpy_player": {
+      "different_paths": [],
+      "entries": 5,
+      "identical": true
+    },
+    "scrcpy_server": {
+      "different_paths": [],
+      "entries": 1,
+      "identical": true
+    },
+    "supervisor": {
+      "different_paths": [],
+      "entries": 1,
+      "identical": true
+    }
+  },
+  "different_paths": [
+    "Contents/Info.plist",
+    "Contents/MacOS/DroidBridge",
+    "Contents/Resources/ARCHITECTURE.md",
+    "Contents/Resources/COMPATIBILITY.md",
+    "Contents/Resources/Companion/APK-SHA256.txt",
+    "Contents/Resources/Companion/DroidBridgeCompanion.apk",
+    "Contents/Resources/KNOWN_ISSUES.md",
+    "Contents/Resources/Runtime/bin/DroidBridgeAvailability",
+    "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker",
+    "Contents/Resources/Runtime/share/droidbridge/icon-helper.jar",
+    "Contents/Resources/Runtime/versions.txt",
+    "Contents/Resources/TESTING.md",
+    "Contents/Resources/licenses/adb-source-runtime/BUILD_PROVENANCE.json",
+    "Contents/Resources/licenses/adb-source-runtime/SOURCE_CLOSURE.json",
+    "Contents/_CodeSignature/CodeResources"
+  ],
+  "new_app": "/Users/patrick/Applications/DroidBridge Companion QA8.app",
+  "new_inventory_entries": 198,
+  "old_app": "/Users/patrick/Applications/DroidBridge Companion QA6.app",
+  "old_inventory_entries": 198,
+  "runtime_different_paths": [
+    "Contents/Resources/Runtime/bin/DroidBridgeAvailability",
+    "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker",
+    "Contents/Resources/Runtime/share/droidbridge/icon-helper.jar",
+    "Contents/Resources/Runtime/versions.txt"
+  ],
+  "runtime_entries": 40,
+  "whole_app_identical": false
+}

@@ -1,0 +1,773 @@
+{
+  "initial_reply_deliveries": 1,
+  "actual_status": {
+    "action": "status",
+    "ok": true,
+    "buttons": [
+      {
+        "label": "Paired companion phone",
+        "title": "Google sdk_gphone16k_arm64 \u00b7 Connected",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Refresh",
+        "title": "Refresh",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Connection",
+        "title": "Connect",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Apps",
+        "title": "Apps",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Sessions",
+        "title": "Sessions",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Handoff",
+        "title": "Handoff",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Notifications",
+        "title": "Alerts",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Companion section Performance",
+        "title": "Power",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Diagnostics",
+        "title": "Reports",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Get Mac App",
+        "title": "Install",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Mirror permitted phone notifications",
+        "title": "Mirror permitted phone notifications",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Check Mac Notification Permission",
+        "title": "Check Mac Notification Permission",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Search",
+        "title": "search",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Close",
+        "title": "",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Apply Notification Filters",
+        "title": "Apply Notification Filters",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Reply\u2026",
+        "title": "Reply\u2026",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Dismiss on Phone",
+        "title": "Dismiss on Phone",
+        "enabled": true,
+        "state": 0
+      }
+    ],
+    "id": 451,
+    "fields": [
+      {
+        "label": "Notification app filter search",
+        "value": ""
+      },
+      {
+        "label": "Advanced notification package allowlist",
+        "value": "dev.droidbridge.companionfixture"
+      }
+    ],
+    "windows": [
+      {
+        "number": 13804,
+        "title": "DroidBridge",
+        "width": 1160,
+        "height": 780,
+        "visible": true
+      },
+      {
+        "number": 13805,
+        "title": "",
+        "width": 500,
+        "height": 500,
+        "visible": false
+      },
+      {
+        "number": 13811,
+        "title": "DroidBridge Companion",
+        "width": 900,
+        "height": 760,
+        "visible": true
+      },
+      {
+        "number": 13814,
+        "title": "Connect over Wi-Fi",
+        "width": 620,
+        "height": 520,
+        "visible": false
+      }
+    ],
+    "texts": [
+      "Phone",
+      "Google sdk_gphone16k_arm64 \u00b7 Authenticated companion connected",
+      "Notifications are not allowed for this application",
+      "Optional phone notifications",
+      "Enable Android notification access on the phone and allow DroidBridge notifications on this Mac. Sensitive, hidden and ongoing notifications are excluded by default. Denied Mac permission keeps the in-app list available. Replies work only while Android still advertises that reply action.",
+      "Choose allowed apps below. An empty app selection permits all notifications allowed by Android and the phone's privacy rules. Refresh Apps first if this list is empty.",
+      "Mac notification permission: Denied. Checking does not request or change permission.",
+      "Boundary notification 5",
+      "Deterministic fixture generation 5"
+    ],
+    "physical_focus_verified": false,
+    "pid": 3941
+  },
+  "actions": [
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 154.95
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.73
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.32
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.37
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.07
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 104.87
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.73
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.95
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.94
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.56
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.39
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.29
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.96
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.72
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.28
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.49
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.21
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 108.34
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.47
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.47
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.69
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.45
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.31
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 108.99
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.05
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.53
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.71
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.64
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 101.76
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.28
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.64
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.76
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.34
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.84
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.81
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 103.92
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.38
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.29
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.71
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.8
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.06
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.52
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 104.35
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.32
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.23
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.35
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.29
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.9
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.33
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.03
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.27
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.33
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.56
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.25
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.42
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 107.33
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.43
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.7
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.79
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.6
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.48
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 57.34
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 103.75
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.15
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.85
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.24
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.39
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 107.38
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.54
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.33
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.6
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.29
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.22
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.85
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.3
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.52
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.46
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.3
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.08
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.12
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.33
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.44
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.8
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.39
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.96
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.41
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.13
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.87
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.29
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.43
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.89
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.04
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.13
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.14
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.48
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.25
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.34
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.48
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.23
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 0.09
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 0.1
+    }
+  ]
+}

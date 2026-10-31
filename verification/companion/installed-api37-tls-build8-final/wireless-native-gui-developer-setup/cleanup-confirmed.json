@@ -1,0 +1,10 @@
+{
+  "original_report_retained_failed": true,
+  "actual_native_pair_connect_changed_endpoint_pass": true,
+  "cleanup_correction": "GUI toggle returned before global setting settled; exact owned fixture adb_wifi_enabled reset0 and read verified. No aliases/redirections remain.",
+  "adb_wifi_enabled": "0",
+  "adb_enabled": "1",
+  "development_settings_enabled": "null",
+  "redirections": "no active redirections",
+  "physical_lan_verified": false
+}

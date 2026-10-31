@@ -1,0 +1,7 @@
+{
+  "SDL_GetVersion": 3004018,
+  "version": "3.4.18",
+  "library_sha256": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6",
+  "host": "macOS26.2 build25C56",
+  "upstream_source": "https://github.com/libsdl-org/SDL/blob/release-3.4.18/src/video/cocoa/SDL_cocoawindow.m"
+}

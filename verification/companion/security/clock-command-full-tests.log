@@ -1,0 +1,781 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.20s)
+Test Suite 'All tests' started at 2026-10-30 15:04:27.722.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 15:04:27.723.
+Test Suite 'ADBPortableRuntimeTests' started at 2026-10-30 15:04:27.723.
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testLegacyStandaloneIdentityRemainsCompatibleAndMissingManifestCannotHideDynamicDependency]' started.
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testLegacyStandaloneIdentityRemainsCompatibleAndMissingManifestCannotHideDynamicDependency]' passed (1.151 seconds).
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testManifestTraversalSymlinksAndMissingDependenciesFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testManifestTraversalSymlinksAndMissingDependenciesFailClosed]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testPortableInventoryCopiesExactBytesAndBindsEveryDependency]' started.
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testPortableInventoryCopiesExactBytesAndBindsEveryDependency]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testSignedRuntimeActuallyExecutesAfterRelocationAndAbsoluteDependencyIsRejected]' started.
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testSignedRuntimeActuallyExecutesAfterRelocationAndAbsoluteDependencyIsRejected]' passed (2.180 seconds).
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testUniversalLegacyADBReadsOnlyTheSupportedArchitecture]' started.
+Test Case '-[DroidBridgeCoreTests.ADBPortableRuntimeTests testUniversalLegacyADBReadsOnlyTheSupportedArchitecture]' passed (0.440 seconds).
+Test Suite 'ADBPortableRuntimeTests' passed at 2026-10-30 15:04:31.499.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 3.775 (3.776) seconds
+Test Suite 'AndroidDiscoveryTests' started at 2026-10-30 15:04:31.499.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/AndroidDiscoveryTests.swift:26: -[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn] : Test skipped - Set DROIDBRIDGE_TEST_SERIAL to an emulator serial
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' skipped (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' passed (0.094 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' passed (0.302 seconds).
+Test Suite 'AndroidDiscoveryTests' passed at 2026-10-30 15:04:31.897.
+	 Executed 6 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.398 (0.399) seconds
+Test Suite 'AndroidIconProviderTests' started at 2026-10-30 15:04:31.897.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testBoundedRecoveryCursorReachesReceiptAfter128RetainedRequests]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testBoundedRecoveryCursorReachesReceiptAfter128RetainedRequests]' passed (9.538 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testConcurrentRecoveryReturnsCanonicalCompletedResult]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testConcurrentRecoveryReturnsCanonicalCompletedResult]' passed (0.670 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testFailedRequestCleanupRetainsReceiptUntilRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testFailedRequestCleanupRetainsReceiptUntilRecovery]' passed (0.774 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/AndroidIconProviderTests.swift:238: -[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn] : Test skipped - Build icon helper and install icon fixture, then set DROIDBRIDGE_TEST_SERIAL and DROIDBRIDGE_TEST_ICONS=1
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' skipped (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' passed (0.006 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' passed (1.099 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryPreservesLiveOwnerAndRetriesOfflineExactPaths]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryPreservesLiveOwnerAndRetriesOfflineExactPaths]' passed (0.923 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryWaitsForExactDelayedProducerBeforeRemovingReceipt]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryWaitsForExactDelayedProducerBeforeRemovingReceipt]' passed (0.792 seconds).
+Test Suite 'AndroidIconProviderTests' passed at 2026-10-30 15:04:45.700.
+	 Executed 8 tests, with 1 test skipped and 0 failures (0 unexpected) in 13.802 (13.803) seconds
+Test Suite 'AvailabilityRuntimeStoreTests' started at 2026-10-30 15:04:45.700.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testActualMappedExecutableIsPreservedUntilOwnedProcessExits]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testActualMappedExecutableIsPreservedUntilOwnedProcessExits]' passed (4.192 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCompleteStageRecoveryDoesNotRequireOriginalSources]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCompleteStageRecoveryDoesNotRequireOriginalSources]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCorruptOrForeignGenerationContentsArePreserved]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCorruptOrForeignGenerationContentsArePreserved]' passed (0.034 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashDuringRetirementDeletionRemovesOnlyReceiptedRemainingFiles]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashDuringRetirementDeletionRemovesOnlyReceiptedRemainingFiles]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashLeftRetirementResumesAndCurrentPinRestores]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashLeftRetirementResumesAndCurrentPinRestores]' passed (0.032 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashLeftRetirementWithLiveOrUnknownReferencesPreservesBytes]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashLeftRetirementWithLiveOrUnknownReferencesPreservesBytes]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testFullStoreReclaimsVerifiedUnusedGenerationAndPreservesCurrent]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testFullStoreReclaimsVerifiedUnusedGenerationAndPreservesCurrent]' passed (0.035 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testOwnedPartialStageAndInterruptedRecoveryResumeWithPrefixProof]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testOwnedPartialStageAndInterruptedRecoveryResumeWithPrefixProof]' passed (0.014 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPartiallyDeletedPinnedRetirementWaitsForSuccessorAndUnknownBytesStay]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPartiallyDeletedPinnedRetirementWaitsForSuccessorAndUnknownBytesStay]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPartialStageMissingSourceAndForeignBytesAreNeverDeleted]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPartialStageMissingSourceAndForeignBytesAreNeverDeleted]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPortableCrashReceiptsRecoverPartialLibrariesAndRetirementWithoutManifest]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPortableCrashReceiptsRecoverPartialLibrariesAndRetirementWithoutManifest]' passed (0.010 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPortableGenerationBindsLibraryBytesAndReclaimsUnderSameEightBound]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPortableGenerationBindsLibraryBytesAndReclaimsUnderSameEightBound]' passed (0.036 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPostRenameReferenceRecheckRollsBackWithoutDeletingBytes]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPostRenameReferenceRecheckRollsBackWithoutDeletingBytes]' passed (0.044 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRepeatedPublicationReusesIdentityWithoutGrowingStore]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRepeatedPublicationReusesIdentityWithoutGrowingStore]' passed (0.024 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRunningLifetimeLeasesAndUnknownReferenceScanFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRunningLifetimeLeasesAndUnknownReferenceScanFailClosed]' passed (0.046 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testUnreceiptedStageRemainsCountedAtCapacity]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testUnreceiptedStageRemainsCountedAtCapacity]' passed (0.031 seconds).
+Test Suite 'AvailabilityRuntimeStoreTests' passed at 2026-10-30 15:04:50.236.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 4.534 (4.536) seconds
+Test Suite 'CanonicalAliasAdmissionTests' started at 2026-10-30 15:04:50.236.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testAbsentPolicyPreservesStandaloneAndCorruptPolicyFailsClosed]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testAbsentPolicyPreservesStandaloneAndCorruptPolicyFailsClosed]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testCanonicalAudioIntentSharesAliasesAndKeepsLegacyPhoneChoice]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testCanonicalAudioIntentSharesAliasesAndKeepsLegacyPhoneChoice]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testExplicitInstallationMoveCannotRekeyLiveCaptureAndPreservesStableLeaseIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testExplicitInstallationMoveCannotRekeyLiveCaptureAndPreservesStableLeaseIdentity]' passed (0.014 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testFirstPairingRefusesToRekeyStandaloneCaptureUntilDrained]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testFirstPairingRefusesToRekeyStandaloneCaptureUntilDrained]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSameAliasConcurrentAndOtherAliasRefusedUntilLastLeaseDrains]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSameAliasConcurrentAndOtherAliasRefusedUntilLastLeaseDrains]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testStopDuringAliasAdmissionDoesNotRetainLateLeaseOrRunADB]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testStopDuringAliasAdmissionDoesNotRetainLateLeaseOrRunADB]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSupervisorRetainsLeaseAndCrashGuardDrainsOwnedChild]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSupervisorRetainsLeaseAndCrashGuardDrainsOwnedChild]' passed (0.095 seconds).
+Test Suite 'CanonicalAliasAdmissionTests' passed at 2026-10-30 15:04:50.368.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.132 (0.133) seconds
+Test Suite 'CompanionBoundaryTests' started at 2026-10-30 15:04:50.368.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCancellationBeforeStartAndWhileReceivingCompletesOnce]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCancellationBeforeStartAndWhileReceivingCompletesOnce]' passed (1.301 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' passed (0.077 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCatalogDeletedIdentityAndUTF8ByteBound]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCatalogDeletedIdentityAndUTF8ByteBound]' passed (0.110 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testDeepJSONAndNonUTF8AreRejectedBeforeDecoding]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testDeepJSONAndNonUTF8AreRejectedBeforeDecoding]' passed (0.113 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testForwardNoRebindAndExactCleanupWithOwnedFakeADB]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testForwardNoRebindAndExactCleanupWithOwnedFakeADB]' passed (0.784 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testHelloRequiresUUIDAndPositiveOrderedProtocolRange]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testHelloRequiresUUIDAndPositiveOrderedProtocolRange]' passed (0.172 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testKeychainCredentialRoundTripUsesDedicatedRandomIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testKeychainCredentialRoundTripUsesDedicatedRandomIdentity]' passed (0.046 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testLegacyUnpinnedKeychainRecordRequiresPairingBeforeTransport]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testLegacyUnpinnedKeychainRecordRequiresPairingBeforeTransport]' passed (0.019 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPairingAndAuthenticatedIdentityBindExpectedInstallation]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPairingAndAuthenticatedIdentityBindExpectedInstallation]' passed (0.113 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPNGMustActuallyDecodeAndValidPNGPasses]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPNGMustActuallyDecodeAndValidPNGPasses]' passed (0.107 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testRequestCorrelationAndMIMEAreRequired]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testRequestCorrelationAndMIMEAreRequired]' passed (0.107 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testTransferReceiptAcknowledgesOnlyVerifiedWholeFileMetadata]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testTransferReceiptAcknowledgesOnlyVerifiedWholeFileMetadata]' passed (0.058 seconds).
+Test Suite 'CompanionBoundaryTests' passed at 2026-10-30 15:04:53.376.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 3.006 (3.008) seconds
+Test Suite 'CompanionBrokerSchedulerTests' started at 2026-10-30 15:04:53.376.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testBatteryAssetLimitDoesNotBlockAnotherPhone]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testBatteryAssetLimitDoesNotBlockAnotherPhone]' passed (0.022 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testCancelledQueuedControlAndBulkReturnAcquiredSlots]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testCancelledQueuedControlAndBulkReturnAcquiredSlots]' passed (0.047 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testControlQueueBoundAndCancelledWaitersLeaveNoGroupOwnership]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testControlQueueBoundAndCancelledWaitersLeaveNoGroupOwnership]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testFourGlobalControlLanesPreserveFIFOAmongEligibleWaiters]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testFourGlobalControlLanesPreserveFIFOAmongEligibleWaiters]' passed (0.025 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testImmediateCancellationNeverConsumesSlot]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testImmediateCancellationNeverConsumesSlot]' passed (0.000 seconds).
+Test Suite 'CompanionBrokerSchedulerTests' passed at 2026-10-30 15:04:53.474.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.098 (0.098) seconds
+Test Suite 'CompanionBrokerTLSRaceTests' started at 2026-10-30 15:04:53.474.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testActualTLSApprovedAdmissionFaultsRemainExplicitAndRecoverable]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testActualTLSApprovedAdmissionFaultsRemainExplicitAndRecoverable]' passed (0.380 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedRealTLSAuthenticatedIdentityDoesNotStallAnotherPhone]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedRealTLSAuthenticatedIdentityDoesNotStallAnotherPhone]' passed (0.278 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedRealTLSHelloDoesNotStallAnotherPhysicalPhone]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedRealTLSHelloDoesNotStallAnotherPhysicalPhone]' passed (0.256 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedTerminalReceiptShutdownCancelsWaveBeforeOwnerLeaseRelease]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedTerminalReceiptShutdownCancelsWaveBeforeOwnerLeaseRelease]' passed (0.754 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testEnrollmentReplacementBeforeSecretRechecksRealTLSPinAndUUID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testEnrollmentReplacementBeforeSecretRechecksRealTLSPinAndUUID]' passed (0.262 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testForgetWhileRealPinnedTLSHelloIsSuspendedNeverSendsStoredBearer]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testForgetWhileRealPinnedTLSHelloIsSuspendedNeverSendsStoredBearer]' passed (0.091 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testHeartbeatRequiresCapabilityAndRecoversMissingPeerSnapshot]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testHeartbeatRequiresCapabilityAndRecoversMissingPeerSnapshot]' passed (0.287 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testRealAdmissionPeerProtocol]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testRealAdmissionPeerProtocol]' passed (0.059 seconds).
+Test Suite 'CompanionBrokerTLSRaceTests' passed at 2026-10-30 15:04:55.842.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 2.367 (2.368) seconds
+Test Suite 'CompanionBrokerTests' started at 2026-10-30 15:04:55.842.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testActualAnonymousXPCRoundTripNonceCapsCancellationAndGeneration]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testActualAnonymousXPCRoundTripNonceCapsCancellationAndGeneration]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testActualXPCInFlightCancellationReturnsBeforeLateReply]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testActualXPCInFlightCancellationReturnsBeforeLateReply]' passed (0.457 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testBrokerRejectsPinlessEnrollmentAndUnpinnedConnectBeforePhoneIO]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testBrokerRejectsPinlessEnrollmentAndUnpinnedConnectBeforePhoneIO]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testDeadOwnersAndExpiredCommandsCannotReceive]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testDeadOwnersAndExpiredCommandsCannotReceive]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testGenerationCannotRegressOrReassignSession]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testGenerationCannotRegressOrReassignSession]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testIdenticalRetryDoesNotReopenConflictingRetryRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testIdenticalRetryDoesNotReopenConflictingRetryRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testLocalForgetDeletesOnlyExactCredentialAndRetainsPolicyAndOtherPhone]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testLocalForgetDeletesOnlyExactCredentialAndRetainsPolicyAndOtherPhone]' passed (0.047 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testMacIdentityPersistsBeforeAnyPhoneRequestAndUnsafeStateFailsClosed]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testMacIdentityPersistsBeforeAnyPhoneRequestAndUnsafeStateFailsClosed]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testMailboxBackpressureAndBoundedPolling]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testMailboxBackpressureAndBoundedPolling]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testNonceConstantTimeComparisonAndEnvelopeCorrelation]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testNonceConstantTimeComparisonAndEnvelopeCorrelation]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testOnlyRegisteredLauncherCanOpenAndNoCrossPhoneStop]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testOnlyRegisteredLauncherCanOpenAndNoCrossPhoneStop]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testOwnerKernelIdentityAndProcessReuse]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testOwnerKernelIdentityAndProcessReuse]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testPhoneSessionCapacityIsGlobalAcrossProcesses]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testPhoneSessionCapacityIsGlobalAcrossProcesses]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testRemoteExpiryNotExtendedAndFutureDeadlinesRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testRemoteExpiryNotExtendedAndFutureDeadlinesRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testReplacementGenerationCancelsPriorMailbox]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testReplacementGenerationCancelsPriorMailbox]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testSessionValidationDoesNotPartiallyReplace]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testSessionValidationDoesNotPartiallyReplace]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testSignedHostValidationRejectsSubstitutionSymlinkAndWrongProcess]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testSignedHostValidationRejectsSubstitutionSymlinkAndWrongProcess]' passed (0.098 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testStopRoutesExactOwnerAndFencesAcknowledgement]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTests testStopRoutesExactOwnerAndFencesAcknowledgement]' passed (0.000 seconds).
+Test Suite 'CompanionBrokerTests' passed at 2026-10-30 15:04:56.460.
+	 Executed 18 tests, with 0 failures (0 unexpected) in 0.617 (0.618) seconds
+Test Suite 'CompanionCleanupSecurityTests' started at 2026-10-30 15:04:56.460.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' passed (1.565 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testLegacyCredentialForAnotherPhoneCannotBlockHealthyNewAlias]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testLegacyCredentialForAnotherPhoneCannotBlockHealthyNewAlias]' passed (0.107 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringAuthenticatedIdentityCannotPublishLateAdmission]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringAuthenticatedIdentityCannotPublishLateAdmission]' passed (0.092 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringPinnedHelloCannotSendStoredBearerOrPublishAdmission]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringPinnedHelloCannotSendStoredBearerOrPublishAdmission]' passed (0.115 seconds).
+Test Suite 'CompanionCleanupSecurityTests' passed at 2026-10-30 15:04:58.340.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.879 (1.880) seconds
+Test Suite 'CompanionClockTests' started at 2026-10-30 15:04:58.340.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testActualTLSCancelledClockSamplingNeverPostsEffect]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testActualTLSCancelledClockSamplingNeverPostsEffect]' passed (0.086 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testActualTLSEpochResetCannotRefreshCanonicalRequestExpiry]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testActualTLSEpochResetCannotRefreshCanonicalRequestExpiry]' passed (0.104 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testActualTLSLocalExpiryNeverReissuesSameRequestID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testActualTLSLocalExpiryNeverReissuesSameRequestID]' passed (30.240 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testAdmissionAllowsTruthfulLateAckButCannotReviveOrRepoll]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testAdmissionAllowsTruthfulLateAckButCannotReviveOrRepoll]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testCommittedIntentPendingReceiptIsCanonicalAndCannotClaimWrapper]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testCommittedIntentPendingReceiptIsCanonicalAndCannotClaimWrapper]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testCommittedSelectionQueuedExpiryAndOwnerRejectionPreserveIntent]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testCommittedSelectionQueuedExpiryAndOwnerRejectionPreserveIntent]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testCrashGapReplayedSelectionRecordsUnknownWithoutWrapperWork]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testCrashGapReplayedSelectionRecordsUnknownWithoutWrapperWork]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testFreshnessRTTAndServiceEpochFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testFreshnessRTTAndServiceEpochFailClosed]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testFutureExpiredAndWidenedPeerBudgetsRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testFutureExpiredAndWidenedPeerBudgetsRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testHungLiveAdmittedOwnersBecomeUnknownWithoutRequeueAndFreeCapacity]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testHungLiveAdmittedOwnersBecomeUnknownWithoutRequeueAndFreeCapacity]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testLocalDeadlineSurvivesWallChangeButNeverBootResetOrExpiry]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testLocalDeadlineSurvivesWallChangeButNeverBootResetOrExpiry]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testOwnerLossAdmittedUnknownAndQueuedExpiredNeverReopens]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testOwnerLossAdmittedUnknownAndQueuedExpiredNeverReopens]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testPairingUsesPinnedPhoneWallSnapshotAndKeepsOriginalWindow]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testPairingUsesPinnedPhoneWallSnapshotAndKeepsOriginalWindow]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testPinnedTLSIdentityChangeRejectsClockBeforeCommand]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testPinnedTLSIdentityChangeRejectsClockBeforeCommand]' passed (0.200 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testStructuralQRParsingDoesNotTrustMacWallClock]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testStructuralQRParsingDoesNotTrustMacWallClock]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testWallClockSkewAndJumpNeverChangesCommandBudget]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionClockTests testWallClockSkewAndJumpNeverChangesCommandBudget]' passed (0.000 seconds).
+Test Suite 'CompanionClockTests' passed at 2026-10-30 15:05:28.980.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 30.638 (30.640) seconds
+Test Suite 'CompanionCommandSecurityTests' started at 2026-10-30 15:05:28.980.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testActualXPCAdmissionGrantsExecutionOnlyOnceAcrossBothRetryIdentities]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testActualXPCAdmissionGrantsExecutionOnlyOnceAcrossBothRetryIdentities]' passed (0.006 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testAggregateChildIdentityCannotBecomeAggregateParent]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testAggregateChildIdentityCannotBecomeAggregateParent]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testAnotherPhoneHostCannotKeepMissingOwnersAdmittedCommandAlive]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testAnotherPhoneHostCannotKeepMissingOwnersAdmittedCommandAlive]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testCompatibleLauncherNeverReroutesStopFromLegacyWindowOwner]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testCompatibleLauncherNeverReroutesStopFromLegacyWindowOwner]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testExactAggregateRetryDoesNotCaptureNewSessions]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testExactAggregateRetryDoesNotCaptureNewSessions]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testLegacyAcceptedRowsSettleUnknownAndNeverResumeBeforeTheirDeadline]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testLegacyAcceptedRowsSettleUnknownAndNeverResumeBeforeTheirDeadline]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testLegacyWireOwnerRetainsDashboardButCannotPollOrReceiveActions]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testLegacyWireOwnerRetainsDashboardButCannotPollOrReceiveActions]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testMissingChildCrashGapSettlesUnknownWithoutRequeue]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testMissingChildCrashGapSettlesUnknownWithoutRequeue]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testOrdinaryCommandIdentityCannotBecomeStopAll]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testOrdinaryCommandIdentityCannotBecomeStopAll]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testPersistedMissingCapabilityCannotBeAssignedOrReceiveAdmittedWork]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testPersistedMissingCapabilityCannotBeAssignedOrReceiveAdmittedWork]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testPublishingAnotherPhoneDoesNotInvalidateSameProcessCommandGeneration]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testPublishingAnotherPhoneDoesNotInvalidateSameProcessCommandGeneration]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testRealTLSDelayedAdmissionCannotGrantAfterForgetOrShutdown]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testRealTLSDelayedAdmissionCannotGrantAfterForgetOrShutdown]' passed (0.200 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testStopAllIdentityCannotBeReusedAsDifferentKind]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testStopAllIdentityCannotBeReusedAsDifferentKind]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testStopAllIdentityCannotBeReusedForAnotherPhone]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testStopAllIdentityCannotBeReusedForAnotherPhone]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testUnknownAggregateOutcomeSurvivesChildReceiptEviction]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCommandSecurityTests testUnknownAggregateOutcomeSurvivesChildReceiptEviction]' passed (0.005 seconds).
+Test Suite 'CompanionCommandSecurityTests' passed at 2026-10-30 15:05:29.216.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 0.235 (0.236) seconds
+Test Suite 'CompanionDiagnosticsTests' started at 2026-10-30 15:05:29.216.
+Test Case '-[DroidBridgeCoreTests.CompanionDiagnosticsTests testOnlyTypedOperationalFieldsCanLeaveDiagnostics]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionDiagnosticsTests testOnlyTypedOperationalFieldsCanLeaveDiagnostics]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionDiagnosticsTests testUnknownInvalidAndMissingFactsAreNotReportedAsZero]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionDiagnosticsTests testUnknownInvalidAndMissingFactsAreNotReportedAsZero]' passed (0.000 seconds).
+Test Suite 'CompanionDiagnosticsTests' passed at 2026-10-30 15:05:29.216.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'CompanionJournalSecurityTests' started at 2026-10-30 15:05:29.216.
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testByteLimitAndNonprivateDirectoryFailBeforePublication]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testByteLimitAndNonprivateDirectoryFailBeforePublication]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testPublicationFaultsExposeOnlyCompletePrivateOldOrNewDocuments]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testPublicationFaultsExposeOnlyCompletePrivateOldOrNewDocuments]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testSymlinkAndHardlinkTargetsCannotOverwriteOtherFiles]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testSymlinkAndHardlinkTargetsCannotOverwriteOtherFiles]' passed (0.002 seconds).
+Test Suite 'CompanionJournalSecurityTests' passed at 2026-10-30 15:05:29.221.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'CompanionPendingAdmissionTests' started at 2026-10-30 15:05:29.222.
+Test Case '-[DroidBridgeCoreTests.CompanionPendingAdmissionTests testCandidateNeverAppearsInNormalAccountsAndWrongFinalizeIsFenced]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPendingAdmissionTests testCandidateNeverAppearsInNormalAccountsAndWrongFinalizeIsFenced]' passed (0.053 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionPendingAdmissionTests testConflictingStageSaveAndExpiredCallbackCannotFinalize]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPendingAdmissionTests testConflictingStageSaveAndExpiredCallbackCannotFinalize]' passed (0.188 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionPendingAdmissionTests testPendingJournalRefusesAutomaticConnectAndExpiredRecoveryBeforePhoneIO]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPendingAdmissionTests testPendingJournalRefusesAutomaticConnectAndExpiredRecoveryBeforePhoneIO]' passed (0.006 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionPendingAdmissionTests testPolicyBindFailureDoesNotPromoteCandidateAndForgetCanRetireIt]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPendingAdmissionTests testPolicyBindFailureDoesNotPromoteCandidateAndForgetCanRetireIt]' passed (0.026 seconds).
+Test Suite 'CompanionPendingAdmissionTests' passed at 2026-10-30 15:05:29.494.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.272 (0.273) seconds
+Test Suite 'CompanionPerformanceTests' started at 2026-10-30 15:05:29.494.
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testLegacyConfigurationKeepsThirtyFPSAndDecorations]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testLegacyConfigurationKeepsThirtyFPSAndDecorations]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testPersistedInvalidRateFailsRatherThanClamping]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testPersistedInvalidRateFailsRatherThanClamping]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testProfilesPreserveDisplayAndBackendAcrossPersistence]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testProfilesPreserveDisplayAndBackendAcrossPersistence]' passed (0.000 seconds).
+Test Suite 'CompanionPerformanceTests' passed at 2026-10-30 15:05:29.495.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+Test Suite 'CompanionQAScopeTests' started at 2026-10-30 15:05:29.495.
+Test Case '-[DroidBridgeCoreTests.CompanionQAScopeTests testExplicitScopeFiltersOnlyOneOwnedEmulatorAndSeparatesAllPaths]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionQAScopeTests testExplicitScopeFiltersOnlyOneOwnedEmulatorAndSeparatesAllPaths]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionQAScopeTests testInvalidScopeCannotFallBackToProduction]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionQAScopeTests testInvalidScopeCannotFallBackToProduction]' passed (0.001 seconds).
+Test Suite 'CompanionQAScopeTests' passed at 2026-10-30 15:05:29.496.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'CompanionQRImageReaderTests' started at 2026-10-30 15:05:29.496.
+Test Case '-[DroidBridgeCoreTests.CompanionQRImageReaderTests testActualImageDecodesCurrentPairingQRAndValidatesIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionQRImageReaderTests testActualImageDecodesCurrentPairingQRAndValidatesIdentity]' passed (0.154 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionQRImageReaderTests testActualNonQRImageAndOversizedInputAreRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionQRImageReaderTests testActualNonQRImageAndOversizedInputAreRejected]' passed (0.017 seconds).
+Test Suite 'CompanionQRImageReaderTests' passed at 2026-10-30 15:05:29.667.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.171 (0.171) seconds
+Test Suite 'CompanionReleaseMetadataTests' started at 2026-10-30 15:05:29.667.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataBindsExactVersionPlatformAndOfficialArtifact]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataBindsExactVersionPlatformAndOfficialArtifact]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataRefusesSubstitutedURLsUnknownSigningAndUnsafeBounds]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataRefusesSubstitutedURLsUnknownSigningAndUnsafeBounds]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testWireMetadataRejectsDuplicateEscapedKeysNestedValuesAndByteAbuse]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testWireMetadataRejectsDuplicateEscapedKeysNestedValuesAndByteAbuse]' passed (0.000 seconds).
+Test Suite 'CompanionReleaseMetadataTests' passed at 2026-10-30 15:05:29.668.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'CompanionSecurityTests' started at 2026-10-30 15:05:29.668.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testCancellationDuringTLSHandshakeSendsNoApplicationBytes]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testCancellationDuringTLSHandshakeSendsNoApplicationBytes]' passed (0.291 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testCredentialsRejectHeaderInjectionAndWrongLength]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testCredentialsRejectHeaderInjectionAndWrongLength]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDeclaredAndStreamedOversizeAreRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDeclaredAndStreamedOversizeAreRejected]' passed (0.119 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDifferentTLSLeafCannotHarvestPairingSecretOrSavedBearer]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDifferentTLSLeafCannotHarvestPairingSecretOrSavedBearer]' passed (0.100 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDynamicPathsAndCommandNamesRejectBeforeNetwork]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDynamicPathsAndCommandNamesRejectBeforeNetwork]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testEndpointCannotRedirectAuthorityToNetworkOrUserInfo]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testEndpointCannotRedirectAuthorityToNetworkOrUserInfo]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testFixtureWaitsForCompletePortPublicationBeforeSendingTLSRequest]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testFixtureWaitsForCompletePortPublicationBeforeSendingTLSRequest]' passed (0.114 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testMalformedPNGIntegrityAndDimensionsRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testMalformedPNGIntegrityAndDimensionsRejected]' passed (0.056 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testMissingMalformedPinsFailBeforeTransport]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testMissingMalformedPinsFailBeforeTransport]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testPinnedCertificateMustAlsoMatchExpectedLoopbackHost]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testPinnedCertificateMustAlsoMatchExpectedLoopbackHost]' passed (0.053 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testRedirectIsRefusedRatherThanForwardingBearerCredential]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testRedirectIsRefusedRatherThanForwardingBearerCredential]' passed (0.059 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testUnauthenticatedProtectedRequestDoesNotAttemptNetwork]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testUnauthenticatedProtectedRequestDoesNotAttemptNetwork]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testUnknownProtocolCannotBeDecodedAsSuccess]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testUnknownProtocolCannotBeDecodedAsSuccess]' passed (0.057 seconds).
+Test Suite 'CompanionSecurityTests' passed at 2026-10-30 15:05:30.518.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.849 (0.850) seconds
+Test Suite 'CompanionSetupValidationTests' started at 2026-10-30 15:05:30.518.
+Test Case '-[DroidBridgeCoreTests.CompanionSetupValidationTests testMissingPinMalformedFingerprintAndNoncanonicalSecretFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSetupValidationTests testMissingPinMalformedFingerprintAndNoncanonicalSecretFailClosed]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSetupValidationTests testPairingQRIsAnExpiringCapabilityWithoutNetworkAuthority]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSetupValidationTests testPairingQRIsAnExpiringCapabilityWithoutNetworkAuthority]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSetupValidationTests testRejectAmbiguousOrNetworkBearingQR]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSetupValidationTests testRejectAmbiguousOrNetworkBearingQR]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSetupValidationTests testWirelessEndpointCannotBecomeAnOptionShellOrArbitraryURL]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSetupValidationTests testWirelessEndpointCannotBecomeAnOptionShellOrArbitraryURL]' passed (0.000 seconds).
+Test Suite 'CompanionSetupValidationTests' passed at 2026-10-30 15:05:30.519.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'CompanionWirelessADBTests' started at 2026-10-30 15:05:30.519.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' passed (0.271 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' passed (0.278 seconds).
+Test Suite 'CompanionWirelessADBTests' passed at 2026-10-30 15:05:31.068.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.549 (0.549) seconds
+Test Suite 'DesktopConfigurationTests' started at 2026-10-30 15:05:31.068.
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testDecorationChoiceDoesNotRewriteSavedDescriptor]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testDecorationChoiceDoesNotRewriteSavedDescriptor]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testLegacySessionKeepsDecorationsAndNewPreferenceRoundTrips]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testLegacySessionKeepsDecorationsAndNewPreferenceRoundTrips]' passed (0.000 seconds).
+Test Suite 'DesktopConfigurationTests' passed at 2026-10-30 15:05:31.069.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'DeviceAudioArtifactTests' started at 2026-10-30 15:05:31.069.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testDeadAttemptRemovedAndLiveAttemptPreserved]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testDeadAttemptRemovedAndLiveAttemptPreserved]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testFailureDiagnosticsBoundedTo32FilesAnd64KiB]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testFailureDiagnosticsBoundedTo32FilesAnd64KiB]' passed (0.033 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testHeldOwnerTokenPreservesUnpublishedLog]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioArtifactTests testHeldOwnerTokenPreservesUnpublishedLog]' passed (0.001 seconds).
+Test Suite 'DeviceAudioArtifactTests' passed at 2026-10-30 15:05:31.106.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.037 (0.037) seconds
+Test Suite 'DeviceAudioPreferencesTests' started at 2026-10-30 15:05:31.106.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testConcurrentIndependentChoicesMergeAndKeepAcceptedPhone]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testConcurrentIndependentChoicesMergeAndKeepAcceptedPhone]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testInvalidSerialNeverCreatesOrChangesAudioStore]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testInvalidSerialNeverCreatesOrChangesAudioStore]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testMissingStoreStartsEmptyAndMalformedStoreNeverFallsBackToGlobal]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioPreferencesTests testMissingStoreStartsEmptyAndMalformedStoreNeverFallsBackToGlobal]' passed (0.002 seconds).
+Test Suite 'DeviceAudioPreferencesTests' passed at 2026-10-30 15:05:31.114.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.008 (0.008) seconds
+Test Suite 'DeviceAudioQATests' started at 2026-10-30 15:05:31.114.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQACapacityGrowthStopsPreviouslyDefaultMacCapture]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQACapacityGrowthStopsPreviouslyDefaultMacCapture]' passed (2.409 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQADisconnectDuringSDKProbeDrainsWithoutLateCapture]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQADisconnectDuringSDKProbeDrainsWithoutLateCapture]' passed (0.723 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAFullPreferenceCapacityKeepsKnownRouteAndUnknownPhoneEscape]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAFullPreferenceCapacityKeepsKnownRouteAndUnknownPhoneEscape]' passed (3.541 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAInvalidOwnershipSymlinkFailsWithoutLaunchingOrOverwritingTarget]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAInvalidOwnershipSymlinkFailsWithoutLaunchingOrOverwritingTarget]' passed (0.028 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAObservedPTYTitlePrefixDoesNotHideInitializedAudioReceipt]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAObservedPTYTitlePrefixDoesNotHideInitializedAudioReceipt]' passed (0.954 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAPhoneIntentDuringSDKProbeNeverSpawnsClient]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAPhoneIntentDuringSDKProbeNeverSpawnsClient]' passed (1.741 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAPreferenceCapacityUnknownRouteAndAtomicRefusal]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAPreferenceCapacityUnknownRouteAndAtomicRefusal]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAReadyClientFailureLatchesAndRetryLeavesOtherDeviceRunning]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQAReadyClientFailureLatchesAndRetryLeavesOtherDeviceRunning]' passed (3.606 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQASeparateAudioAuthoritySurvivesLegacyGlobalPreferenceRewrite]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQASeparateAudioAuthoritySurvivesLegacyGlobalPreferenceRewrite]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQASeparateAudioStoreBoundsAndBusyRefusalPreserveAcceptedBytes]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQASeparateAudioStoreBoundsAndBusyRefusalPreserveAcceptedBytes]' passed (0.117 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQATwoSerialsHaveIndependentOwnershipAndPhoneRelease]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioQATests testQATwoSerialsHaveIndependentOwnershipAndPhoneRelease]' passed (2.601 seconds).
+Test Suite 'DeviceAudioQATests' passed at 2026-10-30 15:05:46.841.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 15.726 (15.727) seconds
+Test Suite 'DeviceAudioReadinessTests' started at 2026-10-30 15:05:46.841.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testActualPinnedClientOSCWindowTitleBeforeOutputReady]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testActualPinnedClientOSCWindowTitleBeforeOutputReady]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testBoundedInputAndCompleteLineRequirement]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testBoundedInputAndCompleteLineRequirement]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testIncompleteOrPayloadMarkersNeverClaimReadiness]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioReadinessTests testIncompleteOrPayloadMarkersNeverClaimReadiness]' passed (0.000 seconds).
+Test Suite 'DeviceAudioReadinessTests' passed at 2026-10-30 15:05:46.844.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.003 (0.003) seconds
+Test Suite 'DeviceAudioTests' started at 2026-10-30 15:05:46.844.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testAudioArgumentsCannotCaptureMicrophoneOrControlVideo]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testAudioArgumentsCannotCaptureMicrophoneOrControlVideo]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testDecoderLogIsNotReadyAndFailureLatchRequiresExplicitRetry]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testDecoderLogIsNotReadyAndFailureLatchRequiresExplicitRetry]' passed (3.240 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testLegacyPreferencesAndAtomicMerge]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testLegacyPreferencesAndAtomicMerge]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testMissingOutputRefusesCapture]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testMissingOutputRefusesCapture]' passed (0.024 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testPhoneRoundTripClearsFailureWithoutImplicitRestartLoop]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testPhoneRoundTripClearsFailureWithoutImplicitRestartLoop]' passed (1.394 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testPositiveReadinessSingleOwnerHandoffAndRouteRelease]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceAudioTests testPositiveReadinessSingleOwnerHandoffAndRouteRelease]' passed (3.664 seconds).
+Test Suite 'DeviceAudioTests' passed at 2026-10-30 15:05:55.167.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 8.323 (8.323) seconds
+Test Suite 'DeviceReadinessTests' started at 2026-10-30 15:05:55.167.
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testBootReadinessProgressesWithoutLosingIntent]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testBootReadinessProgressesWithoutLosingIntent]' passed (0.657 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testProbeTimeoutAndFiniteRetryCadence]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testProbeTimeoutAndFiniteRetryCadence]' passed (0.213 seconds).
+Test Suite 'DeviceReadinessTests' passed at 2026-10-30 15:05:56.038.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.871 (0.871) seconds
+Test Suite 'DeviceSelectionTests' started at 2026-10-30 15:05:56.038.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testExplicitSerialWinsOverFirstDevice]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testExplicitSerialWinsOverFirstDevice]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testMissingExplicitSerialDoesNotQueryAnotherDevice]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testMissingExplicitSerialDoesNotQueryAnotherDevice]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testUserSelectionAndDefault]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceSelectionTests testUserSelectionAndDefault]' passed (0.000 seconds).
+Test Suite 'DeviceSelectionTests' passed at 2026-10-30 15:05:56.039.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'DroidBridgePreferencesTests' started at 2026-10-30 15:05:56.039.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testAtomicUpdatesMergeFieldsAndCorruptionFailsClosed]' started.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testAtomicUpdatesMergeFieldsAndCorruptionFailsClosed]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testDefaultsAndLegacyFieldsPreserveEnabledBehavior]' started.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testDefaultsAndLegacyFieldsPreserveEnabledBehavior]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testHeldWriterLockFailsWithinFiniteUIBudget]' started.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testHeldWriterLockFailsWithinFiniteUIBudget]' passed (0.101 seconds).
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testInvalidScreenOffSerialIsRejectedWithoutReplacingAcceptedPreferences]' started.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testInvalidScreenOffSerialIsRejectedWithoutReplacingAcceptedPreferences]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testScreenOffPreferencesArePerDeviceAndSurviveOtherFieldUpdates]' started.
+Test Case '-[DroidBridgeCoreTests.DroidBridgePreferencesTests testScreenOffPreferencesArePerDeviceAndSurviveOtherFieldUpdates]' passed (0.003 seconds).
+Test Suite 'DroidBridgePreferencesTests' passed at 2026-10-30 15:05:56.147.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.107 (0.108) seconds
+Test Suite 'FrameMailboxTests' started at 2026-10-30 15:05:56.147.
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testBlockedDeliveryRetainsNewestImageAndAllCounters]' started.
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testBlockedDeliveryRetainsNewestImageAndAllCounters]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testProducerDuringDeliverySchedulesOneSuccessorAndCancelDropsPending]' started.
+Test Case '-[DroidBridgeCoreTests.FrameMailboxTests testProducerDuringDeliverySchedulesOneSuccessorAndCancelDropsPending]' passed (0.000 seconds).
+Test Suite 'FrameMailboxTests' passed at 2026-10-30 15:05:56.149.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'HiddenIMEArgumentTests' started at 2026-10-30 15:05:56.149.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testBothActualSpawnPathsAlwaysHideIMEForNewAndRestoredSessions]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testBothActualSpawnPathsAlwaysHideIMEForNewAndRestoredSessions]' passed (40.986 seconds).
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testFallbackHoverMitigationAppliesOnlyToAndroid15]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testFallbackHoverMitigationAppliesOnlyToAndroid15]' passed (5.012 seconds).
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testUnsupportedOrUnknownSDKFailsBeforeAppResolutionStagingOrChildLaunch]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testUnsupportedOrUnknownSDKFailsBeforeAppResolutionStagingOrChildLaunch]' passed (4.984 seconds).
+Test Suite 'HiddenIMEArgumentTests' passed at 2026-10-30 15:06:47.131.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 50.982 (50.982) seconds
+Test Suite 'InputGeometryTests' started at 2026-10-30 15:06:47.131.
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testDragClampsAndInvalidDimensions]' started.
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testDragClampsAndInvalidDimensions]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testLetterboxAndCenter]' started.
+Test Case '-[DroidBridgeCoreTests.InputGeometryTests testLetterboxAndCenter]' passed (0.000 seconds).
+Test Suite 'InputGeometryTests' passed at 2026-10-30 15:06:47.131.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'ManagedAppsTests' started at 2026-10-30 15:06:47.131.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testAliasMoveKeepsExistingNewChoicesAndMostRestrictiveInheritedChoices]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testAliasMoveKeepsExistingNewChoicesAndMostRestrictiveInheritedChoices]' passed (0.009 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testAvailabilityRequiresPositiveDeviceAndUnregisterBeforeMove]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testAvailabilityRequiresPositiveDeviceAndUnregisterBeforeMove]' passed (0.014 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCatalogHeldLockRefusesWithinBoundAndHonorsCancellation]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCatalogHeldLockRefusesWithinBoundAndHonorsCancellation]' passed (0.157 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCloneCopyIsolationAndCapacityRefusal]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCloneCopyIsolationAndCapacityRefusal]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCloneFallbackAndExternalLinkRefusal]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCloneFallbackAndExternalLinkRefusal]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionAliasConflictRefusesWithoutLosingAcceptedPolicy]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionAliasConflictRefusesWithoutLosingAcceptedPolicy]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionCorruptPolicyDeniesAndRecoversWithoutCacheLeak]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionCorruptPolicyDeniesAndRecoversWithoutCacheLeak]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionExportAtomicOutcomePreservesCanonicalBooleanCompatibility]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionExportAtomicOutcomePreservesCanonicalBooleanCompatibility]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionExportConcurrentOutcomeCommitsExactlyOnce]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionExportConcurrentOutcomeCommitsExactlyOnce]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionExportRevisionsArePerPackageAndCanonical]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionExportRevisionsArePerPackageAndCanonical]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionPolicyPermanentlyAdvancesLegacyReaderFence]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionPolicyPermanentlyAdvancesLegacyReaderFence]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionPolicySurvivesLegacyCatalogRewrite]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionPolicySurvivesLegacyCatalogRewrite]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionRePairPreservesSelectionAndFencesOldAuthority]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionRePairPreservesSelectionAndFencesOldAuthority]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionSelectionDeniesStaleLaunchAndLateRegistration]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionSelectionDeniesStaleLaunchAndLateRegistration]' passed (0.013 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testContendedCatalogLockHasFiniteAdmissionDeadline]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testContendedCatalogLockHasFiniteAdmissionDeadline]' passed (0.155 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDeletedWrapperCanBeRepairedWithoutBlockingHealthyOfflineMove]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDeletedWrapperCanBeRepairedWithoutBlockingHealthyOfflineMove]' passed (0.026 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDeviceIdentityAndConcurrentReservationFence]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDeviceIdentityAndConcurrentReservationFence]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDuplicateCurrentRegisterAcknowledgementIsIdempotent]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDuplicateCurrentRegisterAcknowledgementIsIdempotent]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDuplicateUnregisterCompletionStillCompensatesAfterRegisterAck]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testDuplicateUnregisterCompletionStillCompensatesAfterRegisterAck]' passed (0.013 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExpiredReservationAndMalformedPublicationFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExpiredReservationAndMalformedPublicationFailClosed]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExplicitForgetPreservesChoicesAndRevisionBytes]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExplicitForgetPreservesChoicesAndRevisionBytes]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExplicitNewInstallationAliasMoveInheritsChoicesAndStartsNewAuthority]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExplicitNewInstallationAliasMoveInheritsChoicesAndStartsNewAuthority]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testForeignSymlinkAndCorruptReservationRefused]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testForeignSymlinkAndCorruptReservationRefused]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testGenerationReplacementAndRunningRefusal]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testGenerationReplacementAndRunningRefusal]' passed (0.019 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testLargeCohortPolicyDeniesUntouchedRowsAndBatchesDrain]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testLargeCohortPolicyDeniesUntouchedRowsAndBatchesDrain]' passed (0.887 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testLateOldGenerationRegisterPreservesSuccessorReceipt]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testLateOldGenerationRegisterPreservesSuccessorReceipt]' passed (0.023 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testManagedUpgradePreservesAcceptedFriendlyNameAndBackend]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testManagedUpgradePreservesAcceptedFriendlyNameAndBackend]' passed (0.006 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testManifestCacheInvalidatesAcrossIndependentCatalogWriter]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testManifestCacheInvalidatesAcrossIndependentCatalogWriter]' passed (0.010 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testManualAdoptionPreservesIntentAndArchivesOnlyAfterUnregister]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testManualAdoptionPreservesIntentAndArchivesOnlyAfterUnregister]' passed (0.009 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testMissingRootCannotFollowReplacedParentSymlink]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testMissingRootCannotFollowReplacedParentSymlink]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testMoveJournalRecoveryAndTamperedActionFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testMoveJournalRecoveryAndTamperedActionFailClosed]' passed (0.009 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingAbandonedClaimDoesNotPermanentlyDisambiguateSuccessor]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingAbandonedClaimDoesNotPermanentlyDisambiguateSuccessor]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingAbsentLegacyAppDoesNotBlockHealthyUpgradeAndKeepsHistory]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingAbsentLegacyAppDoesNotBlockHealthyUpgradeAndKeepsHistory]' passed (0.019 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingAccentDistinctNamesDoNotNeedQualifier]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingAccentDistinctNamesDoNotNeedQualifier]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingDeadLegacyReservationWithoutAcceptedAppDoesNotBlockForever]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingDeadLegacyReservationWithoutAcceptedAppDoesNotBlockForever]' passed (0.016 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingDeletedButRunningLegacyPathStillBlocksCompatibilityBarrier]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingDeletedButRunningLegacyPathStillBlocksCompatibilityBarrier]' passed (0.019 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingForeignPathsRemainUntouchedAndReadableQualifierAdvances]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingForeignPathsRemainUntouchedAndReadableQualifierAdvances]' passed (0.009 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingForeignPublicDestinationAppearingAfterStageRemainsUntouched]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingForeignPublicDestinationAppearingAfterStageRemainsUntouched]' passed (0.009 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingInactiveAcceptedOwnerAndUnicodeCaseCollisions]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingInactiveAcceptedOwnerAndUnicodeCaseCollisions]' passed (0.006 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingLateOldPathUnregisterCannotMoveNewPathBeforeItsOwnAck]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingLateOldPathUnregisterCannotMoveNewPathBeforeItsOwnAck]' passed (0.026 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingLegacyBarrierWaitsForAllOtherAcceptedBundles]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingLegacyBarrierWaitsForAllOtherAcceptedBundles]' passed (0.025 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingLegacyLiveReservationBlocksCleanPhaseUntilReleased]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingLegacyLiveReservationBlocksCleanPhaseUntilReleased]' passed (0.015 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingLegacyOfflineMigrationPreservesIdentityAndPriorBytes]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingLegacyOfflineMigrationPreservesIdentityAndPriorBytes]' passed (0.015 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingOnlineMigrationUnregistersOldURLAndCompensatesLateRegister]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingOnlineMigrationUnregistersOldURLAndCompensatesLateRegister]' passed (0.025 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingRegisterDispatchedBeforeCodeUpgradeStillCompensatesAfterRename]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingRegisterDispatchedBeforeCodeUpgradeStillCompensatesAfterRename]' passed (0.026 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingReservationsDisambiguateOnlyActualSameDeviceCollision]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingReservationsDisambiguateOnlyActualSameDeviceCollision]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingSavedAssetsPreserveOptionsAndRejectStaleOrSymlinkedReads]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingSavedAssetsPreserveOptionsAndRejectStaleOrSymlinkedReads]' passed (0.013 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingUniqueAppsHaveOnlyFriendlyFilename]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNamingUniqueAppsHaveOnlyFriendlyFilename]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNewDenyPolicyPersistsEvenWhenOneOwnedPathFailsValidation]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNewDenyPolicyPersistsEvenWhenOneOwnedPathFailsValidation]' passed (0.019 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNewInstallationCannotStealAliasWithoutExplicitForgetAndPair]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNewInstallationCannotStealAliasWithoutExplicitForgetAndPair]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testRepairRefusesForeignExistingBundleBeforePublication]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testRepairRefusesForeignExistingBundleBeforePublication]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testStaleRegistrationCreatesDurableCompensation]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testStaleRegistrationCreatesDurableCompensation]' passed (0.011 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testUnregisterAdmissionRefusesForeignReplacementAtOwnedURL]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testUnregisterAdmissionRefusesForeignReplacementAtOwnedURL]' passed (0.009 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testUnregisterFinishingAfterCurrentRegisterRetainsCompensation]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testUnregisterFinishingAfterCurrentRegisterRetainsCompensation]' passed (0.011 seconds).
+Test Suite 'ManagedAppsTests' passed at 2026-10-30 15:06:48.848.
+	 Executed 54 tests, with 0 failures (0 unexpected) in 1.712 (1.717) seconds
+Test Suite 'ManagedAvailabilityMonitorTests' started at 2026-10-30 15:06:48.848.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testDeviceQueryFailureHidesPreviouslyAcceptedApps]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testDeviceQueryFailureHidesPreviouslyAcceptedApps]' passed (0.018 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFeatureOffNeverCallsADBAndHidesAcceptedHistory]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFeatureOffNeverCallsADBAndHidesAcceptedHistory]' passed (0.017 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFlagChangedDuringProbePreventsPublicationAndCancellationDoesNotPublish]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFlagChangedDuringProbePreventsPublicationAndCancellationDoesNotPublish]' passed (0.009 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFlagChangedDuringRegistrationStopsRemainingAdmission]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testFlagChangedDuringRegistrationStopsRemainingAdmission]' passed (0.019 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testMoreThanEightDevicesDoNotAlternateOfflineAndAbsentInvalidatesImmediately]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testMoreThanEightDevicesDoNotAlternateOfflineAndAbsentInvalidatesImmediately]' passed (0.111 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testPoisonedPrecheckDoesNotLoseEarlierReceiptsOrStarveLaterHealthyActions]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testPoisonedPrecheckDoesNotLoseEarlierReceiptsOrStarveLaterHealthyActions]' passed (0.032 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testSlowReadinessAdvancesOnlyVisitedCursorAndTTLExpires]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAvailabilityMonitorTests testSlowReadinessAdvancesOnlyVisitedCursorAndTTLExpires]' passed (0.123 seconds).
+Test Suite 'ManagedAvailabilityMonitorTests' passed at 2026-10-30 15:06:49.178.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.329 (0.330) seconds
+Test Suite 'NativeDiagnosticsTests' started at 2026-10-30 15:06:49.178.
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testDecoderCallbackFailureIsObservableAndLaterOutputCanRecover]' started.
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testDecoderCallbackFailureIsObservableAndLaterOutputCanRecover]' passed (0.016 seconds).
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testStartupDiagnosticDistinguishesMissingAndUndecodedMedia]' started.
+Test Case '-[DroidBridgeCoreTests.NativeDiagnosticsTests testStartupDiagnosticDistinguishesMissingAndUndecodedMedia]' passed (0.000 seconds).
+Test Suite 'NativeDiagnosticsTests' passed at 2026-10-30 15:06:49.195.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.016 (0.017) seconds
+Test Suite 'NativeStartupExitTests' started at 2026-10-30 15:06:49.195.
+Test Case '-[DroidBridgeCoreTests.NativeStartupExitTests testCleanProcessExitBeforeFirstFramePreservesActionableFailure]' started.
+Test Case '-[DroidBridgeCoreTests.NativeStartupExitTests testCleanProcessExitBeforeFirstFramePreservesActionableFailure]' passed (3.031 seconds).
+Test Suite 'NativeStartupExitTests' passed at 2026-10-30 15:06:52.226.
+	 Executed 1 test, with 0 failures (0 unexpected) in 3.031 (3.031) seconds
+Test Suite 'PhoneDisplayPowerQATests' started at 2026-10-30 15:06:52.226.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAAodOnExplicitlyRestoresPolicy]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAAodOnExplicitlyRestoresPolicy]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAAPI35UsesLegacyOnAndAPI37ResetsThenWakesDisplayZero]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAAPI35UsesLegacyOnAndAPI37ResetsThenWakesDisplayZero]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAAPI37AsleepWithoutAdvertisedWakeRemainsAnError]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAAPI37AsleepWithoutAdvertisedWakeRemainsAnError]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQADeferredOffCannotClaimOnFromStaleOnSample]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQADeferredOffCannotClaimOnFromStaleOnSample]' passed (0.421 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQADeferredOnCannotClaimOffFromStaleOffSample]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQADeferredOnCannotClaimOffFromStaleOffSample]' passed (0.419 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAExitZeroWithoutStateChangeDoesNotVerifyEitherDirection]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAExitZeroWithoutStateChangeDoesNotVerifyEitherDirection]' passed (0.834 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAHeldFirstDeviceDoesNotBlockSecondDevice]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAHeldFirstDeviceDoesNotBlockSecondDevice]' passed (0.080 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAHeldMutexCancellationAndTimeoutNeverReachAndroid]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAHeldMutexCancellationAndTimeoutNeverReachAndroid]' passed (0.228 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAInFlightOffAndQueuedOnReconcileBeforeMutexRelease]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAInFlightOffAndQueuedOnReconcileBeforeMutexRelease]' passed (0.055 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAInFlightOnAndNewOffRespectLatestIntent]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAInFlightOnAndNewOffRespectLatestIntent]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAKnownDozeActuatesAndRequiresVerifiedOff]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAKnownDozeActuatesAndRequiresVerifiedOff]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQALegacyUnadvertisedCommandsAreLimitedToAPI35AndVerifiedState]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQALegacyUnadvertisedCommandsAreLimitedToAPI35AndVerifiedState]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAMissingStateAndUnsupportedHelpNeverActuate]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAMissingStateAndUnsupportedHelpNeverActuate]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAQueuedBothDirectionsRecheckIntentAfterRealCrossProcessLock]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerQATests testQAQueuedBothDirectionsRecheckIntentAfterRealCrossProcessLock]' passed (0.311 seconds).
+Test Suite 'PhoneDisplayPowerQATests' passed at 2026-10-30 15:06:54.595.
+	 Executed 14 tests, with 0 failures (0 unexpected) in 2.368 (2.369) seconds
+Test Suite 'PhoneDisplayPowerTests' started at 2026-10-30 15:06:54.595.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testAlwaysOnDisplayDozeCanBeExplicitlyTurnedOff]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testAlwaysOnDisplayDozeCanBeExplicitlyTurnedOff]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testCapturedStockAPI35HelpWithoutPowerCommandsSupportsVerifiedOffAndOn]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testCapturedStockAPI35HelpWithoutPowerCommandsSupportsVerifiedOffAndOn]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testClearedIntentDuringOffCompensatesOnBeforeUnlock]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testClearedIntentDuringOffCompensatesOnBeforeUnlock]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testHeldMutexFreshIntentRecheckAndCancellation]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testHeldMutexFreshIntentRecheckAndCancellation]' passed (0.184 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testNoOptInDoesNotExecuteADBAndExitZeroIsNotProof]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testNoOptInDoesNotExecuteADBAndExitZeroIsNotProof]' passed (0.415 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testParserUsesPhysicalZeroNotCommittedOrVirtualState]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testParserUsesPhysicalZeroNotCommittedOrVirtualState]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testReadOnlyHelpCanRetainExpectedNonzeroOutputWithoutWeakeningDefaultExecution]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testReadOnlyHelpCanRetainExpectedNonzeroOutputWithoutWeakeningDefaultExecution]' passed (0.179 seconds).
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testSymlinkLockRefusedWithoutTouchingTarget]' started.
+Test Case '-[DroidBridgeCoreTests.PhoneDisplayPowerTests testSymlinkLockRefusedWithoutTouchingTarget]' passed (0.001 seconds).
+Test Suite 'PhoneDisplayPowerTests' passed at 2026-10-30 15:06:55.381.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.785 (0.786) seconds
+Test Suite 'QALifecycleTests' started at 2026-10-30 15:06:55.381.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/QALifecycleTests.swift:27: -[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup] : Test skipped - Opt in after coordinating exclusive emulator sessions
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testActualNativeCancelledStartAndRepeatedCleanup]' skipped (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testLateForwardCleanupPreservesOtherSerialAndOtherSessionSocket]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testLateForwardCleanupPreservesOtherSerialAndOtherSessionSocket]' passed (2.865 seconds).
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testRejectsInvalidInputsBeforeAnySpawn]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testRejectsInvalidInputsBeforeAnySpawn]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testStopAndWaitIncludesLateForwardAllocation]' started.
+Test Case '-[DroidBridgeCoreTests.QALifecycleTests testStopAndWaitIncludesLateForwardAllocation]' passed (1.523 seconds).
+Test Suite 'QALifecycleTests' passed at 2026-10-30 15:06:59.770.
+	 Executed 4 tests, with 1 test skipped and 0 failures (0 unexpected) in 4.389 (4.389) seconds
+Test Suite 'ScrcpyPortLeaseTests' started at 2026-10-30 15:06:59.770.
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testConcurrentLeasesAreDistinctAndReleaseIsReusable]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testConcurrentLeasesAreDistinctAndReleaseIsReusable]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testForeignListenerIsSkippedWithoutReplacement]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testForeignListenerIsSkippedWithoutReplacement]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testInheritedLeaseSurvivesHostReferenceReleaseWithoutListeningSocket]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testInheritedLeaseSurvivesHostReferenceReleaseWithoutListeningSocket]' passed (0.528 seconds).
+Test Suite 'ScrcpyPortLeaseTests' passed at 2026-10-30 15:07:00.300.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.529 (0.530) seconds
+Test Suite 'ScrcpyStartupLeaseTests' started at 2026-10-30 15:07:00.300.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testActualChildCannotAcquireHeldDeviceAndDoesNotPinGateAfterExec]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testActualChildCannotAcquireHeldDeviceAndDoesNotPinGateAfterExec]' passed (0.504 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testDifferentDevicesDoNotBlockAndCancellationReleasesWaiter]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testDifferentDevicesDoNotBlockAndCancellationReleasesWaiter]' passed (0.033 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testSameDeviceExcludesAndReleaseAdmitsNextStartup]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testSameDeviceExcludesAndReleaseAdmitsNextStartup]' passed (0.089 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testSymlinkRefusedAndLockPermissionsArePrivate]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyStartupLeaseTests testSymlinkRefusedAndLockPermissionsArePrivate]' passed (0.002 seconds).
+Test Suite 'ScrcpyStartupLeaseTests' passed at 2026-10-30 15:07:00.928.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.628 (0.628) seconds
+Test Suite 'SessionRecoveryTests' started at 2026-10-30 15:07:00.928.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testReceiptValidationRejectsTraversalAndShellCharacters]' started.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testReceiptValidationRejectsTraversalAndShellCharacters]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testRecoveryScopesExactDeadOwnerResourcesAndRetainsOffline]' started.
+Test Case '-[DroidBridgeCoreTests.SessionRecoveryTests testRecoveryScopesExactDeadOwnerResourcesAndRetainsOffline]' passed (0.700 seconds).
+Test Suite 'SessionRecoveryTests' passed at 2026-10-30 15:07:01.629.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.700 (0.700) seconds
+Test Suite 'StartupFrameVisibilityTests' started at 2026-10-30 15:07:01.629.
+Test Case '-[DroidBridgeCoreTests.StartupFrameVisibilityTests testColoredAndLightSplashContentIsVisible]' started.
+Test Case '-[DroidBridgeCoreTests.StartupFrameVisibilityTests testColoredAndLightSplashContentIsVisible]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StartupFrameVisibilityTests testInitialSolidBlackAndNearBlackAreHeld]' started.
+Test Case '-[DroidBridgeCoreTests.StartupFrameVisibilityTests testInitialSolidBlackAndNearBlackAreHeld]' passed (0.000 seconds).
+Test Suite 'StartupFrameVisibilityTests' passed at 2026-10-30 15:07:01.629.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'StreamingTests' started at 2026-10-30 15:07:01.629.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/StreamingTests.swift:29: -[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams] : Test skipped - Set DROIDBRIDGE_INTEGRATION=1 with emulator-5580 running
+Test Case '-[DroidBridgeCoreTests.StreamingTests testActualNativeConcurrentStreams]' skipped (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testAnnexBUnits]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testUnicodeLimitDoesNotSplitCodePoint]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' started.
+Test Case '-[DroidBridgeCoreTests.StreamingTests testWireMessagesMatchPinnedScrcpy]' passed (0.000 seconds).
+Test Suite 'StreamingTests' passed at 2026-10-30 15:07:01.630.
+	 Executed 4 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'SupervisorDiagnosticsTests' started at 2026-10-30 15:07:01.630.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testAlreadyAbsentExactListenerIsAnIdempotentSuccess]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testAlreadyAbsentExactListenerIsAnIdempotentSuccess]' passed (0.404 seconds).
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testOtherFailuresRemainVisibleIncludingDifferentListener]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testOtherFailuresRemainVisibleIncludingDifferentListener]' passed (0.809 seconds).
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testTerminalOutputRelaysBufferedClientBeforeItExits]' started.
+Test Case '-[DroidBridgeCoreTests.SupervisorDiagnosticsTests testTerminalOutputRelaysBufferedClientBeforeItExits]' passed (0.139 seconds).
+Test Suite 'SupervisorDiagnosticsTests' passed at 2026-10-30 15:07:02.982.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 1.352 (1.352) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 15:07:02.983.
+	 Executed 311 tests, with 4 tests skipped and 0 failures (0 unexpected) in 155.231 (155.259) seconds
+Test Suite 'All tests' passed at 2026-10-30 15:07:02.983.
+	 Executed 311 tests, with 4 tests skipped and 0 failures (0 unexpected) in 155.231 (155.261) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

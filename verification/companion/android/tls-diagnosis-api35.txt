@@ -1,0 +1,67 @@
+
+dev.droidbridge.companion.CompanionTlsTest:
+Error in installationIdentityAndTlsAreStableAndMandatory(dev.droidbridge.companion.CompanionTlsTest):
+java.lang.AssertionError: Positive TLS handshake failed
+	at dev.droidbridge.companion.CompanionTlsTest.installationIdentityAndTlsAreStableAndMandatory(CompanionTlsTest.kt:14)
+	... 31 trimmed
+Caused by: javax.net.ssl.SSLHandshakeException: Read error: ssl=0xb40000737c086a58: I/O error during system call, Success
+	at com.android.org.conscrypt.SSLUtils.toSSLHandshakeException(SSLUtils.java:356)
+	at com.android.org.conscrypt.ConscryptEngine.convertException(ConscryptEngine.java:1127)
+	at com.android.org.conscrypt.ConscryptEngine.unwrap(ConscryptEngine.java:912)
+	at com.android.org.conscrypt.ConscryptEngine.unwrap(ConscryptEngine.java:740)
+	at com.android.org.conscrypt.ConscryptEngine.unwrap(ConscryptEngine.java:705)
+	at com.android.org.conscrypt.ConscryptEngineSocket$SSLInputStream.processDataFromSocket(ConscryptEngineSocket.java:896)
+	at com.android.org.conscrypt.ConscryptEngineSocket$SSLInputStream.-$$Nest$mprocessDataFromSocket(Unknown Source:0)
+	at com.android.org.conscrypt.ConscryptEngineSocket.doHandshake(ConscryptEngineSocket.java:236)
+	at com.android.org.conscrypt.ConscryptEngineSocket.startHandshake(ConscryptEngineSocket.java:218)
+	at dev.droidbridge.companion.BridgeHttpServer.handle(BridgeHttpServer.kt:47)
+	at dev.droidbridge.companion.BridgeHttpServer.acceptor$lambda$0$0(BridgeHttpServer.kt:27)
+	at dev.droidbridge.companion.BridgeHttpServer.$r8$lambda$3mzthX9TQQxLihINmeF7h3sAT9o(Unknown Source:0)
+	at dev.droidbridge.companion.BridgeHttpServer$$ExternalSyntheticLambda3.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+	at java.lang.Thread.run(Thread.java:1012)
+Caused by: javax.net.ssl.SSLException: Read error: ssl=0xb40000737c086a58: I/O error during system call, Success
+	at com.android.org.conscrypt.NativeCrypto.ENGINE_SSL_read_direct(Native Method)
+	at com.android.org.conscrypt.NativeSsl.readDirectByteBuffer(NativeSsl.java:570)
+	at com.android.org.conscrypt.ConscryptEngine.readPlaintextDataDirect(ConscryptEngine.java:1088)
+	at com.android.org.conscrypt.ConscryptEngine.readPlaintextData(ConscryptEngine.java:1072)
+	at com.android.org.conscrypt.ConscryptEngine.unwrap(ConscryptEngine.java:869)
+	... 13 more
+
+
+Time: 0.059
+There was 1 failure:
+1) installationIdentityAndTlsAreStableAndMandatory(dev.droidbridge.companion.CompanionTlsTest)
+java.lang.AssertionError: Positive TLS handshake failed
+	at dev.droidbridge.companion.CompanionTlsTest.installationIdentityAndTlsAreStableAndMandatory(CompanionTlsTest.kt:14)
+	... 31 trimmed
+Caused by: javax.net.ssl.SSLHandshakeException: Read error: ssl=0xb40000737c086a58: I/O error during system call, Success
+	at com.android.org.conscrypt.SSLUtils.toSSLHandshakeException(SSLUtils.java:356)
+	at com.android.org.conscrypt.ConscryptEngine.convertException(ConscryptEngine.java:1127)
+	at com.android.org.conscrypt.ConscryptEngine.unwrap(ConscryptEngine.java:912)
+	at com.android.org.conscrypt.ConscryptEngine.unwrap(ConscryptEngine.java:740)
+	at com.android.org.conscrypt.ConscryptEngine.unwrap(ConscryptEngine.java:705)
+	at com.android.org.conscrypt.ConscryptEngineSocket$SSLInputStream.processDataFromSocket(ConscryptEngineSocket.java:896)
+	at com.android.org.conscrypt.ConscryptEngineSocket$SSLInputStream.-$$Nest$mprocessDataFromSocket(Unknown Source:0)
+	at com.android.org.conscrypt.ConscryptEngineSocket.doHandshake(ConscryptEngineSocket.java:236)
+	at com.android.org.conscrypt.ConscryptEngineSocket.startHandshake(ConscryptEngineSocket.java:218)
+	at dev.droidbridge.companion.BridgeHttpServer.handle(BridgeHttpServer.kt:47)
+	at dev.droidbridge.companion.BridgeHttpServer.acceptor$lambda$0$0(BridgeHttpServer.kt:27)
+	at dev.droidbridge.companion.BridgeHttpServer.$r8$lambda$3mzthX9TQQxLihINmeF7h3sAT9o(Unknown Source:0)
+	at dev.droidbridge.companion.BridgeHttpServer$$ExternalSyntheticLambda3.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+	at java.lang.Thread.run(Thread.java:1012)
+Caused by: javax.net.ssl.SSLException: Read error: ssl=0xb40000737c086a58: I/O error during system call, Success
+	at com.android.org.conscrypt.NativeCrypto.ENGINE_SSL_read_direct(Native Method)
+	at com.android.org.conscrypt.NativeSsl.readDirectByteBuffer(NativeSsl.java:570)
+	at com.android.org.conscrypt.ConscryptEngine.readPlaintextDataDirect(ConscryptEngine.java:1088)
+	at com.android.org.conscrypt.ConscryptEngine.readPlaintextData(ConscryptEngine.java:1072)
+	at com.android.org.conscrypt.ConscryptEngine.unwrap(ConscryptEngine.java:869)
+	... 13 more
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+

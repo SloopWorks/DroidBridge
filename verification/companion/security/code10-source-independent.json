@@ -1,0 +1,15 @@
+{
+  "scope": "Independent code9-to10 source/artifact comparison; historical backend tests remain code9, code10 has focused/large UI gates only",
+  "source_files_checked": 59,
+  "source_mismatches": [],
+  "artifact_hash_matches": {
+    "DroidBridgeCompanion-test.apk": true,
+    "DroidBridgeCompanion.apk": true
+  },
+  "manifest_sha256": "e53aad484d073a84744e356cb955e481ea651e24d4e5fba6d612814393566fa9",
+  "changed_source_paths_since_code9": [
+    "AndroidCompanion/app/build.gradle.kts",
+    "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionReceiptDeviceTest.kt",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt"
+  ]
+}

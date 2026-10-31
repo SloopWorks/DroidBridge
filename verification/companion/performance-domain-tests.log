@@ -1,0 +1,23 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.16s)
+Test Suite 'Selected tests' started at 2026-10-30 12:05:28.932.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 12:05:28.933.
+Test Suite 'CompanionPerformanceTests' started at 2026-10-30 12:05:28.933.
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testLegacyConfigurationKeepsThirtyFPSAndDecorations]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testLegacyConfigurationKeepsThirtyFPSAndDecorations]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testPersistedInvalidRateFailsRatherThanClamping]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testPersistedInvalidRateFailsRatherThanClamping]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testProfilesPreserveDisplayAndBackendAcrossPersistence]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionPerformanceTests testProfilesPreserveDisplayAndBackendAcrossPersistence]' passed (0.001 seconds).
+Test Suite 'CompanionPerformanceTests' passed at 2026-10-30 12:05:28.936.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 12:05:28.936.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 12:05:28.936.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

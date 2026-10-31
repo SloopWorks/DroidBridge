@@ -1,0 +1,34 @@
+{
+  "archive_bytes_equal": false,
+  "entry_payloads_equal": true,
+  "qa6_entries": {
+    "classes.dex": {
+      "sha256": "89e084e52ee2e2d369fae1ff0fa4718883b434d87784678ba5ea5fa481c824df",
+      "size": 4780,
+      "timestamp": [
+        2026,
+        10,
+        30,
+        15,
+        11,
+        28
+      ],
+      "compression": 8
+    }
+  },
+  "qa8_entries": {
+    "classes.dex": {
+      "sha256": "89e084e52ee2e2d369fae1ff0fa4718883b434d87784678ba5ea5fa481c824df",
+      "size": 4780,
+      "timestamp": [
+        2026,
+        10,
+        30,
+        16,
+        2,
+        52
+      ],
+      "compression": 8
+    }
+  }
+}

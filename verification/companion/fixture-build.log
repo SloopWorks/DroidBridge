@@ -1,0 +1,8 @@
+warning: [options] bootstrap class path not set in conjunction with -source 8
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+Note: /Users/patrick/workspace/DroidBridge/android/companion-fixture/MainActivity.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+4 warnings
+83a9767dfbc8ed1cefe7112b5791be37b0fa98e33cefb9c3d7999d14661b4cf8  /Users/patrick/workspace/DroidBridge/.build/companion-fixture/DroidBridgeCompanionFixture.apk

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "action": "Restart exact QA broker LaunchAgent",
+  "scope": "68330bb4920c",
+  "authenticated_ui_recovered": true,
+  "elapsed_ms": 3311.68,
+  "durable_device_count_before": 1,
+  "durable_device_count_after": 1,
+  "new_phone_approval": false,
+  "production_service_touched": false,
+  "ipc_connected_paired_verified": true,
+  "ipc_live_session_count": 1
+}

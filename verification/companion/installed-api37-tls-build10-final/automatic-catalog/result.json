@@ -1,0 +1,3436 @@
+{
+  "passed": true,
+  "boundary": "Android package operation and public cached broker status -> actual shipping AppKit row state in both visible windows",
+  "refresh_clicked": false,
+  "mutations": [
+    {
+      "initial_main_state": {
+        "Input Alpha": false,
+        "Input Alpha Updated": true,
+        "Input Beta": true
+      },
+      "initial_companion_state": {
+        "Input Alpha": false,
+        "Input Alpha Updated": true,
+        "Input Beta": true
+      },
+      "main_expected_transition": true,
+      "companion_expected_transition": true,
+      "operation": "remove_beta",
+      "android_process_start_monotonic": 1594036.460628,
+      "android_process_completion_observed_monotonic": 1594036.498908333,
+      "broker_token_observed_monotonic": 1594036.853972458,
+      "main_row_observed_monotonic": 1594037.158577416,
+      "companion_row_observed_monotonic": 1594037.073719041,
+      "observations": [
+        {
+          "from_start_ms": 2.12,
+          "token_changed": false,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 192.84,
+          "token_changed": false,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 392.39,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": false
+          }
+        },
+        {
+          "from_start_ms": 644.89,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": false
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": false
+          }
+        }
+      ],
+      "android_output": "Success",
+      "android_exit": 0,
+      "main_from_android_completion_ms": 659.67,
+      "main_from_android_start_ms": 697.95,
+      "main_from_broker_token_ms": 304.6,
+      "companion_from_android_completion_ms": 574.81,
+      "companion_from_android_start_ms": 613.09,
+      "companion_from_broker_token_ms": 219.75,
+      "catalog_before": {
+        "generation": "d1bfe7323e9615fc55d6382786798cd8786b94799ce6c0a3adee950e2f7981f4",
+        "items": [
+          {
+            "activity_name": "com.android.camera.CameraLauncher",
+            "label": "Camera",
+            "launchable": true,
+            "package_name": "com.android.camera2",
+            "version_code": 20002000,
+            "export_to_mac": true,
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53"
+          },
+          {
+            "label": "Chrome",
+            "launchable": true,
+            "version_code": 763221832,
+            "package_name": "com.android.chrome",
+            "activity_name": "com.google.android.apps.chrome.Main",
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "export_to_mac": true
+          },
+          {
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "launchable": true,
+            "export_to_mac": true,
+            "label": "Settings",
+            "activity_name": "com.android.settings.Settings",
+            "package_name": "com.android.settings",
+            "version_code": 37
+          },
+          {
+            "launchable": true,
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "version_code": 37,
+            "activity_name": "com.android.stk.StkMain",
+            "label": "TMoble",
+            "export_to_mac": true,
+            "package_name": "com.android.stk"
+          },
+          {
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "export_to_mac": true,
+            "package_name": "com.android.vending",
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6",
+            "version_code": 85372340,
+            "label": "Play Store",
+            "launchable": true
+          },
+          {
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "label": "Drive",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215",
+            "launchable": true,
+            "version_code": 214380540,
+            "export_to_mac": true,
+            "package_name": "com.google.android.apps.docs"
+          },
+          {
+            "package_name": "com.google.android.apps.maps",
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426",
+            "label": "Maps",
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "launchable": true,
+            "export_to_mac": true,
+            "version_code": 1068505956
+          },
+          {
+            "label": "Messages",
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "launchable": true,
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137",
+            "export_to_mac": true,
+            "package_name": "com.google.android.apps.messaging",
+            "version_code": 302567063
+          },
+          {
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "label": "Photos",
+            "package_name": "com.google.android.apps.photos",
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "launchable": true,
+            "version_code": 51413603,
+            "export_to_mac": true
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "version_code": 100766962,
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity",
+            "label": "Safety",
+            "launchable": true,
+            "package_name": "com.google.android.apps.safetyhub"
+          },
+          {
+            "version_code": 91052240,
+            "package_name": "com.google.android.apps.youtube.music",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity",
+            "label": "YT Music",
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378"
+          },
+          {
+            "package_name": "com.google.android.calendar",
+            "version_code": 2018015783,
+            "label": "Calendar",
+            "activity_name": "com.android.calendar.AllInOneActivity",
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "launchable": true,
+            "export_to_mac": true
+          },
+          {
+            "version_code": 3266771,
+            "package_name": "com.google.android.contacts",
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "label": "Contacts",
+            "launchable": true,
+            "activity_name": "com.android.contacts.activities.PeopleActivity",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "com.google.android.deskclock",
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da",
+            "export_to_mac": true,
+            "activity_name": "com.android.deskclock.DeskClock",
+            "version_code": 76002074,
+            "launchable": true,
+            "label": "Clock"
+          },
+          {
+            "label": "Phone",
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "launchable": true,
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d",
+            "export_to_mac": true,
+            "package_name": "com.google.android.dialer",
+            "version_code": 19559368
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "label": "Files",
+            "version_code": 370399999,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "package_name": "com.google.android.documentsui",
+            "launchable": true
+          },
+          {
+            "version_code": 42853,
+            "package_name": "com.google.android.glasses.companion",
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity",
+            "export_to_mac": true,
+            "label": "Glasses",
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "label": "Gmail",
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail",
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf",
+            "launchable": true,
+            "version_code": 65615106
+          },
+          {
+            "version_code": 301714343,
+            "launchable": true,
+            "label": "Google",
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4",
+            "export_to_mac": true,
+            "package_name": "com.google.android.googlequicksearchbox",
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity"
+          },
+          {
+            "package_name": "com.google.android.youtube",
+            "export_to_mac": true,
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "label": "YouTube",
+            "launchable": true,
+            "version_code": 1553337816,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd"
+          },
+          {
+            "version_code": 12,
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2",
+            "label": "DroidBridge",
+            "package_name": "dev.droidbridge.companion",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "package_name": "dev.droidbridge.companionfixture",
+            "label": "Companion Verification",
+            "launchable": true,
+            "version_code": 0,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 0,
+            "label": "Alias Icon Fixture",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "dev.droidbridge.iconfixture",
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias"
+          },
+          {
+            "launchable": true,
+            "version_code": 2,
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+            "label": "Input Alpha Updated",
+            "package_name": "dev.droidbridge.inputalpha",
+            "icon_sha256": "e372924729acff0ac99908e67457665cfe69d68b51a3f2dfb2de6d9e513593c0"
+          },
+          {
+            "label": "Input Beta",
+            "package_name": "dev.droidbridge.inputbeta",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+            "version_code": 1,
+            "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87"
+          },
+          {
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "package_name": "dev.droidbridge.peerattack",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 1,
+            "label": "DroidBridge adversarial peer fixture",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.testapp",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "version_code": 0,
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "label": "DroidBridge Test",
+            "package_name": "dev.droidbridge.testapp2",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.testapp3",
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "label": "DroidBridge Test",
+            "version_code": 0
+          }
+        ]
+      },
+      "catalog_after": {
+        "generation": "005888c2f9dfb9b3c2891bce058dcf5898a1b650cb4ac3fa6558ee96974a2911",
+        "items": [
+          {
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53",
+            "version_code": 20002000,
+            "export_to_mac": true,
+            "label": "Camera",
+            "package_name": "com.android.camera2",
+            "launchable": true,
+            "activity_name": "com.android.camera.CameraLauncher"
+          },
+          {
+            "package_name": "com.android.chrome",
+            "label": "Chrome",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.chrome.Main",
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "version_code": 763221832
+          },
+          {
+            "label": "Settings",
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "package_name": "com.android.settings",
+            "export_to_mac": true,
+            "launchable": true,
+            "version_code": 37,
+            "activity_name": "com.android.settings.Settings"
+          },
+          {
+            "activity_name": "com.android.stk.StkMain",
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "export_to_mac": true,
+            "package_name": "com.android.stk",
+            "version_code": 37,
+            "label": "TMoble",
+            "launchable": true
+          },
+          {
+            "package_name": "com.android.vending",
+            "version_code": 85372340,
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "launchable": true,
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6",
+            "export_to_mac": true,
+            "label": "Play Store"
+          },
+          {
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "label": "Drive",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215",
+            "version_code": 214380540,
+            "package_name": "com.google.android.apps.docs",
+            "launchable": true
+          },
+          {
+            "package_name": "com.google.android.apps.maps",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426",
+            "version_code": 1068505956,
+            "label": "Maps"
+          },
+          {
+            "version_code": 302567063,
+            "package_name": "com.google.android.apps.messaging",
+            "label": "Messages",
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "launchable": true,
+            "export_to_mac": true,
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137"
+          },
+          {
+            "label": "Photos",
+            "export_to_mac": true,
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "launchable": true,
+            "version_code": 51413603,
+            "package_name": "com.google.android.apps.photos"
+          },
+          {
+            "label": "Safety",
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity",
+            "launchable": true,
+            "package_name": "com.google.android.apps.safetyhub",
+            "version_code": 100766962,
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "export_to_mac": true
+          },
+          {
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378",
+            "version_code": 91052240,
+            "label": "YT Music",
+            "package_name": "com.google.android.apps.youtube.music",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity"
+          },
+          {
+            "package_name": "com.google.android.calendar",
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "version_code": 2018015783,
+            "label": "Calendar",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.android.calendar.AllInOneActivity"
+          },
+          {
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "launchable": true,
+            "package_name": "com.google.android.contacts",
+            "label": "Contacts",
+            "activity_name": "com.android.contacts.activities.PeopleActivity",
+            "version_code": 3266771,
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "Clock",
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da",
+            "export_to_mac": true,
+            "package_name": "com.google.android.deskclock",
+            "activity_name": "com.android.deskclock.DeskClock",
+            "version_code": 76002074
+          },
+          {
+            "package_name": "com.google.android.dialer",
+            "export_to_mac": true,
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "label": "Phone",
+            "launchable": true,
+            "version_code": 19559368,
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d"
+          },
+          {
+            "version_code": 370399999,
+            "export_to_mac": true,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "label": "Files",
+            "package_name": "com.google.android.documentsui",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "package_name": "com.google.android.glasses.companion",
+            "label": "Glasses",
+            "launchable": true,
+            "version_code": 42853,
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 65615106,
+            "label": "Gmail",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf",
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail"
+          },
+          {
+            "launchable": true,
+            "version_code": 301714343,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity",
+            "label": "Google",
+            "package_name": "com.google.android.googlequicksearchbox",
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4"
+          },
+          {
+            "label": "YouTube",
+            "package_name": "com.google.android.youtube",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "version_code": 1553337816,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd"
+          },
+          {
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "package_name": "dev.droidbridge.companion",
+            "launchable": true,
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2",
+            "version_code": 12,
+            "label": "DroidBridge",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.companionfixture",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "version_code": 0,
+            "label": "Companion Verification",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1"
+          },
+          {
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "label": "Alias Icon Fixture",
+            "package_name": "dev.droidbridge.iconfixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.inputalpha",
+            "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+            "icon_sha256": "e372924729acff0ac99908e67457665cfe69d68b51a3f2dfb2de6d9e513593c0",
+            "label": "Input Alpha Updated",
+            "version_code": 2
+          },
+          {
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "export_to_mac": true,
+            "label": "DroidBridge adversarial peer fixture",
+            "version_code": 1,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "package_name": "dev.droidbridge.peerattack",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.testapp",
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "label": "DroidBridge Test"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "launchable": true,
+            "label": "DroidBridge Test",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "package_name": "dev.droidbridge.testapp2"
+          },
+          {
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "version_code": 0,
+            "launchable": true,
+            "package_name": "dev.droidbridge.testapp3",
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "export_to_mac": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "initial_main_state": {
+        "Input Alpha": false,
+        "Input Alpha Updated": true,
+        "Input Beta": false
+      },
+      "initial_companion_state": {
+        "Input Alpha": false,
+        "Input Alpha Updated": true,
+        "Input Beta": false
+      },
+      "main_expected_transition": true,
+      "companion_expected_transition": true,
+      "operation": "install_beta",
+      "android_process_start_monotonic": 1594037.453460625,
+      "android_process_completion_observed_monotonic": 1594037.513485583,
+      "broker_token_observed_monotonic": 1594037.89919525,
+      "main_row_observed_monotonic": 1594038.148364958,
+      "companion_row_observed_monotonic": 1594038.254085541,
+      "observations": [
+        {
+          "from_start_ms": 1.88,
+          "token_changed": false,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": false
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": false
+          }
+        },
+        {
+          "from_start_ms": 196.56,
+          "token_changed": false,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": false
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": false
+          }
+        },
+        {
+          "from_start_ms": 444.91,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": false
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": false
+          }
+        },
+        {
+          "from_start_ms": 643.34,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          }
+        }
+      ],
+      "android_output": "Serving...\nPerforming Incremental Install\nSuccess\nInstall command complete in 48 ms",
+      "android_exit": 0,
+      "main_from_android_completion_ms": 634.88,
+      "main_from_android_start_ms": 694.9,
+      "main_from_broker_token_ms": 249.17,
+      "companion_from_android_completion_ms": 740.6,
+      "companion_from_android_start_ms": 800.62,
+      "companion_from_broker_token_ms": 354.89,
+      "catalog_before": {
+        "generation": "005888c2f9dfb9b3c2891bce058dcf5898a1b650cb4ac3fa6558ee96974a2911",
+        "items": [
+          {
+            "activity_name": "com.android.camera.CameraLauncher",
+            "label": "Camera",
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53",
+            "launchable": true,
+            "version_code": 20002000,
+            "export_to_mac": true,
+            "package_name": "com.android.camera2"
+          },
+          {
+            "package_name": "com.android.chrome",
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "label": "Chrome",
+            "activity_name": "com.google.android.apps.chrome.Main",
+            "launchable": true,
+            "export_to_mac": true,
+            "version_code": 763221832
+          },
+          {
+            "label": "Settings",
+            "activity_name": "com.android.settings.Settings",
+            "launchable": true,
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "export_to_mac": true,
+            "package_name": "com.android.settings",
+            "version_code": 37
+          },
+          {
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "label": "TMoble",
+            "package_name": "com.android.stk",
+            "activity_name": "com.android.stk.StkMain",
+            "launchable": true,
+            "version_code": 37,
+            "export_to_mac": true
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6",
+            "version_code": 85372340,
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "label": "Play Store",
+            "launchable": true,
+            "package_name": "com.android.vending"
+          },
+          {
+            "version_code": 214380540,
+            "package_name": "com.google.android.apps.docs",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "label": "Drive",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215"
+          },
+          {
+            "package_name": "com.google.android.apps.maps",
+            "version_code": 1068505956,
+            "label": "Maps",
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426",
+            "launchable": true,
+            "export_to_mac": true
+          },
+          {
+            "version_code": 302567063,
+            "package_name": "com.google.android.apps.messaging",
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137",
+            "label": "Messages",
+            "launchable": true,
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "com.google.android.apps.photos",
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "version_code": 51413603,
+            "launchable": true,
+            "label": "Photos"
+          },
+          {
+            "label": "Safety",
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity",
+            "launchable": true,
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "export_to_mac": true,
+            "package_name": "com.google.android.apps.safetyhub",
+            "version_code": 100766962
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378",
+            "label": "YT Music",
+            "version_code": 91052240,
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity",
+            "package_name": "com.google.android.apps.youtube.music",
+            "launchable": true
+          },
+          {
+            "version_code": 2018015783,
+            "package_name": "com.google.android.calendar",
+            "activity_name": "com.android.calendar.AllInOneActivity",
+            "export_to_mac": true,
+            "label": "Calendar",
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "label": "Contacts",
+            "activity_name": "com.android.contacts.activities.PeopleActivity",
+            "package_name": "com.google.android.contacts",
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "launchable": true,
+            "version_code": 3266771
+          },
+          {
+            "version_code": 76002074,
+            "launchable": true,
+            "label": "Clock",
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da",
+            "export_to_mac": true,
+            "package_name": "com.google.android.deskclock",
+            "activity_name": "com.android.deskclock.DeskClock"
+          },
+          {
+            "package_name": "com.google.android.dialer",
+            "export_to_mac": true,
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "label": "Phone",
+            "launchable": true,
+            "version_code": 19559368,
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d"
+          },
+          {
+            "version_code": 370399999,
+            "export_to_mac": true,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "label": "Files",
+            "package_name": "com.google.android.documentsui",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "package_name": "com.google.android.glasses.companion",
+            "label": "Glasses",
+            "launchable": true,
+            "version_code": 42853,
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 65615106,
+            "label": "Gmail",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf",
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail"
+          },
+          {
+            "launchable": true,
+            "version_code": 301714343,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity",
+            "label": "Google",
+            "package_name": "com.google.android.googlequicksearchbox",
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4"
+          },
+          {
+            "label": "YouTube",
+            "package_name": "com.google.android.youtube",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "version_code": 1553337816,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd"
+          },
+          {
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "package_name": "dev.droidbridge.companion",
+            "launchable": true,
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2",
+            "version_code": 12,
+            "label": "DroidBridge",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.companionfixture",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "version_code": 0,
+            "label": "Companion Verification",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1"
+          },
+          {
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "label": "Alias Icon Fixture",
+            "package_name": "dev.droidbridge.iconfixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.inputalpha",
+            "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+            "icon_sha256": "e372924729acff0ac99908e67457665cfe69d68b51a3f2dfb2de6d9e513593c0",
+            "label": "Input Alpha Updated",
+            "version_code": 2
+          },
+          {
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "export_to_mac": true,
+            "label": "DroidBridge adversarial peer fixture",
+            "version_code": 1,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "package_name": "dev.droidbridge.peerattack",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.testapp",
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "label": "DroidBridge Test"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "launchable": true,
+            "label": "DroidBridge Test",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "package_name": "dev.droidbridge.testapp2"
+          },
+          {
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "version_code": 0,
+            "launchable": true,
+            "package_name": "dev.droidbridge.testapp3",
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "export_to_mac": true
+          }
+        ]
+      },
+      "catalog_after": {
+        "generation": "d1bfe7323e9615fc55d6382786798cd8786b94799ce6c0a3adee950e2f7981f4",
+        "items": [
+          {
+            "package_name": "com.android.camera2",
+            "label": "Camera",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.android.camera.CameraLauncher",
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53",
+            "version_code": 20002000
+          },
+          {
+            "label": "Chrome",
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "package_name": "com.android.chrome",
+            "export_to_mac": true,
+            "launchable": true,
+            "version_code": 763221832,
+            "activity_name": "com.google.android.apps.chrome.Main"
+          },
+          {
+            "activity_name": "com.android.settings.Settings",
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "export_to_mac": true,
+            "package_name": "com.android.settings",
+            "version_code": 37,
+            "label": "Settings",
+            "launchable": true
+          },
+          {
+            "package_name": "com.android.stk",
+            "version_code": 37,
+            "activity_name": "com.android.stk.StkMain",
+            "launchable": true,
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "export_to_mac": true,
+            "label": "TMoble"
+          },
+          {
+            "export_to_mac": true,
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "label": "Play Store",
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6",
+            "version_code": 85372340,
+            "package_name": "com.android.vending",
+            "launchable": true
+          },
+          {
+            "package_name": "com.google.android.apps.docs",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215",
+            "version_code": 214380540,
+            "label": "Drive"
+          },
+          {
+            "version_code": 1068505956,
+            "package_name": "com.google.android.apps.maps",
+            "label": "Maps",
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "launchable": true,
+            "export_to_mac": true,
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426"
+          },
+          {
+            "label": "Messages",
+            "export_to_mac": true,
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137",
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "launchable": true,
+            "version_code": 302567063,
+            "package_name": "com.google.android.apps.messaging"
+          },
+          {
+            "label": "Photos",
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "launchable": true,
+            "package_name": "com.google.android.apps.photos",
+            "version_code": 51413603,
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "export_to_mac": true
+          },
+          {
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "version_code": 100766962,
+            "label": "Safety",
+            "package_name": "com.google.android.apps.safetyhub",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity"
+          },
+          {
+            "package_name": "com.google.android.apps.youtube.music",
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378",
+            "version_code": 91052240,
+            "label": "YT Music",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity"
+          },
+          {
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "launchable": true,
+            "package_name": "com.google.android.calendar",
+            "label": "Calendar",
+            "activity_name": "com.android.calendar.AllInOneActivity",
+            "version_code": 2018015783,
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "Contacts",
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "export_to_mac": true,
+            "package_name": "com.google.android.contacts",
+            "activity_name": "com.android.contacts.activities.PeopleActivity",
+            "version_code": 3266771
+          },
+          {
+            "package_name": "com.google.android.deskclock",
+            "export_to_mac": true,
+            "activity_name": "com.android.deskclock.DeskClock",
+            "label": "Clock",
+            "launchable": true,
+            "version_code": 76002074,
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da"
+          },
+          {
+            "version_code": 19559368,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d",
+            "label": "Phone",
+            "package_name": "com.google.android.dialer",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "package_name": "com.google.android.documentsui",
+            "label": "Files",
+            "launchable": true,
+            "version_code": 370399999,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 42853,
+            "label": "Glasses",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "com.google.android.glasses.companion",
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity"
+          },
+          {
+            "launchable": true,
+            "version_code": 65615106,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail",
+            "label": "Gmail",
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf"
+          },
+          {
+            "label": "Google",
+            "package_name": "com.google.android.googlequicksearchbox",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity",
+            "version_code": 301714343,
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4"
+          },
+          {
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "package_name": "com.google.android.youtube",
+            "launchable": true,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd",
+            "version_code": 1553337816,
+            "label": "YouTube",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.companion",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "version_code": 12,
+            "label": "DroidBridge",
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "label": "Companion Verification",
+            "package_name": "dev.droidbridge.companionfixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.iconfixture",
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias",
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "label": "Alias Icon Fixture",
+            "version_code": 0
+          },
+          {
+            "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+            "export_to_mac": true,
+            "label": "Input Alpha Updated",
+            "version_code": 2,
+            "icon_sha256": "e372924729acff0ac99908e67457665cfe69d68b51a3f2dfb2de6d9e513593c0",
+            "package_name": "dev.droidbridge.inputalpha",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.inputbeta",
+            "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+            "launchable": true,
+            "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87",
+            "version_code": 1,
+            "label": "Input Beta"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 1,
+            "launchable": true,
+            "label": "DroidBridge adversarial peer fixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "package_name": "dev.droidbridge.peerattack"
+          },
+          {
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "version_code": 0,
+            "launchable": true,
+            "package_name": "dev.droidbridge.testapp",
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "package_name": "dev.droidbridge.testapp2",
+            "version_code": 0,
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.testapp3",
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "label": "DroidBridge Test",
+            "export_to_mac": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "initial_main_state": {
+        "Input Alpha": false,
+        "Input Alpha Updated": true,
+        "Input Beta": true
+      },
+      "initial_companion_state": {
+        "Input Alpha": false,
+        "Input Alpha Updated": true,
+        "Input Beta": true
+      },
+      "main_expected_transition": true,
+      "companion_expected_transition": true,
+      "operation": "remove_alpha",
+      "android_process_start_monotonic": 1594038.451885541,
+      "android_process_completion_observed_monotonic": 1594038.482884291,
+      "broker_token_observed_monotonic": 1594038.700262,
+      "main_row_observed_monotonic": 1594039.338331666,
+      "companion_row_observed_monotonic": 1594039.248287083,
+      "observations": [
+        {
+          "from_start_ms": 1.63,
+          "token_changed": false,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 247.35,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 441.04,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 636.27,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 831.35,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          }
+        }
+      ],
+      "android_output": "Success",
+      "android_exit": 0,
+      "main_from_android_completion_ms": 855.45,
+      "main_from_android_start_ms": 886.45,
+      "main_from_broker_token_ms": 638.07,
+      "companion_from_android_completion_ms": 765.4,
+      "companion_from_android_start_ms": 796.4,
+      "companion_from_broker_token_ms": 548.03,
+      "catalog_before": {
+        "generation": "d1bfe7323e9615fc55d6382786798cd8786b94799ce6c0a3adee950e2f7981f4",
+        "items": [
+          {
+            "package_name": "com.android.camera2",
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53",
+            "label": "Camera",
+            "activity_name": "com.android.camera.CameraLauncher",
+            "launchable": true,
+            "export_to_mac": true,
+            "version_code": 20002000
+          },
+          {
+            "label": "Chrome",
+            "activity_name": "com.google.android.apps.chrome.Main",
+            "launchable": true,
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "export_to_mac": true,
+            "package_name": "com.android.chrome",
+            "version_code": 763221832
+          },
+          {
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "label": "Settings",
+            "package_name": "com.android.settings",
+            "activity_name": "com.android.settings.Settings",
+            "launchable": true,
+            "version_code": 37,
+            "export_to_mac": true
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "version_code": 37,
+            "activity_name": "com.android.stk.StkMain",
+            "label": "TMoble",
+            "launchable": true,
+            "package_name": "com.android.stk"
+          },
+          {
+            "version_code": 85372340,
+            "package_name": "com.android.vending",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "label": "Play Store",
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6"
+          },
+          {
+            "package_name": "com.google.android.apps.docs",
+            "version_code": 214380540,
+            "label": "Drive",
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215",
+            "launchable": true,
+            "export_to_mac": true
+          },
+          {
+            "version_code": 1068505956,
+            "package_name": "com.google.android.apps.maps",
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426",
+            "label": "Maps",
+            "launchable": true,
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "com.google.android.apps.messaging",
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137",
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "version_code": 302567063,
+            "launchable": true,
+            "label": "Messages"
+          },
+          {
+            "label": "Photos",
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "launchable": true,
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "export_to_mac": true,
+            "package_name": "com.google.android.apps.photos",
+            "version_code": 51413603
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "label": "Safety",
+            "version_code": 100766962,
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity",
+            "package_name": "com.google.android.apps.safetyhub",
+            "launchable": true
+          },
+          {
+            "version_code": 91052240,
+            "package_name": "com.google.android.apps.youtube.music",
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity",
+            "export_to_mac": true,
+            "label": "YT Music",
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "label": "Calendar",
+            "activity_name": "com.android.calendar.AllInOneActivity",
+            "package_name": "com.google.android.calendar",
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "launchable": true,
+            "version_code": 2018015783
+          },
+          {
+            "version_code": 3266771,
+            "launchable": true,
+            "label": "Contacts",
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "export_to_mac": true,
+            "package_name": "com.google.android.contacts",
+            "activity_name": "com.android.contacts.activities.PeopleActivity"
+          },
+          {
+            "package_name": "com.google.android.deskclock",
+            "export_to_mac": true,
+            "activity_name": "com.android.deskclock.DeskClock",
+            "label": "Clock",
+            "launchable": true,
+            "version_code": 76002074,
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da"
+          },
+          {
+            "version_code": 19559368,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d",
+            "label": "Phone",
+            "package_name": "com.google.android.dialer",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "package_name": "com.google.android.documentsui",
+            "label": "Files",
+            "launchable": true,
+            "version_code": 370399999,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 42853,
+            "label": "Glasses",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "com.google.android.glasses.companion",
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity"
+          },
+          {
+            "launchable": true,
+            "version_code": 65615106,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail",
+            "label": "Gmail",
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf"
+          },
+          {
+            "label": "Google",
+            "package_name": "com.google.android.googlequicksearchbox",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity",
+            "version_code": 301714343,
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4"
+          },
+          {
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "package_name": "com.google.android.youtube",
+            "launchable": true,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd",
+            "version_code": 1553337816,
+            "label": "YouTube",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.companion",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "version_code": 12,
+            "label": "DroidBridge",
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "label": "Companion Verification",
+            "package_name": "dev.droidbridge.companionfixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.iconfixture",
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias",
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "label": "Alias Icon Fixture",
+            "version_code": 0
+          },
+          {
+            "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+            "export_to_mac": true,
+            "label": "Input Alpha Updated",
+            "version_code": 2,
+            "icon_sha256": "e372924729acff0ac99908e67457665cfe69d68b51a3f2dfb2de6d9e513593c0",
+            "package_name": "dev.droidbridge.inputalpha",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.inputbeta",
+            "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+            "launchable": true,
+            "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87",
+            "version_code": 1,
+            "label": "Input Beta"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 1,
+            "launchable": true,
+            "label": "DroidBridge adversarial peer fixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "package_name": "dev.droidbridge.peerattack"
+          },
+          {
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "version_code": 0,
+            "launchable": true,
+            "package_name": "dev.droidbridge.testapp",
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "package_name": "dev.droidbridge.testapp2",
+            "version_code": 0,
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.testapp3",
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "label": "DroidBridge Test",
+            "export_to_mac": true
+          }
+        ]
+      },
+      "catalog_after": {
+        "generation": "f077fb5a0b793483971b905c3774d735f1b464e7d3a8ecad15e3c859005dc2ff",
+        "items": [
+          {
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53",
+            "version_code": 20002000,
+            "export_to_mac": true,
+            "label": "Camera",
+            "package_name": "com.android.camera2",
+            "launchable": true,
+            "activity_name": "com.android.camera.CameraLauncher"
+          },
+          {
+            "package_name": "com.android.chrome",
+            "label": "Chrome",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.chrome.Main",
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "version_code": 763221832
+          },
+          {
+            "label": "Settings",
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "package_name": "com.android.settings",
+            "export_to_mac": true,
+            "launchable": true,
+            "version_code": 37,
+            "activity_name": "com.android.settings.Settings"
+          },
+          {
+            "activity_name": "com.android.stk.StkMain",
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "export_to_mac": true,
+            "package_name": "com.android.stk",
+            "version_code": 37,
+            "label": "TMoble",
+            "launchable": true
+          },
+          {
+            "package_name": "com.android.vending",
+            "version_code": 85372340,
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "launchable": true,
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6",
+            "export_to_mac": true,
+            "label": "Play Store"
+          },
+          {
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "label": "Drive",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215",
+            "version_code": 214380540,
+            "package_name": "com.google.android.apps.docs",
+            "launchable": true
+          },
+          {
+            "package_name": "com.google.android.apps.maps",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426",
+            "version_code": 1068505956,
+            "label": "Maps"
+          },
+          {
+            "version_code": 302567063,
+            "package_name": "com.google.android.apps.messaging",
+            "label": "Messages",
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "launchable": true,
+            "export_to_mac": true,
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137"
+          },
+          {
+            "label": "Photos",
+            "export_to_mac": true,
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "launchable": true,
+            "version_code": 51413603,
+            "package_name": "com.google.android.apps.photos"
+          },
+          {
+            "label": "Safety",
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity",
+            "launchable": true,
+            "package_name": "com.google.android.apps.safetyhub",
+            "version_code": 100766962,
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "export_to_mac": true
+          },
+          {
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378",
+            "version_code": 91052240,
+            "label": "YT Music",
+            "package_name": "com.google.android.apps.youtube.music",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity"
+          },
+          {
+            "package_name": "com.google.android.calendar",
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "version_code": 2018015783,
+            "label": "Calendar",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.android.calendar.AllInOneActivity"
+          },
+          {
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "launchable": true,
+            "package_name": "com.google.android.contacts",
+            "label": "Contacts",
+            "activity_name": "com.android.contacts.activities.PeopleActivity",
+            "version_code": 3266771,
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "Clock",
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da",
+            "export_to_mac": true,
+            "package_name": "com.google.android.deskclock",
+            "activity_name": "com.android.deskclock.DeskClock",
+            "version_code": 76002074
+          },
+          {
+            "package_name": "com.google.android.dialer",
+            "export_to_mac": true,
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "label": "Phone",
+            "launchable": true,
+            "version_code": 19559368,
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d"
+          },
+          {
+            "version_code": 370399999,
+            "export_to_mac": true,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "label": "Files",
+            "package_name": "com.google.android.documentsui",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "package_name": "com.google.android.glasses.companion",
+            "label": "Glasses",
+            "launchable": true,
+            "version_code": 42853,
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 65615106,
+            "label": "Gmail",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf",
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail"
+          },
+          {
+            "launchable": true,
+            "version_code": 301714343,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity",
+            "label": "Google",
+            "package_name": "com.google.android.googlequicksearchbox",
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4"
+          },
+          {
+            "label": "YouTube",
+            "package_name": "com.google.android.youtube",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "version_code": 1553337816,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd"
+          },
+          {
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "package_name": "dev.droidbridge.companion",
+            "launchable": true,
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2",
+            "version_code": 12,
+            "label": "DroidBridge",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.companionfixture",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "version_code": 0,
+            "label": "Companion Verification",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1"
+          },
+          {
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "label": "Alias Icon Fixture",
+            "package_name": "dev.droidbridge.iconfixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.inputbeta",
+            "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+            "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87",
+            "label": "Input Beta",
+            "version_code": 1
+          },
+          {
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "export_to_mac": true,
+            "label": "DroidBridge adversarial peer fixture",
+            "version_code": 1,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "package_name": "dev.droidbridge.peerattack",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.testapp",
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "label": "DroidBridge Test"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "launchable": true,
+            "label": "DroidBridge Test",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "package_name": "dev.droidbridge.testapp2"
+          },
+          {
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "version_code": 0,
+            "launchable": true,
+            "package_name": "dev.droidbridge.testapp3",
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "export_to_mac": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "initial_main_state": {
+        "Input Alpha": false,
+        "Input Alpha Updated": false,
+        "Input Beta": true
+      },
+      "initial_companion_state": {
+        "Input Alpha": false,
+        "Input Alpha Updated": false,
+        "Input Beta": true
+      },
+      "main_expected_transition": true,
+      "companion_expected_transition": true,
+      "operation": "install_alpha_v1",
+      "android_process_start_monotonic": 1594039.644871041,
+      "android_process_completion_observed_monotonic": 1594039.696503083,
+      "broker_token_observed_monotonic": 1594039.894099,
+      "main_row_observed_monotonic": 1594040.338714958,
+      "companion_row_observed_monotonic": 1594040.250182916,
+      "observations": [
+        {
+          "from_start_ms": 1.91,
+          "token_changed": false,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 248.51,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 442.24,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": true,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 640.34,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": true,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": true,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          }
+        }
+      ],
+      "android_output": "Serving...\nPerforming Incremental Install\nSuccess\nInstall command complete in 41 ms",
+      "android_exit": 0,
+      "main_from_android_completion_ms": 642.21,
+      "main_from_android_start_ms": 693.84,
+      "main_from_broker_token_ms": 444.62,
+      "companion_from_android_completion_ms": 553.68,
+      "companion_from_android_start_ms": 605.31,
+      "companion_from_broker_token_ms": 356.08,
+      "catalog_before": {
+        "generation": "f077fb5a0b793483971b905c3774d735f1b464e7d3a8ecad15e3c859005dc2ff",
+        "items": [
+          {
+            "activity_name": "com.android.camera.CameraLauncher",
+            "label": "Camera",
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53",
+            "launchable": true,
+            "version_code": 20002000,
+            "export_to_mac": true,
+            "package_name": "com.android.camera2"
+          },
+          {
+            "package_name": "com.android.chrome",
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "label": "Chrome",
+            "activity_name": "com.google.android.apps.chrome.Main",
+            "launchable": true,
+            "export_to_mac": true,
+            "version_code": 763221832
+          },
+          {
+            "label": "Settings",
+            "activity_name": "com.android.settings.Settings",
+            "launchable": true,
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "export_to_mac": true,
+            "package_name": "com.android.settings",
+            "version_code": 37
+          },
+          {
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "label": "TMoble",
+            "package_name": "com.android.stk",
+            "activity_name": "com.android.stk.StkMain",
+            "launchable": true,
+            "version_code": 37,
+            "export_to_mac": true
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6",
+            "version_code": 85372340,
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "label": "Play Store",
+            "launchable": true,
+            "package_name": "com.android.vending"
+          },
+          {
+            "version_code": 214380540,
+            "package_name": "com.google.android.apps.docs",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "label": "Drive",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215"
+          },
+          {
+            "package_name": "com.google.android.apps.maps",
+            "version_code": 1068505956,
+            "label": "Maps",
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426",
+            "launchable": true,
+            "export_to_mac": true
+          },
+          {
+            "version_code": 302567063,
+            "package_name": "com.google.android.apps.messaging",
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137",
+            "label": "Messages",
+            "launchable": true,
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "com.google.android.apps.photos",
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "version_code": 51413603,
+            "launchable": true,
+            "label": "Photos"
+          },
+          {
+            "label": "Safety",
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity",
+            "launchable": true,
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "export_to_mac": true,
+            "package_name": "com.google.android.apps.safetyhub",
+            "version_code": 100766962
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378",
+            "label": "YT Music",
+            "version_code": 91052240,
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity",
+            "package_name": "com.google.android.apps.youtube.music",
+            "launchable": true
+          },
+          {
+            "version_code": 2018015783,
+            "package_name": "com.google.android.calendar",
+            "activity_name": "com.android.calendar.AllInOneActivity",
+            "export_to_mac": true,
+            "label": "Calendar",
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "label": "Contacts",
+            "activity_name": "com.android.contacts.activities.PeopleActivity",
+            "package_name": "com.google.android.contacts",
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "launchable": true,
+            "version_code": 3266771
+          },
+          {
+            "version_code": 76002074,
+            "launchable": true,
+            "label": "Clock",
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da",
+            "export_to_mac": true,
+            "package_name": "com.google.android.deskclock",
+            "activity_name": "com.android.deskclock.DeskClock"
+          },
+          {
+            "package_name": "com.google.android.dialer",
+            "export_to_mac": true,
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "label": "Phone",
+            "launchable": true,
+            "version_code": 19559368,
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d"
+          },
+          {
+            "version_code": 370399999,
+            "export_to_mac": true,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "label": "Files",
+            "package_name": "com.google.android.documentsui",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "package_name": "com.google.android.glasses.companion",
+            "label": "Glasses",
+            "launchable": true,
+            "version_code": 42853,
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 65615106,
+            "label": "Gmail",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf",
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail"
+          },
+          {
+            "launchable": true,
+            "version_code": 301714343,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity",
+            "label": "Google",
+            "package_name": "com.google.android.googlequicksearchbox",
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4"
+          },
+          {
+            "label": "YouTube",
+            "package_name": "com.google.android.youtube",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "version_code": 1553337816,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd"
+          },
+          {
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "package_name": "dev.droidbridge.companion",
+            "launchable": true,
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2",
+            "version_code": 12,
+            "label": "DroidBridge",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.companionfixture",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "version_code": 0,
+            "label": "Companion Verification",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1"
+          },
+          {
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "label": "Alias Icon Fixture",
+            "package_name": "dev.droidbridge.iconfixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.inputbeta",
+            "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+            "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87",
+            "label": "Input Beta",
+            "version_code": 1
+          },
+          {
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "export_to_mac": true,
+            "label": "DroidBridge adversarial peer fixture",
+            "version_code": 1,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "package_name": "dev.droidbridge.peerattack",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.testapp",
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "label": "DroidBridge Test"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "launchable": true,
+            "label": "DroidBridge Test",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "package_name": "dev.droidbridge.testapp2"
+          },
+          {
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "version_code": 0,
+            "launchable": true,
+            "package_name": "dev.droidbridge.testapp3",
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "export_to_mac": true
+          }
+        ]
+      },
+      "catalog_after": {
+        "generation": "38cd321612a4b5fd49f9fcee2e7f91b09dce47819f60290b4e6d8d34d24f256f",
+        "items": [
+          {
+            "package_name": "com.android.camera2",
+            "label": "Camera",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.android.camera.CameraLauncher",
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53",
+            "version_code": 20002000
+          },
+          {
+            "label": "Chrome",
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "package_name": "com.android.chrome",
+            "export_to_mac": true,
+            "launchable": true,
+            "version_code": 763221832,
+            "activity_name": "com.google.android.apps.chrome.Main"
+          },
+          {
+            "activity_name": "com.android.settings.Settings",
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "export_to_mac": true,
+            "package_name": "com.android.settings",
+            "version_code": 37,
+            "label": "Settings",
+            "launchable": true
+          },
+          {
+            "package_name": "com.android.stk",
+            "version_code": 37,
+            "activity_name": "com.android.stk.StkMain",
+            "launchable": true,
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "export_to_mac": true,
+            "label": "TMoble"
+          },
+          {
+            "export_to_mac": true,
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "label": "Play Store",
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6",
+            "version_code": 85372340,
+            "package_name": "com.android.vending",
+            "launchable": true
+          },
+          {
+            "package_name": "com.google.android.apps.docs",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215",
+            "version_code": 214380540,
+            "label": "Drive"
+          },
+          {
+            "version_code": 1068505956,
+            "package_name": "com.google.android.apps.maps",
+            "label": "Maps",
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "launchable": true,
+            "export_to_mac": true,
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426"
+          },
+          {
+            "label": "Messages",
+            "export_to_mac": true,
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137",
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "launchable": true,
+            "version_code": 302567063,
+            "package_name": "com.google.android.apps.messaging"
+          },
+          {
+            "label": "Photos",
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "launchable": true,
+            "package_name": "com.google.android.apps.photos",
+            "version_code": 51413603,
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "export_to_mac": true
+          },
+          {
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "version_code": 100766962,
+            "label": "Safety",
+            "package_name": "com.google.android.apps.safetyhub",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity"
+          },
+          {
+            "package_name": "com.google.android.apps.youtube.music",
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378",
+            "version_code": 91052240,
+            "label": "YT Music",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity"
+          },
+          {
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "launchable": true,
+            "package_name": "com.google.android.calendar",
+            "label": "Calendar",
+            "activity_name": "com.android.calendar.AllInOneActivity",
+            "version_code": 2018015783,
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "Contacts",
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "export_to_mac": true,
+            "package_name": "com.google.android.contacts",
+            "activity_name": "com.android.contacts.activities.PeopleActivity",
+            "version_code": 3266771
+          },
+          {
+            "package_name": "com.google.android.deskclock",
+            "export_to_mac": true,
+            "activity_name": "com.android.deskclock.DeskClock",
+            "label": "Clock",
+            "launchable": true,
+            "version_code": 76002074,
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da"
+          },
+          {
+            "version_code": 19559368,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d",
+            "label": "Phone",
+            "package_name": "com.google.android.dialer",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "package_name": "com.google.android.documentsui",
+            "label": "Files",
+            "launchable": true,
+            "version_code": 370399999,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 42853,
+            "label": "Glasses",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "com.google.android.glasses.companion",
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity"
+          },
+          {
+            "launchable": true,
+            "version_code": 65615106,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail",
+            "label": "Gmail",
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf"
+          },
+          {
+            "label": "Google",
+            "package_name": "com.google.android.googlequicksearchbox",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity",
+            "version_code": 301714343,
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4"
+          },
+          {
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "package_name": "com.google.android.youtube",
+            "launchable": true,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd",
+            "version_code": 1553337816,
+            "label": "YouTube",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.companion",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "version_code": 12,
+            "label": "DroidBridge",
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "label": "Companion Verification",
+            "package_name": "dev.droidbridge.companionfixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.iconfixture",
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias",
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "label": "Alias Icon Fixture",
+            "version_code": 0
+          },
+          {
+            "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+            "export_to_mac": true,
+            "label": "Input Alpha",
+            "version_code": 1,
+            "icon_sha256": "dbaaedff599acbcc940c7d85daf7b56a1ef891ea9c5f1757be398433f113c45a",
+            "package_name": "dev.droidbridge.inputalpha",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.inputbeta",
+            "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+            "launchable": true,
+            "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87",
+            "version_code": 1,
+            "label": "Input Beta"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 1,
+            "launchable": true,
+            "label": "DroidBridge adversarial peer fixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "package_name": "dev.droidbridge.peerattack"
+          },
+          {
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "version_code": 0,
+            "launchable": true,
+            "package_name": "dev.droidbridge.testapp",
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "package_name": "dev.droidbridge.testapp2",
+            "version_code": 0,
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.testapp3",
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "label": "DroidBridge Test",
+            "export_to_mac": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "initial_main_state": {
+        "Input Alpha": true,
+        "Input Alpha Updated": false,
+        "Input Beta": true
+      },
+      "initial_companion_state": {
+        "Input Alpha": true,
+        "Input Alpha Updated": false,
+        "Input Beta": true
+      },
+      "main_expected_transition": true,
+      "companion_expected_transition": true,
+      "operation": "rename_icon_alpha_v2",
+      "android_process_start_monotonic": 1594040.73440675,
+      "android_process_completion_observed_monotonic": 1594041.024699166,
+      "broker_token_observed_monotonic": 1594041.200938083,
+      "main_row_observed_monotonic": 1594041.45193675,
+      "companion_row_observed_monotonic": 1594041.360498791,
+      "observations": [
+        {
+          "from_start_ms": 2.21,
+          "token_changed": false,
+          "main": {
+            "Input Alpha": true,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": true,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 263.07,
+          "token_changed": false,
+          "main": {
+            "Input Alpha": true,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": true,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 465.78,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": true,
+            "Input Alpha Updated": false,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          }
+        },
+        {
+          "from_start_ms": 661.12,
+          "token_changed": true,
+          "main": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          },
+          "companion": {
+            "Input Alpha": false,
+            "Input Alpha Updated": true,
+            "Input Beta": true
+          }
+        }
+      ],
+      "android_output": "Serving...\nPerforming Incremental Install\nSuccess\nInstall command complete in 268 ms",
+      "android_exit": 0,
+      "main_from_android_completion_ms": 427.24,
+      "main_from_android_start_ms": 717.53,
+      "main_from_broker_token_ms": 251.0,
+      "companion_from_android_completion_ms": 335.8,
+      "companion_from_android_start_ms": 626.09,
+      "companion_from_broker_token_ms": 159.56,
+      "catalog_before": {
+        "generation": "38cd321612a4b5fd49f9fcee2e7f91b09dce47819f60290b4e6d8d34d24f256f",
+        "items": [
+          {
+            "package_name": "com.android.camera2",
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53",
+            "label": "Camera",
+            "activity_name": "com.android.camera.CameraLauncher",
+            "launchable": true,
+            "export_to_mac": true,
+            "version_code": 20002000
+          },
+          {
+            "label": "Chrome",
+            "activity_name": "com.google.android.apps.chrome.Main",
+            "launchable": true,
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "export_to_mac": true,
+            "package_name": "com.android.chrome",
+            "version_code": 763221832
+          },
+          {
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "label": "Settings",
+            "package_name": "com.android.settings",
+            "activity_name": "com.android.settings.Settings",
+            "launchable": true,
+            "version_code": 37,
+            "export_to_mac": true
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "version_code": 37,
+            "activity_name": "com.android.stk.StkMain",
+            "label": "TMoble",
+            "launchable": true,
+            "package_name": "com.android.stk"
+          },
+          {
+            "version_code": 85372340,
+            "package_name": "com.android.vending",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "label": "Play Store",
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6"
+          },
+          {
+            "package_name": "com.google.android.apps.docs",
+            "version_code": 214380540,
+            "label": "Drive",
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215",
+            "launchable": true,
+            "export_to_mac": true
+          },
+          {
+            "version_code": 1068505956,
+            "package_name": "com.google.android.apps.maps",
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426",
+            "label": "Maps",
+            "launchable": true,
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "com.google.android.apps.messaging",
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137",
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "version_code": 302567063,
+            "launchable": true,
+            "label": "Messages"
+          },
+          {
+            "label": "Photos",
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "launchable": true,
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "export_to_mac": true,
+            "package_name": "com.google.android.apps.photos",
+            "version_code": 51413603
+          },
+          {
+            "export_to_mac": true,
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "label": "Safety",
+            "version_code": 100766962,
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity",
+            "package_name": "com.google.android.apps.safetyhub",
+            "launchable": true
+          },
+          {
+            "version_code": 91052240,
+            "package_name": "com.google.android.apps.youtube.music",
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity",
+            "export_to_mac": true,
+            "label": "YT Music",
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "label": "Calendar",
+            "activity_name": "com.android.calendar.AllInOneActivity",
+            "package_name": "com.google.android.calendar",
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "launchable": true,
+            "version_code": 2018015783
+          },
+          {
+            "version_code": 3266771,
+            "launchable": true,
+            "label": "Contacts",
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "export_to_mac": true,
+            "package_name": "com.google.android.contacts",
+            "activity_name": "com.android.contacts.activities.PeopleActivity"
+          },
+          {
+            "package_name": "com.google.android.deskclock",
+            "export_to_mac": true,
+            "activity_name": "com.android.deskclock.DeskClock",
+            "label": "Clock",
+            "launchable": true,
+            "version_code": 76002074,
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da"
+          },
+          {
+            "version_code": 19559368,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d",
+            "label": "Phone",
+            "package_name": "com.google.android.dialer",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "package_name": "com.google.android.documentsui",
+            "label": "Files",
+            "launchable": true,
+            "version_code": 370399999,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 42853,
+            "label": "Glasses",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "com.google.android.glasses.companion",
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity"
+          },
+          {
+            "launchable": true,
+            "version_code": 65615106,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail",
+            "label": "Gmail",
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf"
+          },
+          {
+            "label": "Google",
+            "package_name": "com.google.android.googlequicksearchbox",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity",
+            "version_code": 301714343,
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4"
+          },
+          {
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "package_name": "com.google.android.youtube",
+            "launchable": true,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd",
+            "version_code": 1553337816,
+            "label": "YouTube",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.companion",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "version_code": 12,
+            "label": "DroidBridge",
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "label": "Companion Verification",
+            "package_name": "dev.droidbridge.companionfixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.iconfixture",
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias",
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "label": "Alias Icon Fixture",
+            "version_code": 0
+          },
+          {
+            "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+            "export_to_mac": true,
+            "label": "Input Alpha",
+            "version_code": 1,
+            "icon_sha256": "dbaaedff599acbcc940c7d85daf7b56a1ef891ea9c5f1757be398433f113c45a",
+            "package_name": "dev.droidbridge.inputalpha",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.inputbeta",
+            "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+            "launchable": true,
+            "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87",
+            "version_code": 1,
+            "label": "Input Beta"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 1,
+            "launchable": true,
+            "label": "DroidBridge adversarial peer fixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "package_name": "dev.droidbridge.peerattack"
+          },
+          {
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "version_code": 0,
+            "launchable": true,
+            "package_name": "dev.droidbridge.testapp",
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "package_name": "dev.droidbridge.testapp2",
+            "version_code": 0,
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.testapp3",
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "label": "DroidBridge Test",
+            "export_to_mac": true
+          }
+        ]
+      },
+      "catalog_after": {
+        "generation": "d1bfe7323e9615fc55d6382786798cd8786b94799ce6c0a3adee950e2f7981f4",
+        "items": [
+          {
+            "package_name": "com.android.camera2",
+            "label": "Camera",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.android.camera.CameraLauncher",
+            "icon_sha256": "739eba984b70262dc43a18ecf259f0074f4f7a8a6b4bcd9327c2b9b8c48e8e53",
+            "version_code": 20002000
+          },
+          {
+            "label": "Chrome",
+            "icon_sha256": "84f82ca7552f79de89e53a8c5cd456e3ee8b3609115e29be9448998f759fc10c",
+            "package_name": "com.android.chrome",
+            "export_to_mac": true,
+            "launchable": true,
+            "version_code": 763221832,
+            "activity_name": "com.google.android.apps.chrome.Main"
+          },
+          {
+            "activity_name": "com.android.settings.Settings",
+            "icon_sha256": "523b9300421cd0a75abce3510c4ff2288bf522f5f1611d3f25e9853019fb73dc",
+            "export_to_mac": true,
+            "package_name": "com.android.settings",
+            "version_code": 37,
+            "label": "Settings",
+            "launchable": true
+          },
+          {
+            "package_name": "com.android.stk",
+            "version_code": 37,
+            "activity_name": "com.android.stk.StkMain",
+            "launchable": true,
+            "icon_sha256": "ba5d0df304fec66748aa7c45370b033c88ed135cf561026ab14c9e8dfe3eb83c",
+            "export_to_mac": true,
+            "label": "TMoble"
+          },
+          {
+            "export_to_mac": true,
+            "activity_name": "com.android.vending.AssetBrowserActivity",
+            "label": "Play Store",
+            "icon_sha256": "e6e12c65bb13cf46e7fc9ff051180cf4d93ae91b6b59a5511e925325239970a6",
+            "version_code": 85372340,
+            "package_name": "com.android.vending",
+            "launchable": true
+          },
+          {
+            "package_name": "com.google.android.apps.docs",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.docs.app.NewMainProxyActivity",
+            "icon_sha256": "341838a978ab2b1758967d6284af6ab56245b860560f0382cbcdb5c977e9d215",
+            "version_code": 214380540,
+            "label": "Drive"
+          },
+          {
+            "version_code": 1068505956,
+            "package_name": "com.google.android.apps.maps",
+            "label": "Maps",
+            "activity_name": "com.google.android.maps.MapsActivity",
+            "launchable": true,
+            "export_to_mac": true,
+            "icon_sha256": "85828f151b5377695f8a25dc18540a7597bb759d7529cadab2e8127a2ed28426"
+          },
+          {
+            "label": "Messages",
+            "export_to_mac": true,
+            "icon_sha256": "cb477cf310953350e8d6dc70ad454e04a3cc90d75959a6e329aad7dbf5b4e137",
+            "activity_name": "com.google.android.apps.messaging.ui.ConversationListActivity",
+            "launchable": true,
+            "version_code": 302567063,
+            "package_name": "com.google.android.apps.messaging"
+          },
+          {
+            "label": "Photos",
+            "activity_name": "com.google.android.apps.photos.home.HomeActivity",
+            "launchable": true,
+            "package_name": "com.google.android.apps.photos",
+            "version_code": 51413603,
+            "icon_sha256": "d56404c9f5cf90527f77c8f4c118013cee8919ed1cfdec5b2215847b0921b81a",
+            "export_to_mac": true
+          },
+          {
+            "icon_sha256": "d21daa11ff1af5ace66b89ca04ae4888eb8836738c1e6ab506be9b76d10854c4",
+            "version_code": 100766962,
+            "label": "Safety",
+            "package_name": "com.google.android.apps.safetyhub",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "com.google.android.apps.safetyhub.LauncherActivity"
+          },
+          {
+            "package_name": "com.google.android.apps.youtube.music",
+            "icon_sha256": "450e88e2188eaacee87bdb4ef32e2196fa2fc2880a5f25572e01088417d9f378",
+            "version_code": 91052240,
+            "label": "YT Music",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.apps.youtube.music.activities.MusicActivity"
+          },
+          {
+            "icon_sha256": "01828169e7efa3430dd5152f2fb7c1692e6a6c79170c23adbdcb089617a828e3",
+            "launchable": true,
+            "package_name": "com.google.android.calendar",
+            "label": "Calendar",
+            "activity_name": "com.android.calendar.AllInOneActivity",
+            "version_code": 2018015783,
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "Contacts",
+            "icon_sha256": "7051e0f5ceb98fdad6728f95bc2e8e204e436aa6ed39654a6ee029fe9587c9a4",
+            "export_to_mac": true,
+            "package_name": "com.google.android.contacts",
+            "activity_name": "com.android.contacts.activities.PeopleActivity",
+            "version_code": 3266771
+          },
+          {
+            "package_name": "com.google.android.deskclock",
+            "export_to_mac": true,
+            "activity_name": "com.android.deskclock.DeskClock",
+            "label": "Clock",
+            "launchable": true,
+            "version_code": 76002074,
+            "icon_sha256": "0967a05078a7b9b40efe2d67a63cec3c388c0cf0e6d52452f4d22fbc49bf60da"
+          },
+          {
+            "version_code": 19559368,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.dialer.extensions.GoogleDialtactsActivity",
+            "icon_sha256": "afaadfb0cef60228df45254439ce97016c66268a1da32a9f69762836049d2d5d",
+            "label": "Phone",
+            "package_name": "com.google.android.dialer",
+            "launchable": true
+          },
+          {
+            "icon_sha256": "d98c7aced902d96122c11add6809e29c841f51b186abe3fe3edfa9a2a2693339",
+            "package_name": "com.google.android.documentsui",
+            "label": "Files",
+            "launchable": true,
+            "version_code": 370399999,
+            "activity_name": "com.android.documentsui.LauncherActivity",
+            "export_to_mac": true
+          },
+          {
+            "version_code": 42853,
+            "label": "Glasses",
+            "export_to_mac": true,
+            "launchable": true,
+            "package_name": "com.google.android.glasses.companion",
+            "icon_sha256": "6ef2132a66c7dd2c9fd3687bbfc1395368887fa83e0eccfea2dabc247d8feaa1",
+            "activity_name": "com.google.android.glasses.companion.startup.SplashActivity"
+          },
+          {
+            "launchable": true,
+            "version_code": 65615106,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.gm.ConversationListActivityGmail",
+            "label": "Gmail",
+            "package_name": "com.google.android.gm",
+            "icon_sha256": "1883340f84252398f46948d4f1e85b83da8b71304c6fd050b9adc839aa4aabdf"
+          },
+          {
+            "label": "Google",
+            "package_name": "com.google.android.googlequicksearchbox",
+            "launchable": true,
+            "export_to_mac": true,
+            "activity_name": "com.google.android.googlequicksearchbox.SearchActivity",
+            "version_code": 301714343,
+            "icon_sha256": "0d0d9a38df5e75f930c09c4a194f3e44a41aac05eafa83a0ed0dc740d95fc3b4"
+          },
+          {
+            "activity_name": "com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
+            "package_name": "com.google.android.youtube",
+            "launchable": true,
+            "icon_sha256": "a96310178c26e4961fe763f6ad24b1af28f5a8e99c55657eee29e9c50a3431fd",
+            "version_code": 1553337816,
+            "label": "YouTube",
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.companion",
+            "export_to_mac": true,
+            "launchable": true,
+            "activity_name": "dev.droidbridge.companion.MainActivity",
+            "version_code": 12,
+            "label": "DroidBridge",
+            "icon_sha256": "ebd19321fb5cf44dbe2cdb686270010fbf1b2c0eb60bfc175f787de6db9ac6d2"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "label": "Companion Verification",
+            "package_name": "dev.droidbridge.companionfixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.companionfixture.MainActivity",
+            "version_code": 0,
+            "launchable": true
+          },
+          {
+            "launchable": true,
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.iconfixture",
+            "activity_name": "dev.droidbridge.iconfixture.LauncherAlias",
+            "icon_sha256": "4b6c844a17220651878ad21f8e3eefda9c4e2ec9a3a6a0dba519738f9c287f08",
+            "label": "Alias Icon Fixture",
+            "version_code": 0
+          },
+          {
+            "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+            "export_to_mac": true,
+            "label": "Input Alpha Updated",
+            "version_code": 2,
+            "icon_sha256": "e372924729acff0ac99908e67457665cfe69d68b51a3f2dfb2de6d9e513593c0",
+            "package_name": "dev.droidbridge.inputalpha",
+            "launchable": true
+          },
+          {
+            "export_to_mac": true,
+            "package_name": "dev.droidbridge.inputbeta",
+            "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+            "launchable": true,
+            "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87",
+            "version_code": 1,
+            "label": "Input Beta"
+          },
+          {
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 1,
+            "launchable": true,
+            "label": "DroidBridge adversarial peer fixture",
+            "export_to_mac": true,
+            "activity_name": "dev.droidbridge.peerattack.AttackActivity",
+            "package_name": "dev.droidbridge.peerattack"
+          },
+          {
+            "activity_name": "dev.droidbridge.testapp.MainActivity",
+            "version_code": 0,
+            "launchable": true,
+            "package_name": "dev.droidbridge.testapp",
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "export_to_mac": true
+          },
+          {
+            "launchable": true,
+            "label": "DroidBridge Test",
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "activity_name": "dev.droidbridge.testapp2.MainActivity",
+            "package_name": "dev.droidbridge.testapp2",
+            "version_code": 0,
+            "export_to_mac": true
+          },
+          {
+            "package_name": "dev.droidbridge.testapp3",
+            "activity_name": "dev.droidbridge.testapp3.MainActivity",
+            "launchable": true,
+            "icon_sha256": "543e2101c25e77b291eb76196975bc337cd4b9d093c9b46c93cd02386075f3a1",
+            "version_code": 0,
+            "label": "DroidBridge Test",
+            "export_to_mac": true
+          }
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "actions": [
+    {
+      "kind": "appkit_action",
+      "action": "set_field",
+      "ok": true,
+      "elapsed_ms": 53.86
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 214.49
+    },
+    {
+      "kind": "appkit_action",
+      "action": "set_field",
+      "ok": true,
+      "elapsed_ms": 105.09
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.5
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.7
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 109.2
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 103.86
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 103.19
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.98
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 109.26
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.43
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 108.73
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.42
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.73
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 104.16
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.42
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.02
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 109.52
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.13
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.54
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 107.6
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.8
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 108.07
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 50.55
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.41
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.93
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.78
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 103.83
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.45
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.09
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.89
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.22
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.76
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.43
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.15
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.83
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 107.13
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.58
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 109.53
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 104.98
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 104.99
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.94
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 103.99
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.28
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.37
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.26
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 111.5
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.53
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.62
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.94
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.13
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.99
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 109.4
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.29
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.49
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.34
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 108.68
+    },
+    {
+      "kind": "appkit_action",
+      "action": "capture",
+      "ok": true,
+      "elapsed_ms": 107.83
+    },
+    {
+      "kind": "appkit_action",
+      "action": "capture",
+      "ok": true,
+      "elapsed_ms": 111.36
+    }
+  ]
+}

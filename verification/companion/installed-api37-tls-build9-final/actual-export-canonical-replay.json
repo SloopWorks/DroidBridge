@@ -1,0 +1,114 @@
+{
+  "scope": "Actual installed9 broker+shipping main owner+real Android companion; same public NSXPC client connection; policy bytes hashed without exposing private journal/credentials.",
+  "before": {
+    "token": "0a27aba2-6d03-4468-827e-a56d602acb5d",
+    "trust_id": "cfc9427a-ae50-42b9-b3c4-1e58f15dd9a7",
+    "sessions": [],
+    "policy_sha256": "a7c8ca6d39f6751e5a4878ff81720bbd70edaa55d844eafcaf29dca3c2a978a3",
+    "policy_selection": {
+      "dev.droidbridge.inputalpha": false
+    }
+  },
+  "first_request_id": "4d8ef2b2-64aa-4166-8439-6d8dcf695c3e",
+  "first_rpc": {
+    "status": "ok",
+    "data": {
+      "status": "accepted",
+      "request_id": "4d8ef2b2-64aa-4166-8439-6d8dcf695c3e",
+      "result": {}
+    },
+    "requestID": "4D8EF2B2-64AA-4166-8439-6D8DCF695C3E"
+  },
+  "first_terminal": {
+    "requestID": "F35A8DBE-B474-442A-9EF9-345ED95789B2",
+    "data": {
+      "request_id": "4d8ef2b2-64aa-4166-8439-6d8dcf695c3e",
+      "result": {
+        "wrapper_created": true,
+        "phase": "active",
+        "selected": true
+      },
+      "status": "applied"
+    },
+    "status": "ok"
+  },
+  "after_change": {
+    "token": "d9095d1a-eb28-4490-865e-665f727db2f2",
+    "trust_id": "cfc9427a-ae50-42b9-b3c4-1e58f15dd9a7",
+    "sessions": [],
+    "policy_sha256": "394eda66a191f126baae110501fa96321c498ea962e30fa86f323e3e4fb4f4b9",
+    "policy_selection": {
+      "dev.droidbridge.inputalpha": true
+    }
+  },
+  "exact_replay_rpc": {
+    "requestID": "4D8EF2B2-64AA-4166-8439-6D8DCF695C3E",
+    "data": {
+      "status": "accepted",
+      "request_id": "4d8ef2b2-64aa-4166-8439-6d8dcf695c3e",
+      "result": {}
+    },
+    "status": "ok"
+  },
+  "replay_terminal": {
+    "requestID": "721B5E94-2050-4C92-9A99-BA30221B3682",
+    "data": {
+      "request_id": "4d8ef2b2-64aa-4166-8439-6d8dcf695c3e",
+      "result": {
+        "wrapper_created": true,
+        "phase": "active",
+        "selected": true
+      },
+      "status": "applied"
+    },
+    "status": "ok"
+  },
+  "after_replay": {
+    "token": "d9095d1a-eb28-4490-865e-665f727db2f2",
+    "trust_id": "cfc9427a-ae50-42b9-b3c4-1e58f15dd9a7",
+    "sessions": [],
+    "policy_sha256": "394eda66a191f126baae110501fa96321c498ea962e30fa86f323e3e4fb4f4b9",
+    "policy_selection": {
+      "dev.droidbridge.inputalpha": true
+    }
+  },
+  "new_identity_same_value": "9241788d-8ace-41e9-97e8-50a4b09b8694",
+  "new_identity_rpc": {
+    "requestID": "9241788D-8ACE-41E9-97E8-50A4B09B8694",
+    "data": {
+      "status": "accepted",
+      "request_id": "9241788d-8ace-41e9-97e8-50a4b09b8694",
+      "result": {}
+    },
+    "status": "ok"
+  },
+  "new_identity_terminal": {
+    "requestID": "B59031DD-DA2B-4203-A099-58F93AF663FC",
+    "data": {
+      "result": {
+        "wrapper_created": true,
+        "phase": "active",
+        "selected": true
+      },
+      "status": "applied",
+      "request_id": "9241788d-8ace-41e9-97e8-50a4b09b8694"
+    },
+    "status": "ok"
+  },
+  "after_new_identity_same_value": {
+    "token": "d9095d1a-eb28-4490-865e-665f727db2f2",
+    "trust_id": "cfc9427a-ae50-42b9-b3c4-1e58f15dd9a7",
+    "sessions": [],
+    "policy_sha256": "9a7b2fe07a980b5c0722bc5c723e50201d456009178cd9c89c3f428181c3914c",
+    "policy_selection": {
+      "dev.droidbridge.inputalpha": true
+    }
+  },
+  "token_changes_for_accepted_map_change": true,
+  "exact_replay_same_rpc_reply": true,
+  "exact_replay_no_policy_revision_change": true,
+  "exact_replay_no_token_change": true,
+  "same_value_new_identity_no_token_change": true,
+  "no_sessions_created": true,
+  "passed": true
+}

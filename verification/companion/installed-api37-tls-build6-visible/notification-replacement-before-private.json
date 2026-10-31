@@ -1,0 +1,14 @@
+{
+  "created": 815092166.906395,
+  "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+  "id": "29f75878-0523-4620-a763-a7fdf189f5c0",
+  "kind": "notification_posted",
+  "payload": {
+    "action_id": "557c3ccb-72c5-4823-be8f-3dd483830cc4",
+    "can_reply": true,
+    "notification_key": "9dff8307f3d8eae3b204191b948b555f15eb8dcd77c8aec5542e4033e21178d2",
+    "package_name": "dev.droidbridge.companionfixture",
+    "text": "Deterministic fixture generation 2",
+    "title": "Boundary notification 2"
+  }
+}

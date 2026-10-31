@@ -1,0 +1,36 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Emitting module DroidBridgeCoreTests
+[4/5] Compiling DroidBridgeCoreTests CanonicalAliasAdmissionTests.swift
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.76s)
+Test Suite 'Selected tests' started at 2026-10-30 16:56:56.177.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 16:56:56.178.
+Test Suite 'CanonicalAliasAdmissionTests' started at 2026-10-30 16:56:56.178.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testAbsentPolicyPreservesStandaloneAndCorruptPolicyFailsClosed]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testAbsentPolicyPreservesStandaloneAndCorruptPolicyFailsClosed]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testCanonicalAudioIntentSharesAliasesAndKeepsLegacyPhoneChoice]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testCanonicalAudioIntentSharesAliasesAndKeepsLegacyPhoneChoice]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testExplicitInstallationMoveCannotRekeyLiveCaptureAndPreservesStableLeaseIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testExplicitInstallationMoveCannotRekeyLiveCaptureAndPreservesStableLeaseIdentity]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testFirstPairingRefusesToRekeyStandaloneCaptureUntilDrained]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testFirstPairingRefusesToRekeyStandaloneCaptureUntilDrained]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSameAliasConcurrentAndOtherAliasRefusedUntilLastLeaseDrains]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSameAliasConcurrentAndOtherAliasRefusedUntilLastLeaseDrains]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testStopDuringAliasAdmissionDoesNotRetainLateLeaseOrRunADB]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testStopDuringAliasAdmissionDoesNotRetainLateLeaseOrRunADB]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSupervisorRetainsLeaseAndCrashGuardDrainsOwnedChild]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSupervisorRetainsLeaseAndCrashGuardDrainsOwnedChild]' passed (0.081 seconds).
+Test Suite 'CanonicalAliasAdmissionTests' passed at 2026-10-30 16:56:56.283.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.104 (0.105) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 16:56:56.283.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.104 (0.105) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 16:56:56.283.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.104 (0.106) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

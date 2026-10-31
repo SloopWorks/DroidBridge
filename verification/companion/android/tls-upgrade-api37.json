@@ -1,0 +1,31 @@
+{
+  "before": {
+    "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+    "server_pin": "82f9aeab82dcb375f75a490ad81a064e315da5211e033c8938928a930b05ee8d",
+    "pid": 6840,
+    "version_code": 1,
+    "settings": {
+      "clipboard_enabled": true,
+      "notifications_enabled": false,
+      "profile": "battery"
+    }
+  },
+  "after": {
+    "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+    "server_pin": "82f9aeab82dcb375f75a490ad81a064e315da5211e033c8938928a930b05ee8d",
+    "pid": 6914,
+    "version_code": 2,
+    "settings": {
+      "clipboard_enabled": true,
+      "notifications_enabled": false,
+      "profile": "battery"
+    }
+  },
+  "device_identity_preserved": true,
+  "certificate_pin_preserved": true,
+  "settings_preserved": true,
+  "changed_process": true,
+  "same_release_signer": true,
+  "clear_data_or_uninstall_used": false,
+  "trusted_mac_keychain_upgrade_verified": false
+}

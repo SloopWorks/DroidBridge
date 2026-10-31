@@ -1,0 +1,60 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/11] Compiling DroidBridgeCore CompanionBrokerService.swift
+[4/11] Emitting module DroidBridgeCore
+[5/15] Emitting module DroidBridgeAvailability
+[5/16] Write Objects.LinkFileList
+[7/16] Emitting module DroidBridgeCompanionBroker
+[7/17] Write Objects.LinkFileList
+[9/17] Emitting module DroidBridgeStreaming
+[9/19] Linking DroidBridgeCompanionBroker
+[9/19] Linking DroidBridgeAvailability
+[11/19] Applying DroidBridgeAvailability
+[11/19] Applying DroidBridgeCompanionBroker
+[14/19] Emitting module DroidBridgeCoreTests
+[14/19] Write Objects.LinkFileList
+[16/19] Emitting module DroidBridge
+[16/20] Write Objects.LinkFileList
+[17/20] Linking DroidBridgePackageTests
+[18/20] Linking DroidBridge
+[19/20] Applying DroidBridge
+Build complete! (3.91s)
+Test Suite 'Selected tests' started at 2026-10-30 12:48:25.103.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 12:48:25.104.
+Test Suite 'CompanionSecurityTests' started at 2026-10-30 12:48:25.104.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testCancellationDuringTLSHandshakeSendsNoApplicationBytes]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testCancellationDuringTLSHandshakeSendsNoApplicationBytes]' passed (0.268 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testCredentialsRejectHeaderInjectionAndWrongLength]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testCredentialsRejectHeaderInjectionAndWrongLength]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDeclaredAndStreamedOversizeAreRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDeclaredAndStreamedOversizeAreRejected]' passed (0.104 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDifferentTLSLeafCannotHarvestPairingSecretOrSavedBearer]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDifferentTLSLeafCannotHarvestPairingSecretOrSavedBearer]' passed (0.086 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDynamicPathsAndCommandNamesRejectBeforeNetwork]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDynamicPathsAndCommandNamesRejectBeforeNetwork]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testEndpointCannotRedirectAuthorityToNetworkOrUserInfo]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testEndpointCannotRedirectAuthorityToNetworkOrUserInfo]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testMalformedPNGIntegrityAndDimensionsRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testMalformedPNGIntegrityAndDimensionsRejected]' passed (0.051 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testMissingMalformedPinsFailBeforeTransport]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testMissingMalformedPinsFailBeforeTransport]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testPinnedCertificateMustAlsoMatchExpectedLoopbackHost]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testPinnedCertificateMustAlsoMatchExpectedLoopbackHost]' passed (0.046 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testRedirectIsRefusedRatherThanForwardingBearerCredential]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testRedirectIsRefusedRatherThanForwardingBearerCredential]' passed (0.051 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testUnauthenticatedProtectedRequestDoesNotAttemptNetwork]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testUnauthenticatedProtectedRequestDoesNotAttemptNetwork]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testUnknownProtocolCannotBeDecodedAsSuccess]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testUnknownProtocolCannotBeDecodedAsSuccess]' passed (0.051 seconds).
+Test Suite 'CompanionSecurityTests' passed at 2026-10-30 12:48:25.761.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.656 (0.657) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 12:48:25.761.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.656 (0.657) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 12:48:25.761.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.656 (0.658) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

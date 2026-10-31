@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-10-31T00:40:20.580744+00:00",
+  "previous_goal_turn_classification": "progress",
+  "previous_turn_evidence": [
+    "Committed packaging repair08dc203 and interpreter selection94b51c2",
+    "Fresh DMG-installed QA12 full offline validation, independent artifact/source acceptance, privacy audit"
+  ],
+  "current_goal_turn_classification": "no_progress_external_blocker_revalidated",
+  "consecutive_goal_turns_with_same_blocking_condition": 2,
+  "authoritative_current_observation": {
+    "tool": "mcp__cua_repl.js cua.getState()",
+    "error": "Native apps: The Mac is locked and automatic unlock could not unlock it. Ask the user to unlock the Mac manually before continuing."
+  },
+  "candidate_commit": "94b51c2fab719304e43381de1f7d1bf532276b61",
+  "current_worktree": "No tracked changes; only intended untracked verification/companion evidence",
+  "candidate_hash_recheck": {
+    "host": true,
+    "broker": true,
+    "apk": true,
+    "dmg": true
+  },
+  "completion_unproven": [
+    "QA12 installed GUI/native/fallback interaction",
+    "Unchanged declared quiet performance cohort and targets",
+    "Actual Spotlight and permission-dependent native banner delivery",
+    "Actual public prerelease/download installation then final release/merge/push"
+  ],
+  "safe_next_action": "Wait for user unlock; do not bypass lock or substitute an unsigned acceptance claim",
+  "goal_remains_active": true,
+  "reason_not_marked_blocked": "Same blocker has not reached three consecutive goal turns in this audit"
+}

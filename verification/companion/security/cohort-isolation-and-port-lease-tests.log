@@ -1,0 +1,66 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[4/12] Compiling DroidBridgeCore CompanionBrokerService.swift
+[5/12] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[5/16] Write Objects.LinkFileList
+[8/19] Linking DroidBridgeCompanionBroker
+[9/19] Linking DroidBridgeAvailability
+[10/19] Applying DroidBridgeCompanionBroker
+[11/19] Applying DroidBridgeAvailability
+[12/19] Linking DroidBridge
+[13/19] Applying DroidBridge
+[15/19] Compiling DroidBridgeCoreTests ScrcpyPortLeaseTests.swift
+[16/19] Emitting module DroidBridgeCoreTests
+[17/19] Compiling DroidBridgeCoreTests CompanionCleanupSecurityTests.swift
+[17/19] Write Objects.LinkFileList
+[18/19] Linking DroidBridgePackageTests
+Build complete! (4.75s)
+Test Suite 'Selected tests' started at 2026-10-30 14:01:09.934.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 14:01:09.935.
+Test Suite 'CompanionCleanupSecurityTests' started at 2026-10-30 14:01:09.935.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' passed (1.606 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testLegacyCredentialForAnotherPhoneCannotBlockHealthyNewAlias]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testLegacyCredentialForAnotherPhoneCannotBlockHealthyNewAlias]' passed (0.112 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringAuthenticatedIdentityCannotPublishLateAdmission]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringAuthenticatedIdentityCannotPublishLateAdmission]' passed (0.099 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringPinnedHelloCannotSendStoredBearerOrPublishAdmission]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringPinnedHelloCannotSendStoredBearerOrPublishAdmission]' passed (0.092 seconds).
+Test Suite 'CompanionCleanupSecurityTests' passed at 2026-10-30 14:01:11.844.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.909 (1.909) seconds
+Test Suite 'ScrcpyPortLeaseTests' started at 2026-10-30 14:01:11.844.
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testConcurrentLeasesAreDistinctAndReleaseIsReusable]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testConcurrentLeasesAreDistinctAndReleaseIsReusable]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testForeignListenerIsSkippedWithoutReplacement]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testForeignListenerIsSkippedWithoutReplacement]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testInheritedLeaseSurvivesHostReferenceReleaseWithoutListeningSocket]' started.
+Test Case '-[DroidBridgeCoreTests.ScrcpyPortLeaseTests testInheritedLeaseSurvivesHostReferenceReleaseWithoutListeningSocket]' passed (0.523 seconds).
+Test Suite 'ScrcpyPortLeaseTests' passed at 2026-10-30 14:01:12.370.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.525 (0.525) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 14:01:12.370.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 2.434 (2.435) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 14:01:12.370.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 2.434 (2.435) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

@@ -1,0 +1,79 @@
+{
+  "passed": false,
+  "scope": "Installed signed Mac app + real Android companion TLS/GUI flow; isolated QA paths",
+  "serial": "emulator-5582",
+  "physical_focus_verified": false,
+  "events": [
+    {
+      "kind": "installed_host_started",
+      "pid": 89309,
+      "executable_sha256": "02f9ecc40b2a9d7d769dee919b1f6f29bdab312b5f52be818b9e78590149a5a7",
+      "qa_scope": true
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 805.55
+    },
+    {
+      "kind": "appkit_action",
+      "action": "show_companion",
+      "ok": true,
+      "elapsed_ms": 161.56
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.18
+    },
+    {
+      "kind": "appkit_action",
+      "action": "select_adb",
+      "ok": true,
+      "elapsed_ms": 102.22
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 208.15
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.3
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.87
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.36
+    },
+    {
+      "kind": "gui_companion_install_confirmed",
+      "bundled_apk_sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029",
+      "exact_selected_device": "emulator-5582"
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 161.92
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Start connection service",
+      "monotonic": 1590483.300887166
+    }
+  ],
+  "error": "Interactive session requires separately recorded actual flow evidence"
+}

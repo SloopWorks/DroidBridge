@@ -1,0 +1,10 @@
+{
+  "cold_launch_target_verified" : false,
+  "explicit_launcher_builds_once" : true,
+  "launcher_ui_deferred_before_preview" : true,
+  "local_preview_visible" : true,
+  "passed" : true,
+  "reconnect_default_preserved" : true,
+  "reopen_preserves_control_state" : true,
+  "scope" : "Shipping AppKit with explicit wrapper and private QA flags; no ADB or broker started"
+}

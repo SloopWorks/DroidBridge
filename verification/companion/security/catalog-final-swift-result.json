@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "tests": 332,
+  "explicit_live_opt_in_skips": 4,
+  "failures": 0,
+  "seconds": 157.852,
+  "files_unchanged": 128,
+  "source": "catalog-final-swift-source-before.json",
+  "log": "catalog-final-swift-full.log"
+}

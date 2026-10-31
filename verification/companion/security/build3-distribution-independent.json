@@ -1,0 +1,39 @@
+{
+  "scope": "Independent read-only signature, shipped-file, source/archive/recipe, formula-cohort and DEBUG marker checks; not an installed GUI run",
+  "formula_versions": [
+    "brotli/1.2.0",
+    "dav1d/1.5.4",
+    "ffmpeg/9.0.2_1",
+    "lame/4.0",
+    "libusb/1.0.30",
+    "libvpx/1.17.0",
+    "lz4/1.10.0",
+    "mpg123/1.33.7",
+    "openssl@4/4.1.0",
+    "opus/1.6.1",
+    "sdl3/3.4.18",
+    "svt-av1/4.2.0",
+    "x264/r3222",
+    "x265/4.3",
+    "xz/5.8.4",
+    "zstd/1.5.7_1"
+  ],
+  "source_count": 16,
+  "source_manifest_sha256": "de2e30100b1b516c973bac0989a250569a9c32e8e7a430e3325b539645ec6a5b",
+  "runtime_manifest_sha256": "65dfa704cbde5802fe9e7a1c44f77c9dd9943653f0b5135fa8fca7f71a5c9cc9",
+  "all_source_hashes_verified": true,
+  "deep_signatures_verified": true,
+  "installed_binary_hashes_match": true,
+  "debug_markers_absent": [
+    "CompanionBrokerTestingHooks",
+    "qaAdditionalSerials",
+    "persist_before_write",
+    "persist_after_file_sync",
+    "persist_after_rename"
+  ],
+  "binaries": {
+    "Contents/MacOS/DroidBridge": "d776356fa9c2fc671a79794880b8c3ebe3b22828fa5a5fafca3ee314808f2ad5",
+    "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker": "246725b3bc2aff61df276ea166ec63f53f1755111c45f01cdee159bfcc80b846"
+  },
+  "apk_sha256": "b17b6bcae25cb3549ec696a868675807aa93fc316ae1327bd8af9ede5dfc31f5"
+}

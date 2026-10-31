@@ -1,0 +1,24 @@
+[
+  {
+    "name": "UnicodeCJK-v1",
+    "package": "dev.droidbridge.unicodefixture.cjk",
+    "label": "\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c\u754c",
+    "label_scalars": 86,
+    "label_utf16_units": 86,
+    "label_utf8_bytes": 258,
+    "version_code": 1,
+    "bytes": 12766,
+    "sha256": "f79db3d34eeb65a3f8213ee101c6221ae4921d722c40175f7d076f6857e34a4f"
+  },
+  {
+    "name": "UnicodeSupplementary-v1",
+    "package": "dev.droidbridge.unicodefixture.supplementary",
+    "label": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\ud83d\ude00",
+    "label_scalars": 256,
+    "label_utf16_units": 257,
+    "label_utf8_bytes": 259,
+    "version_code": 1,
+    "bytes": 12766,
+    "sha256": "f46cf8671358d2539ab8db0477f5916e95ac08d3ad26dbad9b82236a978e9f2c"
+  }
+]

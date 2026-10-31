@@ -1,0 +1,1 @@
+{"server_pin":"0630a92cc9e6dcb34e8db0dd3e5de275e6719f8ea6c63819775d47f4d3ef356e","negotiated":[{"protocol":"TLSv1.2","cipher":"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"},{"protocol":"TLSv1.3","cipher":"TLS_AES_128_GCM_SHA256"}],"private_key_exportable":false}

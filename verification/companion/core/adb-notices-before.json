@@ -1,0 +1,40 @@
+{
+  "manifest_sha256": "65dfa704cbde5802fe9e7a1c44f77c9dd9943653f0b5135fa8fca7f71a5c9cc9",
+  "files": [
+    {
+      "name": "adb",
+      "sha256": "e19f1bdac239722dbd7866ccf27c4d1de601bffc07a04c39a02daf9cbe4f8eab",
+      "size": 6994400
+    },
+    {
+      "name": "adb-libbrotlicommon.1.2.0.dylib",
+      "sha256": "5ecd35029a5c6d0880a1bf52cf8bce76469722803cad8de4517b4bdc45f00f18",
+      "size": 167264
+    },
+    {
+      "name": "adb-libbrotlidec.1.2.0.dylib",
+      "sha256": "7324d97b037e5450c6bd8fa7a3abedb00df9205c19d59517b9cde70a26bdd5b1",
+      "size": 87744
+    },
+    {
+      "name": "adb-libbrotlienc.1.2.0.dylib",
+      "sha256": "885c52592ad43411f2d61b00af488e23e336a2b8144f81c45f30fe304e2d2dc9",
+      "size": 653344
+    },
+    {
+      "name": "adb-liblz4.1.10.0.dylib",
+      "sha256": "394a5880300630f87ab4aada16845490e2b39c327d6605472a632858d5bcdc64",
+      "size": 178064
+    },
+    {
+      "name": "adb-libusb-1.0.0.dylib",
+      "sha256": "a60e0f5c4130253853af22421254ea4bd801fe282333256c1dfb5ff19fdb5000",
+      "size": 179808
+    },
+    {
+      "name": "adb-libzstd.1.5.7.dylib",
+      "sha256": "36a6fe2c93b7166f326c7da306761d59311e5514e7b201e57fe4b6300cc2c5e1",
+      "size": 649648
+    }
+  ]
+}

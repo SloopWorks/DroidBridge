@@ -1,0 +1,15 @@
+{
+  "events": [
+    {
+      "kind": "android_ui_action",
+      "action": "Favorite",
+      "monotonic": 1584390.168263416
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Open on Patrick\u2019s MacBook Pro",
+      "monotonic": 1584392.133695416
+    }
+  ],
+  "intent": "Actual phone selected second trust c665de, favorited Alpha and tapped Open after main Command-Q; completion pending actual window and receipt"
+}

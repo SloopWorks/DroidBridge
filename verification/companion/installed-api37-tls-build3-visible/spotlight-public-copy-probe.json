@@ -1,0 +1,60 @@
+{
+  "passed": false,
+  "scope": "Exact owned signed wrapper COPY in public Applications parent; never launched, no catalog/admission acceptance. Original private QA wrapper retained.",
+  "source": "/Users/patrick/Applications/DroidBridge Companion QA Data/Applications/d966c9c5e93ec89df8ebb92d/Input Alpha.app",
+  "target": "/Users/patrick/Applications/DroidBridge Spotlight Probe.app",
+  "queries": [
+    {
+      "attempt": 1,
+      "elapsed_seconds": 0,
+      "stdout": ""
+    },
+    {
+      "attempt": 2,
+      "elapsed_seconds": 1,
+      "stdout": ""
+    },
+    {
+      "attempt": 3,
+      "elapsed_seconds": 2,
+      "stdout": ""
+    },
+    {
+      "attempt": 4,
+      "elapsed_seconds": 3,
+      "stdout": ""
+    },
+    {
+      "attempt": 5,
+      "elapsed_seconds": 4,
+      "stdout": ""
+    },
+    {
+      "attempt": 6,
+      "elapsed_seconds": 5,
+      "stdout": ""
+    },
+    {
+      "attempt": 7,
+      "elapsed_seconds": 6,
+      "stdout": ""
+    },
+    {
+      "attempt": 8,
+      "elapsed_seconds": 7,
+      "stdout": ""
+    },
+    {
+      "attempt": 9,
+      "elapsed_seconds": 8,
+      "stdout": ""
+    },
+    {
+      "attempt": 10,
+      "elapsed_seconds": 9,
+      "stdout": ""
+    }
+  ],
+  "mdfind": "",
+  "cleanup": "exact owned probe copy removed after queries"
+}

@@ -1,0 +1,37 @@
+{
+  "owned_windows" : [
+    {
+      "bounds" : {
+        "Height" : 874,
+        "Width" : 561,
+        "X" : 467,
+        "Y" : 45
+      },
+      "pid" : 33732,
+      "title" : "DroidBridge · Input Beta",
+      "window_id" : 13900
+    },
+    {
+      "bounds" : {
+        "Height" : 20,
+        "Width" : 66,
+        "X" : 473,
+        "Y" : 51
+      },
+      "pid" : 31903,
+      "title" : "Window",
+      "window_id" : 13894
+    },
+    {
+      "bounds" : {
+        "Height" : 874,
+        "Width" : 561,
+        "X" : 467,
+        "Y" : 45
+      },
+      "pid" : 31903,
+      "title" : "DroidBridge · Input Alpha Updated",
+      "window_id" : 13893
+    }
+  ]
+}

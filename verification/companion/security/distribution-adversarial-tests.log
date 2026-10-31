@@ -1,0 +1,11 @@
+test_duplicate_manifest_identity_is_rejected (__main__.DistributionSecurityTests.test_duplicate_manifest_identity_is_rejected) ... ok
+test_missing_formula_source_refuses_archive_before_git_staging (__main__.DistributionSecurityTests.test_missing_formula_source_refuses_archive_before_git_staging) ... ok
+test_signed_replacement_adb_cannot_be_bound_by_old_manifest (__main__.DistributionSecurityTests.test_signed_replacement_adb_cannot_be_bound_by_old_manifest) ... ok
+test_signed_runtime_with_conflicting_hash_is_rejected (__main__.DistributionSecurityTests.test_signed_runtime_with_conflicting_hash_is_rejected) ... ok
+test_valid_runtime_is_accepted_without_starting_adb (__main__.DistributionSecurityTests.test_valid_runtime_is_accepted_without_starting_adb) ... ok
+test_validation_scripts_refuse_optimized_interpreter_before_admission (__main__.DistributionSecurityTests.test_validation_scripts_refuse_optimized_interpreter_before_admission) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.616s
+
+OK

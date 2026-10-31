@@ -1,0 +1,8 @@
+{
+  "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+  "server_pin": "82f9aeab82dcb375f75a490ad81a064e315da5211e033c8938928a930b05ee8d",
+  "service_running": true,
+  "observed_at": "2026-10-30T20:51:45.530929+00:00",
+  "trust_continuity": "Not asserted from unauthenticated hello; phone real trust not revoked by isolated test fixtures.",
+  "owned_forward_removed": true
+}

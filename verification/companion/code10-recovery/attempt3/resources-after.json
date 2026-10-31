@@ -1,0 +1,11 @@
+{
+  "owned_forwards": [],
+  "scrcpy_process_lines": [],
+  "staged_droidbridge_files": [],
+  "service_off": true,
+  "settings": {
+    "development_settings_enabled": "1",
+    "adb_enabled": "1",
+    "adb_wifi_enabled": "0"
+  }
+}

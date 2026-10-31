@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-10-31T00:34:49.501966+00:00",
+  "attempt": 1,
+  "exit_code": 1,
+  "committed_candidate": "08dc2039265761694a35201214b6f56de30daea6",
+  "failure": "Package PATH selected Homebrew Python3.15; plistlib import fails because pyexpat expects an unavailable libexpat symbol. Caller Python3.14 imports successfully.",
+  "published_dist_build_unchanged": "11",
+  "remediation": "Preserve caller-selected Python before Homebrew PATH additions and preflight required imports; no global dependency changes",
+  "evidence": "package-build12-attempt1-python-import-failure.log"
+}

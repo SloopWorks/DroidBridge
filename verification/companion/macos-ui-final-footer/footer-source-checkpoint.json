@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "Shipping AppKit plus anonymous NSXPC, no installed footer acceptance",
+  "sha256": {
+    "Sources/DroidBridge/CompanionLauncherIntegration.swift": "553ecfd17c6672901b4c1b98ba5900e9f78727a2b69959acadd01e95d3dffc6c",
+    "scripts/verify-companion-gui.swift": "92e0c7bc46def9103b0a81c129a9e9581ad70bed234b4cfe1f8972f84c818caf"
+  },
+  "assertions": [
+    "Complete1000-app companion snapshot replaces deliberately stale ADB footer",
+    "Incremental rename delta replaces deliberately stale pre-delta footer"
+  ]
+}

@@ -1,0 +1,26 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Emitting module DroidBridgeCoreTests
+[4/5] Compiling DroidBridgeCoreTests CompanionCleanupSecurityTests.swift
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.60s)
+Test Suite 'Selected tests' started at 2026-10-30 13:52:26.833.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 13:52:26.834.
+Test Suite 'CompanionCleanupSecurityTests' started at 2026-10-30 13:52:26.834.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringAuthenticatedIdentityCannotPublishLateAdmission]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/CompanionCleanupSecurityTests.swift:46: error: -[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringAuthenticatedIdentityCannotPublishLateAdmission] : XCTAssertEqual failed: ("435 bytes") is not equal to ("432 bytes") - A late identity response must not write state after the broker released its owner lock
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/CompanionCleanupSecurityTests.swift:47: error: -[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringAuthenticatedIdentityCannotPublishLateAdmission] : XCTAssertFalse failed - A stopped broker cannot publish a new alias authority
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testShutdownDuringAuthenticatedIdentityCannotPublishLateAdmission]' failed (0.190 seconds).
+Test Suite 'CompanionCleanupSecurityTests' failed at 2026-10-30 13:52:27.024.
+	 Executed 1 test, with 2 failures (0 unexpected) in 0.190 (0.190) seconds
+Test Suite 'DroidBridgePackageTests.xctest' failed at 2026-10-30 13:52:27.024.
+	 Executed 1 test, with 2 failures (0 unexpected) in 0.190 (0.190) seconds
+Test Suite 'Selected tests' failed at 2026-10-30 13:52:27.024.
+	 Executed 1 test, with 2 failures (0 unexpected) in 0.190 (0.191) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

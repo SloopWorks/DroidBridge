@@ -1,0 +1,141 @@
+{
+  "runtime_manifest_unchanged": true,
+  "runtime_manifest_sha256": "65dfa704cbde5802fe9e7a1c44f77c9dd9943653f0b5135fa8fca7f71a5c9cc9",
+  "bound_runtime_files": 7,
+  "source_closure_files": 1532,
+  "linked_static_archives": 81,
+  "generated_headers": [
+    {
+      "path": "abseil-release/options-pinned.h",
+      "sha256": "833a0000a9d1b8a864398c34f2f3fbe64156ad62afb146a9dd058b6563ed1a23",
+      "source": "abseil-cpp-20260817.0/absl/base/options.h",
+      "transform": "Abseil CMake C++17 ABI pin: STD_SOURCE_LOCATION=0, STD_ORDERING=0"
+    }
+  ],
+  "notices": [
+    {
+      "path": "notices/android-tools-LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "source": "android-tools-37.0.0/LICENSE"
+    },
+    {
+      "path": "notices/adb-NOTICE",
+      "sha256": "cf14d0774dd1e5f5ae0416edbc5c0de706c474e9402e3fe367e9103cd13891f7",
+      "source": "android-tools-37.0.0/vendor/adb/NOTICE"
+    },
+    {
+      "path": "notices/libbase-NOTICE",
+      "sha256": "e0afbb47be661ce2076d21a1d4dc02caa58b7c215ab7ff9d151b6724be341f77",
+      "source": "android-tools-37.0.0/vendor/libbase/NOTICE"
+    },
+    {
+      "path": "notices/libcutils-NOTICE",
+      "sha256": "38751245389e1e23f73e6f5384b5cbe7fa972cc4410c5adc9c04b082a0b9561a",
+      "source": "android-tools-37.0.0/vendor/core/libcutils/NOTICE"
+    },
+    {
+      "path": "notices/liblog-NOTICE",
+      "sha256": "f09747e3bc87e0ec3bdea983b37e18eeda223e01e678f76418a8a731ed8f590f",
+      "source": "android-tools-37.0.0/vendor/logging/liblog/NOTICE"
+    },
+    {
+      "path": "notices/boringssl-LICENSE",
+      "sha256": "827c8d8fc207c2392794eef9e00fe246f9f61fdcc132556c275be3dd8c3cd97f",
+      "source": "android-tools-37.0.0/vendor/boringssl/LICENSE"
+    },
+    {
+      "path": "notices/boringssl-fiat-LICENSE",
+      "sha256": "9eacbcb81be660840c714a560a9d65ba07913db98dd4baf969f78dd499fdd60f",
+      "source": "android-tools-37.0.0/vendor/boringssl/third_party/fiat/LICENSE"
+    },
+    {
+      "path": "notices/boringssl-fiat-AUTHORS",
+      "sha256": "ad74c036a6afaedc418fed65f171c877c2f74a4c70938a03930aa11c98a20508",
+      "source": "android-tools-37.0.0/vendor/boringssl/third_party/fiat/AUTHORS"
+    },
+    {
+      "path": "notices/fmt-LICENSE",
+      "sha256": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+      "source": "android-tools-37.0.0/vendor/fmtlib/LICENSE"
+    },
+    {
+      "path": "notices/fmt-NOTICE",
+      "sha256": "560d39617dfb4b4e4088597291a070ed6c3a8d67668114ed475c673430c3e49a",
+      "source": "android-tools-37.0.0/vendor/fmtlib/NOTICE"
+    },
+    {
+      "path": "notices/protobuf-LICENSE",
+      "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d",
+      "source": "protobuf-36.2/LICENSE"
+    },
+    {
+      "path": "notices/protobuf-utf8-range-LICENSE",
+      "sha256": "02de69b64fc36d9e938f418e52723e42f0b2b226d58a9cb3c8dcbdf7059f5074",
+      "source": "protobuf-36.2/third_party/utf8_range/LICENSE"
+    },
+    {
+      "path": "notices/abseil-LICENSE",
+      "sha256": "c79a7fea0e3cac04cd43f20e7b648e5a0ff8fa5344e644b0ee09ca1162b62747",
+      "source": "abseil-cpp-20260817.0/LICENSE"
+    },
+    {
+      "path": "notices/abseil-AUTHORS",
+      "sha256": "1fd39030c119b4c97014f59e0ad0ed65f23475bbdf55a52740f31eb82b34b4ee",
+      "source": "abseil-cpp-20260817.0/AUTHORS"
+    },
+    {
+      "path": "notices/googletest-LICENSE",
+      "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+      "source": "googletest-1.18.0/LICENSE"
+    },
+    {
+      "path": "notices/SOURCE_HEADER_NOTICES.txt",
+      "sha256": "e1e6eae1238e6bd4d0a1a414673f45fc9a42ec2936cc8f0fe5d5f9ae69b29a5b",
+      "source": "SOURCE_CLOSURE.json"
+    }
+  ],
+  "source_tree_verification": "freshly extracted pinned archives plus approved patches; verified before and after build",
+  "sources": [
+    {
+      "archive": "android-tools-37.0.0.tar.xz",
+      "name": "android-tools",
+      "sha256": "2725d09f892a3a38e534429f47a321f58ecf6a3169caa42c915fb2cb7d46be0e",
+      "staged_source": "sources/android-tools-37.0.0.tar.xz",
+      "tree_file_count": 7304,
+      "tree_sha256": "d1dc72186bd84fd38f70ccd0b75d7a215c9775f2839a81f42ca9de09e32dbd30",
+      "url": "https://github.com/nmeum/android-tools/releases/download/37.0.0/android-tools-37.0.0.tar.xz",
+      "version": "37.0.0"
+    },
+    {
+      "archive": "protobuf-36.2.tar.gz",
+      "name": "protobuf",
+      "sha256": "3d9642a662d10e68ebae5e53f14dcce5105684212d5078f8e0d47d1ab3ae6b64",
+      "staged_source": "sources/protobuf-36.2.tar.gz",
+      "tree_file_count": 3515,
+      "tree_sha256": "225f78962d61905fc58ba6c16f345d5a6ddf03bde1ba74374315933d5fb6313c",
+      "url": "https://github.com/protocolbuffers/protobuf/releases/download/v36.2/protobuf-36.2.tar.gz",
+      "version": "36.2"
+    },
+    {
+      "archive": "abseil-20260817.0.tar.gz",
+      "name": "abseil",
+      "sha256": "f7e05179df39c45434cad433f5783840bb3788ef322976f9138bc6b72b3a107d",
+      "staged_source": "sources/abseil-20260817.0.tar.gz",
+      "tree_file_count": 1602,
+      "tree_sha256": "5da63b4d8a7ea263802c10f6ab52cfae206727d47ca6935dded487a6f293be08",
+      "url": "https://github.com/abseil/abseil-cpp/archive/refs/tags/20260817.0.tar.gz",
+      "version": "20260817.0"
+    },
+    {
+      "archive": "googletest-1.18.0.tar.gz",
+      "name": "googletest",
+      "sha256": "6e3191c1455468b3fc35a417fb565c1c5071aee1b7e7f85e30cf48a98d37d8b5",
+      "staged_source": "sources/googletest-1.18.0.tar.gz",
+      "tree_file_count": 252,
+      "tree_sha256": "6e18146c80b5f26d1af8afab715f6209d0ca050b08d1b2f302c0646e39b9695d",
+      "url": "https://github.com/google/googletest/archive/refs/tags/v1.18.0.tar.gz",
+      "version": "1.18.0"
+    }
+  ],
+  "all_staged_hashes_verified": true
+}

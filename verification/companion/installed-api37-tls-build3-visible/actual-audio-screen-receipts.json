@@ -1,0 +1,79 @@
+{
+  "scope": "Actual persisted broker command receipts for exact selected QA phone and owning Mac processes; initialized does not prove audible sound",
+  "commands": [
+    {
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815089164.76,
+      "generation": 1,
+      "id": "cb2ad843-a355-41a8-b84e-16d69d981d90",
+      "kind": "set_audio_route",
+      "owner": {
+        "pid": 53733,
+        "start": 1793395564403287
+      },
+      "payload": {
+        "route": "phone"
+      },
+      "result": {
+        "phase": "phone",
+        "route": "phone"
+      },
+      "status": "applied"
+    },
+    {
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815089197.076,
+      "generation": 1,
+      "id": "ead062c6-1718-4c4b-bccc-425f2a4f8155",
+      "kind": "set_audio_route",
+      "owner": {
+        "pid": 53733,
+        "start": 1793395564403287
+      },
+      "payload": {
+        "route": "mac"
+      },
+      "result": {
+        "phase": "ready",
+        "route": "mac"
+      },
+      "status": "applied"
+    },
+    {
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815089242.0469999,
+      "generation": 1,
+      "id": "71fee8f4-1cac-40ff-b4b2-e0b2a87abdc2",
+      "kind": "retry_audio",
+      "owner": {
+        "pid": 53733,
+        "start": 1793395564403287
+      },
+      "payload": {},
+      "result": {
+        "phase": "ready",
+        "route": "mac"
+      },
+      "status": "applied"
+    },
+    {
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815089247.9070001,
+      "generation": 1,
+      "id": "7ad11edd-9d99-45c0-8b99-debc1ff69e10",
+      "kind": "set_screen_power",
+      "owner": {
+        "pid": 53733,
+        "start": 1793395564403287
+      },
+      "payload": {
+        "off": true
+      },
+      "result": {
+        "state": "off",
+        "verified": true
+      },
+      "status": "applied"
+    }
+  ]
+}

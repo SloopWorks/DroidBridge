@@ -1,0 +1,156 @@
+{
+  "before": {
+    "devices": [
+      {
+        "aliases": [
+          "emulator-5582"
+        ],
+        "serial": "emulator-5582",
+        "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+        "paired": true,
+        "capabilities": [
+          "catalog",
+          "icons",
+          "events",
+          "commands",
+          "sessions",
+          "share",
+          "files",
+          "clipboard",
+          "notifications",
+          "notification_replies",
+          "profiles",
+          "diagnostics",
+          "delivery",
+          "state_heartbeat",
+          "clock_anchor_v1",
+          "notification_scope_v2"
+        ],
+        "catalog_change_token": "ba79b3f7-a45d-4930-9313-eb1efcc79891",
+        "enabled": true,
+        "profile": "balanced",
+        "trust_id": "316745f7-69e1-41cb-853c-7b9a3f6149d9",
+        "device_name": "Google sdk_gphone16k_arm64",
+        "connected": true,
+        "connection_error": null
+      }
+    ],
+    "pending_pairings": [],
+    "sessions": [
+      {
+        "generation": 1,
+        "owner": {
+          "pid": 20973,
+          "start": 1793405054482910
+        },
+        "serial": "emulator-5582",
+        "label": "Input Alpha Updated",
+        "session_id": "6CB75B09-53BF-448D-AC25-A535BE3481A5",
+        "package": "dev.droidbridge.inputalpha",
+        "phase": "running",
+        "backend": "native",
+        "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa"
+      }
+    ],
+    "broker_version": 1
+  },
+  "offline": {
+    "devices": [
+      {
+        "trust_id": "316745f7-69e1-41cb-853c-7b9a3f6149d9",
+        "connected": false,
+        "capabilities": [],
+        "serial": "emulator-5582",
+        "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+        "paired": true,
+        "enabled": true,
+        "catalog_change_token": "ba79b3f7-a45d-4930-9313-eb1efcc79891",
+        "profile": "balanced",
+        "device_name": "Google sdk_gphone16k_arm64",
+        "aliases": [
+          "emulator-5582"
+        ],
+        "connection_error": "connection_lost"
+      }
+    ],
+    "sessions": [
+      {
+        "serial": "emulator-5582",
+        "phase": "running",
+        "generation": 1,
+        "owner": {
+          "start": 1793405054482910,
+          "pid": 20973
+        },
+        "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+        "session_id": "6CB75B09-53BF-448D-AC25-A535BE3481A5",
+        "label": "Input Alpha Updated",
+        "package": "dev.droidbridge.inputalpha",
+        "backend": "native"
+      }
+    ],
+    "pending_pairings": [],
+    "broker_version": 1
+  },
+  "after": {
+    "devices": [
+      {
+        "trust_id": "316745f7-69e1-41cb-853c-7b9a3f6149d9",
+        "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+        "catalog_change_token": "cce1d680-262d-446e-90ac-d91ce9ddb7c9",
+        "paired": true,
+        "aliases": [
+          "emulator-5582"
+        ],
+        "profile": "balanced",
+        "device_name": "Google sdk_gphone16k_arm64",
+        "capabilities": [
+          "catalog",
+          "icons",
+          "events",
+          "commands",
+          "sessions",
+          "share",
+          "files",
+          "clipboard",
+          "notifications",
+          "notification_replies",
+          "profiles",
+          "diagnostics",
+          "delivery",
+          "state_heartbeat",
+          "clock_anchor_v1",
+          "notification_scope_v2"
+        ],
+        "connected": true,
+        "connection_error": null,
+        "serial": "emulator-5582",
+        "enabled": true
+      }
+    ],
+    "sessions": [
+      {
+        "backend": "native",
+        "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+        "session_id": "6CB75B09-53BF-448D-AC25-A535BE3481A5",
+        "package": "dev.droidbridge.inputalpha",
+        "owner": {
+          "start": 1793405054482910,
+          "pid": 20973
+        },
+        "generation": 1,
+        "serial": "emulator-5582",
+        "label": "Input Alpha Updated",
+        "phase": "running"
+      }
+    ],
+    "pending_pairings": [],
+    "broker_version": 1
+  },
+  "reconnect_ms": 33684.89,
+  "same_trust": true,
+  "same_session": true,
+  "same_main_pid": true,
+  "native_log_grew_during_companion_offline": true,
+  "passed": true
+}

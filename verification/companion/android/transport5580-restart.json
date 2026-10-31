@@ -1,0 +1,9 @@
+{
+  "old_pid": 71398,
+  "old_command": "/Users/patrick/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64-headless -avd DroidBridge_API35 -port 5580 -no-window -no-snapshot -gpu auto",
+  "reason": "Shared5037 emulator5580 offline after exact isolated5038 server disconnected",
+  "global_adb_server_restarted": false,
+  "method": "authenticated console restart; no wipe/snapshot flags changed",
+  "restart_response": "OK: restarting emulator, bye bye\r\nOK",
+  "recovered": false
+}

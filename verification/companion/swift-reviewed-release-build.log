@@ -1,0 +1,36 @@
+[0/1] Planning build
+Building for production...
+[0/13] Write sources
+[4/13] Write swift-version--58304C5D6DBC2206.txt
+[5/14] Compiling DroidBridgeSupervisor main.c
+[6/15] Write Objects.LinkFileList
+[7/15] Linking DroidBridgeSupervisor
+[9/15] Compiling DroidBridgeCore ADBPortableRuntime.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[10/18] Compiling DroidBridgeCompanionBroker main.swift
+[10/18] Write Objects.LinkFileList
+[12/18] Compiling DroidBridgeAvailability main.swift
+[12/18] Write Objects.LinkFileList
+[13/18] Linking DroidBridgeCompanionBroker
+[14/18] Linking DroidBridgeAvailability
+[16/18] Compiling DroidBridgeStreaming BridgeSession.swift
+[17/19] Compiling DroidBridge AudioControls.swift
+[17/19] Write Objects.LinkFileList
+[18/19] Linking DroidBridge
+Build complete! (40.59s)

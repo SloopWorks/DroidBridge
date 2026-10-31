@@ -1,0 +1,23 @@
+{
+  "candidate": "installed QA5",
+  "app_path": "/Users/patrick/Applications/DroidBridge Companion QA5.app",
+  "files": {
+    "Contents/MacOS/DroidBridge": "8fba9ef67ffdccf170e211761f92ff4137e5dbf41f2166363a7bf64a2819dc5b",
+    "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker": "de0d13759075af09ba4832e3ca10ed4258725411b400cf2e4fa94472a7a164ad",
+    "Contents/Resources/Runtime/bin/DroidBridgeSupervisor": "06060ed6b73c5109118edeee9764a24d2a3cb6da92bd193d2c26fa84f91ee1b8",
+    "Contents/Resources/Runtime/bin/adb": "e19f1bdac239722dbd7866ccf27c4d1de601bffc07a04c39a02daf9cbe4f8eab",
+    "Contents/Resources/Runtime/bin/DroidBridgeAudioClient": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+    "Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+    "Contents/Resources/Runtime/share/scrcpy/scrcpy-server": "764eb6f79811d5211fe9df341120882ba9994c7a61b897d7bf3fb662e53bc536",
+    "Contents/Resources/Companion/DroidBridgeCompanion.apk": "0bddc834ac688fedb23d18138a59ea39c6fd7f4d3ecda0d0f63759d8ab999ee9"
+  },
+  "apk_expected_sha256": "0bddc834ac688fedb23d18138a59ea39c6fd7f4d3ecda0d0f63759d8ab999ee9",
+  "initial_android": {
+    "service_running": false,
+    "font_scale": "1.0",
+    "density": "420",
+    "development_settings_enabled": "1",
+    "adb_enabled": "1",
+    "adb_wifi_enabled": "0"
+  }
+}

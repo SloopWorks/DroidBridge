@@ -1,0 +1,20 @@
+{
+  "pixels" : [
+    1800,
+    1584
+  ],
+  "scope" : "Actual WindowServer ScreenCaptureKit capture of only exact owned windows; original desktop positions preserved; all foreign windows excluded",
+  "windows" : [
+    {
+      "frame" : {
+        "height" : 792,
+        "width" : 900,
+        "x" : 298,
+        "y" : 66
+      },
+      "pid" : 53733,
+      "title" : "DroidBridge Companion",
+      "window_id" : 13124
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "source": "Actual dumpsys display parsed after CUA physical d key and pointer tap",
+  "physical_display_state": [
+    "OFF",
+    "OFF"
+  ],
+  "raw_virtual_input": "phone-off-beta-input-raw-android.xml",
+  "motion_screenshot": "phone-off-native-windowserver/two-native-windows.png",
+  "scope": "Exact owned API37 emulator; no physical Pixel claim"
+}

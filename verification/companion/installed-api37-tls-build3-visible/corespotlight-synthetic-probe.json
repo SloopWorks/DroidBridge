@@ -1,0 +1,11 @@
+{
+  "bundle_id" : "dev.droidbridge.qa.spotlight.5f795969af9a4879bfca0fc5bece6aa0",
+  "exact_item_cleanup_confirmed" : true,
+  "index_name" : "DroidBridgeQA-555945e1-b1a7-417c-b85d-b448a22a0563",
+  "index_request_succeeded" : true,
+  "indexing_available" : true,
+  "query_error" : null,
+  "query_matched_own_item" : true,
+  "scope" : "Distinct temporary QA app and named CoreSpotlight index; no production index or wrapper launch; synthetic item expires in120s",
+  "spotlight_ui_launch_verified" : false
+}

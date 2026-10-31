@@ -1,0 +1,32 @@
+[
+  {
+    "elapsed": 0,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "elapsed": 2,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "elapsed": 4,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "elapsed": 6,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "elapsed": 8,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  }
+]

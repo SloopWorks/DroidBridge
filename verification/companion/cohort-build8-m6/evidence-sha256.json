@@ -1,0 +1,13 @@
+{
+  "REPORT.md": "c8c5b16a36d024d6a75c80434174c1c81483ccc0fc49cd65f69876730db576f5",
+  "bridge-function-bindings.json": "fc58bfd8d8e5f03536aee45e1b369932c44d5a7821ac1db6967f5bcc2bcaf158",
+  "broker-function-bindings.json": "4c193953cdadb2016c7fc0cf9f88e7e26780de41d2bb7ea58a9cd862a36aa3eb",
+  "icon-helper-jar-comparison.json": "d64e39de6dffb25c59dbe38ae0ccefa2c83059205dad2b27936862a547de18fb",
+  "packaging-binding.json": "5ebe66bab790c17a1291cdf5ef20485ab8b05a54a711c28d68ae99229aa42449",
+  "prior-runtime-record-binding.json": "d4fcc543cdc324c2c149337b3a7d5994dbcb29ddf779d19c3ff1e34edafb68b3",
+  "qa6-inventory.json": "dc1a9fc02f90f84394326a5c4440b0d96a0b6b95d8ce067e6a3b508ebb876b03",
+  "qa8-inventory.json": "35794627f2cfdfc2341f4a9bb757f73c620bcc1ed0241ba9e5bf49bd6d833c1c",
+  "relevant-source.diff": "c07ecdf5296db6861a10c8c1e4e3d87a62611587b6f4fa5366cb706614535d2d",
+  "runtime-comparison.json": "317f570a7f4186011726b72b1a38076760507b57d74313165067dc0f85b6a746",
+  "source-bindings.json": "023655e2e83c01cdec017209edcb5925de51429a1fcfb4cc212fc6ad33555fdb"
+}

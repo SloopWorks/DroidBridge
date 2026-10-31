@@ -1,0 +1,41 @@
+
+dev.droidbridge.companion.CompanionStagingDeadlineTest:
+Error in stalledPipeDeadlineAndCancelUnblockReadersAndRestoreCapacity(dev.droidbridge.companion.CompanionStagingDeadlineTest):
+java.lang.SecurityException: Permission Denial: opening provider dev.droidbridge.companion.StalledTransferProvider from ProcessRecord{a1c08e8 25831:dev.droidbridge.companion/u0a234} (pid=25831, uid=10234) that is not exported from UID 10236
+	at android.os.Parcel.createExceptionOrNull(Parcel.java:3392)
+	at android.os.Parcel.createException(Parcel.java:3376)
+	at android.os.Parcel.readException(Parcel.java:3359)
+	at android.os.Parcel.readException(Parcel.java:3301)
+	at android.app.IActivityManager$Stub$Proxy.getContentProvider(IActivityManager.java:6601)
+	at android.app.ActivityThread.acquireProvider(ActivityThread.java:8702)
+	at android.app.ContextImpl$ApplicationContentResolver.acquireUnstableProvider(ContextImpl.java:4079)
+	at android.content.ContentResolver.acquireUnstableProvider(ContentResolver.java:2627)
+	at android.content.ContentResolver.query(ContentResolver.java:1253)
+	at android.content.ContentResolver.query(ContentResolver.java:1200)
+	at android.content.ContentResolver.query(ContentResolver.java:1155)
+	at dev.droidbridge.companion.CompanionStagingDeadlineTest.stalledPipeDeadlineAndCancelUnblockReadersAndRestoreCapacity$pipeCount(CompanionStagingDeadlineTest.kt:29)
+	at dev.droidbridge.companion.CompanionStagingDeadlineTest.stalledPipeDeadlineAndCancelUnblockReadersAndRestoreCapacity(CompanionStagingDeadlineTest.kt:32)
+
+
+Time: 5.209
+There was 1 failure:
+1) stalledPipeDeadlineAndCancelUnblockReadersAndRestoreCapacity(dev.droidbridge.companion.CompanionStagingDeadlineTest)
+java.lang.SecurityException: Permission Denial: opening provider dev.droidbridge.companion.StalledTransferProvider from ProcessRecord{a1c08e8 25831:dev.droidbridge.companion/u0a234} (pid=25831, uid=10234) that is not exported from UID 10236
+	at android.os.Parcel.createExceptionOrNull(Parcel.java:3392)
+	at android.os.Parcel.createException(Parcel.java:3376)
+	at android.os.Parcel.readException(Parcel.java:3359)
+	at android.os.Parcel.readException(Parcel.java:3301)
+	at android.app.IActivityManager$Stub$Proxy.getContentProvider(IActivityManager.java:6601)
+	at android.app.ActivityThread.acquireProvider(ActivityThread.java:8702)
+	at android.app.ContextImpl$ApplicationContentResolver.acquireUnstableProvider(ContextImpl.java:4079)
+	at android.content.ContentResolver.acquireUnstableProvider(ContentResolver.java:2627)
+	at android.content.ContentResolver.query(ContentResolver.java:1253)
+	at android.content.ContentResolver.query(ContentResolver.java:1200)
+	at android.content.ContentResolver.query(ContentResolver.java:1155)
+	at dev.droidbridge.companion.CompanionStagingDeadlineTest.stalledPipeDeadlineAndCancelUnblockReadersAndRestoreCapacity$pipeCount(CompanionStagingDeadlineTest.kt:29)
+	at dev.droidbridge.companion.CompanionStagingDeadlineTest.stalledPipeDeadlineAndCancelUnblockReadersAndRestoreCapacity(CompanionStagingDeadlineTest.kt:32)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+

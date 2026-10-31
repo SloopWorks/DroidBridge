@@ -1,0 +1,9 @@
+{
+  "server_pid": 63745,
+  "port": 5039,
+  "exact_target": "127.0.0.1:5581",
+  "usb": false,
+  "mdns": false,
+  "emulator_scan": false,
+  "owned_server_stopped": true
+}

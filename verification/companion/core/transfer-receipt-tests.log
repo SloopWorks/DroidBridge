@@ -1,0 +1,44 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling DroidBridgeCoreTests CompanionBoundaryTests.swift
+[4/5] Emitting module DroidBridgeCoreTests
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.15s)
+Test Suite 'Selected tests' started at 2026-10-30 12:32:04.776.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 12:32:04.776.
+Test Suite 'CompanionBoundaryTests' started at 2026-10-30 12:32:04.776.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCancellationBeforeStartAndWhileReceivingCompletesOnce]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCancellationBeforeStartAndWhileReceivingCompletesOnce]' passed (0.153 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCatalogDeletedIdentityAndUTF8ByteBound]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCatalogDeletedIdentityAndUTF8ByteBound]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testDeepJSONAndNonUTF8AreRejectedBeforeDecoding]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testDeepJSONAndNonUTF8AreRejectedBeforeDecoding]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testForwardNoRebindAndExactCleanupWithOwnedFakeADB]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testForwardNoRebindAndExactCleanupWithOwnedFakeADB]' passed (0.700 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testHelloRequiresUUIDAndPositiveOrderedProtocolRange]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testHelloRequiresUUIDAndPositiveOrderedProtocolRange]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testKeychainCredentialRoundTripUsesDedicatedRandomIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testKeychainCredentialRoundTripUsesDedicatedRandomIdentity]' passed (0.029 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPairingAndAuthenticatedIdentityBindExpectedInstallation]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPairingAndAuthenticatedIdentityBindExpectedInstallation]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPNGMustActuallyDecodeAndValidPNGPasses]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPNGMustActuallyDecodeAndValidPNGPasses]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testRequestCorrelationAndMIMEAreRequired]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testRequestCorrelationAndMIMEAreRequired]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testTransferReceiptAcknowledgesOnlyVerifiedWholeFileMetadata]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testTransferReceiptAcknowledgesOnlyVerifiedWholeFileMetadata]' passed (0.002 seconds).
+Test Suite 'CompanionBoundaryTests' passed at 2026-10-30 12:32:05.684.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.906 (0.907) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 12:32:05.684.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.906 (0.907) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 12:32:05.684.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.906 (0.908) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

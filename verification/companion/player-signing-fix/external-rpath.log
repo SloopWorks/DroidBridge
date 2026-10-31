@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-package.py", line 240, in <module>
+    main()
+    ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-package.py", line 188, in main
+    report = {'app': str(app), 'player_bundle': verify_player_bundle(app)}
+                                                ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-package.py", line 147, in verify_player_bundle
+    code = verify_machos(player, player / 'Contents/MacOS/scrcpy')
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-package.py", line 82, in verify_machos
+    for dependency in deps: resolve_dependency(dependency, file, executable, root)
+                            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-package.py", line 54, in resolve_dependency
+    assert entry.startswith(('@loader_path/', '@executable_path/')), f'external or unsupported rpath {loader}: {entry}'
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: external or unsupported rpath /Users/patrick/workspace/DroidBridge/.build/player-signing-proof/external-rpath/Player.app/Contents/MacOS/scrcpy: /opt/homebrew/lib

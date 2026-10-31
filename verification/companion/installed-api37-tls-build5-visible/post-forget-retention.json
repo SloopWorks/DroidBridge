@@ -1,0 +1,9 @@
+{
+  "boundary": "after actual MacForget + phoneoldtrustrevoke + failed APK8 freshpair + orphancleanup",
+  "selection_retained": true,
+  "selection": {
+    "dev.droidbridge.inputalpha": true,
+    "dev.droidbridge.inputbeta": true
+  },
+  "paired_retention_not_yet_verified": true
+}

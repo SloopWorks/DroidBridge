@@ -1,0 +1,27 @@
+[0/1] Planning build
+Building for debugging...
+[0/1] Write swift-version--58304C5D6DBC2206.txt
+[1/2] Write sources
+[3/5] Compiling DroidBridgeCore CompanionBrokerTestingHooks.swift
+[4/5] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[5/5] Compiling DroidBridgeCore CompanionBrokerService.swift
+[6/7] Emitting module DroidBridgeCompanionBroker
+[7/7] Compiling DroidBridgeCompanionBroker main.swift
+Build of target: 'DroidBridgeCompanionBroker' complete! (4.13s)

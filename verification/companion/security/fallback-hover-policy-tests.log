@@ -1,0 +1,80 @@
+[0/1] Planning build
+Building for debugging...
+[0/11] Write sources
+[3/11] Write swift-version--58304C5D6DBC2206.txt
+[5/13] Compiling DroidBridgeCore CompanionBrokerService.swift
+[6/13] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[6/16] Write Objects.LinkFileList
+[8/18] Linking DroidBridgeAvailability
+[8/18] Linking DroidBridgeCompanionBroker
+[10/18] Applying DroidBridgeCompanionBroker
+[10/18] Applying DroidBridgeAvailability
+[13/18] Compiling DroidBridgeStreaming BridgeSession.swift
+[14/18] Emitting module DroidBridgeStreaming
+[15/19] Compiling DroidBridgeStreaming SessionRecovery.swift
+[16/40] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[17/40] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[18/40] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[19/40] Compiling DroidBridgeCoreTests CanonicalAliasAdmissionTests.swift
+[20/40] Emitting module DroidBridgeCoreTests
+[21/40] Compiling DroidBridgeCoreTests BrokerAdmissionTLSPeer.swift
+[22/43] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[23/43] Compiling DroidBridgeCoreTests StreamingTests.swift
+[24/43] Compiling DroidBridgeCoreTests CompanionNotificationSecurityTests.swift
+[25/43] Compiling DroidBridge ManagedAppNameRepair.swift
+[26/43] Compiling DroidBridge LauncherUI.swift
+[27/43] Compiling DroidBridge main.swift
+[28/43] Compiling DroidBridge NativeWindow.swift
+[29/43] Compiling DroidBridge PhoneDisplayControls.swift
+[30/43] Compiling DroidBridgeCoreTests CompanionBrokerTLSRaceTests.swift
+[31/43] Compiling DroidBridgeCoreTests CompanionCleanupSecurityTests.swift
+[32/43] Compiling DroidBridgeCoreTests CompanionCommandSecurityTests.swift
+[32/43] Write Objects.LinkFileList
+[34/43] Compiling DroidBridge Launcher.swift
+[35/43] Compiling DroidBridge DeviceOnboardingUI.swift
+[35/43] Linking DroidBridgePackageTests
+[37/43] Compiling DroidBridge AudioControls.swift
+[38/43] Compiling DroidBridge CompanionWindow.swift
+[39/43] Emitting module DroidBridge
+[40/43] Compiling DroidBridge CompanionDesktopAdapter.swift
+[41/43] Compiling DroidBridge CompanionLauncherIntegration.swift
+[41/44] Write Objects.LinkFileList
+[42/44] Linking DroidBridge
+[43/44] Applying DroidBridge
+Build complete! (7.88s)
+Test Suite 'Selected tests' started at 2026-10-30 15:46:55.183.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 15:46:55.184.
+Test Suite 'HiddenIMEArgumentTests' started at 2026-10-30 15:46:55.184.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testBothActualSpawnPathsAlwaysHideIMEForNewAndRestoredSessions]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testBothActualSpawnPathsAlwaysHideIMEForNewAndRestoredSessions]' passed (40.355 seconds).
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testFallbackSuppressesButtonlessHoverAcrossSupportedAndroidVersions]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testFallbackSuppressesButtonlessHoverAcrossSupportedAndroidVersions]' passed (4.549 seconds).
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testUnsupportedOrUnknownSDKFailsBeforeAppResolutionStagingOrChildLaunch]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testUnsupportedOrUnknownSDKFailsBeforeAppResolutionStagingOrChildLaunch]' passed (4.561 seconds).
+Test Suite 'HiddenIMEArgumentTests' passed at 2026-10-30 15:47:44.650.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 49.465 (49.466) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 15:47:44.650.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 49.465 (49.466) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 15:47:44.650.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 49.465 (49.467) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

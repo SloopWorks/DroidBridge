@@ -1,0 +1,26 @@
+{
+  "events": [
+    {
+      "kind": "android_ui_action",
+      "action": "Copy received text",
+      "monotonic": 1587891.007486083
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Paste clipboard",
+      "monotonic": 1587899.05219
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Send to Patrick\u2019s MacBook Pro",
+      "monotonic": 1587903.009940583
+    }
+  ],
+  "pasted_sentinel_matches": true,
+  "pass": true,
+  "mac_send_clipboard_receipt": "applied",
+  "mac_received_text": "DroidBridge explicit clipboard QA6",
+  "mac_explicit_copy_verified_by_exact_pasteboard_match": true,
+  "original_mac_clipboard_all_types_restored": true,
+  "scope": "RealinstalledGUI explicitMacCopy/SendClipboard\u2192pinnedphoneReceived\u2192explicitphoneCopy/Paste/Send\u2192MacInboxCopy; synthetictextonly"
+}

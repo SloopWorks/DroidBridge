@@ -1,0 +1,72 @@
+{
+  "scope": "Actual phone Apps checkbox, exact selected trust cfc942 -> targeted companion event -> public broker accepted map/token -> shipping Mac checkbox. No Refresh.",
+  "changes": [
+    {
+      "chosen": false,
+      "before": {
+        "token": "8e22dd06-d777-4c3b-83ca-2024ead63a81",
+        "selection": {
+          "dev.droidbridge.inputbeta": true,
+          "dev.droidbridge.inputalpha": true
+        }
+      },
+      "after": {
+        "token": "25ee3e2f-b876-4ecc-a50a-e4e5780b5931",
+        "selection": {
+          "dev.droidbridge.inputbeta": true,
+          "dev.droidbridge.inputalpha": false
+        }
+      },
+      "mac_checkbox": {
+        "label": "Export Input Alpha Updated to Spotlight",
+        "title": "Input Alpha Updated",
+        "enabled": true,
+        "state": 0
+      },
+      "elapsed_ms": 9364.98,
+      "phone_texts": [
+        "Using: Patrick\u2019s MacBook Pro \u00b7 Connected",
+        "Completed on Patrick\u2019s MacBook Pro: set export",
+        "Apps on your Mac",
+        "Spotlight choices apply to the selected Mac. Publication status is shown on that Mac \u2192 Companion \u2192 Apps.",
+        "inputalpha",
+        "Input Alpha Updated"
+      ],
+      "passed": true
+    },
+    {
+      "chosen": true,
+      "before": {
+        "token": "25ee3e2f-b876-4ecc-a50a-e4e5780b5931",
+        "selection": {
+          "dev.droidbridge.inputbeta": true,
+          "dev.droidbridge.inputalpha": false
+        }
+      },
+      "after": {
+        "token": "00369ad1-c9d7-4991-8127-8a0624f6d0b9",
+        "selection": {
+          "dev.droidbridge.inputbeta": true,
+          "dev.droidbridge.inputalpha": true
+        }
+      },
+      "mac_checkbox": {
+        "label": "Export Input Alpha Updated to Spotlight",
+        "title": "Input Alpha Updated",
+        "enabled": true,
+        "state": 1
+      },
+      "elapsed_ms": 8914.44,
+      "phone_texts": [
+        "Using: Patrick\u2019s MacBook Pro \u00b7 Connected",
+        "Spotlight choice saved on phone and queued for this Mac. Availability is not confirmed yet.",
+        "Apps on your Mac",
+        "Spotlight choices apply to the selected Mac. Publication status is shown on that Mac \u2192 Companion \u2192 Apps.",
+        "inputalpha",
+        "Input Alpha Updated"
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

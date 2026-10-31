@@ -1,0 +1,27 @@
+{
+  "scope": "Exact production package preflight/header run with isolated caller PATHs; no packaging work or bundled runtime executed, no global environment mutation",
+  "package_script_sha256": "5d31894443c23445b027e22d3b6cb8b79ede44a128329810644f6d41c9371ac7",
+  "fixture": "/Users/patrick/workspace/DroidBridge/.build/security-package-python-68_lhp8g",
+  "cases": {
+    "caller-before-brew": {
+      "exit": 0,
+      "stdout": "Package Python: /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 3.14.5\nSelected: /Library/Frameworks/Python.framework/Versions/3.14/bin/python3\n/Library/Frameworks/Python.framework/Versions/3.14/bin/python3\n",
+      "stderr": ""
+    },
+    "space-path": {
+      "exit": 0,
+      "stdout": "Package Python: /Users/patrick/workspace/DroidBridge/.build/security-package-python-68_lhp8g/Python with spaces/python3 3.14.5\nSelected: /Users/patrick/workspace/DroidBridge/.build/security-package-python-68_lhp8g/Python with spaces/python3\n/Users/patrick/workspace/DroidBridge/.build/security-package-python-68_lhp8g/Python with spaces/python3\n",
+      "stderr": ""
+    },
+    "relative-path": {
+      "exit": 0,
+      "stdout": "Package Python: /Users/patrick/workspace/DroidBridge/.build/security-package-python-68_lhp8g/relative/python3 3.14.5\nSelected: /Users/patrick/workspace/DroidBridge/.build/security-package-python-68_lhp8g/relative/python3\n/Users/patrick/workspace/DroidBridge/.build/security-package-python-68_lhp8g/relative/python3\n",
+      "stderr": ""
+    },
+    "broken-brew": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import argparse, hashlib, json, os, pathlib, plistlib, re, secrets, shutil, stat, subprocess, sys, zipfile, zlib, xml.parsers.expat; print(\"Package Python:\", sys.executable, sys.version.split()[0])\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/plistlib.py\", line 70, in <module>\n    from xml.parsers.expat import ParserCreate\n  File \"/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/xml/parsers/expat.py\", line 4, in <module>\n    from pyexpat import *\nImportError: dlopen(/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/lib-dynload/pyexpat.cpython-315-darwin.so, 0x0002): Symbol not found: _XML_SetAllocTrackerActivationThreshold\n  Referenced from: <C11AEF36-1DF3-3DDC-A834-FFF50E1F97FD> /opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/lib-dynload/pyexpat.cpython-315-darwin.so\n  Expected in:     <4D62FA9D-D86A-3DD0-98F2-C6D0718849E8> /usr/lib/libexpat.1.dylib\n"
+    }
+  }
+}

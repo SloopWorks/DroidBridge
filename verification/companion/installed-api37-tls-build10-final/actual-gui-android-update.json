@@ -1,0 +1,54 @@
+{
+  "events": [
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 161.15
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 108.85
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.31
+    },
+    {
+      "kind": "gui_companion_install_confirmed",
+      "bundled_apk_sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b",
+      "exact_selected_device": "emulator-5582"
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 220.77
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Start connection service",
+      "monotonic": 1593975.552376625
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.35
+    }
+  ],
+  "texts": [
+    "Phone",
+    "Google sdk_gphone16k_arm64 \u00b7 Companion offline \u00b7 credential_unavailable",
+    "Companion opened on the phone. Start its connection service, then choose Connect Companion here.",
+    "Two permissions, one local connection",
+    "USB or Android's paired wireless debugging authorizes ADB. Companion pairing separately authorizes this Mac's app catalog, handoff and phone dashboard. Select its authorized ADB device, install/open the companion if needed, then start its connection service on the phone.",
+    "This installed DroidBridge app can reopen for phone launch requests.",
+    "Trusted Macs",
+    "If no ADB device appears: enable Developer options and USB debugging on Android, connect USB, unlock the phone and accept its debugging prompt. A QR code does not grant ADB access. Revoke an untrusted Mac from either companion UI. If a local credential becomes unreadable after an unsigned update, use Forget Pairing on This Mac, remove the old trust on the phone, and pair with a fresh link."
+  ]
+}

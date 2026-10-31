@@ -1,0 +1,26 @@
+{
+  "device": "emulator-5580",
+  "version_code": 10,
+  "installed_sha256": "49570ea24a1f4d3fd6207f9e11afa21db6e76d678090d2336770318f30de8e0b",
+  "focused_tests": 4,
+  "focused_seconds": 32.77,
+  "large_text_tests": 9,
+  "large_text_seconds": 53.68,
+  "large_text_width_dp": 320,
+  "large_text_font_scale": 2.0,
+  "unchanged_backend_full_suite": {
+    "version_code": 9,
+    "tests": 30,
+    "seconds": 257.053
+  },
+  "code10_full31_run": false,
+  "restored": {
+    "density": "Physical density: 420",
+    "font_scale": "1.0",
+    "developer_settings": "1",
+    "adb_enabled": "1",
+    "service_state": "force_stopped"
+  },
+  "wireless_debugging": "0",
+  "adb_forwards_created": 0
+}

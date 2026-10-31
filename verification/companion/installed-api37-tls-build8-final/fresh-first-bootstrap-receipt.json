@@ -1,0 +1,54 @@
+{
+  "pass": true,
+  "command": {
+    "admitted": true,
+    "admittedAtMS": 1597610761.5867915,
+    "continuousDeadline": {
+      "bootID": "c2b75959-43b0-4811-b30e-db0c5762b804",
+      "expiresMS": 1597637329.5085416,
+      "issuedMS": 1597607406.7175
+    },
+    "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+    "expires": 815094700.8521348,
+    "generation": 1,
+    "id": "b3db8e0a-efa6-4dbd-9832-d3314e066d1d",
+    "kind": "open_app",
+    "owner": {
+      "pid": 851,
+      "start": 1793401871035959
+    },
+    "payload": {
+      "package_name": "dev.droidbridge.inputalpha"
+    },
+    "receiptDelivered": true,
+    "result": {
+      "phase": "running",
+      "session_id": "2AE4CA38-1077-4BDB-BD41-3C1BA088D135"
+    },
+    "status": "applied"
+  },
+  "host": {
+    "bundleIdentifier": "app.droidbridge.desktop",
+    "executableSHA256": "02f9ecc40b2a9d7d769dee919b1f6f29bdab312b5f52be818b9e78590149a5a7",
+    "path": "/Users/patrick/Applications/DroidBridge Companion QA8.app"
+  },
+  "phone_actions": [
+    {
+      "kind": "android_ui_action",
+      "action": "Open on Patrick\u2019s MacBook Pro",
+      "monotonic": 1590770.630732
+    }
+  ],
+  "actual_android_texts": [
+    "Input Alpha Updated",
+    "Display 45 \u00b7 taps 1 \u00b7 key downs 2",
+    "n8",
+    "Echo Alpha: n8",
+    "TAP ALPHA",
+    "COPY ALPHA SENTINEL",
+    "READ CLIPBOARD EXPLICITLY",
+    "Clipboard untouched until an explicit action",
+    "TOGGLE 60 HZ MOTION"
+  ],
+  "input_verified": true
+}

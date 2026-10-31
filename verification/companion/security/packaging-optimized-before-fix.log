@@ -1,0 +1,1 @@
+{"portable": true, "files": ["adb", "adb-libbrotlicommon.1.2.0.dylib", "adb-libbrotlidec.1.2.0.dylib", "adb-libbrotlienc.1.2.0.dylib", "adb-liblz4.1.10.0.dylib", "adb-libusb-1.0.0.dylib", "adb-libzstd.1.5.7.dylib"], "verified_signatures_and_load_closure": true}

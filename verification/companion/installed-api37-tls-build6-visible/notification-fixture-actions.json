@@ -1,0 +1,14 @@
+{
+  "events": [
+    {
+      "kind": "android_ui_action",
+      "action": "Allow",
+      "monotonic": 1588221.170339375
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "POST PUBLIC REPLY NOTIFICATION",
+      "monotonic": 1588223.211473541
+    }
+  ]
+}

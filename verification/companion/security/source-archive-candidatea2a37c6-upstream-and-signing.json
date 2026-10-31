@@ -1,0 +1,16 @@
+{
+  "scope": "Independent upstream source identity and no private local-signing/test APK outer-layout check; no source extraction or binary execution",
+  "scrcpy_commit": "a60891aea193d92e7e5c3942700eca63f9d19a5f",
+  "trusted_vendor_git_archive_sha256": "64bac06d6e31630296c957e067ae2485b0b0fc5746d805c2ce8a60744aba20b1",
+  "source_archive_member_sha256": "64bac06d6e31630296c957e067ae2485b0b0fc5746d805c2ce8a60744aba20b1",
+  "match": true,
+  "source_archive_sha256": "2a02838e5b2368e5ee3a95fdf64b89c5f62e51819b3297292c65c680a95a676b",
+  "source_archive_member_files_checked": 539,
+  "forbidden_source_signing_test_paths": [],
+  "app_files_checked": 197,
+  "forbidden_app_signing_test_paths": [],
+  "app_apks": [
+    "Contents/Resources/Companion/DroidBridgeCompanion.apk"
+  ],
+  "app_product_apk_sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029"
+}

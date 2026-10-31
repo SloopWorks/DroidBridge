@@ -1,0 +1,10 @@
+{
+  "Sources/DroidBridgeCore/CompanionBrokerService.swift": "fcc74783fef0cf0d59f2abaec407db65c2c19f0296b62a029d766b4cbe1cc215",
+  "Sources/DroidBridgeCore/CompanionClient.swift": "f21e12e5af0b189a12c8c7a6520d9536bbff11952ea0033060382c36ccc3abcc",
+  "Sources/DroidBridgeCore/CompanionModels.swift": "ddadaea3040cc1473d3b1a7f723193c80abd5ee1bcba458375a188a85abcb8aa",
+  "Sources/DroidBridge/CompanionDesktopAdapter.swift": "233a5310184587510050317d28896eb321b30f0a1359a5038366c0ff84ef6fcb",
+  "Sources/DroidBridge/CompanionWindow.swift": "0d051a8973cb21484ed1490935d3001a10390c9515c7e31dc2299bfac26985a8",
+  "Tests/DroidBridgeCoreTests/CompanionNotificationSecurityTests.swift": "17662de87266015f42b5b22eb736347efbdb6e6292d9e15287d0b645c9af8dd1",
+  "Tests/DroidBridgeCoreTests/BrokerAdmissionTLSPeer.swift": "a6c628d08cf0d4a4cdcc97870bcd69c5ab80dffc59a9f96dfcab3fb7cead2aac",
+  "scripts/verify-companion-gui.swift": "a7c38bf2fe08de90f95960d52638a60ac0c1a87dba1da039eed143c123583c64"
+}

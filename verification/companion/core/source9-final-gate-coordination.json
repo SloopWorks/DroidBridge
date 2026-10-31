@@ -1,0 +1,21 @@
+{
+  "scope": "Read-only Source9 release coordination; no product/build/runtime mutation",
+  "created_at": "2026-10-30T23:39:52.583455+00:00",
+  "source_sha256": {
+    "docs/companion/ROADMAP.md": "1f54cec4605677506018d8687d3cb1bb68bf8557b912e20c6b0d27785007bc2b",
+    "verification/companion/RELEASE_CANDIDATE.json": "1ad90b10d87ed7c08e36c3cc27ddbc806414bbcdc6c5b2464848a89e75c93b6d",
+    "verification/companion/PROGRAM_STATUS.md": "d1b305ecbc5ba67eb08439d0eabe02851c0a84b60bdea786442162b0d5d85da2",
+    "Sources/DroidBridgeCore/CompanionBrokerService.swift": "9f12ac05552f23d864926db92fa2624dea6677cccfbd2659f3389a0fe37c78cc",
+    "Sources/DroidBridgeCore/ManagedApps.swift": "27453308460194edefb8bc9dcb9814b2f40dea56df9002e3b62ab9169cbda488",
+    "verification/companion/security/catalog-complete-focused-attempt2.log": "f5bd2ff859ddf2d8989c58750a9d36a33cac8227edc8816718af1cefecb2ed27",
+    "verification/companion/security/catalog-source9-independent-review.json": "0d09f95674be590814960158ffc6c230087578e920093e6ae74be9f8378086a7"
+  },
+  "report_sha256": "ad303330699c55256e8c808192ac2f52e1d1a6724ede361d1d5ed1506df93763",
+  "focused_core": {
+    "tests": 21,
+    "failures": 0,
+    "seconds": 3.961
+  },
+  "full_current_swift": "running at review; no result asserted",
+  "installed_source9": "pending; no new acceptance claim"
+}

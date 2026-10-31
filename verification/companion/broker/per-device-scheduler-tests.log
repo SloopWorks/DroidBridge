@@ -1,0 +1,64 @@
+[0/1] Planning build
+Building for debugging...
+[0/14] Write sources
+[2/14] Write swift-version--58304C5D6DBC2206.txt
+[4/18] Compiling DroidBridgeCore CompanionBrokerScheduler.swift
+[5/18] Compiling DroidBridgeCore CompanionForward.swift
+[6/18] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[7/18] Compiling DroidBridgeCore CompanionBrokerService.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionBrokerService.swift:734:64: error: actor-isolated property 'forwardRetries' can not be mutated from a nonisolated context
+133 |     private var retiringForwards: [UUID: BrokerOwnedForward] = [:]
+134 |     private var startingForwards: [UUID: BrokerOwnedForward] = [:]
+135 |     private var forwardRetries: [UUID: (attempt: Int, next: Date)] = [:]
+    |                 `- note: mutation of this property is only permitted within the actor
+136 |     private var forwardReaper: Task<Void, Never>?
+137 |     #if DEBUG
+    :
+732 |             forwardReaper = Task { [weak self] in
+733 |                 guard let self else { return }
+734 |                 let due = self.retiringForwards.filter { (self.forwardRetries[$0.key]?.next ?? .distantPast) <= Date() }.prefix(4)
+    |                                                                `- error: actor-isolated property 'forwardRetries' can not be mutated from a nonisolated context
+735 |                 for (generation, forward) in due { _ = await self.retireForward(forward, generation: generation) }
+736 |                 self.forwardReaper = nil
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionBrokerService.swift:736:22: error: actor-isolated property 'forwardReaper' can not be mutated from a nonisolated context
+134 |     private var startingForwards: [UUID: BrokerOwnedForward] = [:]
+135 |     private var forwardRetries: [UUID: (attempt: Int, next: Date)] = [:]
+136 |     private var forwardReaper: Task<Void, Never>?
+    |                 `- note: mutation of this property is only permitted within the actor
+137 |     #if DEBUG
+138 |     var retiringForwardCount: Int { retiringForwards.count }
+    :
+734 |                 let due = self.retiringForwards.filter { (self.forwardRetries[$0.key]?.next ?? .distantPast) <= Date() }.prefix(4)
+735 |                 for (generation, forward) in due { _ = await self.retireForward(forward, generation: generation) }
+736 |                 self.forwardReaper = nil
+    |                      |- error: actor-isolated property 'forwardReaper' can not be mutated from a nonisolated context
+    |                      `- note: consider declaring an isolated method on 'CompanionBrokerEngine' to perform the mutation
+737 |             }
+738 |         }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionBrokerService.swift:734:32: error: actor-isolated property 'retiringForwards' cannot be accessed from outside of the actor
+732 |             forwardReaper = Task { [weak self] in
+733 |                 guard let self else { return }
+734 |                 let due = self.retiringForwards.filter { (self.forwardRetries[$0.key]?.next ?? .distantPast) <= Date() }.prefix(4)
+    |                                `- error: actor-isolated property 'retiringForwards' cannot be accessed from outside of the actor
+735 |                 for (generation, forward) in due { _ = await self.retireForward(forward, generation: generation) }
+736 |                 self.forwardReaper = nil
+error: fatalError

@@ -1,0 +1,9 @@
+{
+  "denied_banners_preserve_explicit_in_app_list" : true,
+  "explicit_off_retry_applied" : true,
+  "passed" : true,
+  "replaced_trust_no_rpc" : true,
+  "scope" : "Shipping AppKit controller + deferred authorization seam + anonymous NSXPC; no OS permission requested",
+  "shutdown_late_approval_no_rpc" : true,
+  "superseded_approval_no_rpc" : true
+}

@@ -1,0 +1,8 @@
+
+dev.droidbridge.companion.CompanionTlsTest:..
+
+Time: 3.213
+
+OK (2 tests)
+
+

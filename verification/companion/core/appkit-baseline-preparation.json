@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-10-30T22:22:44.061188+00:00",
+  "review": "startup baseline preparation and independent receiver-FPS measurement review",
+  "source_sha256": {
+    "scripts/verify-appkit-startup-baseline.m": "f74310fa8c3153c1981d24de1e4a433419d109930fa4d8289c3f2ab6d07252c5",
+    "scripts/verify-appkit-startup-baseline.swift": "7e89f0093a4885905a1e136efc4017427a7d950f63ed4833b9773e6701cd6f29",
+    "scripts/verify-appkit-startup-baseline.py": "616904ec55ca41f50d0037dacce25ffae919a3df5033bed7d18d6937626a8d5d",
+    "scripts/verify-companion-window-observer.m": "409d65826a7ae40a698ef1a9b329de3a0fc4449a444e4592cafd93b7f43bdc85",
+    "Sources/DroidBridgeStreaming/FrameMailbox.swift": "19c1deed81a98170c3f24924c86cb92c88603316fd2cc17c751383fa00639313",
+    "Sources/DroidBridgeStreaming/BridgeSession.swift": "1f5640867eaf55b40902ebff6f0003f6775896cd8bb385a32d4b3d59687e14d5",
+    "Sources/DroidBridge/NativeWindow.swift": "7b304a1c6ab63c12fdb1afbb7d27fa202e832911dffede9eeb3992883aa21fda"
+  },
+  "standalone_compile_and_signature": "pass, both ObjC and Swift variants",
+  "invalid_argument_guard": "both exact executable invocations exit64 before NSApplication; no UI launched",
+  "measurement_performed": false,
+  "gui_handoff": "pending macOS test owner quiet window",
+  "target_changed": false,
+  "review_result": "1s MainActor batch-arrival p95 cannot establish encoder PTS limit; preserve failed artifact and separate configured ceiling, >=20s sustained decoded throughput and jitter",
+  "compile_metadata": ".build/companion-appkit-baseline/compile-ready/results.json",
+  "cleanup": "Exact child terminate/wait with kill/wait fallback, no process-name cleanup"
+}

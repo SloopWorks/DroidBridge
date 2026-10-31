@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "scope": "Only owned DroidBridge_API35 emulator5580 UI recovery; no shared ADB server restart",
+  "root_cause_observed": "Guest USB debugging OFF; shell cannot respond even though emulator TCP proxy listens",
+  "recovery": "Authenticated localhost emulator control service; Settings USB debugging enabled with explicit guest consent",
+  "settings_after": {
+    "development_settings_enabled": "1",
+    "adb_enabled": "1",
+    "adb_wifi_enabled": "0"
+  },
+  "gRPC_port": 8556,
+  "gRPC_owner_pid": 74283,
+  "gRPC_removal_pending": false,
+  "shared_5037_restarted": false,
+  "unrelated_devices_operated": false,
+  "state_after": "device",
+  "gRPC_listener_removed": true,
+  "original_no_grpc_configuration_restored": true,
+  "cold_restart_with_persisted_debugging_passed": true,
+  "wait_after_probe_start_seconds": 0.031,
+  "root_emulator_tool_session": 75348
+}

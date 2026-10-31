@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "first_fresh_root_registration_passed": false,
+  "scope": "Second main launch registered; actual CUA quit then phone favorite/Open bootstrapped signed installed host and live native Alpha. First fresh-root race is tracked for repair.",
+  "registered_host": {
+    "bundleIdentifier": "app.droidbridge.desktop",
+    "executableSHA256": "d776356fa9c2fc671a79794880b8c3ebe3b22828fa5a5fafca3ee314808f2ad5",
+    "path": "/Users/patrick/Applications/DroidBridge Companion QA.app"
+  },
+  "actual_process": "53733 /Users/patrick/Applications/DroidBridge Companion QA.app/Contents/MacOS/DroidBridge --companion-qa-root /Users/patrick/Applications/DroidBridge Companion QA Data --serial emulator-5582",
+  "phone_receipt_screenshot": "phone-bootstrap-status.png",
+  "native_running_confirmed": true,
+  "CUA_screenshot_observed": "Input Alpha, display37, framefixture live"
+}

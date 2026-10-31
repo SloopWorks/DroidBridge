@@ -1,0 +1,62 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write swift-version--58304C5D6DBC2206.txt
+[1/12] Write Objects.LinkFileList
+[3/14] Emitting module DroidBridgeAvailability
+[3/14] Write Objects.LinkFileList
+[5/14] Emitting module DroidBridgeStreaming
+[5/14] Linking DroidBridgeCompanionBroker
+[6/14] Applying DroidBridgeCompanionBroker
+[7/17] Linking DroidBridgeAvailability
+[8/17] Applying DroidBridgeAvailability
+[10/17] Emitting module DroidBridgeCoreTests
+[11/17] Compiling DroidBridge CompanionDesktopAdapter.swift
+[12/17] Emitting module DroidBridge
+[12/17] Write Objects.LinkFileList
+[14/17] Linking DroidBridge
+[15/17] Applying DroidBridge
+[16/17] Linking DroidBridgePackageTests
+Build complete! (1.86s)
+Test Suite 'Selected tests' started at 2026-10-30 13:31:09.855.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 13:31:09.856.
+Test Suite 'AvailabilityRuntimeStoreTests' started at 2026-10-30 13:31:09.856.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testActualMappedExecutableIsPreservedUntilOwnedProcessExits]' started.
+<unknown>:0: error: -[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testActualMappedExecutableIsPreservedUntilOwnedProcessExits] : failed: caught error: "otool failed (1): error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool-classic: file: /bin/echo does not contain architecture: arm64
+"
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testActualMappedExecutableIsPreservedUntilOwnedProcessExits]' failed (1.658 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCompleteStageRecoveryDoesNotRequireOriginalSources]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCompleteStageRecoveryDoesNotRequireOriginalSources]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCorruptOrForeignGenerationContentsArePreserved]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCorruptOrForeignGenerationContentsArePreserved]' passed (0.033 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashDuringRetirementDeletionRemovesOnlyReceiptedRemainingFiles]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashDuringRetirementDeletionRemovesOnlyReceiptedRemainingFiles]' passed (0.010 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashLeftRetirementResumesAndCurrentPinRestores]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashLeftRetirementResumesAndCurrentPinRestores]' passed (0.029 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashLeftRetirementWithLiveOrUnknownReferencesPreservesBytes]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCrashLeftRetirementWithLiveOrUnknownReferencesPreservesBytes]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testFullStoreReclaimsVerifiedUnusedGenerationAndPreservesCurrent]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testFullStoreReclaimsVerifiedUnusedGenerationAndPreservesCurrent]' passed (0.034 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testOwnedPartialStageAndInterruptedRecoveryResumeWithPrefixProof]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testOwnedPartialStageAndInterruptedRecoveryResumeWithPrefixProof]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPartiallyDeletedPinnedRetirementWaitsForSuccessorAndUnknownBytesStay]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPartiallyDeletedPinnedRetirementWaitsForSuccessorAndUnknownBytesStay]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPartialStageMissingSourceAndForeignBytesAreNeverDeleted]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPartialStageMissingSourceAndForeignBytesAreNeverDeleted]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPostRenameReferenceRecheckRollsBackWithoutDeletingBytes]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPostRenameReferenceRecheckRollsBackWithoutDeletingBytes]' passed (0.045 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRepeatedPublicationReusesIdentityWithoutGrowingStore]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRepeatedPublicationReusesIdentityWithoutGrowingStore]' passed (0.028 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRunningLifetimeLeasesAndUnknownReferenceScanFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRunningLifetimeLeasesAndUnknownReferenceScanFailClosed]' passed (0.041 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testUnreceiptedStageRemainsCountedAtCapacity]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testUnreceiptedStageRemainsCountedAtCapacity]' passed (0.027 seconds).
+Test Suite 'AvailabilityRuntimeStoreTests' failed at 2026-10-30 13:31:11.800.
+	 Executed 14 tests, with 1 failure (1 unexpected) in 1.943 (1.944) seconds
+Test Suite 'DroidBridgePackageTests.xctest' failed at 2026-10-30 13:31:11.800.
+	 Executed 14 tests, with 1 failure (1 unexpected) in 1.943 (1.944) seconds
+Test Suite 'Selected tests' failed at 2026-10-30 13:31:11.800.
+	 Executed 14 tests, with 1 failure (1 unexpected) in 1.943 (1.945) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

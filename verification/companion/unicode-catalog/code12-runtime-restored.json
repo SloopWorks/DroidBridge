@@ -1,0 +1,17 @@
+{
+  "density": "Physical density: 420",
+  "font_scale": "1.0",
+  "developer": "1",
+  "adb": "1",
+  "wifi_debug": "0",
+  "notification_listeners": "",
+  "test_notification_posting_granted": false,
+  "forwards": [],
+  "display_ids": [
+    "0"
+  ],
+  "service_state": "force_stopped",
+  "test_apk_state": "force_stopped",
+  "identity_pin_settings_preserved_after_all_tests": true,
+  "source_hashes_match": true
+}

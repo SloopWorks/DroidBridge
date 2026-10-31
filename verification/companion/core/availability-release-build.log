@@ -1,0 +1,16 @@
+[0/1] Planning build
+Building for production...
+[0/10] Write sources
+[3/10] Write swift-version--58304C5D6DBC2206.txt
+[5/11] Compiling DroidBridgeCore AndroidDiscovery.swift
+[6/14] Compiling DroidBridgeCompanionBroker main.swift
+[6/14] Write Objects.LinkFileList
+[8/14] Compiling DroidBridgeAvailability main.swift
+[8/14] Write Objects.LinkFileList
+[9/14] Linking DroidBridgeCompanionBroker
+[10/14] Linking DroidBridgeAvailability
+[12/14] Compiling DroidBridgeStreaming BridgeSession.swift
+[13/15] Compiling DroidBridge AudioControls.swift
+[13/15] Write Objects.LinkFileList
+[14/15] Linking DroidBridge
+Build complete! (34.02s)

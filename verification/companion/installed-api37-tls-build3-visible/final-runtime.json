@@ -1,0 +1,10 @@
+{
+  "scope": "After actual CUA main Quit and phone Stop All; scoped broker deliberately retained connected for next candidate",
+  "exact_qa_processes": [
+    "41806 /Users/patrick/Applications/DroidBridge Companion QA Data/CompanionBroker/generations/fb01e47fd1cf1fd0ffc235db19104be92184b03f4d44bb5483cee873e4cc6ebf/DroidBridgeCompanionBroker --companion-qa-root /Users/patrick/Applications/DroidBridge Companion QA Data --serial emulator-5582"
+  ],
+  "serial_forwards": [
+    "emulator-5582 tcp:46001 tcp:37841"
+  ],
+  "native_receipts": 0
+}

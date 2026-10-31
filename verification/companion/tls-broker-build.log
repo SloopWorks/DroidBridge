@@ -1,0 +1,45 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/10] Emitting module DroidBridgeCore
+[4/10] Compiling DroidBridgeCore CompanionBrokerService.swift
+[5/21] Compiling DroidBridgeCompanionBroker main.swift
+[6/21] Emitting module DroidBridgeCompanionBroker
+[6/22] Write Objects.LinkFileList
+[8/22] Emitting module DroidBridgeAvailability
+[9/22] Compiling DroidBridgeAvailability main.swift
+[9/23] Write Objects.LinkFileList
+[11/23] Compiling DroidBridgeStreaming SessionRecovery.swift
+[12/23] Compiling DroidBridgeStreaming SocketTransport.swift
+[13/23] Compiling DroidBridgeStreaming H264Decoder.swift
+[14/23] Compiling DroidBridgeStreaming DeviceAudioRouter.swift
+[15/23] Compiling DroidBridgeStreaming DeviceAudioArtifacts.swift
+[16/23] Emitting module DroidBridgeStreaming
+[17/23] Compiling DroidBridgeStreaming BridgeSession.swift
+[17/23] Linking DroidBridgeCompanionBroker
+[18/23] Linking DroidBridgeAvailability
+[19/23] Applying DroidBridgeAvailability
+[20/23] Applying DroidBridgeCompanionBroker
+[22/40] Compiling DroidBridge DeviceOnboardingAgent.swift
+[23/41] Compiling DroidBridge PhoneDisplayControls.swift
+[24/41] Compiling DroidBridge MacAppWrapper.swift
+[25/41] Compiling DroidBridge CompanionWirelessSetup.swift
+[26/41] Compiling DroidBridge DeviceOnboarding.swift
+[27/41] Compiling DroidBridge CompanionLauncherIntegration.swift
+[28/41] Compiling DroidBridge CompanionPairingScanner.swift
+[29/41] Compiling DroidBridge ManagedAppNameRepair.swift
+[30/41] Compiling DroidBridge NativeWindow.swift
+[31/41] Compiling DroidBridge LauncherUI.swift
+[32/41] Compiling DroidBridge AudioControls.swift
+[33/41] Compiling DroidBridge CompanionDesktopAdapter.swift
+[34/41] Emitting module DroidBridge
+[35/41] Compiling DroidBridge main.swift
+[36/41] Compiling DroidBridge DeviceOnboardingUI.swift
+[37/41] Compiling DroidBridge Launcher.swift
+[38/41] Compiling DroidBridge CompanionTransfers.swift
+[39/41] Compiling DroidBridge CompanionWindow.swift
+[39/42] Write Objects.LinkFileList
+[40/42] Linking DroidBridge
+[41/42] Applying DroidBridge
+Build complete! (5.44s)

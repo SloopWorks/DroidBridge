@@ -1,0 +1,52 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[4/12] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[5/12] Compiling DroidBridgeCore CompanionReleaseMetadata.swift
+[6/13] Compiling DroidBridgeCore CompanionBrokerService.swift
+[7/19] Emitting module DroidBridgeAvailability
+[7/19] Write Objects.LinkFileList
+[9/19] Emitting module DroidBridgeCompanionBroker
+[9/19] Write Objects.LinkFileList
+[11/19] Emitting module DroidBridgeStreaming
+[11/22] Linking DroidBridgeCompanionBroker
+[11/22] Linking DroidBridgeAvailability
+[13/22] Applying DroidBridgeAvailability
+[13/22] Applying DroidBridgeCompanionBroker
+[16/22] Compiling DroidBridgeCoreTests CompanionReleaseMetadataTests.swift
+[17/22] Emitting module DroidBridgeCoreTests
+[18/23] Emitting module DroidBridge
+[18/23] Write Objects.LinkFileList
+[20/23] Linking DroidBridge
+[21/23] Applying DroidBridge
+[22/23] Linking DroidBridgePackageTests
+Build complete! (3.92s)
+Test Suite 'Selected tests' started at 2026-10-30 13:19:14.751.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 13:19:14.752.
+Test Suite 'CompanionReleaseMetadataTests' started at 2026-10-30 13:19:14.752.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataBindsExactVersionPlatformAndOfficialArtifact]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataBindsExactVersionPlatformAndOfficialArtifact]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataRefusesSubstitutedURLsUnknownSigningAndUnsafeBounds]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataRefusesSubstitutedURLsUnknownSigningAndUnsafeBounds]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testWireMetadataRejectsDuplicateEscapedKeysNestedValuesAndByteAbuse]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testWireMetadataRejectsDuplicateEscapedKeysNestedValuesAndByteAbuse]' passed (0.000 seconds).
+Test Suite 'CompanionReleaseMetadataTests' passed at 2026-10-30 13:19:14.755.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 13:19:14.755.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 13:19:14.755.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.004) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

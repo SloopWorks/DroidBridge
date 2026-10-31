@@ -1,0 +1,38 @@
+{
+  "scope": "Read-only changed JAR comparison: identical entry names and uncompressed payload hashes, packaging metadata only",
+  "entries": {
+    "10": {
+      "classes.dex": {
+        "sha256": "89e084e52ee2e2d369fae1ff0fa4718883b434d87784678ba5ea5fa481c824df",
+        "size": 4780,
+        "date_time": [
+          2026,
+          10,
+          30,
+          17,
+          2,
+          24
+        ],
+        "compression": 8,
+        "external_attr": 2175008768
+      }
+    },
+    "11": {
+      "classes.dex": {
+        "sha256": "89e084e52ee2e2d369fae1ff0fa4718883b434d87784678ba5ea5fa481c824df",
+        "size": 4780,
+        "date_time": [
+          2026,
+          10,
+          30,
+          17,
+          15,
+          6
+        ],
+        "compression": 8,
+        "external_attr": 2175008768
+      }
+    }
+  },
+  "all_payloads_equal": true
+}

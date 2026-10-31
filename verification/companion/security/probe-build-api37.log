@@ -1,0 +1,5 @@
+[0/1] Planning build
+Building for debugging...
+[0/1] Write swift-version--58304C5D6DBC2206.txt
+Build of target: 'DroidBridgeCore' complete! (0.15s)
+{"probe_sha256": "773dfd8fee193fd1ac7a1f7040ed1593b8514b8258c73e135bbdc2ccad250982", "sources": 41, "objects": 38}

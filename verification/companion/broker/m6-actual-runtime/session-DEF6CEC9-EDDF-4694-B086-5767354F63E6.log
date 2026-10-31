@@ -1,0 +1,9 @@
+{"event":"supervisor_alias_acquired"}
+{"event":"supervisor_started","parent":77228,"child":78339}
+[server] INFO: Device: [unknown] Android Android SDK built for arm64 (Android 15)
+[server] DEBUG: Using video encoder: 'c2.android.avc.encoder'
+[server] DEBUG: Video codec size alignment requirement: 2px
+[server] INFO: New display: 480x720/240 (id=6)
+[server] INFO: Starting app "Companion Verification" [dev.droidbridge.companionfixture] on display 6...
+{"event":"supervisor_cleanup_already_complete","operation":"forward"}
+{"event":"supervisor_stopped","reason":"stop_signal","exit_status":null,"signal":15,"requested_signal":15}

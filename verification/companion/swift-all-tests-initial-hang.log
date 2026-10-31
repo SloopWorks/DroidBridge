@@ -1,0 +1,59 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/11] Compiling DroidBridgeCore CompanionBrokerService.swift
+[4/11] Emitting module DroidBridgeCore
+[4/15] Write Objects.LinkFileList
+[8/15] Linking DroidBridgeCompanionBroker
+[8/15] Linking DroidBridgeAvailability
+[10/15] Applying DroidBridgeCompanionBroker
+[10/15] Applying DroidBridgeAvailability
+[12/15] Linking DroidBridge
+[13/15] Applying DroidBridge
+[14/15] Linking DroidBridgePackageTests
+Build complete! (3.32s)
+Test Suite 'All tests' started at 2026-10-30 12:51:38.948.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 12:51:38.949.
+Test Suite 'AndroidDiscoveryTests' started at 2026-10-30 12:51:38.949.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/AndroidDiscoveryTests.swift:26: -[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn] : Test skipped - Set DROIDBRIDGE_TEST_SERIAL to an emulator serial
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' skipped (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' passed (0.091 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' passed (0.296 seconds).
+Test Suite 'AndroidDiscoveryTests' passed at 2026-10-30 12:51:39.339.
+	 Executed 6 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.390 (0.390) seconds
+Test Suite 'AndroidIconProviderTests' started at 2026-10-30 12:51:39.339.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testBoundedRecoveryCursorReachesReceiptAfter128RetainedRequests]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testBoundedRecoveryCursorReachesReceiptAfter128RetainedRequests]' passed (9.208 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testConcurrentRecoveryReturnsCanonicalCompletedResult]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testConcurrentRecoveryReturnsCanonicalCompletedResult]' passed (0.681 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testFailedRequestCleanupRetainsReceiptUntilRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testFailedRequestCleanupRetainsReceiptUntilRecovery]' passed (0.760 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/AndroidIconProviderTests.swift:238: -[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn] : Test skipped - Build icon helper and install icon fixture, then set DROIDBRIDGE_TEST_SERIAL and DROIDBRIDGE_TEST_ICONS=1
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testLiveAdaptiveAliasAndSystemIconsWhenOptedIn]' skipped (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testPNGValidationRejectsMalformedAndWrongDimensions]' passed (0.008 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testProviderCleansOwnedFilesOnSuccessAndHelperFailure]' passed (1.106 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryPreservesLiveOwnerAndRetriesOfflineExactPaths]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryPreservesLiveOwnerAndRetriesOfflineExactPaths]' passed (0.805 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryWaitsForExactDelayedProducerBeforeRemovingReceipt]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidIconProviderTests testRecoveryWaitsForExactDelayedProducerBeforeRemovingReceipt]' passed (0.756 seconds).
+Test Suite 'AndroidIconProviderTests' passed at 2026-10-30 12:51:52.665.
+	 Executed 8 tests, with 1 test skipped and 0 failures (0 unexpected) in 13.325 (13.326) seconds
+Test Suite 'AvailabilityRuntimeStoreTests' started at 2026-10-30 12:51:52.665.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testActualMappedExecutableIsPreservedUntilOwnedProcessExits]' started.
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

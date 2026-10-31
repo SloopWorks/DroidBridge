@@ -1,0 +1,16 @@
+{
+  "pass": false,
+  "scope": "Actualinstalled6 fallbackSDLwindow CUAphysicalkeys f,b +mouseTap, actualAndroidfocusedvirtualdisplay UIhierarchy",
+  "texts": [
+    "Input Beta",
+    "Display 43 \u00b7 taps 0 \u00b7 key downs 2",
+    "fb",
+    "Echo Beta: fb",
+    "TAP BETA",
+    "COPY BETA SENTINEL",
+    "READ CLIPBOARD EXPLICITLY",
+    "Clipboard untouched until an explicit action",
+    "TOGGLE 60 HZ MOTION"
+  ],
+  "software_keyboard_present": false
+}

@@ -1,0 +1,141 @@
+{
+  "serial": "emulator-5580",
+  "scope": "installed Android foreground service reached from Mac through exact ADB forward",
+  "hello": {
+    "protocol": 1,
+    "request_id": "3c51715c-ab16-4f16-914c-3d3f44e97493",
+    "data": {
+      "protocol_min": 1,
+      "protocol_max": 1,
+      "device_id": "[installation UUID redacted]",
+      "device_name": "unknown Android SDK built for arm64",
+      "capabilities": [
+        "catalog",
+        "icons",
+        "events",
+        "commands",
+        "sessions",
+        "share",
+        "files",
+        "clipboard",
+        "notifications",
+        "notification_replies",
+        "profiles",
+        "diagnostics",
+        "delivery"
+      ],
+      "catalog_revision": "762bdd2002caa58702fdc9b8aa5e2bb1e2c6160bbc470a4dece995b6802df465",
+      "pairing_available": false,
+      "permissions": {
+        "notifications": "false",
+        "clipboard": "false"
+      }
+    }
+  },
+  "requests": [
+    {
+      "elapsed_ms": 12.312,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 3.957,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 2.063,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.652,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.813,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.567,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.639,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.684,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 2.742,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.854,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.941,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.783,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.571,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 2.586,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 2.001,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.862,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 2.69,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.862,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.62,
+      "response_bytes": 553,
+      "status": 200
+    },
+    {
+      "elapsed_ms": 1.661,
+      "response_bytes": 553,
+      "status": 200
+    }
+  ],
+  "p95_ms": 3.957,
+  "listener_source_binding": "127.0.0.1:37841",
+  "listener_shell_inspection": "unavailable: Android shell netlink permission denied",
+  "physical_device_tested": false
+}

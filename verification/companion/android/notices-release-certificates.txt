@@ -1,0 +1,8 @@
+Signer #1 certificate DN: CN=DroidBridge Local Distribution
+Signer #1 certificate SHA-256 digest: eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4
+Signer #1 certificate SHA-1 digest: 873ad67e9b1ee7e45e9393496c66b0454adbc304
+Signer #1 certificate MD5 digest: e2980d83ecd17f1c8833fcf6d0cae345
+Signer #1 certificate DN: CN=DroidBridge Local Distribution
+Signer #1 certificate SHA-256 digest: eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4
+Signer #1 certificate SHA-1 digest: 873ad67e9b1ee7e45e9393496c66b0454adbc304
+Signer #1 certificate MD5 digest: e2980d83ecd17f1c8833fcf6d0cae345

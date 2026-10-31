@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests": 335,
+  "explicit_live_opt_in_skips": 4,
+  "failures": 0,
+  "seconds": 158.232,
+  "source_files_unchanged": 128,
+  "manifest": "swift-source-attempt2-before.json",
+  "log": "swift-full-attempt2.log",
+  "supersedes_aborted_attempt1": true
+}

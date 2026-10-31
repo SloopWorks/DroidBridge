@@ -1,0 +1,16 @@
+Performing Streamed Install
+Success
+Performing Streamed Install
+Success
+
+dev.droidbridge.companion.CompanionDeviceTest:..
+dev.droidbridge.companion.CompanionSecurityTest:.......
+dev.droidbridge.companion.CompanionTlsTest:....
+dev.droidbridge.companion.CompanionUXDeviceTest:...
+dev.droidbridge.companion.ReleaseDeliveryDeviceTest:...
+
+Time: 47.812
+
+OK (19 tests)
+
+

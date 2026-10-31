@@ -1,0 +1,34 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling DroidBridgeCoreTests AvailabilityRuntimeStoreTests.swift
+[4/5] Emitting module DroidBridgeCoreTests
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.26s)
+Test Suite 'Selected tests' started at 2026-10-30 12:49:55.355.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 12:49:55.356.
+Test Suite 'AvailabilityRuntimeStoreTests' started at 2026-10-30 12:49:55.356.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testActualMappedExecutableIsPreservedUntilOwnedProcessExits]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testActualMappedExecutableIsPreservedUntilOwnedProcessExits]' passed (4.449 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCorruptOrForeignGenerationContentsArePreserved]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCorruptOrForeignGenerationContentsArePreserved]' passed (0.018 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testFullStoreReclaimsVerifiedUnusedGenerationAndPreservesCurrent]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testFullStoreReclaimsVerifiedUnusedGenerationAndPreservesCurrent]' passed (0.018 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPostRenameReferenceRecheckRollsBackWithoutDeletingBytes]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPostRenameReferenceRecheckRollsBackWithoutDeletingBytes]' passed (0.019 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRepeatedPublicationReusesIdentityWithoutGrowingStore]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRepeatedPublicationReusesIdentityWithoutGrowingStore]' passed (0.014 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRunningLifetimeLeasesAndUnknownReferenceScanFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRunningLifetimeLeasesAndUnknownReferenceScanFailClosed]' passed (0.020 seconds).
+Test Suite 'AvailabilityRuntimeStoreTests' passed at 2026-10-30 12:49:59.895.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 4.538 (4.539) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 12:49:59.895.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 4.538 (4.539) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 12:49:59.895.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 4.538 (4.540) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

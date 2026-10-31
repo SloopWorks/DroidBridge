@@ -1,0 +1,158 @@
+{
+  "passed": false,
+  "execution_passed": true,
+  "cold_preview_target_ms": 100,
+  "cold_preview_target_passed": false,
+  "ordering": "interleaved ABBA connected/disconnected, five per cohort",
+  "scope": "Same installed executable --wrapper path; paired saved trust with companion connected vs deliberately disconnected; no separate bundle identity or WindowServer paint/focus claim",
+  "sampling": "10 ms public NSWindow/accessibility observer; process spawn includes dyld; first video may contain Android system decorations before app content",
+  "rows": [
+    {
+      "companion_connected": true,
+      "sample": 1,
+      "local_preview_ms": 1080.406208988279,
+      "first_presented_video_ms": 3275.0638341531157,
+      "constructor_to_preview_ms": 881.224500015378,
+      "load_average_1_5_15_min": [
+        10.74609375,
+        12.0302734375,
+        11.49658203125
+      ]
+    },
+    {
+      "companion_connected": false,
+      "sample": 1,
+      "local_preview_ms": 1105.7397918775678,
+      "first_presented_video_ms": 3718.505166936666,
+      "constructor_to_preview_ms": 1081.5539166796952,
+      "load_average_1_5_15_min": [
+        15.25048828125,
+        12.9423828125,
+        11.82177734375
+      ]
+    },
+    {
+      "companion_connected": false,
+      "sample": 2,
+      "local_preview_ms": 936.5543755702674,
+      "first_presented_video_ms": 3431.831083726138,
+      "constructor_to_preview_ms": 888.5289584286511,
+      "load_average_1_5_15_min": [
+        15.14990234375,
+        12.95947265625,
+        11.83447265625
+      ]
+    },
+    {
+      "companion_connected": true,
+      "sample": 2,
+      "local_preview_ms": 1203.9052506443113,
+      "first_presented_video_ms": 5166.964625706896,
+      "constructor_to_preview_ms": 1195.3575832303613,
+      "load_average_1_5_15_min": [
+        15.8583984375,
+        13.142578125,
+        11.9052734375
+      ]
+    },
+    {
+      "companion_connected": true,
+      "sample": 3,
+      "local_preview_ms": 868.5157084837556,
+      "first_presented_video_ms": 6716.771291801706,
+      "constructor_to_preview_ms": 855.3892083000392,
+      "load_average_1_5_15_min": [
+        26.07177734375,
+        15.38525390625,
+        12.71337890625
+      ]
+    },
+    {
+      "companion_connected": false,
+      "sample": 3,
+      "local_preview_ms": 840.2275424450636,
+      "first_presented_video_ms": 3606.308750808239,
+      "constructor_to_preview_ms": 826.3610834255815,
+      "load_average_1_5_15_min": [
+        24.94482421875,
+        15.32861328125,
+        12.708984375
+      ]
+    },
+    {
+      "companion_connected": false,
+      "sample": 4,
+      "local_preview_ms": 602.607000619173,
+      "first_presented_video_ms": 3143.6672089621425,
+      "constructor_to_preview_ms": 594.5962499827147,
+      "load_average_1_5_15_min": [
+        25.189453125,
+        15.53857421875,
+        12.79833984375
+      ]
+    },
+    {
+      "companion_connected": true,
+      "sample": 4,
+      "local_preview_ms": 802.6692918501794,
+      "first_presented_video_ms": 3424.694666871801,
+      "constructor_to_preview_ms": 791.9717500917614,
+      "load_average_1_5_15_min": [
+        26.6953125,
+        16.0107421875,
+        12.98095703125
+      ]
+    },
+    {
+      "companion_connected": true,
+      "sample": 5,
+      "local_preview_ms": 762.7792917191982,
+      "first_presented_video_ms": 2667.6212085876614,
+      "constructor_to_preview_ms": 746.8024166300893,
+      "load_average_1_5_15_min": [
+        26.6953125,
+        16.0107421875,
+        12.98095703125
+      ]
+    },
+    {
+      "companion_connected": false,
+      "sample": 5,
+      "local_preview_ms": 697.0267083961517,
+      "first_presented_video_ms": 3209.265375044197,
+      "constructor_to_preview_ms": 687.5408333726227,
+      "load_average_1_5_15_min": [
+        25.35791015625,
+        15.91064453125,
+        12.96337890625
+      ]
+    }
+  ],
+  "groups": {
+    "connected": {
+      "local_preview_ms": {
+        "n": 5,
+        "p50": 868.5157084837556,
+        "p95": 1203.9052506443113
+      },
+      "first_presented_video_ms": {
+        "n": 5,
+        "p50": 3424.694666871801,
+        "p95": 6716.771291801706
+      }
+    },
+    "disconnected": {
+      "local_preview_ms": {
+        "n": 5,
+        "p50": 840.2275424450636,
+        "p95": 1105.7397918775678
+      },
+      "first_presented_video_ms": {
+        "n": 5,
+        "p50": 3431.831083726138,
+        "p95": 3718.505166936666
+      }
+    }
+  },
+  "host_load_limitation": "Concurrent dependency/Gradle compilation was reported during these cohorts; do not use this as the final quiet-host gate."
+}

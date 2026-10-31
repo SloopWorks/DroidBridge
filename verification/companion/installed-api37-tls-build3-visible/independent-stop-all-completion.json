@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "scope": "Actual phone confirmation and broker exact-owner fanout; two independent Mac wrapper child exit codes0",
+  "commands": [
+    {
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815089388.911,
+      "generation": 1,
+      "id": "4112d302-1ea9-4c1a-8105-20afaa668ff4",
+      "kind": "stop_session",
+      "owner": {
+        "pid": 77504,
+        "start": 1793396162576266
+      },
+      "payload": {
+        "session_id": "87324764-BE72-4539-A119-7D5F96D8247F"
+      },
+      "result": {
+        "phase": "stopped",
+        "session_id": "87324764-BE72-4539-A119-7D5F96D8247F"
+      },
+      "status": "applied"
+    },
+    {
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815089388.9159999,
+      "generation": 1,
+      "id": "831154ad-dd92-4b06-9fb6-1eb436c5545a",
+      "kind": "stop_session",
+      "owner": {
+        "pid": 77507,
+        "start": 1793396162630266
+      },
+      "payload": {
+        "session_id": "96FFBF60-1788-462B-A4BE-CB1AC6F1C2BC"
+      },
+      "result": {
+        "phase": "stopped",
+        "session_id": "96FFBF60-1788-462B-A4BE-CB1AC6F1C2BC"
+      },
+      "status": "applied"
+    }
+  ],
+  "aggregate": [],
+  "wrapper_pids": [
+    77504,
+    77507
+  ],
+  "both_processes_absent": true,
+  "session_receipts_remaining": 0
+}

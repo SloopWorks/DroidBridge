@@ -1,0 +1,61 @@
+{
+  "scope": "Independent final11 offline source, source closure, artifact byte, metadata and excluded-material checks; DISTRIBUTION REJECTED due separately recorded nested Player signature failure",
+  "commit": "62186d3c3dac73a3580ee268b9b9a2a69fb7dd0b",
+  "timestamp": "2026-10-31T00:26:52.044679+00:00",
+  "archive_sha256": "c0075ed20fca15ee8f9c5dee1c7c46e2f67d92d47c9a4914caa249ba56ff1097",
+  "upstream_scrcpy_git_pin": "a60891aea193d92e7e5c3942700eca63f9d19a5f",
+  "upstream_fresh_git_archive_sha256": "64bac06d6e31630296c957e067ae2485b0b0fc5746d805c2ce8a60744aba20b1",
+  "upstream_archive_exact_match": true,
+  "source_closure_sha256": "ae011f814fdcef472cb68e220ebd884e75739eea779b8e42bb548a30dd3f72b4",
+  "source_closure_review": "final11-source-closure-independent.json",
+  "source_archive_private_key_or_generated_apk_paths": [],
+  "source_private_PEM_literal_marker_paths": [],
+  "installed_apk_paths": [
+    "Contents/Resources/Companion/DroidBridgeCompanion.apk"
+  ],
+  "artifact_sha256": {
+    "host": "6d70755ddc5a1386e1ebc6004ebcac987be448fba8b6a620105b30ad2b777e53",
+    "broker": "d890c6815c7a679a0df3be864b9abac0bd3be9212dbcbb98ce9be08c17e98936",
+    "apk": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b"
+  },
+  "release_manifest": {
+    "version": "0.2.0",
+    "build": "11",
+    "architecture": "arm64",
+    "minimum_macos": "26.0",
+    "size_bytes": 30398328,
+    "sha256": "7d97c2236dec402e20dce4479b7f7ec00a3bf4adc92985103475ef27f0e496a5",
+    "signing": "ad_hoc_not_notarized",
+    "download_url": "https://github.com/SloopWorks/DroidBridge/releases/download/v0.2.0/DroidBridge-0.2.0-arm64.dmg",
+    "release_url": "https://github.com/SloopWorks/DroidBridge/releases/tag/v0.2.0"
+  },
+  "dmg_sha256": "7d97c2236dec402e20dce4479b7f7ec00a3bf4adc92985103475ef27f0e496a5",
+  "info_plist_only_delta": {
+    "CFBundleVersion": [
+      "10",
+      "11"
+    ]
+  },
+  "bundled_docs_match_commit": {
+    "README.md": "e72f7eca9d6d327349abb6f7910e18b03ed2b2ae7205a5b15a9603e0c5090537",
+    "ARCHITECTURE.md": "fafbf65556e6956a13835b635c43b91411040105535773f474f53abacdeffea0",
+    "BUILD.md": "1ad7199e5283a8f814868cf3108f415656819bb5b7400cb82d5dd12b395d493e",
+    "TESTING.md": "1c66b60b9dbd63716e0e3eba8c91097ab5c84090f616b25223d25406fa21187b",
+    "COMPATIBILITY.md": "b6a9c7e3a253f4acb7f7d074d5a48579d554a96edf113019001b5679634f7575",
+    "KNOWN_ISSUES.md": "c259885e4771adb71ad83f01ea5e5fcc1ee78944be505c30111782e65e590b19",
+    "PIXEL_VERIFICATION.md": "3814080e1447d57c5a8ba7f4092f8684dfa2f047137dd82293289a832eeedb6d"
+  },
+  "release_debug_seams_absent": {
+    "host": true,
+    "broker": true
+  },
+  "scope_status": "source_and_byte_cohort_checks_passed; offline_distribution_cohort_rejected",
+  "blocking_evidence": "final11-player-signature-failure.json",
+  "remaining_gates": [
+    "Repackage self-contained Player and verify every MachO plus nested bundle separately; rebind source archive to repaired committed candidate",
+    "Actual installed final candidate GUI/session/fallback, Spotlight/Dock/CmdTab and permission-dependent native banner checks after Mac unlock",
+    "Predeclared performance/battery/resource acceptance cohort",
+    "Actual final public release/download validation and final Pixel physical-device handoff"
+  ],
+  "no_runtime_UI_device_actions": true
+}

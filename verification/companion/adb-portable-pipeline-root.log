@@ -1,0 +1,7 @@
+{"portable": true, "files": ["adb", "adb-libbrotlicommon.1.2.0.dylib", "adb-libbrotlidec.1.2.0.dylib", "adb-libbrotlienc.1.2.0.dylib", "adb-liblz4.1.10.0.dylib", "adb-libusb-1.0.0.dylib", "adb-libzstd.1.5.7.dylib"], "verified_signatures_and_load_closure": true}
+{"portable": true, "files": ["adb", "adb-libbrotlicommon.1.2.0.dylib", "adb-libbrotlidec.1.2.0.dylib", "adb-libbrotlienc.1.2.0.dylib", "adb-liblz4.1.10.0.dylib", "adb-libusb-1.0.0.dylib", "adb-libzstd.1.5.7.dylib"], "verified_signatures_and_load_closure": true}
+{"portable": true, "files": ["adb", "adb-libbrotlicommon.1.2.0.dylib", "adb-libbrotlidec.1.2.0.dylib", "adb-libbrotlienc.1.2.0.dylib", "adb-liblz4.1.10.0.dylib", "adb-libusb-1.0.0.dylib", "adb-libzstd.1.5.7.dylib"], "verified_signatures_and_load_closure": true}
+Android Debug Bridge version 1.0.41
+Version 37.0.0-android-tools
+Installed as /Users/patrick/workspace/DroidBridge/.build/adb-packaging-portability/container/Runtime/bin/adb
+Running on Darwin 25.2.0 (arm64)

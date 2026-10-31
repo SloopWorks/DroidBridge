@@ -1,0 +1,75 @@
+{
+  "samples": [
+    {
+      "monotonic": 1588776.187372,
+      "cpu_percent": 0.6,
+      "rss_kib": 22064
+    },
+    {
+      "monotonic": 1588776.69254725,
+      "cpu_percent": 9.6,
+      "rss_kib": 26016
+    },
+    {
+      "monotonic": 1588777.20057425,
+      "cpu_percent": 5.0,
+      "rss_kib": 26496
+    },
+    {
+      "monotonic": 1588777.706464541,
+      "cpu_percent": 3.5,
+      "rss_kib": 30576
+    },
+    {
+      "monotonic": 1588778.216182458,
+      "cpu_percent": 0.4,
+      "rss_kib": 30608
+    },
+    {
+      "monotonic": 1588778.750651,
+      "cpu_percent": 6.2,
+      "rss_kib": 34816
+    },
+    {
+      "monotonic": 1588779.262810625,
+      "cpu_percent": 3.1,
+      "rss_kib": 33200
+    },
+    {
+      "monotonic": 1588779.774131125,
+      "cpu_percent": 2.8,
+      "rss_kib": 34736
+    },
+    {
+      "monotonic": 1588780.283975375,
+      "cpu_percent": 5.7,
+      "rss_kib": 34192
+    },
+    {
+      "monotonic": 1588780.800647625,
+      "cpu_percent": 3.4,
+      "rss_kib": 34064
+    },
+    {
+      "monotonic": 1588781.313040791,
+      "cpu_percent": 2.4,
+      "rss_kib": 34208
+    },
+    {
+      "monotonic": 1588781.856265583,
+      "cpu_percent": 4.7,
+      "rss_kib": 33248
+    },
+    {
+      "monotonic": 1588795.719492416,
+      "cpu_percent": 2.5,
+      "rss_kib": 33840
+    },
+    {
+      "monotonic": 1588796.226923541,
+      "cpu_percent": 3.4,
+      "rss_kib": 33360
+    }
+  ],
+  "not_a_quiet_performance_benchmark": true
+}

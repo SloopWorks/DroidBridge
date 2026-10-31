@@ -1,0 +1,62 @@
+[
+  {
+    "attempt": 0,
+    "code": 1,
+    "state": "",
+    "error": "error: device 'emulator-5580' not found"
+  },
+  {
+    "attempt": 1,
+    "code": 1,
+    "state": "",
+    "error": "error: device 'emulator-5580' not found"
+  },
+  {
+    "attempt": 2,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "attempt": 3,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "attempt": 4,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "attempt": 5,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "attempt": 6,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "attempt": 7,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "attempt": 8,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  },
+  {
+    "attempt": 9,
+    "code": 1,
+    "state": "",
+    "error": "error: device offline"
+  }
+]

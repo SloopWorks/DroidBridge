@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "scope": "Final frozen native source candidate; actual XPC and pinned TLS included, four explicitly opt-in device gates remain separate",
+  "tests": 311,
+  "skips": 4,
+  "failures": 0,
+  "seconds": 155.231,
+  "source_files_checked": 125,
+  "source_mismatches": [],
+  "source_manifest_sha256": "c8288245643ed12037c5034452dfa13e8e53f7c5fc4258418d2a232366136c60",
+  "log_sha256": "917aa1afc967edd9ce5f7314b3208b992c386fc208b0939004d4b232c00f4003",
+  "process_exit": 0,
+  "focused_command_security_tests": 15
+}

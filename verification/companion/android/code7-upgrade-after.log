@@ -1,0 +1,24 @@
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionTlsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+dev.droidbridge.companion.CompanionTlsTest:
+INSTRUMENTATION_STATUS: test=captureUpgradeSnapshot
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionTlsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=captureUpgradeSnapshot
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: droidbridge_upgrade_evidence={"device_id":"6e6da77c-b8f1-422d-9645-cc416cf913ce","server_pin":"71e228545bfad01763179b51ae87eec51f92914a8a19a6d1e5910475b0499b8c","pid":2533,"version_code":7,"settings":{"clipboard_enabled":true,"notifications_enabled":false,"profile":"battery"}}
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.012
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1

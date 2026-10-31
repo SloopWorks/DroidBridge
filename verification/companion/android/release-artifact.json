@@ -1,0 +1,11 @@
+{
+  "apk_sha256": "9900aa674cc84dc955d74c732028d3292cc07b222fe9c12d385fd9a9b7522850",
+  "apk_bytes": 2809076,
+  "main_activity_sha256": "7ca54e49a9bd0ff3b23225a7790e0092dc008e23952600455de1469322b9fcc0",
+  "certificate_sha256": "eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4",
+  "signing": "persistent private local distribution key, not Play App Signing",
+  "signing_config_mode": "0o600",
+  "keystore_mode": "0o600",
+  "installed_release_verified": false,
+  "debug_to_release_update_requires_uninstall_due_to_distinct_certificate": true
+}

@@ -1,0 +1,55 @@
+{
+  "review": "Final11 standalone Player signature rejected; outer bundle signature has narrower coverage",
+  "commit": "62186d3c3dac73a3580ee268b9b9a2a69fb7dd0b",
+  "timestamp": "2026-10-31T00:26:20.897920+00:00",
+  "runtime_actions": "No packaged executable launched; codesign and filesystem inspection only",
+  "results": [
+    {
+      "target": "/Users/patrick/Applications/DroidBridge Companion QA11.app",
+      "argv": [
+        "/usr/bin/codesign",
+        "--verify",
+        "--deep",
+        "--strict",
+        "/Users/patrick/Applications/DroidBridge Companion QA11.app"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "target": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/Player.app",
+      "argv": [
+        "/usr/bin/codesign",
+        "--verify",
+        "--deep",
+        "--strict",
+        "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/Player.app"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/Player.app: invalid destination for symbolic link in bundle\n"
+    },
+    {
+      "target": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "argv": [
+        "/usr/bin/codesign",
+        "--verify",
+        "--strict",
+        "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy: invalid destination for symbolic link in bundle\n"
+    }
+  ],
+  "escaping_link": {
+    "path": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/Player.app/Contents/lib",
+    "target": "../../lib",
+    "resolved": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib",
+    "inside_player": false
+  },
+  "player_executable_sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+  "remediation_owner": "Systems: self-contained transitive dylib closure, child-first signing and individual MachO/nested-bundle strict validation",
+  "approval": "rejected_offline_distribution_cohort_pending_packaging_repair"
+}

@@ -1,0 +1,9 @@
+{
+  "pid": 53979,
+  "command": "/Users/patrick/workspace/DroidBridge/.build/companion-macos-qa37/CompanionBroker/generations/8eacc933543c89613d62a206cd65b6b340397fdc220c94d5d33340e5987978d9/DroidBridgeCompanionBroker --companion-qa-root /Users/patrick/workspace/DroidBridge/.build/companion-macos-qa37 --serial emulator-5582",
+  "started": "Fri Oct 30 13:10:39 2026",
+  "resumed": true,
+  "same_command_and_start_identity": true,
+  "state_before": "T",
+  "state_after": "R"
+}

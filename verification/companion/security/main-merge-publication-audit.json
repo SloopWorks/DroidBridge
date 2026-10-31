@@ -1,0 +1,61 @@
+{
+  "decision": "PASS_public_commit_readiness_only",
+  "timestamp": "2026-10-31T01:10:54.678965+00:00",
+  "source_candidate": "94b51c2fab719304e43381de1f7d1bf532276b61",
+  "scope": "Independent bounded read-only audit of untracked verification/companion for user-requested main checkpoint merge; no product/runtime testing or public-release approval",
+  "snapshot_manifest": "main-merge-publication-manifest.json",
+  "snapshot_manifest_sha256": "8eaafc976e5057a47d1f2539ba3fb968fd2e04c1410ebe8c5af6f961b5410e80",
+  "snapshot_files": 1310,
+  "snapshot_bytes": 77164115,
+  "snapshot_text_files": 974,
+  "snapshot_binary_files": 336,
+  "maximum_file_bytes": 1614660,
+  "extensions": {
+    ".json": 440,
+    ".md": 33,
+    ".log": 332,
+    ".xml": 37,
+    ".png": 334,
+    ".txt": 75,
+    ".der": 2,
+    ".jsonl": 26,
+    ".py": 6,
+    ".m": 1,
+    ".diff": 1,
+    ".swift": 4,
+    ".hex": 18,
+    ".html": 1
+  },
+  "secret_pattern_findings": [],
+  "scan_categories": [
+    "private PEM keys",
+    "provider/API access-token formats",
+    "long Bearer Authorization values",
+    "secret-bearing pairing URLs",
+    "JSON credential/secret/password fields",
+    "known physical Pixel serial"
+  ],
+  "binary_inspection": {
+    "334_PNG": "Fresh Vision QR scan passed,0detections/unreadable; raw decoded values not printed",
+    "18_hex": "Every capture independently decoded as empty or exact TLSClientHello handshake only, no PSK or HTTP/credentials",
+    "2_DER": "Parseable public X509 certificates, no private key"
+  },
+  "forbidden_artifacts": {
+    "symlinks": 0,
+    "files_over_2MiB": 0,
+    "debug_APK_or_generated_installable_archives": 0,
+    "unexpected_binary_types": 0,
+    "ignored_pyc": "Excluded naturally by Git --exclude-standard, not part of public snapshot"
+  },
+  "status_claims_review": "PROGRAM_STATUS top + MAIN_MERGE_CHECKPOINT explicitly incomplete/blocked/user-requested merge; QA11 rejection retained; QA12 only offline accepted; older scoped historical evidence is not final completion",
+  "remaining_acceptance": [
+    "Installed QA12 GUI and fallback interaction",
+    "Quiet performance cohort at unchanged targets",
+    "Actual Spotlight and permission-dependent native notification banners",
+    "Actual public download and installed release verification"
+  ],
+  "release_published": false,
+  "no_UI_device_runtime_operations": true,
+  "limitations": "Automated secret-pattern/QR audits and scoped source review reduce publication risk; historical logs retain local QA usernames/paths, synthetic fixture IDs, public pins/certificates and test measurements. No whole-program/performance/Spotlight/banner/fallback/public-delivery acceptance is implied.",
+  "corpus_freeze": "Root may stage these exact files plus generated manifest/receipt; any subsequent substantive evidence change requires re-audit"
+}

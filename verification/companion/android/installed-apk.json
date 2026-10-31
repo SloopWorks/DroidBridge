@@ -1,0 +1,12 @@
+{
+  "sha256": "0acf408230430b69e5fd979e0a9d1f4c340cf6870e0f27847823073132d2a66a",
+  "bytes": 5693125,
+  "type": "debug, not production release",
+  "devices": [
+    "emulator-5580 API35",
+    "emulator-5582 API37"
+  ],
+  "instrumentation_tests_each": 6,
+  "physical_device_tested": false,
+  "source_notes": "native source tested; subsequently added license assets and wrapper checksum do not change production Kotlin code"
+}

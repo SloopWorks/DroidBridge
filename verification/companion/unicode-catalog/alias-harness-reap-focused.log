@@ -1,0 +1,14 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Emitting module DroidBridgeCoreTests
+[4/5] Compiling DroidBridgeCoreTests CanonicalAliasAdmissionTests.swift
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/CanonicalAliasAdmissionTests.swift:118:131: error: cannot convert value of type 'Int32' to expected argument type 'Int'
+116 |             if result == supervisor.processIdentifier || (result == -1 && errno == ECHILD) { break }
+117 |             if result == -1 && errno != EINTR { throw NSError(domain: "OwnedAliasFixtureReap", code: Int(errno)) }
+118 |             guard ProcessInfo.processInfo.systemUptime < reapDeadline else { throw NSError(domain: "OwnedAliasFixtureReap", code: ETIMEDOUT) }
+    |                                                                                                                                   `- error: cannot convert value of type 'Int32' to expected argument type 'Int'
+119 |             try await Task.sleep(nanoseconds: 5_000_000)
+120 |         }
+error: fatalError

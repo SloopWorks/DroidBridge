@@ -1,0 +1,114 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :app:mergeReleaseNativeLibs NO-SOURCE
+> Task :app:stripReleaseDebugSymbols NO-SOURCE
+> Task :app:extractReleaseNativeSymbolTables NO-SOURCE
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:checkReleaseDuplicateClasses UP-TO-DATE
+> Task :app:buildKotlinToolingMetadata UP-TO-DATE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:checkReleaseAarMetadata UP-TO-DATE
+> Task :app:processReleaseNavigationResources UP-TO-DATE
+> Task :app:compileReleaseNavigationResources UP-TO-DATE
+> Task :app:generateReleaseResValues UP-TO-DATE
+> Task :app:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :app:generateReleaseResources UP-TO-DATE
+> Task :app:mergeReleaseResources UP-TO-DATE
+> Task :app:packageReleaseResources UP-TO-DATE
+> Task :app:parseReleaseLocalResources UP-TO-DATE
+> Task :app:createReleaseCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksRelease UP-TO-DATE
+> Task :app:processReleaseMainManifest UP-TO-DATE
+> Task :app:processReleaseManifest UP-TO-DATE
+> Task :app:processReleaseManifestForPackage UP-TO-DATE
+> Task :app:processReleaseResources UP-TO-DATE
+> Task :app:javaPreCompileRelease UP-TO-DATE
+> Task :app:desugarReleaseFileDependencies UP-TO-DATE
+> Task :app:mergeReleaseStartupProfile UP-TO-DATE
+> Task :app:mergeExtDexRelease UP-TO-DATE
+> Task :app:mergeReleaseArtProfile UP-TO-DATE
+> Task :app:mergeReleaseShaders UP-TO-DATE
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets UP-TO-DATE
+> Task :app:compressReleaseAssets UP-TO-DATE
+> Task :app:extractReleaseVersionControlInfo UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :app:optimizeReleaseResources UP-TO-DATE
+> Task :app:collectReleaseDependencies UP-TO-DATE
+> Task :app:sdkReleaseDependencyData UP-TO-DATE
+> Task :app:validateSigningRelease UP-TO-DATE
+> Task :app:writeReleaseAppMetadata UP-TO-DATE
+> Task :app:writeReleaseSigningConfigVersions UP-TO-DATE
+> Task :app:preReleaseAndroidTestBuild SKIPPED
+> Task :app:checkReleaseAndroidTestAarMetadata UP-TO-DATE
+> Task :app:processReleaseAndroidTestNavigationResources UP-TO-DATE
+> Task :app:compileReleaseAndroidTestNavigationResources UP-TO-DATE
+> Task :app:generateReleaseAndroidTestResValues UP-TO-DATE
+> Task :app:mapReleaseAndroidTestSourceSetPaths UP-TO-DATE
+> Task :app:generateReleaseAndroidTestResources UP-TO-DATE
+> Task :app:mergeReleaseAndroidTestResources UP-TO-DATE
+> Task :app:processReleaseAndroidTestManifest UP-TO-DATE
+> Task :app:processReleaseAndroidTestResources UP-TO-DATE
+> Task :app:javaPreCompileReleaseAndroidTest UP-TO-DATE
+> Task :app:mergeReleaseAndroidTestShaders UP-TO-DATE
+> Task :app:compileReleaseAndroidTestShaders NO-SOURCE
+> Task :app:generateReleaseAndroidTestAssets UP-TO-DATE
+> Task :app:mergeReleaseAndroidTestAssets UP-TO-DATE
+> Task :app:compressReleaseAndroidTestAssets UP-TO-DATE
+> Task :app:checkReleaseAndroidTestDuplicateClasses UP-TO-DATE
+> Task :app:desugarReleaseAndroidTestFileDependencies UP-TO-DATE
+> Task :app:mergeExtDexReleaseAndroidTest UP-TO-DATE
+> Task :app:mergeReleaseAndroidTestJniLibFolders UP-TO-DATE
+> Task :app:mergeReleaseAndroidTestNativeLibs NO-SOURCE
+> Task :app:stripReleaseAndroidTestDebugSymbols NO-SOURCE
+> Task :app:validateSigningReleaseAndroidTest UP-TO-DATE
+> Task :app:writeReleaseAndroidTestSigningConfigVersions UP-TO-DATE
+> Task :app:preReleaseUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileReleaseUnitTest UP-TO-DATE
+
+> Task :app:compileReleaseKotlin
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt:30:39 This class is not recommended for use in Kotlin. Use 'kotlin.Any' instead.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt:418:59 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt:419:49 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:79:16 'var statusBarColor: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:80:26 'var systemUiVisibility: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:80:52 'static field SYSTEM_UI_FLAG_LIGHT_STATUS_BAR: Int' is deprecated. Deprecated in Java.
+
+> Task :app:compileReleaseJavaWithJavac NO-SOURCE
+> Task :app:dexBuilderRelease
+> Task :app:mergeReleaseGlobalSynthetics UP-TO-DATE
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:processReleaseJavaRes UP-TO-DATE
+> Task :app:mergeReleaseJavaResource UP-TO-DATE
+> Task :app:bundleReleaseClassesToRuntimeJar
+> Task :app:bundleReleaseClassesToCompileJar
+> Task :app:compileReleaseUnitTestKotlin
+> Task :app:compileReleaseUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processReleaseUnitTestJavaRes UP-TO-DATE
+> Task :app:mergeDexRelease
+> Task :app:compileReleaseAndroidTestKotlin
+> Task :app:testReleaseUnitTest
+> Task :app:compileReleaseArtProfile
+> Task :app:compileReleaseAndroidTestJavaWithJavac UP-TO-DATE
+> Task :app:dexBuilderReleaseAndroidTest
+> Task :app:mergeReleaseAndroidTestGlobalSynthetics UP-TO-DATE
+> Task :app:processReleaseAndroidTestJavaRes UP-TO-DATE
+> Task :app:mergeReleaseAndroidTestJavaResource UP-TO-DATE
+> Task :app:mergeDexReleaseAndroidTest
+> Task :app:packageReleaseAndroidTest
+> Task :app:createReleaseAndroidTestApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleReleaseAndroidTest
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease UP-TO-DATE
+> Task :app:lintVitalRelease
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleRelease
+
+BUILD SUCCESSFUL in 15s
+81 actionable tasks: 16 executed, 65 up-to-date

@@ -1,0 +1,7 @@
+[0/1] Planning build
+Building for production...
+[0/9] Write sources
+[2/9] Write swift-version--58304C5D6DBC2206.txt
+[4/10] Compiling DroidBridgeCore AndroidDiscovery.swift
+error: input file '/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionBrokerService.swift' was modified during the build
+error: input file '/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionBrokerService.swift' was modified during the build

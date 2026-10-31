@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.droidbridge.companion.ProtocolRulesTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-30T23:54:01.821Z" hostname="Patricks-MacBook-Pro.local" time="0.04">
+  <properties/>
+  <testcase name="generatedCapabilitiesHaveFullEntropyLengthAndUniqueBytes" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.022"/>
+  <testcase name="packageValidationRejectsArgumentsAndTraversal" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.004"/>
+  <testcase name="catalogLabelsReplaceMalformedUtf16WithoutPublishingSplitSurrogates" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.003"/>
+  <testcase name="optionalActivityIdentityUsesUtf8BytesAndIsOmittedInsteadOfTruncated" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.0"/>
+  <testcase name="filenamesCannotEscapePrivateStorage" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.002"/>
+  <testcase name="contentLengthRejectsAmbiguousAndOversizedFraming" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.001"/>
+  <testcase name="contentAddressesHaveKnownSha256" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.004"/>
+  <testcase name="catalogLabelsPreserveCjkAndSupplementaryScalarsAtTheWireBoundary" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

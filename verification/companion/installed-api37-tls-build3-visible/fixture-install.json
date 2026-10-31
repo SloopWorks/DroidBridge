@@ -1,0 +1,10 @@
+[
+  {
+    "apk": "InputAlpha-v1.apk",
+    "result": "Serving...\nPerforming Incremental Install\nSuccess\nInstall command complete in 112 ms"
+  },
+  {
+    "apk": "InputBeta-v1.apk",
+    "result": "Serving...\nPerforming Incremental Install\nSuccess\nInstall command complete in 276 ms"
+  }
+]

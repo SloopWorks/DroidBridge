@@ -1,0 +1,37 @@
+DroidBridgeCompanion.apk
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=DroidBridge Local Distribution
+Signer #1 certificate SHA-256 digest: eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4
+Signer #1 certificate SHA-1 digest: 873ad67e9b1ee7e45e9393496c66b0454adbc304
+Signer #1 certificate MD5 digest: e2980d83ecd17f1c8833fcf6d0cae345
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: 89e92b2c88b60f435fe0da21fd5f31de20da9a4a32e282effe9bc066867064e0
+Signer #1 public key SHA-1 digest: 9c02869365ec268a18c7000d8a62fa3ee08f6013
+Signer #1 public key MD5 digest: b8a296cbe5852efe81a9772d4fcbddf4
+
+DroidBridgeCompanion-test.apk
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=DroidBridge Local Distribution
+Signer #1 certificate SHA-256 digest: eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4
+Signer #1 certificate SHA-1 digest: 873ad67e9b1ee7e45e9393496c66b0454adbc304
+Signer #1 certificate MD5 digest: e2980d83ecd17f1c8833fcf6d0cae345
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: 89e92b2c88b60f435fe0da21fd5f31de20da9a4a32e282effe9bc066867064e0
+Signer #1 public key SHA-1 digest: 9c02869365ec268a18c7000d8a62fa3ee08f6013
+Signer #1 public key MD5 digest: b8a296cbe5852efe81a9772d4fcbddf4

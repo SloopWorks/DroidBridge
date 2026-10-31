@@ -1,0 +1,52 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[4/12] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[5/12] Compiling DroidBridgeCore ADBPortableRuntime.swift
+[5/16] Write Objects.LinkFileList
+[8/19] Linking DroidBridgeCompanionBroker
+[9/19] Applying DroidBridgeCompanionBroker
+[10/19] Linking DroidBridgeAvailability
+[11/19] Applying DroidBridgeAvailability
+[12/19] Linking DroidBridge
+[13/19] Applying DroidBridge
+[15/19] Compiling DroidBridgeCoreTests CompanionBrokerTLSRaceTests.swift
+[16/19] Compiling DroidBridgeCoreTests BrokerAdmissionTLSPeer.swift
+[17/19] Emitting module DroidBridgeCoreTests
+[17/19] Write Objects.LinkFileList
+[18/19] Linking DroidBridgePackageTests
+Build complete! (3.25s)
+Test Suite 'Selected tests' started at 2026-10-30 13:31:43.154.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 13:31:43.155.
+Test Suite 'CompanionBrokerTLSRaceTests' started at 2026-10-30 13:31:43.155.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testRealAdmissionPeerProtocol]' started.
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionClient.swift:193: error: -[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testRealAdmissionPeerProtocol] : failed: caught error: "keyNotFound(CodingKeys(stringValue: "deviceId", intValue: nil), Swift.DecodingError.Context(codingPath: [CodingKeys(stringValue: "data", intValue: nil)], debugDescription: "No value associated with key CodingKeys(stringValue: \"deviceId\", intValue: nil) (\"deviceId\").", underlyingError: nil))"
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testRealAdmissionPeerProtocol]' failed (0.178 seconds).
+Test Suite 'CompanionBrokerTLSRaceTests' failed at 2026-10-30 13:31:43.333.
+	 Executed 1 test, with 1 failure (1 unexpected) in 0.178 (0.178) seconds
+Test Suite 'DroidBridgePackageTests.xctest' failed at 2026-10-30 13:31:43.333.
+	 Executed 1 test, with 1 failure (1 unexpected) in 0.178 (0.178) seconds
+Test Suite 'Selected tests' failed at 2026-10-30 13:31:43.333.
+	 Executed 1 test, with 1 failure (1 unexpected) in 0.178 (0.179) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

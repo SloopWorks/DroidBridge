@@ -1,0 +1,4 @@
+{
+  "passed": false,
+  "scope": "Immediate catalog/delta query after actual Beta uninstall did not yet report deletion; Beta restored in finally. This attempt failed and is retained; retry waits bounded package broadcast generation change."
+}

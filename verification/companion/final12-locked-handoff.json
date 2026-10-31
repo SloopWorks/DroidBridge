@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-10-31T00:39:20.530735+00:00",
+  "state": "Offline work complete; user unlock still pending after CUA auto-unlock failure",
+  "source_commit": "94b51c2fab719304e43381de1f7d1bf532276b61",
+  "installed_candidate": "/Users/patrick/Applications/DroidBridge Companion QA12.app",
+  "candidate_gui_launched": false,
+  "runtime_state": "Last observed main remains QA10; exact runtime identifiers/handoff in installed-api37-tls-build10-final/final11-locked-runtime-handoff.json. No fresh GUI/device probe or input while locked.",
+  "broker": "QA12 broker SHA identical QA10; retain pairing when proceeding, no unnecessary broker reset",
+  "remaining_order": [
+    "User unlock; graceful real Cmd+Q QA10, start installed QA12 using existing private QA root",
+    "Footer, native first-frame/input, actual fallback wrapper and independent identity smoke",
+    "Current APK12 notification in-app path respecting actual OS permission; fresh2MiB share",
+    "Real graceful quit; root exclusive quiet20-sample controls and20-per-cohort ABBA plus actual protocol/performance gates; do not change targets",
+    "Actual public prerelease/download/quarantine install verification after local gates",
+    "Final reviews/evidence privacy audit, final delivery commit/merge/push as already authorized"
+  ],
+  "safety": "No Mac lock/permission bypass; no shared ADB5037, physical Pixel, user emulator5554, production app/catalog/helper changes",
+  "root_tool_sessions": "All root build, install, archive, validators and QR audit complete. No held root subprocess sessions.",
+  "public_publication": false,
+  "privacy": {
+    "text_files_scanned": 965,
+    "text_findings": 0,
+    "qr": {
+      "images_scanned": 334,
+      "qr_detections": [],
+      "scope": "Read-only full-resolution Vision QR detection; no decoded payloads accessed or logged; detections require separate review",
+      "unreadable_or_oversize_images": []
+    }
+  }
+}

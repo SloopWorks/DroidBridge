@@ -1,0 +1,96 @@
+{
+  "scope": "Different-code-hash and different-path ad-hoc-signed Core-linked helpers using one random isolated QA service/account; not yet installed broker update evidence",
+  "production_keychain_access": false,
+  "source_sha256": {
+    "Sources/DroidBridgeCore/AndroidDiscovery.swift": "f8b00e025baa053e44fe52ca8364669215271aeca62b3449d32bf6f9cb0b3e61",
+    "Sources/DroidBridgeCore/AndroidIconProvider.swift": "01de6b63d46c46e77b62c6d445d0d0b22cd7e55d28b590632b83e02c31a7906e",
+    "Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift": "0dabd1b1b5803eed9573896d826228ec822cf676e6d24b3db1cf2d197306e888",
+    "Sources/DroidBridgeCore/CompanionBrokerHost.swift": "55689542b97970d8a0e79cb63d6c40d78b88ec3eea73a25f47a08b4d344f92aa",
+    "Sources/DroidBridgeCore/CompanionBrokerIPC.swift": "ad7c4ec728b7f7e614faa5265f7535ab3494621495509ae398c589d344373824",
+    "Sources/DroidBridgeCore/CompanionBrokerInstaller.swift": "94715fa3091c3d85602b118db88bc24615e125f9ba33e9da02b777db9bc650f1",
+    "Sources/DroidBridgeCore/CompanionBrokerRegistry.swift": "2706888e9251db1de453934f0da7ab47c473494d53090d52293d9d4dcae90f7b",
+    "Sources/DroidBridgeCore/CompanionBrokerService.swift": "af36a7822897d6d40941eb6e6c8848e908e292a371f403612d3858d5a432e410",
+    "Sources/DroidBridgeCore/CompanionClient.swift": "b9b929f3e3f0bbfeff7cdc2abdc69574da10233d32b400a0894ebebff0a07436",
+    "Sources/DroidBridgeCore/CompanionCredentialStore.swift": "f69546b73112c604505d5a501b5a37c6dd00b6f8d54e4f32dcf06a2a3f2862f0",
+    "Sources/DroidBridgeCore/CompanionDiagnostics.swift": "c293cfb540ae9561eb1f39f062d6223797ecaf6fb597d6b744b112704a7a1613",
+    "Sources/DroidBridgeCore/CompanionExportPolicy.swift": "8a347e2b613171f87c141a9817cc17bca26bf6c9c86dc0841993bfb9bab100b3",
+    "Sources/DroidBridgeCore/CompanionForward.swift": "9158ea21019e1d7028b8addf825711beae664b353b1e4a0940c36b9d432579aa",
+    "Sources/DroidBridgeCore/CompanionModels.swift": "60c48e503811465d063bf8ff7d62e891bb623c6ae8747e852f3cd674a7f004bc",
+    "Sources/DroidBridgeCore/CompanionPerformanceProfile.swift": "56d670d8b9b12fe466251bdf37ca9aaaeeeed4a623aab6287fe2856eb2b4c7c9",
+    "Sources/DroidBridgeCore/CompanionQAScope.swift": "bf3ac0fd6dc14ed4d4685ebf73403a588a03962a2125ce7a3bb2ead71a41bfba",
+    "Sources/DroidBridgeCore/CompanionQRImageReader.swift": "4d6c4920e70d69d4b0de65df6d8043fdf168dffd0be27ebbc4f010f60692d680",
+    "Sources/DroidBridgeCore/CompanionReleaseMetadata.swift": "69b010a6dc88e269d75f7295c1f5f6cb47cff2b280ee74fd7af0003d4cf84630",
+    "Sources/DroidBridgeCore/CompanionSetupValidation.swift": "0b074d30e994ca99563fb1e9e2e58301b725c1563aaffd4809af7507efc98ba9",
+    "Sources/DroidBridgeCore/CompanionWirelessADB.swift": "bf96094ae79114e7c359966acaaacd190ebbb05302ea390f440d56d2c6ccd9c6",
+    "Sources/DroidBridgeCore/CoreAvailabilityAuthority.swift": "88aff5c4d6ef1be10ebcebbef4da365c6bed51b93981182c7ea63e8c13cdbc92",
+    "Sources/DroidBridgeCore/DeviceAudioPreferences.swift": "42ed21c9560b0f5829d1cf5a4ad8ed2151fdea38fe5cc83b4ee74d2e76162c53",
+    "Sources/DroidBridgeCore/DeviceAudioRoute.swift": "b9480532a15d256cf42abf580f52f3939b5d73b3514e3959b0bb57dd533c73f1",
+    "Sources/DroidBridgeCore/DeviceReadiness.swift": "7e5170ef613363be40f0170a7a16dfd13c0d1af4159479fc12ddcab59e400fa5",
+    "Sources/DroidBridgeCore/DeviceSelection.swift": "e0bd1b3cd19ccb1aa5204e2af1f7783e8e71be59b394a0a55be03daa92bee23f",
+    "Sources/DroidBridgeCore/DroidBridgePreferences.swift": "5376c4a1e5aa57c654e4b7f3944bf1f6e94c39fb2a3213335a18c042dc52b39f",
+    "Sources/DroidBridgeCore/InputGeometry.swift": "be7efb7033ef40c554804ff981c852361a3c94c09a8456ba4d764f945f04ebc2",
+    "Sources/DroidBridgeCore/ManagedAppRegistrationExecutor.swift": "95ad78b3777018a21849e411ad67ca110c3860c9abfc4f9329578f88cebc3594",
+    "Sources/DroidBridgeCore/ManagedApps.swift": "55acaa79186bf680240b3c1522497a782652e52ae42b1cf60d6610d283fe8267",
+    "Sources/DroidBridgeCore/ManagedAppsCopy.swift": "e4d84fc0919a8787d4ffa3e44dfeb7396949ee3dd0fa869e4bf5c411a620f415",
+    "Sources/DroidBridgeCore/ManagedAvailabilityMonitor.swift": "1ab219d07da31c826efcc2fe46602c61bf4c38159a56b52cab444d8536ea3ae1",
+    "Sources/DroidBridgeCore/Models.swift": "9b300cb718def600c062de8ce49ca0584402a2a780c131964c97c3ab67b2afed",
+    "Sources/DroidBridgeCore/PhoneDisplayPower.swift": "ac8cfdcef11709818ce6d463020d3ef159a7111272ff1edbfc320f0511f0e60a",
+    "Sources/DroidBridgeCore/ProcessRunner.swift": "3c98f5766a576d76d426618f900ee9cbb1b9dceb5fafefa50cf1da989c0741c5",
+    "Sources/DroidBridgeCore/ScrcpyPortLease.swift": "a451508e59586d045921ffb916e1f5e3cfd0243233b061d08e9a153700a843fe",
+    "Sources/DroidBridgeCore/ScrcpyStartupLease.swift": "f77c54245a9811c30b682cd7a7af016373a441b127998993c639479b7244a717",
+    "Sources/DroidBridgeCore/StartupFrameVisibility.swift": "0739e4128052cc31d59bc92ce0f4e82ddf76ed8fae98e7394fc37ea85ad90bd5",
+    "Sources/DroidBridgeCore/Toolchain.swift": "5b0f9d1e4ca3f4ae3ab5d7a747dd0a8475976eeb83f7bf223598e3c18267cb8b"
+  },
+  "source_driver_sha256": "572c06eff1c0bf8b643a664f0962ed4ad8ac40fa520dd6650d7f1045e3e8b528",
+  "helpers": {
+    "A": {
+      "sha256": "20e94be2bb40e14fea0571d3cd6714b9eaeed0aee463f9f775d8bca8b461d1ab",
+      "cdhash": "6f74e5b62d8a4fbf47c4fa7377bfcf2d70c20980",
+      "relative_path": "generation-A/DroidBridgeCompanionBroker",
+      "signing": "ad_hoc_strict_verified"
+    },
+    "B": {
+      "sha256": "5bef8183140e927bd184573511752c30ebd866b87ae7baac280e92330cfe7ae7",
+      "cdhash": "551da07e7b8068a3ae2ac54114a52bcd90d9103b",
+      "relative_path": "generation-B/DroidBridgeCompanionBroker",
+      "signing": "ad_hoc_strict_verified"
+    }
+  },
+  "actions": [
+    {
+      "helper": "A",
+      "mode": "save",
+      "result": {
+        "generation": "A",
+        "keychain_status_after": "0",
+        "keychain_status_before": "-25300",
+        "mode": "save",
+        "status": "ok"
+      }
+    },
+    {
+      "helper": "A",
+      "mode": "load",
+      "result": {
+        "generation": "A",
+        "keychain_status_after": "0",
+        "keychain_status_before": "0",
+        "mode": "load",
+        "status": "ok"
+      }
+    },
+    {
+      "helper": "A",
+      "mode": "delete",
+      "result": {
+        "generation": "A",
+        "keychain_status_after": "-25300",
+        "keychain_status_before": "0",
+        "mode": "delete",
+        "status": "ok"
+      }
+    }
+  ],
+  "exact_random_item_cleanup": true,
+  "source_unchanged": true
+}

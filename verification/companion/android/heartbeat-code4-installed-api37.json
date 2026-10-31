@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-10-30T20:52:24.356631+00:00",
+  "version_code": 4,
+  "apk_sha256": "51a776498d3774317c7fea79de0494b7ae97fc92344a5014229245459b58e4f1",
+  "installed_apk_same_as_candidate": true,
+  "source_manifest": ".build/companion-heartbeat-candidate/manifest.json",
+  "all_frozen_sources_match": true,
+  "signed_test_apk_sha256": "ecdfe80703915930d3c0989ec62beba2016786c0daf171b3b0caaf2010a26e95",
+  "tests_passed": 19,
+  "large_text_tests_passed": 4,
+  "device": "emulator-5582/API37",
+  "production_source_modified_by_reviewer": false
+}

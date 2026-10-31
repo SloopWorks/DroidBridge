@@ -1,0 +1,53 @@
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+dev.droidbridge.companion.CompanionSecurityTest:
+INSTRUMENTATION_STATUS: test=authenticatedBroadcastCatalogHintsRespectNullableTargetsAndPeerIsolation
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=authenticatedBroadcastCatalogHintsRespectNullableTargetsAndPeerIsolation
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=catalogWirePreservesUnicodeScalarsAndOmitsOversizedActivityMetadata
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=catalogWirePreservesUnicodeScalarsAndOmitsOversizedActivityMetadata
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionTlsTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+dev.droidbridge.companion.CompanionTlsTest:
+INSTRUMENTATION_STATUS: test=installationIdentityAndTlsAreStableAndMandatory
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionTlsTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=installationIdentityAndTlsAreStableAndMandatory
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: droidbridge_tls_evidence={"server_pin":"71e228545bfad01763179b51ae87eec51f92914a8a19a6d1e5910475b0499b8c","device_id":"6e6da77c-b8f1-422d-9645-cc416cf913ce","pid":2363,"negotiated":[{"protocol":"TLSv1.2","cipher":"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"},{"protocol":"TLSv1.3","cipher":"TLS_AES_128_GCM_SHA256"}],"leaf_der_base64":"MIIBnjCCAUWgAwIBAgIRAKFGucKINmXpxDcguOYZCz4wCgYIKoZIzj0EAwIwLTErMCkGA1UEAxMiRHJvaWRCcmlkZ2UgQ29tcGFuaW9uIEluc3RhbGxhdGlvbjAeFw0yNjEwMjkyMDE3MzRaFw0yODEwMjkyMDE3MzRaMC0xKzApBgNVBAMTIkRyb2lkQnJpZGdlIENvbXBhbmlvbiBJbnN0YWxsYXRpb24wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQWnLeizOq8gCLWQtn1VlJDqbMTNeLrrwS9rbavvMnzoNSLRBbBUK6pQWh67TjQLHO0nmclwdfbex49i0ChggAbo0YwRDAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH\/BAIwADATBgNVHSUEDDAKBggrBgEFBQcDATAPBgNVHREECDAGhwR\/AAABMAoGCCqGSM49BAMCA0cAMEQCIDLQ9NZYTDtRXt0oToEAtjdpRbkIqgCHMUL2aJmAU9wPAiAworcbnQUaMEGJaPqf19MaZ\/v7ksWu5I8QVjG7Qqe9Hg==","private_key_exportable":false}
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.579
+
+OK (3 tests)
+
+
+INSTRUMENTATION_CODE: -1

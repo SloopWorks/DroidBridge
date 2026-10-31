@@ -1,0 +1,10 @@
+{
+  "observed_at": "2026-10-30T21:15:59.720447+00:00",
+  "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+  "server_pin": "82f9aeab82dcb375f75a490ad81a064e315da5211e033c8938928a930b05ee8d",
+  "same_device_id": true,
+  "same_server_pin": true,
+  "version_line": "versionCode=6 minSdk=33 targetSdk=35",
+  "method": "same-certificate install-r from code5; no uninstall/data clear",
+  "service_restored": true
+}

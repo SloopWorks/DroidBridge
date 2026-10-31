@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "path": "Sources/DroidBridge/CompanionCatalogSync.swift",
+      "sha256": "b00e27870f342c07c2b58825d7503a7e2da83084cb013f7d37b1f70d7fd4b1e1"
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionDesktopAdapter.swift",
+      "sha256": "584c93e70892c6682ea5aa8e21bf09ac275629ebea3094f1981a120f2b338c03"
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionWindow.swift",
+      "sha256": "68fd5457190705bfeb55317b423cb61e2634370b624f19c92d95a18a43921055"
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionLauncherIntegration.swift",
+      "sha256": "ade7e572c017edadff80cf6184cd7443dd58e6beb1df9a71f9036943423defe3"
+    },
+    {
+      "path": "Sources/DroidBridge/Launcher.swift",
+      "sha256": "aa53e0560a9d02a83a4816feeb4b325704080020fa08b876915395baa987c5fb"
+    },
+    {
+      "path": "scripts/verify-companion-catalog-sync.swift",
+      "sha256": "1fe7490eddb414ebdbbe47a5b1dc870690a4c35eb7670d7ff8d04f037c76e6e2"
+    },
+    {
+      "path": "scripts/verify-companion-gui.swift",
+      "sha256": "472086491fc31dd9c223ed13d4d38e7b78fb3a040e56301da9161f63f0d9059a"
+    }
+  ],
+  "aggregate_sha256": "9a9f2cfd9a089dfb898494ae6053637ecdb25140d4e4985da12e0b62c1caf7ab",
+  "engine_report": "catalog-sync-engine-fixture.json",
+  "source_build_passed": true,
+  "installed_device_acceptance": false
+}

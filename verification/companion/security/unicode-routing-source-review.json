@@ -1,0 +1,26 @@
+{
+  "scope": "Independent source review of Unicode boundary and nullable event routing; completed Swift focused33 log only, pending APK12/runtime routing/install proof",
+  "source_sha256": {
+    "Sources/DroidBridgeCore/CompanionModels.swift": "7af7afe7318aceeaccf3501414300f60c3893d3993f995d4ad765acaea801519",
+    "Sources/DroidBridgeCore/CompanionClient.swift": "1e578c8395f978022872f5cef5f29a4eb611a590dbadc7fba1c06cccc8263fe7",
+    "Sources/DroidBridgeCore/CompanionBrokerRegistry.swift": "077e9b9ed78cd65e83ac0acd10f020d56c3a8f7c56d8c39b25a45258e60b6024",
+    "Sources/DroidBridge/CompanionCatalogSync.swift": "d73e214f3ece2eaf86058bf33b2f46867107a9da3bd5ffb504d4a3410761eaeb",
+    "Tests/DroidBridgeCoreTests/CompanionBoundaryTests.swift": "d2f9de82e0b2a80a4a0d5e685084793dd471e00850b4bcbeef4c9b9d0d4b3323",
+    "Tests/DroidBridgeCoreTests/CompanionBrokerTests.swift": "dfed86de5ba5cb6fe7378eb3bc959c5321a9f1b8922d33f9a71a33a11c5004bc",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ProtocolRules.kt": "a898763c6cc3fb154e4b9a59a28cd605cc60690ac45fbb3b38b189ca9f292052",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt": "0ce668f9b1674068339594902737cba39b3fe58ad9fa1d8c4bdc8d243fea69f2",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTransfers.kt": "9d50abd0dd1973b01d62df8705ceb53cd2b0b0741742687c2c7c0331a70ae831",
+    "AndroidCompanion/app/src/test/java/dev/droidbridge/companion/ProtocolRulesTest.kt": "23e875f62fd65bdf2919483f55083ecf4df8a872449fc0b492945ea405dfcdb6",
+    "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionSecurityTest.kt": "345d85c2b618873330ca336c7a8a48d5b62c390199d6324faa18aaee8597bd62"
+  },
+  "swift_focused_tests": 33,
+  "swift_failures": 0,
+  "swift_seconds": 3.815,
+  "swift_log_sha256": "6f2b4062d35b17b492c64dd96403e85dc90f0c0ab13dae958cec5504a50e9531",
+  "review": "No source blocker in scalar-safe label normalization/optional exact activity omission or typed JSON-null metadata routing. All current content-bearing file/command/clipboard/notification producers use nonnull explicit authorized recipients. Notification reads require exact target. Only catalog_changed(revision hash) and profile_changed(enum) broadcast.",
+  "pending": [
+    "Signed APK12 manifest and actual two-peer routing+Unicode TLS tests",
+    "Updated full Swift and Android gates",
+    "Installed automatic C04 and final package/archive"
+  ]
+}

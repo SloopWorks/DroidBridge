@@ -1,0 +1,321 @@
+{
+  "scope": "Readonly per-file actual MachO architecture/dependency/strict signature inspection; no packaged executable launched",
+  "app": "/Users/patrick/Applications/DroidBridge Companion QA11.app",
+  "count": 31,
+  "entries": [
+    {
+      "path": "Contents/MacOS/DroidBridge",
+      "sha256": "6d70755ddc5a1386e1ebc6004ebcac987be448fba8b6a620105b30ad2b777e53",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/MacOS/DroidBridge:\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/System/Library/Frameworks/AVFoundation.framework/Versions/A/AVFoundation (compatibility version 1.0.0, current version 2.0.0)\n\t/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 2685.30.107)\n\t/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork (compatibility version 1.0.0, current version 3860.255.31)\n\t/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio (compatibility version 1.0.0, current version 1.0.0)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 4201.0.0)\n\t/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics (compatibility version 64.0.0, current version 1965.2.3)\n\t/System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage (compatibility version 1.0.1, current version 7.0.0)\n\t/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia (compatibility version 1.0.0, current version 3290.6.5)\n\t/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo (compatibility version 1.2.0, current version 726.2.0)\n\t/System/Library/Frameworks/CryptoKit.framework/Versions/A/CryptoKit (compatibility version 1.0.0, current version 1.0.0)\n\t/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 4201.0.0)\n\t/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO (compatibility version 1.0.0, current version 1.0.0)\n\t/System/Library/Frameworks/LocalAuthentication.framework/Versions/A/LocalAuthentication (compatibility version 1.0.0, current version 2005.60.9)\n\t/System/Library/Frameworks/Security.framework/Versions/A/Security (compatibility version 1.0.0, current version 61901.60.40)\n\t/System/Library/Frameworks/UserNotifications.framework/Versions/A/UserNotifications (compatibility version 1.0.0, current version 1.0.0)\n\t/System/Library/Frameworks/VideoToolbox.framework/Versions/A/VideoToolbox (compatibility version 1.0.0, current version 3290.6.5)\n\t/System/Library/Frameworks/Vision.framework/Versions/A/Vision (compatibility version 1.0.0, current version 9.3.1)\n\t/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)\n\t/usr/lib/swift/libswiftAVFoundation.dylib (compatibility version 1.0.0, current version 2395.6.5, weak)\n\t/usr/lib/swift/libswiftAccelerate.dylib (compatibility version 1.0.0, current version 77.0.0, weak)\n\t/usr/lib/swift/libswiftCore.dylib (compatibility version 0.0.0, current version 0.0.0)\n\t/usr/lib/swift/libswiftCoreAudio.dylib (compatibility version 1.0.0, current version 411.255.11, weak)\n\t/usr/lib/swift/libswiftCoreFoundation.dylib (compatibility version 1.0.0, current version 120.100.0)\n\t/usr/lib/swift/libswiftCoreImage.dylib (compatibility version 1.0.0, current version 2.2.0, weak)\n\t/usr/lib/swift/libswiftCoreMIDI.dylib (compatibility version 1.0.0, current version 6.0.0, weak)\n\t/usr/lib/swift/libswiftCoreMedia.dylib (compatibility version 1.0.0, current version 3290.6.5)\n\t/usr/lib/swift/libswiftDarwin.dylib (compatibility version 1.0.0, current version 347.40.2)\n\t/usr/lib/swift/libswiftDispatch.dylib (compatibility version 1.0.0, current version 56.0.0)\n\t/usr/lib/swift/libswiftIOKit.dylib (compatibility version 1.0.0, current version 1.0.0, weak)\n\t/usr/lib/swift/libswiftMetal.dylib (compatibility version 1.0.0, current version 370.64.2, weak)\n\t/usr/lib/swift/libswiftOSLog.dylib (compatibility version 1.0.0, current version 10.0.0, weak)\n\t/usr/lib/swift/libswiftObjectiveC.dylib (compatibility version 1.0.0, current version 951.1.0)\n\t/usr/lib/swift/libswiftQuartzCore.dylib (compatibility version 1.0.0, current version 5.0.0, weak)\n\t/usr/lib/swift/libswiftUniformTypeIdentifiers.dylib (compatibility version 1.0.0, current version 877.2.4)\n\t/usr/lib/swift/libswiftVideoToolbox.dylib (compatibility version 1.0.0, current version 3290.6.5, weak)\n\t/usr/lib/swift/libswiftXPC.dylib (compatibility version 1.0.0, current version 105.0.14, weak)\n\t/usr/lib/swift/libswift_Concurrency.dylib (compatibility version 1.0.0, current version 0.0.0)\n\t/usr/lib/swift/libswiftos.dylib (compatibility version 1.0.0, current version 1076.40.2, weak)\n\t/usr/lib/swift/libswiftsimd.dylib (compatibility version 1.0.0, current version 23.0.0, weak)\n\t/usr/lib/swift/libswiftAppKit.dylib (compatibility version 1.0.0, current version 1.0.0)\n\t/usr/lib/swift/libswiftCoreGraphics.dylib (compatibility version 1.0.0, current version 1.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/adb-libbrotlidec.1.2.0.dylib",
+      "sha256": "7324d97b037e5450c6bd8fa7a3abedb00df9205c19d59517b9cde70a26bdd5b1",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/adb-libbrotlidec.1.2.0.dylib:\n\t@loader_path/adb-libbrotlidec.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t@loader_path/adb-libbrotlicommon.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/adb-libbrotlicommon.1.2.0.dylib",
+      "sha256": "5ecd35029a5c6d0880a1bf52cf8bce76469722803cad8de4517b4bdc45f00f18",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/adb-libbrotlicommon.1.2.0.dylib:\n\t@loader_path/adb-libbrotlicommon.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/DroidBridgeAudioClient",
+      "sha256": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/DroidBridgeAudioClient:\n\t@loader_path/../lib/libavformat.63.dylib (compatibility version 63.0.0, current version 63.1.102)\n\t@loader_path/../lib/libavcodec.63.dylib (compatibility version 63.0.0, current version 63.1.102)\n\t@loader_path/../lib/libavutil.61.dylib (compatibility version 61.0.0, current version 61.1.102)\n\t@loader_path/../lib/libswresample.7.dylib (compatibility version 7.0.0, current version 7.1.102)\n\t@loader_path/../lib/libSDL3.0.dylib (compatibility version 401.0.0, current version 401.18.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/DroidBridgeSupervisor",
+      "sha256": "06060ed6b73c5109118edeee9764a24d2a3cb6da92bd193d2c26fa84f91ee1b8",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/DroidBridgeSupervisor:\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/adb-libzstd.1.5.7.dylib",
+      "sha256": "36a6fe2c93b7166f326c7da306761d59311e5514e7b201e57fe4b6300cc2c5e1",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/adb-libzstd.1.5.7.dylib:\n\t@loader_path/adb-libzstd.1.5.7.dylib (compatibility version 1.0.0, current version 1.5.7)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/adb",
+      "sha256": "e19f1bdac239722dbd7866ccf27c4d1de601bffc07a04c39a02daf9cbe4f8eab",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/adb:\n\t/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 4201.0.0)\n\t/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)\n\t@loader_path/adb-libbrotlicommon.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)\n\t@loader_path/adb-libbrotlidec.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)\n\t@loader_path/adb-libbrotlienc.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)\n\t@loader_path/adb-liblz4.1.10.0.dylib (compatibility version 1.0.0, current version 1.10.0)\n\t@loader_path/adb-libzstd.1.5.7.dylib (compatibility version 1.0.0, current version 1.5.7)\n\t@loader_path/adb-libusb-1.0.0.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 2000.67.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/DroidBridgeAvailability",
+      "sha256": "16e64f2316146b3e68acd5a70565ba233f2deca4d7afe857b350984ce1474835",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/DroidBridgeAvailability:\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork (compatibility version 1.0.0, current version 3860.255.31)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 4201.0.0)\n\t/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics (compatibility version 64.0.0, current version 1965.2.3)\n\t/System/Library/Frameworks/CryptoKit.framework/Versions/A/CryptoKit (compatibility version 1.0.0, current version 1.0.0)\n\t/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 4201.0.0)\n\t/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO (compatibility version 1.0.0, current version 1.0.0)\n\t/System/Library/Frameworks/LocalAuthentication.framework/Versions/A/LocalAuthentication (compatibility version 1.0.0, current version 2005.60.9)\n\t/System/Library/Frameworks/Security.framework/Versions/A/Security (compatibility version 1.0.0, current version 61901.60.40)\n\t/System/Library/Frameworks/Vision.framework/Versions/A/Vision (compatibility version 1.0.0, current version 9.3.1)\n\t/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)\n\t/usr/lib/swift/libswiftAVFoundation.dylib (compatibility version 1.0.0, current version 2395.6.5, weak)\n\t/usr/lib/swift/libswiftAccelerate.dylib (compatibility version 1.0.0, current version 77.0.0, weak)\n\t/usr/lib/swift/libswiftCore.dylib (compatibility version 0.0.0, current version 0.0.0)\n\t/usr/lib/swift/libswiftCoreAudio.dylib (compatibility version 1.0.0, current version 411.255.11, weak)\n\t/usr/lib/swift/libswiftCoreFoundation.dylib (compatibility version 1.0.0, current version 120.100.0)\n\t/usr/lib/swift/libswiftCoreImage.dylib (compatibility version 1.0.0, current version 2.2.0, weak)\n\t/usr/lib/swift/libswiftCoreMIDI.dylib (compatibility version 1.0.0, current version 6.0.0, weak)\n\t/usr/lib/swift/libswiftCoreMedia.dylib (compatibility version 1.0.0, current version 3290.6.5, weak)\n\t/usr/lib/swift/libswiftDarwin.dylib (compatibility version 1.0.0, current version 347.40.2)\n\t/usr/lib/swift/libswiftDispatch.dylib (compatibility version 1.0.0, current version 56.0.0)\n\t/usr/lib/swift/libswiftIOKit.dylib (compatibility version 1.0.0, current version 1.0.0, weak)\n\t/usr/lib/swift/libswiftMetal.dylib (compatibility version 1.0.0, current version 370.64.2, weak)\n\t/usr/lib/swift/libswiftObjectiveC.dylib (compatibility version 1.0.0, current version 951.1.0, weak)\n\t/usr/lib/swift/libswiftQuartzCore.dylib (compatibility version 1.0.0, current version 5.0.0, weak)\n\t/usr/lib/swift/libswiftUniformTypeIdentifiers.dylib (compatibility version 1.0.0, current version 877.2.4, weak)\n\t/usr/lib/swift/libswiftXPC.dylib (compatibility version 1.0.0, current version 105.0.14, weak)\n\t/usr/lib/swift/libswift_Concurrency.dylib (compatibility version 1.0.0, current version 0.0.0)\n\t/usr/lib/swift/libswiftos.dylib (compatibility version 1.0.0, current version 1076.40.2, weak)\n\t/usr/lib/swift/libswiftsimd.dylib (compatibility version 1.0.0, current version 23.0.0, weak)\n\t/usr/lib/swift/libswiftCoreGraphics.dylib (compatibility version 1.0.0, current version 1.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/adb-liblz4.1.10.0.dylib",
+      "sha256": "394a5880300630f87ab4aada16845490e2b39c327d6605472a632858d5bcdc64",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/adb-liblz4.1.10.0.dylib:\n\t@loader_path/adb-liblz4.1.10.0.dylib (compatibility version 1.0.0, current version 1.10.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/adb-libbrotlienc.1.2.0.dylib",
+      "sha256": "885c52592ad43411f2d61b00af488e23e336a2b8144f81c45f30fe304e2d2dc9",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/adb-libbrotlienc.1.2.0.dylib:\n\t@loader_path/adb-libbrotlienc.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t@loader_path/adb-libbrotlicommon.1.2.0.dylib (compatibility version 1.0.0, current version 1.2.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/adb-libusb-1.0.0.dylib",
+      "sha256": "a60e0f5c4130253853af22421254ea4bd801fe282333256c1dfb5ff19fdb5000",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/adb-libusb-1.0.0.dylib:\n\t@loader_path/adb-libusb-1.0.0.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)\n\t/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 4424.1.255)\n\t/System/Library/Frameworks/Security.framework/Versions/A/Security (compatibility version 1.0.0, current version 61901.101.4)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker",
+      "sha256": "d890c6815c7a679a0df3be864b9abac0bd3be9212dbcbb98ce9be08c17e98936",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker:\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork (compatibility version 1.0.0, current version 3860.255.31)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 4201.0.0)\n\t/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics (compatibility version 64.0.0, current version 1965.2.3)\n\t/System/Library/Frameworks/CryptoKit.framework/Versions/A/CryptoKit (compatibility version 1.0.0, current version 1.0.0)\n\t/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 4201.0.0)\n\t/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO (compatibility version 1.0.0, current version 1.0.0)\n\t/System/Library/Frameworks/LocalAuthentication.framework/Versions/A/LocalAuthentication (compatibility version 1.0.0, current version 2005.60.9)\n\t/System/Library/Frameworks/Security.framework/Versions/A/Security (compatibility version 1.0.0, current version 61901.60.40)\n\t/System/Library/Frameworks/Vision.framework/Versions/A/Vision (compatibility version 1.0.0, current version 9.3.1)\n\t/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)\n\t/usr/lib/swift/libswiftAVFoundation.dylib (compatibility version 1.0.0, current version 2395.6.5, weak)\n\t/usr/lib/swift/libswiftAccelerate.dylib (compatibility version 1.0.0, current version 77.0.0, weak)\n\t/usr/lib/swift/libswiftCore.dylib (compatibility version 0.0.0, current version 0.0.0)\n\t/usr/lib/swift/libswiftCoreAudio.dylib (compatibility version 1.0.0, current version 411.255.11, weak)\n\t/usr/lib/swift/libswiftCoreFoundation.dylib (compatibility version 1.0.0, current version 120.100.0)\n\t/usr/lib/swift/libswiftCoreImage.dylib (compatibility version 1.0.0, current version 2.2.0, weak)\n\t/usr/lib/swift/libswiftCoreMIDI.dylib (compatibility version 1.0.0, current version 6.0.0, weak)\n\t/usr/lib/swift/libswiftCoreMedia.dylib (compatibility version 1.0.0, current version 3290.6.5, weak)\n\t/usr/lib/swift/libswiftDarwin.dylib (compatibility version 1.0.0, current version 347.40.2)\n\t/usr/lib/swift/libswiftDispatch.dylib (compatibility version 1.0.0, current version 56.0.0)\n\t/usr/lib/swift/libswiftIOKit.dylib (compatibility version 1.0.0, current version 1.0.0, weak)\n\t/usr/lib/swift/libswiftMetal.dylib (compatibility version 1.0.0, current version 370.64.2, weak)\n\t/usr/lib/swift/libswiftObjectiveC.dylib (compatibility version 1.0.0, current version 951.1.0, weak)\n\t/usr/lib/swift/libswiftQuartzCore.dylib (compatibility version 1.0.0, current version 5.0.0, weak)\n\t/usr/lib/swift/libswiftUniformTypeIdentifiers.dylib (compatibility version 1.0.0, current version 877.2.4, weak)\n\t/usr/lib/swift/libswiftXPC.dylib (compatibility version 1.0.0, current version 105.0.14, weak)\n\t/usr/lib/swift/libswift_Concurrency.dylib (compatibility version 1.0.0, current version 0.0.0)\n\t/usr/lib/swift/libswiftos.dylib (compatibility version 1.0.0, current version 1076.40.2, weak)\n\t/usr/lib/swift/libswiftsimd.dylib (compatibility version 1.0.0, current version 23.0.0, weak)\n\t/usr/lib/swift/libswiftCoreGraphics.dylib (compatibility version 1.0.0, current version 1.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/bin/scrcpy",
+      "sha256": "2dead2559e75ea25c224fa74398042c5c4ec4234e5ed7ff76d066a7cbd23a7ca",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/bin/scrcpy:\n\t@loader_path/../lib/libavformat.63.dylib (compatibility version 63.0.0, current version 63.1.102)\n\t@loader_path/../lib/libavcodec.63.dylib (compatibility version 63.0.0, current version 63.1.102)\n\t@loader_path/../lib/libavutil.61.dylib (compatibility version 61.0.0, current version 61.1.102)\n\t@loader_path/../lib/libswresample.7.dylib (compatibility version 7.0.0, current version 7.1.102)\n\t@loader_path/../lib/libSDL3.0.dylib (compatibility version 401.0.0, current version 401.18.0)\n\t@loader_path/../lib/libusb-1.0.0.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libswresample.7.dylib",
+      "sha256": "c0854526e6928459720d4a8c2f62bd22c14eb1ed64933a43978ce323bea2d844",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libswresample.7.dylib:\n\t@loader_path/libswresample.7.dylib (compatibility version 7.0.0, current version 7.1.102)\n\t@loader_path/libavutil.61.dylib (compatibility version 61.0.0, current version 61.1.102)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)\n\t@loader_path/libssl.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t@loader_path/libcrypto.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t/System/Library/Frameworks/VideoToolbox.framework/Versions/A/VideoToolbox (compatibility version 1.0.0, current version 3320.8.5)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 5026.5.4)\n\t/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia (compatibility version 1.0.0, current version 3320.8.5)\n\t/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo (compatibility version 1.2.0, current version 734.4.0)\n\t/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 1226.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libSvtAv1Enc.4.dylib",
+      "sha256": "dbfee16602a1e19ed31a94153a49a03b41116af1d42e5f844cea454865ce62d5",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libSvtAv1Enc.4.dylib:\n\t@loader_path/libSvtAv1Enc.4.dylib (compatibility version 4.0.0, current version 4.2.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libmpg123.0.dylib",
+      "sha256": "40f1607b710ddc95bd0e041f452d218e8e1fc9c56c5223c363a9b50cc9b64e7a",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libmpg123.0.dylib:\n\t@loader_path/libmpg123.0.dylib (compatibility version 50.0.0, current version 50.4.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libcrypto.4.dylib",
+      "sha256": "710421eac59c226b2fa42bf56809533cf915d2cecc531e813b13fcc4e1150459",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libcrypto.4.dylib:\n\t@loader_path/libcrypto.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libssl.4.dylib",
+      "sha256": "b127c7ee7650d972cf87834de1af9ceabcd343f43e42f034a4dcd8bafc74b755",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libssl.4.dylib:\n\t@loader_path/libssl.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t@loader_path/libcrypto.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libdav1d.7.dylib",
+      "sha256": "12e71a0df17680a36a91091e7a0cf5a199425e0f138290b01b24232b071c82e4",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libdav1d.7.dylib:\n\t@loader_path/libdav1d.7.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libSDL3.0.dylib",
+      "sha256": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libSDL3.0.dylib:\n\t@loader_path/libSDL3.0.dylib (compatibility version 401.0.0, current version 401.18.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia (compatibility version 1.0.0, current version 3320.8.5)\n\t/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo (compatibility version 1.2.0, current version 734.4.0)\n\t/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 24.0.0)\n\t/System/Library/Frameworks/UniformTypeIdentifiers.framework/Versions/A/UniformTypeIdentifiers (compatibility version 1.0.0, current version 709.0.0, weak)\n\t/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)\n\t/System/Library/Frameworks/ForceFeedback.framework/Versions/A/ForceFeedback (compatibility version 1.0.0, current version 1.0.2)\n\t/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 170.0.0)\n\t/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio (compatibility version 1.0.0, current version 1.0.0)\n\t/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1000.0.0)\n\t/System/Library/Frameworks/AVFoundation.framework/Versions/A/AVFoundation (compatibility version 1.0.0, current version 2.0.0)\n\t/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 5026.5.4)\n\t/System/Library/Frameworks/GameController.framework/Versions/A/GameController (compatibility version 1.0.0, current version 13.5.1)\n\t/System/Library/Frameworks/Metal.framework/Versions/A/Metal (compatibility version 1.0.0, current version 373.2.0)\n\t/System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore (compatibility version 1.2.0, current version 1195.14.4)\n\t/System/Library/Frameworks/CoreHaptics.framework/Versions/A/CoreHaptics (compatibility version 1.0.0, current version 1.0.0, weak)\n\t/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 2685.60.104)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 5026.5.4)\n\t/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics (compatibility version 64.0.0, current version 1965.5.1)\n\t/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 1226.0.0)\n\t/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libx264.165.dylib",
+      "sha256": "3ab241fe51e34c1d2113db4d6f2866d162fdee8f0a020708dee998f996e005dd",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libx264.165.dylib:\n\t@loader_path/libx264.165.dylib (compatibility version 0.0.0, current version 0.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libmp3lame.0.dylib",
+      "sha256": "a8d70e10f425ec85161bd2f6118877d97fe8296c365616b6c5ae4327f7437116",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libmp3lame.0.dylib:\n\t@loader_path/libmp3lame.0.dylib (compatibility version 1.0.0, current version 1.0.0)\n\t@loader_path/libmpg123.0.dylib (compatibility version 50.0.0, current version 50.4.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libavformat.63.dylib",
+      "sha256": "c4df21c3badba461040103a8afa791b9b8240e4f4821f0d99386247fd2b69279",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libavformat.63.dylib:\n\t@loader_path/libavformat.63.dylib (compatibility version 63.0.0, current version 63.1.102)\n\t@loader_path/libavcodec.63.dylib (compatibility version 63.0.0, current version 63.1.102)\n\t@loader_path/libswresample.7.dylib (compatibility version 7.0.0, current version 7.1.102)\n\t@loader_path/libavutil.61.dylib (compatibility version 61.0.0, current version 61.1.102)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/usr/lib/libbz2.1.0.dylib (compatibility version 1.0.0, current version 1.0.8)\n\t/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)\n\t@loader_path/libssl.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t@loader_path/libcrypto.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t@loader_path/libvpx.12.dylib (compatibility version 1.0.0, current version 1.0.0)\n\t/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t@loader_path/liblzma.5.dylib (compatibility version 14.0.0, current version 14.4.0)\n\t@loader_path/libdav1d.7.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1000.0.0)\n\t@loader_path/libmp3lame.0.dylib (compatibility version 1.0.0, current version 1.0.0)\n\t@loader_path/libopus.0.dylib (compatibility version 12.0.0, current version 12.1.0)\n\t@loader_path/libSvtAv1Enc.4.dylib (compatibility version 4.0.0, current version 4.2.0)\n\t@loader_path/libx264.165.dylib (compatibility version 0.0.0, current version 0.0.0)\n\t@loader_path/libx265.217.dylib (compatibility version 217.0.0, current version 217.0.0)\n\t/System/Library/Frameworks/VideoToolbox.framework/Versions/A/VideoToolbox (compatibility version 1.0.0, current version 3320.8.5)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 5026.5.4)\n\t/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia (compatibility version 1.0.0, current version 3320.8.5)\n\t/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo (compatibility version 1.2.0, current version 734.4.0)\n\t/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 1226.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libusb-1.0.0.dylib",
+      "sha256": "5ed1b68671f62ca5e09ec338bd07dbc9b705c4308c3e76cbc8f15c2700c1f99f",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libusb-1.0.0.dylib:\n\t@loader_path/libusb-1.0.0.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)\n\t/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 4424.1.255)\n\t/System/Library/Frameworks/Security.framework/Versions/A/Security (compatibility version 1.0.0, current version 61901.101.4)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libavutil.61.dylib",
+      "sha256": "78c492610a1e7a64d33a67f8d64c2f7718015aeea96a196da3498a94eb58600e",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libavutil.61.dylib:\n\t@loader_path/libavutil.61.dylib (compatibility version 61.0.0, current version 61.1.102)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)\n\t@loader_path/libssl.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t@loader_path/libcrypto.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t/System/Library/Frameworks/VideoToolbox.framework/Versions/A/VideoToolbox (compatibility version 1.0.0, current version 3320.8.5)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 5026.5.4)\n\t/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia (compatibility version 1.0.0, current version 3320.8.5)\n\t/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo (compatibility version 1.2.0, current version 734.4.0)\n\t/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 1226.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libx265.217.dylib",
+      "sha256": "1e71956ffcbaf72f1b45fff17fd6d9688c272ec50730779a206c1ee8ca8b257e",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libx265.217.dylib:\n\t@loader_path/libx265.217.dylib (compatibility version 217.0.0, current version 217.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 2100.43.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/liblzma.5.dylib",
+      "sha256": "652556c1a1af272715aabc978f0d9fce6c2378ba7c240c6d283e7ea059bafc43",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/liblzma.5.dylib:\n\t@loader_path/liblzma.5.dylib (compatibility version 14.0.0, current version 14.4.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libavcodec.63.dylib",
+      "sha256": "9db69b81f72100b471476036b27b3815aebd7af8f0c1bb19c604e03b9074c704",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libavcodec.63.dylib:\n\t@loader_path/libavcodec.63.dylib (compatibility version 63.0.0, current version 63.1.102)\n\t@loader_path/libswresample.7.dylib (compatibility version 7.0.0, current version 7.1.102)\n\t@loader_path/libavutil.61.dylib (compatibility version 61.0.0, current version 61.1.102)\n\t@loader_path/libvpx.12.dylib (compatibility version 1.0.0, current version 1.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t@loader_path/liblzma.5.dylib (compatibility version 14.0.0, current version 14.4.0)\n\t@loader_path/libdav1d.7.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (compatibility version 1.0.0, current version 1000.0.0)\n\t@loader_path/libmp3lame.0.dylib (compatibility version 1.0.0, current version 1.0.0)\n\t@loader_path/libopus.0.dylib (compatibility version 12.0.0, current version 12.1.0)\n\t@loader_path/libSvtAv1Enc.4.dylib (compatibility version 4.0.0, current version 4.2.0)\n\t@loader_path/libx264.165.dylib (compatibility version 0.0.0, current version 0.0.0)\n\t@loader_path/libx265.217.dylib (compatibility version 217.0.0, current version 217.0.0)\n\t/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)\n\t/System/Library/Frameworks/VideoToolbox.framework/Versions/A/VideoToolbox (compatibility version 1.0.0, current version 3320.8.5)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 5026.5.4)\n\t/System/Library/Frameworks/CoreMedia.framework/Versions/A/CoreMedia (compatibility version 1.0.0, current version 3320.8.5)\n\t/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo (compatibility version 1.2.0, current version 734.4.0)\n\t/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 1226.0.0)\n\t@loader_path/libssl.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n\t@loader_path/libcrypto.4.dylib (compatibility version 4.0.0, current version 4.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libvpx.12.dylib",
+      "sha256": "75bc597365a56da22618077a959fbb2e27fadd53f05a9a4633e0051f9da5b170",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libvpx.12.dylib:\n\t@loader_path/libvpx.12.dylib (compatibility version 1.0.0, current version 1.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n\t/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 2100.43.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/lib/libopus.0.dylib",
+      "sha256": "577875d06d65d2977ac74ca73d156f8123cfef3f2ffe950f7c0c64b8c905f0fa",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 0,
+      "strict_signature_stderr": "",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/lib/libopus.0.dylib:\n\t@loader_path/libopus.0.dylib (compatibility version 12.0.0, current version 12.1.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    },
+    {
+      "path": "Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy",
+      "sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+      "architecture": "arm64",
+      "architecture_exit": 0,
+      "strict_signature_exit": 1,
+      "strict_signature_stderr": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy: invalid destination for symbolic link in bundle\n",
+      "dependencies_exit": 0,
+      "dependencies": "/Users/patrick/Applications/DroidBridge Companion QA11.app/Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy:\n\t@loader_path/../lib/libavformat.63.dylib (compatibility version 63.0.0, current version 63.1.102)\n\t@loader_path/../lib/libavcodec.63.dylib (compatibility version 63.0.0, current version 63.1.102)\n\t@loader_path/../lib/libavutil.61.dylib (compatibility version 61.0.0, current version 61.1.102)\n\t@loader_path/../lib/libswresample.7.dylib (compatibility version 7.0.0, current version 7.1.102)\n\t@loader_path/../lib/libSDL3.0.dylib (compatibility version 401.0.0, current version 401.18.0)\n\t@loader_path/../lib/libusb-1.0.0.dylib (compatibility version 7.0.0, current version 7.0.0)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n"
+    }
+  ],
+  "all_arm64": true,
+  "signature_failures": [
+    "Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy"
+  ]
+}

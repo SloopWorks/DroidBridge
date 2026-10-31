@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-10-30T21:51:09.351608+00:00",
+  "scope": "clock_anchor_v1 and truthful command admission/outcomes",
+  "source_sha256": {
+    "Sources/DroidBridgeCore/CompanionModels.swift": "8bf0ba762663dafec5376d190570a6c4f9d8e96e105be6a2a8d5e08d8ff19d5f",
+    "Sources/DroidBridgeCore/CompanionClient.swift": "3c0cd83e581027da4c24bfe1e3a16992dbc36ca86a5398070600bdbfadb0ed37",
+    "Sources/DroidBridgeCore/CompanionBrokerRegistry.swift": "69a095fee8c27dabeecae23353f4843aafde0b3daa510a7f873d05ada9600618",
+    "Sources/DroidBridgeCore/CompanionBrokerService.swift": "53d82aad52b9bd055b6f98dffeb75ee8c83d2082e9c922cdf5212ff5e01ce5f0",
+    "Sources/DroidBridgeCore/CompanionSetupValidation.swift": "62f5cd19b13c68c26a43dd358e3d63fee1c4aa0e50860008acaa5dcf9ff57f69",
+    "Sources/DroidBridgeCore/ManagedApps.swift": "27453308460194edefb8bc9dcb9814b2f40dea56df9002e3b62ab9169cbda488",
+    "Tests/DroidBridgeCoreTests/CompanionClockTests.swift": "4639c1e7d98d524bc11e4aed63474a33f595419deaf3081364c9f3e0b7661c99",
+    "Tests/DroidBridgeCoreTests/CompanionTLSFixture.swift": "1c4b13573c6cb33ea7010688729d79fcdd519ea1ec295a8a5840f84d0b26f78f",
+    "Tests/DroidBridgeCoreTests/CompanionBrokerTLSRaceTests.swift": "1255f203fa9dda06d2d99b8676f9bf50ca11fcd0a393ef194fdcefbb824bbfb2",
+    "Tests/DroidBridgeCoreTests/BrokerAdmissionTLSPeer.swift": "7b1496ad6cba8ba6d664c6e6a80251e512614bc0ca7ebf38ba98aa0ef2349c74"
+  },
+  "evidence": [
+    {
+      "path": "clock-swift-full.log",
+      "result": "294 tests passed, 4 intentional runtime skips; before final receipt-delivery lifecycle refinements"
+    },
+    {
+      "path": "clock-lifecycle-tests.log",
+      "result": "12 tests passed against frozen source, including actual pinned TLS blocked receipt shutdown, exact XPC command_admit and atomic selection outcome concurrency"
+    },
+    {
+      "path": "clock-swift-final.log",
+      "result": "running; root must observe completion before final acceptance"
+    }
+  ],
+  "runtime_limits": {
+    "hello_rtt_ms": 2000,
+    "sample_age_ms": 30000,
+    "command_admission_ms": 30000,
+    "admitted_receipt_ms": 120000,
+    "pairing_window_ms": 120000,
+    "mac_recovery_window_ms": 600000,
+    "terminal_wave_max": 8,
+    "retry_backoff_seconds": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      30
+    ]
+  },
+  "not_claimed": [
+    "No physical-device commands or system-clock mutation performed",
+    "Installed Mac/APK interoperation after this source change remains root-owned",
+    "Independent security re-review remains required"
+  ],
+  "full_swift_exec_session": 57817
+}

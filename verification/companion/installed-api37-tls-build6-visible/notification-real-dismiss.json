@@ -1,0 +1,7 @@
+{
+  "pass": true,
+  "android_fixture_active_keys": [],
+  "broker_fixture_rows": [],
+  "scope": "ActualCUADismissbutton applied + actualAndroidNotificationManagerlist + actualbrokerinbox removal",
+  "nonreply_notification_exposed_reply_button": false
+}

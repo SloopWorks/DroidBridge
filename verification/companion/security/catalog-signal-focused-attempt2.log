@@ -1,0 +1,57 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[1/10] Write swift-version--58304C5D6DBC2206.txt
+[2/8] Linking DroidBridge
+[3/8] Applying DroidBridge
+[5/8] Emitting module DroidBridgeCoreTests
+[6/8] Compiling DroidBridgeCoreTests CompanionCatalogSignalTests.swift
+[6/8] Write Objects.LinkFileList
+[7/8] Linking DroidBridgePackageTests
+Build complete! (1.90s)
+Test Suite 'Selected tests' started at 2026-10-30 16:19:52.582.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 16:19:52.583.
+Test Suite 'CompanionCatalogSignalTests' started at 2026-10-30 16:19:52.583.
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testAuthenticatedEventAdvancesOncePersistsCursorAndDoesNotCrowdInbox]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testAuthenticatedEventAdvancesOncePersistsCursorAndDoesNotCrowdInbox]' passed (0.258 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testEpochDiscontinuityAdvancesTokenWithoutFetchingCatalog]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testEpochDiscontinuityAdvancesTokenWithoutFetchingCatalog]' passed (0.093 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testLegacyJournalAuthenticatedConnectSeedsPersistentTokenAndStatusNeverFetchesCatalog]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testLegacyJournalAuthenticatedConnectSeedsPersistentTokenAndStatusNeverFetchesCatalog]' passed (0.086 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testResetReplayAndReconnectCannotCollapseToOldEventTokenAndForgetClearsAuthority]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testResetReplayAndReconnectCannotCollapseToOldEventTokenAndForgetClearsAuthority]' passed (0.422 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testSelfRevocationClearsCatalogSignalAndDedupAuthority]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testSelfRevocationClearsCatalogSignalAndDedupAuthority]' passed (0.111 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testWrongTrustAndUnrelatedEventsCannotInvalidateCurrentCatalog]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCatalogSignalTests testWrongTrustAndUnrelatedEventsCannotInvalidateCurrentCatalog]' passed (0.322 seconds).
+Test Suite 'CompanionCatalogSignalTests' passed at 2026-10-30 16:19:53.875.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 1.292 (1.293) seconds
+Test Suite 'CompanionNotificationSecurityTests' started at 2026-10-30 16:19:53.876.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testAdmittedPreferenceCarriesExpectedTrustInCanonicalWirePayload]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testAdmittedPreferenceCarriesExpectedTrustInCanonicalWirePayload]' passed (0.092 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testAuthenticatedEventFailureInvalidatesOnlyDeviceNotifications]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testAuthenticatedEventFailureInvalidatesOnlyDeviceNotifications]' passed (0.100 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testCurrentNotificationActionsCarryOriginalTrust]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testCurrentNotificationActionsCarryOriginalTrust]' passed (0.104 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testEventResetAndEpochChangeInvalidateOnlyDeviceNotifications]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testEventResetAndEpochChangeInvalidateOnlyDeviceNotifications]' passed (0.194 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testHistoricalNotificationActionsAreRefusedBeforeWire]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testHistoricalNotificationActionsAreRefusedBeforeWire]' passed (0.155 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testLegacyPhoneWithoutScopeCapabilityReceivesNoNotificationCommand]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testLegacyPhoneWithoutScopeCapabilityReceivesNoNotificationCommand]' passed (0.080 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testMissingAndMismatchedTrustNeverSendNotificationPreference]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testMissingAndMismatchedTrustNeverSendNotificationPreference]' passed (0.084 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testOldPollerFailureCannotRemoveReconnectedTransport]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testOldPollerFailureCannotRemoveReconnectedTransport]' passed (0.338 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testQueuedPreferenceRevalidatesTrustBeforeEnteringWire]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionNotificationSecurityTests testQueuedPreferenceRevalidatesTrustBeforeEnteringWire]' passed (0.106 seconds).
+Test Suite 'CompanionNotificationSecurityTests' passed at 2026-10-30 16:19:55.129.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 1.253 (1.254) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 16:19:55.129.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 2.545 (2.547) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 16:19:55.129.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 2.545 (2.548) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

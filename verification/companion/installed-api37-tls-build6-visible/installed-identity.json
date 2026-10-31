@@ -1,0 +1,8 @@
+{
+  "bundle_version": "6",
+  "version": "0.2.0",
+  "host_sha256": "32367d901e17bcce782db426bd54731a8a8076b83efe25c4ab4469a3823b7ebd",
+  "broker_sha256": "de0d13759075af09ba4832e3ca10ed4258725411b400cf2e4fa94472a7a164ad",
+  "apk_sha256": "bdc1d8bd2ae2f46917a738054ef1a9482095ee58592f9e53e11853c36e8ad084",
+  "codesign_exit": 0
+}

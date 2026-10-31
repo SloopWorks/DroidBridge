@@ -1,0 +1,62 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/8] Compiling DroidBridgeCore CompanionPendingCredentialStore.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[4/8] Compiling DroidBridgeCore CompanionBrokerService.swift
+[5/8] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[6/15] Compiling DroidBridgeStreaming SessionRecovery.swift
+[7/15] Compiling DroidBridgeStreaming SocketTransport.swift
+[8/15] Compiling DroidBridgeStreaming H264Decoder.swift
+[9/15] Compiling DroidBridgeStreaming DeviceAudioArtifacts.swift
+[10/15] Compiling DroidBridgeStreaming BridgeSession.swift
+[11/15] Emitting module DroidBridgeStreaming
+[12/15] Compiling DroidBridgeStreaming DeviceAudioRouter.swift
+[13/32] Compiling DroidBridge CompanionLauncherIntegration.swift
+[14/32] Compiling DroidBridge CompanionPairingScanner.swift
+[15/33] Compiling DroidBridge main.swift
+[16/33] Compiling DroidBridge DeviceOnboarding.swift
+[17/33] Compiling DroidBridge LauncherUI.swift
+[18/33] Compiling DroidBridge Launcher.swift
+[19/33] Compiling DroidBridge MacAppWrapper.swift
+[20/33] Compiling DroidBridge DeviceOnboardingUI.swift
+[21/33] Compiling DroidBridge PhoneDisplayControls.swift
+[22/33] Emitting module DroidBridge
+[23/33] Compiling DroidBridge NativeWindow.swift
+[24/33] Compiling DroidBridge DeviceOnboardingAgent.swift
+[25/33] Compiling DroidBridge ManagedAppNameRepair.swift
+[26/33] Compiling DroidBridge AudioControls.swift
+[27/33] Compiling DroidBridge CompanionDesktopAdapter.swift
+[28/33] Compiling DroidBridge CompanionWirelessSetup.swift
+[29/33] Compiling DroidBridge CompanionTransfers.swift
+[30/33] Compiling DroidBridge CompanionWindow.swift
+[30/33] Write Objects.LinkFileList
+[31/33] Linking DroidBridge
+[32/33] Applying DroidBridge
+Build of product 'DroidBridge' complete! (14.76s)

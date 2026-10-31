@@ -1,0 +1,81 @@
+{
+  "scope": "Independent offline source11/footer/docs/helper and retained actual10 evidence review; no GUI/device activity or final11 installed/performance/public acceptance",
+  "commit": "62186d3c3dac73a3580ee268b9b9a2a69fb7dd0b",
+  "production_changes_since_full335_candidate": [
+    "Sources/DroidBridge/CompanionLauncherIntegration.swift"
+  ],
+  "source11_hashes": {
+    "Sources/DroidBridge/CompanionLauncherIntegration.swift": "553ecfd17c6672901b4c1b98ba5900e9f78727a2b69959acadd01e95d3dffc6c",
+    "README.md": "e72f7eca9d6d327349abb6f7910e18b03ed2b2ae7205a5b15a9603e0c5090537",
+    "ARCHITECTURE.md": "fafbf65556e6956a13835b635c43b91411040105535773f474f53abacdeffea0",
+    "BUILD.md": "1ad7199e5283a8f814868cf3108f415656819bb5b7400cb82d5dd12b395d493e",
+    "TESTING.md": "1c66b60b9dbd63716e0e3eba8c91097ab5c84090f616b25223d25406fa21187b",
+    "COMPATIBILITY.md": "b6a9c7e3a253f4acb7f7d074d5a48579d554a96edf113019001b5679634f7575",
+    "KNOWN_ISSUES.md": "c259885e4771adb71ad83f01ea5e5fcc1ee78944be505c30111782e65e590b19",
+    "PIXEL_VERIFICATION.md": "3814080e1447d57c5a8ba7f4092f8684dfa2f047137dd82293289a832eeedb6d",
+    "scripts/verify-companion-actions.m": "f52af417bcbcf43ef1847a2ca9989567e03716c00637090b31352e5aa85eedcc",
+    "scripts/verify-companion-installed.py": "273977ee64b269b5f24675c0afe2a16cc51b7591f83824c07c63f82310f78207",
+    "scripts/verify-companion-preview.py": "5e782c12406bd4885a483b1222413d0c1756c6f1eb8cca550f08d7c1392687e3",
+    "scripts/verify-companion-gui.swift": "92e0c7bc46def9103b0a81c129a9e9581ad70bed234b4cfe1f8972f84c818caf"
+  },
+  "core_and_android_unchanged": true,
+  "footer_fixture_passed": true,
+  "docs_claim_review": "Accepted; known Spotlight/native-banner/fallback/performance/public-download gates explicitly remain open; one-deep event dedupe accurately described",
+  "helper_execution_precondition": "Root acknowledged env -u PYTHONOPTIMIZE python3, no -O, so existing QA assertions remain enabled",
+  "actual10_catalog_mutations": [
+    {
+      "operation": "remove_beta",
+      "main_from_broker_token_ms": 304.6,
+      "companion_from_broker_token_ms": 219.75,
+      "main_from_android_completion_ms": 659.67,
+      "companion_from_android_completion_ms": 574.81
+    },
+    {
+      "operation": "install_beta",
+      "main_from_broker_token_ms": 249.17,
+      "companion_from_broker_token_ms": 354.89,
+      "main_from_android_completion_ms": 634.88,
+      "companion_from_android_completion_ms": 740.6
+    },
+    {
+      "operation": "remove_alpha",
+      "main_from_broker_token_ms": 638.07,
+      "companion_from_broker_token_ms": 548.03,
+      "main_from_android_completion_ms": 855.45,
+      "companion_from_android_completion_ms": 765.4
+    },
+    {
+      "operation": "install_alpha_v1",
+      "main_from_broker_token_ms": 444.62,
+      "companion_from_broker_token_ms": 356.08,
+      "main_from_android_completion_ms": 642.21,
+      "companion_from_android_completion_ms": 553.68
+    },
+    {
+      "operation": "rename_icon_alpha_v2",
+      "main_from_broker_token_ms": 251.0,
+      "companion_from_broker_token_ms": 159.56,
+      "main_from_android_completion_ms": 427.24,
+      "companion_from_android_completion_ms": 335.8
+    }
+  ],
+  "actual10_catalog_observation_scope": "Actual shipping AppKit row state and cached token; not WindowServer paint/physical focus latency",
+  "actual10_icons_independently_viewed": [
+    "icon-alpha-v1-main.png:blue square/Input Alpha",
+    "icon-alpha-v2-main.png:green triangle/Input Alpha Updated"
+  ],
+  "evidence_sha256": {
+    "verification/companion/installed-api37-tls-build10-final/automatic-catalog/result.json": "585d31de0506b783bef0e21dd1b5fe781d6fb121e53f7cd9fa7ea62dd26ec4f6",
+    "verification/companion/installed-api37-tls-build10-final/actual-unicode-labels.json": "2c5e2ba07ef49d9a531458a7d2ecd366e3c6e569bde695cec7392b4875cb2ae9",
+    "verification/companion/installed-api37-tls-build10-final/actual-service-recovery.json": "2d2c6dc7fb5e273aea88677b4b6262883c4a6b14d2bd47fdbebcb6146b2b8331",
+    "verification/companion/installed-api37-tls-build10-final/actual-emulator-restart-recovery.json": "6e67a8ad559f14a2ba9a0052bd87b53521188ef80b07de896a6b4c7f76282166",
+    "verification/companion/installed-api37-tls-build10-final/actual-automatic-icon-update.json": "3fa7585b858f4d6b0a8d4ddfadbb76ea5cd247995399aa8370ff15a3070c047e",
+    "verification/companion/macos-ui-final-footer/run.log": "a8258f6fd44e34c19a2086c16f5b4f63db198a14ad5f51118d4870e70be2937a",
+    "verification/companion/macos-ui-final-footer/results.json": "a07169601b24d65c18c359e4bdf8a65326102e7bbd19e3f9f8ef68dc3cf68879"
+  },
+  "remaining": [
+    "Final11 bundle/source archive independent byte review",
+    "Actual final11 installed smoke after normal host unlock",
+    "Performance/Spotlight/native-banner/fallback/public-delivery gates as ledger"
+  ]
+}

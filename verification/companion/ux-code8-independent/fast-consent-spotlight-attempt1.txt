@@ -1,0 +1,8 @@
+
+dev.droidbridge.companion.CompanionSecurityTest:.
+
+Time: 0.354
+
+OK (1 test)
+
+

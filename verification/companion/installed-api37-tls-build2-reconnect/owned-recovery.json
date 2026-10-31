@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "reused_shipping_recovery_engine": true,
+  "explicit_owned_scope": true,
+  "only_serial": "emulator-5582",
+  "forwards_before": 3,
+  "forwards_after": 3,
+  "receipts_before": 22,
+  "receipts_after": 1,
+  "recovery_result": {
+    "completed": true,
+    "recovery_observations": 21
+  },
+  "other_device_mutations": false,
+  "three_live_forwards_independently_matched": {
+    "companion": "exact scoped receipt port and remote 37841",
+    "native": "exact live receipt scid",
+    "audio": "exact running scoped audio supervisor port and scid; phase ready"
+  }
+}

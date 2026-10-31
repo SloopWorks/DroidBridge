@@ -1,0 +1,113 @@
+{
+  "scope": "Actual adb emu kill, owned sameAVD DroidBridge_API37/port5582 cold relaunch -no-snapshot, no sharedADBserver restart",
+  "original_emulator_pid": 71397,
+  "relaunched_emulator_pid": 30064,
+  "original_main_pid": 20973,
+  "main_survives": true,
+  "original_trust": "316745f7-69e1-41cb-853c-7b9a3f6149d9",
+  "same_trust": true,
+  "same_phone_identity": true,
+  "phone_service_public_start_required": true,
+  "pairing_repeated": false,
+  "transient_failures": [
+    "First am start after sys.boot_completed returned nonzero; bounded public am start retry succeeded",
+    "Companion service stopped at reboot; broker server_authentication_failed while unavailable cleared after public Start and automatic retry",
+    "Initial phoneHome choose receiver state did not mean trusts lost: Settings retained3 trusts"
+  ],
+  "current": {
+    "broker_version": 1,
+    "devices": [
+      {
+        "paired": true,
+        "aliases": [
+          "emulator-5582"
+        ],
+        "enabled": true,
+        "profile": "balanced",
+        "connection_error": null,
+        "trust_id": "316745f7-69e1-41cb-853c-7b9a3f6149d9",
+        "catalog_change_token": "e496b0b4-99dd-47f1-837f-73d3927d5ae2",
+        "capabilities": [
+          "catalog",
+          "icons",
+          "events",
+          "commands",
+          "sessions",
+          "share",
+          "files",
+          "clipboard",
+          "notifications",
+          "notification_replies",
+          "profiles",
+          "diagnostics",
+          "delivery",
+          "state_heartbeat",
+          "clock_anchor_v1",
+          "notification_scope_v2"
+        ],
+        "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+        "connected": true,
+        "device_name": "Google sdk_gphone16k_arm64",
+        "serial": "emulator-5582"
+      }
+    ],
+    "sessions": [
+      {
+        "label": "Input Alpha Updated",
+        "generation": 1,
+        "backend": "native",
+        "session_id": "C9191C2F-D6B2-4D53-99A2-22ED14AE0AFB",
+        "phase": "running",
+        "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+        "owner": {
+          "start": 1793405054482910,
+          "pid": 20973
+        },
+        "package": "dev.droidbridge.inputalpha",
+        "serial": "emulator-5582"
+      }
+    ],
+    "pending_pairings": []
+  },
+  "catalog_row_recovered": true,
+  "received_video_metrics": [
+    {
+      "bytes": "406143",
+      "config_fps": "30",
+      "final": "false",
+      "frames": "290",
+      "height": "1048",
+      "uptime": "1594330.0891584167",
+      "width": "696"
+    },
+    {
+      "bytes": "410233",
+      "config_fps": "30",
+      "final": "false",
+      "frames": "300",
+      "height": "1048",
+      "uptime": "1594331.1024154585",
+      "width": "696"
+    },
+    {
+      "bytes": "410642",
+      "config_fps": "30",
+      "final": "false",
+      "frames": "301",
+      "height": "1048",
+      "uptime": "1594360.0840520833",
+      "width": "696"
+    },
+    {
+      "bytes": "415194",
+      "config_fps": "30",
+      "final": "false",
+      "frames": "312",
+      "height": "1048",
+      "uptime": "1594361.1683390834",
+      "width": "696"
+    }
+  ],
+  "trust_rows_retained": 3,
+  "passed": true
+}

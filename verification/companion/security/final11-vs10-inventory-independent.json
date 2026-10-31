@@ -1,0 +1,129 @@
+{
+  "scope": "Read-only exact path/type/file-byte and symlink inventory comparison, no app/device launch",
+  "before": "/Users/patrick/Applications/DroidBridge Companion QA10.app",
+  "after": "/Users/patrick/Applications/DroidBridge Companion QA11.app",
+  "entries": 198,
+  "path_cohorts_equal": true,
+  "changed": {
+    "Contents/Info.plist": {
+      "before": {
+        "kind": "file",
+        "sha256": "41f10442160a50245c1c0bcce770f30c65dd4deaf8174f458dda3bf3a3b3ce54"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "039c26c7b086e33812670112ced477d387def09bacf0492d109d2fc58841319d"
+      }
+    },
+    "Contents/_CodeSignature/CodeResources": {
+      "before": {
+        "kind": "file",
+        "sha256": "aa3507f9f7576ef8519770ffea766ebe063b0b6c3c050564fca0c6147db6957d"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "b622de7671ec2981040abec99fc2d73f6e1f6ed7c529d695713525d977f1756f"
+      }
+    },
+    "Contents/MacOS/DroidBridge": {
+      "before": {
+        "kind": "file",
+        "sha256": "6aecfcffc4d2226abb3cedcf7df71a6681d0455042bfeb696ad495b3cf2ce689"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "6d70755ddc5a1386e1ebc6004ebcac987be448fba8b6a620105b30ad2b777e53"
+      }
+    },
+    "Contents/Resources/PIXEL_VERIFICATION.md": {
+      "before": {
+        "kind": "file",
+        "sha256": "bfcd2bfbe70d50b5f5ade8db1288c69f176abe4fb420ed4bc0a288ec86618474"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "3814080e1447d57c5a8ba7f4092f8684dfa2f047137dd82293289a832eeedb6d"
+      }
+    },
+    "Contents/Resources/ARCHITECTURE.md": {
+      "before": {
+        "kind": "file",
+        "sha256": "7904112f4aaa812bf4fee4a54863c53a73468e2b22224093c33cf6322ff0c613"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "fafbf65556e6956a13835b635c43b91411040105535773f474f53abacdeffea0"
+      }
+    },
+    "Contents/Resources/TESTING.md": {
+      "before": {
+        "kind": "file",
+        "sha256": "70579ef301b9474b7dc9fa4a2abbfe5fd6ca8add140ec474a6044ed14da6caee"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "1c66b60b9dbd63716e0e3eba8c91097ab5c84090f616b25223d25406fa21187b"
+      }
+    },
+    "Contents/Resources/README.md": {
+      "before": {
+        "kind": "file",
+        "sha256": "4bc73338e9b9fef7f34300a53ddd728ce9cd0b6d93e1c3dca22643e07a9ad487"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "e72f7eca9d6d327349abb6f7910e18b03ed2b2ae7205a5b15a9603e0c5090537"
+      }
+    },
+    "Contents/Resources/KNOWN_ISSUES.md": {
+      "before": {
+        "kind": "file",
+        "sha256": "151b851f74fdcd5b97bf6e39d6a782358f71a4007d31e649a6d1fe7643e25d25"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "c259885e4771adb71ad83f01ea5e5fcc1ee78944be505c30111782e65e590b19"
+      }
+    },
+    "Contents/Resources/BUILD.md": {
+      "before": {
+        "kind": "file",
+        "sha256": "fcc40cd45eb64fba8bb658970dd1cfd36f225c59f4bfcaf4b637c76f26faeb02"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "1ad7199e5283a8f814868cf3108f415656819bb5b7400cb82d5dd12b395d493e"
+      }
+    },
+    "Contents/Resources/COMPATIBILITY.md": {
+      "before": {
+        "kind": "file",
+        "sha256": "032b496a825b86dd269ddfc59a831ac4cc255303286a78a2dee3d73844c85d77"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "b6a9c7e3a253f4acb7f7d074d5a48579d554a96edf113019001b5679634f7575"
+      }
+    },
+    "Contents/Resources/Runtime/versions.txt": {
+      "before": {
+        "kind": "file",
+        "sha256": "4351ad928d119173ecead2b81dc120d95db2989b578271f0e2d96f2b69c15b5d"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "6c3d2a7a31de369fd9753544937b973888b88b9486dfde62283aeb29c009c445"
+      }
+    },
+    "Contents/Resources/Runtime/share/droidbridge/icon-helper.jar": {
+      "before": {
+        "kind": "file",
+        "sha256": "cda34b074c5e986248fd5375d81e2f36f68a78c0072cf5dd6fb963afedd21945"
+      },
+      "after": {
+        "kind": "file",
+        "sha256": "a7fc301bfd3fe7837a558f4bda14298448dc40a7da539e64913d2c98397dd728"
+      }
+    }
+  }
+}

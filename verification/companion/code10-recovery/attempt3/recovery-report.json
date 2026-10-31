@@ -1,0 +1,39 @@
+{
+  "android_display_ids_after": [
+    "0"
+  ],
+  "android_display_ids_before": [
+    "0"
+  ],
+  "automatic_reconnect_enabled": true,
+  "boundary": "Actual current Core broker automatic reconnect with signed packaged runtime and owned Android10; not installed GUI acceptance",
+  "capture_pid_before": 11321,
+  "capture_pid_offline": 11321,
+  "capture_pid_recovered": 11321,
+  "companion_force_stopped_only": true,
+  "decoded_frames_before": 13,
+  "decoded_frames_offline": 52,
+  "disconnected_status_observed": true,
+  "discovery_scope": "shipping QA emulator-5580 only",
+  "display_ids_before": [
+    0,
+    15
+  ],
+  "display_ids_offline": [
+    0,
+    15
+  ],
+  "display_ids_recovered": [
+    0,
+    15
+  ],
+  "live_resize_while_companion_down": true,
+  "new_service_clock_epoch": true,
+  "no_android_display_leak": true,
+  "no_duplicate_capture_or_display": true,
+  "own_test_trust_revoked": true,
+  "phone_observed_exactly_one_recovered_session": true,
+  "result": "PASS",
+  "same_trust_uuid_pin": true,
+  "session_command_protocol": 2
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "Independent sparse oversized staging dylib cap admission with hash-entry guard, no packaged executable/UI/device launch",
+  "verifier_sha256": "339038742d092e84c612200315a5559b1379ff7e6ee7c5a9e7346a9210f4bc28",
+  "result": "rejected before content hashing or copy",
+  "error": "Player library closure exceeds bounds",
+  "oversized_hash_calls": [],
+  "fixture": "/Users/patrick/workspace/DroidBridge/.build/security-player-cap-19d4u2eq"
+}

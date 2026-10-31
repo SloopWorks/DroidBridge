@@ -1,0 +1,17 @@
+{
+  "server_pin": "82f9aeab82dcb375f75a490ad81a064e315da5211e033c8938928a930b05ee8d",
+  "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+  "pid": 6966,
+  "negotiated": [
+    {
+      "protocol": "TLSv1.2",
+      "cipher": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"
+    },
+    {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_128_GCM_SHA256"
+    }
+  ],
+  "leaf_der_base64": "MIIBnjCCAUWgAwIBAgIRAN3OoGkG254PZx0v+CVcLrEwCgYIKoZIzj0EAwIwLTErMCkGA1UEAxMiRHJvaWRCcmlkZ2UgQ29tcGFuaW9uIEluc3RhbGxhdGlvbjAeFw0yNjEwMjkxOTU1MDFaFw0yODEwMjkxOTU1MDFaMC0xKzApBgNVBAMTIkRyb2lkQnJpZGdlIENvbXBhbmlvbiBJbnN0YWxsYXRpb24wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAS1XyWS9TU9HN/p+V3C7FsWYTyQtzwLP44OXqE31WgR6B1p0x1BmMuh6b23ZWfZmP/MpuLIfyMgnEVm+KNUnJRuo0YwRDAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH/BAIwADATBgNVHSUEDDAKBggrBgEFBQcDATAPBgNVHREECDAGhwR/AAABMAoGCCqGSM49BAMCA0cAMEQCICslvS9MaGYdVBrSfGZML4zqyo0ED47h7Tskrh/GsKwnAiBKu3akaBSEIGjUTb6UDOciAJ0FH0fUl759DJiZUG2fPQ==",
+  "private_key_exportable": false
+}

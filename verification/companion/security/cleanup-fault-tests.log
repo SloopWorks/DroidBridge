@@ -1,0 +1,19 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.16s)
+Test Suite 'Selected tests' started at 2026-10-30 13:49:48.889.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 13:49:48.890.
+Test Suite 'CompanionCleanupSecurityTests' started at 2026-10-30 13:49:48.890.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' passed (1.597 seconds).
+Test Suite 'CompanionCleanupSecurityTests' passed at 2026-10-30 13:49:50.487.
+	 Executed 1 test, with 0 failures (0 unexpected) in 1.597 (1.597) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 13:49:50.487.
+	 Executed 1 test, with 0 failures (0 unexpected) in 1.597 (1.597) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 13:49:50.488.
+	 Executed 1 test, with 0 failures (0 unexpected) in 1.597 (1.598) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

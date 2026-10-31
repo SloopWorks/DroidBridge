@@ -1,0 +1,5 @@
+[0/1] Planning build
+Building for debugging...
+[0/1] Write swift-version--58304C5D6DBC2206.txt
+Build of target: 'DroidBridgeCore' complete! (0.14s)
+{"acceptance": true, "observed_cross_generation_read": "refused_without_interaction_requires_explicit_repair", "exact_random_item_cleanup": true, "source_unchanged": true}

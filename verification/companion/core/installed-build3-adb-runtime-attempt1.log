@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-packaged-adb.py", line 123, in <module>
+    main()
+    ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-packaged-adb.py", line 60, in main
+    require(server.poll() is None, 'Owned ADB server exited before admission')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-packaged-adb.py", line 19, in require
+    raise RuntimeError(message)
+RuntimeError: Owned ADB server exited before admission

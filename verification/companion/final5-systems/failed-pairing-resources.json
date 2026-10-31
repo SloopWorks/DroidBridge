@@ -1,0 +1,10 @@
+{
+  "installed_android_apk_sha256": "0bddc834ac688fedb23d18138a59ea39c6fd7f4d3ecda0d0f63759d8ab999ee9",
+  "display_ids": [
+    "0"
+  ],
+  "owned_forwards": [],
+  "staged_droidbridge_files": [],
+  "scrcpy_server_lines": [],
+  "note": "Corrected resource read after pairing was rejected; the failed attempt never started a native/audio session. An earlier baseline reader failed on a blank ADB forward-list row."
+}

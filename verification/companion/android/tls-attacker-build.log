@@ -1,0 +1,51 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+> Task :attacker:preBuild UP-TO-DATE
+> Task :attacker:preDebugBuild UP-TO-DATE
+> Task :attacker:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :attacker:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :attacker:checkDebugAarMetadata
+> Task :attacker:processDebugNavigationResources
+> Task :attacker:generateDebugResValues
+> Task :attacker:compileDebugNavigationResources
+> Task :attacker:mapDebugSourceSetPaths
+> Task :attacker:generateDebugResources
+> Task :attacker:mergeDebugResources
+> Task :attacker:packageDebugResources
+> Task :attacker:createDebugCompatibleScreenManifests
+> Task :attacker:extractDeepLinksDebug
+> Task :attacker:parseDebugLocalResources
+> Task :attacker:processDebugMainManifest
+> Task :attacker:processDebugManifest
+> Task :attacker:javaPreCompileDebug
+> Task :attacker:mergeDebugShaders
+> Task :attacker:compileDebugShaders NO-SOURCE
+> Task :attacker:generateDebugAssets UP-TO-DATE
+> Task :attacker:mergeDebugAssets
+> Task :attacker:compressDebugAssets
+> Task :attacker:desugarDebugFileDependencies
+> Task :attacker:mergeDebugJniLibFolders
+> Task :attacker:checkDebugDuplicateClasses
+> Task :attacker:mergeDebugNativeLibs NO-SOURCE
+> Task :attacker:stripDebugDebugSymbols NO-SOURCE
+> Task :attacker:mergeLibDexDebug
+> Task :attacker:validateSigningDebug
+> Task :attacker:writeDebugAppMetadata
+> Task :attacker:writeDebugSigningConfigVersions
+> Task :attacker:processDebugManifestForPackage
+> Task :attacker:processDebugResources
+> Task :attacker:mergeExtDexDebug
+> Task :attacker:compileDebugKotlin
+> Task :attacker:compileDebugJavaWithJavac NO-SOURCE
+> Task :attacker:dexBuilderDebug
+> Task :attacker:mergeDebugGlobalSynthetics
+> Task :attacker:processDebugJavaRes
+> Task :attacker:mergeProjectDexDebug
+> Task :attacker:mergeDebugJavaResource
+> Task :attacker:packageDebug
+> Task :attacker:createDebugApkListingFileRedirect
+> Task :attacker:assembleDebug
+
+BUILD SUCCESSFUL in 9s
+35 actionable tasks: 35 executed

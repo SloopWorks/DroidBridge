@@ -1,0 +1,10 @@
+{
+  "product_sha256": "740fdf0aa9b8ea22522de07cc1d28a528aa822f26be5748d4b325cbf421e3bc8",
+  "checked_absent": [
+    "StalledTransferProvider",
+    "StagingGrantActivity",
+    "CompanionPairingExpiryDeviceTest",
+    "CompanionSecurityTest"
+  ],
+  "pass": true
+}

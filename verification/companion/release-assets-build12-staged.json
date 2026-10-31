@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-10-31T00:37:34.811502+00:00",
+  "candidate": "94b51c2fab719304e43381de1f7d1bf532276b61",
+  "mac_build": 12,
+  "stage": ".build/release-assets-0.2.0-candidate12",
+  "scope": "Local immutable candidate asset copies only; no upload/publication or release acceptance",
+  "files": [
+    {
+      "name": "DroidBridge-0.2.0-arm64.dmg",
+      "source": "dist/DroidBridge-0.2.0-arm64.dmg",
+      "size_bytes": 48138501,
+      "sha256": "4c262acf4682651b179c4ed1b47b095d73c12dbe1e0604a7dd4e8d0d34bdf947"
+    },
+    {
+      "name": "DroidBridge-0.2.0-arm64.zip",
+      "source": "dist/DroidBridge-0.2.0-arm64.zip",
+      "size_bytes": 43358526,
+      "sha256": "d96ecd4d3ce1f851d036b1839c982f1586a4529f5efb60179e7c043b80adbbd3"
+    },
+    {
+      "name": "DroidBridgeCompanion-0.2.0.apk",
+      "source": "dist/DroidBridge.app/Contents/Resources/Companion/DroidBridgeCompanion.apk",
+      "size_bytes": 2870487,
+      "sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b"
+    },
+    {
+      "name": "DroidBridge-0.2.0-source.tar.gz",
+      "source": ".build/DroidBridge-0.2.0-candidate94b51c2-source.tar.gz",
+      "size_bytes": 162453538,
+      "sha256": "74be6174d260bbd1d205caf9b9e1f1876bdd1c049d5eebbae378f306b0a3533d"
+    },
+    {
+      "name": "release-manifest.json",
+      "source": "dist/release-manifest.json",
+      "size_bytes": 437,
+      "sha256": "f5f4ed64e4c0482a0684b9e4c57d8fa650caccb288c5bbe5f561a26ac910626f"
+    }
+  ],
+  "total_payload_bytes": 256821489,
+  "remaining_gates": [
+    "independent artifact/source review",
+    "actual installed GUI/fallback after user unlock",
+    "quiet performance",
+    "public download validation"
+  ]
+}

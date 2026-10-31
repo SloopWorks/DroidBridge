@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "real_CUA_CmdQ_old_process_exited": true,
+  "old_main_pid": 75770,
+  "new_registered_owner_pid": 11473,
+  "actual_public_status": {
+    "requestID": "AC4C91E9-7BEB-4F84-806B-285A747CBA5F",
+    "status": "ok",
+    "data": {
+      "pending_pairings": [],
+      "broker_version": 1,
+      "devices": [
+        {
+          "trust_id": "cfc9427a-ae50-42b9-b3c4-1e58f15dd9a7",
+          "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+          "capabilities": [
+            "catalog",
+            "icons",
+            "events",
+            "commands",
+            "sessions",
+            "share",
+            "files",
+            "clipboard",
+            "notifications",
+            "notification_replies",
+            "profiles",
+            "diagnostics",
+            "delivery",
+            "state_heartbeat",
+            "clock_anchor_v1",
+            "notification_scope_v2"
+          ],
+          "profile": "balanced",
+          "connection_error": null,
+          "paired": true,
+          "catalog_change_token": "00369ad1-c9d7-4991-8127-8a0624f6d0b9",
+          "enabled": true,
+          "connected": true,
+          "aliases": [
+            "emulator-5582"
+          ],
+          "serial": "emulator-5582",
+          "device_name": "Google sdk_gphone16k_arm64"
+        }
+      ],
+      "sessions": [
+        {
+          "package": "dev.droidbridge.inputalpha",
+          "owner": {
+            "pid": 11473,
+            "start": 1793404824245368
+          },
+          "backend": "native",
+          "generation": 1,
+          "serial": "emulator-5582",
+          "session_id": "2AD4936F-511E-438F-8A8C-933AFFED44DA",
+          "label": "Input Alpha Updated",
+          "phase": "running",
+          "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa"
+        }
+      ]
+    }
+  },
+  "phone_texts": [
+    "Input Alpha Updated",
+    "Display 51 \u00b7 taps 0 \u00b7 key downs 0",
+    "Type for Alpha",
+    "Echo Alpha: ",
+    "TAP ALPHA",
+    "COPY ALPHA SENTINEL",
+    "READ CLIPBOARD EXPLICITLY",
+    "Clipboard untouched until an explicit action"
+  ],
+  "harness_initial_wrong_field": "initialwaitusedpackage_namebutpublicregistrystatususespackage; actualsessionwasrunning; correctedqueryshown"
+}

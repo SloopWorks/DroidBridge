@@ -1,0 +1,33 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Compiling DroidBridgeCore CompanionForward.swift
+[4/6] Emitting module DroidBridgeCore
+[5/6] Compiling DroidBridgeCore CompanionClient.swift
+[6/6] Compiling DroidBridgeCore CompanionCredentialStore.swift
+[7/8] Compiling DroidBridgeCore CompanionBrokerIPC.swift
+[8/8] Compiling DroidBridgeCore CompanionBrokerService.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionBrokerService.swift:365:48: error: cannot convert value of type 'CompanionCredentialRecord' to expected argument type 'String'
+363 |             var transport = BrokerTransport(serial: serial, hello: hello, forward: forward, client: client, generation: UUID(), verified: false)
+364 |             if let credential = try CompanionCredentialStore.load(deviceID: canonical) {
+365 |                 try await client.setCredential(credential)
+    |                                                `- error: cannot convert value of type 'CompanionCredentialRecord' to expected argument type 'String'
+366 |                 let identity = try await control { try await client.identity() }
+367 |                 guard UUID(uuidString: identity.deviceId)?.uuidString.lowercased() == canonical else { throw CompanionBoundaryError("identity_mismatch", "The authenticated phone identity changed. Pair again.") }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionBrokerService.swift:420:74: error: extra argument 'deviceID' in call
+418 |             guard UUID(uuidString: identity.deviceId)?.uuidString.lowercased() == pair.deviceID, identity.trustId == trust else { throw CompanionBoundaryError("identity_mismatch", "The approved phone identity did not match.") }
+419 |             try await transport.client.setExpectedDeviceID(pair.deviceID)
+420 |             try CompanionCredentialStore.save(credential, deviceID: pair.deviceID)
+    |                                                                          `- error: extra argument 'deviceID' in call
+421 |             transport.verified = true; try await admit(transport, deviceID: pair.deviceID, trustID: trust); transports[pair.serial] = transport
+422 |             pairings.removeValue(forKey: id); startPoller(pair.deviceID)
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionBrokerService.swift:420:47: error: cannot convert value of type 'String' to expected argument type 'CompanionCredentialRecord'
+418 |             guard UUID(uuidString: identity.deviceId)?.uuidString.lowercased() == pair.deviceID, identity.trustId == trust else { throw CompanionBoundaryError("identity_mismatch", "The approved phone identity did not match.") }
+419 |             try await transport.client.setExpectedDeviceID(pair.deviceID)
+420 |             try CompanionCredentialStore.save(credential, deviceID: pair.deviceID)
+    |                                               `- error: cannot convert value of type 'String' to expected argument type 'CompanionCredentialRecord'
+421 |             transport.verified = true; try await admit(transport, deviceID: pair.deviceID, trustID: trust); transports[pair.serial] = transport
+422 |             pairings.removeValue(forKey: id); startPoller(pair.deviceID)

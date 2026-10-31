@@ -1,0 +1,38 @@
+{
+  "adaptive_resize_verified": true,
+  "android_display_ids_after": [
+    "0"
+  ],
+  "android_display_ids_before": [
+    "0"
+  ],
+  "audio_initialized": true,
+  "audio_only_blocks_other_alias": true,
+  "first_frame_counts": [
+    51,
+    3
+  ],
+  "gui_sigkill_retained_lease_refusals": 12,
+  "host_sigkill_to_recovered_stream_and_cleanup_seconds": 1.9450600147247314,
+  "installed_gui_acceptance": false,
+  "lease_refusal_poll_interval_seconds": 0.02,
+  "no_android_display_leak": true,
+  "own_test_trust_revoked_by_authenticated_broker": true,
+  "owned_emulator_redirections_removed": [
+    58139,
+    58141
+  ],
+  "phone_intent_shared_across_aliases": true,
+  "physical_wifi_verified": false,
+  "post_crash_wireless_capture_verified": true,
+  "real_broker_authenticates_both_aliases": true,
+  "result": "PASS",
+  "same_alias_concurrent_native_apps": 2,
+  "scope": "Private QA35 Keychain/catalog/receipts; unchanged shipping pin/identity/authentication and real ADB forwards",
+  "temporary_settings_restored": {
+    "adb_wifi_enabled": "0",
+    "development_settings_enabled": "null"
+  },
+  "test": "M6 actual Core/Streaming harness with real Android TLS wireless alias",
+  "wireless_native_frames_verified": true
+}

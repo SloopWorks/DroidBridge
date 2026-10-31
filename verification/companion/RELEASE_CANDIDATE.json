@@ -1,0 +1,304 @@
+{
+  "schema_version": 2,
+  "status": "distribution12_offline_accepted_gui_and_performance_blocked_by_locked_mac",
+  "version": "0.2.0",
+  "mac_build": 10,
+  "android_version_code": 12,
+  "product_commit": "0b4b3e3ab7a75ddca3abcbc83aaef00f93e86c88",
+  "artifacts": {
+    "timestamp": "2026-10-31T00:03:17.248835+00:00",
+    "scope": "Read-only verified DMG copied outside build directory; integrity check only, application not launched yet",
+    "installed_app": "/Users/patrick/Applications/DroidBridge Companion QA10.app",
+    "file_inventory_matches_dist": true,
+    "inventory_entries": 198,
+    "codesign_deep_strict_verified": true,
+    "host_sha256": "6aecfcffc4d2226abb3cedcf7df71a6681d0455042bfeb696ad495b3cf2ce689",
+    "broker_sha256": "d890c6815c7a679a0df3be864b9abac0bd3be9212dbcbb98ce9be08c17e98936",
+    "apk_sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b",
+    "dmg_sha256": "6f453029e45c63eff4f2588487f3dcc72e64334553f3df7c180feaa36cce0555",
+    "version": "0.2.0",
+    "build": "10"
+  },
+  "gates": {
+    "swift": {
+      "status": "independent_scoped_pass",
+      "full_tests": 335,
+      "explicit_live_opt_in_skips": 4,
+      "failures": 0,
+      "seconds": 158.232,
+      "followup_test_only_identity_guard_tests": 7,
+      "followup_failures": 0,
+      "evidence": "security/source10-final-gates-independent.json"
+    },
+    "android": {
+      "status": "pass",
+      "unit": 8,
+      "focused_tls": 3,
+      "full_actual": 36,
+      "full_seconds": 285.923,
+      "large_text": 9,
+      "large_seconds": 46.425,
+      "evidence": "unicode-catalog/code12-final-checkpoint.json"
+    },
+    "installed_integrity": {
+      "status": "outer_signature_and_dependency_checks_passed_nested_player_rejected_retrospectively",
+      "evidence": "package-build10-installed-validation.json",
+      "limitation": "QA10 uses the same escaping Player library symlink discovered and rejected in QA11; fixed distribution12 requires full validation."
+    },
+    "automatic_catalog": {
+      "status": "pass",
+      "mutations": 5,
+      "maximum_android_completion_to_ui_row_ms": 855.45,
+      "refresh_clicked": false,
+      "evidence": "installed-api37-tls-build10-final/automatic-catalog/result.json"
+    },
+    "unicode_labels": {
+      "status": "pass",
+      "evidence": "installed-api37-tls-build10-final/actual-unicode-labels.json"
+    },
+    "icon_update": {
+      "status": "pass",
+      "evidence": "installed-api37-tls-build10-final/actual-automatic-icon-update.json"
+    },
+    "service_recovery": {
+      "status": "pass",
+      "evidence": "installed-api37-tls-build10-final/actual-service-recovery.json"
+    },
+    "emulator_restart": {
+      "status": "pass_with_explicit_phone_service_start",
+      "evidence": "installed-api37-tls-build10-final/actual-emulator-restart-recovery.json"
+    },
+    "quiet_performance": {
+      "status": "pending",
+      "original_targets_unchanged": true
+    },
+    "public_delivery": {
+      "status": "not_published"
+    },
+    "spotlight_ui": {
+      "status": "blocked",
+      "scope": "Tested user-Applications metadata missing and Spotlight UI unbindable; system-app and synthetic CoreSpotlight controls pass. Wrappers and admission are separately verified."
+    },
+    "allowed_native_banners": {
+      "status": "unverified",
+      "last_observed_permission": "denied",
+      "scope": "In-app actual notification reply/dismiss tested separately; no OS permission bypass"
+    },
+    "fallback_post_keyboard_system_mouse": {
+      "status": "unverified",
+      "evidence": "fallback-input-investigation/REPORT.md",
+      "scope": "CUA firsttouch pass, afterkeys missing/stale coordinates; actualsystemeventchecks notconclusive; no speculativeproductpatch"
+    }
+  },
+  "planned_distribution": {
+    "mac_build": 11,
+    "android_version_code": 12,
+    "source_commit": "62186d3c3dac73a3580ee268b9b9a2a69fb7dd0b",
+    "scope": "User guides and one catalog footer presentation correction; Core/Android source unchanged; footer AppKit fixture passed, exact artifact smoke/performance still pending",
+    "status": "rejected_standalone_player_signature",
+    "artifacts": {
+      "timestamp": "2026-10-31T00:16:25.340579+00:00",
+      "scope": "Read-only verified DMG copied outside build directory; offline integrity check only, application not launched because Mac is locked",
+      "installed_app": "/Users/patrick/Applications/DroidBridge Companion QA11.app",
+      "file_inventory_matches_dist": true,
+      "inventory_entries": 198,
+      "codesign_deep_strict_verified": true,
+      "host_sha256": "6d70755ddc5a1386e1ebc6004ebcac987be448fba8b6a620105b30ad2b777e53",
+      "broker_sha256": "d890c6815c7a679a0df3be864b9abac0bd3be9212dbcbb98ce9be08c17e98936",
+      "apk_sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b",
+      "dmg_sha256": "7d97c2236dec402e20dce4479b7f7ec00a3bf4adc92985103475ef27f0e496a5",
+      "version": "0.2.0",
+      "build": "11"
+    },
+    "source_archive": {
+      "path": ".build/DroidBridge-0.2.0-candidate62186d3-source.tar.gz",
+      "sha256": "c0075ed20fca15ee8f9c5dee1c7c46e2f67d92d47c9a4914caa249ba56ff1097",
+      "status": "independently_verified_source_only_distribution_rejected"
+    },
+    "runtime_launched": false,
+    "public_assets_staged_not_published": true,
+    "rejection_evidence": "security/final11-player-signature-failure.json"
+  },
+  "current_external_blocker": {
+    "reason": "Mac locked; CUA automatic unlock failed",
+    "user_unlock_requested": true,
+    "evidence": "installed-api37-tls-build10-final/locked-ui-handoff.json"
+  },
+  "history": {
+    "mac8": {
+      "mac_build": 8,
+      "android_version_code": 11,
+      "product_commit": "a2a37c68d67d7f809ea7e1694fdf030414334435",
+      "artifacts": {
+        "host_sha256": "02f9ecc40b2a9d7d769dee919b1f6f29bdab312b5f52be818b9e78590149a5a7",
+        "broker_sha256": "82bae4c6d6e18f27db9df640f1c53a9e6cec83c8a7103faadd99b28168102386",
+        "apk_sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029",
+        "dmg_sha256": "09fc328d551a002e89ee52ee8501cb2d25e6e7058263d41badf442bd809da923"
+      },
+      "gates": {
+        "swift_source": {
+          "status": "pass",
+          "tests": 320,
+          "explicit_live_opt_in_skips": 4,
+          "failures": 0,
+          "source_files_unchanged": 126,
+          "evidence": "security/final-notification-swift-result.json"
+        },
+        "android_full": {
+          "status": "pass",
+          "tests": 34,
+          "seconds": 282.426,
+          "evidence": "android/code11-api35-full34-attempt1.log"
+        },
+        "android_focused_notifications": {
+          "status": "pass",
+          "tests": 3,
+          "seconds": 14.07,
+          "evidence": "android/code11-api35-focused3-attempt2.log"
+        },
+        "android_large_text": {
+          "status": "pass",
+          "tests": 9,
+          "seconds": 48.715,
+          "evidence": "android/code11-api35-large9-attempt1.log"
+        },
+        "installed_package_integrity": {
+          "status": "pass",
+          "macho_dependency_trees": 31,
+          "inventory_entries": 198,
+          "evidence": "package-build8-installed-validation.json"
+        },
+        "installed_fresh_host_registration": {
+          "status": "pass",
+          "evidence": "installed-api37-tls-build8-final/fresh-first-host-registration.json"
+        },
+        "installed_changed_paths": {
+          "status": "running",
+          "evidence": "installed-api37-tls-build8-final/"
+        },
+        "quiet_startup_performance": {
+          "status": "pending",
+          "plan": "20 connected and20 disconnected ABBA samples, plus20 per standalone AppKit baseline; original targets unchanged"
+        },
+        "spotlight_ui": {
+          "status": "blocked",
+          "scope": "Tested user-Applications metadata missing and Spotlight UI unbindable; system-app and synthetic CoreSpotlight controls pass. Wrappers and admission are separately verified."
+        },
+        "native_notification_banners": {
+          "status": "unverified",
+          "last_observed_permission": "denied",
+          "scope": "In-app actual notification reply/dismiss tested separately; no OS permission bypass"
+        },
+        "corresponding_source": {
+          "status": "independent_review_running",
+          "archive": ".build/DroidBridge-0.2.0-candidatea2a37c6-source.tar.gz"
+        },
+        "public_delivery": {
+          "status": "not_published",
+          "planned_url": "https://github.com/SloopWorks/DroidBridge/releases/tag/v0.2.0"
+        }
+      }
+    },
+    "mac9": {
+      "mac_build": 9,
+      "status": "superseded_by_required_source_fixes",
+      "android_version_code": 11,
+      "scope": "Automatic visible catalog token/delta consumer, trust-fenced uncached reads, Denied-only native notification permission recovery; same frozen Android11 candidate2",
+      "focused_core": {
+        "status": "pass",
+        "tests": 21,
+        "failures": 0,
+        "seconds": 3.961,
+        "evidence": "security/catalog-complete-focused-attempt2.log"
+      },
+      "independent_review": "Source accepted after coalesced token-storm remediation; actual AppKit and installed9 gates pending",
+      "full_swift_log": "security/catalog-final-swift-full.log",
+      "product_commit": "acb3d58",
+      "full_swift": {
+        "status": "pass",
+        "tests": 332,
+        "explicit_live_opt_in_skips": 4,
+        "failures": 0,
+        "seconds": 157.852,
+        "source_files_unchanged": 128,
+        "evidence": "security/catalog-final-swift-result.json"
+      },
+      "appkit_component": {
+        "status": "pass",
+        "evidence": "macos-ui-catalog-and-denied-attempt3/result.json",
+        "scope": "Anonymous publicNSXPC fixture and shipping AppKit source, OS permission callbacks injected, not actual installed9"
+      },
+      "artifacts": {
+        "timestamp": "2026-10-30T23:41:58.359499+00:00",
+        "scope": "Read-only verified DMG copied outside build directory; integrity check only, application not launched yet",
+        "installed_app": "/Users/patrick/Applications/DroidBridge Companion QA9.app",
+        "file_inventory_matches_dist": true,
+        "inventory_entries": 198,
+        "codesign_deep_strict_verified": true,
+        "host_sha256": "60501ff1bd837725302a1d712944ca672beecb762a45424027670176bb8d5558",
+        "broker_sha256": "7d8fb204e5eb98a71bb8233106c4760154dff2836adb8ecc871fa2af4d3fc54c",
+        "apk_sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029",
+        "dmg_sha256": "0ce9be98c8ad3f0874f623db8aa8e0c92f5235aefd890caec07f69229fa1c997",
+        "version": "0.2.0",
+        "build": "9"
+      },
+      "installed_integrity": {
+        "status": "pass",
+        "macho_dependency_trees": 31,
+        "inventory_entries": 198,
+        "evidence": "package-build9-installed-validation.json"
+      },
+      "provisional_corresponding_source": {
+        "status": "independently_reviewed_pass",
+        "archive": ".build/DroidBridge-0.2.0-candidateacb3d58-source.tar.gz",
+        "sha256": "3d315be9a6fb8dbf102409b7ba146eddbc57318395810c6dc956a36499c86aa7",
+        "evidence": "security/source-archive-candidateacb3d58-independent.json"
+      },
+      "fallback_post_keyboard_mouse": {
+        "status": "unverified",
+        "evidence": "fallback-input-investigation/REPORT.md",
+        "scope": "CUA firsttouch pass, afterkeys missing/stale coordinates; actualsystemeventchecks notconclusive; no speculativeproductpatch"
+      },
+      "automatic_catalog_actual": {
+        "status": "fail",
+        "evidence": "installed-api37-tls-build9-final/automatic-catalog/result.json",
+        "scope": "Android catalog generation changes but authenticated unscoped hints were dropped as literal null recipient; visible rows stale over20s"
+      }
+    }
+  },
+  "next_distribution": {
+    "mac_build": 12,
+    "android_version_code": 12,
+    "source_commit": "94b51c2fab719304e43381de1f7d1bf532276b61",
+    "status": "independently_accepted_offline_only",
+    "scope": "Internal Player closure, per-MachO/nested signatures and preserved callerPython; Core/Android feature source unchanged from accepted source621 footer candidate",
+    "artifacts": {
+      "timestamp": "2026-10-31T00:36:44.849267+00:00",
+      "scope": "Read-only verified DMG copied outside build directory; complete offline signatures, dependency closure and version probes only. No GUI launch while Mac locked.",
+      "installed_app": "/Users/patrick/Applications/DroidBridge Companion QA12.app",
+      "file_inventory_matches_dist": true,
+      "inventory_entries": 252,
+      "codesign_individual_and_nested_strict_verified": true,
+      "host_sha256": "8cefb3e95c6ee0584dea920a66bb9d318ea4af1402f43084b5cc180cab6d15bd",
+      "broker_sha256": "d890c6815c7a679a0df3be864b9abac0bd3be9212dbcbb98ce9be08c17e98936",
+      "apk_sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b",
+      "dmg_sha256": "4c262acf4682651b179c4ed1b47b095d73c12dbe1e0604a7dd4e8d0d34bdf947",
+      "version": "0.2.0",
+      "build": "12",
+      "dmg_size_bytes": 48138501,
+      "zip_size_bytes": 43358526,
+      "inventory_scope": "252 entries include 215 regular files and 37 real directories; no symlinks. Earlier QA11 198-entry receipt counted files/links only (197 files +1 link), excluding36 directories."
+    },
+    "source_archive": {
+      "path": ".build/DroidBridge-0.2.0-candidate94b51c2-source.tar.gz",
+      "sha256": "74be6174d260bbd1d205caf9b9e1f1876bdd1c049d5eebbae378f306b0a3533d",
+      "root_validator": "package-build12-source-validation.json",
+      "status": "independently_accepted_exact_source"
+    },
+    "runtime_launched": false,
+    "public_assets_published": false,
+    "offline_repair_fixture": "player-signing-fix/regression-results.json",
+    "python_selection_fixture": "package-python-selection/results.json",
+    "independent_review": "security/final12-offline-cohort-review.json"
+  }
+}

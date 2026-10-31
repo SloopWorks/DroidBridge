@@ -1,0 +1,73 @@
+{
+  "basis": "Independent reread and complete TLS record/ClientHello framing decode of captured .hex files; separate from attacker receipt assertions",
+  "artifacts": [
+    {
+      "path": "tls-pair-0.hex",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tls_records": [],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "tls-reconnect-0.hex",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tls_records": [],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "plain-pair-0.hex",
+      "sha256": "72ab246ae31b97163615ca1d4dbc3f6303a7b9782540ee1bd50852cb0f283ae1",
+      "bytes": 1514,
+      "tls_records": [
+        {
+          "type": 22,
+          "handshake_type": 1,
+          "record_payload_bytes": 1509
+        }
+      ],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "plain-pair-1.hex",
+      "sha256": "f55c85aa35c9f51cade8af36181ee78fdf41ddd373b18de7d80fd8d56d401a44",
+      "bytes": 1516,
+      "tls_records": [
+        {
+          "type": 22,
+          "handshake_type": 1,
+          "record_payload_bytes": 1511
+        }
+      ],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "plain-reconnect-0.hex",
+      "sha256": "fe48498eaed787b35b97ba1ae71019155e178e50066645dc34e5fce52e87f457",
+      "bytes": 1514,
+      "tls_records": [
+        {
+          "type": 22,
+          "handshake_type": 1,
+          "record_payload_bytes": 1509
+        }
+      ],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "plain-reconnect-1.hex",
+      "sha256": "cfb27b97175b2ebe31ae7e950af34fedffd951126230827b15189572d7cf7e7d",
+      "bytes": 1516,
+      "tls_records": [
+        {
+          "type": 22,
+          "handshake_type": 1,
+          "record_payload_bytes": 1511
+        }
+      ],
+      "http_application_bytes": 0
+    }
+  ],
+  "all_pass": true,
+  "credential_scope": "Synthetic isolated test credentials; no user credentials or Keychain access in this runtime test"
+}

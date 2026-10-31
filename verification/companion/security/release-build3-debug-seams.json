@@ -1,0 +1,27 @@
+{
+  "scope": "Release binary string inspection; paired runtime tests remain separate",
+  "binaries": [
+    {
+      "path": "dist/DroidBridge.app/Contents/MacOS/DroidBridge",
+      "sha256": "d776356fa9c2fc671a79794880b8c3ebe3b22828fa5a5fafca3ee314808f2ad5",
+      "debug_markers_absent": [
+        "CompanionBrokerTestingHooks",
+        "qaAdditionalSerials",
+        "persist_before_write",
+        "persist_after_file_sync",
+        "persist_after_rename"
+      ]
+    },
+    {
+      "path": "dist/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker",
+      "sha256": "246725b3bc2aff61df276ea166ec63f53f1755111c45f01cdee159bfcc80b846",
+      "debug_markers_absent": [
+        "CompanionBrokerTestingHooks",
+        "qaAdditionalSerials",
+        "persist_before_write",
+        "persist_after_file_sync",
+        "persist_after_rename"
+      ]
+    }
+  ]
+}

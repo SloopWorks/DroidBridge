@@ -1,0 +1,60 @@
+{
+  "profile_now": "responsive",
+  "existing_session_config_fps": "15",
+  "existing_session": "16A75317-2946-4746-801C-EFA205AFF2E8",
+  "new_profile_receipts": [
+    {
+      "admitted": true,
+      "admittedAtMS": 1594398168.5957916,
+      "continuousDeadline": {
+        "bootID": "c2b75959-43b0-4811-b30e-db0c5762b804",
+        "expiresMS": 1594428103.9987917,
+        "issuedMS": 1594398104.998625
+      },
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815091491.6008787,
+      "generation": 1,
+      "id": "a3562b56-c778-4100-bf81-2740b8e940b2",
+      "kind": "set_profile",
+      "owner": {
+        "pid": 73719,
+        "start": 1793398537448928
+      },
+      "payload": {
+        "profile": "battery"
+      },
+      "result": {
+        "applies_to": "new_sessions",
+        "profile": "battery"
+      },
+      "status": "applied"
+    },
+    {
+      "admitted": true,
+      "admittedAtMS": 1594480872.3843749,
+      "continuousDeadline": {
+        "bootID": "c2b75959-43b0-4811-b30e-db0c5762b804",
+        "expiresMS": 1594510721.7403333,
+        "issuedMS": 1594480722.7403333
+      },
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815091574.2194049,
+      "generation": 1,
+      "id": "6019bf05-8dfd-4b1c-89f1-e4cc2783eae0",
+      "kind": "set_profile",
+      "owner": {
+        "pid": 82000,
+        "start": 1793398708942449
+      },
+      "payload": {
+        "profile": "responsive"
+      },
+      "result": {
+        "applies_to": "new_sessions",
+        "profile": "responsive"
+      },
+      "status": "applied"
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,176 @@
+{
+  "passed": false,
+  "scope": "Actual installed native session periodic decoded-frame metadata; explicit visible-motion measurement interval; no battery-savings claim",
+  "session": "16a75317-2946-4746-801c-efa205aff2e8",
+  "serial": "emulator-5582",
+  "configured_fps": 15,
+  "configured_ceiling_verified": true,
+  "samples": 32,
+  "usable_intervals": 31,
+  "resize_intervals_excluded": 0,
+  "duration_seconds": 32.53206891659647,
+  "decoded_frames": 486.0,
+  "observed_decoded_fps": 14.939105202499542,
+  "interval_fps_p50": 14.881007123962966,
+  "interval_fps_p95": 18.08475170399823,
+  "sufficient_duration": true,
+  "motion_observed": true,
+  "ceiling_observed": false,
+  "intervals": [
+    {
+      "elapsed_seconds": 1.0788564165122807,
+      "frames": 16.0,
+      "decoded_fps": 14.830518459281807
+    },
+    {
+      "elapsed_seconds": 1.0079962918534875,
+      "frames": 15.0,
+      "decoded_fps": 14.881007123962966
+    },
+    {
+      "elapsed_seconds": 1.042987083317712,
+      "frames": 16.0,
+      "decoded_fps": 15.340554313582158
+    },
+    {
+      "elapsed_seconds": 1.0317842499352992,
+      "frames": 15.0,
+      "decoded_fps": 14.537923021155455
+    },
+    {
+      "elapsed_seconds": 1.0357175832614303,
+      "frames": 17.0,
+      "decoded_fps": 16.413740844746236
+    },
+    {
+      "elapsed_seconds": 1.0334516251459718,
+      "frames": 15.0,
+      "decoded_fps": 14.514467474838309
+    },
+    {
+      "elapsed_seconds": 1.091289124917239,
+      "frames": 12.0,
+      "decoded_fps": 10.996169324889088
+    },
+    {
+      "elapsed_seconds": 1.1059040415566415,
+      "frames": 20.0,
+      "decoded_fps": 18.08475170399823
+    },
+    {
+      "elapsed_seconds": 1.080042541725561,
+      "frames": 17.0,
+      "decoded_fps": 15.740120729725573
+    },
+    {
+      "elapsed_seconds": 1.037257625022903,
+      "frames": 16.0,
+      "decoded_fps": 15.425290317481844
+    },
+    {
+      "elapsed_seconds": 1.0085552083328366,
+      "frames": 15.0,
+      "decoded_fps": 14.872760435985771
+    },
+    {
+      "elapsed_seconds": 1.0099528750870377,
+      "frames": 15.0,
+      "decoded_fps": 14.852178126338123
+    },
+    {
+      "elapsed_seconds": 1.058942541712895,
+      "frames": 16.0,
+      "decoded_fps": 15.109412805457
+    },
+    {
+      "elapsed_seconds": 1.0373947916086763,
+      "frames": 16.0,
+      "decoded_fps": 15.423250752193368
+    },
+    {
+      "elapsed_seconds": 1.0156488749198616,
+      "frames": 15.0,
+      "decoded_fps": 14.768883588025
+    },
+    {
+      "elapsed_seconds": 1.0061981249600649,
+      "frames": 15.0,
+      "decoded_fps": 14.907600827218136
+    },
+    {
+      "elapsed_seconds": 1.0100770834833384,
+      "frames": 15.0,
+      "decoded_fps": 14.850351765502094
+    },
+    {
+      "elapsed_seconds": 1.0676949582993984,
+      "frames": 16.0,
+      "decoded_fps": 14.985553575605953
+    },
+    {
+      "elapsed_seconds": 1.0721883750520647,
+      "frames": 15.0,
+      "decoded_fps": 13.990078934843526
+    },
+    {
+      "elapsed_seconds": 1.0471822081599385,
+      "frames": 14.0,
+      "decoded_fps": 13.369211098993146
+    },
+    {
+      "elapsed_seconds": 1.158041125163436,
+      "frames": 17.0,
+      "decoded_fps": 14.679962248837032
+    },
+    {
+      "elapsed_seconds": 1.0738009999040514,
+      "frames": 19.0,
+      "decoded_fps": 17.69415376005212
+    },
+    {
+      "elapsed_seconds": 1.0374650417361408,
+      "frames": 16.0,
+      "decoded_fps": 15.42220639379316
+    },
+    {
+      "elapsed_seconds": 1.046706416644156,
+      "frames": 16.0,
+      "decoded_fps": 15.286043675262428
+    },
+    {
+      "elapsed_seconds": 1.03199458331801,
+      "frames": 15.0,
+      "decoded_fps": 14.53496001090709
+    },
+    {
+      "elapsed_seconds": 1.145196083234623,
+      "frames": 8.0,
+      "decoded_fps": 6.985703249529009
+    },
+    {
+      "elapsed_seconds": 1.0077593750320375,
+      "frames": 7.0,
+      "decoded_fps": 6.946102585031734
+    },
+    {
+      "elapsed_seconds": 1.0143857083749026,
+      "frames": 30.0,
+      "decoded_fps": 29.574549160458425
+    },
+    {
+      "elapsed_seconds": 1.0662525000516325,
+      "frames": 15.0,
+      "decoded_fps": 14.06796232531566
+    },
+    {
+      "elapsed_seconds": 1.0441162083297968,
+      "frames": 16.0,
+      "decoded_fps": 15.32396477743999
+    },
+    {
+      "elapsed_seconds": 1.0272292499430478,
+      "frames": 16.0,
+      "decoded_fps": 15.575880457928044
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "scope": "Installed8 real AppKit CUA Reply, original trust v2, Android RemoteInput receiver. Broker API stale action diagnostic only. OS banners Denied.",
+  "reply_baseline_before_CUA": 1,
+  "phone_after_CUA_reply": [
+    "Companion boundary verification",
+    "DroidBridge QA8 scoped RemoteInput\nReply deliveries: 2",
+    "ALLOW TEST NOTIFICATIONS"
+  ],
+  "before_replace": [
+    {
+      "kind": "notification_posted",
+      "id": "9e6a317c-b3d6-44ee-8148-4ca3d7e2bcb0",
+      "payload": {
+        "package_name": "dev.droidbridge.companionfixture",
+        "notification_key": "9dff8307f3d8eae3b204191b948b555f15eb8dcd77c8aec5542e4033e21178d2",
+        "can_reply": true,
+        "title": "Boundary notification 8",
+        "text": "Deterministic fixture generation 8",
+        "action_id": "71181fde-53e4-45d2-8cca-8f893b2530ee"
+      },
+      "trust_id": "d1d3e816-0214-47f3-8f08-a73cdc134d7e",
+      "created": 815095281.362561,
+      "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa"
+    }
+  ],
+  "after_replace": [
+    {
+      "id": "662be2d3-e884-43ce-b055-98eb260c4ee3",
+      "created": 815095283.731822,
+      "trust_id": "d1d3e816-0214-47f3-8f08-a73cdc134d7e",
+      "payload": {
+        "can_reply": true,
+        "text": "Deterministic fixture generation 9",
+        "package_name": "dev.droidbridge.companionfixture",
+        "action_id": "8937ca6b-46fa-4b8f-8924-bd19c635c52f",
+        "notification_key": "9dff8307f3d8eae3b204191b948b555f15eb8dcd77c8aec5542e4033e21178d2",
+        "title": "Boundary notification 9"
+      },
+      "kind": "notification_posted",
+      "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa"
+    }
+  ],
+  "private_removed_previous_public": true,
+  "after_private": [],
+  "stale_reply": {
+    "exit": -5,
+    "error": "Swift/ErrorType.swift:254: Fatal error: Error raised at top level: DroidBridgeCore.CompanionBoundaryError(code: \"notification_unavailable\", message: \"This notification belongs to an older pairing or action. Refresh the notification list.\", retryable: false)"
+  },
+  "after_stale_phone_texts": [
+    "Companion boundary verification",
+    "DroidBridge QA8 scoped RemoteInput\nReply deliveries: 2",
+    "ALLOW TEST NOTIFICATIONS"
+  ],
+  "nonreply": [
+    {
+      "created": 815095290.590688,
+      "kind": "notification_posted",
+      "id": "3b1309bd-40d0-46f5-9345-66d1dbfef0f4",
+      "payload": {
+        "action_id": "aff31525-0303-4ca2-9b3b-9b02beff764f",
+        "package_name": "dev.droidbridge.companionfixture",
+        "text": "Deterministic fixture generation 11",
+        "title": "Boundary notification 11",
+        "can_reply": false,
+        "notification_key": "9dff8307f3d8eae3b204191b948b555f15eb8dcd77c8aec5542e4033e21178d2"
+      },
+      "trust_id": "d1d3e816-0214-47f3-8f08-a73cdc134d7e",
+      "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa"
+    }
+  ],
+  "actions": [
+    {
+      "kind": "android_ui_action",
+      "action": "POST PUBLIC REPLY NOTIFICATION",
+      "monotonic": 1591380.845662416
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "REPLACE REPLY NOTIFICATION",
+      "monotonic": 1591383.298340416
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "POST PRIVATE NOTIFICATION",
+      "monotonic": 1591385.733218291
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "POST PUBLIC NON-REPLY NOTIFICATION",
+      "monotonic": 1591390.166579125
+    }
+  ]
+}

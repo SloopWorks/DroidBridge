@@ -1,0 +1,34 @@
+{
+  "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ProtocolRules.kt": {
+    "sha256": "a898763c6cc3fb154e4b9a59a28cd605cc60690ac45fbb3b38b189ca9f292052",
+    "bytes": 4356
+  },
+  "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt": {
+    "sha256": "497030105b19c3d9c8806200448df103caffbf6965639b095479170fc541ef9d",
+    "bytes": 52919
+  },
+  "AndroidCompanion/app/src/test/java/dev/droidbridge/companion/ProtocolRulesTest.kt": {
+    "sha256": "ac7c7dd3aeb24dfb8d49a11ea04df4e5d2784439bf20e14a66a5c97db41acdd7",
+    "bytes": 4024
+  },
+  "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionSecurityTest.kt": {
+    "sha256": "bb04dd7098bdcf7d89b9ce165af6169512bd2a084005609eb12793994f005dd9",
+    "bytes": 37637
+  },
+  "android/unicode-label-fixture/README.md": {
+    "sha256": "02284435c8c4eccd46ee0009f1630789ef13722c67c232d50e0cdad8b2599e9e",
+    "bytes": 977
+  },
+  "android/unicode-label-fixture/MainActivity.java.in": {
+    "sha256": "06e0d8ee0defaabd1a3e8f14bd5d9db3a1c61c0dbc096c66b97c892c16ec7c6e",
+    "bytes": 785
+  },
+  "android/unicode-label-fixture/AndroidManifest.xml.in": {
+    "sha256": "5830206edb055c7343ac5512f3f0b788a4f7d489125fff9d115985a8c6b545e7",
+    "bytes": 698
+  },
+  "scripts/build-unicode-label-fixture.py": {
+    "sha256": "f4a93f5da73b5416d1a5725b5475b8b92b6fa3662601cc1db53b28cc18384ca2",
+    "bytes": 3900
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "5580": {
+    "closed": true
+  },
+  "5581": {
+    "closed": true
+  },
+  "owned_emulator_pid_gone": true,
+  "serial": "emulator-5580",
+  "shared_adb_server_restarted": false
+}

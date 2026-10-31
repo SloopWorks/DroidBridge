@@ -1,0 +1,10 @@
+{
+  "images_scanned" : 301,
+  "qr_detections" : [
+
+  ],
+  "scope" : "Read-only Vision QR detection; no decoded payloads logged; detections require separate review",
+  "unreadable_or_oversize_images" : [
+
+  ]
+}

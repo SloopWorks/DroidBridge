@@ -1,0 +1,90 @@
+{
+  "passed": false,
+  "scope": "Installed signed Mac app + real Android companion TLS/GUI flow; isolated QA paths",
+  "serial": "emulator-5582",
+  "physical_focus_verified": false,
+  "events": [
+    {
+      "kind": "installed_host_started",
+      "pid": 42744,
+      "executable_sha256": "7f5d573588f0e6e9c7169e23422f706a8e65a23c1a3d30d12cd7c935393466d4",
+      "qa_scope": true
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 785.95
+    },
+    {
+      "kind": "appkit_action",
+      "action": "show_companion",
+      "ok": true,
+      "elapsed_ms": 209.89
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.01
+    },
+    {
+      "kind": "appkit_action",
+      "action": "select_adb",
+      "ok": true,
+      "elapsed_ms": 51.9
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 208.3
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 108.5
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.2
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.63
+    },
+    {
+      "kind": "gui_companion_install_confirmed",
+      "bundled_apk_sha256": "c304d5d3fc526ebdc7c4c4e16d7c92fb5e53175bfe8f913d3d131fcf097cff04",
+      "exact_selected_device": "emulator-5582"
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 108.55
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Start connection service",
+      "monotonic": 1579653.983750125
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Pair a new Mac",
+      "monotonic": 1579660.326048166
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 216.38
+    }
+  ],
+  "error": "Command '['/usr/bin/swift', '/Users/patrick/workspace/DroidBridge/.build/companion-macos-qa37/read-private-qr.swift', '/Users/patrick/workspace/DroidBridge/.build/companion-macos-qa37/pairing-frame.png', '/Users/patrick/workspace/DroidBridge/.build/companion-macos-qa37/pairing-link.txt']' returned non-zero exit status 2."
+}

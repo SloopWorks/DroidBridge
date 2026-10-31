@@ -1,0 +1,9 @@
+{
+  "scope": "Independent staging oversized sparse dylib guard; file-content read instrumented to fail if attempted before byte admission; no bundled executable launched",
+  "fixture": "/Users/patrick/workspace/DroidBridge/.build/security-player-cap-19d4u2eq",
+  "verifier_sha256": "73fea06dc2ba1427aeb52832787e96aade1294302836a9692ac1f1f20391e141",
+  "result": "RuntimeError: ADVERSARIAL_OVERSIZE_READ_BEFORE_ADMISSION",
+  "oversized_content_reads": [
+    "/Users/patrick/workspace/DroidBridge/.build/security-player-cap-19d4u2eq/Runtime/lib/libavformat.63.dylib"
+  ]
+}

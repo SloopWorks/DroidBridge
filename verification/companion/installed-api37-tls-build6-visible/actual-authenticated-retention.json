@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "profile": "balanced",
+  "selection": {
+    "dev.droidbridge.inputalpha": true,
+    "dev.droidbridge.inputbeta": true
+  },
+  "fresh_pair_connected": true,
+  "fresh_pair_trusted": true
+}

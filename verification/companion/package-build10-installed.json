@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-10-31T00:03:17.248835+00:00",
+  "scope": "Read-only verified DMG copied outside build directory; integrity check only, application not launched yet",
+  "installed_app": "/Users/patrick/Applications/DroidBridge Companion QA10.app",
+  "file_inventory_matches_dist": true,
+  "inventory_entries": 198,
+  "codesign_deep_strict_verified": true,
+  "host_sha256": "6aecfcffc4d2226abb3cedcf7df71a6681d0455042bfeb696ad495b3cf2ce689",
+  "broker_sha256": "d890c6815c7a679a0df3be864b9abac0bd3be9212dbcbb98ce9be08c17e98936",
+  "apk_sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b",
+  "dmg_sha256": "6f453029e45c63eff4f2588487f3dcc72e64334553f3df7c180feaa36cce0555",
+  "version": "0.2.0",
+  "build": "10"
+}

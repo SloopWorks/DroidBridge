@@ -1,0 +1,10 @@
+{
+  "helper_sha256": "298f319bfc6c0d78159bac7bb6e289c667d57054cbf78b388481fee992a56f69",
+  "version": "DroidBridgeAvailability 0.1.8",
+  "exit_code": 0,
+  "stdout": "{\"probed\":0,\"messages\":[\"Managed app availability could not be reconciled: Managed app catalog refused: root layout\",\"Managed app repair diagnostics are unavailable\"],\"registrations\":0,\"pendingRegistrations\":0,\"transitions\":0,\"enabled\":false,\"available\":0}\n",
+  "stderr": "",
+  "manifest_unchanged": true,
+  "active_directory_empty": true,
+  "manifest_v2_rejected": false
+}

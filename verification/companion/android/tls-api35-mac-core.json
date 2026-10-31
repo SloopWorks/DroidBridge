@@ -1,0 +1,11 @@
+{
+  "scope": "ActualMacURLSessionproductionCoretoAndroidKeyStoreTLSAPI35",
+  "exit_code": 0,
+  "result": {
+    "device_id": "260553b5-97e4-4949-9a61-0597d49d0347",
+    "operation": "hello",
+    "status": "ok"
+  },
+  "device_id": "260553b5-97e4-4949-9a61-0597d49d0347",
+  "server_pin": "0630a92cc9e6dcb34e8db0dd3e5de275e6719f8ea6c63819775d47f4d3ef356e"
+}

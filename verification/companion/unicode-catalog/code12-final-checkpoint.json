@@ -1,0 +1,20 @@
+{
+  "version_code": 12,
+  "product_sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b",
+  "test_sha256": "b0eda9e5f7763c062abe2ee7f72e49f48dd1da762331257dc2e83cbcd15c1552",
+  "signer_sha256": "eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4",
+  "unit_tests": 8,
+  "focused_tls_tests": 3,
+  "focused_seconds": 0.579,
+  "full_tests": 36,
+  "full_seconds": 285.923,
+  "large_tests": 9,
+  "large_seconds": 46.425,
+  "large_density": 540,
+  "large_font": 2.0,
+  "source_hashes_match": true,
+  "installed_hash_matches": true,
+  "uuid_pin_settings_preserved": true,
+  "owned_emulator_off": true,
+  "no_failed_code12_test_attempts": true
+}

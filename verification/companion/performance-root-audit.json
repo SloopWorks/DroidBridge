@@ -1,0 +1,15 @@
+{
+  "independently_recalculated": true,
+  "source": "verification/companion/installed-api37-tls-build2-reconnect/performance.json",
+  "transport": "owned API37 emulator ADB; physical USB and real wireless not established by this result",
+  "idle_control_p95_ms": 27.96291676349938,
+  "bulk_control_p95_ms": 33.90620835125446,
+  "fairness_ratio": 1.212541904623948,
+  "catalog_p95_ms": 131.00716681219637,
+  "reconnect_p95_ms": 282.52087510190904,
+  "open_gates": [
+    "physical Wi-Fi path",
+    "local preview timing",
+    "same-run video firstframe regression"
+  ]
+}

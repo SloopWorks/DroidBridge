@@ -1,0 +1,215 @@
+{
+  "samples": [
+    {
+      "monotonic": 1587981.893632458,
+      "cpu_percent": 0.1,
+      "rss_kib": 23664
+    },
+    {
+      "monotonic": 1587982.399350708,
+      "cpu_percent": 6.3,
+      "rss_kib": 27296
+    },
+    {
+      "monotonic": 1587982.909516416,
+      "cpu_percent": 2.7,
+      "rss_kib": 27488
+    },
+    {
+      "monotonic": 1587983.418329541,
+      "cpu_percent": 4.3,
+      "rss_kib": 31600
+    },
+    {
+      "monotonic": 1587983.931073666,
+      "cpu_percent": 0.6,
+      "rss_kib": 31600
+    },
+    {
+      "monotonic": 1587984.440449625,
+      "cpu_percent": 8.6,
+      "rss_kib": 37088
+    },
+    {
+      "monotonic": 1587984.948024583,
+      "cpu_percent": 3.1,
+      "rss_kib": 37200
+    },
+    {
+      "monotonic": 1587985.468029333,
+      "cpu_percent": 2.6,
+      "rss_kib": 37040
+    },
+    {
+      "monotonic": 1587985.971237375,
+      "cpu_percent": 5.6,
+      "rss_kib": 37200
+    },
+    {
+      "monotonic": 1587986.482305291,
+      "cpu_percent": 7.6,
+      "rss_kib": 37776
+    },
+    {
+      "monotonic": 1587986.987784333,
+      "cpu_percent": 7.5,
+      "rss_kib": 40448
+    },
+    {
+      "monotonic": 1587987.50164575,
+      "cpu_percent": 4.9,
+      "rss_kib": 38400
+    },
+    {
+      "monotonic": 1587988.006048166,
+      "cpu_percent": 3.2,
+      "rss_kib": 36560
+    },
+    {
+      "monotonic": 1587988.50982875,
+      "cpu_percent": 0.3,
+      "rss_kib": 36560
+    },
+    {
+      "monotonic": 1587989.01520925,
+      "cpu_percent": 0.8,
+      "rss_kib": 36576
+    },
+    {
+      "monotonic": 1587989.523626666,
+      "cpu_percent": 0.2,
+      "rss_kib": 36592
+    },
+    {
+      "monotonic": 1587990.031954125,
+      "cpu_percent": 0.1,
+      "rss_kib": 36592
+    },
+    {
+      "monotonic": 1587990.540023583,
+      "cpu_percent": 1.5,
+      "rss_kib": 36288
+    },
+    {
+      "monotonic": 1587991.042753666,
+      "cpu_percent": 2.3,
+      "rss_kib": 34816
+    },
+    {
+      "monotonic": 1587991.552045916,
+      "cpu_percent": 0.8,
+      "rss_kib": 34016
+    },
+    {
+      "monotonic": 1587992.057579791,
+      "cpu_percent": 2.1,
+      "rss_kib": 33936
+    },
+    {
+      "monotonic": 1587992.561057083,
+      "cpu_percent": 0.2,
+      "rss_kib": 33840
+    },
+    {
+      "monotonic": 1587993.068557666,
+      "cpu_percent": 1.4,
+      "rss_kib": 33872
+    },
+    {
+      "monotonic": 1587993.575007833,
+      "cpu_percent": 1.6,
+      "rss_kib": 33840
+    },
+    {
+      "monotonic": 1587994.078716166,
+      "cpu_percent": 1.4,
+      "rss_kib": 33840
+    },
+    {
+      "monotonic": 1587994.585621416,
+      "cpu_percent": 0.5,
+      "rss_kib": 33840
+    },
+    {
+      "monotonic": 1587995.094205208,
+      "cpu_percent": 2.2,
+      "rss_kib": 33616
+    },
+    {
+      "monotonic": 1587995.598382375,
+      "cpu_percent": 1.8,
+      "rss_kib": 33616
+    },
+    {
+      "monotonic": 1587996.104159583,
+      "cpu_percent": 2.4,
+      "rss_kib": 35280
+    },
+    {
+      "monotonic": 1587996.612282666,
+      "cpu_percent": 2.3,
+      "rss_kib": 33632
+    },
+    {
+      "monotonic": 1587997.118802291,
+      "cpu_percent": 1.6,
+      "rss_kib": 33632
+    },
+    {
+      "monotonic": 1587997.635752,
+      "cpu_percent": 3.3,
+      "rss_kib": 33648
+    },
+    {
+      "monotonic": 1587998.1446135,
+      "cpu_percent": 1.7,
+      "rss_kib": 33648
+    },
+    {
+      "monotonic": 1587998.653781458,
+      "cpu_percent": 1.1,
+      "rss_kib": 33648
+    },
+    {
+      "monotonic": 1587999.161285625,
+      "cpu_percent": 0.3,
+      "rss_kib": 33440
+    },
+    {
+      "monotonic": 1587999.668852666,
+      "cpu_percent": 3.3,
+      "rss_kib": 33504
+    },
+    {
+      "monotonic": 1588000.177844375,
+      "cpu_percent": 2.1,
+      "rss_kib": 33504
+    },
+    {
+      "monotonic": 1588000.687160458,
+      "cpu_percent": 0.7,
+      "rss_kib": 33504
+    },
+    {
+      "monotonic": 1588001.20146725,
+      "cpu_percent": 2.5,
+      "rss_kib": 33504
+    },
+    {
+      "monotonic": 1588001.708329125,
+      "cpu_percent": 2.4,
+      "rss_kib": 33488
+    },
+    {
+      "monotonic": 1588002.214539208,
+      "cpu_percent": 0.5,
+      "rss_kib": 33488
+    },
+    {
+      "monotonic": 1588002.722969083,
+      "cpu_percent": 2.3,
+      "rss_kib": 33600
+    }
+  ],
+  "not_a_quiet_performance_benchmark": true
+}

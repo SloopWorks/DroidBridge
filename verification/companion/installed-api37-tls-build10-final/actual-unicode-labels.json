@@ -1,0 +1,30 @@
+{
+  "boundary": "Actual signed fixture APK labels -> authenticated production catalog -> automatic visible shipping AppKit rows; no Refresh",
+  "rows": [
+    {
+      "package": "dev.droidbridge.unicodefixture.cjk",
+      "sha256": "f79db3d34eeb65a3f8213ee101c6221ae4921d722c40175f7d076f6857e34a4f",
+      "label": "界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界界",
+      "unicode_scalars": 86,
+      "utf8_bytes": 258,
+      "utf16_units": 86,
+      "main_exact": true,
+      "companion_exact": true,
+      "from_android_completion_ms": 230.59,
+      "passed": true
+    },
+    {
+      "package": "dev.droidbridge.unicodefixture.supplementary",
+      "sha256": "f46cf8671358d2539ab8db0477f5916e95ac08d3ad26dbad9b82236a978e9f2c",
+      "label": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa😀",
+      "unicode_scalars": 256,
+      "utf8_bytes": 259,
+      "utf16_units": 257,
+      "main_exact": true,
+      "companion_exact": true,
+      "from_android_completion_ms": 760.19,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

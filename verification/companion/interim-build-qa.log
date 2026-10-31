@@ -1,0 +1,98 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[2/12] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift:36:112: warning: converting non-Sendable function value to '@Sendable (URL) async throws -> Void' may introduce data races
+ 34 |     public typealias Verify = @Sendable (URL) async throws -> Void
+ 35 |     public typealias InUse = @Sendable ([URL]) async throws -> Bool
+ 36 |     public static func prepare(parent: URL, helper: URL, adb: URL, preservedGeneration: URL?, verify: Verify = verifySignature, inUse: InUse = referenced) async throws -> URL {
+    |                                                                                                                `- warning: converting non-Sendable function value to '@Sendable (URL) async throws -> Void' may introduce data races
+ 37 |         let helper = helper.resolvingSymlinksInPath(), adb = adb.resolvingSymlinksInPath()
+ 38 |         let identity = try await Task.detached { try Self.identity(helper: helper, adb: adb) }.value
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift:36:112: error: static method 'verifySignature' is private and cannot be referenced from a default argument value
+ 34 |     public typealias Verify = @Sendable (URL) async throws -> Void
+ 35 |     public typealias InUse = @Sendable ([URL]) async throws -> Bool
+ 36 |     public static func prepare(parent: URL, helper: URL, adb: URL, preservedGeneration: URL?, verify: Verify = verifySignature, inUse: InUse = referenced) async throws -> URL {
+    |                                                                                                                `- error: static method 'verifySignature' is private and cannot be referenced from a default argument value
+ 37 |         let helper = helper.resolvingSymlinksInPath(), adb = adb.resolvingSymlinksInPath()
+ 38 |         let identity = try await Task.detached { try Self.identity(helper: helper, adb: adb) }.value
+    :
+109 |         guard try Self.identity(helper: files(directory)[0], adb: files(directory)[1]) == identity else { throw BridgeError.message("Availability runtime identity mismatch.") }
+110 |     }
+111 |     private static func verifySignature(_ file: URL) async throws {
+    |                         `- note: static method 'verifySignature' is not '@usableFromInline' or public
+112 |         _ = try await ProcessRunner.run("/usr/bin/codesign", arguments: ["--verify", "--strict", file.path], timeout: 10)
+113 |     }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift:36:144: warning: converting non-Sendable function value to '@Sendable ([URL]) async throws -> Bool' may introduce data races
+ 34 |     public typealias Verify = @Sendable (URL) async throws -> Void
+ 35 |     public typealias InUse = @Sendable ([URL]) async throws -> Bool
+ 36 |     public static func prepare(parent: URL, helper: URL, adb: URL, preservedGeneration: URL?, verify: Verify = verifySignature, inUse: InUse = referenced) async throws -> URL {
+    |                                                                                                                                                `- warning: converting non-Sendable function value to '@Sendable ([URL]) async throws -> Bool' may introduce data races
+ 37 |         let helper = helper.resolvingSymlinksInPath(), adb = adb.resolvingSymlinksInPath()
+ 38 |         let identity = try await Task.detached { try Self.identity(helper: helper, adb: adb) }.value
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift:36:144: error: static method 'referenced' is private and cannot be referenced from a default argument value
+ 34 |     public typealias Verify = @Sendable (URL) async throws -> Void
+ 35 |     public typealias InUse = @Sendable ([URL]) async throws -> Bool
+ 36 |     public static func prepare(parent: URL, helper: URL, adb: URL, preservedGeneration: URL?, verify: Verify = verifySignature, inUse: InUse = referenced) async throws -> URL {
+    |                                                                                                                                                `- error: static method 'referenced' is private and cannot be referenced from a default argument value
+ 37 |         let helper = helper.resolvingSymlinksInPath(), adb = adb.resolvingSymlinksInPath()
+ 38 |         let identity = try await Task.detached { try Self.identity(helper: helper, adb: adb) }.value
+    :
+112 |         _ = try await ProcessRunner.run("/usr/bin/codesign", arguments: ["--verify", "--strict", file.path], timeout: 10)
+113 |     }
+114 |     private static func referenced(_ files: [URL]) async throws -> Bool {
+    |                         `- note: static method 'referenced' is not '@usableFromInline' or public
+115 |         let result = try await ProcessRunner.run("/usr/sbin/lsof", arguments: ["-nP", "-F", "pn", "--"] + files.map(\.path), timeout: 5, allowNonZeroExit: true)
+116 |         if result.status == 0 { return true }
+[3/12] Compiling DroidBridgeCore AvailabilityRuntimeStore.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift:36:112: warning: converting non-Sendable function value to '@Sendable (URL) async throws -> Void' may introduce data races
+ 34 |     public typealias Verify = @Sendable (URL) async throws -> Void
+ 35 |     public typealias InUse = @Sendable ([URL]) async throws -> Bool
+ 36 |     public static func prepare(parent: URL, helper: URL, adb: URL, preservedGeneration: URL?, verify: Verify = verifySignature, inUse: InUse = referenced) async throws -> URL {
+    |                                                                                                                `- warning: converting non-Sendable function value to '@Sendable (URL) async throws -> Void' may introduce data races
+ 37 |         let helper = helper.resolvingSymlinksInPath(), adb = adb.resolvingSymlinksInPath()
+ 38 |         let identity = try await Task.detached { try Self.identity(helper: helper, adb: adb) }.value
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift:36:112: error: static method 'verifySignature' is private and cannot be referenced from a default argument value
+ 34 |     public typealias Verify = @Sendable (URL) async throws -> Void
+ 35 |     public typealias InUse = @Sendable ([URL]) async throws -> Bool
+ 36 |     public static func prepare(parent: URL, helper: URL, adb: URL, preservedGeneration: URL?, verify: Verify = verifySignature, inUse: InUse = referenced) async throws -> URL {
+    |                                                                                                                `- error: static method 'verifySignature' is private and cannot be referenced from a default argument value
+ 37 |         let helper = helper.resolvingSymlinksInPath(), adb = adb.resolvingSymlinksInPath()
+ 38 |         let identity = try await Task.detached { try Self.identity(helper: helper, adb: adb) }.value
+    :
+109 |         guard try Self.identity(helper: files(directory)[0], adb: files(directory)[1]) == identity else { throw BridgeError.message("Availability runtime identity mismatch.") }
+110 |     }
+111 |     private static func verifySignature(_ file: URL) async throws {
+    |                         `- note: static method 'verifySignature' is not '@usableFromInline' or public
+112 |         _ = try await ProcessRunner.run("/usr/bin/codesign", arguments: ["--verify", "--strict", file.path], timeout: 10)
+113 |     }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift:36:144: warning: converting non-Sendable function value to '@Sendable ([URL]) async throws -> Bool' may introduce data races
+ 34 |     public typealias Verify = @Sendable (URL) async throws -> Void
+ 35 |     public typealias InUse = @Sendable ([URL]) async throws -> Bool
+ 36 |     public static func prepare(parent: URL, helper: URL, adb: URL, preservedGeneration: URL?, verify: Verify = verifySignature, inUse: InUse = referenced) async throws -> URL {
+    |                                                                                                                                                `- warning: converting non-Sendable function value to '@Sendable ([URL]) async throws -> Bool' may introduce data races
+ 37 |         let helper = helper.resolvingSymlinksInPath(), adb = adb.resolvingSymlinksInPath()
+ 38 |         let identity = try await Task.detached { try Self.identity(helper: helper, adb: adb) }.value
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift:36:144: error: static method 'referenced' is private and cannot be referenced from a default argument value
+ 34 |     public typealias Verify = @Sendable (URL) async throws -> Void
+ 35 |     public typealias InUse = @Sendable ([URL]) async throws -> Bool
+ 36 |     public static func prepare(parent: URL, helper: URL, adb: URL, preservedGeneration: URL?, verify: Verify = verifySignature, inUse: InUse = referenced) async throws -> URL {
+    |                                                                                                                                                `- error: static method 'referenced' is private and cannot be referenced from a default argument value
+ 37 |         let helper = helper.resolvingSymlinksInPath(), adb = adb.resolvingSymlinksInPath()
+ 38 |         let identity = try await Task.detached { try Self.identity(helper: helper, adb: adb) }.value
+    :
+112 |         _ = try await ProcessRunner.run("/usr/bin/codesign", arguments: ["--verify", "--strict", file.path], timeout: 10)
+113 |     }
+114 |     private static func referenced(_ files: [URL]) async throws -> Bool {
+    |                         `- note: static method 'referenced' is not '@usableFromInline' or public
+115 |         let result = try await ProcessRunner.run("/usr/sbin/lsof", arguments: ["-nP", "-F", "pn", "--"] + files.map(\.path), timeout: 5, allowNonZeroExit: true)
+116 |         if result.status == 0 { return true }
+error: input file '/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift' was modified during the build
+error: input file '/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift' was modified during the build

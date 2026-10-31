@@ -1,0 +1,66 @@
+{
+  "boundary": "CUA actualMaccheckbox -> pinned Android command -> durable owner grant -> wrapper effect -> canonical terminalreceipt",
+  "commands": [
+    {
+      "admitted": true,
+      "admittedAtMS": 1594342618.0149584,
+      "continuousDeadline": {
+        "bootID": "c2b75959-43b0-4811-b30e-db0c5762b804",
+        "expiresMS": 1594367861.3979583,
+        "issuedMS": 1594337862.3979583
+      },
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815091431.3578216,
+      "generation": 1,
+      "id": "7cede257-c2d9-4eb4-b2c3-3c8efd723711",
+      "intentCommitted": true,
+      "kind": "set_export",
+      "owner": {
+        "pid": 73719,
+        "start": 1793398537448928
+      },
+      "payload": {
+        "package_name": "dev.droidbridge.inputalpha",
+        "selected": false,
+        "selection_revision": 1
+      },
+      "result": {
+        "message": "New launches are disabled. Existing running windows are preserved.",
+        "phase": "inactive",
+        "selected": false
+      },
+      "status": "applied"
+    },
+    {
+      "admitted": true,
+      "admittedAtMS": 1594353385.0157082,
+      "continuousDeadline": {
+        "bootID": "c2b75959-43b0-4811-b30e-db0c5762b804",
+        "expiresMS": 1594379455.865375,
+        "issuedMS": 1594349456.8652499
+      },
+      "deviceID": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+      "expires": 815091442.9523786,
+      "generation": 1,
+      "id": "8a74939b-f092-44f2-8a64-0d6801a83f6d",
+      "intentCommitted": true,
+      "kind": "set_export",
+      "owner": {
+        "pid": 73719,
+        "start": 1793398537448928
+      },
+      "payload": {
+        "package_name": "dev.droidbridge.inputalpha",
+        "selected": true,
+        "selection_revision": 2
+      },
+      "result": {
+        "phase": "active",
+        "selected": true,
+        "wrapper_created": true
+      },
+      "status": "applied"
+    }
+  ],
+  "pass": true
+}

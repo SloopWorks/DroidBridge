@@ -1,0 +1,22 @@
+{
+  "scope": "Independent source and completed pinned TLS fixture log review of Core catalog invalidation hints only; no GUI/device operations or automatic refresh acceptance",
+  "source_sha256": {
+    "Sources/DroidBridgeCore/CompanionBrokerService.swift": "ff028e8f8bfcb8fa3410c9132fe53def80372113ad3f1c0cef7d2402b592003d",
+    "Tests/DroidBridgeCoreTests/CompanionCatalogSignalTests.swift": "43444fd1a876f45b78b05d2d0a98d9cdbff11d385e338eeb09538de0b0cf8143",
+    "Tests/DroidBridgeCoreTests/BrokerAdmissionTLSPeer.swift": "decf4c8a3bed0c699355e3ecd180c5cbfb56310a23ec9dbbf748a3daece527b5"
+  },
+  "focused_log_sha256": "77a0d589c965fd24c7c1700c4fe00f9111a53e08ee0d4b594c9e9c9e9d8d130a",
+  "source_checkpoint_sha256": "eb43de6cf30556f2951ad013ce0ed440fdae16048db8ec9408d5723e64c17a77",
+  "tests_reviewed": {
+    "catalog_signal": 6,
+    "notification_security": 9,
+    "failures": 0
+  },
+  "source_findings": "No blocking Core authority/replay/privacy/persist fence issue found; event content never substitutes for catalog; status cached read-only; last-ID dedupe is intentionally not full historical dedupe",
+  "pending": [
+    "Dedicated export selection actual-map-change/no-op hint assertion",
+    "Mac visible origin-fenced coalescing/delta synchronizer tests",
+    "Actual installed rename/icon/delete update without manual refresh and bounded event-to-visible time",
+    "New full Swift source gate and final package/archive after Mac integration"
+  ]
+}

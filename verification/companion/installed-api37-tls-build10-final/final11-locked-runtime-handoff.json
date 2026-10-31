@@ -1,0 +1,95 @@
+{
+  "scope": "Read-only handoff from last executable evidence; no fresh GUI, ADB, device, process-liveness or permission probes while Mac locked",
+  "qa_root": "/Users/patrick/Applications/DroidBridge Companion Final QA Data",
+  "root_mode": "0700 owned current user",
+  "emulator": {
+    "last_recorded_launch_pid": 30064,
+    "previous_emulator_pid": 71397,
+    "previous_emulator_shutdown": true,
+    "binary": "/Users/patrick/Library/Android/sdk/emulator/emulator",
+    "arguments": [
+      "-avd",
+      "DroidBridge_API37",
+      "-port",
+      "5582",
+      "-no-window",
+      "-no-snapshot",
+      "-gpu",
+      "auto"
+    ],
+    "serial": "emulator-5582",
+    "spawned_with_start_new_session": true,
+    "launch_tool_session": 92994,
+    "launch_helper": ".build/qa10-emulator-recovery.py",
+    "helper_exit": 1,
+    "helper_failure": "First am-start ran immediately after boot_completed before ActivityManager was ready; later explicit public retry and normal service restart recovered. Emulator remains intentionally independent of exited helper.",
+    "log": "/Users/patrick/Applications/DroidBridge Companion Final QA Data/emulator-restart.log",
+    "last_current_qemu_liveness_not_reprobed": true
+  },
+  "main": {
+    "pid": 20973,
+    "app": "/Users/patrick/Applications/DroidBridge Companion QA10.app",
+    "tool_session": 1433,
+    "held_helper": ".build/qa10-start.py",
+    "qa_arguments": [
+      "--companion-qa-root",
+      "/Users/patrick/Applications/DroidBridge Companion Final QA Data",
+      "--serial",
+      "emulator-5582",
+      "--companion-launch-trace"
+    ],
+    "observer": "Test-only actions.dylib injected by held helper; current receipt sequence must be loaded before actions"
+  },
+  "broker": {
+    "pid": 21121,
+    "launchagent": "dev.droidbridge.companion.broker.qa.519a8a5dd851",
+    "launchctl_domain": "gui/501",
+    "generation": "50acb0a0c11832738ba69ecd38072ccea3231f8b4552063cdee55e7ff34dc428",
+    "sha256": "d890c6815c7a679a0df3be864b9abac0bd3be9212dbcbb98ce9be08c17e98936",
+    "final11_binary_identical_per_root": true,
+    "restart_not_required_for_text_host_update": true
+  },
+  "phone": {
+    "canonical_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+    "trust_id": "316745f7-69e1-41cb-853c-7b9a3f6149d9",
+    "retained_trust_count": 3,
+    "installed_companion_apk": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b",
+    "service": "ON after explicit public Start following coldboot",
+    "profile": "balanced",
+    "audio_intent": "mac",
+    "last_settings_baseline": {
+      "wireless_debugging_enabled": 0,
+      "adb_enabled": 1,
+      "development_settings_enabled": "null",
+      "wifi_on": 1
+    },
+    "fresh_2MiB_entry_not_created": true
+  },
+  "cleanup": {
+    "active_sessions": 0,
+    "owned_unicode_fixture_packages_removed": [
+      "dev.droidbridge.unicodefixture.cjk",
+      "dev.droidbridge.unicodefixture.supplementary"
+    ],
+    "retained_fixture_versions": {
+      "dev.droidbridge.inputalpha": 2,
+      "dev.droidbridge.inputbeta": 1
+    },
+    "owned_forwards": [
+      "emulator-5582 tcp:46000 tcp:37841"
+    ],
+    "owned_wireless_aliases_or_nat_redirections": [],
+    "production_or_physical_device_operations": false
+  },
+  "final11_plan": [
+    "Wait for actual user unlock; do not synthesize unlock or operate through alternative UI APIs while the Mac is locked.",
+    "Bind existing QA10 by its exact installed path, real Cmd+Q, and await held session1433 exit. Preserve same-generation broker21121 and saved credential; do not boot it out solely for a host/docs/footer update.",
+    "Launch exact installed QA11 with explicit same QA root and --serial emulator-5582 (optional existing isolated launch trace). Confirm actual device, unchanged trusted connection, and successful host registration for QA11. Fresh pairing only if a genuine actionable credential error occurs; never copy private grants.",
+    "Installed footer smoke: main visible complete catalog and one real owned install/remove delta must keep header and ready count consistent; no Refresh. Native Alpha launch must show live content; close it cleanly. Existing actual10 C04, Unicode and recovery evidence remains separately scoped.",
+    "Current12 notification smoke through normal shipping Mac Apply: read OS permission, keep Denied respected, explicitly enable in-app fixture-only allowlist for this exact trust. Publish original fixture public reply notification, send one reply and verify one RemoteInput delivery; replace with private and verify old public row removal; refuse stale action and dismiss current public row. No OS banner claim without actual authorization.",
+    "If feasible after unlock, test independent wrapper activation/Cmd+Tab using exact owned QA arguments; retain honest unsupported/tool-blocked result rather than alternative lock or permission bypass.",
+    "Create a fresh actual deterministic2MiB Android ACTION_SEND share using the original fixture and explicit selected316745 receiver; verify the targeted Mac inbox file metadata/hash528d7c4ccbfb9b6c5be870818614c6bb306e726715cde1f50704f2de017697eb. Retain this entry less than30minutes old for Root current bulk/control performance.",
+    "Set/verify Balanced profile, close all owned native/SDL/audio sessions, then use real macOS Cmd+Q on QA11. Confirm no capture processes or owned capture forwards remain; leave only paired scoped broker, phone service and baseline companion forward.",
+    "Hand GUI plus5582 exclusively to Root quiet performance cohort with exact current process/forward/trust/file-entry identities. Do not clear trust, inbox or uninstall final scope until Root performance/download verification finishes. Disposable uninstall goes last."
+  ]
+}

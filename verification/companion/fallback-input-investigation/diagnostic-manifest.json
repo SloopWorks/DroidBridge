@@ -1,0 +1,43 @@
+{
+  "android/desktop-input-probe/MainActivity.java.in": {
+    "sha256": "c650d3f9f318a8186f66e5f6c7f8a828b63654bff1a10dcd587fa3c144838aca",
+    "bytes": 7004
+  },
+  "android/desktop-input-probe/AndroidManifest.xml.in": {
+    "sha256": "5830206edb055c7343ac5512f3f0b788a4f7d489125fff9d115985a8c6b545e7",
+    "bytes": 698
+  },
+  "scripts/build-input-probe.py": {
+    "sha256": "3db218a05fc348b869583639d61aa8ac5e4019c58a95a7d1f804db05731654c6",
+    "bytes": 3550
+  },
+  ".build/desktop-input-probe/InputProbe-v1.apk": {
+    "sha256": "3ae5f1d93cfc113b703f52749b22f91b4dc867ec996eb73ddf920484b7efa10c",
+    "bytes": 16862
+  },
+  ".build/fallback-global-click.swift": {
+    "sha256": "6351367c2472c8bf173a5d49d8a8defe42077f6c881fcb94e51933508a71021a",
+    "bytes": 2422
+  },
+  "verification/companion/fallback-input-investigation/fallback-window-pid-click.swift": {
+    "sha256": "983f36ddf45d4b9124cfb2c62bca54fc258abc71e2146dabeb32fcff261a8287",
+    "bytes": 2858
+  },
+  "verification/companion/fallback-input-investigation/fallback-global-click.swift": {
+    "sha256": "6351367c2472c8bf173a5d49d8a8defe42077f6c881fcb94e51933508a71021a",
+    "bytes": 2422
+  },
+  "verification/companion/fallback-input-investigation/fallback-position-only.swift": {
+    "sha256": "e34e1b19a2cae31eefcbca7c7db8ef12b75e54fc827e9a40c78d806cb7df33a8",
+    "bytes": 2325
+  },
+  "verification/companion/fallback-input-investigation/fallback-global-pid-click.swift": {
+    "sha256": "d6529d60078d1f63121e8816bfffd27d16805a088915a064eddea36c74f05b53",
+    "bytes": 2476
+  },
+  "production_scope": {
+    "android_apk11_unchanged": true,
+    "streaming_source_unchanged": true,
+    "global_input_verified": false
+  }
+}

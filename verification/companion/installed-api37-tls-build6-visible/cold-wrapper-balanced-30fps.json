@@ -1,0 +1,12 @@
+{
+  "scope": "Actualcoldindependentwrapper mainGUIquit; sustaineddecodedcounterrate, not strictencoderPTSceiling",
+  "configured_fps": 30,
+  "session": "304F7508-EBE8-4430-8889-3D77F25A2E33",
+  "samples": 30,
+  "duration_seconds": 30.056754833552986,
+  "decoded_frames": 767,
+  "sustained_decoded_fps": 25.518390266928677,
+  "motion_observed": true,
+  "source_log": "session-304F7508-EBE8-4430-8889-3D77F25A2E33.log.jsonl",
+  "pass": true
+}
