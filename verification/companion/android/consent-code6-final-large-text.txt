@@ -1,0 +1,10 @@
+
+dev.droidbridge.companion.CompanionUXDeviceTest:...
+dev.droidbridge.companion.ReleaseDeliveryDeviceTest:.
+dev.droidbridge.companion.CompanionConsentDeviceTest:.
+
+Time: 13.071
+
+OK (5 tests)
+
+

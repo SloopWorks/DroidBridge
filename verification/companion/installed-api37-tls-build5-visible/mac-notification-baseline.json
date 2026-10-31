@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "boundary": "Actual installed5 AppKit button queried UNUserNotificationCenter settings",
+  "authorization": "notDetermined",
+  "visible_status": "Mac notification permission: Not requested. Checking does not request or change permission.",
+  "permission_requested": false,
+  "existing_denial_overridden": false
+}

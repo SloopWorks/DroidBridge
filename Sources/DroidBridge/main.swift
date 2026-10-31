@@ -6,7 +6,21 @@ import DroidBridgeStreaming
 final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, NSMenuDelegate {
     var launcher: LauncherController!
     let audioMenu = NSMenu(title:"Audio")
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        // A wrapper needs only its local identity and one window. Present it
+        // before menu construction and the rest of AppKit launch completion.
+        do { _ = try CompanionQAScope.parse(arguments: ProcessInfo.processInfo.arguments) }
+        catch { return } // didFinishLaunching presents the existing error path.
+        guard Bundle.main.url(forResource: "launch", withExtension: "json") != nil || ProcessInfo.processInfo.arguments.contains("--wrapper") else { return }
+        CompanionLaunchTrace.record("will_finish_launching")
+        NSApp.setActivationPolicy(.regular)
+        launcher = LauncherController()
+        _ = launcher.prepareWrapperLaunch()
+    }
     func applicationDidFinishLaunching(_ notification: Notification) {
+        do { _ = try CompanionQAScope.parse(arguments: ProcessInfo.processInfo.arguments) }
+        catch { let alert = NSAlert(); alert.messageText = "Invalid companion verification scope"; alert.informativeText = error.localizedDescription; alert.runModal(); NSApp.terminate(nil); return }
+        CompanionLaunchTrace.record("did_finish_launching")
         NSApp.setActivationPolicy(.regular)
         let applicationName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "DroidBridge"
         if let url = Bundle.main.url(forResource: "AndroidApp", withExtension: "icns"), let icon = NSImage(contentsOf: url) { NSApp.applicationIconImage = icon }
@@ -26,6 +40,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         let phoneMenu=NSMenu(title:"Phone")
         phoneMenu.addItem(withTitle:"Turn Phone Screen Off",action:#selector(turnPhoneScreenOff),keyEquivalent:"").target=self
         phoneMenu.addItem(withTitle:"Turn Phone Screen On",action:#selector(turnPhoneScreenOn),keyEquivalent:"").target=self
+        phoneMenu.addItem(.separator())
+        phoneMenu.addItem(withTitle:"Companion…",action:#selector(showCompanion),keyEquivalent:"").target=self
         phoneItem.submenu=phoneMenu;menu.addItem(phoneItem)
         let audioItem=NSMenuItem();audioItem.title="Audio";audioItem.submenu=audioMenu
         audioMenu.delegate=self;audioMenu.autoenablesItems=false;menu.addItem(audioItem)
@@ -42,11 +58,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         windowMenu.addItem(withTitle: "Bring All to Front", action: #selector(NSApplication.arrangeInFront(_:)), keyEquivalent: "")
         windowItem.submenu = windowMenu; menu.addItem(windowItem); NSApp.windowsMenu = windowMenu
         NSApp.mainMenu = menu
-        launcher = LauncherController()
+        if launcher == nil { launcher = LauncherController() }
         if !launcher.prepareWrapperLaunch() { launcher.showWindow(nil) }
         NSApp.activate(ignoringOtherApps: true)
+        launcher.companion.start()
+        CompanionLaunchTrace.record("companion_start_scheduled")
         Task { @MainActor in
-            let recovery = await BridgeSession.recoverAbandonedSessions(toolchain: launcher.toolchain)
+            let recovery = CompanionQAScope.current == nil ? await BridgeSession.recoverAbandonedSessions(toolchain: launcher.toolchain) : []
             if !recovery.isEmpty { launcher.status.stringValue = recovery.joined(separator: " · ") }
             launcher.beginPolling()
         }
@@ -57,6 +75,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
     }
     @objc func findApp() {guard let launcher,launcher.window?.isKeyWindow == true || (launcher.sessions.isEmpty && launcher.launchPreview == nil && !launcher.isWrapper) else {return};launcher.focusAppSearch()}
     @objc func showSettings() {launcher?.showLauncherSettings()}
+    @objc func showCompanion() {launcher?.companion.show()}
     func menuNeedsUpdate(_ menu:NSMenu) {if menu === audioMenu {updateAudioMenu()}}
     func updateAudioMenu() {
         audioMenu.removeAllItems()
@@ -102,7 +121,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
     }
 }
 MainActor.assumeIsolated {
+    CompanionLaunchTrace.record("app_entry")
     let application = NSApplication.shared
+    CompanionLaunchTrace.record("appkit_shared_ready")
     let delegate = AppDelegate()
     application.delegate = delegate
     withExtendedLifetime(delegate) { application.run() }

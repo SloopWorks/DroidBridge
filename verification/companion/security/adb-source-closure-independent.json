@@ -1,0 +1,16 @@
+{
+  "scope": "Read-only review of frozen runtime, pristine archive-derived source trees and published compiler/header closure; no device or server operations",
+  "source_trees": {
+    "android-tools-37.0.0": 7304,
+    "protobuf-36.2": 3515,
+    "abseil-cpp-20260817.0": 1602,
+    "googletest-1.18.0": 252
+  },
+  "closure_files": 1532,
+  "linked_static_archives": 81,
+  "notices": 16,
+  "runtime_manifest_sha256": "65dfa704cbde5802fe9e7a1c44f77c9dd9943653f0b5135fa8fca7f71a5c9cc9",
+  "source_closure_sha256": "b227ddf318c3f8effbd132469862876403e2f7d743be843737d6d0c2c996772c",
+  "builder_sha256": "08ba5e3a2d0e35c060319d95879baeec51dbfa0c87aae18fc3ad1a5a90dabbf3",
+  "all_hashes_match": true
+}

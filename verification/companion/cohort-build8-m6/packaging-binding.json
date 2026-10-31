@@ -1,0 +1,5 @@
+{
+  "host_sha_matches_packaging": true,
+  "broker_sha_matches_packaging": true,
+  "apk_sha_matches_packaging": true
+}

@@ -1,0 +1,6 @@
+{"event":"supervisor_started","parent":50793,"child":51255}
+[server] INFO: Device: [Google] google sdk_gphone16k_arm64 (Android 17)
+[server] DEBUG: Using video encoder: 'c2.android.avc.encoder'
+[server] DEBUG: Video codec size alignment requirement: 2px
+[server] INFO: New display: 720x1080/240 (id=3)
+[server] INFO: Starting app "Companion Verification" [dev.droidbridge.companionfixture] on display 3...

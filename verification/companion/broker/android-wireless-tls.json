@@ -1,0 +1,11 @@
+{
+  "test": "Actual Android Wireless Debugging TLS pairing and connect",
+  "result": "PASS",
+  "transport": "Android adbd TLS pairing-code UI; emulator-owned TCP redirection to actual TLS listener",
+  "plaintext_tcpip_5555_used": false,
+  "companion_tls_pin_matches_usb": true,
+  "companion_uuid_matches_usb": true,
+  "wireless_alias": "127.0.0.1:58141",
+  "physical_wifi_verified": false,
+  "credential_bearing_alias_admission_verified": false
+}

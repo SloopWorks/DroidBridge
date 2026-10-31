@@ -1,0 +1,66 @@
+[0/1] Planning build
+Building for debugging...
+[0/11] Write sources
+[2/11] Write swift-version--58304C5D6DBC2206.txt
+[4/13] Compiling DroidBridgeCore CompanionBrokerService.swift
+[5/13] Emitting module DroidBridgeCore
+[6/19] Emitting module DroidBridgeAvailability
+[6/19] Write Objects.LinkFileList
+[8/19] Emitting module DroidBridgeCompanionBroker
+[8/19] Write Objects.LinkFileList
+[10/19] Emitting module DroidBridgeStreaming
+[10/22] Linking DroidBridgeAvailability
+[10/22] Linking DroidBridgeCompanionBroker
+[12/22] Applying DroidBridgeAvailability
+[13/22] Applying DroidBridgeCompanionBroker
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[15/22] Emitting module DroidBridge
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/CompanionDesktopAdapter.swift:33:27: error: cannot find type 'CompanionWindowController' in scope
+ 31 |     private(set) var statusMessage = "Companion not connected. Existing Android app windows work independently."
+ 32 |     var onChange: (() -> Void)?
+ 33 |     var windowController: CompanionWindowController?
+    |                           `- error: cannot find type 'CompanionWindowController' in scope
+ 34 |     private var lifecycle: Task<Void, Never>?
+ 35 |     private var commands: [String: Task<Void, Never>] = [:]
+[16/22] Compiling DroidBridge CompanionDesktopAdapter.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/CompanionDesktopAdapter.swift:33:27: error: cannot find type 'CompanionWindowController' in scope
+ 31 |     private(set) var statusMessage = "Companion not connected. Existing Android app windows work independently."
+ 32 |     var onChange: (() -> Void)?
+ 33 |     var windowController: CompanionWindowController?
+    |                           `- error: cannot find type 'CompanionWindowController' in scope
+ 34 |     private var lifecycle: Task<Void, Never>?
+ 35 |     private var commands: [String: Task<Void, Never>] = [:]
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/CompanionDesktopAdapter.swift:86:57: error: cannot find 'CompanionWindowController' in scope
+ 84 |     func markSessionsChanged() { lastPublish = .distantPast }
+ 85 |     func show() {
+ 86 |         if windowController == nil { windowController = CompanionWindowController(adapter: self) }
+    |                                                         `- error: cannot find 'CompanionWindowController' in scope
+ 87 |         windowController?.showWindow(nil); windowController?.window?.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true)
+ 88 |     }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/CompanionDesktopAdapter.swift:87:38: error: 'nil' requires a contextual type
+ 85 |     func show() {
+ 86 |         if windowController == nil { windowController = CompanionWindowController(adapter: self) }
+ 87 |         windowController?.showWindow(nil); windowController?.window?.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true)
+    |                                      `- error: 'nil' requires a contextual type
+ 88 |     }
+ 89 | 
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/CompanionDesktopAdapter.swift:87:91: error: 'nil' requires a contextual type
+ 85 |     func show() {
+ 86 |         if windowController == nil { windowController = CompanionWindowController(adapter: self) }
+ 87 |         windowController?.showWindow(nil); windowController?.window?.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true)
+    |                                                                                           `- error: 'nil' requires a contextual type
+ 88 |     }
+ 89 | 
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/CompanionDesktopAdapter.swift:178:32: error: value of type 'LauncherController' has no member 'applyCompanionExport'
+176 |             guard !launcher.isWrapper, let package = payload["package_name"]?.string, let selected = payload["selected"]?.bool else { throw CompanionBoundaryError("launcher_unavailable", "Open DroidBridge on the Mac to update Spotlight apps.") }
+177 |             try AndroidDiscovery.validatePackage(package)
+178 |             try await launcher.applyCompanionExport(device: device, package: package, selected: selected)
+    |                                `- error: value of type 'LauncherController' has no member 'applyCompanionExport'
+179 |             return ["package_name": .string(package), "selected": .bool(selected), "phase": .string("applied")]
+180 |         case "diagnostics_request": return ["broker": .string("connected"), "owned_sessions": .number(Double(launcher.sessions.count)), "content_included": .bool(false)]
+[17/22] Emitting module DroidBridgeCoreTests
+error: fatalError

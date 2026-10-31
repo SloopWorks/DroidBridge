@@ -18,15 +18,18 @@ public struct SessionConfiguration: Codable {
     public var height: Int
     public var density: Int
     public var backend: BackendKind
+    /// Encoder ceiling for this session. Profile changes apply to new sessions.
+    public var maximumFramesPerSecond: Int
     /// Applies only to this virtual display. App-drawn controls are separate;
     /// the session always hides Android's software keyboard on this display.
     /// The phone's system UI and global keyboard settings are never changed.
     public var showSystemDecorations: Bool
-    public init(width: Int = 720, height: Int = 1080, density: Int = 240, backend: BackendKind = .native, showSystemDecorations: Bool = true) {
+    public init(width: Int = 720, height: Int = 1080, density: Int = 240, backend: BackendKind = .native, showSystemDecorations: Bool = true, maximumFramesPerSecond: Int = 30) {
         self.width = width; self.height = height; self.density = density; self.backend = backend
         self.showSystemDecorations = showSystemDecorations
+        self.maximumFramesPerSecond = maximumFramesPerSecond
     }
-    private enum CodingKeys: String, CodingKey { case width, height, density, backend, showSystemDecorations }
+    private enum CodingKeys: String, CodingKey { case width, height, density, backend, showSystemDecorations, maximumFramesPerSecond }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         width = try values.decode(Int.self, forKey: .width)
@@ -35,6 +38,10 @@ public struct SessionConfiguration: Codable {
         backend = try values.decode(BackendKind.self, forKey: .backend)
         // Existing persisted sessions retain the previous decorated behavior.
         showSystemDecorations = try values.decodeIfPresent(Bool.self, forKey: .showSystemDecorations) ?? true
+        maximumFramesPerSecond = try values.decodeIfPresent(Int.self, forKey: .maximumFramesPerSecond) ?? 30
+        guard (15...60).contains(maximumFramesPerSecond) else {
+            throw DecodingError.dataCorruptedError(forKey: .maximumFramesPerSecond, in: values, debugDescription: "Frame rate must be between 15 and 60 fps")
+        }
     }
 }
 public enum SessionState: String, Codable { case starting, running, stopping, stopped, failed }

@@ -8,11 +8,13 @@ let package = Package(
         .executable(name: "DroidBridge", targets: ["DroidBridge"]),
         .executable(name: "DroidBridgeSupervisor", targets: ["DroidBridgeSupervisor"]),
         .executable(name: "DroidBridgeAvailability", targets: ["DroidBridgeAvailability"]),
+        .executable(name: "DroidBridgeCompanionBroker", targets: ["DroidBridgeCompanionBroker"]),
     ],
     targets: [
         .executableTarget(name: "DroidBridgeSupervisor"),
         .target(name: "DroidBridgeCore"),
         .executableTarget(name: "DroidBridgeAvailability", dependencies: ["DroidBridgeCore"]),
+        .executableTarget(name: "DroidBridgeCompanionBroker", dependencies: ["DroidBridgeCore"]),
         .target(name: "DroidBridgeStreaming", dependencies: ["DroidBridgeCore"]),
         .executableTarget(name: "DroidBridge", dependencies: ["DroidBridgeCore", "DroidBridgeStreaming"]),
         .testTarget(name: "DroidBridgeCoreTests", dependencies: ["DroidBridgeCore", "DroidBridgeStreaming"]),

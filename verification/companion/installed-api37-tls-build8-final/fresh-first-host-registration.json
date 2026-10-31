@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "fresh_state_initially_absent": true,
+  "host_registration": {
+    "bundleIdentifier": "app.droidbridge.desktop",
+    "executableSHA256": "02f9ecc40b2a9d7d769dee919b1f6f29bdab312b5f52be818b9e78590149a5a7",
+    "path": "/Users/patrick/Applications/DroidBridge Companion QA8.app"
+  },
+  "no_manual_registration_retry": true
+}

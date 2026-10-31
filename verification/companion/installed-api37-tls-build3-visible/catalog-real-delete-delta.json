@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "Actual owned Beta APK uninstall, authenticated delta deletion after bounded package broadcast wait; package immediately restored afterward",
+  "uninstall_output": "Success\n",
+  "query_attempts": 1,
+  "elapsed_seconds": 0.27036470896564424,
+  "before_generation": "86505c13f6a52f7d5b3a1277a1de25a0b011cff73c87054cccfc8f2d57a76736",
+  "after_generation": "47f80b1493b0e948a6f42289d7ce6b15d175491f17e0094a9e15983d8eaa4b44",
+  "deleted": [
+    "dev.droidbridge.inputbeta"
+  ]
+}

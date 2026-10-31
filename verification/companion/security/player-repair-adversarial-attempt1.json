@@ -1,0 +1,24 @@
+{
+  "scope": "Independent signed private-copy dependency injection regression; no packaged code launches or installed/runtime/device changes",
+  "verifier_sha256": "a956a156edf5c8145f4221a8a88a2cd4d26d75c04466aa6540061f8913376d11",
+  "cases": {
+    "external-first-rpath": {
+      "fixture": "/Users/patrick/workspace/DroidBridge/.build/security-player-adversarial-l5d74q65/external-first-rpath.app",
+      "exit": 0,
+      "stdout": "PASS package checks; report /Users/patrick/workspace/DroidBridge/.build/security-player-adversarial-l5d74q65/external-first-rpath.json\n",
+      "stderr": ""
+    },
+    "system-prefix-traversal": {
+      "fixture": "/Users/patrick/workspace/DroidBridge/.build/security-player-adversarial-l5d74q65/system-prefix-traversal.app",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/patrick/workspace/DroidBridge/scripts/verify-package.py\", line 222, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/patrick/workspace/DroidBridge/scripts/verify-package.py\", line 170, in main\n    report = {'app': str(app), 'player_bundle': verify_player_bundle(app)}\n                                                ~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"/Users/patrick/workspace/DroidBridge/scripts/verify-package.py\", line 154, in verify_player_bundle\n    assert reachable == {player / path for path in code}, 'Player contains unreachable Mach-O code'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Player contains unreachable Mach-O code\n"
+    },
+    "system-prefix-traversal-apple-edge": {
+      "fixture": "/Users/patrick/workspace/DroidBridge/.build/security-player-adversarial-l5d74q65/system-prefix-traversal-apple-edge.app",
+      "exit": 0,
+      "stdout": "PASS package checks; report /Users/patrick/workspace/DroidBridge/.build/security-player-adversarial-l5d74q65/system-prefix-traversal-apple-edge.json\n",
+      "stderr": ""
+    }
+  }
+}

@@ -1,0 +1,8 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+[3/4] Compiling DroidBridgeCore ManagedApps.swift
+[4/4] Emitting module DroidBridgeCore
+[5/5] Compiling DroidBridgeCore ManagedAvailabilityMonitor.swift
+Build of target: 'DroidBridgeCore' complete! (2.07s)

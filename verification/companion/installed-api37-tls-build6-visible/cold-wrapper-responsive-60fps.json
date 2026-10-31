@@ -1,0 +1,13 @@
+{
+  "scope": "Actual coldindependentwrapper with mainGUIquit; sustained decodedcounter rate, not strict encoderPTS ceiling",
+  "configured_fps": 60,
+  "session": "493108DC-80B9-41BC-B28A-6064D9676CDA",
+  "samples": 54,
+  "duration_seconds": 55.00787683320232,
+  "decoded_frames": 1910,
+  "sustained_decoded_fps": 34.72229996790458,
+  "profile_after_change": "balanced",
+  "existing_window_config_after_change": "60",
+  "counter_batching_limitation": "FrameMailbox aggregates overwritten frames on MainActor drain; one-second arrival spikes cannot prove encoder ceiling",
+  "pass": false
+}

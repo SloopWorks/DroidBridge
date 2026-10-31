@@ -1,0 +1,114 @@
+package __PACKAGE__;
+
+import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.TextWatcher;
+import android.view.Choreographer;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+/** Original, permission-free deterministic desktop-input fixture. Never shipped. */
+public final class MainActivity extends Activity {
+    private int traceCount;
+    @Override public boolean dispatchTouchEvent(MotionEvent event) {
+        int a=event.getActionMasked();
+        boolean handled=super.dispatchTouchEvent(event);
+        if (traceCount++ < 128) {
+            View f=getCurrentFocus();
+            Log.i("DroidBridgeInputProbe", "action="+a+" x="+event.getX()+" y="+event.getY()+" source="+event.getSource()+" tool="+event.getToolType(0)+" button="+event.getButtonState()+" flags="+event.getFlags()+" down="+event.getDownTime()+" time="+event.getEventTime()+" display="+getDisplay().getDisplayId()+" mode="+getWindow().getDecorView().isInTouchMode()+" focus="+(f==null?"none":f.getClass().getSimpleName())+" handled="+handled+" taps="+taps);
+        }
+        return handled;
+    }
+    private static final String NAME = "__SHORT__";
+    private static final int BASE_COLOR = Color.rgb(__RGB__);
+    private TextView echo, counts, clipboard;
+    private EditText input;
+    private FrameProbe probe;
+    private int taps, keys;
+    private long frames;
+    private boolean moving;
+
+    @Override public void onCreate(Bundle saved) {
+        super.onCreate(saved);
+        if (saved != null) {
+            taps = saved.getInt("taps"); keys = saved.getInt("keys");
+            frames = saved.getLong("frames"); moving = saved.getBoolean("moving");
+        }
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL); box.setPadding(24, 52, 24, 24);
+        TextView title = text("__LABEL__", 24); box.addView(title);
+        counts = text("", 16); box.addView(counts);
+        input = new EditText(this); input.setId(100);
+        input.setHint("Type for " + NAME); input.setSingleLine(true);
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        input.setFilters(new InputFilter[]{new InputFilter.LengthFilter(256)});
+        // Deliberately leave normal Android IME behavior enabled. The host's
+        // virtual-display IME policy, rather than a fixture shortcut, must hide it.
+        input.setShowSoftInputOnFocus(true);
+        box.addView(input, new LinearLayout.LayoutParams(-1, -2));
+        echo = text("Echo " + NAME + ": ", 18); echo.setMinHeight(56); box.addView(echo);
+        input.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) { echo.setText("Echo " + NAME + ": " + s); }
+            public void afterTextChanged(Editable value) {}
+        });
+        input.setOnKeyListener((view, code, event) -> {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) { keys++; updateCounts(); }
+            return false;
+        });
+        button(box, "Tap " + NAME, () -> { taps++; updateCounts(); });
+        button(box, "Copy " + NAME + " sentinel", () -> {
+            getSystemService(ClipboardManager.class).setPrimaryClip(ClipData.newPlainText("DroidBridge fixture", NAME.toLowerCase(java.util.Locale.ROOT) + "-clipboard-sentinel"));
+            clipboard.setText("Copied explicit " + NAME + " sentinel");
+        });
+        button(box, "Read clipboard explicitly", () -> {
+            ClipboardManager manager = getSystemService(ClipboardManager.class);
+            ClipData data = manager.getPrimaryClip();
+            CharSequence value = data != null && data.getItemCount() > 0 ? data.getItemAt(0).coerceToText(this) : "<empty>";
+            clipboard.setText("Read: " + String.valueOf(value).substring(0, Math.min(String.valueOf(value).length(), 256)));
+        });
+        clipboard = text("Clipboard untouched until an explicit action", 14); box.addView(clipboard);
+        button(box, "Toggle 60 Hz motion", () -> { moving = !moving; probe.arm(); });
+        probe = new FrameProbe(); box.addView(probe, new LinearLayout.LayoutParams(-1, 200));
+        setContentView(box);
+        if (saved != null) input.setText(saved.getString("text", ""));
+        box.post(this::updateCounts);
+    }
+    private TextView text(String value, int size) { TextView view = new TextView(this); view.setText(value); view.setTextSize(size); return view; }
+    private void button(LinearLayout box, String label, Runnable action) { Button button = new Button(this); button.setText(label); button.setMinHeight(64); button.setOnClickListener(v -> action.run()); box.addView(button); }
+    private void updateCounts() {
+        int display = getWindow().getDecorView().getDisplay() == null ? -1 : getWindow().getDecorView().getDisplay().getDisplayId();
+        counts.setText("Display " + display + " · taps " + taps + " · key downs " + keys);
+    }
+    @Override protected void onSaveInstanceState(Bundle state) {
+        state.putString("text", input.getText().toString()); state.putInt("taps", taps); state.putInt("keys", keys);
+        state.putLong("frames", frames); state.putBoolean("moving", moving); super.onSaveInstanceState(state);
+    }
+    private final class FrameProbe extends View implements Choreographer.FrameCallback {
+        final Paint paint = new Paint(); boolean attached, armed;
+        FrameProbe() { super(MainActivity.this); setOnClickListener(v -> { taps++; updateCounts(); }); }
+        void arm() { if (attached && moving && !armed) { armed = true; Choreographer.getInstance().postFrameCallback(this); } invalidate(); }
+        @Override protected void onAttachedToWindow() { super.onAttachedToWindow(); attached = true; arm(); }
+        @Override protected void onDetachedFromWindow() { attached = false; armed = false; Choreographer.getInstance().removeFrameCallback(this); super.onDetachedFromWindow(); }
+        public void doFrame(long time) { armed = false; if (attached && moving) { frames++; invalidate(); arm(); } }
+        @Override protected void onDraw(Canvas canvas) {
+            canvas.drawColor(moving ? Color.rgb((int)(frames * 7 % 251), 80, 160) : BASE_COLOR);
+            paint.setColor(Color.WHITE); paint.setTextSize(34); canvas.drawText(NAME + " frame " + frames, 16, 56, paint);
+            paint.setTextSize(24); canvas.drawText(moving ? "Motion enabled" : "Motion off", 16, 100, paint);
+        }
+    }
+}

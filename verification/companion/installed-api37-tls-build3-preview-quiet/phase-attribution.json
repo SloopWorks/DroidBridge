@@ -1,0 +1,37 @@
+{
+  "passed": false,
+  "cold_100ms_target_passed": false,
+  "scope": "Actual installed build3 process-spawn and public AppKit observer; traces are local metadata. No window paint claim.",
+  "phases": {
+    "spawn_to_entry": {
+      "n": 10,
+      "p50_ms": 10.32079174183309,
+      "p95_ms": 306.7238759249449
+    },
+    "entry_to_appkit": {
+      "n": 10,
+      "p50_ms": 50.406416645273566,
+      "p95_ms": 165.74470838531852
+    },
+    "appkit_to_finish_launching": {
+      "n": 10,
+      "p50_ms": 27.617958141490817,
+      "p95_ms": 49.1267500910908
+    },
+    "launcher_init": {
+      "n": 10,
+      "p50_ms": 28.17366668023169,
+      "p95_ms": 34.19741662219167
+    },
+    "preview_setup": {
+      "n": 10,
+      "p50_ms": 26.572416769340634,
+      "p95_ms": 30.74500011280179
+    },
+    "entry_to_visible": {
+      "n": 10,
+      "p50_ms": 139.97483323328197,
+      "p95_ms": 285.8247917611152
+    }
+  }
+}

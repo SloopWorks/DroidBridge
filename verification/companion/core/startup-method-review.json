@@ -1,0 +1,120 @@
+{
+  "source": "scripts/verify-companion-preview.py",
+  "sha256": "5e782c12406bd4885a483b1222413d0c1756c6f1eb8cca550f08d7c1392687e3",
+  "measurement_performed": false,
+  "old_n5_ABBA_exact_match": true,
+  "upfront_n20_each_cohort": true,
+  "nearest_rank_20_p95_is_19th_not_maximum": true,
+  "exact_reviewed_AST_gate_cases": [
+    {
+      "connected_video_p95_ms": 110,
+      "disconnected_video_p95_ms": 100,
+      "preview_p95_ms": 100,
+      "passed": true
+    },
+    {
+      "connected_video_p95_ms": 111,
+      "disconnected_video_p95_ms": 100,
+      "preview_p95_ms": 100,
+      "passed": false
+    },
+    {
+      "connected_video_p95_ms": 2200,
+      "disconnected_video_p95_ms": 2000,
+      "preview_p95_ms": 100,
+      "passed": true
+    },
+    {
+      "connected_video_p95_ms": 3200.1,
+      "disconnected_video_p95_ms": 3000,
+      "preview_p95_ms": 100,
+      "passed": false
+    },
+    {
+      "connected_video_p95_ms": 100,
+      "disconnected_video_p95_ms": 110,
+      "preview_p95_ms": 100,
+      "passed": true
+    },
+    {
+      "connected_video_p95_ms": 100,
+      "disconnected_video_p95_ms": 100,
+      "preview_p95_ms": 100.01,
+      "passed": false
+    }
+  ],
+  "remaining_execution_conditions": [
+    "Verify actual broker cohort state after each transition",
+    "Observe exact owned resource drain between samples",
+    "Quiet window handoff and final artifact source freeze"
+  ],
+  "safeguard_review": {
+    "actual_cohort_before_and_after_video": "accepted",
+    "bounded_exact_parent_session_log_and_PID_drain": "accepted",
+    "supervisor_reader_synthetic_cases": 3,
+    "receipt_file_deletion_not_assumed": true,
+    "inspection_failure_always_terminates_child": "accepted, exact reviewedAST synthetic pgrep/ps failures reap child and close log",
+    "observer_exact_PID_check": "accepted, wrongPID synthetic rejected",
+    "timeout_cleanup": "accepted, exact terminate/wait10/kill/wait5 sequence and explicit failed sample",
+    "cleanup_AST_cases": [
+      {
+        "case": "normal",
+        "exact_child_calls": [
+          "terminate",
+          "wait:10"
+        ],
+        "log_closed": true,
+        "expected_failure_reported": false
+      },
+      {
+        "case": "child_inspection_error",
+        "exact_child_calls": [
+          "terminate",
+          "wait:10"
+        ],
+        "log_closed": true,
+        "expected_failure_reported": true
+      },
+      {
+        "case": "identity_inspection_error",
+        "exact_child_calls": [
+          "terminate",
+          "wait:10"
+        ],
+        "log_closed": true,
+        "expected_failure_reported": true
+      },
+      {
+        "case": "timeout",
+        "exact_child_calls": [
+          "terminate",
+          "wait:10",
+          "kill",
+          "wait:5"
+        ],
+        "log_closed": true,
+        "expected_failure_reported": true
+      },
+      {
+        "case": "cleanup_failure",
+        "exact_child_calls": [
+          "terminate",
+          "wait:10"
+        ],
+        "log_closed": true,
+        "expected_failure_reported": true
+      },
+      {
+        "case": "PID_reused",
+        "exact_child_calls": [
+          "terminate",
+          "wait:10"
+        ],
+        "log_closed": true,
+        "expected_failure_reported": false
+      }
+    ],
+    "measurement_performed": false,
+    "review_result": "accepted for coordinated execution; actual quiet measurements outstanding"
+  }
+}

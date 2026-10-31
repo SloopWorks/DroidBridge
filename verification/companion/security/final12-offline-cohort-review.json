@@ -1,0 +1,308 @@
+{
+  "decision": "accepted_offline_final12_artifact_source_cohort_only",
+  "timestamp": "2026-10-31T00:38:13.608682+00:00",
+  "commit": "94b51c2fab719304e43381de1f7d1bf532276b61",
+  "source_archive_sha256": "74be6174d260bbd1d205caf9b9e1f1876bdd1c049d5eebbae378f306b0a3533d",
+  "archive_checker": "final12-source-archive-independent.json",
+  "inventory_review": "final12-inventory-independent.json",
+  "upstream_scrcpy_trusted_git_pin": "a60891aea193d92e7e5c3942700eca63f9d19a5f",
+  "fresh_git_archive_sha256": "64bac06d6e31630296c957e067ae2485b0b0fc5746d805c2ce8a60744aba20b1",
+  "upstream_archive_exact_match": true,
+  "source_closure_sha256": "ae011f814fdcef472cb68e220ebd884e75739eea779b8e42bb548a30dd3f72b4",
+  "same_source_closure_as_independently_verified_1532files_81staticarchives": "final11-source-closure-independent.json",
+  "reviewed_source_sha256": {
+    "scripts/package.sh": "5d31894443c23445b027e22d3b6cb8b79ede44a128329810644f6d41c9371ac7",
+    "scripts/verify-package.py": "339038742d092e84c612200315a5559b1379ff7e6ee7c5a9e7346a9210f4bc28",
+    "BUILD.md": "854071ebe1ddfb9821035896a60b854e664c0a83119fb85776e1589095779380",
+    "ARCHITECTURE.md": "cf8fa1faf5bb3b2eebf500ea43d67b8f65ee80638933fa47bd75f79c80d8dce2"
+  },
+  "bundled_docs_match_commit": {
+    "README.md": "e72f7eca9d6d327349abb6f7910e18b03ed2b2ae7205a5b15a9603e0c5090537",
+    "ARCHITECTURE.md": "cf8fa1faf5bb3b2eebf500ea43d67b8f65ee80638933fa47bd75f79c80d8dce2",
+    "BUILD.md": "854071ebe1ddfb9821035896a60b854e664c0a83119fb85776e1589095779380",
+    "TESTING.md": "1c66b60b9dbd63716e0e3eba8c91097ab5c84090f616b25223d25406fa21187b",
+    "COMPATIBILITY.md": "b6a9c7e3a253f4acb7f7d074d5a48579d554a96edf113019001b5679634f7575",
+    "KNOWN_ISSUES.md": "c259885e4771adb71ad83f01ea5e5fcc1ee78944be505c30111782e65e590b19",
+    "PIXEL_VERIFICATION.md": "3814080e1447d57c5a8ba7f4092f8684dfa2f047137dd82293289a832eeedb6d"
+  },
+  "source_private_signing_or_generated_apk_paths": [],
+  "source_private_PEM_literals": [],
+  "release_debug_seams_absent": {
+    "Contents/MacOS/DroidBridge": true,
+    "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker": true
+  },
+  "standalone_player_strict_signature_and_dependency_jail": "passed",
+  "individual_arm64_strict_macho_checks": {
+    "Contents/MacOS/DroidBridge": {
+      "sha256": "8cefb3e95c6ee0584dea920a66bb9d318ea4af1402f43084b5cc180cab6d15bd",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy": {
+      "sha256": "5d9f5ee7953026cd7fa897c326cebf33e6c8556709efeec2fd20fd40d921912a",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libSDL3.0.dylib": {
+      "sha256": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libSvtAv1Enc.4.dylib": {
+      "sha256": "dbfee16602a1e19ed31a94153a49a03b41116af1d42e5f844cea454865ce62d5",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libavcodec.63.dylib": {
+      "sha256": "9db69b81f72100b471476036b27b3815aebd7af8f0c1bb19c604e03b9074c704",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libavformat.63.dylib": {
+      "sha256": "c4df21c3badba461040103a8afa791b9b8240e4f4821f0d99386247fd2b69279",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libavutil.61.dylib": {
+      "sha256": "78c492610a1e7a64d33a67f8d64c2f7718015aeea96a196da3498a94eb58600e",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libcrypto.4.dylib": {
+      "sha256": "710421eac59c226b2fa42bf56809533cf915d2cecc531e813b13fcc4e1150459",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libdav1d.7.dylib": {
+      "sha256": "12e71a0df17680a36a91091e7a0cf5a199425e0f138290b01b24232b071c82e4",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/liblzma.5.dylib": {
+      "sha256": "652556c1a1af272715aabc978f0d9fce6c2378ba7c240c6d283e7ea059bafc43",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libmp3lame.0.dylib": {
+      "sha256": "a8d70e10f425ec85161bd2f6118877d97fe8296c365616b6c5ae4327f7437116",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libmpg123.0.dylib": {
+      "sha256": "40f1607b710ddc95bd0e041f452d218e8e1fc9c56c5223c363a9b50cc9b64e7a",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libopus.0.dylib": {
+      "sha256": "577875d06d65d2977ac74ca73d156f8123cfef3f2ffe950f7c0c64b8c905f0fa",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libssl.4.dylib": {
+      "sha256": "b127c7ee7650d972cf87834de1af9ceabcd343f43e42f034a4dcd8bafc74b755",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libswresample.7.dylib": {
+      "sha256": "c0854526e6928459720d4a8c2f62bd22c14eb1ed64933a43978ce323bea2d844",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libusb-1.0.0.dylib": {
+      "sha256": "5ed1b68671f62ca5e09ec338bd07dbc9b705c4308c3e76cbc8f15c2700c1f99f",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libvpx.12.dylib": {
+      "sha256": "75bc597365a56da22618077a959fbb2e27fadd53f05a9a4633e0051f9da5b170",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libx264.165.dylib": {
+      "sha256": "3ab241fe51e34c1d2113db4d6f2866d162fdee8f0a020708dee998f996e005dd",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libx265.217.dylib": {
+      "sha256": "1e71956ffcbaf72f1b45fff17fd6d9688c272ec50730779a206c1ee8ca8b257e",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/DroidBridgeAudioClient": {
+      "sha256": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/DroidBridgeAvailability": {
+      "sha256": "16e64f2316146b3e68acd5a70565ba233f2deca4d7afe857b350984ce1474835",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker": {
+      "sha256": "d890c6815c7a679a0df3be864b9abac0bd3be9212dbcbb98ce9be08c17e98936",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/DroidBridgeSupervisor": {
+      "sha256": "06060ed6b73c5109118edeee9764a24d2a3cb6da92bd193d2c26fa84f91ee1b8",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/adb": {
+      "sha256": "e19f1bdac239722dbd7866ccf27c4d1de601bffc07a04c39a02daf9cbe4f8eab",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/adb-libbrotlicommon.1.2.0.dylib": {
+      "sha256": "5ecd35029a5c6d0880a1bf52cf8bce76469722803cad8de4517b4bdc45f00f18",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/adb-libbrotlidec.1.2.0.dylib": {
+      "sha256": "7324d97b037e5450c6bd8fa7a3abedb00df9205c19d59517b9cde70a26bdd5b1",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/adb-libbrotlienc.1.2.0.dylib": {
+      "sha256": "885c52592ad43411f2d61b00af488e23e336a2b8144f81c45f30fe304e2d2dc9",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/adb-liblz4.1.10.0.dylib": {
+      "sha256": "394a5880300630f87ab4aada16845490e2b39c327d6605472a632858d5bcdc64",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/adb-libusb-1.0.0.dylib": {
+      "sha256": "a60e0f5c4130253853af22421254ea4bd801fe282333256c1dfb5ff19fdb5000",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/adb-libzstd.1.5.7.dylib": {
+      "sha256": "36a6fe2c93b7166f326c7da306761d59311e5514e7b201e57fe4b6300cc2c5e1",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/bin/scrcpy": {
+      "sha256": "2dead2559e75ea25c224fa74398042c5c4ec4234e5ed7ff76d066a7cbd23a7ca",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libSDL3.0.dylib": {
+      "sha256": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libSvtAv1Enc.4.dylib": {
+      "sha256": "dbfee16602a1e19ed31a94153a49a03b41116af1d42e5f844cea454865ce62d5",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libavcodec.63.dylib": {
+      "sha256": "9db69b81f72100b471476036b27b3815aebd7af8f0c1bb19c604e03b9074c704",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libavformat.63.dylib": {
+      "sha256": "c4df21c3badba461040103a8afa791b9b8240e4f4821f0d99386247fd2b69279",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libavutil.61.dylib": {
+      "sha256": "78c492610a1e7a64d33a67f8d64c2f7718015aeea96a196da3498a94eb58600e",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libcrypto.4.dylib": {
+      "sha256": "710421eac59c226b2fa42bf56809533cf915d2cecc531e813b13fcc4e1150459",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libdav1d.7.dylib": {
+      "sha256": "12e71a0df17680a36a91091e7a0cf5a199425e0f138290b01b24232b071c82e4",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/liblzma.5.dylib": {
+      "sha256": "652556c1a1af272715aabc978f0d9fce6c2378ba7c240c6d283e7ea059bafc43",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libmp3lame.0.dylib": {
+      "sha256": "a8d70e10f425ec85161bd2f6118877d97fe8296c365616b6c5ae4327f7437116",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libmpg123.0.dylib": {
+      "sha256": "40f1607b710ddc95bd0e041f452d218e8e1fc9c56c5223c363a9b50cc9b64e7a",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libopus.0.dylib": {
+      "sha256": "577875d06d65d2977ac74ca73d156f8123cfef3f2ffe950f7c0c64b8c905f0fa",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libssl.4.dylib": {
+      "sha256": "b127c7ee7650d972cf87834de1af9ceabcd343f43e42f034a4dcd8bafc74b755",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libswresample.7.dylib": {
+      "sha256": "c0854526e6928459720d4a8c2f62bd22c14eb1ed64933a43978ce323bea2d844",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libusb-1.0.0.dylib": {
+      "sha256": "5ed1b68671f62ca5e09ec338bd07dbc9b705c4308c3e76cbc8f15c2700c1f99f",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libvpx.12.dylib": {
+      "sha256": "75bc597365a56da22618077a959fbb2e27fadd53f05a9a4633e0051f9da5b170",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libx264.165.dylib": {
+      "sha256": "3ab241fe51e34c1d2113db4d6f2866d162fdee8f0a020708dee998f996e005dd",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    },
+    "Contents/Resources/Runtime/lib/libx265.217.dylib": {
+      "sha256": "1e71956ffcbaf72f1b45fff17fd6d9688c272ec50730779a206c1ee8ca8b257e",
+      "architecture": "arm64",
+      "strict_signature_exit": 0
+    }
+  },
+  "individual_count": 48,
+  "nested_player_macho_count": 18,
+  "player_libraries": 17,
+  "player_library_bytes": 37129056,
+  "copied_library_hashes_match_original_runtime": true,
+  "all_installed_links": 0,
+  "dmg_bytes": 48138501,
+  "dmg_sha256": "4c262acf4682651b179c4ed1b47b095d73c12dbe1e0604a7dd4e8d0d34bdf947",
+  "zip_bytes": 43358526,
+  "zip_sha256": "d96ecd4d3ce1f851d036b1839c982f1586a4529f5efb60179e7c043b80adbbd3",
+  "release_manifest": {
+    "version": "0.2.0",
+    "build": "12",
+    "architecture": "arm64",
+    "minimum_macos": "26.0",
+    "size_bytes": 48138501,
+    "sha256": "4c262acf4682651b179c4ed1b47b095d73c12dbe1e0604a7dd4e8d0d34bdf947",
+    "signing": "ad_hoc_not_notarized",
+    "download_url": "https://github.com/SloopWorks/DroidBridge/releases/download/v0.2.0/DroidBridge-0.2.0-arm64.dmg",
+    "release_url": "https://github.com/SloopWorks/DroidBridge/releases/tag/v0.2.0"
+  },
+  "QA11_rejection_preserved": "final11-player-signature-failure.json",
+  "signing_scope": "ad_hoc_not_notarized; no DeveloperID/Gatekeeper acceptance claim",
+  "no_packaged_executable_UI_device_operations_in_independent_review": true,
+  "remaining_gates": [
+    "Actual installed final12 GUI and fallback/wrapper interactive launch after Mac unlock",
+    "Unfinished Spotlight/Dock/CmdTab and permission-dependent native-banner checks",
+    "Predeclared performance/resource/battery acceptance cohort",
+    "Public release/download verification and final user physical Pixel handoff"
+  ],
+  "whole_program_accepted": false
+}

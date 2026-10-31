@@ -1,0 +1,44 @@
+{
+  "status": "ok",
+  "data": {
+    "broker_version": 1,
+    "pending_pairings": [],
+    "sessions": [],
+    "devices": [
+      {
+        "connection_error": null,
+        "device_name": "Google sdk_gphone16k_arm64",
+        "paired": true,
+        "serial": "emulator-5582",
+        "aliases": [
+          "emulator-5582"
+        ],
+        "capabilities": [
+          "catalog",
+          "icons",
+          "events",
+          "commands",
+          "sessions",
+          "share",
+          "files",
+          "clipboard",
+          "notifications",
+          "notification_replies",
+          "profiles",
+          "diagnostics",
+          "delivery",
+          "state_heartbeat",
+          "clock_anchor_v1",
+          "notification_scope_v2"
+        ],
+        "connected": true,
+        "catalog_change_token": "4e020294-7b8d-49b9-bfd1-3fb3fbfad96d",
+        "enabled": true,
+        "trust_id": "cfc9427a-ae50-42b9-b3c4-1e58f15dd9a7",
+        "profile": "balanced",
+        "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa"
+      }
+    ]
+  },
+  "requestID": "A0CA82C7-6332-4A85-8CC2-143762419619"
+}

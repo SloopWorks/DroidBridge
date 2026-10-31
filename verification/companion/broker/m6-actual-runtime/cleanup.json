@@ -1,0 +1,16 @@
+{
+  "wireless_alias_disconnected": true,
+  "redirections_removed": [
+    58139,
+    58141
+  ],
+  "settings_restored": {
+    "adb_wifi_enabled": "0",
+    "development_settings_enabled": "null"
+  },
+  "remaining_redirections": "no active redirections\nOK",
+  "owned_forward_remains": false,
+  "unrelated_5582_forward_preserved": true,
+  "initially_stopped_companion_service_restored": true,
+  "unconsumed_phone_pairing_qr_cancelled": true
+}

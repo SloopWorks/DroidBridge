@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "text_files_scanned": 891,
+  "findings": [],
+  "scope": "Known physical serial, bearer values, pairing URI secrets and JSON credential values; no matched values emitted. New evidence requires another audit."
+}

@@ -1,0 +1,7 @@
+{
+  "timestamp": "2026-10-31T00:38:55.042199+00:00",
+  "passed": true,
+  "text_files_scanned": 965,
+  "findings": [],
+  "scope": "Known physical serial, long bearer values, secret-bearing pairing URIs and JSON credential fields; matched values never emitted. Source archives separately reviewed. New evidence requires another audit."
+}

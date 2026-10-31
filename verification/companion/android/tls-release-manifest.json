@@ -1,0 +1,31 @@
+{
+  "apk_sha256": "c304d5d3fc526ebdc7c4c4e16d7c92fb5e53175bfe8f913d3d131fcf097cff04",
+  "apk_bytes": 2827308,
+  "version_code": 2,
+  "version_name": "0.2.0",
+  "signer_certificate_sha256": "eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4",
+  "main_source": {
+    "AndroidCompanion/app/src/main/AndroidManifest.xml": "da22f13cd1aff8586fccce337cc02188e0f6a1786cdef22789ec970d2bd808f8",
+    "AndroidCompanion/app/src/main/assets/licenses/Apache-2.0.txt": "01c12035bf35af37241298dc7ad538eb2a07e5c940437bc6876feeaa9d1951d0",
+    "AndroidCompanion/app/src/main/assets/licenses/NOTICE.txt": "0ac85f060da5360fe19ed146a4a11e509c4a1d6b481d298209b6935a5d10e5a9",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeHttpServer.kt": "cb2a996d1af2dcac55d8204ad0079cbefd70553584ae34ca4c09796b1aa086b9",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeNotifications.kt": "de46dc34d0a42266e1cf62ab946e70e4d6f6bd7e2f57586b55027b2c6d74264a",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeService.kt": "91a6e783b908363394768a3de36e33ed0d6b9d362c27b6f79f28223430a866b4",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt": "a42dfc8e1d9495288cf023cb58ecc659cbd83f62139797987ffa45b8ed8f07d7",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTlsIdentity.kt": "5d612ecec0eca227238bce8ac98a5e27dc74fccb3541834a88ffa5c651ecee63",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTransfers.kt": "24dc5588cfe8c5ab31814c51396ae6c0e69ae779ce086e90d61bc00ca501b163",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt": "a62c6aa10b70ee17c25c73b54f16aa6b3d6d8555c85c1c3d60823358d98b7a3f",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ProtocolRules.kt": "f658216faed6be14abdd2e7af41753346ffcc85317c649c4fa23dc8e99475e79",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/SecureJournal.kt": "312f1371104e06a46ed2aa6f2576be99ee12fb8a8859cf56987d40de7e3e1d11",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/SecurePreferences.kt": "601e067742e94caabd6a8a17f8da578de1a3d8b9cfa83b2a4cadf476a2bcf6a2",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/TlsLeafCertificate.kt": "2a5e2280a116b145d42740eddda33d65a177bcf06a58a93afbea8f8bc2760295",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/TransferProvider.kt": "711ac9cdd3d70565a57d5206eb2ef3f61e0a02081adcddfc5d328ff12fa3391f",
+    "AndroidCompanion/app/src/main/res/drawable/ic_bridge.xml": "39e9b77a89926aa1bed324d078994a0aaec1d384d44bc1cc79f1d40b637cf2b5"
+  },
+  "api37_exact_release_tests": 13,
+  "api35_tls_tests": 2,
+  "api35_genuine_core_hello": true,
+  "api37_genuine_core_hello": true,
+  "ordinary_attacker_matrix": "independent Security owner",
+  "tls_identity_automatic_rotation": false
+}

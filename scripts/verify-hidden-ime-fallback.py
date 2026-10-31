@@ -114,7 +114,7 @@ try:
    expected_extra=['--record='+str(case/'player.mkv')]+(['--no-mouse-hover'] if args.diagnostic_no_mouse_hover else [])
    assert launched_args[len(production):]==expected_extra,'Unexpected test proxy additions'
    if args.diagnostic_no_mouse_hover:assert '--no-mouse-hover' not in production and '--no-mouse-hover' in launched_args
-   else:assert ('--no-mouse-hover' in production)==(android_api==35),'Production hover policy does not match exact Android version'
+   else:assert '--no-mouse-hover' in production,'Production must suppress buttonless hover on every supported Android version'
    player_status=command('player','status');command('player','resize',width=720,height=1080);time.sleep(3)
    command('host','menu',title='Turn Phone Screen On');wait('panel ON',lambda:physical()=='ON',20)
    on=edit(display,log,'PanelOn');print('PASS panel ON editing',flush=True)

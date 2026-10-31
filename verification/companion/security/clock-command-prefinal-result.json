@@ -1,0 +1,9 @@
+{
+  "process_exit": 0,
+  "source_changed_during_run": [
+    "Sources/DroidBridgeCore/CompanionBrokerRegistry.swift",
+    "Tests/DroidBridgeCoreTests/CompanionCommandSecurityTests.swift"
+  ],
+  "status": "superseded_not_final_acceptance",
+  "log_sha256": "425e211c583ec2fc54958b63b8623b66e48abbefc9b19eaf6d767aa943157683"
+}

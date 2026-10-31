@@ -1,0 +1,81 @@
+{
+  "basis": "Separate reread, SHA256 and complete TLS ClientHello framing decode of raw captures; current source unchanged from before/after Core build manifest",
+  "probe_build_manifest": "../probe-build.json",
+  "probe_sha256": "7b5707022fc574b3210927e3cc228ddf120e5d55844d54d50add94187e7ad23e",
+  "source_sha256": {
+    "Sources/DroidBridgeCore/CompanionBrokerService.swift": "af36a7822897d6d40941eb6e6c8848e908e292a371f403612d3858d5a432e410",
+    "Sources/DroidBridgeCore/CompanionClient.swift": "b9b929f3e3f0bbfeff7cdc2abdc69574da10233d32b400a0894ebebff0a07436",
+    "Sources/DroidBridgeCore/CompanionCredentialStore.swift": "f69546b73112c604505d5a501b5a37c6dd00b6f8d54e4f32dcf06a2a3f2862f0",
+    "Sources/DroidBridgeCore/CompanionForward.swift": "9158ea21019e1d7028b8addf825711beae664b353b1e4a0940c36b9d432579aa"
+  },
+  "artifacts": [
+    {
+      "path": "tls-pair-0.hex",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tls_records": [],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "tls-reconnect-0.hex",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tls_records": [],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "plain-pair-0.hex",
+      "sha256": "db19b2a6e85423faacfcc1129a74fceca11d512b471593a1975e8801431d4f2b",
+      "bytes": 1514,
+      "tls_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "record_bytes": 1514
+        }
+      ],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "plain-pair-1.hex",
+      "sha256": "3d6c1c652697b127b6fa20d34eaa8b4d15f0cb2fe19c735385842da10b5d9d95",
+      "bytes": 1516,
+      "tls_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "record_bytes": 1516
+        }
+      ],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "plain-reconnect-0.hex",
+      "sha256": "43cc36dd3192d0b056ea677dde3f8710f7c3a556d88794bac1a49c11eb77b100",
+      "bytes": 1514,
+      "tls_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "record_bytes": 1514
+        }
+      ],
+      "http_application_bytes": 0
+    },
+    {
+      "path": "plain-reconnect-1.hex",
+      "sha256": "1e93490a23e93377f1338deae3ffafae59418588f0692c9c9a4267c5d05039e1",
+      "bytes": 1516,
+      "tls_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "record_bytes": 1516
+        }
+      ],
+      "http_application_bytes": 0
+    }
+  ],
+  "all_pass": true,
+  "credential_scope": "Synthetic candidate credentials; no user Keychain access"
+}

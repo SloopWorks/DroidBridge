@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "size": 2097152,
+  "sha256": "528d7c4ccbfb9b6c5be870818614c6bb306e726715cde1f50704f2de017697eb",
+  "expected_sha256": "528d7c4ccbfb9b6c5be870818614c6bb306e726715cde1f50704f2de017697eb",
+  "scope": "ActualAndroidACTION_SEND namedreceiverconsent -> MacHandoffSaveFile nativeNSSavePanel -> actualpinnedchunkdownload + terminalreceipt",
+  "opened_automatically": false
+}

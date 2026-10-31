@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "profile_before": "balanced",
+  "profile_after": "balanced",
+  "selection_before": {},
+  "selection_after": {},
+  "scope": "Actual installed ad-hoc update/revoke/fresh QR pairing. Empty selection retained; nonempty selection retention still needs separate test."
+}

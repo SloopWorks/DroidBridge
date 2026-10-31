@@ -1,0 +1,57 @@
+{
+  "connect": {
+    "base_sha256": "2fb17f820e59377e63e659ce5b5b267450c01ec4c6db2d3f38d78b6a1eb347e3",
+    "current_sha256": "2fb17f820e59377e63e659ce5b5b267450c01ec4c6db2d3f38d78b6a1eb347e3",
+    "exact_text_identical": true
+  },
+  "admit": {
+    "base_sha256": "30841778ed451d0c20bfef8f33ac413b0eded3f86c9eb979034d8ef1d7237701",
+    "current_sha256": "30841778ed451d0c20bfef8f33ac413b0eded3f86c9eb979034d8ef1d7237701",
+    "exact_text_identical": true
+  },
+  "beginPair": {
+    "base_sha256": "275028e7475820d6d78a51644aa5919b81d364d1b8358b99bdb2da126e9a845b",
+    "current_sha256": "275028e7475820d6d78a51644aa5919b81d364d1b8358b99bdb2da126e9a845b",
+    "exact_text_identical": true
+  },
+  "pollPair": {
+    "base_sha256": "8a575e07fffadf45168f93f6ea3af9ffc302410547e56570430df1640fd8de53",
+    "current_sha256": "8a575e07fffadf45168f93f6ea3af9ffc302410547e56570430df1640fd8de53",
+    "exact_text_identical": true
+  },
+  "maintain": {
+    "base_sha256": "4e25bf9c4708723a7fd0264ce9bd492d127d075dbd994f45fed0265067d90d8c",
+    "current_sha256": "4e25bf9c4708723a7fd0264ce9bd492d127d075dbd994f45fed0265067d90d8c",
+    "exact_text_identical": true
+  },
+  "publish": {
+    "base_sha256": "9f6b923d18ccc457fe3c34c11464e6576676c260667c313a13bc0c04f87f0033",
+    "current_sha256": "9f6b923d18ccc457fe3c34c11464e6576676c260667c313a13bc0c04f87f0033",
+    "exact_text_identical": true
+  },
+  "startPoller": {
+    "base_sha256": "8abed29f1a505c97c208ffb5928bb841fdb734bb38008b1fbe63fac89f718d40",
+    "current_sha256": "139d1dae3502dd64f218ae33c31b33a07b85c3eca7d708fd4356ecbc76eccabe",
+    "exact_text_identical": false
+  },
+  "poll": {
+    "base_sha256": "30770ff198578da02783939317d2ea11690254f06625367437ac37994e9364f7",
+    "current_sha256": "c9a687d8908c7a241844ad6e15ae36c623bae1fa3a6824b8de4ade051498fe7d",
+    "exact_text_identical": false
+  },
+  "pollFailed": {
+    "base_sha256": "712309749e9c7d96aa1006f47a6e00e7d1f606c6f1e021f173f421ff1f8dd883",
+    "current_sha256": "55d6f364e7212caf56e8209622309c73f780a40a64a405ed392e4e126f1724e4",
+    "exact_text_identical": false
+  },
+  "removeTransport": {
+    "base_sha256": "ba2e516abf6527caf03c9bef8891e45023d1ddc8c1f450185c295c6eb03009b1",
+    "current_sha256": "ba2e516abf6527caf03c9bef8891e45023d1ddc8c1f450185c295c6eb03009b1",
+    "exact_text_identical": true
+  },
+  "retireForward": {
+    "base_sha256": "f04d65a1da9067ad1e62b6a5cb94071e65340cc882ffed897076cd010eaedfac",
+    "current_sha256": "f04d65a1da9067ad1e62b6a5cb94071e65340cc882ffed897076cd010eaedfac",
+    "exact_text_identical": true
+  }
+}

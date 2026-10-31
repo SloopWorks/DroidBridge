@@ -1,0 +1,55 @@
+{
+  "phone_texts": [
+    "Using: Patrick\u2019s MacBook Pro \u00b7 Connected",
+    "Completed on Patrick\u2019s MacBook Pro: set export",
+    "Apps on your Mac",
+    "Spotlight choices apply to the selected Mac. Publication status is shown on that Mac \u2192 Companion \u2192 Apps.",
+    "Input",
+    "Input Alpha",
+    "Include in Spotlight",
+    "Favorite",
+    "Open on Patrick\u2019s MacBook Pro",
+    "Input Beta",
+    "Include in Spotlight",
+    "Favorite",
+    "Open on Patrick\u2019s MacBook Pro",
+    "Home",
+    "Apps",
+    "Sharing",
+    "Settings"
+  ],
+  "managed_catalog": {
+    "publications": {},
+    "version": 2,
+    "actions": [],
+    "issues": {},
+    "records": {
+      "d966c9c5e93ec89df8ebb92d:dev.droidbridge.inputalpha": {
+        "deviceHash": "d966c9c5e93ec89df8ebb92d",
+        "location": "active",
+        "activeBundleURL": "file:///Users/patrick/Applications/DroidBridge%20Companion%20QA%20Data/Applications/d966c9c5e93ec89df8ebb92d/Input%20Alpha.app",
+        "sourceVersion": "0.2.0",
+        "backend": "native",
+        "deviceModel": "sdk gphone16k arm64",
+        "bundleFilename": "Input Alpha.app",
+        "inactiveBundleURL": "file:///Users/patrick/Applications/DroidBridge%20Companion%20QA%20Data/ManagedApps.noindex/inactive/d966c9c5e93ec89df8ebb92d/Input%20Alpha.app",
+        "generation": "DD94164A-9973-49E1-B863-E56887943DFE",
+        "availability": "active",
+        "deviceSerial": "emulator-5582",
+        "sourceBuild": "3",
+        "name": "Input Alpha",
+        "bundleIdentifier": "app.droidbridge.managed.dd966c9c5e93ec89df8ebb92d.dev.droidbridge.inputalpha",
+        "namingVersion": 2,
+        "key": "d966c9c5e93ec89df8ebb92d:dev.droidbridge.inputalpha",
+        "packageName": "dev.droidbridge.inputalpha"
+      }
+    },
+    "policyEnabled": true,
+    "retiredNames": {},
+    "reservations": {},
+    "availableSerials": [
+      "emulator-5582"
+    ],
+    "missingHistory": {}
+  }
+}

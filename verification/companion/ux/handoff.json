@@ -1,0 +1,10 @@
+{
+  "serial": "emulator-5580",
+  "scope_released": true,
+  "app_state": "force-stopped; service off",
+  "font_scale": "1.0",
+  "density": "Physical density: 420",
+  "main_activity_sha256": "7ca54e49a9bd0ff3b23225a7790e0092dc008e23952600455de1469322b9fcc0",
+  "adb_forwards_created": 0,
+  "physical_device_or_5554_operated": false
+}

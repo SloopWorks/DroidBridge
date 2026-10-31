@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-31T01:08:45.386628+00:00",
+  "request": "Commit and merge current work into Main",
+  "scope": "Commit collected companion verification evidence and merge the reviewed source checkpoint; earlier explicit push instruction remains authorized",
+  "source_candidate": "94b51c2fab719304e43381de1f7d1bf532276b61",
+  "upstream_main_before_merge": "e0e02ea2f4810dcc3e108d5f2339e6cdb25726db",
+  "validation": "Existing exact-source and independent QA12 offline artifact checks retained; no new product code changes for this merge",
+  "remaining_acceptance": [
+    "Installed QA12 GUI and fallback interaction",
+    "Quiet performance cohort at unchanged targets",
+    "Actual Spotlight and permission-dependent native notification banners",
+    "Actual public download and installed release verification"
+  ],
+  "goal_status": "blocked",
+  "release_published": false,
+  "mac_lock_bypassed": false,
+  "review": "security/main-merge-publication-audit.json"
+}

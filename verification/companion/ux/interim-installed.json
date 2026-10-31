@@ -1,0 +1,15 @@
+{
+  "serial": "emulator-5580",
+  "api": 35,
+  "artifacts": {
+    "app": {
+      "sha256": "92ff5bfe02381335af41c5565280d4c7fd89e602134b42297d88cc8b4344e599",
+      "bytes": 5693273
+    },
+    "test": {
+      "sha256": "4978bd55ccfc6ac4cbd3a1c023d7ef1c3845ae4e892ad448cc2ae80831e96716",
+      "bytes": 2224690
+    }
+  },
+  "physical_device": false
+}

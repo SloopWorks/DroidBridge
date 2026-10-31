@@ -1,0 +1,5 @@
+{"backend":"native","device":"127.0.0.1:59500","package":"dev.droidbridge.companionfixture","session":"228B767A-CDA7-4AB6-8366-39966EB68CF9","state":"starting","timestamp":"2026-10-30T22:24:50Z"}
+{"backend":"native","device":"127.0.0.1:59500","package":"dev.droidbridge.companionfixture","session":"228B767A-CDA7-4AB6-8366-39966EB68CF9","state":"running","timestamp":"2026-10-30T22:24:51Z"}
+{"backend":"native","device":"127.0.0.1:59500","event":"session_stop_requested","package":"dev.droidbridge.companionfixture","reason":"requested","session":"228B767A-CDA7-4AB6-8366-39966EB68CF9","timestamp":"2026-10-30T22:24:51Z"}
+{"backend":"native","device":"127.0.0.1:59500","package":"dev.droidbridge.companionfixture","session":"228B767A-CDA7-4AB6-8366-39966EB68CF9","state":"stopping","timestamp":"2026-10-30T22:24:51Z"}
+{"backend":"native","device":"127.0.0.1:59500","package":"dev.droidbridge.companionfixture","session":"228B767A-CDA7-4AB6-8366-39966EB68CF9","state":"stopped","timestamp":"2026-10-30T22:24:51Z"}

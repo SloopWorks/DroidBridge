@@ -1,0 +1,71 @@
+{
+  "status": {
+    "requestID": "66CDFFA3-9A53-4463-97F4-0A5FC56D267D",
+    "status": "ok",
+    "data": {
+      "pending_pairings": [],
+      "broker_version": 1,
+      "devices": [
+        {
+          "connected": true,
+          "device_name": "Google sdk_gphone16k_arm64",
+          "capabilities": [
+            "catalog",
+            "icons",
+            "events",
+            "commands",
+            "sessions",
+            "share",
+            "files",
+            "clipboard",
+            "notifications",
+            "notification_replies",
+            "profiles",
+            "diagnostics",
+            "delivery",
+            "state_heartbeat",
+            "clock_anchor_v1",
+            "notification_scope_v2"
+          ],
+          "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+          "connection_error": null,
+          "enabled": true,
+          "profile": "balanced",
+          "serial": "emulator-5582",
+          "paired": true,
+          "catalog_change_token": "00369ad1-c9d7-4991-8127-8a0624f6d0b9",
+          "trust_id": "cfc9427a-ae50-42b9-b3c4-1e58f15dd9a7",
+          "aliases": [
+            "emulator-5582"
+          ]
+        }
+      ],
+      "sessions": [
+        {
+          "backend": "native",
+          "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+          "serial": "emulator-5582",
+          "owner": {
+            "pid": 11473,
+            "start": 1793404824245368
+          },
+          "session_id": "2AD4936F-511E-438F-8A8C-933AFFED44DA",
+          "phase": "running",
+          "package": "dev.droidbridge.inputalpha",
+          "generation": 1,
+          "label": "Input Alpha Updated"
+        }
+      ]
+    }
+  },
+  "phone_texts": [
+    "Input Alpha Updated",
+    "Display 51 \u00b7 taps 0 \u00b7 key downs 0",
+    "Type for Alpha",
+    "Echo Alpha: ",
+    "TAP ALPHA",
+    "COPY ALPHA SENTINEL",
+    "READ CLIPBOARD EXPLICITLY",
+    "Clipboard untouched until an explicit action"
+  ]
+}

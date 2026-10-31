@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "text_files_scanned": 799,
+  "findings": [],
+  "scope": "Known physical serial, bearer values, pairing URI secrets and JSON credential values; values never emitted. Complements separate bounded image QR scan; final new evidence needs re-audit."
+}

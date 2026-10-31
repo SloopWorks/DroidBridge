@@ -1,0 +1,70 @@
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+dev.droidbridge.companion.CompanionSecurityTest:
+INSTRUMENTATION_STATUS: test=tlsPairPollCarriesCanonicalIDBeforeAndAfterApprovalAndRejectsReplacement
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=tlsPairPollCarriesCanonicalIDBeforeAndAfterApprovalAndRejectsReplacement
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionReceiptDeviceTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+dev.droidbridge.companion.CompanionReceiptDeviceTest:
+INSTRUMENTATION_STATUS: test=expiredAndUnknownReceiptsRequireMacInspectionWithoutAutomaticResubmission
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionReceiptDeviceTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=expiredAndUnknownReceiptsRequireMacInspectionWithoutAutomaticResubmission
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionReceiptDeviceTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=savedAudioPreferenceNeverClaimsUnconfirmedOutputCompleted
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionReceiptDeviceTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=savedAudioPreferenceNeverClaimsUnconfirmedOutputCompleted
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionTlsTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+dev.droidbridge.companion.CompanionTlsTest:
+INSTRUMENTATION_STATUS: test=installationIdentityAndTlsAreStableAndMandatory
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionTlsTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=installationIdentityAndTlsAreStableAndMandatory
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: droidbridge_pair_wire_evidence={"transport":"pinned_tls_http","pending_status":200,"approved_status":200,"pending_id_matched":true,"approved_id_matched":true,"repeat_id_matched":true,"invalid_id_rejected":true,"replaced_id_rejected":true,"denied_poll_rejected":true,"pending_fields":["clock_epoch","expires_uptime_ms","pairing_id","status"],"approved_fields":["capabilities","clock_epoch","credential","device_id","expires_uptime_ms","pairing_id","protocol","status","trust_id"]}
+INSTRUMENTATION_RESULT: droidbridge_tls_evidence={"server_pin":"71e228545bfad01763179b51ae87eec51f92914a8a19a6d1e5910475b0499b8c","device_id":"6e6da77c-b8f1-422d-9645-cc416cf913ce","pid":7114,"negotiated":[{"protocol":"TLSv1.2","cipher":"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"},{"protocol":"TLSv1.3","cipher":"TLS_AES_128_GCM_SHA256"}],"leaf_der_base64":"MIIBnjCCAUWgAwIBAgIRAKFGucKINmXpxDcguOYZCz4wCgYIKoZIzj0EAwIwLTErMCkGA1UEAxMiRHJvaWRCcmlkZ2UgQ29tcGFuaW9uIEluc3RhbGxhdGlvbjAeFw0yNjEwMjkyMDE3MzRaFw0yODEwMjkyMDE3MzRaMC0xKzApBgNVBAMTIkRyb2lkQnJpZGdlIENvbXBhbmlvbiBJbnN0YWxsYXRpb24wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQWnLeizOq8gCLWQtn1VlJDqbMTNeLrrwS9rbavvMnzoNSLRBbBUK6pQWh67TjQLHO0nmclwdfbex49i0ChggAbo0YwRDAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH\/BAIwADATBgNVHSUEDDAKBggrBgEFBQcDATAPBgNVHREECDAGhwR\/AAABMAoGCCqGSM49BAMCA0cAMEQCIDLQ9NZYTDtRXt0oToEAtjdpRbkIqgCHMUL2aJmAU9wPAiAworcbnQUaMEGJaPqf19MaZ\/v7ksWu5I8QVjG7Qqe9Hg==","private_key_exportable":false}
+INSTRUMENTATION_RESULT: droidbridge_uncertain_receipt_ui={"elapsed_ms":30173,"real_30s_expiry":true,"expired_requires_mac_check":true,"unknown_requires_mac_check":true,"automatic_successors":0}
+INSTRUMENTATION_RESULT: stream=
+
+Time: 32.77
+
+OK (4 tests)
+
+
+INSTRUMENTATION_CODE: -1

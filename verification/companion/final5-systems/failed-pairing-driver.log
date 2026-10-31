@@ -1,0 +1,6 @@
+Actual phone comparison matched and Trust Mac approved
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/.build/companion-systems-final5-qa35/driver.py", line 65, in <module>
+    status=p.wait(timeout=1);log.flush();assert status==0,'Runtime harness failed; inspect private runtime.log'
+                                                ^^^^^^^^^
+AssertionError: Runtime harness failed; inspect private runtime.log

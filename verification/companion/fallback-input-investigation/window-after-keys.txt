@@ -1,0 +1,711 @@
+WINDOW MANAGER DISPLAY CONTENTS (dumpsys window displays)
+  Display: mDisplayId=0 (organized)
+    init=1280x2856 480dpi mMinSizeOfResizeableTaskDp=220 cur=1280x2856 app=1280x2856 rng=1280x1280-2856x2856
+    deferred=false mLayoutNeeded=false
+  mLastOrientationSource=WindowedMagnification:0:31@18393678
+  deepestLastOrientationSource=ActivityRecord{137590894 u0 dev.droidbridge.companionfixture/.MainActivity t311}
+  overrideConfig={1.0 310mcc260mnc [en_US] ldltr sw427dp w427dp h952dp 480dpi nrml long compactNeeded port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1280, 2856) mAppBounds=Rect(0, 0 - 1280, 2856) mMaxBounds=Rect(0, 0 - 1280, 2856) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.1090 fontWeightAdjustment=0}
+  mHasSetIgnoreOrientationRequest=false ignoreOrientationRequest=false
+  mSleeping=false mAllSleepTokens=[]
+  mLayoutSeq=2436
+  mImeWindow=null
+  mImeLayeringTarget=null
+  mImeInputTarget=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+  mImeControlTarget=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+  ImeContainer
+    mNeedsLayer=false
+    mImeWindowToken=null
+  mImeParent=ImePlaceholder:13:14@125661443
+  mRemoteInsetsControlTarget=RemoteInsetsControlTarget{eb9677a displayId=0 requestedVisibleTypes=503 animatingTypes=0}
+  mCurrentFocus=null
+  mFocusedApp=ActivityRecord{137590894 u0 dev.droidbridge.companionfixture/.MainActivity t311}
+  mFixedRotationLaunchingApp=null
+
+  mHoldScreenWindow=null
+  mObscuringWindow=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+  mLastWakeLockHoldingWindow=null
+  mLastWakeLockObscuringWindow=Window{b3cdf0c u0 dev.droidbridge.companion/dev.droidbridge.companion.MainActivity}
+
+  mIsHardwareRendererOutputDisabled=false
+  mAreClientRenderingLimitationsEnabled=false
+
+  displayId=0
+  mWallpaperTarget=null
+  mLastWallpaperZoomOut=0.0
+  token WallpaperWindowToken{cd9f873 showWhenLocked=true}:
+    mWallpaperX=0.0
+    mWallpaperY=0.5
+    mWallpaperXStep=0.33333334
+    mWallpaperYStep=1.0
+    mWallpaperDisplayOffsetX=NA
+    mWallpaperDisplayOffsetY=NA
+
+  mSystemGestureExclusion=SkRegion()
+
+  Display areas in top down Z order:
+    * Leaf:36:36
+    * OneHanded:34:35
+      * Leaf:34:35
+    * Leaf:33:33
+    * OneHanded:32:32
+      * Leaf:32:32
+    * WindowedMagnification:0:31 (organized)
+      * OneHanded:26:31
+        * Leaf:26:31
+      * Leaf:24:25
+      * OneHanded:0:23
+        * Leaf:23:23
+        * AppZoomOut:20:22 (organized)
+          * Leaf:20:22
+        * Leaf:17:19
+        * AppZoomOut:16:16 (organized)
+          * Leaf:16:16
+        * Leaf:15:15
+        * AppZoomOut:2:14 (organized)
+          * ImePlaceholder:13:14
+            * ImeContainer
+          * Leaf:3:12
+          * DefaultTaskDisplayArea (organized)
+        * Leaf:1:1
+        * AppZoomOut:0:0 (organized)
+          * Leaf:0:0
+
+  Task display areas in top down Z order:
+    TaskDisplayArea DefaultTaskDisplayArea
+      overrideConfig={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?round ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+      mPreferredTopFocusableRootTask=Task{faffb0f #311 type=standard A=10235:dev.droidbridge.companionfixture}
+      mLastFocusedRootTask=Task{faffb0f #311 type=standard A=10235:dev.droidbridge.companionfixture}
+      Application tokens in top down Z order:
+      * Task{faffb0f #311 type=standard A=10235:dev.droidbridge.companionfixture U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+        bounds=[0,0][1280,2856]
+        * ActivityRecord{137590894 u0 dev.droidbridge.companionfixture/.MainActivity t311}
+      * Task{fb9c52 #318 type=standard A=10234:dev.droidbridge.companion U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1280,2856]
+        * ActivityRecord{14083301 u0 dev.droidbridge.companion/.MainActivity t318}
+      * Task{6b96a4e #329 type=standard A=10195:com.android.systemui U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1280,2856]
+        * ActivityRecord{244461897 u0 com.android.systemui/.wifi.WifiDebuggingActivity t329}
+      * Task{c3080bd #326 type=standard A=1000:com.android.settings U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=2}
+        bounds=[0,0][1280,2856]
+        * ActivityRecord{194235015 u0 com.android.settings/.SubSettings t326}
+        * ActivityRecord{17491304 u0 com.android.settings/.Settings$DevelopmentSettingsActivity t326}
+      * Task{bee9955 #325 type=standard A=1000:com.android.settings.root U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1280,2856]
+        * ActivityRecord{214445068 u0 com.android.settings/.homepage.SettingsHomepageActivity t325}
+      * Task{4d57d8 #1 type=home U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][1280,2856]
+        * Task{5b696bb #2 type=home I=com.google.android.apps.nexuslauncher/.NexusLauncherActivity U=0 rootTaskId=1 visible=false visibleRequested=false mode=fullscreen translucent=true sz=2}
+          bounds=[0,0][1280,2856]
+          * ActivityRecord{16893770 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t2}
+          * TaskFragment{6b3ea70 mode=multi-window organizerUid=10192 organizerProc=com.google.android.apps.nexuslauncher}
+            bounds=[0,0][1280,2856]
+      * Task{76271d #3 name=Bubbles type=undefined U=0 visible=false visibleRequested=false mode=multi-window translucent=true sz=1}
+        bounds=[0,0][1280,2856]
+        * Task{c96db38 #0 name=Bubbles-visibility-barrier type=undefined U=0 rootTaskId=3 visible=false visibleRequested=false mode=multi-window translucent=true sz=0}
+          bounds=[0,0][1280,2856]
+      * Task{fa7ad92 #4 name=SplitRoot type=undefined U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=2}
+        bounds=[0,0][1280,2856]
+        * Task{8701b60 #6 name=side type=undefined U=0 rootTaskId=4 visible=false visibleRequested=false mode=multi-window translucent=true sz=0}
+          bounds=[0,2856][1280,4284]
+        * Task{2339363 #5 name=main type=undefined U=0 rootTaskId=4 visible=false visibleRequested=false mode=multi-window translucent=true sz=0}
+          bounds=[0,0][1280,2856]
+
+  rootHomeTask=Task=1
+
+  PinnedTaskController
+    mIsImeShowing=false
+    mImeHeight=0
+    mMinAspectRatio=0.41841003
+    mMaxAspectRatio=2.39
+
+  DisplayFrames w=1280 h=2856 r=0
+
+  DisplayPolicy
+    mCarDockEnablesAccelerometer=true mDeskDockEnablesAccelerometer=true
+    mDockMode=EXTRA_DOCK_STATE_UNDOCKED mLidState=LID_OPEN
+    mAwake=true mScreenOnEarly=true mScreenOnFully=true
+    mKeyguardDrawComplete=true mWindowManagerDrawComplete=true
+    mHdmiPlugged=false
+    mLastAppearance=LIGHT_NAVIGATION_BARS FORCE_LIGHT_NAVIGATION_BARS
+    mLastBehavior=DEFAULT
+    mShowingDream=false mDreamingLockscreen=false
+    mStatusBar=Window{785adde u0 StatusBar}
+    mExpandedPanel=Window{2d999b8 u0 NotificationShade}
+    isKeyguardShowing=false
+    mNavigationBar=Window{45d512c u0 Taskbar}
+    mNavBarOpacityMode=2
+    mNavigationBarCanMove=false
+    mHasBottomNavigationBar=true
+    mLeftGestureHost=Window{45d512c u0 Taskbar}
+    mTopGestureHost=Window{785adde u0 StatusBar}
+    mRightGestureHost=Window{45d512c u0 Taskbar}
+    mBottomGestureHost=Window{45d512c u0 Taskbar}
+    mTopFullscreenOpaqueWindowState=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+    mSystemUiControllingWindow=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+    mSystemBarColorApps={ActivityRecord{137590894 u0 dev.droidbridge.companionfixture/.MainActivity t311}}
+    mNavBarColorWindowCandidate=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+    mNavBarBackgroundWindowCandidate=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+    mLastStatusBarAppearanceRegions=
+      AppearanceRegion{ bounds=[0,0][1280,2856]}
+    mLastLetterboxDetails=
+    mStatusBarBackgroundWindows=
+      Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+    mImeInsetsConsumed=false
+    mForceShowNavigationBarEnabled=false mAllowLockscreenWhenOn=false
+    mAllowsSystemBarRemoteInsetsController=false
+    mDecorInsetsInfo:
+      ROTATION_0={overrideNonDecorInsets=[0,0][0,72], overrideConfigInsets=[0,72][0,72], overrideNonDecorFrame=[0,0][1280,2784], overrideConfigFrame=[0,72][1280,2784]}
+      ROTATION_90={overrideNonDecorInsets=[0,0][0,96], overrideConfigInsets=[0,72][0,96], overrideNonDecorFrame=[0,0][2856,1184], overrideConfigFrame=[0,72][2856,1184]}
+      ROTATION_180={overrideNonDecorInsets=[0,0][0,96], overrideConfigInsets=[0,96][0,96], overrideNonDecorFrame=[0,0][1280,2760], overrideConfigFrame=[0,96][1280,2760]}
+      ROTATION_270={overrideNonDecorInsets=[0,0][0,96], overrideConfigInsets=[0,96][0,96], overrideNonDecorFrame=[0,0][2856,1184], overrideConfigFrame=[0,96][2856,1184]}
+    SystemGestures:
+      mDisplayCutoutTouchableRegionSize=0
+      mSwipeStartThreshold=Rect(72, 72 - 72, 72)
+      mSwipeDistanceThreshold=72
+
+  DisplayRotation
+    mCurrentAppOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+    mLastOrientation=-1
+    mRotation=0 mDeferredRotationPauseCount=0
+    mLandscapeRotation=ROTATION_90 mSeascapeRotation=ROTATION_270
+    mPortraitRotation=ROTATION_0 mUpsideDownRotation=ROTATION_180
+    mSupportAutoRotation=true
+    WindowOrientationListener
+      mEnabled=true
+      mCurrentRotation=ROTATION_0
+      mSensorType=null
+      mSensor={Sensor name="Goldfish 3-axis Accelerometer", vendor="The Android Open Source Project", version=1, type=1, maxRange=39.300102, resolution=2.480159E-4, power=3.0, minDelay=10000}
+      mRate=2
+      AccelSensorJudge
+        mProposedRotation=0
+        mPredictedRotation=0
+        mLastFilteredX=0.0
+        mLastFilteredY=9.776321
+        mLastFilteredZ=0.812345
+        mLastFilteredTimestampNanos=16382592780877 (49.37156ms ago)
+        mTiltHistory={last: 5.0}
+        mFlat=false
+        mSwinging=false
+        mAccelerating=false
+        mOverhead=false
+        mTouched=false
+        mTiltToleranceConfig=[[-25, 70], [-25, 65], [-25, 60], [-25, 65]]
+
+    mCarDockRotation=-1 mDeskDockRotation=-1
+    mUserRotationMode=USER_ROTATION_FREE mUserRotation=ROTATION_0 mCameraRotationMode=0 mAllowAllRotations=unknown
+    mDemoHdmiRotation=ROTATION_90 mDemoHdmiRotationLock=false mUndockedHdmiRotation=-1
+    mLidOpenRotation=-1
+    mFixedToUserRotation=false
+
+    RotationLockHistory
+      10-30 16:21:10.918: mode=USER_ROTATION_FREE, rotation=ROTATION_0, caller=UiAutomationConnection#restoreRotationStateLocked
+      10-30 16:21:12.850: mode=USER_ROTATION_FREE, rotation=ROTATION_0, caller=UiAutomationConnection#restoreRotationStateLocked
+      10-30 16:21:15.299: mode=USER_ROTATION_FREE, rotation=ROTATION_0, caller=UiAutomationConnection#restoreRotationStateLocked
+      10-30 16:21:17.739: mode=USER_ROTATION_FREE, rotation=ROTATION_0, caller=UiAutomationConnection#restoreRotationStateLocked
+      10-30 16:21:20.253: mode=USER_ROTATION_FREE, rotation=ROTATION_0, caller=UiAutomationConnection#restoreRotationStateLocked
+      10-30 16:21:22.178: mode=USER_ROTATION_FREE, rotation=ROTATION_0, caller=UiAutomationConnection#restoreRotationStateLocked
+      10-30 16:22:59.538: mode=USER_ROTATION_FREE, rotation=ROTATION_0, caller=UiAutomationConnection#restoreRotationStateLocked
+      10-30 16:23:47.569: mode=USER_ROTATION_FREE, rotation=ROTATION_0, caller=UiAutomationConnection#restoreRotationStateLocked
+
+  InputConsumers:
+    name=recents_animation_input_consumer pid=1137 user=UserHandle{0}
+
+  WindowInsetsStateController
+    InsetsState
+      mDisplayFrame=Rect(0, 0 - 1280, 2856)
+      mDisplayCutout=DisplayCutout{insets=Rect(0, 0 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=0 displayHeight=0 physicalDisplayWidth=0 physicalDisplayHeight=0 density={0.0} cutoutSpec={} rotation={0} scale={0.0} physicalPixelDisplaySizeRatio={0.0}}} sideOverrides=null}
+      mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=0, center=Point(0, 0)}, RoundedCorner{position=TopRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomLeft, radius=0, center=Point(0, 0)}]}
+      mRoundedCornerFrame=Rect(0, 0 - 0, 0)
+      mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(992, 0 - 1238, 72) rotation=0}
+      mDisplayShape=DisplayShape{type=2, displayWidth=1280, displayHeight=2856, physicalPixelDisplaySizeRatio=1.0, rotation=0, offsetX=0, offsetY=0, scale=1.0}
+        InsetsSource id=802a0000 type=statusBars frame=[0,0][1280,72] visible=true flags= sideHint=TOP
+        InsetsSource id=802a0005 type=mandatorySystemGestures frame=[0,0][1280,72] visible=true flags= sideHint=TOP
+        InsetsSource id=802a0006 type=tappableElement frame=[0,0][1280,72] visible=true flags= sideHint=TOP
+        InsetsSource id=db340001 type=navigationBars frame=[0,2784][1280,2856] visible=true flags=SUPPRESS_SCRIM|ANIMATE_RESIZING sideHint=BOTTOM
+        InsetsSource id=db340004 type=systemGestures frame=[0,0][90,2856] visible=true flags= sideHint=LEFT
+        InsetsSource id=db340005 type=mandatorySystemGestures frame=[0,2760][1280,2856] visible=true flags= sideHint=BOTTOM
+        InsetsSource id=db340006 type=tappableElement frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        InsetsSource id=db340024 type=systemGestures frame=[1190,0][1280,2856] visible=true flags= sideHint=RIGHT
+        InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags=INVALID sideHint=NONE
+    Control map:
+      Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}:
+        InsetsSourceControl: {802a0000 mType=statusBars initiallyVisible mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=72, right=0, bottom=0} mLeash=Surface(name=Surface(name=785adde StatusBar#69)/@0x40974db - animation-leash of insets_animation#5123)/@0xdedb279}
+        InsetsSourceControl: {db340001 mType=navigationBars initiallyVisible mSurfacePosition=Point(0, 2784) mInsetsHint=Insets{left=0, top=0, right=0, bottom=72} mLeash=Surface(name=Surface(name=45d512c Taskbar#74)/@0x716dbfb - animation-leash of insets_animation#5122)/@0xd2c0bbe}
+    InsetsSourceProviders:
+      ImeInsetsSourceProvider
+        mSource=InsetsSource id=3 type=ime frame=[0,0][0,0] visible=false flags=INVALID sideHint=NONE
+        mSourceFrame=Rect(0, 0 - 0, 0)
+        mInsetsHint=Insets{left=0, top=0, right=0, bottom=1008} stale
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mPendingControlTarget=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+        mImeShowing=false mLastDrawn=false
+      InsetsSourceProvider
+        mSource=InsetsSource id=db340024 type=systemGestures frame=[1190,0][1280,2856] visible=true flags= sideHint=RIGHT
+        mSourceFrame=Rect(1190, 0 - 1280, 2856)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{45d512c u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=db340006 type=tappableElement frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        mSourceFrame=Rect(0, 0 - 0, 0)
+        mOverrideFrames={2031=Rect(0, 0 - 0, 0)}
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{45d512c u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=db340005 type=mandatorySystemGestures frame=[0,2760][1280,2856] visible=true flags= sideHint=BOTTOM
+        mSourceFrame=Rect(0, 2760 - 1280, 2856)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{45d512c u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=db340004 type=systemGestures frame=[0,0][90,2856] visible=true flags= sideHint=LEFT
+        mSourceFrame=Rect(0, 0 - 90, 2856)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{45d512c u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=db340001 type=navigationBars frame=[0,2784][1280,2856] visible=true flags=SUPPRESS_SCRIM|ANIMATE_RESIZING sideHint=BOTTOM
+        mSourceFrame=Rect(0, 2784 - 1280, 2856)
+        mControl=InsetsSourceControl mId=db340001 mType=navigationBars mLeash=Surface(name=Surface(name=45d512c Taskbar#74)/@0x716dbfb - animation-leash of insets_animation#5122)/@0xd2c0bbe mInitiallyVisible=true mSurfacePosition=Point(0, 2784) mInsetsHint=Insets{left=0, top=0, right=0, bottom=72} mSkipAnimationOnce=false mImeStatsToken=null
+        mInsetsHint=Insets{left=0, top=0, right=0, bottom=72}
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mWin=Window{45d512c u0 Taskbar}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=45d512c Taskbar#74)/@0x716dbfb - animation-leash of insets_animation#5122)/@0xd2c0bbe
+        mControlTarget=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+      InsetsSourceProvider
+        mSource=InsetsSource id=802a0006 type=tappableElement frame=[0,0][1280,72] visible=true flags= sideHint=TOP
+        mSourceFrame=Rect(0, 0 - 1280, 72)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{785adde u0 StatusBar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=802a0005 type=mandatorySystemGestures frame=[0,0][1280,72] visible=true flags= sideHint=TOP
+        mSourceFrame=Rect(0, 0 - 1280, 72)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{785adde u0 StatusBar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=802a0000 type=statusBars frame=[0,0][1280,72] visible=true flags= sideHint=TOP
+        mSourceFrame=Rect(0, 0 - 1280, 72)
+        mControl=InsetsSourceControl mId=802a0000 mType=statusBars mLeash=Surface(name=Surface(name=785adde StatusBar#69)/@0x40974db - animation-leash of insets_animation#5123)/@0xdedb279 mInitiallyVisible=true mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=72, right=0, bottom=0} mSkipAnimationOnce=false mImeStatsToken=null
+        mInsetsHint=Insets{left=0, top=72, right=0, bottom=0}
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mWin=Window{785adde u0 StatusBar}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=785adde StatusBar#69)/@0x40974db - animation-leash of insets_animation#5123)/@0xdedb279
+        mControlTarget=Window{660c31b u0 dev.droidbridge.companionfixture/dev.droidbridge.companionfixture.MainActivity}
+  InsetsPolicy
+    status: WINDOW_STATE_SHOWING
+    nav: WINDOW_STATE_SHOWING
+
+  DisplayWindowSettingsProvider
+    SettingsEntry{mWindowingMode=0, mUserRotationMode=null, mUserRotation=null, mForcedWidth=0, mForcedHeight=0, mForcedDensity=0, mForcedDensityRatio=0.0, mForcedScalingMode=null, mRemoveContentMode=0, mShouldShowWithInsecureKeyguard=null, mShouldShowSystemDecors=null, mIsHomeSupported=null, mShouldShowIme=null, mFixedToUserRotation=null, mIgnoreOrientationRequest=null, mIgnoreDisplayCutout=null, mDontMoveToTop=null, mForceAppsUniversalResizable=null, mCanStealTopFocus=null}
+
+  Display: mDisplayId=49 (organized)
+    init=720x1080 240dpi mMinSizeOfResizeableTaskDp=220 cur=720x1080 app=720x1080 rng=720x720-1080x1080
+    deferred=false mLayoutNeeded=false
+  mLastOrientationSource=WindowedMagnification:0:31@157437636
+  deepestLastOrientationSource=ActivityRecord{148018746 u0 dev.droidbridge.inputbeta/.MainActivity t341}
+  overrideConfig={0.0 ?mcc0mnc ?localeList ?layoutDir sw480dp w480dp h720dp 240dpi lrg compactNeeded port ?uimode ?night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1080) mAppBounds=Rect(0, 0 - 720, 1080) mMaxBounds=Rect(0, 0 - 720, 1080) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} ?fontWeightAdjustment}
+  mHasSetIgnoreOrientationRequest=false ignoreOrientationRequest=false
+  mSleeping=false mAllSleepTokens=[]
+  mLayoutSeq=26
+  mImeWindow=null
+  mImeLayeringTarget=null
+  mImeInputTarget=null
+  mImeControlTarget=null
+  ImeContainer
+    mNeedsLayer=false
+    mImeWindowToken=null
+  mImeParent=ImePlaceholder:13:14@172561439
+  mRemoteInsetsControlTarget=RemoteInsetsControlTarget{439336c displayId=49 requestedVisibleTypes=503 animatingTypes=0}
+  mCurrentFocus=Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+  mFocusedApp=ActivityRecord{148018746 u0 dev.droidbridge.inputbeta/.MainActivity t341}
+  mFixedRotationLaunchingApp=null
+
+  mHoldScreenWindow=null
+  mObscuringWindow=Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+  mLastWakeLockHoldingWindow=null
+  mLastWakeLockObscuringWindow=null
+
+  mIsHardwareRendererOutputDisabled=false
+  mAreClientRenderingLimitationsEnabled=false
+
+  displayId=49
+  mWallpaperTarget=null
+  mLastWallpaperZoomOut=0.0
+  token WallpaperWindowToken{7f2552e showWhenLocked=true}:
+    mWallpaperX=NA
+    mWallpaperY=NA
+    mWallpaperXStep=NA
+    mWallpaperYStep=NA
+    mWallpaperDisplayOffsetX=NA
+    mWallpaperDisplayOffsetY=NA
+
+  mSystemGestureExclusion=SkRegion()
+
+  Display areas in top down Z order:
+    * Leaf:32:36
+    * WindowedMagnification:0:31 (organized)
+      * Leaf:15:31
+      * ImePlaceholder:13:14
+        * ImeContainer
+      * Leaf:3:12
+      * DefaultTaskDisplayArea (organized)
+      * Leaf:0:1
+
+  Task display areas in top down Z order:
+    TaskDisplayArea DefaultTaskDisplayArea
+      overrideConfig={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?round ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+      mPreferredTopFocusableRootTask=Task{64bd2eb #341 type=standard A=10241:dev.droidbridge.inputbeta}
+      mLastFocusedRootTask=Task{64bd2eb #341 type=standard A=10241:dev.droidbridge.inputbeta}
+      Application tokens in top down Z order:
+      * Task{64bd2eb #341 type=standard A=10241:dev.droidbridge.inputbeta U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+        bounds=[0,0][720,1080]
+        * ActivityRecord{148018746 u0 dev.droidbridge.inputbeta/.MainActivity t341}
+      * Task{232a5d7 #339 type=home U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][720,1080]
+        * Task{984ce2 #340 type=home A=10192:com.google.android.apps.nexuslauncher nonResizable U=0 rootTaskId=339 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+          bounds=[0,0][720,1080]
+          * ActivityRecord{51278166 u0 com.google.android.apps.nexuslauncher/com.android.launcher3.secondarydisplay.SecondaryDisplayLauncher t340}
+
+  rootHomeTask=Task=339
+
+  PinnedTaskController
+    mIsImeShowing=false
+    mImeHeight=0
+    mMinAspectRatio=0.41841003
+    mMaxAspectRatio=2.39
+
+  DisplayFrames w=720 h=1080 r=0
+
+  DisplayPolicy
+    mCarDockEnablesAccelerometer=true mDeskDockEnablesAccelerometer=true
+    mDockMode=EXTRA_DOCK_STATE_UNDOCKED mLidState=LID_ABSENT
+    mAwake=true mScreenOnEarly=true mScreenOnFully=true
+    mKeyguardDrawComplete=false mWindowManagerDrawComplete=false
+    mHdmiPlugged=false
+    mLastAppearance=LIGHT_NAVIGATION_BARS FORCE_LIGHT_NAVIGATION_BARS
+    mLastBehavior=DEFAULT
+    mShowingDream=false mDreamingLockscreen=false
+    mStatusBar=Window{e47dbb7 u0 StatusBar(displayId=49)}
+    isKeyguardShowing=false
+    mTopGestureHost=Window{e47dbb7 u0 StatusBar(displayId=49)}
+    mBottomGestureHost=Window{9707969 u0 Taskbar}
+    mFocusedWindow=Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+    mTopFullscreenOpaqueWindowState=Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+    mSystemUiControllingWindow=Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+    mSystemBarColorApps={ActivityRecord{148018746 u0 dev.droidbridge.inputbeta/.MainActivity t341}}
+    mNavBarColorWindowCandidate=Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+    mNavBarBackgroundWindowCandidate=Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+    mLastStatusBarAppearanceRegions=
+      AppearanceRegion{ bounds=[0,0][720,1080]}
+    mLastLetterboxDetails=
+    mStatusBarBackgroundWindows=
+      Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+    mImeInsetsConsumed=false
+    mForceShowNavigationBarEnabled=false mAllowLockscreenWhenOn=false
+    mAllowsSystemBarRemoteInsetsController=false
+    mDecorInsetsInfo:
+      ROTATION_0={overrideNonDecorInsets=[0,0][0,36], overrideConfigInsets=[0,36][0,36], overrideNonDecorFrame=[0,0][720,1044], overrideConfigFrame=[0,36][720,1044]}
+      ROTATION_90={overrideNonDecorInsets=[0,0][0,0], overrideConfigInsets=[0,0][0,0], overrideNonDecorFrame=[0,0][1080,720], overrideConfigFrame=[0,0][1080,720]}
+      ROTATION_180={overrideNonDecorInsets=[0,0][0,0], overrideConfigInsets=[0,0][0,0], overrideNonDecorFrame=[0,0][0,0], overrideConfigFrame=[0,0][0,0]}
+      ROTATION_270={overrideNonDecorInsets=[0,0][0,0], overrideConfigInsets=[0,0][0,0], overrideNonDecorFrame=[0,0][0,0], overrideConfigFrame=[0,0][0,0]}
+    SystemGestures:
+      mDisplayCutoutTouchableRegionSize=0
+      mSwipeStartThreshold=Rect(72, 72 - 72, 72)
+      mSwipeDistanceThreshold=72
+
+  DisplayRotation
+    mCurrentAppOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+    mLastOrientation=-1
+    mRotation=0 mDeferredRotationPauseCount=0
+    mLandscapeRotation=ROTATION_90 mSeascapeRotation=ROTATION_270
+    mPortraitRotation=ROTATION_0 mUpsideDownRotation=ROTATION_180
+    mSupportAutoRotation=true
+
+    mCarDockRotation=-1 mDeskDockRotation=-1
+    mUserRotationMode=USER_ROTATION_FREE mUserRotation=ROTATION_0 mCameraRotationMode=0 mAllowAllRotations=unknown
+    mDemoHdmiRotation=ROTATION_90 mDemoHdmiRotationLock=false mUndockedHdmiRotation=-1
+    mLidOpenRotation=-1
+    mFixedToUserRotation=false
+
+
+  WindowInsetsStateController
+    InsetsState
+      mDisplayFrame=Rect(0, 0 - 720, 1080)
+      mDisplayCutout=DisplayCutout{insets=Rect(0, 0 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=0 displayHeight=0 physicalDisplayWidth=0 physicalDisplayHeight=0 density={0.0} cutoutSpec={} rotation={0} scale={0.0} physicalPixelDisplaySizeRatio={0.0}}} sideOverrides=null}
+      mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=0, center=Point(0, 0)}, RoundedCorner{position=TopRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomLeft, radius=0, center=Point(0, 0)}]}
+      mRoundedCornerFrame=Rect(0, 0 - 0, 0)
+      mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(576, 0 - 699, 36) rotation=0}
+      mDisplayShape=DisplayShape{type=3, displayWidth=720, displayHeight=1080, physicalPixelDisplaySizeRatio=1.0, rotation=0, offsetX=0, offsetY=0, scale=1.0}
+        InsetsSource id=d1260000 type=statusBars frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        InsetsSource id=d1260005 type=mandatorySystemGestures frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        InsetsSource id=d1260006 type=tappableElement frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        InsetsSource id=44a30001 type=navigationBars frame=[0,1044][720,1080] visible=true flags=SUPPRESS_SCRIM|ANIMATE_RESIZING sideHint=BOTTOM
+        InsetsSource id=44a30004 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        InsetsSource id=44a30005 type=mandatorySystemGestures frame=[0,1044][720,1080] visible=true flags= sideHint=BOTTOM
+        InsetsSource id=44a30006 type=tappableElement frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        InsetsSource id=44a30024 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE
+    Control map:
+      Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}:
+        InsetsSourceControl: {44a30001 mType=navigationBars initiallyVisible mSurfacePosition=Point(0, 905) mInsetsHint=Insets{left=0, top=0, right=0, bottom=36} mLeash=Surface(name=Surface(name=9707969 Taskbar#5326)/@0x4f81b1c - animation-leash of insets_animation#5327)/@0xb8dfd35}
+        InsetsSourceControl: {d1260000 mType=statusBars initiallyVisible mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=36, right=0, bottom=0} mLeash=Surface(name=Surface(name=e47dbb7 StatusBar(displayId=49)#5318)/@0x77ea033 - animation-leash of insets_animation#5324)/@0xa9925ca}
+    InsetsSourceProviders:
+      InsetsSourceProvider
+        mSource=InsetsSource id=44a30024 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        mSourceFrame=Rect(0, 0 - 0, 0)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{9707969 u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=44a30006 type=tappableElement frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        mSourceFrame=Rect(0, 0 - 0, 0)
+        mOverrideFrames={2031=Rect(0, 0 - 0, 0)}
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{9707969 u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=44a30005 type=mandatorySystemGestures frame=[0,1044][720,1080] visible=true flags= sideHint=BOTTOM
+        mSourceFrame=Rect(0, 1044 - 720, 1080)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{9707969 u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=44a30004 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        mSourceFrame=Rect(0, 0 - 0, 0)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{9707969 u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=44a30001 type=navigationBars frame=[0,1044][720,1080] visible=true flags=SUPPRESS_SCRIM|ANIMATE_RESIZING sideHint=BOTTOM
+        mSourceFrame=Rect(0, 1044 - 720, 1080)
+        mControl=InsetsSourceControl mId=44a30001 mType=navigationBars mLeash=Surface(name=Surface(name=9707969 Taskbar#5326)/@0x4f81b1c - animation-leash of insets_animation#5327)/@0xb8dfd35 mInitiallyVisible=true mSurfacePosition=Point(0, 905) mInsetsHint=Insets{left=0, top=0, right=0, bottom=36} mSkipAnimationOnce=false mImeStatsToken=null
+        mInsetsHint=Insets{left=0, top=0, right=0, bottom=36}
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mWin=Window{9707969 u0 Taskbar}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=9707969 Taskbar#5326)/@0x4f81b1c - animation-leash of insets_animation#5327)/@0xb8dfd35
+        mControlTarget=Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+      InsetsSourceProvider
+        mSource=InsetsSource id=d1260006 type=tappableElement frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        mSourceFrame=Rect(0, 0 - 720, 36)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{e47dbb7 u0 StatusBar(displayId=49)}
+      InsetsSourceProvider
+        mSource=InsetsSource id=d1260005 type=mandatorySystemGestures frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        mSourceFrame=Rect(0, 0 - 720, 36)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{e47dbb7 u0 StatusBar(displayId=49)}
+      InsetsSourceProvider
+        mSource=InsetsSource id=d1260000 type=statusBars frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        mSourceFrame=Rect(0, 0 - 720, 36)
+        mControl=InsetsSourceControl mId=d1260000 mType=statusBars mLeash=Surface(name=Surface(name=e47dbb7 StatusBar(displayId=49)#5318)/@0x77ea033 - animation-leash of insets_animation#5324)/@0xa9925ca mInitiallyVisible=true mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=36, right=0, bottom=0} mSkipAnimationOnce=false mImeStatsToken=null
+        mInsetsHint=Insets{left=0, top=36, right=0, bottom=0}
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mWin=Window{e47dbb7 u0 StatusBar(displayId=49)}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=e47dbb7 StatusBar(displayId=49)#5318)/@0x77ea033 - animation-leash of insets_animation#5324)/@0xa9925ca
+        mControlTarget=Window{6cf3dd8 u0 dev.droidbridge.inputbeta/dev.droidbridge.inputbeta.MainActivity}
+  InsetsPolicy
+    status: WINDOW_STATE_SHOWING
+    nav: WINDOW_STATE_SHOWING
+
+  DisplayWindowSettingsProvider
+    SettingsEntry{mWindowingMode=0, mUserRotationMode=null, mUserRotation=null, mForcedWidth=0, mForcedHeight=0, mForcedDensity=0, mForcedDensityRatio=0.0, mForcedScalingMode=null, mRemoveContentMode=0, mShouldShowWithInsecureKeyguard=null, mShouldShowSystemDecors=null, mIsHomeSupported=null, mShouldShowIme=2, mFixedToUserRotation=null, mIgnoreOrientationRequest=null, mIgnoreDisplayCutout=null, mDontMoveToTop=null, mForceAppsUniversalResizable=null, mCanStealTopFocus=null}
+
+  Display: mDisplayId=48 (organized)
+    init=720x1080 240dpi mMinSizeOfResizeableTaskDp=220 cur=720x1080 app=720x1080 rng=720x720-1080x1080
+    deferred=false mLayoutNeeded=false
+  mLastOrientationSource=WindowedMagnification:0:31@84517569
+  deepestLastOrientationSource=ActivityRecord{25771407 u0 dev.droidbridge.inputalpha/.MainActivity t338}
+  overrideConfig={0.0 ?mcc0mnc ?localeList ?layoutDir sw480dp w480dp h720dp 240dpi lrg compactNeeded port ?uimode ?night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 720, 1080) mAppBounds=Rect(0, 0 - 720, 1080) mMaxBounds=Rect(0, 0 - 720, 1080) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} ?fontWeightAdjustment}
+  mHasSetIgnoreOrientationRequest=false ignoreOrientationRequest=false
+  mSleeping=false mAllSleepTokens=[]
+  mLayoutSeq=30
+  mImeWindow=null
+  mImeLayeringTarget=null
+  mImeInputTarget=null
+  mImeControlTarget=null
+  ImeContainer
+    mNeedsLayer=false
+    mImeWindowToken=null
+  mImeParent=ImePlaceholder:13:14@16044859
+  mRemoteInsetsControlTarget=RemoteInsetsControlTarget{b3c1a58 displayId=48 requestedVisibleTypes=503 animatingTypes=0}
+  mCurrentFocus=Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+  mFocusedApp=ActivityRecord{25771407 u0 dev.droidbridge.inputalpha/.MainActivity t338}
+  mFixedRotationLaunchingApp=null
+
+  mHoldScreenWindow=null
+  mObscuringWindow=Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+  mLastWakeLockHoldingWindow=null
+  mLastWakeLockObscuringWindow=null
+
+  mIsHardwareRendererOutputDisabled=false
+  mAreClientRenderingLimitationsEnabled=false
+
+  displayId=48
+  mWallpaperTarget=null
+  mLastWallpaperZoomOut=0.0
+  token WallpaperWindowToken{7bee8f9 showWhenLocked=true}:
+    mWallpaperX=NA
+    mWallpaperY=NA
+    mWallpaperXStep=NA
+    mWallpaperYStep=NA
+    mWallpaperDisplayOffsetX=NA
+    mWallpaperDisplayOffsetY=NA
+
+  mSystemGestureExclusion=SkRegion()
+
+  Display areas in top down Z order:
+    * Leaf:32:36
+    * WindowedMagnification:0:31 (organized)
+      * Leaf:15:31
+      * ImePlaceholder:13:14
+        * ImeContainer
+      * Leaf:3:12
+      * DefaultTaskDisplayArea (organized)
+      * Leaf:0:1
+
+  Task display areas in top down Z order:
+    TaskDisplayArea DefaultTaskDisplayArea
+      overrideConfig={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?round ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+      mPreferredTopFocusableRootTask=Task{3caf81c #338 type=standard A=10238:dev.droidbridge.inputalpha}
+      mLastFocusedRootTask=Task{3caf81c #338 type=standard A=10238:dev.droidbridge.inputalpha}
+      Application tokens in top down Z order:
+      * Task{3caf81c #338 type=standard A=10238:dev.droidbridge.inputalpha U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+        bounds=[0,0][720,1080]
+        * ActivityRecord{25771407 u0 dev.droidbridge.inputalpha/.MainActivity t338}
+      * Task{d2507a8 #336 type=home U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+        bounds=[0,0][720,1080]
+        * Task{d9f1a7 #337 type=home A=10192:com.google.android.apps.nexuslauncher nonResizable U=0 rootTaskId=336 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+          bounds=[0,0][720,1080]
+          * ActivityRecord{136592303 u0 com.google.android.apps.nexuslauncher/com.android.launcher3.secondarydisplay.SecondaryDisplayLauncher t337}
+
+  rootHomeTask=Task=336
+
+  PinnedTaskController
+    mIsImeShowing=false
+    mImeHeight=0
+    mMinAspectRatio=0.41841003
+    mMaxAspectRatio=2.39
+
+  DisplayFrames w=720 h=1080 r=0
+
+  DisplayPolicy
+    mCarDockEnablesAccelerometer=true mDeskDockEnablesAccelerometer=true
+    mDockMode=EXTRA_DOCK_STATE_UNDOCKED mLidState=LID_ABSENT
+    mAwake=true mScreenOnEarly=true mScreenOnFully=true
+    mKeyguardDrawComplete=false mWindowManagerDrawComplete=false
+    mHdmiPlugged=false
+    mLastAppearance=LIGHT_NAVIGATION_BARS FORCE_LIGHT_NAVIGATION_BARS
+    mLastBehavior=DEFAULT
+    mShowingDream=false mDreamingLockscreen=false
+    mStatusBar=Window{33dc133 u0 StatusBar(displayId=48)}
+    isKeyguardShowing=false
+    mTopGestureHost=Window{33dc133 u0 StatusBar(displayId=48)}
+    mBottomGestureHost=Window{3d783f1 u0 Taskbar}
+    mFocusedWindow=Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+    mTopFullscreenOpaqueWindowState=Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+    mSystemUiControllingWindow=Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+    mSystemBarColorApps={ActivityRecord{25771407 u0 dev.droidbridge.inputalpha/.MainActivity t338}}
+    mNavBarColorWindowCandidate=Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+    mNavBarBackgroundWindowCandidate=Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+    mLastStatusBarAppearanceRegions=
+      AppearanceRegion{ bounds=[0,0][720,1080]}
+    mLastLetterboxDetails=
+    mStatusBarBackgroundWindows=
+      Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+    mImeInsetsConsumed=false
+    mForceShowNavigationBarEnabled=false mAllowLockscreenWhenOn=false
+    mAllowsSystemBarRemoteInsetsController=false
+    mDecorInsetsInfo:
+      ROTATION_0={overrideNonDecorInsets=[0,0][0,36], overrideConfigInsets=[0,36][0,36], overrideNonDecorFrame=[0,0][720,1044], overrideConfigFrame=[0,36][720,1044]}
+      ROTATION_90={overrideNonDecorInsets=[0,0][0,0], overrideConfigInsets=[0,0][0,0], overrideNonDecorFrame=[0,0][1080,720], overrideConfigFrame=[0,0][1080,720]}
+      ROTATION_180={overrideNonDecorInsets=[0,0][0,0], overrideConfigInsets=[0,0][0,0], overrideNonDecorFrame=[0,0][0,0], overrideConfigFrame=[0,0][0,0]}
+      ROTATION_270={overrideNonDecorInsets=[0,0][0,0], overrideConfigInsets=[0,0][0,0], overrideNonDecorFrame=[0,0][0,0], overrideConfigFrame=[0,0][0,0]}
+    SystemGestures:
+      mDisplayCutoutTouchableRegionSize=0
+      mSwipeStartThreshold=Rect(72, 72 - 72, 72)
+      mSwipeDistanceThreshold=72
+
+  DisplayRotation
+    mCurrentAppOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+    mLastOrientation=-1
+    mRotation=0 mDeferredRotationPauseCount=0
+    mLandscapeRotation=ROTATION_90 mSeascapeRotation=ROTATION_270
+    mPortraitRotation=ROTATION_0 mUpsideDownRotation=ROTATION_180
+    mSupportAutoRotation=true
+
+    mCarDockRotation=-1 mDeskDockRotation=-1
+    mUserRotationMode=USER_ROTATION_FREE mUserRotation=ROTATION_0 mCameraRotationMode=0 mAllowAllRotations=unknown
+    mDemoHdmiRotation=ROTATION_90 mDemoHdmiRotationLock=false mUndockedHdmiRotation=-1
+    mLidOpenRotation=-1
+    mFixedToUserRotation=false
+
+
+  WindowInsetsStateController
+    InsetsState
+      mDisplayFrame=Rect(0, 0 - 720, 1080)
+      mDisplayCutout=DisplayCutout{insets=Rect(0, 0 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=0 displayHeight=0 physicalDisplayWidth=0 physicalDisplayHeight=0 density={0.0} cutoutSpec={} rotation={0} scale={0.0} physicalPixelDisplaySizeRatio={0.0}}} sideOverrides=null}
+      mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=0, center=Point(0, 0)}, RoundedCorner{position=TopRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomLeft, radius=0, center=Point(0, 0)}]}
+      mRoundedCornerFrame=Rect(0, 0 - 0, 0)
+      mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(576, 0 - 699, 36) rotation=0}
+      mDisplayShape=DisplayShape{type=3, displayWidth=720, displayHeight=1080, physicalPixelDisplaySizeRatio=1.0, rotation=0, offsetX=0, offsetY=0, scale=1.0}
+        InsetsSource id=f8be0000 type=statusBars frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        InsetsSource id=f8be0005 type=mandatorySystemGestures frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        InsetsSource id=f8be0006 type=tappableElement frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        InsetsSource id=467a0001 type=navigationBars frame=[0,1044][720,1080] visible=true flags=SUPPRESS_SCRIM|ANIMATE_RESIZING sideHint=BOTTOM
+        InsetsSource id=467a0004 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        InsetsSource id=467a0005 type=mandatorySystemGestures frame=[0,1044][720,1080] visible=true flags= sideHint=BOTTOM
+        InsetsSource id=467a0006 type=tappableElement frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        InsetsSource id=467a0024 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE
+    Control map:
+      Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}:
+        InsetsSourceControl: {467a0001 mType=navigationBars initiallyVisible mSurfacePosition=Point(0, 905) mInsetsHint=Insets{left=0, top=0, right=0, bottom=36} mLeash=Surface(name=Surface(name=3d783f1 Taskbar#5289)/@0xff66d44 - animation-leash of insets_animation#5290)/@0xae37b1}
+        InsetsSourceControl: {f8be0000 mType=statusBars initiallyVisible mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=36, right=0, bottom=0} mLeash=Surface(name=Surface(name=33dc133 StatusBar(displayId=48)#5272)/@0x18bd513 - animation-leash of insets_animation#5283)/@0x30bd496}
+    InsetsSourceProviders:
+      InsetsSourceProvider
+        mSource=InsetsSource id=467a0024 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        mSourceFrame=Rect(0, 0 - 0, 0)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{3d783f1 u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=467a0006 type=tappableElement frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        mSourceFrame=Rect(0, 0 - 0, 0)
+        mOverrideFrames={2031=Rect(0, 0 - 0, 0)}
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{3d783f1 u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=467a0005 type=mandatorySystemGestures frame=[0,1044][720,1080] visible=true flags= sideHint=BOTTOM
+        mSourceFrame=Rect(0, 1044 - 720, 1080)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{3d783f1 u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=467a0004 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE
+        mSourceFrame=Rect(0, 0 - 0, 0)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{3d783f1 u0 Taskbar}
+      InsetsSourceProvider
+        mSource=InsetsSource id=467a0001 type=navigationBars frame=[0,1044][720,1080] visible=true flags=SUPPRESS_SCRIM|ANIMATE_RESIZING sideHint=BOTTOM
+        mSourceFrame=Rect(0, 1044 - 720, 1080)
+        mControl=InsetsSourceControl mId=467a0001 mType=navigationBars mLeash=Surface(name=Surface(name=3d783f1 Taskbar#5289)/@0xff66d44 - animation-leash of insets_animation#5290)/@0xae37b1 mInitiallyVisible=true mSurfacePosition=Point(0, 905) mInsetsHint=Insets{left=0, top=0, right=0, bottom=36} mSkipAnimationOnce=false mImeStatsToken=null
+        mInsetsHint=Insets{left=0, top=0, right=0, bottom=36}
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mWin=Window{3d783f1 u0 Taskbar}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=3d783f1 Taskbar#5289)/@0xff66d44 - animation-leash of insets_animation#5290)/@0xae37b1
+        mControlTarget=Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+      InsetsSourceProvider
+        mSource=InsetsSource id=f8be0006 type=tappableElement frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        mSourceFrame=Rect(0, 0 - 720, 36)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{33dc133 u0 StatusBar(displayId=48)}
+      InsetsSourceProvider
+        mSource=InsetsSource id=f8be0005 type=mandatorySystemGestures frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        mSourceFrame=Rect(0, 0 - 720, 36)
+        mIsLeashInitialized=false mHasPendingPosition=false
+        mWin=Window{33dc133 u0 StatusBar(displayId=48)}
+      InsetsSourceProvider
+        mSource=InsetsSource id=f8be0000 type=statusBars frame=[0,0][720,36] visible=true flags= sideHint=TOP
+        mSourceFrame=Rect(0, 0 - 720, 36)
+        mControl=InsetsSourceControl mId=f8be0000 mType=statusBars mLeash=Surface(name=Surface(name=33dc133 StatusBar(displayId=48)#5272)/@0x18bd513 - animation-leash of insets_animation#5283)/@0x30bd496 mInitiallyVisible=true mSurfacePosition=Point(0, 0) mInsetsHint=Insets{left=0, top=36, right=0, bottom=0} mSkipAnimationOnce=false mImeStatsToken=null
+        mInsetsHint=Insets{left=0, top=36, right=0, bottom=0}
+        mIsLeashInitialized=true mHasPendingPosition=false
+        mWin=Window{33dc133 u0 StatusBar(displayId=48)}
+        mAdapter=ControlAdapter mCapturedLeash=Surface(name=Surface(name=33dc133 StatusBar(displayId=48)#5272)/@0x18bd513 - animation-leash of insets_animation#5283)/@0x30bd496
+        mControlTarget=Window{a7eda76 u0 dev.droidbridge.inputalpha/dev.droidbridge.inputalpha.MainActivity}
+  InsetsPolicy
+    status: WINDOW_STATE_SHOWING
+    nav: WINDOW_STATE_SHOWING
+
+  DisplayWindowSettingsProvider
+    SettingsEntry{mWindowingMode=0, mUserRotationMode=null, mUserRotation=null, mForcedWidth=0, mForcedHeight=0, mForcedDensity=0, mForcedDensityRatio=0.0, mForcedScalingMode=null, mRemoveContentMode=0, mShouldShowWithInsecureKeyguard=null, mShouldShowSystemDecors=null, mIsHomeSupported=null, mShouldShowIme=2, mFixedToUserRotation=null, mIgnoreOrientationRequest=null, mIgnoreDisplayCutout=null, mDontMoveToTop=null, mForceAppsUniversalResizable=null, mCanStealTopFocus=null}
+

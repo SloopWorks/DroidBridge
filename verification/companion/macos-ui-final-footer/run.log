@@ -1,0 +1,5 @@
+[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.16s)
+PASS: companion native UI, bounded catalog, action receipt and file transfer fixtures

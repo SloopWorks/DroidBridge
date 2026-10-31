@@ -1,0 +1,18 @@
+{
+  "one_visible_test_trust_removed_by_explicit_phone_Forget": true,
+  "no_other_phone_trust_present": true,
+  "service_restored_off": true,
+  "exact_owned_wireless_alias_disconnected": true,
+  "exact_owned_redirects_removed": [
+    62949,
+    62951
+  ],
+  "settings_preserved": {
+    "development_settings_enabled": "1",
+    "adb_enabled": "1",
+    "adb_wifi_enabled": "0"
+  },
+  "font_scale_preserved": "1.0",
+  "density_preserved": 420,
+  "private_pairing_material_deleted": true
+}

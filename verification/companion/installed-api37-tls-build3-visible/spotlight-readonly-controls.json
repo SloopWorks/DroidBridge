@@ -1,0 +1,25 @@
+[
+  {
+    "path": "/Users/patrick/Applications/DroidBridge.app",
+    "stdout": "",
+    "exit": 0
+  },
+  {
+    "path": "/Users/patrick/Applications/DroidBridge Companion QA.app",
+    "stdout": "",
+    "exit": 0
+  },
+  {
+    "path": "/Users/patrick/Applications",
+    "stdout": "",
+    "exit": 0
+  },
+  {
+    "path": "/Users/patrick/.metadata_never_index",
+    "exists": false
+  },
+  {
+    "path": "/Users/patrick/Applications/.metadata_never_index",
+    "exists": false
+  }
+]

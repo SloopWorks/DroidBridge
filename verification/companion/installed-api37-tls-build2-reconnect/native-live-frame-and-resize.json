@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "real_android_frame_counts": {
+    "live-frame-before-input.png": 26,
+    "live-frame-next.png": 54,
+    "live-frame-after-input.png": 1080,
+    "resized-stable-before-tap.png": 2998,
+    "resized-stable-after-tap.png": 4049
+  },
+  "mouse_adds_1000_before_and_after_resize": true,
+  "resized_window_points": [
+    360,
+    600
+  ],
+  "frame_hashes": {
+    "live-frame-before-input.png": "4d2190108fda3f6810215c7eb7f45f7feb8b0215f47106a8a4aa90734d470766",
+    "live-frame-next.png": "12b2b3dea3efc1b658ee0a7c496408e430156b779aa3d3e64d86861851742ea8",
+    "live-frame-after-input.png": "88ef43937086d631ba602146283497d2d343ddef2c23808fc10c712373426705",
+    "resized-stable-before-tap.png": "424431157bdca579ed150f560af82f929ceba084f7154af302d063e432c17b2a",
+    "resized-stable-after-tap.png": "16011027df3ba77cdf2e4ff916d5bb680c6566e96be2e4addab5cd6f8d516d24"
+  },
+  "physical_focus_tested": false,
+  "successive_frame_content_changes": true
+}

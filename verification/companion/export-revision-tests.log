@@ -1,0 +1,71 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[4/12] Emitting module DroidBridgeCore
+[5/12] Compiling DroidBridgeCore ManagedApps.swift
+[6/15] Compiling DroidBridgeCore CoreAvailabilityAuthority.swift
+[7/15] Compiling DroidBridgeCore ManagedAvailabilityMonitor.swift
+[8/15] Compiling DroidBridgeCore CompanionBrokerService.swift
+[9/20] Emitting module DroidBridgeCompanionBroker
+[9/21] Write Objects.LinkFileList
+[11/21] Emitting module DroidBridgeStreaming
+[12/21] Emitting module DroidBridgeAvailability
+[13/21] Compiling DroidBridgeAvailability main.swift
+[13/22] Write Objects.LinkFileList
+[14/41] Linking DroidBridgeCompanionBroker
+[15/41] Applying DroidBridgeCompanionBroker
+[16/41] Linking DroidBridgeAvailability
+[17/41] Applying DroidBridgeAvailability
+[19/41] Compiling DroidBridge ManagedAppNameRepair.swift
+[20/41] Compiling DroidBridge PhoneDisplayControls.swift
+[21/41] Compiling DroidBridge main.swift
+[22/41] Emitting module DroidBridge
+[23/41] Compiling DroidBridge LauncherUI.swift
+[24/41] Emitting module DroidBridgeCoreTests
+[25/41] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[26/41] Compiling DroidBridgeCoreTests CompanionExportPolicyTests.swift
+[27/41] Compiling DroidBridgeCoreTests ManagedAppNamingQATests.swift
+[28/41] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[29/41] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[29/41] Write Objects.LinkFileList
+[31/41] Compiling DroidBridge MacAppWrapper.swift
+[32/41] Compiling DroidBridge Launcher.swift
+[32/41] Linking DroidBridgePackageTests
+[34/41] Compiling DroidBridge DeviceOnboardingUI.swift
+[35/41] Compiling DroidBridge DeviceOnboarding.swift
+[36/41] Compiling DroidBridge CompanionDesktopAdapter.swift
+[37/41] Compiling DroidBridge AudioControls.swift
+[38/41] Compiling DroidBridge CompanionLauncherIntegration.swift
+[39/41] Compiling DroidBridge CompanionWindow.swift
+[39/42] Write Objects.LinkFileList
+[40/42] Linking DroidBridge
+[41/42] Applying DroidBridge
+Build complete! (4.79s)
+Test Suite 'Selected tests' started at 2026-10-30 12:32:24.082.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 12:32:24.082.
+Test Suite 'ManagedAppsTests' started at 2026-10-30 12:32:24.082.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionAliasConflictRefusesWithoutLosingAcceptedPolicy]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionAliasConflictRefusesWithoutLosingAcceptedPolicy]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionCorruptPolicyDeniesAndRecoversWithoutCacheLeak]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionCorruptPolicyDeniesAndRecoversWithoutCacheLeak]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionExportRevisionsArePerPackageAndCanonical]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionExportRevisionsArePerPackageAndCanonical]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionPolicyPermanentlyAdvancesLegacyReaderFence]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionPolicyPermanentlyAdvancesLegacyReaderFence]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionPolicySurvivesLegacyCatalogRewrite]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionPolicySurvivesLegacyCatalogRewrite]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionRePairPreservesSelectionAndFencesOldAuthority]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionRePairPreservesSelectionAndFencesOldAuthority]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionSelectionDeniesStaleLaunchAndLateRegistration]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testCompanionSelectionDeniesStaleLaunchAndLateRegistration]' passed (0.015 seconds).
+Test Suite 'ManagedAppsTests' passed at 2026-10-30 12:32:24.119.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.036 (0.037) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 12:32:24.119.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.036 (0.037) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 12:32:24.119.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.036 (0.038) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

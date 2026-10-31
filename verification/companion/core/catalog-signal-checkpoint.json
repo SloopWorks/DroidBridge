@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-10-30T23:20:25.401336+00:00",
+  "scope": "Core catalog invalidation signaling, exact pinned TLS broker fixture; no Android/GUI/index/LaunchAgent operations",
+  "source_sha256": {
+    "Sources/DroidBridgeCore/CompanionBrokerService.swift": "ff028e8f8bfcb8fa3410c9132fe53def80372113ad3f1c0cef7d2402b592003d",
+    "Tests/DroidBridgeCoreTests/CompanionCatalogSignalTests.swift": "43444fd1a876f45b78b05d2d0a98d9cdbff11d385e338eeb09538de0b0cf8143",
+    "Tests/DroidBridgeCoreTests/BrokerAdmissionTLSPeer.swift": "decf4c8a3bed0c699355e3ecd180c5cbfb56310a23ec9dbbf748a3daece527b5",
+    "docs/companion/BOUNDARY_CONTRACT.md": "962be1f10b1dd27385fa7acce65c8675579bebd3731b0ebae02859a16b11fd09"
+  },
+  "result": "PASS for Core signal contract only",
+  "focused_log": "verification/companion/security/catalog-signal-focused-attempt2.log",
+  "tests": {
+    "catalog_signal": 6,
+    "notification_security_regression": 9,
+    "total": 15,
+    "failures": 0,
+    "duration_seconds": 2.547
+  },
+  "retained_attempt1": "verification/companion/security/catalog-signal-focused-attempt1.log",
+  "attempt1_result": "compile failure in test-only CompanionBrokerFailure\u2192Error conversion, corrected without product change",
+  "coverage": [
+    "legacyjournalmissingfield/authenticatedadmissionseedsstablepersistenttoken",
+    "localstatusneverfetchescatalog",
+    "authenticatedchangededup+cursorpersist+noinboxcrowding",
+    "resetreplayedlasteventcannotcollapseoldtoken",
+    "reconnectforcesnewtokenandForgetclearsauthority",
+    "epochdiscontinuityadvanceswithoutfetch",
+    "wrongtargettrustandunrelatedcursornoiseignored",
+    "selfrevocationclearstokenanddedupidentity"
+  ],
+  "remaining": [
+    "Mac host-owned automatic delta/snapshot synchronizer implementation and component regression",
+    "Actual installed visible rename/icon/delete update without manualRefresh",
+    "Two-second observed-event\u2192visibleUI bound, hidden/wrapper zero catalog HTTP work",
+    "Final full Swift and packaged interoperability/review after Mac source integration"
+  ],
+  "no_installed_C04_acceptance_claim": true
+}

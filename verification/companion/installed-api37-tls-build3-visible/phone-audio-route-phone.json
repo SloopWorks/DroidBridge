@@ -1,0 +1,32 @@
+{
+  "events": [
+    {
+      "kind": "android_ui_action",
+      "action": "Phone",
+      "monotonic": 1585241.882794041
+    }
+  ],
+  "phone_texts": [
+    "Using: Patrick\u2019s MacBook Pro \u00b7 Connected",
+    "Completed on Patrick\u2019s MacBook Pro: set audio route",
+    "Device-wide, including other Android apps. Capture restrictions may keep Mac output silent. Actual output: {\"message\":\"Phone route selected. Audio follows Android\u2019s normal output.\",\"phase\":\"phone\",\"route\":\"phone\"}",
+    "Mac",
+    "Phone",
+    "Mac + Phone",
+    "Retry Mac audio",
+    "Phone display",
+    "Display power does not lock or unlock the phone. Mac app windows can continue on supported devices.",
+    "Turn phone display off",
+    "Turn phone display on",
+    "Recent actions",
+    "Queued is not completed. Results below belong to the selected receiving Mac.",
+    "open app \u00b7 Rejected \u00b7 launcher_not_registered",
+    "open app \u00b7 Completed",
+    "set export \u00b7 Completed",
+    "set export \u00b7 Completed",
+    "Home",
+    "Apps",
+    "Sharing",
+    "Settings"
+  ]
+}

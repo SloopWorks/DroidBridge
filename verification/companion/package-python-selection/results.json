@@ -1,0 +1,24 @@
+{
+  "caller": {
+    "exit": 0,
+    "passed": true,
+    "expected_success": true
+  },
+  "spaces": {
+    "exit": 0,
+    "passed": true,
+    "expected_success": true
+  },
+  "relative": {
+    "exit": 0,
+    "passed": true,
+    "expected_success": true
+  },
+  "broken-homebrew": {
+    "exit": 1,
+    "passed": true,
+    "expected_success": false
+  },
+  "package_sha256": "5d31894443c23445b027e22d3b6cb8b79ede44a128329810644f6d41c9371ac7",
+  "scope": "Exact package header only, no build, bundled binary, GUI, ADB, device, dist or installed bundle operations"
+}

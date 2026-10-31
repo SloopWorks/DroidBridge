@@ -1,0 +1,65 @@
+{
+  "profile": "balanced",
+  "exports": {
+    "devices": {
+      "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa": {
+        "aliases": [
+          "emulator-5582"
+        ],
+        "authorityTrustID": "c665de77-ed7d-426e-aefa-39edb3b4812a",
+        "captureIdentity": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+        "forgotten": false,
+        "revisions": {
+          "dev.droidbridge.inputalpha": 2,
+          "dev.droidbridge.inputbeta": 4
+        },
+        "selection": {
+          "dev.droidbridge.inputalpha": true,
+          "dev.droidbridge.inputbeta": true
+        }
+      }
+    },
+    "version": 1
+  },
+  "records": {
+    "d966c9c5e93ec89df8ebb92d:dev.droidbridge.inputalpha": {
+      "deviceHash": "d966c9c5e93ec89df8ebb92d",
+      "location": "active",
+      "activeBundleURL": "file:///Users/patrick/Applications/DroidBridge%20Companion%20QA%20Data/Applications/d966c9c5e93ec89df8ebb92d/Input%20Alpha.app",
+      "sourceVersion": "0.2.0",
+      "backend": "native",
+      "deviceModel": "sdk gphone16k arm64",
+      "bundleFilename": "Input Alpha.app",
+      "inactiveBundleURL": "file:///Users/patrick/Applications/DroidBridge%20Companion%20QA%20Data/ManagedApps.noindex/inactive/d966c9c5e93ec89df8ebb92d/Input%20Alpha.app",
+      "generation": "DD94164A-9973-49E1-B863-E56887943DFE",
+      "availability": "active",
+      "deviceSerial": "emulator-5582",
+      "sourceBuild": "3",
+      "name": "Input Alpha",
+      "bundleIdentifier": "app.droidbridge.managed.dd966c9c5e93ec89df8ebb92d.dev.droidbridge.inputalpha",
+      "namingVersion": 2,
+      "key": "d966c9c5e93ec89df8ebb92d:dev.droidbridge.inputalpha",
+      "packageName": "dev.droidbridge.inputalpha"
+    },
+    "d966c9c5e93ec89df8ebb92d:dev.droidbridge.inputbeta": {
+      "deviceHash": "d966c9c5e93ec89df8ebb92d",
+      "location": "active",
+      "activeBundleURL": "file:///Users/patrick/Applications/DroidBridge%20Companion%20QA%20Data/Applications/d966c9c5e93ec89df8ebb92d/Input%20Beta.app",
+      "sourceVersion": "0.2.0",
+      "backend": "native",
+      "deviceModel": "sdk gphone16k arm64",
+      "bundleFilename": "Input Beta.app",
+      "inactiveBundleURL": "file:///Users/patrick/Applications/DroidBridge%20Companion%20QA%20Data/ManagedApps.noindex/inactive/d966c9c5e93ec89df8ebb92d/Input%20Beta.app",
+      "generation": "2EBFF389-F815-49E4-AA73-15CD1C5231CD",
+      "availability": "active",
+      "deviceSerial": "emulator-5582",
+      "sourceBuild": "3",
+      "name": "Input Beta",
+      "bundleIdentifier": "app.droidbridge.managed.dd966c9c5e93ec89df8ebb92d.dev.droidbridge.inputbeta",
+      "namingVersion": 2,
+      "key": "d966c9c5e93ec89df8ebb92d:dev.droidbridge.inputbeta",
+      "packageName": "dev.droidbridge.inputbeta"
+    }
+  },
+  "host_sha256": "8fba9ef67ffdccf170e211761f92ff4137e5dbf41f2166363a7bf64a2819dc5b"
+}

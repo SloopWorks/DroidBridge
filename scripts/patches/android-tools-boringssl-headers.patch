@@ -1,0 +1,15 @@
+--- a/vendor/CMakeLists.txt
++++ b/vendor/CMakeLists.txt
+@@ -101,6 +101,12 @@
+ check_symbol_exists(strlcpy "string.h" HAVE_STRLCPY)
+ check_symbol_exists(reallocarray "stdlib.h" HAVE_REALLOCARRAY)
+ 
++# DroidBridge: Homebrew's protobuf include prefix also contains OpenSSL.
++# ADB links vendored BoringSSL, so its headers must precede that shared prefix.
++include_directories(BEFORE "${CMAKE_CURRENT_SOURCE_DIR}/boringssl/include")
++find_path(DROIDBRIDGE_GOOGLETEST_INCLUDE gtest/gtest_prod.h REQUIRED)
++include_directories(${DROIDBRIDGE_GOOGLETEST_INCLUDE})
++
+ include_directories(${PROTOBUF_INCLUDE_DIRS})
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ include(CMakeLists.libbase.txt)

@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "boundary": "ActualCUAnativeReplydialog -> pinnedphonecurrentRemoteInput -> actualfixtureBroadcastReceiver -> visibleAndroiddeliverycounter",
+  "receiver_text": "DroidBridge QA6 RemoteInput reply\nReply deliveries: 1",
+  "mac_action_status": "applied",
+  "delivery_count": 1,
+  "banner_permission_verified": false
+}

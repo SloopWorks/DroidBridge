@@ -1,0 +1,15 @@
+{
+  "scope": "ActualAndroidlistenergrant/globaloptin/currenttrustoptin viaUI; exactpublicbrokerAPI fixtureallowlist only. Hostbannerpermissionunverified; noOSpermissionbypass",
+  "reply": {
+    "requestID": "CFD6C312-C80F-45F7-9A3F-F0FDF4E73169",
+    "status": "ok",
+    "data": {
+      "request_id": "CFD6C312-C80F-45F7-9A3F-F0FDF4E73169",
+      "status": "applied",
+      "result": {}
+    }
+  },
+  "android_listener_granted": true,
+  "selected_trust_enabled": true,
+  "unrelated_trust_enabled": false
+}

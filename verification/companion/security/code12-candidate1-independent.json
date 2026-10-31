@@ -1,0 +1,43 @@
+{
+  "scope": "Independent current Android12 frozen source/APK hashes and signed real TLS focused log assessment; no reviewer device operation or installedMac/whole suite acceptance",
+  "sources_verified": 42,
+  "source_mismatches": [],
+  "artifacts": {
+    "DroidBridgeCompanion-test.apk": {
+      "sha256": "b0eda9e5f7763c062abe2ee7f72e49f48dd1da762331257dc2e83cbcd15c1552",
+      "bytes": 1954605,
+      "signer_sha256": "eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4"
+    },
+    "DroidBridgeCompanion.apk": {
+      "sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b",
+      "bytes": 2870487,
+      "signer_sha256": "eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4"
+    }
+  },
+  "artifact_hash_size_matches": {
+    "DroidBridgeCompanion-test.apk": true,
+    "DroidBridgeCompanion.apk": true
+  },
+  "signatures_verified_same_local_cert": true,
+  "fixture_descriptors_absent_product": [
+    "Ldev/droidbridge/companion/CompanionSecurityTest;",
+    "Ldev/droidbridge/companion/CompanionRealNotificationDeviceTest;",
+    "Ldev/droidbridge/companion/StalledTransferProvider;"
+  ],
+  "manifest_sha256": "afb1834c5f037d607577e6570d90dd20e9ddb1a051ce3502f356429961357ac9",
+  "focused_log_sha256": "8b6f4a866b76d614d9a6139e94f83c207de400d4b748215e1c37610b91ecea31",
+  "focused_tests": 3,
+  "failures": 0,
+  "seconds": 0.579,
+  "actual_tests": [
+    "Two-peer JSON-null broadcast metadata routing with targeted/string-null/malformed/nonstring isolation and unauthenticated401",
+    "Real production TLS64-row Unicode snapshot,nextpage,combining delta,513-byte optional activity omission with internal identity retained",
+    "Pinned TLS1.2/TLS1.3 identity stability"
+  ],
+  "remaining": [
+    "Android12 full36 and large9",
+    "Final full Swift on test-only bounded reap source",
+    "InstalledMac10/APK12 automatic C04 Unicode and package lifecycle proof",
+    "Final package/source archive"
+  ]
+}

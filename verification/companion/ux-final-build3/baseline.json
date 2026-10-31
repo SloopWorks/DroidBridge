@@ -1,0 +1,9 @@
+{
+  "font_scale": "1.0",
+  "density": "Physical density: 420",
+  "version_info": [
+    "versionCode=4 minSdk=33 targetSdk=35",
+    "versionName=0.2.0"
+  ],
+  "service": "ACTIVITY MANAGER SERVICES (dumpsys activity services)\n  (nothing)\n"
+}

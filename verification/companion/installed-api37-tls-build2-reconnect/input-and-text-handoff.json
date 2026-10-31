@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "mouse": "Actual NSView mouse events opened Android Share and explicitly sent deterministic fixture text",
+  "phone_to_mac_text": "Exact deterministic text appeared in native Handoff inbox after explicit refresh",
+  "keyboard": "Native TAB/Return opened Android target chooser; Escape dismissed it and returned through activities",
+  "physical_focus_tested": false,
+  "clipboard_read": false
+}

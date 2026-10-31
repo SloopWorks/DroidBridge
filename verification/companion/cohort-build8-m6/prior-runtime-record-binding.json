@@ -1,0 +1,42 @@
+{
+  "Contents/MacOS/DroidBridge": {
+    "actual_qa6": "32367d901e17bcce782db426bd54731a8a8076b83efe25c4ab4469a3823b7ebd",
+    "matches": true,
+    "recorded": "32367d901e17bcce782db426bd54731a8a8076b83efe25c4ab4469a3823b7ebd"
+  },
+  "Contents/Resources/Companion/DroidBridgeCompanion.apk": {
+    "actual_qa6": "bdc1d8bd2ae2f46917a738054ef1a9482095ee58592f9e53e11853c36e8ad084",
+    "matches": true,
+    "recorded": "bdc1d8bd2ae2f46917a738054ef1a9482095ee58592f9e53e11853c36e8ad084"
+  },
+  "Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy": {
+    "actual_qa6": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+    "matches": true,
+    "recorded": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3"
+  },
+  "Contents/Resources/Runtime/bin/DroidBridgeAudioClient": {
+    "actual_qa6": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+    "matches": true,
+    "recorded": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc"
+  },
+  "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker": {
+    "actual_qa6": "de0d13759075af09ba4832e3ca10ed4258725411b400cf2e4fa94472a7a164ad",
+    "matches": true,
+    "recorded": "de0d13759075af09ba4832e3ca10ed4258725411b400cf2e4fa94472a7a164ad"
+  },
+  "Contents/Resources/Runtime/bin/DroidBridgeSupervisor": {
+    "actual_qa6": "06060ed6b73c5109118edeee9764a24d2a3cb6da92bd193d2c26fa84f91ee1b8",
+    "matches": true,
+    "recorded": "06060ed6b73c5109118edeee9764a24d2a3cb6da92bd193d2c26fa84f91ee1b8"
+  },
+  "Contents/Resources/Runtime/bin/adb": {
+    "actual_qa6": "e19f1bdac239722dbd7866ccf27c4d1de601bffc07a04c39a02daf9cbe4f8eab",
+    "matches": true,
+    "recorded": "e19f1bdac239722dbd7866ccf27c4d1de601bffc07a04c39a02daf9cbe4f8eab"
+  },
+  "Contents/Resources/Runtime/share/scrcpy/scrcpy-server": {
+    "actual_qa6": "764eb6f79811d5211fe9df341120882ba9994c7a61b897d7bf3fb662e53bc536",
+    "matches": true,
+    "recorded": "764eb6f79811d5211fe9df341120882ba9994c7a61b897d7bf3fb662e53bc536"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "scope": "Independent provisional build9 source/upstream/private-signing/test-artifact/DEBUG-token byte review; no installed runtime/Gatekeeper/legal claim",
+  "scrcpy_commit": "a60891aea193d92e7e5c3942700eca63f9d19a5f",
+  "trusted_vendor_git_archive_sha256": "64bac06d6e31630296c957e067ae2485b0b0fc5746d805c2ce8a60744aba20b1",
+  "source_archive_member_sha256": "64bac06d6e31630296c957e067ae2485b0b0fc5746d805c2ce8a60744aba20b1",
+  "match": true,
+  "source_archive_sha256": "3d315be9a6fb8dbf102409b7ba146eddbc57318395810c6dc956a36499c86aa7",
+  "source_archive_member_files_checked": 544,
+  "forbidden_source_signing_test_paths": [],
+  "app_files_checked": 197,
+  "forbidden_app_signing_test_paths": [],
+  "app_apks": [
+    "Contents/Resources/Companion/DroidBridgeCompanion.apk"
+  ],
+  "app_product_apk_sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029",
+  "reviewed_debug_tokens": [
+    "CompanionBrokerTestingHooks",
+    "qaAdditionalSerials",
+    "events_received",
+    "notification_preferences_pre_lane",
+    "persist_before_write",
+    "persist_after_file_sync",
+    "old_poller_fault"
+  ],
+  "binaries": {
+    "Contents/MacOS/DroidBridge": {
+      "sha256": "60501ff1bd837725302a1d712944ca672beecb762a45424027670176bb8d5558",
+      "reviewed_debug_tokens_present": []
+    },
+    "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker": {
+      "sha256": "7d8fb204e5eb98a71bb8233106c4760154dff2836adb8ecc871fa2af4d3fc54c",
+      "reviewed_debug_tokens_present": []
+    }
+  },
+  "prior_unchanged_apk_review": "code11-candidate2-independent.json",
+  "actual_installed_interoperability_reviewed": false
+}

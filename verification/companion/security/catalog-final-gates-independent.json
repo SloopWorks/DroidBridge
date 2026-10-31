@@ -1,0 +1,32 @@
+{
+  "scope": "Independent exact-commit source hash comparison and completed full Swift plus shipping-source anonymous-XPC/AppKit harness evidence; no installed release/device/OS authorization claim",
+  "commit": "acb3d5816cb0fcca79518ab9ef7722c2f99a8adc",
+  "source_files_verified_current_and_committed": 128,
+  "current_mismatches": [],
+  "commit_mismatches": [],
+  "swift_tests": 332,
+  "swift_skips": 4,
+  "skip_reasons": [
+    "Set DROIDBRIDGE_TEST_SERIAL to an emulator serial",
+    "Build icon helper and install icon fixture, then set DROIDBRIDGE_TEST_SERIAL and DROIDBRIDGE_TEST_ICONS=1",
+    "Opt in after coordinating exclusive emulator sessions",
+    "Set DROIDBRIDGE_INTEGRATION=1 with emulator-5580 running"
+  ],
+  "swift_failures": 0,
+  "swift_seconds": 157.852,
+  "appkit_pass": true,
+  "appkit_source_files_current_and_committed": 7,
+  "evidence_sha256": {
+    "verification/companion/security/catalog-final-swift-source-before.json": "cd5144b5632b30ff2a11644d3f69d34b85a32fa9c6c2327f292814c7edf5d0b6",
+    "verification/companion/security/catalog-final-swift-full.log": "8cfd83dfdafbebc175a4c690e58b4ace173456edf2774e6e8163b15dd44f5f57",
+    "verification/companion/security/catalog-final-swift-result.json": "390c2404e3cbcf6823b5a257fc0a5387ecaf6b0b81103c686d14af495dda76f0",
+    "verification/companion/catalog-sync-source-checkpoint.json": "503ede24d4d5ff1e82f6d5ec84e28c64883b047abb047e3e0511c14df575bed7",
+    "verification/companion/macos-ui-catalog-and-denied-attempt3/result.json": "f508e995e3e2c43977c20d4b1b045f43adf1e7953fdfc6c27473e9314d8ec1bb",
+    "verification/companion/macos-ui-catalog-and-denied-attempt3/run.log": "4f4fc33831e6d4f5f0c2f2f54d0af943845af497170cdc8aede05ff2c7c8e674"
+  },
+  "remaining": [
+    "Installed final Mac9+APK11 interoperation, automatic catalog/C05 token proof and measured visible update",
+    "Final package9 distribution and matching final committed source archive",
+    "Performance and public publishing acceptance remain separate"
+  ]
+}

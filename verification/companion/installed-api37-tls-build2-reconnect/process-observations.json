@@ -1,0 +1,50 @@
+{
+  "scope": "Three ps estimates on exact owned installed host/broker PIDs, one active native app, paired companion, no transfer; not energy measurement or interval CPU attribution",
+  "samples": [
+    {
+      "monotonic": 1581639.15807425,
+      "processes": [
+        {
+          "role": "installed_main",
+          "cpu_ps_estimate_percent": 2.1,
+          "rss_bytes": 121372672
+        },
+        {
+          "role": "installed_broker",
+          "cpu_ps_estimate_percent": 0.3,
+          "rss_bytes": 24788992
+        }
+      ]
+    },
+    {
+      "monotonic": 1581639.6867315,
+      "processes": [
+        {
+          "role": "installed_main",
+          "cpu_ps_estimate_percent": 1.9,
+          "rss_bytes": 121372672
+        },
+        {
+          "role": "installed_broker",
+          "cpu_ps_estimate_percent": 0.1,
+          "rss_bytes": 24788992
+        }
+      ]
+    },
+    {
+      "monotonic": 1581640.213692375,
+      "processes": [
+        {
+          "role": "installed_main",
+          "cpu_ps_estimate_percent": 2.4,
+          "rss_bytes": 121372672
+        },
+        {
+          "role": "installed_broker",
+          "cpu_ps_estimate_percent": 3.4,
+          "rss_bytes": 24756224
+        }
+      ]
+    }
+  ]
+}

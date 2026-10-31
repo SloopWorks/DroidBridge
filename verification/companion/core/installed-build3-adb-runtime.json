@@ -1,0 +1,156 @@
+{
+  "passed": true,
+  "scope": "Installed signed ADB, isolated server5038, owned API35 emulator; no video, physical USB/Wi-Fi or GUI claim",
+  "app": "/Users/patrick/Applications/DroidBridge Companion QA.app",
+  "adb_sha256": "e19f1bdac239722dbd7866ccf27c4d1de601bffc07a04c39a02daf9cbe4f8eab",
+  "server_pid": 31098,
+  "server_exit_code": -15,
+  "owned_listener_closed": true,
+  "environment": {
+    "ADB_USB": "0",
+    "ADB_MDNS": "0",
+    "ADB_LOCAL_TRANSPORT_MAX_PORT": "0"
+  },
+  "tests": [
+    {
+      "arguments": [
+        "devices",
+        "-l"
+      ],
+      "exit_code": 0,
+      "stdout": "List of devices attached\n\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "connect",
+        "127.0.0.1:5581"
+      ],
+      "exit_code": 0,
+      "stdout": "connected to 127.0.0.1:5581\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "devices",
+        "-l"
+      ],
+      "exit_code": 0,
+      "stdout": "List of devices attached\n127.0.0.1:5581         device product:sdk_phone64_arm64 model:Android_SDK_built_for_arm64 device:emu64a transport_id:1\n\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "-s",
+        "127.0.0.1:5581",
+        "shell",
+        "getprop",
+        "ro.build.version.sdk"
+      ],
+      "exit_code": 0,
+      "stdout": "35\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "-s",
+        "127.0.0.1:5581",
+        "push",
+        "/Users/patrick/workspace/DroidBridge/.build/installed-adb-qa35-1x3rcx95/payload.bin",
+        "/data/local/tmp/droidbridge-packaged-adb-fdcd69597a724855a9505f82d4e02112.bin"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "/Users/patrick/workspace/DroidBridge/.build/installed-adb-qa35-1x3rcx95/payload.bin: 1 file pushed, 0 skipped. 77.6 MB/s (65536 bytes in 0.001s)\n"
+    },
+    {
+      "arguments": [
+        "-s",
+        "127.0.0.1:5581",
+        "shell",
+        "sha256sum",
+        "/data/local/tmp/droidbridge-packaged-adb-fdcd69597a724855a9505f82d4e02112.bin"
+      ],
+      "exit_code": 0,
+      "stdout": "7daca2095d0438260fa849183dfc67faa459fdf4936e1bc91eec6b281b27e4c2  /data/local/tmp/droidbridge-packaged-adb-fdcd69597a724855a9505f82d4e02112.bin\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "-s",
+        "127.0.0.1:5581",
+        "pull",
+        "/data/local/tmp/droidbridge-packaged-adb-fdcd69597a724855a9505f82d4e02112.bin",
+        "/Users/patrick/workspace/DroidBridge/.build/installed-adb-qa35-1x3rcx95/pulled.bin"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "/data/local/tmp/droidbridge-packaged-adb-fdcd69597a724855a9505f82d4e02112.bin: 1 file pulled, 0 skipped. 54.4 MB/s (65536 bytes in 0.001s)\n"
+    },
+    {
+      "arguments": [
+        "-s",
+        "127.0.0.1:5581",
+        "forward",
+        "--no-rebind",
+        "tcp:0",
+        "tcp:37841"
+      ],
+      "exit_code": 0,
+      "stdout": "56107\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "forward",
+        "--list"
+      ],
+      "exit_code": 0,
+      "stdout": "127.0.0.1:5581 tcp:56107 tcp:37841\n\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "-s",
+        "127.0.0.1:5581",
+        "forward",
+        "--remove",
+        "tcp:56107"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "-s",
+        "127.0.0.1:5581",
+        "shell",
+        "rm",
+        "/data/local/tmp/droidbridge-packaged-adb-fdcd69597a724855a9505f82d4e02112.bin"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "disconnect",
+        "127.0.0.1:5581"
+      ],
+      "exit_code": 0,
+      "stdout": "disconnected 127.0.0.1:5581\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "devices",
+        "-l"
+      ],
+      "exit_code": 0,
+      "stdout": "List of devices attached\n\n",
+      "stderr": ""
+    }
+  ],
+  "owned_emulator_shared_transport_handoff": "The explicit isolated connection can replace the shared server connection to this owned emulator. Subsequent emulator5580 shared discovery was observed offline; targeted recovery delegated to its new UX owner. Other devices/server5037 were not operated."
+}

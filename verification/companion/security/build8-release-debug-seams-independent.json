@@ -1,0 +1,22 @@
+{
+  "scope": "Read-only packaged release host/broker byte scan, presence of specific DEBUG-only hook and test strings; no general proof that arbitrary debug code is absent",
+  "tokens": [
+    "CompanionBrokerTestingHooks",
+    "qaAdditionalSerials",
+    "events_received",
+    "notification_preferences_pre_lane",
+    "persist_before_write",
+    "persist_after_file_sync",
+    "old_poller_fault"
+  ],
+  "files": {
+    "Contents/MacOS/DroidBridge": {
+      "sha256": "02f9ecc40b2a9d7d769dee919b1f6f29bdab312b5f52be818b9e78590149a5a7",
+      "reviewed_debug_tokens_present": []
+    },
+    "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker": {
+      "sha256": "82bae4c6d6e18f27db9df640f1c53a9e6cec83c8a7103faadd99b28168102386",
+      "reviewed_debug_tokens_present": []
+    }
+  }
+}

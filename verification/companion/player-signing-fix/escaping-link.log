@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-package.py", line 240, in <module>
+    main()
+    ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-package.py", line 188, in main
+    report = {'app': str(app), 'player_bundle': verify_player_bundle(app)}
+                                                ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-package.py", line 142, in verify_player_bundle
+    assert library.is_dir() and not library.is_symlink(), 'Player Contents/lib must be a real internal directory'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Player Contents/lib must be a real internal directory

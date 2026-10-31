@@ -1,0 +1,15 @@
+{
+  "battery" : {
+    "command_poll" : 12,
+    "publish" : 2,
+    "status" : 1
+  },
+  "observation_seconds_each" : 6.2000000000000002,
+  "responsive" : {
+    "command_poll" : 11,
+    "publish" : 6,
+    "status" : 5
+  },
+  "scope" : "Actual shipping desktop adapter timers over anonymous NSXPC; no battery-savings claim",
+  "unchanged_session_marks" : 50
+}

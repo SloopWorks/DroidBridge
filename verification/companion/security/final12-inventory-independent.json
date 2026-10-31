@@ -1,0 +1,180 @@
+{
+  "scope": "Independent read-only file/symlink/mode and directory inventory comparison, no app/runtime/device launch",
+  "dist_equals_installed_including_modes": true,
+  "directory_inclusive_inventory_entries": 252,
+  "file_symlink_entries_QA11": 198,
+  "file_symlink_entries_QA12": 215,
+  "added": [
+    "Contents/Resources/Runtime/Player.app/Contents/Resources/dylib-inventory.json",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libSDL3.0.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libSvtAv1Enc.4.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libavcodec.63.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libavformat.63.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libavutil.61.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libcrypto.4.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libdav1d.7.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/liblzma.5.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libmp3lame.0.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libmpg123.0.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libopus.0.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libssl.4.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libswresample.7.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libusb-1.0.0.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libvpx.12.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libx264.165.dylib",
+    "Contents/Resources/Runtime/Player.app/Contents/lib/libx265.217.dylib"
+  ],
+  "removed": [
+    "Contents/Resources/Runtime/Player.app/Contents/lib"
+  ],
+  "changed": {
+    "Contents/Info.plist": {
+      "old": {
+        "mode": 420,
+        "kind": "file",
+        "size": 1011,
+        "sha256": "039c26c7b086e33812670112ced477d387def09bacf0492d109d2fc58841319d"
+      },
+      "new": {
+        "mode": 420,
+        "kind": "file",
+        "size": 1011,
+        "sha256": "786de6ce61f9973402d5885080f0ec3bb5c99c4ebdb7404f5b5e4e16e319ed9c"
+      }
+    },
+    "Contents/MacOS/DroidBridge": {
+      "old": {
+        "mode": 493,
+        "kind": "file",
+        "size": 6972592,
+        "sha256": "6d70755ddc5a1386e1ebc6004ebcac987be448fba8b6a620105b30ad2b777e53"
+      },
+      "new": {
+        "mode": 493,
+        "kind": "file",
+        "size": 6972592,
+        "sha256": "8cefb3e95c6ee0584dea920a66bb9d318ea4af1402f43084b5cc180cab6d15bd"
+      }
+    },
+    "Contents/Resources/Runtime/share/droidbridge/icon-helper.jar": {
+      "old": {
+        "mode": 420,
+        "kind": "file",
+        "size": 2739,
+        "sha256": "a7fc301bfd3fe7837a558f4bda14298448dc40a7da539e64913d2c98397dd728"
+      },
+      "new": {
+        "mode": 420,
+        "kind": "file",
+        "size": 2739,
+        "sha256": "590854720b823122b90a1ca36d3ad99faba7b4ffcb0c170ebf21a1bfe853e10d"
+      }
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy": {
+      "old": {
+        "mode": 365,
+        "kind": "file",
+        "size": 262336,
+        "sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3"
+      },
+      "new": {
+        "mode": 365,
+        "kind": "file",
+        "size": 262336,
+        "sha256": "5d9f5ee7953026cd7fa897c326cebf33e6c8556709efeec2fd20fd40d921912a"
+      }
+    },
+    "Contents/Resources/BUILD.md": {
+      "old": {
+        "mode": 420,
+        "kind": "file",
+        "size": 10068,
+        "sha256": "1ad7199e5283a8f814868cf3108f415656819bb5b7400cb82d5dd12b395d493e"
+      },
+      "new": {
+        "mode": 420,
+        "kind": "file",
+        "size": 10740,
+        "sha256": "854071ebe1ddfb9821035896a60b854e664c0a83119fb85776e1589095779380"
+      }
+    },
+    "Contents/_CodeSignature/CodeResources": {
+      "old": {
+        "mode": 420,
+        "kind": "file",
+        "size": 54720,
+        "sha256": "b622de7671ec2981040abec99fc2d73f6e1f6ed7c529d695713525d977f1756f"
+      },
+      "new": {
+        "mode": 420,
+        "kind": "file",
+        "size": 60090,
+        "sha256": "945f67e4bec4939e5e7ce1f955dc3fb025f8a65946e6ac5727d20e0acd755cee"
+      }
+    },
+    "Contents/Resources/ARCHITECTURE.md": {
+      "old": {
+        "mode": 420,
+        "kind": "file",
+        "size": 26612,
+        "sha256": "fafbf65556e6956a13835b635c43b91411040105535773f474f53abacdeffea0"
+      },
+      "new": {
+        "mode": 420,
+        "kind": "file",
+        "size": 27033,
+        "sha256": "cf8fa1faf5bb3b2eebf500ea43d67b8f65ee80638933fa47bd75f79c80d8dce2"
+      }
+    },
+    "Contents/Resources/Runtime/versions.txt": {
+      "old": {
+        "mode": 420,
+        "kind": "file",
+        "size": 581,
+        "sha256": "6c3d2a7a31de369fd9753544937b973888b88b9486dfde62283aeb29c009c445"
+      },
+      "new": {
+        "mode": 420,
+        "kind": "file",
+        "size": 581,
+        "sha256": "ba6f41b1309b53a2af5426040e3a0f790faeed20b0783d34bc07870f59756020"
+      }
+    },
+    "Contents/Resources/Runtime/Player.app/Contents/_CodeSignature/CodeResources": {
+      "old": {
+        "mode": 420,
+        "kind": "file",
+        "size": 2542,
+        "sha256": "b9ba46727d150357f66e7ea77ba5a28bbee9aff48228102034e7f4ee00cca41b"
+      },
+      "new": {
+        "mode": 420,
+        "kind": "file",
+        "size": 5134,
+        "sha256": "bb0a9c6ddc3d8240b68fc7bb1d91be7a251c72e1b816329deb6eeb4c8fb8b881"
+      }
+    }
+  },
+  "host_code_signature_boundary_comparison": {
+    "QA11": {
+      "file_sha256": "6d70755ddc5a1386e1ebc6004ebcac987be448fba8b6a620105b30ad2b777e53",
+      "code_before_signature_sha256": "216fc3e87490b96712c4bb9af7a9429f62f652a879f22b53add8bb8f8227e30a",
+      "signature_offset": 6940752,
+      "signature_length": 31840,
+      "file_length": 6972592
+    },
+    "QA12": {
+      "file_sha256": "8cefb3e95c6ee0584dea920a66bb9d318ea4af1402f43084b5cc180cab6d15bd",
+      "code_before_signature_sha256": "216fc3e87490b96712c4bb9af7a9429f62f652a879f22b53add8bb8f8227e30a",
+      "signature_offset": 6940752,
+      "signature_length": 31840,
+      "file_length": 6972592
+    }
+  },
+  "committed_source_delta": [
+    "ARCHITECTURE.md",
+    "BUILD.md",
+    "scripts/package.sh",
+    "scripts/verify-package.py"
+  ]
+}

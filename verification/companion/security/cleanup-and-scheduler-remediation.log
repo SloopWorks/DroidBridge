@@ -1,0 +1,178 @@
+[0/1] Planning build
+Building for debugging...
+[0/14] Write sources
+[2/14] Write swift-version--58304C5D6DBC2206.txt
+[4/18] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[5/18] Compiling DroidBridgeCore CompanionBrokerService.swift
+[6/18] Compiling DroidBridgeCore CompanionBrokerScheduler.swift
+[7/18] Compiling DroidBridgeCore CompanionBrokerJournal.swift
+[8/29] Compiling DroidBridgeCompanionBroker main.swift
+[9/29] Emitting module DroidBridgeCompanionBroker
+[9/29] Write Objects.LinkFileList
+[11/29] Emitting module DroidBridgeAvailability
+[12/29] Compiling DroidBridgeAvailability main.swift
+[12/29] Write Objects.LinkFileList
+[14/29] Compiling DroidBridgeStreaming SocketTransport.swift
+[14/29] Linking DroidBridgeCompanionBroker
+[15/29] Linking DroidBridgeAvailability
+[16/29] Applying DroidBridgeAvailability
+[16/29] Applying DroidBridgeCompanionBroker
+[19/29] Emitting module DroidBridgeStreaming
+[20/29] Compiling DroidBridgeStreaming SessionRecovery.swift
+[21/29] Compiling DroidBridgeStreaming BridgeSession.swift
+[22/29] Compiling DroidBridgeStreaming DeviceAudioArtifacts.swift
+[23/29] Compiling DroidBridgeStreaming H264Decoder.swift
+[24/29] Compiling DroidBridgeStreaming DeviceAudioRouter.swift
+[25/91] Emitting module DroidBridgeCoreTests
+[26/94] Compiling DroidBridgeCoreTests CompanionQRImageReaderTests.swift
+[27/94] Compiling DroidBridgeCoreTests CompanionReleaseMetadataTests.swift
+[28/94] Compiling DroidBridgeCoreTests CompanionSecurityTests.swift
+[29/94] Compiling DroidBridgeCoreTests DeviceSelectionTests.swift
+[30/94] Compiling DroidBridgeCoreTests DroidBridgePreferencesTests.swift
+[31/94] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[32/94] Compiling DroidBridgeCoreTests ScrcpyPortLeaseTests.swift
+[33/94] Compiling DroidBridgeCoreTests ScrcpyStartupLeaseTests.swift
+[34/94] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[35/94] Compiling DroidBridgeCoreTests CompanionSetupValidationTests.swift
+[36/94] Compiling DroidBridgeCoreTests CompanionTLSFixture.swift
+[37/94] Compiling DroidBridgeCoreTests CompanionWirelessADBTests.swift
+[38/94] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[39/94] Compiling DroidBridgeCoreTests DeviceAudioPreferencesTests.swift
+[40/94] Compiling DroidBridgeCoreTests DeviceAudioQATests.swift
+[41/94] Compiling DroidBridgeCoreTests DeviceAudioReadinessTests.swift
+[42/94] Compiling DroidBridgeCoreTests DeviceAudioTests.swift
+[43/94] Compiling DroidBridgeCoreTests DeviceReadinessTests.swift
+[44/94] Compiling DroidBridgeCoreTests StartupFrameVisibilityTests.swift
+[45/94] Compiling DroidBridgeCoreTests StreamingTests.swift
+[46/94] Compiling DroidBridgeCoreTests SupervisorDiagnosticsTests.swift
+[47/94] Compiling DroidBridgeCoreTests PhoneDisplayPowerQATests.swift
+[48/94] Compiling DroidBridgeCoreTests PhoneDisplayPowerTests.swift
+[49/94] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[50/94] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[51/94] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[52/94] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[53/94] Compiling DroidBridgeCoreTests InputGeometryTests.swift
+[54/94] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[55/94] Compiling DroidBridgeCoreTests ManagedAppNamingQATests.swift
+[56/94] Compiling DroidBridge NativeWindow.swift
+[57/94] Compiling DroidBridge ManagedAppNameRepair.swift
+[58/94] Compiling DroidBridge PhoneDisplayControls.swift
+[59/94] Compiling DroidBridge Launcher.swift
+[60/94] Compiling DroidBridge LauncherUI.swift
+[61/95] Compiling DroidBridgeCoreTests CompanionExportPolicyTests.swift
+[62/95] Compiling DroidBridgeCoreTests CompanionPendingAdmissionTests.swift
+[63/95] Compiling DroidBridgeCoreTests CompanionPerformanceTests.swift
+[64/95] Compiling DroidBridgeCoreTests CompanionQAScopeTests.swift
+[65/95] Compiling DroidBridgeCoreTests BrokerAdmissionTLSPeer.swift
+[66/95] Compiling DroidBridgeCoreTests CanonicalAliasAdmissionTests.swift
+[67/95] Compiling DroidBridgeCoreTests CompanionBoundaryTests.swift
+[68/95] Compiling DroidBridgeCoreTests CompanionBrokerSchedulerTests.swift
+[69/95] Compiling DroidBridgeCoreTests CompanionBrokerTLSRaceTests.swift
+[70/95] Compiling DroidBridgeCoreTests CompanionBrokerTests.swift
+[71/95] Compiling DroidBridgeCoreTests CompanionCleanupSecurityTests.swift
+[72/95] Compiling DroidBridgeCoreTests CompanionDiagnosticsTests.swift
+[73/95] Compiling DroidBridgeCoreTests ADBPortableRuntimeTests.swift
+[74/95] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[75/95] Compiling DroidBridgeCoreTests AndroidIconProviderTests.swift
+[76/95] Compiling DroidBridgeCoreTests AvailabilityRuntimeStoreTests.swift
+[76/95] Write Objects.LinkFileList
+[78/95] Compiling DroidBridge main.swift
+[79/95] Compiling DroidBridge MacAppWrapper.swift
+[80/95] Compiling DroidBridge DeviceOnboardingUI.swift
+[81/95] Compiling DroidBridge DeviceOnboarding.swift
+[82/95] Compiling DroidBridge DeviceOnboardingAgent.swift
+[89/95] Emitting module DroidBridge
+[91/95] Write Objects.LinkFileList
+[92/95] Linking DroidBridgePackageTests
+[93/95] Linking DroidBridge
+[94/95] Applying DroidBridge
+Build complete! (11.94s)
+Test Suite 'Selected tests' started at 2026-10-30 13:49:14.272.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 13:49:14.273.
+Test Suite 'CompanionBoundaryTests' started at 2026-10-30 13:49:14.273.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCancellationBeforeStartAndWhileReceivingCompletesOnce]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCancellationBeforeStartAndWhileReceivingCompletesOnce]' passed (1.325 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' passed (0.051 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCatalogDeletedIdentityAndUTF8ByteBound]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCatalogDeletedIdentityAndUTF8ByteBound]' passed (0.102 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testDeepJSONAndNonUTF8AreRejectedBeforeDecoding]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testDeepJSONAndNonUTF8AreRejectedBeforeDecoding]' passed (0.104 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testForwardNoRebindAndExactCleanupWithOwnedFakeADB]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testForwardNoRebindAndExactCleanupWithOwnedFakeADB]' passed (0.772 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testHelloRequiresUUIDAndPositiveOrderedProtocolRange]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testHelloRequiresUUIDAndPositiveOrderedProtocolRange]' passed (0.151 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testKeychainCredentialRoundTripUsesDedicatedRandomIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testKeychainCredentialRoundTripUsesDedicatedRandomIdentity]' passed (0.032 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testLegacyUnpinnedKeychainRecordRequiresPairingBeforeTransport]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testLegacyUnpinnedKeychainRecordRequiresPairingBeforeTransport]' passed (0.014 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPairingAndAuthenticatedIdentityBindExpectedInstallation]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPairingAndAuthenticatedIdentityBindExpectedInstallation]' passed (0.101 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPNGMustActuallyDecodeAndValidPNGPasses]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testPNGMustActuallyDecodeAndValidPNGPasses]' passed (0.105 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testRequestCorrelationAndMIMEAreRequired]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testRequestCorrelationAndMIMEAreRequired]' passed (0.101 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testTransferReceiptAcknowledgesOnlyVerifiedWholeFileMetadata]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testTransferReceiptAcknowledgesOnlyVerifiedWholeFileMetadata]' passed (0.055 seconds).
+Test Suite 'CompanionBoundaryTests' passed at 2026-10-30 13:49:17.187.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 2.913 (2.914) seconds
+Test Suite 'CompanionBrokerSchedulerTests' started at 2026-10-30 13:49:17.187.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testBatteryAssetLimitDoesNotBlockAnotherPhone]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testBatteryAssetLimitDoesNotBlockAnotherPhone]' passed (0.024 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testCancelledQueuedControlAndBulkReturnAcquiredSlots]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testCancelledQueuedControlAndBulkReturnAcquiredSlots]' passed (0.056 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testControlQueueBoundAndCancelledWaitersLeaveNoGroupOwnership]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testControlQueueBoundAndCancelledWaitersLeaveNoGroupOwnership]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testFourGlobalControlLanesPreserveFIFOAmongEligibleWaiters]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testFourGlobalControlLanesPreserveFIFOAmongEligibleWaiters]' passed (0.026 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testImmediateCancellationNeverConsumesSlot]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerSchedulerTests testImmediateCancellationNeverConsumesSlot]' passed (0.000 seconds).
+Test Suite 'CompanionBrokerSchedulerTests' passed at 2026-10-30 13:49:17.296.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.109 (0.109) seconds
+Test Suite 'CompanionBrokerTLSRaceTests' started at 2026-10-30 13:49:17.296.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testActualTLSApprovedAdmissionFaultsRemainExplicitAndRecoverable]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testActualTLSApprovedAdmissionFaultsRemainExplicitAndRecoverable]' passed (0.322 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedRealTLSAuthenticatedIdentityDoesNotStallAnotherPhone]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedRealTLSAuthenticatedIdentityDoesNotStallAnotherPhone]' passed (0.269 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedRealTLSHelloDoesNotStallAnotherPhysicalPhone]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testBlockedRealTLSHelloDoesNotStallAnotherPhysicalPhone]' passed (0.256 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testEnrollmentReplacementBeforeSecretRechecksRealTLSPinAndUUID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testEnrollmentReplacementBeforeSecretRechecksRealTLSPinAndUUID]' passed (0.260 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testForgetWhileRealPinnedTLSHelloIsSuspendedNeverSendsStoredBearer]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testForgetWhileRealPinnedTLSHelloIsSuspendedNeverSendsStoredBearer]' passed (0.085 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testHeartbeatRequiresCapabilityAndRecoversMissingPeerSnapshot]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testHeartbeatRequiresCapabilityAndRecoversMissingPeerSnapshot]' passed (0.232 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testRealAdmissionPeerProtocol]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBrokerTLSRaceTests testRealAdmissionPeerProtocol]' passed (0.056 seconds).
+Test Suite 'CompanionBrokerTLSRaceTests' passed at 2026-10-30 13:49:18.777.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 1.480 (1.480) seconds
+Test Suite 'CompanionCleanupSecurityTests' started at 2026-10-30 13:49:18.777.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' passed (1.581 seconds).
+Test Suite 'CompanionCleanupSecurityTests' passed at 2026-10-30 13:49:20.358.
+	 Executed 1 test, with 0 failures (0 unexpected) in 1.581 (1.581) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 13:49:20.358.
+	 Executed 25 tests, with 0 failures (0 unexpected) in 6.082 (6.085) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 13:49:20.358.
+	 Executed 25 tests, with 0 failures (0 unexpected) in 6.082 (6.086) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

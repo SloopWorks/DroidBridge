@@ -1,0 +1,10 @@
+{
+  "manifest_sha256": "78a43c0e98ce54e29eee7446a877c80f6eb30a4d0d5f95eb8601992d81349d3b",
+  "source_files_checked": 58,
+  "source_mismatches": [],
+  "artifact_hash_matches": {
+    "DroidBridgeCompanion-test.apk": true,
+    "DroidBridgeCompanion.apk": true
+  },
+  "scope": "Independent source/artifact binding of code8 candidate; no installed runtime mutation"
+}

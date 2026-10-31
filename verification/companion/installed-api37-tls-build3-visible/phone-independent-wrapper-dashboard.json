@@ -1,0 +1,25 @@
+{
+  "phone_texts": [
+    "Using: Patrick\u2019s MacBook Pro \u00b7 Connected",
+    "Completed on Patrick\u2019s MacBook Pro: set export",
+    "Connected to Patrick\u2019s MacBook Pro",
+    "Keep DroidBridge available to your trusted Mac. Android debugging authorization and companion pairing are separate.",
+    "Stop connection service",
+    "Connection setup",
+    "Pair a new Mac",
+    "Refresh status",
+    "Mac sessions",
+    "2 app windows on Patrick\u2019s MacBook Pro",
+    "Input Beta \u00b7 running",
+    "Stop Input Beta",
+    "Input Alpha \u00b7 running",
+    "Stop Input Alpha",
+    "Stop all on Patrick\u2019s MacBook Pro",
+    "Audio destination",
+    "Device-wide, including other Android apps. Capture restrictions may keep Mac output silent. Actual output: {\"message\":\"Mac audio output initialized. Applies to all device audio; audibility depends on Android audio and Mac volume.\",\"phase\":\"ready\",\"route\":\"mac\"}",
+    "Home",
+    "Apps",
+    "Sharing",
+    "Settings"
+  ]
+}

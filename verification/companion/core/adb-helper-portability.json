@@ -1,0 +1,65 @@
+{
+  "acceptance" : true,
+  "android_transport_tested" : false,
+  "availability_adb_version" : "Android Debug Bridge version 1.0.41\nVersion 37.0.0-android-tools\nInstalled as \/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/PortableAvailability\/generations\/bcff0b08c086e07eb93883c93aa8b7cb\/adb\nRunning on Darwin 25.2.0 (arm64)\n",
+  "availability_generation" : "\/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/PortableAvailability\/generations\/bcff0b08c086e07eb93883c93aa8b7cb",
+  "broker_adb_version" : "Android Debug Bridge version 1.0.41\nVersion 37.0.0-android-tools\nInstalled as \/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/CompanionBroker\/generations\/ee879d5e9c822028d11cf3c4d0cd534ad9d622fbe96bd7410f2d67551fdfcfea\/adb\nRunning on Darwin 25.2.0 (arm64)\n",
+  "broker_checked_lifetime_lease" : true,
+  "broker_executable" : "\/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/CompanionBroker\/generations\/ee879d5e9c822028d11cf3c4d0cd534ad9d622fbe96bd7410f2d67551fdfcfea\/DroidBridgeCompanionBroker",
+  "broker_pid" : 46779,
+  "broker_xpc_offline_status" : true,
+  "fixture" : "actual scoped broker and immutable availability ADB relocation",
+  "installed_legacy_sdk_closure_verified" : true,
+  "installed_legacy_sdk_sha256" : "1e22e72965d8a24046d0fb9bf94b5fcdb57796c2a5910dce2b05b70da619691d",
+  "job" : "dev.droidbridge.companion.broker.qa.dc00d1faf893",
+  "scoped_job_removed" : true,
+  "server_started" : false,
+  "source_portable_files" : [
+    "adb",
+    "adb-libbrotlicommon.1.2.0.dylib",
+    "adb-libbrotlidec.1.2.0.dylib",
+    "adb-libbrotlienc.1.2.0.dylib",
+    "adb-liblz4.1.10.0.dylib",
+    "adb-libusb-1.0.0.dylib",
+    "adb-libzstd.1.5.7.dylib",
+    "adb-runtime.json"
+  ],
+  "upgrades" : [
+    {
+      "generation" : "\/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/CompanionBroker\/generations\/12b9ed35872da31d06340419df8bc7ec2ff7ea1441ec7f24d345d6a2724f1bf8",
+      "index" : 0,
+      "old_configured_generation_preserved" : true,
+      "old_job_stopped_before_upgrade" : false,
+      "old_owner_stopped" : true,
+      "pid" : 47158,
+      "retained_count" : 4
+    },
+    {
+      "generation" : "\/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/CompanionBroker\/generations\/58634bef9c7d1c2b8c78d399fc48adae654067fd809900b2168e969fd13b5c45",
+      "index" : 1,
+      "old_configured_generation_preserved" : true,
+      "old_job_stopped_before_upgrade" : false,
+      "old_owner_stopped" : true,
+      "pid" : 47603,
+      "retained_count" : 4
+    },
+    {
+      "generation" : "\/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/CompanionBroker\/generations\/6c02595ebbbc6cbb949e89387c10b29e50797c17be45d94ccb7f7dad04fd2eba",
+      "index" : 2,
+      "old_configured_generation_preserved" : true,
+      "old_job_stopped_before_upgrade" : false,
+      "old_owner_stopped" : true,
+      "pid" : 48027,
+      "retained_count" : 4
+    },
+    {
+      "generation" : "\/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/CompanionBroker\/generations\/d45be083feb8855724fabace5f23207d0d7da449e719796eeb795ce35e8bd69d",
+      "index" : 3,
+      "old_configured_generation_preserved" : true,
+      "old_job_stopped_before_upgrade" : true,
+      "old_owner_stopped" : true,
+      "pid" : 48453,
+      "retained_count" : 4
+    }
+  ]
+}

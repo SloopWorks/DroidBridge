@@ -1,0 +1,126 @@
+{
+  "action": "status",
+  "ok": true,
+  "buttons": [
+    {
+      "label": "Paired companion phone",
+      "title": "Google sdk_gphone16k_arm64 \u00b7 Connected",
+      "enabled": true,
+      "state": 1
+    },
+    {
+      "label": "Refresh",
+      "title": "Refresh",
+      "enabled": true,
+      "state": 0
+    },
+    {
+      "label": "Companion section Connection",
+      "title": "Connect",
+      "enabled": true,
+      "state": 0
+    },
+    {
+      "label": "Companion section Apps",
+      "title": "Apps",
+      "enabled": true,
+      "state": 0
+    },
+    {
+      "label": "Companion section Sessions",
+      "title": "Sessions",
+      "enabled": true,
+      "state": 0
+    },
+    {
+      "label": "Companion section Handoff",
+      "title": "Handoff",
+      "enabled": true,
+      "state": 0
+    },
+    {
+      "label": "Companion section Notifications",
+      "title": "Alerts",
+      "enabled": true,
+      "state": 0
+    },
+    {
+      "label": "Companion section Performance",
+      "title": "Power",
+      "enabled": true,
+      "state": 0
+    },
+    {
+      "label": "Companion section Diagnostics",
+      "title": "Reports",
+      "enabled": true,
+      "state": 1
+    },
+    {
+      "label": "Companion section Get Mac App",
+      "title": "Install",
+      "enabled": true,
+      "state": 0
+    },
+    {
+      "label": "Refresh Diagnostics",
+      "title": "Refresh Diagnostics",
+      "enabled": true,
+      "state": 1
+    },
+    {
+      "label": "Export Report\u2026",
+      "title": "Export Report\u2026",
+      "enabled": true,
+      "state": 0
+    }
+  ],
+  "id": 1223,
+  "fields": [],
+  "windows": [
+    {
+      "number": 13983,
+      "title": "DroidBridge",
+      "width": 1160,
+      "height": 780,
+      "visible": true
+    },
+    {
+      "number": 13984,
+      "title": "",
+      "width": 64,
+      "height": 64,
+      "visible": false
+    },
+    {
+      "number": 13990,
+      "title": "DroidBridge Companion",
+      "width": 900,
+      "height": 760,
+      "visible": true
+    },
+    {
+      "number": 14016,
+      "title": "Pair Android Companion",
+      "width": 600,
+      "height": 540,
+      "visible": false
+    },
+    {
+      "number": 14066,
+      "title": "Window",
+      "width": 66,
+      "height": 20,
+      "visible": true
+    }
+  ],
+  "texts": [
+    "Phone",
+    "Google sdk_gphone16k_arm64 \u00b7 Authenticated companion connected",
+    "Redacted diagnostic snapshot updated.",
+    "Local diagnostics",
+    "Exports include bounded capability, permission and connection counters. Clipboard, shared content, notification bodies, credentials and hardware identifiers are excluded. Nothing is uploaded."
+  ],
+  "physical_focus_verified": false,
+  "pid": 75770
+}

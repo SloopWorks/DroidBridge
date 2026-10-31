@@ -1,0 +1,9 @@
+{
+  "authorization_status": "denied",
+  "boundary": "Actualinstalled6 ownCheckMacNotificationPermission button",
+  "user_intent_to_allow_is_not_grant": true,
+  "system_permission_app_tool_rejection": "Computer Use is not allowed to use the app 'com.apple.UserNotificationCenter' for safety reasons.",
+  "agent_did_not_control_os_dialog": true,
+  "no_re_request_or_settings_override_after_denial": true,
+  "native_banner_delivery_verified": false
+}

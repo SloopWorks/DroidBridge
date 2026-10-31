@@ -1,0 +1,30 @@
+{
+  "failure": "Cold emulator restart loses displayed trusts; broker server_authentication_failed; no bypass/re-pair performed",
+  "phone_settings": [
+    "Choose a trusted Mac",
+    "Starting connection service\u2026",
+    "Trusted Macs",
+    "Choose the receiver at the top. Forgetting stops future access; saved copies on a Mac are not erased.",
+    "Patrick\u2019s MacBook Pro",
+    "Share public notifications with Patrick\u2019s MacBook Pro",
+    "Forget Patrick\u2019s MacBook Pro",
+    "Patrick\u2019s MacBook Pro",
+    "Share public notifications with Patrick\u2019s MacBook Pro",
+    "Forget Patrick\u2019s MacBook Pro",
+    "Patrick\u2019s MacBook Pro",
+    "Share public notifications with Patrick\u2019s MacBook Pro",
+    "Forget Patrick\u2019s MacBook Pro",
+    "Sharing permissions",
+    "Pairing grants neither clipboard collection nor notification access.",
+    "Allow explicit clipboard and text sharing",
+    "Android notification access: Granted",
+    "Enable notification sharing",
+    "Review Android notification access",
+    "Home",
+    "Apps",
+    "Sharing",
+    "Settings"
+  ],
+  "owned_emulator_launcher_pid": 30064,
+  "original_mac_pid": 20973
+}

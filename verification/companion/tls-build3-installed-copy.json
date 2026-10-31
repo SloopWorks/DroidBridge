@@ -1,0 +1,15 @@
+{
+  "installed_path": "/Users/patrick/Applications/DroidBridge Companion QA.app",
+  "version": "0.2.0",
+  "build": "3",
+  "source_artifact": "/Users/patrick/workspace/DroidBridge/dist/DroidBridge.app",
+  "signed_copy_verified": true,
+  "started": false,
+  "scope": "Copy outside build directory only; final installed flow pending",
+  "sha256": {
+    "Contents/MacOS/DroidBridge": "d776356fa9c2fc671a79794880b8c3ebe3b22828fa5a5fafca3ee314808f2ad5",
+    "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker": "246725b3bc2aff61df276ea166ec63f53f1755111c45f01cdee159bfcc80b846",
+    "Contents/Resources/Runtime/bin/adb-runtime.json": "65dfa704cbde5802fe9e7a1c44f77c9dd9943653f0b5135fa8fca7f71a5c9cc9",
+    "Contents/Resources/Companion/DroidBridgeCompanion.apk": "b17b6bcae25cb3549ec696a868675807aa93fc316ae1327bd8af9ede5dfc31f5"
+  }
+}

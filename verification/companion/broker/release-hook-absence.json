@@ -1,0 +1,10 @@
+{
+  "binary_sha256": "3b35a2ac3daf1e9a31f035cd3195f3bc3b779279414c289644b39c2ba23a1168",
+  "debug_hook_markers": {
+    "CompanionBrokerTestingHooks": false,
+    "before_pair_transport_bind": false,
+    "hello_received": false,
+    "injected_candidate_stage": false
+  },
+  "nm_debug_hook_symbols": 0
+}

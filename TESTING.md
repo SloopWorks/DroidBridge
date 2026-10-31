@@ -46,7 +46,7 @@ See [the onboarding report](verification/onboarding/REPORT.md) and [Android disp
 
 `scripts/verify-device-onboarding.sh` exercises the shipping bounded coordinator against the entire real dedicated-emulator catalog, including Android icon extraction and current-record resume. It installs the real per-user helper, so coordinate exclusive ownership and preserve prior shared preferences/catalog state. Tests must distinguish the harness process exiting from main GUI and wrapper lifetime checks.
 
-Run `verification/desktop-mode/run-native.sh` and `run-external.sh` sequentially with `DROIDBRIDGE_TEST_SERIAL=emulator-5580` or the dedicated API37 serial `emulator-5582`. They verify both decoration values, actual changing frames, Android input, activity transitions, resize and exact selected-device cleanup. Never overlap clients using the same Android package on one device: task affinity can move a task and invalidate input/frame results. Wait for observed frame/input conditions rather than treating a fixed delay as evidence of navigation failure.
+Run `verification/desktop-mode/run-native.sh` and `run-external.sh` sequentially with `DROIDBRIDGE_TEST_SERIAL=emulator-5580` or the dedicated API 37 serial `emulator-5582`. They verify both decoration values, actual changing frames, Android input, activity transitions, resize and exact selected-device cleanup. Never overlap clients using the same Android package on one device: task affinity can move a task and invalidate input/frame results. Wait for observed frame/input conditions rather than treating a fixed delay as evidence of navigation failure.
 
 The focused launch-race harness compiles the shipping launcher and delays a fake ADB resolve command, then checks that polling interruption survives the late startup catch. It complements actual emulator reboot tests. The SDL test injects only public client events into two unchanged bundled Players, validates separate Android mouse/text/raw-key receipts, inspects real recorded frames, and verifies cleanup; it does not establish OS focus under a locked desktop.
 
@@ -60,7 +60,7 @@ The 0.1.1 wrapper report is [verification/launcher-fix/REPORT.md](verification/l
 
 ## Physical phone screen control
 
-`swift test --filter PhoneDisplayPower` covers parser certainty, command capability changes, latest-intent races, per-device mutexes and preferences. Real Android15/17 streams, input, display-state evidence and final installed GUI checks live under `verification/screen-off/`. Test primary display0OFF separately from virtual-display liveness; command exit0 and window existence alone are insufficient. Preserve user emulator5554 and all unrelated devices.
+`swift test --filter PhoneDisplayPower` covers parser certainty, command capability changes, latest-intent races, per-device mutexes and preferences. Real Android 15/17 streams, input, display-state evidence and final installed GUI checks live under `verification/screen-off/`. Test primary display0OFF separately from virtual-display liveness; command exit0 and window existence alone are insufficient. Preserve user emulator5554 and all unrelated devices.
 
 ## Launch presentation
 
@@ -84,3 +84,77 @@ tones; positive audio evidence requires nonzero PCM submitted successfully to SD
 tone frequency/ON-OFF contrast and initialized output, not process/window presence.
 The test-only observer records aggregate metrics, never PCM payload. Physical
 speaker audibility and hardware Pixel behavior remain manual acceptance.
+
+## Companion verification
+
+The current production-source checkpoint (`0b4b3e3`) passed 335 Swift tests,
+with four explicit live opt-in skips and zero failures in 158.232 s. A subsequent
+**test-only** supervisor identity/cleanup guard has a separate seven-test passing
+run; those final test bytes are not relabeled as part of the 335 run. Independent
+binding: `verification/companion/security/source10-final-gates-independent.json`.
+The first interrupted full attempt and its process sample are retained.
+
+Android 0.2/code 12 actual signed-release tests on owned API 35 passed 36 full,
+three focused pinned-TLS Unicode/routing tests, nine large-text/320dp tests and
+eight JVM units. Same-signer 11→12 upgrade retained installation UUID, pin and
+settings. See `verification/companion/unicode-catalog/REPORT.md`. These API 35
+results do not certify physical Pixel behavior or an installed Mac interaction.
+
+Focused local checks, without live Android operations:
+
+```sh
+swift test --filter 'CompanionCatalogReadScopeTests|CompanionCatalogSignalTests|CompanionNotificationSecurityTests'
+AndroidCompanion/build.sh :app:testDebugUnitTest
+scripts/verify-companion-catalog-sync.sh
+scripts/verify-companion-gui.sh
+```
+
+The Core tests use real pinned TLS fixture peers for hostile/late/replayed
+responses, command clocks and trust changes. The catalog engine fixture tests
+bounded full/delta merge, Unicode boundaries, stale snapshots, hidden views,
+one-pass coalescing and retry starvation. The AppKit/anonymous-NSXPC fixture
+executes shipping UI and injected permission callbacks. None substitutes for
+actual Android, OS permission delivery, Spotlight activation or OS-routed input.
+
+For signed Android instrumentation, build the release and release-test APKs with
+one persistent signer and `DROIDBRIDGE_TEST_BUILD_TYPE=release`, install only on
+the explicitly handed-off serial, then invoke
+`dev.droidbridge.companion.test/androidx.test.runner.AndroidJUnitRunner` through
+that exact device's ADB. Do not run broad device-discovery Gradle tests while
+other emulators or a physical phone are attached. Preserve font/density,
+permissions, service state and exact resource baseline; restore only owned
+changes. Test APKs/attacker modules never ship in the product.
+
+Installed flows follow `docs/companion/INSTALLED_QA_RUNBOOK.md`, with the current
+artifact/scope supplied by the coordinator. Use a private mode 700
+`--companion-qa-root` and exact `--serial`; scoped helpers, wrappers and broker
+must not touch production state. Coordinate exclusive GUI/device ownership.
+Verify the copied read-only-DMG artifact, then exercise real QR approval, retained
+trust/update, live input on both backends, phone commands/main-quit bootstrap,
+exports, shares, explicit clipboard, notification reply/dismiss/revoke,
+service/emulator recovery and exact cleanup. Commands with unknown outcomes must
+not be retried as new effects just to get a green result.
+
+Mac build 10 / Android code 12 current installed C04 evidence records five package mutations updating
+both visible catalog surfaces without Refresh. Its raw timing/screenshots are in
+`installed-api37-tls-build10-final/automatic-catalog/`; independent/final-cohort
+acceptance and final-candidate checks are tracked by the ledger. Installed
+Unicode label/icon and service-restart evidence is separate from the source gate.
+Earlier Mac build 9 failed automatic updates because Android's JSON-null broadcast
+recipient was filtered as the string `null`; Android code 12 fixes that without widening
+notification recipients. Preserve the failed attempt, not just the later result.
+
+After builds and GUI work stop, run the precommitted 20-per-cohort paired/unpaired
+installed preview/video test and standalone AppKit controls. Capture distributions,
+load and exact child cleanup. The original 100 ms preview target and first-video
+regression limits remain in force; prior failures are retained. Configured
+15/30/60 ceilings and sustained decoded motion are separate from one-second
+arrival jitter, guaranteed 60 fps or power savings.
+
+The final release gate also needs actual public versioned metadata/download
+hashes, corresponding-source review and a downloaded installed-copy smoke.
+Current native banners (Denied), Spotlight activation, fallback automation and
+performance limitations are listed in `KNOWN_ISSUES.md`. Read
+`verification/companion/RELEASE_CANDIDATE.json` and `PROGRAM_STATUS.md` for the
+exact current cohort: source/fixture/older installed passes never automatically
+certify newer artifacts. No physical Pixel operation is part of automated QA.

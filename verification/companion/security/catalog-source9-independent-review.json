@@ -1,0 +1,28 @@
+{
+  "scope": "Independent source/fixture-output review; Core real pinned HTTPS scope/signal/security tests and deterministic shipping Mac catalog engine; no installed C04 or OS permission acceptance",
+  "source_sha256": {
+    "Sources/DroidBridgeCore/CompanionBrokerService.swift": "9f12ac05552f23d864926db92fa2624dea6677cccfbd2659f3389a0fe37c78cc",
+    "Tests/DroidBridgeCoreTests/CompanionCatalogReadScopeTests.swift": "7d16bd782fa46fa39f5fd48c9b1bc1602705b68dc0849eda8aba63292e173980",
+    "Tests/DroidBridgeCoreTests/CompanionCatalogSignalTests.swift": "43444fd1a876f45b78b05d2d0a98d9cdbff11d385e338eeb09538de0b0cf8143",
+    "Tests/DroidBridgeCoreTests/CompanionNotificationSecurityTests.swift": "17662de87266015f42b5b22eb736347efbdb6e6292d9e15287d0b645c9af8dd1",
+    "Tests/DroidBridgeCoreTests/BrokerAdmissionTLSPeer.swift": "99b004acf8a01d1d805d220c3fe5d99bf6687afd421a3de4462c9be1581f3253",
+    "Sources/DroidBridge/CompanionCatalogSync.swift": "b00e27870f342c07c2b58825d7503a7e2da83084cb013f7d37b1f70d7fd4b1e1",
+    "Sources/DroidBridge/CompanionDesktopAdapter.swift": "584c93e70892c6682ea5aa8e21bf09ac275629ebea3094f1981a120f2b338c03",
+    "Sources/DroidBridge/CompanionWindow.swift": "68fd5457190705bfeb55317b423cb61e2634370b624f19c92d95a18a43921055",
+    "Sources/DroidBridge/CompanionLauncherIntegration.swift": "ade7e572c017edadff80cf6184cd7443dd58e6beb1df9a71f9036943423defe3",
+    "Sources/DroidBridge/Launcher.swift": "aa53e0560a9d02a83a4816feeb4b325704080020fa08b876915395baa987c5fb",
+    "scripts/verify-companion-catalog-sync.swift": "1fe7490eddb414ebdbbe47a5b1dc870690a4c35eb7670d7ff8d04f037c76e6e2"
+  },
+  "core_focused_log_sha256": "f5bd2ff859ddf2d8989c58750a9d36a33cac8227edc8816718af1cefecb2ed27",
+  "core_tests": 21,
+  "core_failures": 0,
+  "engine_fixture_report_sha256": "ba5bc6f1edbdd7d86953294a39d3428d8761254aa1478f905a9afb1e097677f7",
+  "coalescing_blocker_remediated": "Hints retain current authority-valid pass and schedule at most one newest successor; hints do not reset retry budget; hidden origins cannot start successor work",
+  "findings": "No remaining reviewed source blocker for Core catalog read scope and Mac catalog/Denied-only authorization paths",
+  "remaining": [
+    "Corrected AppKit fixture execution; first run test-only nil tab lookup preserved as failure",
+    "Final source-frozen full Swift suite",
+    "Actual installed Mac9 automatic rename/icon/delete/token/C05 proof and denial flow",
+    "Final matching source archive/distribution/performance review"
+  ]
+}

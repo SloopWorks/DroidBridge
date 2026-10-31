@@ -1,0 +1,47 @@
+{
+  "scope": "Independent exact committed production-source full Swift binding, explicitly different follow-up test-only guard cohort, Android12 full raw gate; no installed runtime acceptance",
+  "commit": "0b4b3e3ab7a75ddca3abcbc83aaef00f93e86c88",
+  "final_current_and_committed_files": 128,
+  "production_files_unchanged_from_full": 74,
+  "changed_after_full": [
+    "Tests/DroidBridgeCoreTests/CanonicalAliasAdmissionTests.swift"
+  ],
+  "followup_test_hash": "7e87a4859abf35a18198b680d8699803b3537c8012b4c6690ebacdc4250746d2",
+  "swift_full": {
+    "tests": 335,
+    "explicit_live_opt_in_skips": 4,
+    "failures": 0,
+    "seconds": 158.232,
+    "manifest": "swift-source-attempt2-before.json",
+    "log": "swift-full-attempt2.log"
+  },
+  "followup_focused": {
+    "path": "Tests/DroidBridgeCoreTests/CanonicalAliasAdmissionTests.swift",
+    "sha256": "7e87a4859abf35a18198b680d8699803b3537c8012b4c6690ebacdc4250746d2",
+    "reason": "Guard intentional supervisor crash signal with captured process start identity",
+    "focused_tests": 7,
+    "failures": 0,
+    "seconds": 0.101,
+    "log": "alias-harness-final-identity-guard.log"
+  },
+  "android_full": {
+    "tests": 36,
+    "seconds": 285.923,
+    "failures": 0,
+    "manifest_sources_current_and_committed": 42,
+    "apk_sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b"
+  },
+  "evidence_sha256": {
+    "verification/companion/unicode-catalog/swift-final-binding.json": "e9597b09278f8d2cc26cd688afce87735f0d684f0c89471ddfe3053559402ea4",
+    "verification/companion/unicode-catalog/swift-source-attempt2-before.json": "2699e2397783339157ce4feec9b198942053a8f10b1f308f7aa697b7b0127833",
+    "verification/companion/unicode-catalog/swift-full-attempt2.log": "4eff78766b4bcb21efd58259234ac1081bb0ca733ecbc89f7ddee152dc553567",
+    "verification/companion/unicode-catalog/alias-harness-final-identity-guard.log": "d5605f418b5b25089040074d9097f6af1301139ac566c4a32ba61d00a5ff589e",
+    "verification/companion/unicode-catalog/code12-full36-attempt1.log": "57e5750339e58b749a035de67a595d1e09a1e827b64acc73d0176f85e39ca345"
+  },
+  "accepted_scope": "Production source full gate plus proportionate seven-test follow-up for the sole test-only identity guard; no claim all final test bytes ran in335 gate",
+  "remaining": [
+    "Android12 large9",
+    "Installed finalMac10/APK12 automatic catalog Unicode/lifecycle and runtime acceptance",
+    "Finalpackage/sourcearchive/performance/release review"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "device": "emulator-5580",
+  "installed_sha256": "0bddc834ac688fedb23d18138a59ea39c6fd7f4d3ecda0d0f63759d8ab999ee9",
+  "version_code": 8,
+  "full_tests": 28,
+  "full_seconds": 234.42,
+  "large_text_tests": 7,
+  "large_text_seconds": 20.205,
+  "large_text_width_dp": 320,
+  "large_text_font_scale": 2.0,
+  "restored": {
+    "density": "Physical density: 420",
+    "font_scale": "1.0",
+    "developer_settings": "1",
+    "adb_enabled": "1",
+    "service_state": "force_stopped"
+  },
+  "forward_cleanup": "No new ADB forwards created by this checkpoint"
+}

@@ -1,0 +1,9 @@
+{
+  "scope": "Readonly failed packaging attempt binding; no artifacts launched",
+  "failure_log_sha256": "15053488d6af65fc38f3ab445f1859738616adcf05cd9bb651a6505729dc9e9a",
+  "failure_log": "package-build12-attempt1-python-import-failure.log",
+  "dist_app_build_unchanged": "11",
+  "dist_host_sha256": "6d70755ddc5a1386e1ebc6004ebcac987be448fba8b6a620105b30ad2b777e53",
+  "failure": "Homebrew Python3.15 plistlib/pyexpat import selects libexpat missing symbol; packaging aborted before publication",
+  "candidate12_pass_claimed": false
+}

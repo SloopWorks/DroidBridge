@@ -1,0 +1,31 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/11] Compiling DroidBridgeCore CompanionClient.swift
+[4/11] Emitting module DroidBridgeCore
+[4/15] Write Objects.LinkFileList
+[8/15] Linking DroidBridgeAvailability
+[8/15] Linking DroidBridgeCompanionBroker
+[10/15] Applying DroidBridgeCompanionBroker
+[10/15] Applying DroidBridgeAvailability
+[12/15] Linking DroidBridge
+[13/15] Applying DroidBridge
+[14/15] Linking DroidBridgePackageTests
+Build complete! (1.54s)
+Test Suite 'Selected tests' started at 2026-10-30 12:42:55.812.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 12:42:55.813.
+Test Suite 'CompanionBoundaryTests' started at 2026-10-30 12:42:55.813.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' started.
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionClient.swift:319: error: -[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry] : failed: caught error: "CompanionBoundaryError(code: "server_authentication_failed", message: "The pinned phone certificate is invalid or expired (trust code -67609).", retryable: false)"
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' failed (0.193 seconds).
+Test Suite 'CompanionBoundaryTests' failed at 2026-10-30 12:42:56.006.
+	 Executed 1 test, with 1 failure (1 unexpected) in 0.193 (0.194) seconds
+Test Suite 'DroidBridgePackageTests.xctest' failed at 2026-10-30 12:42:56.006.
+	 Executed 1 test, with 1 failure (1 unexpected) in 0.193 (0.194) seconds
+Test Suite 'Selected tests' failed at 2026-10-30 12:42:56.006.
+	 Executed 1 test, with 1 failure (1 unexpected) in 0.193 (0.194) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

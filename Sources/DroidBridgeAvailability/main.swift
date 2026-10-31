@@ -16,6 +16,11 @@ import DroidBridgeCore
         let args = CommandLine.arguments
         if args.contains("--help") { print("Usage: DroidBridgeAvailability [--once] [--adb PATH] [--private-root PATH] [--active-root PATH] [--preferences PATH] [--log PATH] [--interval SECONDS]"); return }
         if args.contains("--version") { print("DroidBridgeAvailability 0.1.8"); return }
+        if args.contains("--policy-protocol") { print("1"); return }
+        let runtimeLease: AvailabilityRuntimeLease?
+        do { runtimeLease = try AvailabilityRuntimeStore.holdRunning(executable: URL(fileURLWithPath: args[0]).resolvingSymlinksInPath()) }
+        catch { fputs("Availability runtime lease is unavailable.\n", stderr); return }
+        defer { withExtendedLifetime(runtimeLease) {} }
         func option(_ name: String) -> String? { guard let i = args.firstIndex(of: name), args.indices.contains(i+1) else { return nil }; return args[i+1] }
         let paths = ManagedAppsPaths(privateRoot: option("--private-root").map { URL(fileURLWithPath:$0) } ?? ManagedAppsPaths.userDefault.privateRoot, activeRoot: option("--active-root").map { URL(fileURLWithPath:$0) } ?? ManagedAppsPaths.userDefault.activeRoot)
         let preferences = option("--preferences").map { URL(fileURLWithPath:$0) } ?? DroidBridgePreferences.defaultURL

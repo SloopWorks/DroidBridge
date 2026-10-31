@@ -1,0 +1,53 @@
+{
+  "decision": "accepted_packaging_source_and_offline_private_fixture_only",
+  "timestamp": "2026-10-31T00:34:03.599688+00:00",
+  "base_commit": "62186d3c3dac73a3580ee268b9b9a2a69fb7dd0b",
+  "reviewed_file_sha256": {
+    "scripts/package.sh": "600d9ac5d70aa081be4c2a13f202106551c421d7c1854bb3e64295b4e0c47e9b",
+    "scripts/verify-package.py": "339038742d092e84c612200315a5559b1379ff7e6ee7c5a9e7346a9210f4bc28",
+    "BUILD.md": "a4fe0b8ddc500b89c2fbf4b4ab6e0f83de20c7a6569d6a81528fdef61a013592",
+    "ARCHITECTURE.md": "cf8fa1faf5bb3b2eebf500ea43d67b8f65ee80638933fa47bd75f79c80d8dce2"
+  },
+  "scope": "Independent source review and private-copy offline signature/dependency fixtures. No installed final12 acceptance, no packaged code launch, no UI/device/ADB operations",
+  "original_QA11": "Standalone Player signature failed due Contents/lib -> ../../lib; final11 distribution remains rejected",
+  "assembly_contract": {
+    "nested_real_directory": true,
+    "libraries": 17,
+    "logical_bytes": 37129056,
+    "source_signed_dylib_hashes_exactly_preserved": true,
+    "new_versions_or_components": 0,
+    "new_components_license_obligations": false,
+    "existing_notices_preserved": true,
+    "maximum_libraries": 64,
+    "maximum_library_bytes": 268435456,
+    "oversized_staging_rejected_before_content_hash_or_copy": true,
+    "signed_inventory_resource": true,
+    "nested_and_each_macho_strict_checks_before_publish": true
+  },
+  "independent_executable_evidence": {
+    "private_full_app_individual_strict_signatures": 48,
+    "positive_report": "player-repair-positive-independent.json",
+    "three_prior_bypass_shapes_rejected": "player-repair-adversarial-final.json",
+    "pre_hash_sparse_256MiB_plus_1_cap": "player-repair-byte-cap-final.json",
+    "optimized_python_explicitly_refused": true,
+    "systems_original_seven_negative_fixtures": "../player-signing-fix/regression-results.json"
+  },
+  "path_findings_remediated": [
+    "External-first LC_RPATH could previously authorize a later local candidate despite dyld search precedence; now unsupported/external active search entries reject",
+    "Lexical /usr/lib/../../tmp prefix traversal could previously pass system exception; now canonical trusted system paths required",
+    "Staging read full dylib before byte admission; now stat/count/aggregate check precedes streaming hash/copy"
+  ],
+  "compatibility_review": {
+    "wrapper_runtime_copy": "Existing ManagedAppCloneCopy recursively clones real directories/files with cancellation and reserve checks; no symlink escape or loader rewrite needed",
+    "wrapper_player_signing": "Existing MacAppWrapper edits nested Player identity/icon and re-signs its bundle; local loader-relative libraries/inventory remain copied and sealed",
+    "resource_impact": "17 duplicate libraries add37,129,056logical bytes per full runtime; APFS clones may share extents; final DMG/ZIP size and real wrapper launch remain unverified",
+    "existing_limits": "APK32MiB, notice64KiB and full runtime version/APK/notices checks retained; no rollout/auth/backend changes"
+  },
+  "docs_scope": "BUILD/ARCH accurately describe internal closure, independent per-file/nested verification, no notarization or runtime success claim",
+  "remaining_gates": [
+    "Root committed candidate12 source, fresh package and outside-build read-only DMG copy verification, final source archive binding",
+    "Actual installed fallback/wrapper launch and interactive rendering after Mac unlock",
+    "Remaining native/Spotlight/Dock/CmdTab/native-banner/performance/public-release acceptance gates"
+  ],
+  "whole_program_accepted": false
+}

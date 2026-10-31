@@ -1,0 +1,16 @@
+{
+  "acceptance" : true,
+  "adb_transport" : "signed compiled fake only",
+  "after_count" : 8,
+  "android_availability_verified" : false,
+  "before_count" : 8,
+  "current_old_generation_preserved" : true,
+  "fixture" : "isolated actual LaunchAgent upgrade",
+  "installed_helper_sha256" : "1d680e89660e0bf255655b1752101e6eb2a7d5001a21b4ca4ace45c0cf91e083",
+  "legacy_policy_refused" : true,
+  "legacy_probe_did_not_invoke_adb" : true,
+  "new_generation" : "26265107c8d69c7ae4825ab46ad0052d",
+  "new_policy_pid_verified" : true,
+  "scope_label" : "app.droidbridge.availability.qa.dc00d1faf893",
+  "scoped_job_removed" : true
+}

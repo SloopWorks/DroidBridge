@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "version_code": 6,
+  "candidate": ".build/companion-consent-code6-candidate",
+  "files": {
+    "DroidBridgeCompanion-test.apk": {
+      "sha256": "1ff26182e53c9a0ceba3dd8ed6df57eeb63801ad05b2e75d5a58551db1b1befc",
+      "size": 1863637
+    },
+    "DroidBridgeCompanion.apk": {
+      "sha256": "b17b6bcae25cb3549ec696a868675807aa93fc316ae1327bd8af9ede5dfc31f5",
+      "size": 2852495
+    }
+  },
+  "source_manifest": ".build/companion-consent-code6-candidate/manifest.json",
+  "frozen_sources_match": true,
+  "instrumentation_tests_passed": 21,
+  "large_text_tests_passed": 5,
+  "actual_test_device": "emulator-5582/API37",
+  "release_certificate_sha256": "eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4",
+  "test_fixtures_in_product": false,
+  "runtime_handoff": "Mac owns5582; production service restored; exact original scoped broker53979 resumed"
+}

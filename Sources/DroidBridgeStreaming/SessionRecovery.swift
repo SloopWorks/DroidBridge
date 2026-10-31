@@ -9,7 +9,7 @@ struct SessionReceipt: Codable {
     let ownerPID: Int32
     let serial: String
     let scid: String
-    static var directory: URL { FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/Receipts",isDirectory:true) }
+    static var directory: URL { CompanionQAScope.current?.receiptDirectory ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/DroidBridge/Receipts",isDirectory:true) }
     var remote: String { "/data/local/tmp/droidbridge-\(scid).jar" }
     var socket: String { "localabstract:scrcpy_\(scid)" }
     var valid: Bool { ownerPID > 1 && serial.range(of:"^[A-Za-z0-9._:-]+$",options:.regularExpression) != nil && scid.range(of:"^[0-7][0-9a-f]{7}$",options:.regularExpression) != nil }

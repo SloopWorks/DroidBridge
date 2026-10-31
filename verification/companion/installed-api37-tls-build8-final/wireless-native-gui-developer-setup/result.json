@@ -1,0 +1,153 @@
+{
+  "passed": false,
+  "serial": "emulator-5582",
+  "wireless_baseline": "0",
+  "boundary": "Actual installed native Pair/Connect controls -> real Android adbd TLS via emulator-owned NAT redirection",
+  "physical_lan_verified": false,
+  "companion_alias_admission_verified_by_this_test": false,
+  "native_pair_succeeded": true,
+  "native_connect_succeeded": true,
+  "changed_android_endpoint": true,
+  "native_connect_changed_endpoint_succeeded": true,
+  "same_owned_emulator_verified": true,
+  "pairing_code_logged": false,
+  "observations": [
+    {
+      "expected": "Successfully paired",
+      "texts": [
+        "On Android, open Developer options \u2192 Wireless debugging. Enable it, then choose Pair device with pairing code. Both devices must be on a network that allows their connection.",
+        "1. Pair Android debugging \u00b7 pairing address and six-digit code",
+        "2. Connect \u00b7 address and port on the main Wireless debugging screen",
+        "Enter pairing code: Successfully paired to 127.0.0.1:58225 [guid redacted]",
+        "ADB pairing authorizes broad Android debugging access. Pair only a trusted Mac. Companion pairing is a separate confirmation inside the DroidBridge Android app. This does not expose the companion API to the network."
+      ]
+    },
+    {
+      "expected": "connected to 127.0.0.1:58227",
+      "texts": [
+        "On Android, open Developer options \u2192 Wireless debugging. Enable it, then choose Pair device with pairing code. Both devices must be on a network that allows their connection.",
+        "1. Pair Android debugging \u00b7 pairing address and six-digit code",
+        "2. Connect \u00b7 address and port on the main Wireless debugging screen",
+        "connected to 127.0.0.1:58227",
+        "ADB pairing authorizes broad Android debugging access. Pair only a trusted Mac. Companion pairing is a separate confirmation inside the DroidBridge Android app. This does not expose the companion API to the network."
+      ]
+    },
+    {
+      "expected": "connected to 127.0.0.1:58571",
+      "texts": [
+        "On Android, open Developer options \u2192 Wireless debugging. Enable it, then choose Pair device with pairing code. Both devices must be on a network that allows their connection.",
+        "1. Pair Android debugging \u00b7 pairing address and six-digit code",
+        "2. Connect \u00b7 address and port on the main Wireless debugging screen",
+        "connected to 127.0.0.1:58571",
+        "ADB pairing authorizes broad Android debugging access. Pair only a trusted Mac. Companion pairing is a separate confirmation inside the DroidBridge Android app. This does not expose the companion API to the network."
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 157.45
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 156.48
+    },
+    {
+      "kind": "appkit_action",
+      "action": "set_field",
+      "ok": true,
+      "elapsed_ms": 104.11
+    },
+    {
+      "kind": "appkit_action",
+      "action": "set_field",
+      "ok": true,
+      "elapsed_ms": 103.56
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 219.64
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.15
+    },
+    {
+      "kind": "appkit_action",
+      "action": "set_field",
+      "ok": true,
+      "elapsed_ms": 55.23
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 219.85
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 107.45
+    },
+    {
+      "kind": "appkit_action",
+      "action": "set_field",
+      "ok": true,
+      "elapsed_ms": 104.48
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 213.06
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.0
+    }
+  ],
+  "wireless_restored": false,
+  "development_settings_baseline": "null",
+  "development_settings_restored": true,
+  "cleanup": [
+    {
+      "operation": "disconnect_exact_alias",
+      "alias": "127.0.0.1:58227",
+      "exit": 0
+    },
+    {
+      "operation": "disconnect_exact_alias",
+      "alias": "127.0.0.1:58571",
+      "exit": 0
+    },
+    {
+      "operation": "delete_exact_owned_redirection",
+      "host_port": 58571,
+      "guest_port": 37595,
+      "ok": true
+    },
+    {
+      "operation": "delete_exact_owned_redirection",
+      "host_port": 58227,
+      "guest_port": 39053,
+      "ok": true
+    },
+    {
+      "operation": "delete_exact_owned_redirection",
+      "host_port": 58225,
+      "guest_port": 41617,
+      "ok": true
+    }
+  ]
+}

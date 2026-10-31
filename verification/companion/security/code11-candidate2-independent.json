@@ -1,0 +1,89 @@
+{
+  "scope": "Independent source/APK/raw focused instrumentation comparison, no device/GUI execution by reviewer; source acceptance and focused Android runtime gate only",
+  "source_files_checked": 62,
+  "source_mismatches": [],
+  "manifest_sha256": "0b24fc0c81ca8f3649752f5c01304726b115762287fb6a617258704dc8cbd645",
+  "artifacts": {
+    "DroidBridgeCompanion-test.apk": {
+      "sha256": "c479b2cc67981ea27a58c150172f5edfe44599612bfbc9596ea0604d47c5c150",
+      "bytes": 1949629
+    },
+    "DroidBridgeCompanion.apk": {
+      "sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029",
+      "bytes": 2869727
+    }
+  },
+  "artifact_hash_size_matches": {
+    "DroidBridgeCompanion-test.apk": true,
+    "DroidBridgeCompanion.apk": true
+  },
+  "signed_product_cert_sha256": "eb482305a29dfa3c7056f2a8eb6162eff9c123e2de6f85601284ca8967cd98c4",
+  "signer_verified_with_apksigner": true,
+  "test_fixture_class_descriptors_absent_from_product": [
+    "Ldev/droidbridge/companion/CompanionRealNotificationDeviceTest;",
+    "Ldev/droidbridge/companion/NotificationProbeReceiver;",
+    "Ldev/droidbridge/companion/StalledTransferProvider;",
+    "Ldev/droidbridge/companion/CompanionSecurityTest;"
+  ],
+  "focused_tests": 3,
+  "focused_seconds": 14.07,
+  "log_sha256": "59efbe5794848ac8e6aec063b3ef89dc88b0d107b8b60df3f0fa40eed2babcf3",
+  "matrix": {
+    "keys": 256,
+    "trusts": 8,
+    "reconcile_ms": 21,
+    "threshold_ms": 3000,
+    "overflow_cleanup": true,
+    "journal_gap_explicit": true
+  },
+  "runtime_evidence": {
+    "actual_android_listener": true,
+    "separate_ordinary_fixture_uid": true,
+    "pinned_tls_commands_events": true,
+    "missing_wrong_scope_rejected_all_three_kinds": true,
+    "cross_trust_replay_rejected": true,
+    "reply_deliveries": 1,
+    "utf8_4097_rejected_without_effect": true,
+    "utf8_4096_delivered_once": true,
+    "private_replacement_cleanup": true,
+    "never_exposed_removal_leak": false,
+    "two_recipient_ongoing_cleanup": true,
+    "optout_filter_global_listener_cleanup": true,
+    "scoped_dismissal": true,
+    "revoked_events_status": 401
+  },
+  "preserved_failed_candidate_sha256": "af6d6feb1099fb9e4a0aa41d35f6365c7d56a22926ee7181b26bcf731778219f",
+  "preserved_failed_log_sha256": "039baa4b6a43ee50c8a5d84a047c1126dfd3c9b3e0af28877bfe14731c93cc97",
+  "remaining": [
+    "Final installed Mac8/APK11 interoperation",
+    "Final committed matching source archive/distribution verification"
+  ],
+  "full_large_gates": {
+    "code11-api35-full34-attempt1.log": {
+      "tests": 34,
+      "seconds": 282.426,
+      "sha256": "9b872aaccbfc1a440171d743c90bf8499c0f202c34732cf3b990453d1b864caf"
+    },
+    "code11-api35-large9-attempt1.log": {
+      "tests": 9,
+      "seconds": 48.715,
+      "sha256": "95afc12764638afedb1ffb72266f6ab34173148eea0b1c84f56422478de048b0"
+    }
+  },
+  "full_matrix": {
+    "keys": 256,
+    "trusts": 8,
+    "reconcile_ms": 27,
+    "threshold_ms": 3000,
+    "overflow_cleanup": true,
+    "journal_gap_explicit": true
+  },
+  "final_source_hashes_still_match": true,
+  "upgrade_raw_checked": {
+    "versions": [
+      10,
+      11
+    ],
+    "device_id_pin_settings_preserved": true
+  }
+}

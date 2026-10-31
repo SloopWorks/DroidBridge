@@ -3,3 +3,5 @@ Resources/licenses/** -whitespace
 verification/** -whitespace
 # Unified diffs require a space prefix on blank context lines.
 scripts/patches/*.patch -whitespace
+# Gradle emits its Windows launcher with CRLF line endings.
+AndroidCompanion/gradlew.bat text eol=crlf

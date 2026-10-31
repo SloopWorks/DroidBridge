@@ -1,0 +1,25 @@
+.build/companion-systems-revoked-qa-cleanup.m:6:14: warning: 'SecKeychainSetUserInteractionAllowed' is deprecated: first deprecated in macOS 10.10 - SecKeychain is deprecated [-Wdeprecated-declarations]
+    6 |  if(argc!=2||SecKeychainSetUserInteractionAllowed(false)!=errSecSuccess)return 2;
+      |              ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecKeychain.h:639:10: note: 'SecKeychainSetUserInteractionAllowed' has been explicitly marked deprecated here
+  639 | OSStatus SecKeychainSetUserInteractionAllowed(Boolean state)
+      |          ^
+.build/companion-systems-revoked-qa-cleanup.m:21:18: warning: 'SecKeychainFindGenericPassword' is deprecated: first deprecated in macOS 10.10 - SecKeychain is deprecated [-Wdeprecated-declarations]
+   21 |   OSStatus found=SecKeychainFindGenericPassword(NULL,(UInt32)s.length,s.bytes,(UInt32)a.length,a.bytes,NULL,NULL,&item);
+      |                  ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecKeychain.h:628:10: note: 'SecKeychainFindGenericPassword' has been explicitly marked deprecated here
+  628 | OSStatus SecKeychainFindGenericPassword(CFTypeRef __nullable keychainOrArray,  UInt32 serviceNameLength, const char * __nullable serviceName, UInt32 accountNameLength, const char * __nullable accountName, UInt32 * __nullable passwordLength, void * __nullable * __nullable passwordData, SecKeychainItemRef * __nullable CF_RETURNS_RETAINED itemRef)
+      |          ^
+.build/companion-systems-revoked-qa-cleanup.m:22:41: warning: 'SecKeychainItemDelete' is deprecated: first deprecated in macOS 10.10 - SecKeychain is deprecated [-Wdeprecated-declarations]
+   22 |   OSStatus removed=found==errSecSuccess?SecKeychainItemDelete(item):found;if(item)CFRelease(item);
+      |                                         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecKeychainItem.h:257:10: note: 'SecKeychainItemDelete' has been explicitly marked deprecated here
+  257 | OSStatus SecKeychainItemDelete(SecKeychainItemRef itemRef)
+      |          ^
+.build/companion-systems-revoked-qa-cleanup.m:23:48: warning: 'SecKeychainFindGenericPassword' is deprecated: first deprecated in macOS 10.10 - SecKeychain is deprecated [-Wdeprecated-declarations]
+   23 |   SecKeychainItemRef check=NULL;OSStatus after=SecKeychainFindGenericPassword(NULL,(UInt32)s.length,s.bytes,(UInt32)a.length,a.bytes,NULL,NULL,&check);if(check)CFRelease(check);
+      |                                                ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecKeychain.h:628:10: note: 'SecKeychainFindGenericPassword' has been explicitly marked deprecated here
+  628 | OSStatus SecKeychainFindGenericPassword(CFTypeRef __nullable keychainOrArray,  UInt32 serviceNameLength, const char * __nullable serviceName, UInt32 accountNameLength, const char * __nullable accountName, UInt32 * __nullable passwordLength, void * __nullable * __nullable passwordData, SecKeychainItemRef * __nullable CF_RETURNS_RETAINED itemRef)
+      |          ^
+4 warnings generated.

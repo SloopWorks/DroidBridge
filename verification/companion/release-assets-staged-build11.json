@@ -1,0 +1,31 @@
+{
+  "status": "staged_local_not_published",
+  "source_commit": "62186d3",
+  "files": [
+    {
+      "name": "DroidBridge-0.2.0-arm64.dmg",
+      "bytes": 30398328,
+      "sha256": "7d97c2236dec402e20dce4479b7f7ec00a3bf4adc92985103475ef27f0e496a5"
+    },
+    {
+      "name": "DroidBridge-0.2.0-arm64.zip",
+      "bytes": 27397615,
+      "sha256": "a8bdcb996b608bbdba49b2f15558ac48e7694bb4ed21e8be555c0712a6e0c0fb"
+    },
+    {
+      "name": "release-manifest.json",
+      "bytes": 437,
+      "sha256": "1a79ff27625d08e14cff42cf6169464d9b90f639fde4dd56109d6fe177792044"
+    },
+    {
+      "name": "DroidBridgeCompanion-0.2.0.apk",
+      "bytes": 2870487,
+      "sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b"
+    },
+    {
+      "name": "DroidBridge-0.2.0-source.tar.gz",
+      "bytes": 162449932,
+      "sha256": "c0075ed20fca15ee8f9c5dee1c7c46e2f67d92d47c9a4914caa249ba56ff1097"
+    }
+  ]
+}

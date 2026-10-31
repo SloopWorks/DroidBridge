@@ -1,0 +1,44 @@
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionRealNotificationDeviceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+dev.droidbridge.companion.CompanionRealNotificationDeviceTest:
+INSTRUMENTATION_STATUS: test=actualListenerRemovesExcludedReplacementsAndFencesEveryNotificationCommand
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionRealNotificationDeviceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: Failed requirement.
+	at dev.droidbridge.companion.BridgeStore.publishNotification(BridgeStore.kt:258)
+	at dev.droidbridge.companion.BridgeNotifications.onNotificationPosted(BridgeNotifications.kt:26)
+	at dev.droidbridge.companion.BridgeNotifications.onListenerConnected(BridgeNotifications.kt:19)
+	at android.service.notification.NotificationListenerService$MyHandler.handleMessage(NotificationListenerService.java:2438)
+	at android.os.Handler.dispatchMessage(Handler.java:107)
+	at android.os.Looper.loopOnce(Looper.java:232)
+	at android.os.Looper.loop(Looper.java:317)
+	at android.app.ActivityThread.main(ActivityThread.java:8705)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+
+INSTRUMENTATION_STATUS: stream=
+Process crashed while executing actualListenerRemovesExcludedReplacementsAndFencesEveryNotificationCommand(dev.droidbridge.companion.CompanionRealNotificationDeviceTest):
+java.lang.IllegalArgumentException: Failed requirement.
+	at dev.droidbridge.companion.BridgeStore.publishNotification(BridgeStore.kt:258)
+	at dev.droidbridge.companion.BridgeNotifications.onNotificationPosted(BridgeNotifications.kt:26)
+	at dev.droidbridge.companion.BridgeNotifications.onListenerConnected(BridgeNotifications.kt:19)
+	at android.service.notification.NotificationListenerService$MyHandler.handleMessage(NotificationListenerService.java:2438)
+	at android.os.Handler.dispatchMessage(Handler.java:107)
+	at android.os.Looper.loopOnce(Looper.java:232)
+	at android.os.Looper.loop(Looper.java:317)
+	at android.app.ActivityThread.main(ActivityThread.java:8705)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:886)
+
+INSTRUMENTATION_STATUS: test=actualListenerRemovesExcludedReplacementsAndFencesEveryNotificationCommand
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: shortMsg=Process crashed.
+INSTRUMENTATION_CODE: 0

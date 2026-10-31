@@ -1,0 +1,1189 @@
+{
+  "Contents/Info.plist": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "0b66c8def4d936da8e4e1246cc253df8cdb8edfda2a0f4516262d831fde97f05",
+    "size": 1010
+  },
+  "Contents/MacOS/DroidBridge": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "02f9ecc40b2a9d7d769dee919b1f6f29bdab312b5f52be818b9e78590149a5a7",
+    "size": 6840848
+  },
+  "Contents/Resources/APP_ONBOARDING_DESIGN.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "75eaf9eb51cc9bcd0d6a1d35244b7a4663bef200ec36de6ef548bd5673c84bec",
+    "size": 7301
+  },
+  "Contents/Resources/ARCHITECTURE.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "7904112f4aaa812bf4fee4a54863c53a73468e2b22224093c33cf6322ff0c613",
+    "size": 23767
+  },
+  "Contents/Resources/AUDIO_DESIGN.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "89d88bedf2885d89ff553dc10b5ff5493418f16b58bc23119401f819ee18bdb7",
+    "size": 5188
+  },
+  "Contents/Resources/BUILD.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "fcc40cd45eb64fba8bb658970dd1cfd36f225c59f4bfcaf4b637c76f26faeb02",
+    "size": 6898
+  },
+  "Contents/Resources/COMPATIBILITY.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "032b496a825b86dd269ddfc59a831ac4cc255303286a78a2dee3d73844c85d77",
+    "size": 7874
+  },
+  "Contents/Resources/Companion/APK-SHA256.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "73b45032574cc59ba8ffd2da2d16414951ad4c023ec367f76294f965a50ce29e",
+    "size": 91
+  },
+  "Contents/Resources/Companion/DroidBridgeCompanion.apk": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029",
+    "size": 2869727
+  },
+  "Contents/Resources/DroidBridge.icns": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "6dfbc1796658d384d6b45589f467c585ba2e41ec86e37118aed6faa49eafda47",
+    "size": 130190
+  },
+  "Contents/Resources/KNOWN_ISSUES.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "151b851f74fdcd5b97bf6e39d6a782358f71a4007d31e649a6d1fe7643e25d25",
+    "size": 7142
+  },
+  "Contents/Resources/LAUNCHER_UX_DESIGN.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "cfd5e6d7ff240d97c3c02db6e74c67de6c169f525ffe3e2a3be53fa3c1989512",
+    "size": 13541
+  },
+  "Contents/Resources/PIXEL_VERIFICATION.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "bfcd2bfbe70d50b5f5ade8db1288c69f176abe4fb420ed4bc0a288ec86618474",
+    "size": 9569
+  },
+  "Contents/Resources/README.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "4bc73338e9b9fef7f34300a53ddd728ce9cd0b6d93e1c3dca22643e07a9ad487",
+    "size": 9841
+  },
+  "Contents/Resources/Runtime/Player.app/Contents/Info.plist": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "c0ce1f4deb20a7098a3cfa2b28fe782f97367eb605043de0b9034b5b8e4e3bc6",
+    "size": 665
+  },
+  "Contents/Resources/Runtime/Player.app/Contents/MacOS/scrcpy": {
+    "kind": "file",
+    "mode": 365,
+    "sha256": "d2e9b47bbff77c755bd7bcf45adc0a31a8098e2ccff178ea56ff02f7a5f69fb3",
+    "size": 262336
+  },
+  "Contents/Resources/Runtime/Player.app/Contents/Resources/DroidBridge.icns": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "6dfbc1796658d384d6b45589f467c585ba2e41ec86e37118aed6faa49eafda47",
+    "size": 130190
+  },
+  "Contents/Resources/Runtime/Player.app/Contents/_CodeSignature/CodeResources": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "b9ba46727d150357f66e7ea77ba5a28bbee9aff48228102034e7f4ee00cca41b",
+    "size": 2542
+  },
+  "Contents/Resources/Runtime/Player.app/Contents/lib": {
+    "kind": "symlink",
+    "mode": 493,
+    "target": "../../lib"
+  },
+  "Contents/Resources/Runtime/bin/DroidBridgeAudioClient": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "398f98a0aad488b2e99dd3cfe1b8368c4ab423ecb9ed1ed775536313d0a5f9bc",
+    "size": 257488
+  },
+  "Contents/Resources/Runtime/bin/DroidBridgeAvailability": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "71a50c60169b7619b5d2ea40c82781042d36c4406f233d2c2e0177ee0ae4bff4",
+    "size": 4548368
+  },
+  "Contents/Resources/Runtime/bin/DroidBridgeCompanionBroker": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "82bae4c6d6e18f27db9df640f1c53a9e6cec83c8a7103faadd99b28168102386",
+    "size": 4545728
+  },
+  "Contents/Resources/Runtime/bin/DroidBridgeSupervisor": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "06060ed6b73c5109118edeee9764a24d2a3cb6da92bd193d2c26fa84f91ee1b8",
+    "size": 56272
+  },
+  "Contents/Resources/Runtime/bin/adb": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "e19f1bdac239722dbd7866ccf27c4d1de601bffc07a04c39a02daf9cbe4f8eab",
+    "size": 6994400
+  },
+  "Contents/Resources/Runtime/bin/adb-dependency-origins.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "d03317a5beb16907b8bc9d0b4145edd80970b27f2bfbedeed628d40bc37c6520",
+    "size": 576
+  },
+  "Contents/Resources/Runtime/bin/adb-libbrotlicommon.1.2.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "5ecd35029a5c6d0880a1bf52cf8bce76469722803cad8de4517b4bdc45f00f18",
+    "size": 167264
+  },
+  "Contents/Resources/Runtime/bin/adb-libbrotlidec.1.2.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "7324d97b037e5450c6bd8fa7a3abedb00df9205c19d59517b9cde70a26bdd5b1",
+    "size": 87744
+  },
+  "Contents/Resources/Runtime/bin/adb-libbrotlienc.1.2.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "885c52592ad43411f2d61b00af488e23e336a2b8144f81c45f30fe304e2d2dc9",
+    "size": 653344
+  },
+  "Contents/Resources/Runtime/bin/adb-liblz4.1.10.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "394a5880300630f87ab4aada16845490e2b39c327d6605472a632858d5bcdc64",
+    "size": 178064
+  },
+  "Contents/Resources/Runtime/bin/adb-libusb-1.0.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "a60e0f5c4130253853af22421254ea4bd801fe282333256c1dfb5ff19fdb5000",
+    "size": 179808
+  },
+  "Contents/Resources/Runtime/bin/adb-libzstd.1.5.7.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "36a6fe2c93b7166f326c7da306761d59311e5514e7b201e57fe4b6300cc2c5e1",
+    "size": 649648
+  },
+  "Contents/Resources/Runtime/bin/adb-runtime.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "65dfa704cbde5802fe9e7a1c44f77c9dd9943653f0b5135fa8fca7f71a5c9cc9",
+    "size": 1146
+  },
+  "Contents/Resources/Runtime/bin/scrcpy": {
+    "kind": "file",
+    "mode": 365,
+    "sha256": "2dead2559e75ea25c224fa74398042c5c4ec4234e5ed7ff76d066a7cbd23a7ca",
+    "size": 262320
+  },
+  "Contents/Resources/Runtime/dependencies.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "48b835b0ae2a8ddf783b6c28049e25e509e7395c96e1883a2ee8c4c5e8140431",
+    "size": 2096
+  },
+  "Contents/Resources/Runtime/lib/libSDL3.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "a670dfb7d17a28d18462dda5fc40f21a81cb3a293aef569d7cb99c5784a1ceb6",
+    "size": 2523936
+  },
+  "Contents/Resources/Runtime/lib/libSvtAv1Enc.4.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "dbfee16602a1e19ed31a94153a49a03b41116af1d42e5f844cea454865ce62d5",
+    "size": 3057664
+  },
+  "Contents/Resources/Runtime/lib/libavcodec.63.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "9db69b81f72100b471476036b27b3815aebd7af8f0c1bb19c604e03b9074c704",
+    "size": 9710160
+  },
+  "Contents/Resources/Runtime/lib/libavformat.63.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "c4df21c3badba461040103a8afa791b9b8240e4f4821f0d99386247fd2b69279",
+    "size": 2377568
+  },
+  "Contents/Resources/Runtime/lib/libavutil.61.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "78c492610a1e7a64d33a67f8d64c2f7718015aeea96a196da3498a94eb58600e",
+    "size": 657824
+  },
+  "Contents/Resources/Runtime/lib/libcrypto.4.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "710421eac59c226b2fa42bf56809533cf915d2cecc531e813b13fcc4e1150459",
+    "size": 4928672
+  },
+  "Contents/Resources/Runtime/lib/libdav1d.7.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "12e71a0df17680a36a91091e7a0cf5a199425e0f138290b01b24232b071c82e4",
+    "size": 843344
+  },
+  "Contents/Resources/Runtime/lib/liblzma.5.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "652556c1a1af272715aabc978f0d9fce6c2378ba7c240c6d283e7ea059bafc43",
+    "size": 184560
+  },
+  "Contents/Resources/Runtime/lib/libmp3lame.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "a8d70e10f425ec85161bd2f6118877d97fe8296c365616b6c5ae4327f7437116",
+    "size": 232624
+  },
+  "Contents/Resources/Runtime/lib/libmpg123.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "40f1607b710ddc95bd0e041f452d218e8e1fc9c56c5223c363a9b50cc9b64e7a",
+    "size": 288336
+  },
+  "Contents/Resources/Runtime/lib/libopus.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "577875d06d65d2977ac74ca73d156f8123cfef3f2ffe950f7c0c64b8c905f0fa",
+    "size": 373744
+  },
+  "Contents/Resources/Runtime/lib/libssl.4.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "b127c7ee7650d972cf87834de1af9ceabcd343f43e42f034a4dcd8bafc74b755",
+    "size": 1008368
+  },
+  "Contents/Resources/Runtime/lib/libswresample.7.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "c0854526e6928459720d4a8c2f62bd22c14eb1ed64933a43978ce323bea2d844",
+    "size": 120992
+  },
+  "Contents/Resources/Runtime/lib/libusb-1.0.0.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "5ed1b68671f62ca5e09ec338bd07dbc9b705c4308c3e76cbc8f15c2700c1f99f",
+    "size": 179808
+  },
+  "Contents/Resources/Runtime/lib/libvpx.12.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "75bc597365a56da22618077a959fbb2e27fadd53f05a9a4633e0051f9da5b170",
+    "size": 1755728
+  },
+  "Contents/Resources/Runtime/lib/libx264.165.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "3ab241fe51e34c1d2113db4d6f2866d162fdee8f0a020708dee998f996e005dd",
+    "size": 1274288
+  },
+  "Contents/Resources/Runtime/lib/libx265.217.dylib": {
+    "kind": "file",
+    "mode": 493,
+    "sha256": "1e71956ffcbaf72f1b45fff17fd6d9688c272ec50730779a206c1ee8ca8b257e",
+    "size": 7611440
+  },
+  "Contents/Resources/Runtime/share/droidbridge/icon-helper.jar": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "832b81a8c3ac3fe4a3ef1a4514aa73c41671bfe23ce3d12a82b8bd2298da31b9",
+    "size": 2739
+  },
+  "Contents/Resources/Runtime/share/scrcpy/scrcpy-server": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "764eb6f79811d5211fe9df341120882ba9994c7a61b897d7bf3fb662e53bc536",
+    "size": 733930
+  },
+  "Contents/Resources/Runtime/versions.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "87742a552d272b5c3aa293f6846da8897a712d8d4af472c796d88705b24353bd",
+    "size": 581
+  },
+  "Contents/Resources/TESTING.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "70579ef301b9474b7dc9fa4a2abbfe5fd6ca8add140ec474a6044ed14da6caee",
+    "size": 13883
+  },
+  "Contents/Resources/THIRD_PARTY.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "3bff8ab6f131e8382bfc4253441910acd1da91c5d0a9a1ab98c48975bc40055b",
+    "size": 4127
+  },
+  "Contents/Resources/WRAPPER_DESIGN.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "2babcb57f488d114c2aa5602a8f03e99b8a7a15cdf7cdcf5b487e28060182e6e",
+    "size": 5755
+  },
+  "Contents/Resources/licenses/adb-source-runtime/BUILD_PROVENANCE.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "34b6687b95fd8f4793b379fafcf71b75d1f5b8e98752d5370c1ef0439bd40be2",
+    "size": 7230
+  },
+  "Contents/Resources/licenses/adb-source-runtime/SOURCE_CLOSURE.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "ae011f814fdcef472cb68e220ebd884e75739eea779b8e42bb548a30dd3f72b4",
+    "size": 329480
+  },
+  "Contents/Resources/licenses/adb-source-runtime/SOURCE_HEADER_NOTICES.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "e1e6eae1238e6bd4d0a1a414673f45fc9a42ec2936cc8f0fe5d5f9ae69b29a5b",
+    "size": 1092087
+  },
+  "Contents/Resources/licenses/adb-source-runtime/abseil-AUTHORS": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "1fd39030c119b4c97014f59e0ad0ed65f23475bbdf55a52740f31eb82b34b4ee",
+    "size": 295
+  },
+  "Contents/Resources/licenses/adb-source-runtime/abseil-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "c79a7fea0e3cac04cd43f20e7b648e5a0ff8fa5344e644b0ee09ca1162b62747",
+    "size": 11361
+  },
+  "Contents/Resources/licenses/adb-source-runtime/adb-NOTICE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "cf14d0774dd1e5f5ae0416edbc5c0de706c474e9402e3fe367e9103cd13891f7",
+    "size": 10695
+  },
+  "Contents/Resources/licenses/adb-source-runtime/android-tools-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "size": 11358
+  },
+  "Contents/Resources/licenses/adb-source-runtime/boringssl-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "827c8d8fc207c2392794eef9e00fe246f9f61fdcc132556c275be3dd8c3cd97f",
+    "size": 13115
+  },
+  "Contents/Resources/licenses/adb-source-runtime/boringssl-fiat-AUTHORS": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "ad74c036a6afaedc418fed65f171c877c2f74a4c70938a03930aa11c98a20508",
+    "size": 648
+  },
+  "Contents/Resources/licenses/adb-source-runtime/boringssl-fiat-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "9eacbcb81be660840c714a560a9d65ba07913db98dd4baf969f78dd499fdd60f",
+    "size": 638
+  },
+  "Contents/Resources/licenses/adb-source-runtime/fmt-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+    "size": 1431
+  },
+  "Contents/Resources/licenses/adb-source-runtime/fmt-NOTICE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "560d39617dfb4b4e4088597291a070ed6c3a8d67668114ed475c673430c3e49a",
+    "size": 1310
+  },
+  "Contents/Resources/licenses/adb-source-runtime/googletest-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+    "size": 1475
+  },
+  "Contents/Resources/licenses/adb-source-runtime/libbase-NOTICE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "e0afbb47be661ce2076d21a1d4dc02caa58b7c215ab7ff9d151b6724be341f77",
+    "size": 12840
+  },
+  "Contents/Resources/licenses/adb-source-runtime/libcutils-NOTICE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "38751245389e1e23f73e6f5384b5cbe7fa972cc4410c5adc9c04b082a0b9561a",
+    "size": 10695
+  },
+  "Contents/Resources/licenses/adb-source-runtime/liblog-NOTICE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "f09747e3bc87e0ec3bdea983b37e18eeda223e01e678f76418a8a731ed8f590f",
+    "size": 10695
+  },
+  "Contents/Resources/licenses/adb-source-runtime/protobuf-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d",
+    "size": 1732
+  },
+  "Contents/Resources/licenses/adb-source-runtime/protobuf-utf8-range-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "02de69b64fc36d9e938f418e52723e42f0b2b226d58a9cb3c8dcbdf7059f5074",
+    "size": 1091
+  },
+  "Contents/Resources/licenses/android-companion/Apache-2.0.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "3f62881f0566227a24b12e5a754cc79f39aaa94883038e95c94812e1f50af42f",
+    "size": 13320
+  },
+  "Contents/Resources/licenses/android-companion/COMPONENTS.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "96831dfec44f7f9e8d50ad996a4fedb90b972dd5b8a3733514e8e5e4b3c6089e",
+    "size": 731
+  },
+  "Contents/Resources/licenses/android-companion/NOTICE.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "0ac85f060da5360fe19ed146a4a11e509c4a1d6b481d298209b6935a5d10e5a9",
+    "size": 677
+  },
+  "Contents/Resources/licenses/android-companion/SOURCES.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "70c5fd3c1fd03c32730c96f09a29c99619e45850d92d4db244ab54b2e14812a5",
+    "size": 628
+  },
+  "Contents/Resources/licenses/android-companion/kotlin-NOTICE.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "0b09a83d3ef7795c7dec65e815866597c066c53898f2852a76599b8f5552941a",
+    "size": 482
+  },
+  "Contents/Resources/licenses/android-companion/zxing-NOTICE.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "4db4b60aace29ec6c5c4f13ca9cac1930d3c0c54bcc67dceead0c10771120e66",
+    "size": 664
+  },
+  "Contents/Resources/licenses/android-platform-tools-NOTICE.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "f74735e1636534c2165b51815c4de870a2a06c24d8fe3e8c91149c841b81d33e",
+    "size": 1153968
+  },
+  "Contents/Resources/licenses/brotli-1.2.0-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "abae85a0ed88dcf7987629dba837c4d91b1c058198dad66c4f2e2c78aa5fcf4a",
+    "size": 1009
+  },
+  "Contents/Resources/licenses/brotli-1.2.0-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+    "size": 1084
+  },
+  "Contents/Resources/licenses/brotli/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "abae85a0ed88dcf7987629dba837c4d91b1c058198dad66c4f2e2c78aa5fcf4a",
+    "size": 1009
+  },
+  "Contents/Resources/licenses/brotli/LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+    "size": 1084
+  },
+  "Contents/Resources/licenses/brotli/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "3abfc3a647c00c8d3dd422ddbe2f9f2ee26c5f27e712c250e8556c345bccbe84",
+    "size": 2590
+  },
+  "Contents/Resources/licenses/dav1d-1.5.4-COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "dd92c3c2247c5651606fc23a5e2d6a1ebc5ace9a3e49cbde0e12f05ad1cb1ee5",
+    "size": 1317
+  },
+  "Contents/Resources/licenses/dav1d-1.5.4-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "d33336361f3a20022dcf8fc63ebb360ff1d94e671cdbadbf81b7c886d938f717",
+    "size": 958
+  },
+  "Contents/Resources/licenses/dav1d/COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "dd92c3c2247c5651606fc23a5e2d6a1ebc5ace9a3e49cbde0e12f05ad1cb1ee5",
+    "size": 1317
+  },
+  "Contents/Resources/licenses/dav1d/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "d33336361f3a20022dcf8fc63ebb360ff1d94e671cdbadbf81b7c886d938f717",
+    "size": 958
+  },
+  "Contents/Resources/licenses/dav1d/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "67024898a766344d95a14fda510811124456962412d789af5babb94542dadfdf",
+    "size": 2869
+  },
+  "Contents/Resources/licenses/droidbridge-audio-client/LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "01c12035bf35af37241298dc7ad538eb2a07e5c940437bc6876feeaa9d1951d0",
+    "size": 11387
+  },
+  "Contents/Resources/licenses/droidbridge-audio-client/NOTICE.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "c5f5fc5e5c71776c422b7a52d17794ddbf141014c455325aa734fe8fdb0a38ed",
+    "size": 250
+  },
+  "Contents/Resources/licenses/droidbridge-audio-client/audio-output-ready.patch": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "d9d91f9b6e416a4b583f81bae1adeb8ee80ed4c5d4f0ac16bf689d11a4272c5a",
+    "size": 5586
+  },
+  "Contents/Resources/licenses/ffmpeg-9.0.2_1-COPYING.GPLv2": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "size": 18092
+  },
+  "Contents/Resources/licenses/ffmpeg-9.0.2_1-COPYING.GPLv3": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "size": 35147
+  },
+  "Contents/Resources/licenses/ffmpeg-9.0.2_1-COPYING.LGPLv2.1": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "246041b6ecf9bc32d718a62c57877c78b5eb397b6467e74ed7ae2626ab189c30",
+    "size": 26517
+  },
+  "Contents/Resources/licenses/ffmpeg-9.0.2_1-COPYING.LGPLv3": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+    "size": 7651
+  },
+  "Contents/Resources/licenses/ffmpeg-9.0.2_1-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "f916d7a44fad7a6445da84890c0de2fc474ccef832cf4f776726df053d5e26ef",
+    "size": 4935
+  },
+  "Contents/Resources/licenses/ffmpeg-9.0.2_1-LICENSE.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "2e1d16c72fd74e12063776371da757322f8b77589386532f4fd8634bde7de1af",
+    "size": 4346
+  },
+  "Contents/Resources/licenses/ffmpeg/COPYING.GPLv2": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+    "size": 18092
+  },
+  "Contents/Resources/licenses/ffmpeg/COPYING.GPLv3": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "size": 35147
+  },
+  "Contents/Resources/licenses/ffmpeg/COPYING.LGPLv2.1": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "246041b6ecf9bc32d718a62c57877c78b5eb397b6467e74ed7ae2626ab189c30",
+    "size": 26517
+  },
+  "Contents/Resources/licenses/ffmpeg/COPYING.LGPLv3": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+    "size": 7651
+  },
+  "Contents/Resources/licenses/ffmpeg/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "f916d7a44fad7a6445da84890c0de2fc474ccef832cf4f776726df053d5e26ef",
+    "size": 4935
+  },
+  "Contents/Resources/licenses/ffmpeg/LICENSE.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "2e1d16c72fd74e12063776371da757322f8b77589386532f4fd8634bde7de1af",
+    "size": 4346
+  },
+  "Contents/Resources/licenses/ffmpeg/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "ce5c137e57bacde57ba6490e077b657010f7a417230afb81ea724cc7a62ea1ef",
+    "size": 17474
+  },
+  "Contents/Resources/licenses/homebrew-formulae.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "e0e00b2a3820474def67994344999567cfa0a3cbab9196eafcc4537253464274",
+    "size": 57187
+  },
+  "Contents/Resources/licenses/lame-4.0-COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "e64f9c5a18f56828c10a575df13ade641aa3af4512a7afe6c411256943b57aaf",
+    "size": 25281
+  },
+  "Contents/Resources/licenses/lame-4.0-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "386f4c02686a05a289721a52c92c36cc4dd22c8eeaf42fa8ef5be9f34100dd09",
+    "size": 1137
+  },
+  "Contents/Resources/licenses/lame-4.0-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "5c1f8d44f1eacbea3e1c31ff6ee11a4e1690ccbed4ee4af16de3b6eb61dc69a8",
+    "size": 503
+  },
+  "Contents/Resources/licenses/lame/COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "e64f9c5a18f56828c10a575df13ade641aa3af4512a7afe6c411256943b57aaf",
+    "size": 25281
+  },
+  "Contents/Resources/licenses/lame/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "386f4c02686a05a289721a52c92c36cc4dd22c8eeaf42fa8ef5be9f34100dd09",
+    "size": 1137
+  },
+  "Contents/Resources/licenses/lame/LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "5c1f8d44f1eacbea3e1c31ff6ee11a4e1690ccbed4ee4af16de3b6eb61dc69a8",
+    "size": 503
+  },
+  "Contents/Resources/licenses/lame/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "7f911459f1d7640d892bf1686f2a7250b434cb1147e5cfbe3134d74132d291ca",
+    "size": 3861
+  },
+  "Contents/Resources/licenses/libusb-1.0.30-COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a",
+    "size": 26436
+  },
+  "Contents/Resources/licenses/libusb-1.0.30-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "38df35ed492cfa69a88a00b60813029fa7b73ea010de10b3159b9b49237dee57",
+    "size": 965
+  },
+  "Contents/Resources/licenses/libusb/AUTHORS": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "27fd82b016838197d5276ba98d2187ed5a1ad0e171767322f356f0a9f6395941",
+    "size": 4015
+  },
+  "Contents/Resources/licenses/libusb/COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a",
+    "size": 26436
+  },
+  "Contents/Resources/licenses/libusb/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "38df35ed492cfa69a88a00b60813029fa7b73ea010de10b3159b9b49237dee57",
+    "size": 965
+  },
+  "Contents/Resources/licenses/libusb/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "55809a61dceb01b772b25b7044c682561a60162f20bbbfbb541283b62637448f",
+    "size": 1260
+  },
+  "Contents/Resources/licenses/libvpx-1.17.0-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "45972704c563fe747280087a951e020b5fe07cc02e6dcd932072208d0a1b9ed2",
+    "size": 1042
+  },
+  "Contents/Resources/licenses/libvpx-1.17.0-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "8267348d5af1262c11d1a08de2f5afc77457755f1ac658627dd9acf71011d615",
+    "size": 1537
+  },
+  "Contents/Resources/licenses/libvpx/AUTHORS": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "8a98b560e5314713550e6d3ba2d8acf3ef54dfc870fc448bef08a7c57648a0bd",
+    "size": 9579
+  },
+  "Contents/Resources/licenses/libvpx/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "45972704c563fe747280087a951e020b5fe07cc02e6dcd932072208d0a1b9ed2",
+    "size": 1042
+  },
+  "Contents/Resources/licenses/libvpx/LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "8267348d5af1262c11d1a08de2f5afc77457755f1ac658627dd9acf71011d615",
+    "size": 1537
+  },
+  "Contents/Resources/licenses/libvpx/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "44d25e34e9d4e490812bad43b85ccd94a6a370e9d27b4de9e365757a01ed767f",
+    "size": 3058
+  },
+  "Contents/Resources/licenses/lz4-1.10.0-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "90849673497d26ebf34a66e5a0dd86e5daabd9ed3a6a30ffc892afd9e42e0107",
+    "size": 939
+  },
+  "Contents/Resources/licenses/lz4-1.10.0-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "4bc9c403f6b679cc076dee210e0e21c27b4e8f6d3fb43d85364c76657bfaaac5",
+    "size": 646
+  },
+  "Contents/Resources/licenses/lz4/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "90849673497d26ebf34a66e5a0dd86e5daabd9ed3a6a30ffc892afd9e42e0107",
+    "size": 939
+  },
+  "Contents/Resources/licenses/lz4/LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "4bc9c403f6b679cc076dee210e0e21c27b4e8f6d3fb43d85364c76657bfaaac5",
+    "size": 646
+  },
+  "Contents/Resources/licenses/lz4/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "4897c5d85ccfece60924127c0bb28a1db7b754ea035b907c0dd390b10a75f7f0",
+    "size": 2569
+  },
+  "Contents/Resources/licenses/mpg123-1.33.7-COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "c22482728a634a8dfdb4ff72a96d4c1ed64cd8f3e79335c401751ac591609366",
+    "size": 40718
+  },
+  "Contents/Resources/licenses/mpg123-1.33.7-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "4ea93cc677e57339ee099af43a3b7c001ad3583c4a93207cad0ad9136673a346",
+    "size": 1031
+  },
+  "Contents/Resources/licenses/mpg123/AUTHORS": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "fb18c9abae864a20f691e949e4c7871c79f5f0861b3a3dcaf5881c3c02cf5cc2",
+    "size": 9370
+  },
+  "Contents/Resources/licenses/mpg123/COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "c22482728a634a8dfdb4ff72a96d4c1ed64cd8f3e79335c401751ac591609366",
+    "size": 40718
+  },
+  "Contents/Resources/licenses/mpg123/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "4ea93cc677e57339ee099af43a3b7c001ad3583c4a93207cad0ad9136673a346",
+    "size": 1031
+  },
+  "Contents/Resources/licenses/mpg123/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "e56a72b64e749d1b3901169624731d9c09ac4fbc11d277a126de3336a0b05b8e",
+    "size": 2868
+  },
+  "Contents/Resources/licenses/openssl@4-4.1.0-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "f3f43f5f9d3f96498d6c0c79bcd9cb65c56972b0ecc6646300c14035f5d78ea8",
+    "size": 1535
+  },
+  "Contents/Resources/licenses/openssl@4-4.1.0-LICENSE.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+    "size": 10175
+  },
+  "Contents/Resources/licenses/openssl@4/AUTHORS.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "b9f638dfc06b59c2d3b808186c3b30f713805a5db390f5b77b1703ac58acb83e",
+    "size": 1022
+  },
+  "Contents/Resources/licenses/openssl@4/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "f3f43f5f9d3f96498d6c0c79bcd9cb65c56972b0ecc6646300c14035f5d78ea8",
+    "size": 1535
+  },
+  "Contents/Resources/licenses/openssl@4/LICENSE.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+    "size": 10175
+  },
+  "Contents/Resources/licenses/openssl@4/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "06ec3a5737efa8f459abc82c9e7c68404f9e418c6b57309a1a365ef9ad42f705",
+    "size": 4235
+  },
+  "Contents/Resources/licenses/opus-1.6.1-COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "01e1167d54a096d123cf6dfbbeb19587278845c6481d2d66d545669846079551",
+    "size": 1945
+  },
+  "Contents/Resources/licenses/opus-1.6.1-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "13379c77203733b516b111ba226e752c825eaedf44aea7f2dafef8a35dea07a9",
+    "size": 959
+  },
+  "Contents/Resources/licenses/opus/AUTHORS": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "f9fd849e652219ce98e008303370b352d37663d0ffb27b8dc514ad93c9c7438b",
+    "size": 239
+  },
+  "Contents/Resources/licenses/opus/COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "01e1167d54a096d123cf6dfbbeb19587278845c6481d2d66d545669846079551",
+    "size": 1945
+  },
+  "Contents/Resources/licenses/opus/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "13379c77203733b516b111ba226e752c825eaedf44aea7f2dafef8a35dea07a9",
+    "size": 959
+  },
+  "Contents/Resources/licenses/opus/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "3c274da2c3df9dcc02492e7d7ee77bac7e62c1fb7acc0f9842816bf98dadc01d",
+    "size": 1224
+  },
+  "Contents/Resources/licenses/runtime-notices.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "9d4a5fe24c138e7ecc3cd680b36be99bd6258eb2198503fde0bf41483c20d20d",
+    "size": 2861
+  },
+  "Contents/Resources/licenses/scrcpy-Apache-2.0.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "01c12035bf35af37241298dc7ad538eb2a07e5c940437bc6876feeaa9d1951d0",
+    "size": 11387
+  },
+  "Contents/Resources/licenses/sdl3-3.4.18-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "c6924ab78f9a1fadef513a6e3fa408f03566fcc68caf444be7280822070b0a96",
+    "size": 1044
+  },
+  "Contents/Resources/licenses/sdl3-3.4.18-LICENSE.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "1c040b8271b37e5076359f8fd54240e371114112924d2df81ef87c7d6a1dfdfd",
+    "size": 884
+  },
+  "Contents/Resources/licenses/sdl3/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "c6924ab78f9a1fadef513a6e3fa408f03566fcc68caf444be7280822070b0a96",
+    "size": 1044
+  },
+  "Contents/Resources/licenses/sdl3/LICENSE.txt": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "1c040b8271b37e5076359f8fd54240e371114112924d2df81ef87c7d6a1dfdfd",
+    "size": 884
+  },
+  "Contents/Resources/licenses/sdl3/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "2009115283861c0502fb1775f21964c431c706407ed862f02396c90814dce9c7",
+    "size": 3031
+  },
+  "Contents/Resources/licenses/svt-av1-4.2.0-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "9e001f464bce8434c5892376feae381f6b7e56f9a1473ec995704a956fdb7364",
+    "size": 962
+  },
+  "Contents/Resources/licenses/svt-av1-4.2.0-LICENSE-BSD2.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "c582fcbeb9cf972a60d298bfaf41dc5adff2dd14208946edcb9bb56a281e8438",
+    "size": 1316
+  },
+  "Contents/Resources/licenses/svt-av1-4.2.0-LICENSE.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "0acc2fcb27472bdc9aaf8b71f37055bbdac4f54671b7d922f241bd7fcd0dd3e6",
+    "size": 1709
+  },
+  "Contents/Resources/licenses/svt-av1/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "9e001f464bce8434c5892376feae381f6b7e56f9a1473ec995704a956fdb7364",
+    "size": 962
+  },
+  "Contents/Resources/licenses/svt-av1/LICENSE-BSD2.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "c582fcbeb9cf972a60d298bfaf41dc5adff2dd14208946edcb9bb56a281e8438",
+    "size": 1316
+  },
+  "Contents/Resources/licenses/svt-av1/LICENSE.md": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "0acc2fcb27472bdc9aaf8b71f37055bbdac4f54671b7d922f241bd7fcd0dd3e6",
+    "size": 1709
+  },
+  "Contents/Resources/licenses/svt-av1/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "4710e480bd028aa17d15ef13cb8b86375d675a4b7e8c2b0c8e16092a622b82bf",
+    "size": 2903
+  },
+  "Contents/Resources/licenses/x264-r3222-COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670",
+    "size": 17992
+  },
+  "Contents/Resources/licenses/x264-r3222-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "aa1de18caad391d7dfd6307bb134866fc780d2be6b36355199e3f02e45432479",
+    "size": 959
+  },
+  "Contents/Resources/licenses/x264/AUTHORS": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "783150c1bef404fc7140924f3006eff27c940ea73ef38b3bc76fcb9c173229a5",
+    "size": 1999
+  },
+  "Contents/Resources/licenses/x264/COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670",
+    "size": 17992
+  },
+  "Contents/Resources/licenses/x264/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "aa1de18caad391d7dfd6307bb134866fc780d2be6b36355199e3f02e45432479",
+    "size": 959
+  },
+  "Contents/Resources/licenses/x264/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "6a3a6e68cea8daf3ed0fa0019a71b999d78ea2d44ec2d3eee5d32e9b95141303",
+    "size": 1144
+  },
+  "Contents/Resources/licenses/x265-4.3-COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "d8afb1bcc7a2cfc603683b168d6987ef0a48e59e0da3693bf55c5d33b67e2b49",
+    "size": 18120
+  },
+  "Contents/Resources/licenses/x265-4.3-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "e10b9380d8c112a4572bef80e514b2695621f928016c70a934da50f4e957d069",
+    "size": 1043
+  },
+  "Contents/Resources/licenses/x265/COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "d8afb1bcc7a2cfc603683b168d6987ef0a48e59e0da3693bf55c5d33b67e2b49",
+    "size": 18120
+  },
+  "Contents/Resources/licenses/x265/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "e10b9380d8c112a4572bef80e514b2695621f928016c70a934da50f4e957d069",
+    "size": 1043
+  },
+  "Contents/Resources/licenses/x265/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "a7f182203abdceefd8ac75f12e4ce1542bf0da2dca69bb0244b3236be781e801",
+    "size": 3027
+  },
+  "Contents/Resources/licenses/xz-5.8.4-COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "616a3ad264ce29b8f1cb97e53037b139d406899ca8d1f799651e17bfa09830b8",
+    "size": 3119
+  },
+  "Contents/Resources/licenses/xz-5.8.4-COPYING.0BSD": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "size": 607
+  },
+  "Contents/Resources/licenses/xz-5.8.4-COPYING.GPLv2": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6",
+    "size": 17984
+  },
+  "Contents/Resources/licenses/xz-5.8.4-COPYING.GPLv3": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "size": 35149
+  },
+  "Contents/Resources/licenses/xz-5.8.4-COPYING.LGPLv2.1": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "20e50fe7aae3e56378ebf0417d9de904f55a0e61e4df315333e632a4d3555d95",
+    "size": 26419
+  },
+  "Contents/Resources/licenses/xz-5.8.4-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "ecb1a45b60ee300408b79668514ea72671782156afede6baf089ad2a3a42eee3",
+    "size": 1118
+  },
+  "Contents/Resources/licenses/xz/AUTHORS": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "01e6df90d71d591f4307db3f397a5a4fac93b18533f5a3862156f1a0a7dc8610",
+    "size": 2146
+  },
+  "Contents/Resources/licenses/xz/COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "616a3ad264ce29b8f1cb97e53037b139d406899ca8d1f799651e17bfa09830b8",
+    "size": 3119
+  },
+  "Contents/Resources/licenses/xz/COPYING.0BSD": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "size": 607
+  },
+  "Contents/Resources/licenses/xz/COPYING.GPLv2": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6",
+    "size": 17984
+  },
+  "Contents/Resources/licenses/xz/COPYING.GPLv3": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "size": 35149
+  },
+  "Contents/Resources/licenses/xz/COPYING.LGPLv2.1": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "20e50fe7aae3e56378ebf0417d9de904f55a0e61e4df315333e632a4d3555d95",
+    "size": 26419
+  },
+  "Contents/Resources/licenses/xz/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "ecb1a45b60ee300408b79668514ea72671782156afede6baf089ad2a3a42eee3",
+    "size": 1118
+  },
+  "Contents/Resources/licenses/xz/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "0f97823fd43c4c102153a083e3b9ed779930c56a1ebb3c0d452201ccfa7ccc30",
+    "size": 3027
+  },
+  "Contents/Resources/licenses/zstd-1.5.7_1-COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+    "size": 18091
+  },
+  "Contents/Resources/licenses/zstd-1.5.7_1-INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "05374a4301269093e089f49494f36ce09fb0607b9cd2fb653954ece2a1d0cb68",
+    "size": 1307
+  },
+  "Contents/Resources/licenses/zstd-1.5.7_1-LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+    "size": 1549
+  },
+  "Contents/Resources/licenses/zstd/COPYING": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+    "size": 18091
+  },
+  "Contents/Resources/licenses/zstd/INSTALL_RECEIPT.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "05374a4301269093e089f49494f36ce09fb0607b9cd2fb653954ece2a1d0cb68",
+    "size": 1307
+  },
+  "Contents/Resources/licenses/zstd/LICENSE": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+    "size": 1549
+  },
+  "Contents/Resources/licenses/zstd/sbom.spdx.json": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "7fb328a42057e2a48b5d8144cd1d347f63f887c1aaa1461dcd6b13baf9672713",
+    "size": 4662
+  },
+  "Contents/_CodeSignature/CodeResources": {
+    "kind": "file",
+    "mode": 420,
+    "sha256": "e2e51e1ef8743e5584aaa27aa6c2c8e4e79d228f75aec89db146a8d318c1e985",
+    "size": 54720
+  }
+}

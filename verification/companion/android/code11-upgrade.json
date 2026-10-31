@@ -1,0 +1,26 @@
+{
+  "before": {
+    "device_id": "6e6da77c-b8f1-422d-9645-cc416cf913ce",
+    "server_pin": "71e228545bfad01763179b51ae87eec51f92914a8a19a6d1e5910475b0499b8c",
+    "pid": 12778,
+    "version_code": 10,
+    "settings": {
+      "clipboard_enabled": true,
+      "notifications_enabled": false,
+      "profile": "battery"
+    }
+  },
+  "after": {
+    "device_id": "6e6da77c-b8f1-422d-9645-cc416cf913ce",
+    "server_pin": "71e228545bfad01763179b51ae87eec51f92914a8a19a6d1e5910475b0499b8c",
+    "pid": 13285,
+    "version_code": 11,
+    "settings": {
+      "clipboard_enabled": true,
+      "notifications_enabled": false,
+      "profile": "battery"
+    }
+  },
+  "identity_settings_preserved": true,
+  "final_installed_sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029"
+}

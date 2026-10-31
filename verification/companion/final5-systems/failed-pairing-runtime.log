@@ -1,0 +1,1 @@
+FAIL runtime: CompanionBoundaryError(code: "invalid_pairing", message: "The phone returned a different pairing request.", retryable: false)

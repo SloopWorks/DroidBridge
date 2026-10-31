@@ -1,0 +1,13 @@
+{
+  "blocked_action": "Actual CUA macOS Cmd+Q / independent wrapper Cmd+Tab verification",
+  "tool_result": "The Mac is locked and automatic unlock could not unlock it. Ask the user to unlock the Mac manually before continuing.",
+  "bypass_attempted": false,
+  "qa_main_pid": 20973,
+  "qa_broker_pid": 21121,
+  "active_sessions": 0,
+  "retained_companion_forward": "emulator-5582 tcp:46000 tcp:37841",
+  "service": "ON",
+  "profile": "balanced",
+  "fresh_transfer_created": false,
+  "next": "User unlock followed by installed11 smoke; create fresh2MiB ShareFile only near Root performance handoff"
+}

@@ -1,0 +1,72 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[4/12] Compiling DroidBridgeCore CompanionBrokerService.swift
+[5/12] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[6/17] Emitting module DroidBridgeCompanionBroker
+[6/18] Write Objects.LinkFileList
+[8/18] Compiling DroidBridgeAvailability main.swift
+[9/18] Emitting module DroidBridgeAvailability
+[9/19] Write Objects.LinkFileList
+[11/19] Emitting module DroidBridgeStreaming
+[11/39] Linking DroidBridgeCompanionBroker
+[12/39] Linking DroidBridgeAvailability
+[13/39] Applying DroidBridgeAvailability
+[13/39] Applying DroidBridgeCompanionBroker
+[16/39] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[17/39] Compiling DroidBridgeCoreTests CompanionExportPolicyTests.swift
+[18/39] Compiling DroidBridgeCoreTests ManagedAppNamingQATests.swift
+[19/39] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[20/39] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[21/39] Emitting module DroidBridgeCoreTests
+[22/39] Compiling DroidBridgeCoreTests CompanionBrokerTests.swift
+[22/39] Write Objects.LinkFileList
+[24/39] Compiling DroidBridge PhoneDisplayControls.swift
+[25/39] Compiling DroidBridge ManagedAppNameRepair.swift
+[26/39] Compiling DroidBridge main.swift
+[27/39] Compiling DroidBridge DeviceOnboardingUI.swift
+[28/39] Compiling DroidBridge Launcher.swift
+[29/39] Compiling DroidBridge DeviceOnboarding.swift
+[30/39] Compiling DroidBridge LauncherUI.swift
+[30/39] Linking DroidBridgePackageTests
+[32/39] Compiling DroidBridge MacAppWrapper.swift
+[33/39] Compiling DroidBridge CompanionLauncherIntegration.swift
+[34/39] Compiling DroidBridge AudioControls.swift
+[35/39] Emitting module DroidBridge
+[36/39] Compiling DroidBridge CompanionDesktopAdapter.swift
+[37/39] Compiling DroidBridge CompanionWindow.swift
+[37/40] Write Objects.LinkFileList
+[38/40] Linking DroidBridge
+[39/40] Applying DroidBridge
+Build complete! (6.25s)
+Test Suite 'Selected tests' started at 2026-10-30 13:09:15.590.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 13:09:15.590.
+Test Suite 'ManagedAppsTests' started at 2026-10-30 13:09:15.590.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testAliasMoveKeepsExistingNewChoicesAndMostRestrictiveInheritedChoices]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testAliasMoveKeepsExistingNewChoicesAndMostRestrictiveInheritedChoices]' passed (0.013 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExplicitForgetPreservesChoicesAndRevisionBytes]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExplicitForgetPreservesChoicesAndRevisionBytes]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExplicitNewInstallationAliasMoveInheritsChoicesAndStartsNewAuthority]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testExplicitNewInstallationAliasMoveInheritsChoicesAndStartsNewAuthority]' passed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNewInstallationCannotStealAliasWithoutExplicitForgetAndPair]' started.
+Test Case '-[DroidBridgeCoreTests.ManagedAppsTests testNewInstallationCannotStealAliasWithoutExplicitForgetAndPair]' passed (0.002 seconds).
+Test Suite 'ManagedAppsTests' passed at 2026-10-30 13:09:15.615.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.024 (0.024) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 13:09:15.615.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.024 (0.024) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 13:09:15.615.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.024 (0.025) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

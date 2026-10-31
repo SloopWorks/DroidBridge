@@ -1,0 +1,15 @@
+{
+  "exact_previous_pid": 604,
+  "executable": "/System/Library/CoreServices/Spotlight.app/Contents/MacOS/Spotlight",
+  "same_user_verified": true,
+  "apple_bundle_signature_valid": true,
+  "signal": "TERM",
+  "index_services_restarted": false,
+  "index_or_privacy_settings_changed": false,
+  "subsequent_processes": [
+    "36463   501 /System/Library/CoreServices/Spotlight.app/Contents/MacOS/Spotlight"
+  ],
+  "open_exit": 0,
+  "open_error": "",
+  "scope": "OneRoot-authorizednormalSpotlightUIrestartonly"
+}

@@ -1,0 +1,29 @@
+{
+  "device": "emulator-5580",
+  "version_code": 11,
+  "installed_sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029",
+  "candidate": ".build/companion-code11-candidate2",
+  "focused_tests": 3,
+  "focused_seconds": 14.07,
+  "full_tests": 34,
+  "full_seconds": 282.426,
+  "large_text_tests": 9,
+  "large_text_seconds": 48.715,
+  "large_text_width_dp": 320,
+  "large_text_font_scale": 2.0,
+  "focused_matrix_ms": 21,
+  "full_matrix_ms": 27,
+  "restored": {
+    "density": "Physical density: 420",
+    "font_scale": "1.0",
+    "developer_settings": "1",
+    "adb_enabled": "1",
+    "wireless_debugging": "0",
+    "notification_listeners": "",
+    "service_state": "force_stopped",
+    "test_notification_posting_granted": false,
+    "test_apk_force_stopped": true
+  },
+  "adb_forwards_created": 0,
+  "all_source_hashes_match": true
+}

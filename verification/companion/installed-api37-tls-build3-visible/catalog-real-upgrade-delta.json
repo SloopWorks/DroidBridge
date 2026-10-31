@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "scope": "Actual installed pinned-TLS broker catalog before/after same-signature Android APK upgrade; delta route and original Android-rendered icon SHA",
+  "before_generation": "4059cdc29ee7f1ca4580610f23cff2d4da3211f061daecc1ccae5e8f68f554f7",
+  "after_generation": "86505c13f6a52f7d5b3a1277a1de25a0b011cff73c87054cccfc8f2d57a76736",
+  "before": [
+    {
+      "icon_sha256": "dbaaedff599acbcc940c7d85daf7b56a1ef891ea9c5f1757be398433f113c45a",
+      "export_to_mac": true,
+      "package_name": "dev.droidbridge.inputalpha",
+      "version_code": 1,
+      "label": "Input Alpha",
+      "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+      "launchable": true
+    },
+    {
+      "label": "Input Beta",
+      "export_to_mac": true,
+      "version_code": 1,
+      "launchable": true,
+      "package_name": "dev.droidbridge.inputbeta",
+      "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+      "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87"
+    }
+  ],
+  "after": [
+    {
+      "icon_sha256": "e372924729acff0ac99908e67457665cfe69d68b51a3f2dfb2de6d9e513593c0",
+      "launchable": true,
+      "package_name": "dev.droidbridge.inputalpha",
+      "export_to_mac": true,
+      "label": "Input Alpha Updated",
+      "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+      "version_code": 2
+    },
+    {
+      "label": "Input Beta",
+      "icon_sha256": "72dd61be283bf5c33323425b07e0c6da90dce0a821441e82cb5bbf245db99d87",
+      "export_to_mac": true,
+      "activity_name": "dev.droidbridge.inputbeta.MainActivity",
+      "package_name": "dev.droidbridge.inputbeta",
+      "launchable": true,
+      "version_code": 1
+    }
+  ],
+  "delta": {
+    "generation": "86505c13f6a52f7d5b3a1277a1de25a0b011cff73c87054cccfc8f2d57a76736",
+    "deleted": [],
+    "items": [
+      {
+        "launchable": true,
+        "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+        "export_to_mac": true,
+        "icon_sha256": "e372924729acff0ac99908e67457665cfe69d68b51a3f2dfb2de6d9e513593c0",
+        "package_name": "dev.droidbridge.inputalpha",
+        "version_code": 2,
+        "label": "Input Alpha Updated"
+      }
+    ]
+  },
+  "install_output": "Serving...\nPerforming Incremental Install\nSuccess\nInstall command complete in 155 ms\n"
+}

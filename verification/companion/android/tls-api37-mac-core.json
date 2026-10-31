@@ -1,0 +1,10 @@
+{
+  "scope": "ActualMacCoreURLSessiontoAPI37ReleaseAfterChangedVersionUpgrade",
+  "result": {
+    "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+    "operation": "hello",
+    "status": "ok"
+  },
+  "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+  "server_pin": "82f9aeab82dcb375f75a490ad81a064e315da5211e033c8938928a930b05ee8d"
+}

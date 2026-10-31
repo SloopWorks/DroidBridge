@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-31T00:40:37.993476+00:00",
+  "previous_goal_turn_classification": "no_progress_external_blocker_revalidated",
+  "current_goal_turn_classification": "no_progress_same_external_blocker_revalidated",
+  "consecutive_goal_turns_with_same_blocking_condition": 3,
+  "authoritative_current_observation": {
+    "tool": "mcp__cua_repl.js cua.getState({emit:false})",
+    "native_apps": 0,
+    "error": "The Mac is locked and automatic unlock could not unlock it. Ask the user to unlock the Mac manually before continuing."
+  },
+  "prior_audit": "locked-goal-audit-turn2.json",
+  "safe_independent_work_remaining": false,
+  "candidate_source_commit": "94b51c2fab719304e43381de1f7d1bf532276b61",
+  "uncompleted_gates": [
+    "QA12 installed GUI/native/fallback interaction",
+    "Unchanged declared quiet performance cohort and targets",
+    "Actual Spotlight and permission-dependent native banner delivery",
+    "Actual public prerelease/download installation then final release/merge/push"
+  ],
+  "required_external_change": "User unlocks the Mac; then resume installed QA12 verification using final12-locked-handoff.json",
+  "goal_status_to_set": "blocked",
+  "completion_claimed": false,
+  "public_release_or_merge_push_performed": false
+}

@@ -1,0 +1,14 @@
+{
+  "denied_banners_preserve_explicit_in_app_list" : true,
+  "explicit_off_retry_applied" : true,
+  "invalid_edited_allowlist_no_rpc" : true,
+  "late_add_close_reopen_exact_retraction" : true,
+  "late_settings_opt_out_no_banner" : true,
+  "late_settings_replaced_trust_no_banner" : true,
+  "passed" : true,
+  "red_close_reopen_no_rpc" : true,
+  "replaced_trust_no_rpc" : true,
+  "scope" : "Shipping AppKit controller + deferred authorization\/settings\/add seams + anonymous NSXPC; no OS permission requested",
+  "shutdown_late_approval_no_rpc" : true,
+  "superseded_approval_no_rpc" : true
+}

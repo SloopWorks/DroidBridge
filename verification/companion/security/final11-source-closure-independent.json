@@ -1,0 +1,11 @@
+{
+  "scope": "Independent read-only current source closure file and actual ordered static-object member verification, no rebuild/runtime/device operation",
+  "source_closure_sha256": "ae011f814fdcef472cb68e220ebd884e75739eea779b8e42bb548a30dd3f72b4",
+  "source_files_rehashed": 1532,
+  "static_archives_verified_installed_and_build": 81,
+  "generated_headers_verified": 1,
+  "prior_review": "adb-source-closure-independent.json",
+  "only_closure_difference_since_prior": "installed .a container SHA fields changed; all source files, input graphs, generated header, built .a hashes and ordered object member identities unchanged",
+  "explanation": "Darwin CMake install runs ranlib, rewriting archive symbol-table/container timestamps; actual ordered object member bytes independently match build outputs",
+  "all_hashes_match": true
+}

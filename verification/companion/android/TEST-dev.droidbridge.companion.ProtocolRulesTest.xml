@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.droidbridge.companion.ProtocolRulesTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-30T19:03:03.664Z" hostname="Patricks-MacBook-Pro.local" time="0.031">
+  <properties/>
+  <testcase name="generatedCapabilitiesHaveFullEntropyLengthAndUniqueBytes" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.019"/>
+  <testcase name="packageValidationRejectsArgumentsAndTraversal" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.004"/>
+  <testcase name="filenamesCannotEscapePrivateStorage" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.004"/>
+  <testcase name="contentLengthRejectsAmbiguousAndOversizedFraming" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.001"/>
+  <testcase name="contentAddressesHaveKnownSha256" classname="dev.droidbridge.companion.ProtocolRulesTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

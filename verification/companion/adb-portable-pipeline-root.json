@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "source_adb_manifest_sha256": "65dfa704cbde5802fe9e7a1c44f77c9dd9943653f0b5135fa8fca7f71a5c9cc9",
+  "cohort_files": 7,
+  "bytes_unchanged_by_generic_bundler": true,
+  "isolated_path_version_passed": true,
+  "signature_and_exact_load_closure_verified": true,
+  "source_notices_retained": true,
+  "device_or_server_commands": false,
+  "dependency_origins": {
+    "bin/adb-libbrotlicommon.1.2.0.dylib": "/opt/homebrew/Cellar/brotli/1.2.0/lib/libbrotlicommon.1.2.0.dylib",
+    "bin/adb-libbrotlidec.1.2.0.dylib": "/opt/homebrew/Cellar/brotli/1.2.0/lib/libbrotlidec.1.2.0.dylib",
+    "bin/adb-libbrotlienc.1.2.0.dylib": "/opt/homebrew/Cellar/brotli/1.2.0/lib/libbrotlienc.1.2.0.dylib",
+    "bin/adb-liblz4.1.10.0.dylib": "/opt/homebrew/Cellar/lz4/1.10.0/lib/liblz4.1.10.0.dylib",
+    "bin/adb-libusb-1.0.0.dylib": "/opt/homebrew/Cellar/libusb/1.0.30/lib/libusb-1.0.0.dylib",
+    "bin/adb-libzstd.1.5.7.dylib": "/opt/homebrew/Cellar/zstd/1.5.7_1/lib/libzstd.1.5.7.dylib"
+  }
+}

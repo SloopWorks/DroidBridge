@@ -1,8 +1,18 @@
 #!/bin/bash
 set -euo pipefail
+# Capture the caller's Python before adding Homebrew tools. Some Homebrew
+# Python installations have incompatible extension-library dependencies.
+PACKAGE_PYTHON="$(command -v python3)"
+case "$PACKAGE_PYTHON" in /*) ;; *) PACKAGE_PYTHON="$PWD/$PACKAGE_PYTHON" ;; esac
+[ -f "$PACKAGE_PYTHON" ] && [ -x "$PACKAGE_PYTHON" ] || { echo "A working caller python3 is required" >&2; exit 1; }
+"$PACKAGE_PYTHON" -c 'import argparse, hashlib, json, os, pathlib, plistlib, re, secrets, shutil, stat, subprocess, sys, zipfile, zlib, xml.parsers.expat; print("Package Python:", sys.executable, sys.version.split()[0])'
+export PATH="$(dirname "$PACKAGE_PYTHON"):/opt/homebrew/bin:$PATH"
 cd "$(dirname "$0")/.."
-export PATH="/opt/homebrew/bin:$PATH"
-VERSION=0.1.8
+VERSION="${DROIDBRIDGE_VERSION:-0.2.0}"
+BUILD_NUMBER="${DROIDBRIDGE_BUILD_NUMBER:-1}"
+[[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Invalid release version" >&2; exit 1; }
+[[ "$BUILD_NUMBER" =~ ^[1-9][0-9]*$ ]] || { echo "Invalid build number" >&2; exit 1; }
+COMPANION_APK="${DROIDBRIDGE_COMPANION_APK:-}"
 sign_adhoc() {
     local signing_attempt
     for signing_attempt in 1 2 3; do
@@ -18,7 +28,15 @@ BUILD_STAGE=$(mktemp -d "$PWD/.build/droidbridge-package.XXXXXX")
 # Assemble all mutable resources outside an application bundle. Publish once.
 APP="$BUILD_STAGE/DroidBridge.bundle"
 SDK="${ANDROID_HOME:-$HOME/Library/Android/sdk}"
-ADB="${ADB_PATH:-$SDK/platform-tools/adb}"
+if [ -z "$COMPANION_APK" ]; then
+    android_signing_properties="${DROIDBRIDGE_ANDROID_SIGNING:-$(AndroidCompanion/prepare-local-signing.py)}"
+    DROIDBRIDGE_ANDROID_SIGNING="$android_signing_properties" AndroidCompanion/build.sh :app:assembleRelease
+    COMPANION_APK="$PWD/AndroidCompanion/app/build/outputs/apk/release/app-release.apk"
+fi
+[ -f "$COMPANION_APK" ] || { echo "Missing release companion APK: $COMPANION_APK" >&2; exit 1; }
+"$SDK/build-tools/35.0.0/apksigner" verify "$COMPANION_APK"
+if [ -z "${ADB_PATH:-}" ]; then scripts/build-adb-runtime.sh; fi
+ADB="${ADB_PATH:-$PWD/.build/adb-runtime/adb}"
 SCRCPY="${SCRCPY_PATH:-$(command -v scrcpy)}"
 SERVER="${SCRCPY_SERVER_PATH:-/opt/homebrew/share/scrcpy/scrcpy-server}"
 [ -x "$ADB" ] || { echo "Missing adb: $ADB" >&2; exit 1; }
@@ -37,7 +55,12 @@ mkdir -p "$APP/Contents/MacOS" "$RUNTIME/bin" "$RUNTIME/share/scrcpy" "$RUNTIME/
 cp .build/release/DroidBridge "$APP/Contents/MacOS/"
 cp .build/release/DroidBridgeSupervisor "$RUNTIME/bin/"
 cp .build/release/DroidBridgeAvailability "$RUNTIME/bin/"
-cp "$ADB" "$RUNTIME/bin/adb"
+cp .build/release/DroidBridgeCompanionBroker "$RUNTIME/bin/"
+mkdir -p "$APP/Contents/Resources/Companion"
+cp "$COMPANION_APK" "$APP/Contents/Resources/Companion/DroidBridgeCompanion.apk"
+"$PACKAGE_PYTHON" scripts/collect-companion-notices.py "$COMPANION_APK" "$APP/Contents/Resources/licenses/android-companion"
+shasum -a 256 "$COMPANION_APK" | awk '{print $1 "  DroidBridgeCompanion.apk"}' > "$APP/Contents/Resources/Companion/APK-SHA256.txt"
+"$PACKAGE_PYTHON" scripts/stage-adb-runtime.py --adb "$ADB" --destination "$RUNTIME/bin" --notices-destination "$APP/Contents/Resources/licenses/adb-source-runtime"
 cp "$SCRCPY" "$RUNTIME/bin/scrcpy"
 cp .build/audio-client/DroidBridgeAudioClient "$RUNTIME/bin/"
 cp "$SERVER" "$RUNTIME/share/scrcpy/scrcpy-server"
@@ -47,7 +70,7 @@ cp scripts/patches/audio-output-ready.patch "$APP/Contents/Resources/licenses/dr
 cp Vendor/scrcpy/LICENSE "$APP/Contents/Resources/licenses/droidbridge-audio-client/"
 printf 'Modified pinned scrcpy 5.0.1 source a60891aea193d92e7e5c3942700eca63f9d19a5f: output readiness, supervised audio identity, unique staged server path and non-rebinding forward lifecycle. Build: scripts/build-audio-client.sh in SloopWorks/DroidBridge.\n' > "$APP/Contents/Resources/licenses/droidbridge-audio-client/NOTICE.txt"
 cp .build/icon-helper/icon-helper.jar "$RUNTIME/share/droidbridge/icon-helper.jar"
-python3 scripts/bundle-dylibs.py "$RUNTIME"
+"$PACKAGE_PYTHON" scripts/bundle-dylibs.py "$RUNTIME"
 mv "$RUNTIME" "$APP/Contents/Resources/Runtime"
 if [ -d "$RUNTIME_STAGE/licenses" ]; then ditto "$RUNTIME_STAGE/licenses" "$APP/Contents/Resources/licenses"; fi
 rm -rf "$RUNTIME_STAGE"
@@ -57,32 +80,42 @@ if [ -f Resources/DroidBridge.icns ]; then cp Resources/DroidBridge.icns "$APP/C
 for file in README.md ARCHITECTURE.md BUILD.md TESTING.md COMPATIBILITY.md KNOWN_ISSUES.md PIXEL_VERIFICATION.md THIRD_PARTY.md WRAPPER_DESIGN.md APP_ONBOARDING_DESIGN.md LAUNCHER_UX_DESIGN.md AUDIO_DESIGN.md; do
     if [ -f "$file" ]; then cp "$file" "$APP/Contents/Resources/"; fi
 done
-if [ -f scripts/collect-licenses.py ]; then python3 scripts/collect-licenses.py; fi
+if [ -f scripts/collect-licenses.py ]; then "$PACKAGE_PYTHON" scripts/collect-licenses.py "$RUNTIME"; fi
 if [ -d Resources/licenses ]; then cp -R Resources/licenses/. "$APP/Contents/Resources/licenses/"; fi
 cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict>
-<key>CFBundleName</key><string>DroidBridge</string><key>CFBundleDisplayName</key><string>DroidBridge</string><key>CFBundleIdentifier</key><string>app.droidbridge.desktop</string><key>CFBundleExecutable</key><string>DroidBridge</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>$VERSION</string><key>CFBundleVersion</key><string>14</string><key>DroidBridgeManagedNamingVersion</key><integer>2</integer><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/><key>NSHumanReadableCopyright</key><string>Copyright © 2026 DroidBridge contributors</string></dict></plist>
+<key>CFBundleName</key><string>DroidBridge</string><key>CFBundleDisplayName</key><string>DroidBridge</string><key>CFBundleIdentifier</key><string>app.droidbridge.desktop</string><key>CFBundleExecutable</key><string>DroidBridge</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>$VERSION</string><key>CFBundleVersion</key><string>$BUILD_NUMBER</string><key>DroidBridgeManagedNamingVersion</key><integer>2</integer><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/><key>NSCameraUsageDescription</key><string>Scan the pairing QR code shown on your Android phone to connect it to this Mac.</string><key>NSHumanReadableCopyright</key><string>Copyright © 2026 DroidBridge contributors</string></dict></plist>
 PLIST
-find "$RUNTIME" -type f \( -name '*.dylib' -o -name adb -o -name scrcpy -o -name DroidBridgeSupervisor -o -name DroidBridgeAvailability -o -name DroidBridgeAudioClient \) -print0 | while IFS= read -r -d '' item; do sign_adhoc "$item"; done
+find "$RUNTIME" -type f \( -name '*.dylib' -o -name adb -o -name scrcpy -o -name DroidBridgeSupervisor -o -name DroidBridgeAvailability -o -name DroidBridgeCompanionBroker -o -name DroidBridgeAudioClient \) -print0 | while IFS= read -r -d '' item; do
+    if [ -f "$RUNTIME/bin/adb-runtime.json" ] && [ "$(dirname "$item")" = "$RUNTIME/bin" ]; then
+        case "$(basename "$item")" in adb|adb-lib*.dylib) continue ;; esac
+    fi
+    sign_adhoc "$item"
+done
+"$PACKAGE_PYTHON" scripts/stage-adb-runtime.py --adb "$RUNTIME/bin/adb"
 "$RUNTIME/bin/adb" version > "$RUNTIME/versions.txt"
 "$RUNTIME/bin/scrcpy" --version >> "$RUNTIME/versions.txt"
 shasum -a 256 "$SERVER" >> "$RUNTIME/versions.txt"
 PLAYER="$RUNTIME/Player.app"
 mkdir -p "$PLAYER/Contents/MacOS" "$PLAYER/Contents/Resources"
 cp "$RUNTIME/bin/scrcpy" "$PLAYER/Contents/MacOS/scrcpy"
-ln -s ../../lib "$PLAYER/Contents/lib"
+# A nested signed application must own its libraries; an escaping symlink makes
+# standalone strict signature verification fail even when the outer app passes.
+"$PACKAGE_PYTHON" scripts/verify-package.py "$PLAYER" --stage-player-libraries-from "$RUNTIME" --output "$BUILD_STAGE/player-libraries.json"
 cp "$APP/Contents/Resources/DroidBridge.icns" "$PLAYER/Contents/Resources/"
 cat > "$PLAYER/Contents/Info.plist" <<'PLAYERPLIST'
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>CFBundleIdentifier</key><string>app.droidbridge.player</string><key>CFBundleName</key><string>DroidBridge Player</string><key>CFBundleExecutable</key><string>scrcpy</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>5.0.1</string><key>CFBundleVersion</key><string>1</string><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/></dict></plist>
 PLAYERPLIST
 sign_adhoc "$PLAYER"
+"$PACKAGE_PYTHON" scripts/verify-package.py "$PLAYER" --player-only --output "$BUILD_STAGE/player-verification.json"
 mv "$APP" "$BUILD_STAGE/DroidBridge.app"
 APP="$BUILD_STAGE/DroidBridge.app"
 sign_adhoc "$APP"
-codesign --verify --deep --strict "$APP"
+"$PACKAGE_PYTHON" scripts/verify-package.py "$APP" --signatures-only --output "$BUILD_STAGE/signature-verification.json"
 if [ -e "$PUBLISHED_APP" ]; then mv "$PUBLISHED_APP" ".build/package-backups/DroidBridge.previous.$(date +%s).app"; fi
 mv "$APP" "$PUBLISHED_APP"
 APP="$PUBLISHED_APP"
+rm "$BUILD_STAGE/player-libraries.json" "$BUILD_STAGE/player-verification.json" "$BUILD_STAGE/signature-verification.json"
 rmdir "$BUILD_STAGE"
 codesign --verify --deep --strict "$APP"
 STAGE="$(mktemp -d "$OUT/dmg-stage.XXXXXX")"

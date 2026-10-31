@@ -1,0 +1,15 @@
+Mac received 2026-10-30T23:59:04Z
+{
+  "battery_percent" : 100,
+  "charging" : true,
+  "network_class" : "wifi",
+  "observed_at" : "2026-10-30T23:58:57.577933Z",
+  "phone_command_journal" : "available",
+  "power_save" : false,
+  "profile" : "balanced",
+  "protocol" : 1,
+  "received_text_journal" : "available",
+  "sdk" : 37,
+  "service_running" : true,
+  "thermal_status" : 0
+}

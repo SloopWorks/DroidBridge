@@ -1,0 +1,6 @@
+{
+  "status": "not_published_rejected_distribution",
+  "reason": "Nested Player escaped bundle via lib symlink and failed independent strict signature",
+  "evidence": "security/final11-player-signature-failure.json",
+  "preserved_local_assets": "/Users/patrick/workspace/DroidBridge/.build/release-assets-0.2.0-rejected-build11"
+}

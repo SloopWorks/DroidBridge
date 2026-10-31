@@ -1,0 +1,61 @@
+{
+  "escaping-link": {
+    "rejected": true,
+    "reason": "must be a real internal directory"
+  },
+  "missing-library": {
+    "rejected": true,
+    "reason": "missing dependency"
+  },
+  "tampered-library": {
+    "rejected": true,
+    "reason": "codesign"
+  },
+  "external-rpath": {
+    "rejected": true,
+    "reason": "external or unsupported rpath"
+  },
+  "escaping-executable-path": {
+    "rejected": true,
+    "reason": "dependency escapes bundle"
+  },
+  "external-first-local-later-rpath": {
+    "rejected": true,
+    "reason": "external or unsupported rpath"
+  },
+  "system-prefix-traversal": {
+    "rejected": true,
+    "reason": "noncanonical system dependency"
+  },
+  "oversized-staging-preflight": {
+    "rejected": true,
+    "hash_calls": 0,
+    "copies": 0,
+    "sparse_library_bytes": 268435457
+  },
+  "oversized-inventory-preflight": {
+    "rejected": true,
+    "hash_calls": 0,
+    "isolated_unit_case": true
+  },
+  "full-app": {
+    "independent_macho_strict_checks": 48,
+    "nested_player_strict": true
+  },
+  "copied-byte-identity": {
+    "count": 17,
+    "all_source_hashes_equal": true,
+    "logical_bytes": 37129056
+  },
+  "payload": {
+    "fixture_zip_deflate9_old_bytes": 16103152,
+    "fixture_zip_deflate9_fixed_bytes": 32027375,
+    "fixture_zip_delta_bytes": 15924223,
+    "additional_dylib_logical_bytes": 37129056,
+    "final_dmg_zip_measurement": "pending root build12"
+  },
+  "scripts_sha256": {
+    "scripts/package.sh": "600d9ac5d70aa081be4c2a13f202106551c421d7c1854bb3e64295b4e0c47e9b",
+    "scripts/verify-package.py": "339038742d092e84c612200315a5559b1379ff7e6ee7c5a9e7346a9210f4bc28"
+  }
+}

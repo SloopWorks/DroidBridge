@@ -1,0 +1,13 @@
+DroidBridge Android companion
+
+Kotlin standard library 2.3.21, Copyright JetBrains s.r.o. and Kotlin contributors.
+https://github.com/JetBrains/kotlin — Apache License 2.0.
+
+ZXing core 3.5.3, Copyright ZXing authors.
+https://github.com/zxing/zxing/tree/zxing-3.5.3 — Apache License 2.0.
+Used for local pairing QR generation. QR content never leaves the phone through
+this library. DroidBridge modifications to these libraries: none.
+
+The complete Apache License 2.0 is included in this directory. Android platform
+APIs are supplied by the device. AndroidX test runner, JUnit and Gradle tooling
+are build/test dependencies and are not included in the companion application.

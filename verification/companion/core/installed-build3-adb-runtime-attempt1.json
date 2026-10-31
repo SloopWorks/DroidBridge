@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "scope": "Installed signed ADB, isolated server5038, owned API35 emulator; no video, physical USB/Wi-Fi or GUI claim",
+  "app": "/Users/patrick/Applications/DroidBridge Companion QA.app",
+  "adb_sha256": "e19f1bdac239722dbd7866ccf27c4d1de601bffc07a04c39a02daf9cbe4f8eab",
+  "server_pid": 29988,
+  "server_exit_code": -6,
+  "owned_listener_closed": true,
+  "environment": {
+    "ADB_USB": "0",
+    "ADB_MDNS": "0",
+    "ADB_LOCAL_TRANSPORT_MAX_PORT": "0"
+  },
+  "tests": []
+}

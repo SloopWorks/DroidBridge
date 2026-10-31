@@ -1,6 +1,99 @@
 {
   "formulae": [
     {
+      "name": "brotli",
+      "full_name": "brotli",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "Generic-purpose lossless compression algorithm by Google",
+      "license": "MIT",
+      "homepage": "https://github.com/google/brotli",
+      "versions": {
+        "stable": "1.2.0",
+        "head": "HEAD",
+        "bottle": false
+      },
+      "urls": {
+        "stable": {
+          "url": "https://github.com/google/brotli/archive/refs/tags/v1.2.0.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec"
+        },
+        "head": {
+          "url": "https://github.com/google/brotli.git",
+          "branch": "master",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": null,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {},
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [
+        "cmake"
+      ],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/brotli/1.2.0/sbom.spdx.json",
+          "version": "1.2.0",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1769058471,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "1.2.0",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/brotli/1.2.0/.brew/brotli.rb",
+      "ruby_source_checksum": {
+        "sha256": "2d0050036dfa720d8357fa8d7ddcbb2abb88cdc79f34b438a1f10dd4e1c72366"
+      }
+    },
+    {
       "name": "dav1d",
       "full_name": "dav1d",
       "tap": "homebrew/core",
@@ -13,7 +106,7 @@
       "versions": {
         "stable": "1.5.4",
         "head": null,
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -32,19 +125,7 @@
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/dav1d/blobs/sha256:d30ff747564febd643ec4b279c5adc74f708b8d6eb8e172f914b9fcdec26c464",
-              "sha256": "d30ff747564febd643ec4b279c5adc74f708b8d6eb8e172f914b9fcdec26c464"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -95,10 +176,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/d/dav1d.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/dav1d/1.5.4/.brew/dav1d.rb",
       "ruby_source_checksum": {
-        "sha256": "ceaebbf22c54822f9e1ff2d4fa6a5c26f3556dc6f5005ab77a335dfc185cbae6"
+        "sha256": "3364a5bd9c26e4c9b73d756f8b99944fe3bf74e59e9ded813235c8aeaec63984"
       }
     },
     {
@@ -123,7 +204,7 @@
       "versions": {
         "stable": "9.0.2",
         "head": "HEAD",
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -147,19 +228,7 @@
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:595b0bb854e692d7f6f89b866e860afacfdab5e3698451555547f58f523ed04d",
-              "sha256": "595b0bb854e692d7f6f89b866e860afacfdab5e3698451555547f58f523ed04d"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -474,10 +543,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/f/ffmpeg.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/ffmpeg/9.0.2_1/.brew/ffmpeg.rb",
       "ruby_source_checksum": {
-        "sha256": "1f3e7264a319af3096a9487b6847cf8dc1f888c7798a66b5f91bde1459a7a421"
+        "sha256": "af2c76ee6026cda4df125d2245cff9d24731d54fb969c193e53d4b0a94f63362"
       }
     },
     {
@@ -493,7 +562,7 @@
       "versions": {
         "stable": "4.0",
         "head": null,
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -508,23 +577,11 @@
       "local_patch_checksums": {},
       "revision": 0,
       "version_scheme": 0,
-      "compatibility_version": 1,
+      "compatibility_version": null,
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/lame/blobs/sha256:b0fe0cfb39c74a53b7635833fe3293a62c886b084bc5ccc8ed7cd177803182e4",
-              "sha256": "b0fe0cfb39c74a53b7635833fe3293a62c886b084bc5ccc8ed7cd177803182e4"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -589,10 +646,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/l/lame.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/lame/4.0/.brew/lame.rb",
       "ruby_source_checksum": {
-        "sha256": "ce4a855da3c473fe789a3ec97b264f8e80143260adf57e5fd3d95f3fc6cbb2ac"
+        "sha256": "54e93fd2d82f830c4a53f56f61afb352c465ea96d37f7e34db48257c78bb5478"
       }
     },
     {
@@ -608,7 +665,7 @@
       "versions": {
         "stable": "1.0.30",
         "head": "HEAD",
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -632,19 +689,7 @@
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/libusb/blobs/sha256:184daaa6108f0a56eb72c58cc4124dbbb0b54a655632dffdf8334569d71e2a34",
-              "sha256": "184daaa6108f0a56eb72c58cc4124dbbb0b54a655632dffdf8334569d71e2a34"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -702,10 +747,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/lib/libusb.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/libusb/1.0.30/.brew/libusb.rb",
       "ruby_source_checksum": {
-        "sha256": "513c20f992711ced872639a391fbb0b3194e397ffddc4968b9f9b1e4f03b48ee"
+        "sha256": "fad2c080e3d107b6c1e453864992fd26b89202e7b894aabc4d2facfed2193340"
       },
       "head_dependencies": {
         "build_dependencies": [
@@ -735,7 +780,7 @@
       "versions": {
         "stable": "1.17.0",
         "head": "HEAD",
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -759,19 +804,7 @@
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 1,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/libvpx/blobs/sha256:f98fa074f8eef7b2de3346fb83d4da15e7e6284fd13bf65210d855043f78f8c1",
-              "sha256": "f98fa074f8eef7b2de3346fb83d4da15e7e6284fd13bf65210d855043f78f8c1"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -819,10 +852,101 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/lib/libvpx.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/libvpx/1.17.0/.brew/libvpx.rb",
       "ruby_source_checksum": {
-        "sha256": "da99e55001e2a5494e8c27f80dc5ce54469b07af5a2dcbc428bc8dcb4a225833"
+        "sha256": "6ff28c1e7227a7798851715043d032ed7cf11e77d0e0c14337fdbf0fad4796de"
+      }
+    },
+    {
+      "name": "lz4",
+      "full_name": "lz4",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [],
+      "versioned_formulae": [],
+      "desc": "Extremely Fast Compression algorithm",
+      "license": "BSD-2-Clause",
+      "homepage": "https://lz4.github.io/lz4/",
+      "versions": {
+        "stable": "1.10.0",
+        "head": "HEAD",
+        "bottle": false
+      },
+      "urls": {
+        "stable": {
+          "url": "https://github.com/lz4/lz4/archive/refs/tags/v1.10.0.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b"
+        },
+        "head": {
+          "url": "https://github.com/lz4/lz4.git",
+          "branch": "dev",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 0,
+      "version_scheme": 0,
+      "compatibility_version": null,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {},
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [],
+      "dependencies": [],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/lz4/1.10.0/sbom.spdx.json",
+          "version": "1.10.0",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1769058482,
+          "runtime_dependencies": [],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "1.10.0",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/lz4/1.10.0/.brew/lz4.rb",
+      "ruby_source_checksum": {
+        "sha256": "3b10c1f3e42ea2855214fb53ab884b68b48212495eb058116dc52a9e454a5598"
       }
     },
     {
@@ -838,7 +962,7 @@
       "versions": {
         "stable": "1.33.7",
         "head": null,
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -857,19 +981,7 @@
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 1,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/mpg123/blobs/sha256:5fcd87caeb9b6e6730d7de5c7738e785c84814c641d1ba9ac578a142d2b033f5",
-              "sha256": "5fcd87caeb9b6e6730d7de5c7738e785c84814c641d1ba9ac578a142d2b033f5"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -917,10 +1029,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/m/mpg123.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/mpg123/1.33.7/.brew/mpg123.rb",
       "ruby_source_checksum": {
-        "sha256": "3698eb1f9ba852c034a659b627386f0113671b77ea828535343b9c058fe0f9fb"
+        "sha256": "5ad4b706de97c4879ce5f4971acd1ed6acc2045974fdbc3b29f6feaffe3398be"
       }
     },
     {
@@ -942,7 +1054,7 @@
       "versions": {
         "stable": "4.1.0",
         "head": null,
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -957,23 +1069,11 @@
       "local_patch_checksums": {},
       "revision": 0,
       "version_scheme": 0,
-      "compatibility_version": 1,
+      "compatibility_version": null,
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/openssl/4/blobs/sha256:382f63e829b116d5fb9a2b186147e489631b5bbbb06ac0089f795a3fed1085c4",
-              "sha256": "382f63e829b116d5fb9a2b186147e489631b5bbbb06ac0089f795a3fed1085c4"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -1012,7 +1112,7 @@
         "lib/pkgconfig/libssl.pc",
         "lib/pkgconfig/openssl.pc"
       ],
-      "caveats": "To add additional certificates, place .pem, .crt, .cer, or .crl files in\n  $HOMEBREW_PREFIX/etc/openssl@4/certs\n\nand run\n  $HOMEBREW_PREFIX/Cellar/openssl@4/4.1.0/bin/openssl rehash $HOMEBREW_PREFIX/etc/openssl@4/certs\n",
+      "caveats": "To add additional certificates, place .pem, .crt, .cer, or .crl files in\n  $HOMEBREW_PREFIX/etc/openssl@4/certs\n\nand run\n  $HOMEBREW_PREFIX/opt/openssl@4/bin/openssl rehash $HOMEBREW_PREFIX/etc/openssl@4/certs\n",
       "installed": [
         {
           "sbom": "/opt/homebrew/Cellar/openssl@4/4.0.3/sbom.spdx.json",
@@ -1084,10 +1184,10 @@
       ],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/o/openssl@4.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/openssl@4/4.1.0/.brew/openssl@4.rb",
       "ruby_source_checksum": {
-        "sha256": "50f58cda0dfd54aabc627e53205a88afc2e1780d83f43a99c525b58950c32049"
+        "sha256": "7ff5915f10c5e950f35e65471fae7e04711bc962689f1369e646e2f68b41b19d"
       }
     },
     {
@@ -1103,7 +1203,7 @@
       "versions": {
         "stable": "1.6.1",
         "head": "HEAD",
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -1123,23 +1223,11 @@
       "local_patch_checksums": {},
       "revision": 0,
       "version_scheme": 0,
-      "compatibility_version": 1,
+      "compatibility_version": null,
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/opus/blobs/sha256:5e8146a64fab2683ea447aaa7d0de0b1d717539b4cdabd1fedd4a510e4be0d1e",
-              "sha256": "5e8146a64fab2683ea447aaa7d0de0b1d717539b4cdabd1fedd4a510e4be0d1e"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -1187,10 +1275,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/o/opus.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/opus/1.6.1/.brew/opus.rb",
       "ruby_source_checksum": {
-        "sha256": "39611712ad2de37708493f43569e9266c4be9dcc5e88e7276ee78a562bf03a33"
+        "sha256": "7ebe72e9352ceb9236cfb49c8ba7134556295ca330ea9054135b1401257f03c4"
       },
       "head_dependencies": {
         "build_dependencies": [
@@ -1220,7 +1308,7 @@
       "versions": {
         "stable": "3.4.18",
         "head": "HEAD",
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -1244,19 +1332,7 @@
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/sdl3/blobs/sha256:0040e2deb33adb677f9ab1a0309e4a645a4bfdfb37e59bd6c3d4ed3ab4d0c814",
-              "sha256": "0040e2deb33adb677f9ab1a0309e4a645a4bfdfb37e59bd6c3d4ed3ab4d0c814"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -1317,10 +1393,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/s/sdl3.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/sdl3/3.4.18/.brew/sdl3.rb",
       "ruby_source_checksum": {
-        "sha256": "c3d6ea1becc0bb53773e82d3a7f885bf4cfeaec10b367d82530928859d41dc75"
+        "sha256": "884f857434a199f058a0f169eb344b7ed0258f5c51aee6edd0225197a50e03cc"
       }
     },
     {
@@ -1336,7 +1412,7 @@
       "versions": {
         "stable": "4.2.0",
         "head": "HEAD",
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -1360,19 +1436,7 @@
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/svt-av1/blobs/sha256:bd6186cc963d1980f0d81d59ecef58c8fa6263eb1124211dd3537b224e04c9e0",
-              "sha256": "bd6186cc963d1980f0d81d59ecef58c8fa6263eb1124211dd3537b224e04c9e0"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -1422,10 +1486,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/s/svt-av1.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/svt-av1/4.2.0/.brew/svt-av1.rb",
       "ruby_source_checksum": {
-        "sha256": "de4c69992e6ea2943c41d38dccae7ad37faed0f04f0d76935755da8f1cf210c0"
+        "sha256": "41c026d8329602ecc9de6f581524359836611cab34efa89c2d81ca8b02cf266a"
       }
     },
     {
@@ -1441,7 +1505,7 @@
       "versions": {
         "stable": "r3222",
         "head": "HEAD",
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -1461,23 +1525,11 @@
       "local_patch_checksums": {},
       "revision": 0,
       "version_scheme": 0,
-      "compatibility_version": 1,
+      "compatibility_version": null,
       "autobump": false,
       "no_autobump_message": "incompatible_version_format",
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/x264/blobs/sha256:b631667b5ad55c6c3ae383484f658c5b4ba14da8a2fbb1d537975695852529ca",
-              "sha256": "b631667b5ad55c6c3ae383484f658c5b4ba14da8a2fbb1d537975695852529ca"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -1525,10 +1577,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/x/x264.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/x264/r3222/.brew/x264.rb",
       "ruby_source_checksum": {
-        "sha256": "d404046a3ad9833f9878ab074a743060f3a83cc6ecb08a2a15fda5b960e693e4"
+        "sha256": "9165e288b689999b374401c1045a1904102ff279fb534f514d6569fcb608e264"
       }
     },
     {
@@ -1544,7 +1596,7 @@
       "versions": {
         "stable": "4.3",
         "head": "HEAD",
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -1568,19 +1620,7 @@
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 1,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/x265/blobs/sha256:46dd2b3656ec8e99438a789b627e41a25e3a24407dc76a3a6b88cf159b447858",
-              "sha256": "46dd2b3656ec8e99438a789b627e41a25e3a24407dc76a3a6b88cf159b447858"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -1630,10 +1670,10 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/x/x265.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/x265/4.3/.brew/x265.rb",
       "ruby_source_checksum": {
-        "sha256": "f34703d7f7cb05d2374b19565b076c8b3d9a6968ccfab406905e435829662ed6"
+        "sha256": "71f05bcabc5e87e350d02b7354473cb31cfaa70c7b1cfe9ed78c7d8574902033"
       }
     },
     {
@@ -1649,7 +1689,7 @@
       "versions": {
         "stable": "5.8.4",
         "head": null,
-        "bottle": true
+        "bottle": false
       },
       "urls": {
         "stable": {
@@ -1668,19 +1708,7 @@
       "autobump": true,
       "no_autobump_message": null,
       "skip_livecheck": false,
-      "bottle": {
-        "stable": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "arm64_tahoe": {
-              "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/xz/blobs/sha256:d291ad2277682238329b0e4d249e5e2c948c4b10cd64dba1963d897330ad88dd",
-              "sha256": "d291ad2277682238329b0e4d249e5e2c948c4b10cd64dba1963d897330ad88dd"
-            }
-          }
-        }
-      },
+      "bottle": {},
       "pour_bottle_only_if": null,
       "keg_only": false,
       "keg_only_reason": null,
@@ -1738,10 +1766,125 @@
       "post_install_steps": [],
       "post_install_defined": false,
       "service": null,
-      "tap_git_head": "50150ff56209801e34eb3b93c37b0ded526c2b91",
-      "ruby_source_path": "Formula/x/xz.rb",
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/xz/5.8.4/.brew/xz.rb",
       "ruby_source_checksum": {
-        "sha256": "e5b8bbf09dccb4a1f2ee333ed65b13ee773350a26735ef594ca859d2cf85248e"
+        "sha256": "0a0ec0394575eadc853cdb509c8ababc01c8926b973bd76841a1f6f254e1ebdf"
+      }
+    },
+    {
+      "name": "zstd",
+      "full_name": "zstd",
+      "tap": "homebrew/core",
+      "oldnames": [],
+      "aliases": [
+        "pzstd"
+      ],
+      "versioned_formulae": [],
+      "desc": "Zstandard is a real-time compression algorithm",
+      "license": "(BSD-3-Clause OR GPL-2.0-only) AND BSD-2-Clause AND MIT",
+      "homepage": "https://facebook.github.io/zstd/",
+      "versions": {
+        "stable": "1.5.7",
+        "head": "HEAD",
+        "bottle": false
+      },
+      "urls": {
+        "stable": {
+          "url": "https://github.com/facebook/zstd/archive/refs/tags/v1.5.7.tar.gz",
+          "tag": null,
+          "revision": null,
+          "using": null,
+          "checksum": "37d7284556b20954e56e1ca85b80226768902e2edabd3b649e9e72c0c9012ee3"
+        },
+        "head": {
+          "url": "https://github.com/facebook/zstd.git",
+          "branch": "dev",
+          "using": null
+        }
+      },
+      "patches": [],
+      "local_patch_checksums": {},
+      "revision": 1,
+      "version_scheme": 0,
+      "compatibility_version": null,
+      "autobump": true,
+      "no_autobump_message": null,
+      "skip_livecheck": false,
+      "bottle": {},
+      "pour_bottle_only_if": null,
+      "keg_only": false,
+      "keg_only_reason": null,
+      "options": [],
+      "build_dependencies": [
+        "cmake"
+      ],
+      "dependencies": [
+        "lz4",
+        "xz"
+      ],
+      "test_dependencies": [],
+      "recommended_dependencies": [],
+      "optional_dependencies": [],
+      "no_linkage_dependencies": [],
+      "uses_from_macos": [],
+      "uses_from_macos_bounds": [],
+      "requirements": [],
+      "conflicts_with": [],
+      "conflicts_with_reasons": [],
+      "link_overwrite": [],
+      "caveats": null,
+      "installed": [
+        {
+          "sbom": "/opt/homebrew/Cellar/zstd/1.5.7_1/sbom.spdx.json",
+          "version": "1.5.7_1",
+          "used_options": [],
+          "built_as_bottle": true,
+          "poured_from_bottle": true,
+          "time": 1773812990,
+          "runtime_dependencies": [
+            {
+              "full_name": "lz4",
+              "version": "1.10.0",
+              "revision": 0,
+              "bottle_rebuild": 1,
+              "pkg_version": "1.10.0",
+              "declared_directly": true
+            },
+            {
+              "full_name": "xz",
+              "version": "5.8.2",
+              "revision": 0,
+              "bottle_rebuild": 0,
+              "pkg_version": "5.8.2",
+              "declared_directly": true
+            }
+          ],
+          "installed_on_request": false
+        }
+      ],
+      "linked_keg": "1.5.7_1",
+      "pinned": false,
+      "outdated": false,
+      "deprecated": false,
+      "deprecation_date": null,
+      "deprecation_reason": null,
+      "deprecation_replacement_formula": null,
+      "deprecation_replacement_cask": null,
+      "deprecate_args": null,
+      "disabled": false,
+      "disable_date": null,
+      "disable_reason": null,
+      "disable_replacement_formula": null,
+      "disable_replacement_cask": null,
+      "disable_args": null,
+      "post_install_steps": [],
+      "post_install_defined": false,
+      "service": null,
+      "tap_git_head": null,
+      "ruby_source_path": "../../../../Cellar/zstd/1.5.7_1/.brew/zstd.rb",
+      "ruby_source_checksum": {
+        "sha256": "9a9b0183896886e82b915af4db576f27d34d1cee7757d6c5beb0e1eb74c68e0d"
       }
     }
   ],

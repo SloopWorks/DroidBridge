@@ -1,0 +1,14 @@
+
+dev.droidbridge.companion.CompanionConsentDeviceTest:.
+dev.droidbridge.companion.CompanionDeviceTest:..
+dev.droidbridge.companion.CompanionSecurityTest:.......
+dev.droidbridge.companion.CompanionStagingDeadlineTest:.
+dev.droidbridge.companion.CompanionTlsTest:....
+dev.droidbridge.companion.CompanionUXDeviceTest:...
+dev.droidbridge.companion.ReleaseDeliveryDeviceTest:...
+
+Time: 80.764
+
+OK (21 tests)
+
+

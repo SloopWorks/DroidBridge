@@ -1,0 +1,16 @@
+{
+  "pass": false,
+  "boundary": "actual installed5 GUI -> APK8 pinned TLS pairing poll",
+  "observed": [
+    "Google sdk_gphone16k_arm64 \u00b7 Companion offline \u00b7 pairing_forgotten",
+    "The phone returned a different pairing request.",
+    "USB or Android's paired wireless debugging authorizes ADB. Companion pairing separately authorizes this Mac's app catalog, handoff and phone dashboard. Select its authorized ADB device, install/open the companion if needed, then start its connection service on the phone.",
+    "If no ADB device appears: enable Developer options and USB debugging on Android, connect USB, unlock the phone and accept its debugging prompt. A QR code does not grant ADB access. Revoke an untrusted Mac from either companion UI. If a local credential becomes unreadable after an unsigned update, use Forget Pairing on This Mac, remove the old trust on the phone, and pair with a fresh link."
+  ],
+  "cause": "Android pollPair responses omit pairing_id; Core exact-identity check rejects nil",
+  "phone_approval_performed": true,
+  "guard_retained": true,
+  "orphan_trust_created": true,
+  "orphan_trust_removed_via_phone_settings": true,
+  "unrelated_old_hidden_root_trust_preserved": true
+}

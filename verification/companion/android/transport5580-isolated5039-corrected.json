@@ -1,0 +1,12 @@
+{
+  "server_pid": 64349,
+  "port": 5039,
+  "exact_target": "127.0.0.1:5581",
+  "usb": false,
+  "mdns": false,
+  "emulator_scan": false,
+  "connect": "failed to connect to 127.0.0.1:5581\n",
+  "shell_returncode": 1,
+  "shell": "adb: device offline\n",
+  "owned_server_stopped": true
+}

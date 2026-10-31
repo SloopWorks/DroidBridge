@@ -1,0 +1,10 @@
+
+dev.droidbridge.companion.CompanionDeviceTest:..
+dev.droidbridge.companion.CompanionSecurityTest:.......
+dev.droidbridge.companion.CompanionTlsTest:..
+
+Time: 36.376
+
+OK (11 tests)
+
+

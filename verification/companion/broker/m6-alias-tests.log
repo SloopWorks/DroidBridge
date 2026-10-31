@@ -1,0 +1,59 @@
+Another instance of SwiftPM (PID: 30039) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Compiling DroidBridgeStreaming BridgeSession.swift
+[5/8] Emitting module DroidBridgeStreaming
+[6/9] Compiling DroidBridgeStreaming SessionRecovery.swift
+[7/28] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[8/28] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[9/28] Compiling DroidBridge main.swift
+[10/28] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[11/28] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[12/28] Compiling DroidBridgeCoreTests StreamingTests.swift
+[13/28] Compiling DroidBridgeCoreTests CanonicalAliasAdmissionTests.swift
+[14/28] Emitting module DroidBridgeCoreTests
+[14/29] Write Objects.LinkFileList
+[16/29] Compiling DroidBridge ManagedAppNameRepair.swift
+[16/29] Linking DroidBridgePackageTests
+[18/29] Compiling DroidBridge PhoneDisplayControls.swift
+[19/29] Compiling DroidBridge NativeWindow.swift
+[20/29] Compiling DroidBridge Launcher.swift
+[21/29] Compiling DroidBridge LauncherUI.swift
+[22/29] Compiling DroidBridge DeviceOnboardingUI.swift
+[23/29] Compiling DroidBridge CompanionLauncherIntegration.swift
+[24/29] Compiling DroidBridge AudioControls.swift
+[25/29] Compiling DroidBridge CompanionDesktopAdapter.swift
+[26/29] Emitting module DroidBridge
+[27/29] Compiling DroidBridge CompanionWindow.swift
+[27/30] Write Objects.LinkFileList
+[28/30] Linking DroidBridge
+[29/30] Applying DroidBridge
+Build complete! (3.86s)
+Test Suite 'Selected tests' started at 2026-10-30 13:38:08.219.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 13:38:08.220.
+Test Suite 'CanonicalAliasAdmissionTests' started at 2026-10-30 13:38:08.220.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testAbsentPolicyPreservesStandaloneAndCorruptPolicyFailsClosed]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testAbsentPolicyPreservesStandaloneAndCorruptPolicyFailsClosed]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testCanonicalAudioIntentSharesAliasesAndKeepsLegacyPhoneChoice]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testCanonicalAudioIntentSharesAliasesAndKeepsLegacyPhoneChoice]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testExplicitInstallationMoveCannotRekeyLiveCaptureAndPreservesStableLeaseIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testExplicitInstallationMoveCannotRekeyLiveCaptureAndPreservesStableLeaseIdentity]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testFirstPairingRefusesToRekeyStandaloneCaptureUntilDrained]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testFirstPairingRefusesToRekeyStandaloneCaptureUntilDrained]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSameAliasConcurrentAndOtherAliasRefusedUntilLastLeaseDrains]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSameAliasConcurrentAndOtherAliasRefusedUntilLastLeaseDrains]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testStopDuringAliasAdmissionDoesNotRetainLateLeaseOrRunADB]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testStopDuringAliasAdmissionDoesNotRetainLateLeaseOrRunADB]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSupervisorRetainsLeaseAndCrashGuardDrainsOwnedChild]' started.
+Test Case '-[DroidBridgeCoreTests.CanonicalAliasAdmissionTests testSupervisorRetainsLeaseAndCrashGuardDrainsOwnedChild]' passed (0.148 seconds).
+Test Suite 'CanonicalAliasAdmissionTests' passed at 2026-10-30 13:38:08.392.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.171 (0.172) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 13:38:08.392.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.171 (0.172) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 13:38:08.392.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.171 (0.173) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

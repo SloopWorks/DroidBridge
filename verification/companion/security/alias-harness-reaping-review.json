@@ -1,0 +1,13 @@
+{
+  "scope": "Independent test-only bounded reaping source and retained hang/focused log review; no production/runtime change by reviewer",
+  "focused_tests": 7,
+  "focused_failures": 0,
+  "full_attempt1": "Retained aborted/hung; never a pass",
+  "review": "Accept bounded WNOHANG/EINTR/ECHILD wait with finite2s deadline and preserved child-dead/crashguard/lease assertions; recommend start-identity guard on intentional crash signal as on deferred cleanup",
+  "sha256": {
+    "Tests/DroidBridgeCoreTests/CanonicalAliasAdmissionTests.swift": "06731024e653d8d952244795a94659ed9ac08d2d4f901828dca25a8149c8e275",
+    "verification/companion/unicode-catalog/swift-full-attempt1-hang-sample.txt": "a8a777ba2cef5638d288e586225008fbed5ade5fd2fa21b7eb47d406643fb63e",
+    "verification/companion/unicode-catalog/alias-harness-reap-focused.log": "7542db5606da20825ad9c606d12211bfa6de6bbf25bcd3f20cd60249dadbc2f3",
+    "verification/companion/unicode-catalog/alias-harness-reap-focused-attempt2.log": "ceedc8ccd10b62996de4cde9f2675bc2425e9a8a333e91e53255c820d4566a76"
+  }
+}

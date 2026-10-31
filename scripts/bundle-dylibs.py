@@ -8,10 +8,21 @@ seen = set()
 manifest = {}
 def run(*args):
     return subprocess.check_output(args, text=True)
+portable = set()
+adb_manifest = root / 'bin/adb-runtime.json'
+if adb_manifest.exists():
+    # These bytes were already relocated and signed together. Rewriting or
+    # re-signing one would invalidate the private-service runtime inventory.
+    subprocess.run([sys.executable, str(pathlib.Path(__file__).with_name('stage-adb-runtime.py')), '--adb', str(root / 'bin/adb')], check=True)
+    portable = {entry['name'] for entry in json.loads(adb_manifest.read_text())['files']}
+    origins = json.loads((root / 'bin/adb-dependency-origins.json').read_text())
+    manifest.update({'bin/' + name: origin for name, origin in origins.items()})
 while queue:
     binary = queue.pop(0)
     if str(binary) in seen: continue
     seen.add(str(binary))
+    if binary.parent == root / 'bin' and binary.name in portable: continue
+    if 'Mach-O' not in run('/usr/bin/file', '-b', str(binary)): continue
     lines = run('otool', '-arch', 'arm64', '-L', str(binary)).splitlines()[1:]
     for line in lines:
         dependency = line.strip().split(' (', 1)[0]

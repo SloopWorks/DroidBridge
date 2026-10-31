@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-peer-attack.py", line 178, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-peer-attack.py", line 102, in main
+    assert permissions == ["android.permission.INTERNET"], permissions
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['android.permission.ACCESS_LOCAL_NETWORK', 'android.permission.INTERNET']

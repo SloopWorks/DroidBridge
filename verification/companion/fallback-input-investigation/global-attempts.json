@@ -1,0 +1,37 @@
+{
+  "source": "Recorded exact public event harness stdout from three bounded attempts; no rerun after handoff",
+  "attempts": [
+    {
+      "kind": "global_hid",
+      "frontmost_pid": 50207,
+      "observed_cursor_x": 817,
+      "observed_cursor_y": 370,
+      "requested_global_x": 817,
+      "requested_global_y": 370,
+      "window_id": 13910,
+      "activity_touch_observed": false
+    },
+    {
+      "kind": "global_move_pid_buttons",
+      "frontmost_pid": 50207,
+      "observed_cursor_x": 817,
+      "observed_cursor_y": 370,
+      "requested_global_x": 817,
+      "requested_global_y": 370,
+      "window_id": 13910,
+      "activity_touch_observed": false
+    },
+    {
+      "kind": "global_move_pid_buttons_explicit_public_window_fields",
+      "frontmost_pid": 50207,
+      "observed_cursor_x": 817,
+      "observed_cursor_y": 370,
+      "requested_global_x": 817,
+      "requested_global_y": 370,
+      "window_id": 13910,
+      "activity_touch_observed": false
+    }
+  ],
+  "permissions_requested_or_changed": false,
+  "production_mouse_gate": "unproven"
+}

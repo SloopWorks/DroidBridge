@@ -1,0 +1,33 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[1/10] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Compiling DroidBridgeCoreTests CompanionJournalSecurityTests.swift
+[4/6] Emitting module DroidBridgeCoreTests
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.45s)
+Test Suite 'Selected tests' started at 2026-10-30 13:50:48.644.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 13:50:48.645.
+Test Suite 'CompanionCleanupSecurityTests' started at 2026-10-30 13:50:48.645.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionCleanupSecurityTests testForgetPersistenceFailureRetainsForwardAndRetriesCleanupBeforeStorageRecovery]' passed (1.587 seconds).
+Test Suite 'CompanionCleanupSecurityTests' passed at 2026-10-30 13:50:50.232.
+	 Executed 1 test, with 0 failures (0 unexpected) in 1.587 (1.587) seconds
+Test Suite 'CompanionJournalSecurityTests' started at 2026-10-30 13:50:50.232.
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testByteLimitAndNonprivateDirectoryFailBeforePublication]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testByteLimitAndNonprivateDirectoryFailBeforePublication]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testPublicationFaultsExposeOnlyCompletePrivateOldOrNewDocuments]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testPublicationFaultsExposeOnlyCompletePrivateOldOrNewDocuments]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testSymlinkAndHardlinkTargetsCannotOverwriteOtherFiles]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionJournalSecurityTests testSymlinkAndHardlinkTargetsCannotOverwriteOtherFiles]' passed (0.002 seconds).
+Test Suite 'CompanionJournalSecurityTests' passed at 2026-10-30 13:50:50.239.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.007 (0.007) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 13:50:50.239.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.594 (1.594) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 13:50:50.239.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.594 (1.595) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

@@ -20,3 +20,9 @@ verification/audio/**/host-unsigned-test-copy
 verification/audio/**/wrapper-unsigned-test-copy
 verification/audio/qa/player-capture-final-control/control
 verification/audio/fallback/**/frame.bmp
+
+# Android companion build caches and local machine configuration.
+AndroidCompanion/.gradle/
+AndroidCompanion/.kotlin/
+AndroidCompanion/**/build/
+AndroidCompanion/local.properties

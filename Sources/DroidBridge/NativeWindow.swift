@@ -133,6 +133,9 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
     private var blankNoticeTask: Task<Void,Never>?
     private var initialBlankFrames=0
     private var blankVideoNotice = false
+    private var qaMetricsEnabled = false
+    private var qaMetricsSamples = 0
+    private var qaMetricsLastTime = Double.leastNormalMagnitude
     private var opticalCorrection: (x:CGFloat,y:CGFloat,width:CGFloat,height:CGFloat)?
     convenience init(session: BridgeSession) {
         self.init(deviceSerial: session.descriptor.device.serial, application: session.descriptor.application, configuration: session.descriptor.configuration)
@@ -153,7 +156,7 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
         super.init(window: window)
         window.center()
         Self.nextCascade = window.cascadeTopLeft(from: Self.nextCascade)
-        if window.setFrameUsingName(frameName) {
+        if CompanionQAScope.current == nil, window.setFrameUsingName(frameName) {
             // A removed display must not strand the restored window offscreen.
             if let screen = window.screen ?? NSScreen.main {
                 let visible = screen.visibleFrame
@@ -165,11 +168,21 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
                 window.setFrame(frame, display:false)
             }
         }
-        window.setFrameAutosaveName(frameName)
+        if CompanionQAScope.current == nil { window.setFrameAutosaveName(frameName) }
         window.delegate = self
     }
     func attach(_ session: BridgeSession) {
         self.session = session
+        qaMetricsEnabled = CompanionQAScope.current != nil && ProcessInfo.processInfo.arguments.contains("--companion-launch-trace")
+        qaMetricsSamples = 0; qaMetricsLastTime = Double.leastNormalMagnitude
+        if qaMetricsEnabled {
+            let previous = session.onMetrics
+            session.onMetrics = { [weak self, weak session] metrics in
+                previous?(metrics)
+                guard let self, let session, self.session === session else { return }
+                self.recordQAMetrics(metrics)
+            }
+        }
         video.onRevealVideo={ [weak self] in
             guard let self,let image=self.pendingBlankFrame,self.session?.state == .running else {return}
             self.video.statusMessage=nil;self.video.canRevealVideo=false;self.blankVideoNotice=false
@@ -205,6 +218,13 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
             }
         }
     }
+    private func recordQAMetrics(_ metrics: SessionMetrics, final: Bool = false) {
+        guard qaMetricsEnabled, let session else { return }
+        let uptime = ProcessInfo.processInfo.systemUptime
+        guard qaMetricsSamples < (final ? 120 : 119), final || uptime - qaMetricsLastTime >= 1 else { return }
+        qaMetricsSamples += 1; qaMetricsLastTime = uptime
+        session.recordClientEvent("qa_video_metrics", details: ["frames": String(metrics.frames), "bytes": String(metrics.bytes), "width": String(metrics.width), "height": String(metrics.height), "uptime": String(uptime), "config_fps": String(session.descriptor.configuration.maximumFramesPerSecond), "final": String(final)])
+    }
     func prepareExternalHandoff() {
         guard let window,let screen=NSScreen.screens.first else {return}
         // macOS may report the optical WindowServer rectangle, inset from the
@@ -224,7 +244,7 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
         guard let window, let main=NSScreen.screens.first,let delta=opticalCorrection else {return}
         let bounds=CGRect(x:optical.minX+delta.x,y:optical.minY+delta.y,width:optical.width+delta.width,height:optical.height+delta.height)
         window.setFrame(NSRect(x:bounds.minX,y:main.frame.maxY-bounds.maxY,width:bounds.width,height:bounds.height),display:false)
-        window.saveFrame(usingName:frameName)
+        if CompanionQAScope.current == nil { window.saveFrame(usingName:frameName) }
     }
     func resizeDisplay() {
         guard let session else { return }
@@ -235,11 +255,11 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
     func windowDidResize(_ notification: Notification) {
         resizing?.cancel()
-        window?.saveFrame(usingName: frameName)
+        if CompanionQAScope.current == nil { window?.saveFrame(usingName: frameName) }
         let item = DispatchWorkItem { [weak self] in self?.resizeDisplay() }
         resizing = item
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: item)
     }
-    func windowDidMove(_ notification: Notification) { window?.saveFrame(usingName: frameName) }
-    func windowWillClose(_ notification: Notification) { blankNoticeTask?.cancel();blankNoticeTask=nil;window?.saveFrame(usingName: frameName); resizing?.cancel(); onClose?() }
+    func windowDidMove(_ notification: Notification) { if CompanionQAScope.current == nil { window?.saveFrame(usingName: frameName) } }
+    func windowWillClose(_ notification: Notification) { if let session { recordQAMetrics(session.metrics, final: true) };blankNoticeTask?.cancel();blankNoticeTask=nil;if CompanionQAScope.current == nil { window?.saveFrame(usingName: frameName) }; resizing?.cancel(); onClose?() }
 }

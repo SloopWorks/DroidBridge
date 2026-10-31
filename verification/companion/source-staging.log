@@ -1,0 +1,14 @@
+Verified source dav1d 1.5.4
+Verified source ffmpeg 9.0.2_1
+Verified source lame 4.0
+Verified source libusb 1.0.30
+Verified source libvpx 1.17.0
+Verified source mpg123 1.33.7
+Verified source openssl@4 4.1.0
+Verified source opus 1.6.1
+Verified source sdl3 3.4.18
+Verified source svt-av1 4.2.0
+Verified source x264 r3222
+Verified source x265 4.3
+Verified source xz 5.8.4
+Source staging complete; packaging and independent distribution review remain required.

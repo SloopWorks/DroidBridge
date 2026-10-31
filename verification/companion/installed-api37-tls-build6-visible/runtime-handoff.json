@@ -1,0 +1,13 @@
+{
+  "own_runtime": [
+    "74078 /Users/patrick/Applications/DroidBridge Companion QA Data/CompanionBroker/generations/c9e1b329d27d6e85512cf6998e483de2d201ae51f519874e926c138c4016e82d/DroidBridgeCompanionBroker --companion-qa-root /Users/patrick/Applications/DroidBridge Companion QA Data --serial emulator-5582"
+  ],
+  "exact5582forwards": [
+    "emulator-5582 tcp:46000 tcp:37841"
+  ],
+  "native_receipts_remaining": 0,
+  "profile": "balanced",
+  "retained_pairing": true,
+  "main_host_terminated": true,
+  "note": "Keep one explicitlyscopedpairedbroker+phonegenuineservice forfinalartifactupdate; no native/player/audio session expected"
+}

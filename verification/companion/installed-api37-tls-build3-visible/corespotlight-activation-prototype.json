@@ -1,0 +1,36 @@
+{
+  "passed": false,
+  "scope": "Disposable signed QA NSApplication delegate and distinct named CoreSpotlight index. CUA indexed/deleted through native buttons. No production index touched.",
+  "events": [
+    {
+      "bundle_id": "dev.droidbridge.qa.spotlight.activation.03cd45b6d65243e6ba0451bac830b12b",
+      "event": "app_started",
+      "item_id": "7370e1f3-d4c5-4a4a-a042-d9062e51c80d",
+      "query": "DroidBridgeZebraQAdea26f",
+      "uptime": 1586700.2987033334
+    },
+    {
+      "event": "indexed",
+      "item_id": "7370e1f3-d4c5-4a4a-a042-d9062e51c80d",
+      "uptime": 1586727.617870625
+    },
+    {
+      "event": "deleted",
+      "item_id": "7370e1f3-d4c5-4a4a-a042-d9062e51c80d",
+      "uptime": 1586845.4665464584
+    },
+    {
+      "event": "cleanup_confirmed",
+      "item_id": "7370e1f3-d4c5-4a4a-a042-d9062e51c80d",
+      "uptime": 1586848.0954080417
+    }
+  ],
+  "spotlight_activation_observed": false,
+  "observations": [
+    "CUA Cmd-Space did not expose a bindable Spotlight window",
+    "Existing CLI Accessibility/PostEvent/Capture authorization preflights true",
+    "Exact macOS Spotlight PID604 AXExtrasMenuBar Spotlight Search AXPress returned0 but AXWindows remains0",
+    "No global hotkey, index, privacy or service settings changed"
+  ],
+  "cleanup_confirmed": true
+}

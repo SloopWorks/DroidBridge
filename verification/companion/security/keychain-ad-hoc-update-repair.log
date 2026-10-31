@@ -1,0 +1,19 @@
+/Users/patrick/workspace/DroidBridge/scripts/verify-companion-keychain-update.swift:14:19: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+12 |         do {
+13 |             #if NO_KEYCHAIN_UI
+14 |             guard SecKeychainSetUserInteractionAllowed(false) == errSecSuccess else { throw CompanionBoundaryError("noninteractive_policy_failed", "Could not require noninteractive Keychain access.") }
+   |                   `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+15 |             #endif
+16 |             guard let scope = CompanionQAScope.current else { throw CompanionBoundaryError("qa_required", "An isolated private QA root is required.") }
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+/Users/patrick/workspace/DroidBridge/scripts/verify-companion-keychain-update.swift:14:19: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+12 |         do {
+13 |             #if NO_KEYCHAIN_UI
+14 |             guard SecKeychainSetUserInteractionAllowed(false) == errSecSuccess else { throw CompanionBoundaryError("noninteractive_policy_failed", "Could not require noninteractive Keychain access.") }
+   |                   `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+15 |             #endif
+16 |             guard let scope = CompanionQAScope.current else { throw CompanionBoundaryError("qa_required", "An isolated private QA root is required.") }
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+{"acceptance": true, "observed_cross_generation_read": "refused_without_interaction_requires_explicit_repair", "exact_random_item_cleanup": true, "source_unchanged": true}

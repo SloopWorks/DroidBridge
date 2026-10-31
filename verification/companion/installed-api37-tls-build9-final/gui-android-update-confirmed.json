@@ -1,0 +1,199 @@
+{
+  "status": {
+    "action": "status",
+    "ok": true,
+    "buttons": [
+      {
+        "label": "Paired companion phone",
+        "title": "Google sdk_gphone16k_arm64 \u00b7 Offline",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Refresh",
+        "title": "Refresh",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Connection",
+        "title": "Connect",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Companion section Apps",
+        "title": "Apps",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Sessions",
+        "title": "Sessions",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Handoff",
+        "title": "Handoff",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Notifications",
+        "title": "Alerts",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Performance",
+        "title": "Power",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Diagnostics",
+        "title": "Reports",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Get Mac App",
+        "title": "Install",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "ADB device for companion setup",
+        "title": "sdk gphone16k arm64 \u00b7 device",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Install / Update Android Companion",
+        "title": "Install / Update Android Companion",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Open Android Companion",
+        "title": "Open Android Companion",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Connect Companion",
+        "title": "Connect Companion",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Pair Phone\u2026",
+        "title": "Pair Phone\u2026",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Set Up Wi-Fi ADB\u2026",
+        "title": "Set Up Wi-Fi ADB\u2026",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Retry",
+        "title": "Retry",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Disconnect Companion",
+        "title": "Disconnect Companion",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Forget Pairing on This Mac\u2026",
+        "title": "Forget Pairing on This Mac\u2026",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Retry Mac Launch Registration",
+        "title": "Retry Mac Launch Registration",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Refresh Trusted Macs",
+        "title": "Refresh Trusted Macs",
+        "enabled": true,
+        "state": 0
+      }
+    ],
+    "id": 13,
+    "fields": [],
+    "windows": [
+      {
+        "number": 13983,
+        "title": "DroidBridge",
+        "width": 1160,
+        "height": 780,
+        "visible": true
+      },
+      {
+        "number": 13984,
+        "title": "",
+        "width": 64,
+        "height": 64,
+        "visible": false
+      },
+      {
+        "number": 13990,
+        "title": "DroidBridge Companion",
+        "width": 900,
+        "height": 760,
+        "visible": true
+      },
+      {
+        "number": 14010,
+        "title": "Window",
+        "width": 66,
+        "height": 20,
+        "visible": true
+      }
+    ],
+    "texts": [
+      "Phone",
+      "Google sdk_gphone16k_arm64 \u00b7 Companion offline \u00b7 pairing_forgotten",
+      "Android companion installed. Choose Open Android Companion, then start its connection service and pair this Mac.",
+      "Two permissions, one local connection",
+      "USB or Android's paired wireless debugging authorizes ADB. Companion pairing separately authorizes this Mac's app catalog, handoff and phone dashboard. Select its authorized ADB device, install/open the companion if needed, then start its connection service on the phone.",
+      "This installed DroidBridge app can reopen for phone launch requests.",
+      "Trusted Macs",
+      "If no ADB device appears: enable Developer options and USB debugging on Android, connect USB, unlock the phone and accept its debugging prompt. A QR code does not grant ADB access. Revoke an untrusted Mac from either companion UI. If a local credential becomes unreadable after an unsigned update, use Forget Pairing on This Mac, remove the old trust on the phone, and pair with a fresh link."
+    ],
+    "physical_focus_verified": false,
+    "pid": 75770
+  },
+  "bundled_apk_sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029",
+  "actions": [
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 161.61
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 110.06
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.27
+    }
+  ]
+}

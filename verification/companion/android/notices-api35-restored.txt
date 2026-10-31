@@ -1,0 +1,2 @@
+font_scale=1.0
+Physical density: 420

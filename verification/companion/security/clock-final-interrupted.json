@@ -1,0 +1,9 @@
+{
+  "pid": 14268,
+  "expected_command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xctest /Users/patrick/workspace/DroidBridge/.build/arm64-apple-macosx/debug/DroidBridgePackageTests.xctest",
+  "observed": "1 /Applications/Xcode.app/Contents/Developer/usr/bin/xctest /Users/patrick/workspace/DroidBridge/.build/arm64-apple-macosx/debug/DroidBridgePackageTests.xctest",
+  "term_sent_to_exact_owned_orphan": true,
+  "log": "verification/companion/core/clock-swift-final.log",
+  "log_sha256": "40b66741bf58c41c20073ac5180605db4932e464b17f42c517e8676d52944ae6",
+  "scope": "Interrupted suite; no pass claim. Only exact root-identified orphan was signalled."
+}

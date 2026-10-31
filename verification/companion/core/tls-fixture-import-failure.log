@@ -1,0 +1,97 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[1/10] Write swift-version--58304C5D6DBC2206.txt
+[3/40] Compiling DroidBridgeCoreTests CompanionWirelessADBTests.swift
+[4/40] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[5/40] Compiling DroidBridgeCoreTests DeviceAudioPreferencesTests.swift
+[6/42] Compiling DroidBridgeCoreTests ScrcpyPortLeaseTests.swift
+[7/42] Compiling DroidBridgeCoreTests ScrcpyStartupLeaseTests.swift
+[8/42] Compiling DroidBridgeCoreTests PhoneDisplayPowerTests.swift
+[9/42] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[10/42] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[11/42] Compiling DroidBridgeCoreTests PhoneDisplayPowerQATests.swift
+[12/42] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[13/42] Compiling DroidBridgeCoreTests StartupFrameVisibilityTests.swift
+[14/42] Compiling DroidBridgeCoreTests DeviceReadinessTests.swift
+[15/42] Compiling DroidBridgeCoreTests DeviceSelectionTests.swift
+[16/42] Compiling DroidBridgeCoreTests DroidBridgePreferencesTests.swift
+[17/42] Compiling DroidBridgeCoreTests CompanionSecurityTests.swift
+[18/42] Compiling DroidBridgeCoreTests CompanionSetupValidationTests.swift
+[19/42] Compiling DroidBridgeCoreTests CompanionTLSFixture.swift
+[20/42] Compiling DroidBridgeCoreTests DeviceAudioQATests.swift
+[21/42] Compiling DroidBridgeCoreTests DeviceAudioReadinessTests.swift
+[22/42] Compiling DroidBridgeCoreTests DeviceAudioTests.swift
+[23/42] Compiling DroidBridgeCoreTests CompanionBoundaryTests.swift
+[24/42] Compiling DroidBridgeCoreTests CompanionBrokerTests.swift
+[25/42] Compiling DroidBridgeCoreTests CompanionExportPolicyTests.swift
+[26/42] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[27/42] Compiling DroidBridgeCoreTests InputGeometryTests.swift
+[28/42] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[29/42] Compiling DroidBridgeCoreTests CompanionPerformanceTests.swift
+[30/42] Compiling DroidBridgeCoreTests CompanionQAScopeTests.swift
+[31/42] Compiling DroidBridgeCoreTests CompanionQRImageReaderTests.swift
+[32/42] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[33/42] Compiling DroidBridgeCoreTests AndroidIconProviderTests.swift
+[34/42] Compiling DroidBridgeCoreTests AvailabilityRuntimeStoreTests.swift
+[35/42] Compiling DroidBridgeCoreTests ManagedAppNamingQATests.swift
+[36/42] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[37/42] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[38/42] Emitting module DroidBridgeCoreTests
+[39/42] Compiling DroidBridgeCoreTests StreamingTests.swift
+[40/42] Compiling DroidBridgeCoreTests SupervisorDiagnosticsTests.swift
+[40/42] Write Objects.LinkFileList
+[41/42] Linking DroidBridgePackageTests
+Build complete! (2.49s)
+Test Suite 'Selected tests' started at 2026-10-30 12:37:48.827.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 12:37:48.828.
+Test Suite 'AvailabilityRuntimeStoreTests' started at 2026-10-30 12:37:48.828.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCorruptOrForeignGenerationContentsArePreserved]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testCorruptOrForeignGenerationContentsArePreserved]' passed (0.017 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testFullStoreReclaimsVerifiedUnusedGenerationAndPreservesCurrent]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testFullStoreReclaimsVerifiedUnusedGenerationAndPreservesCurrent]' passed (0.014 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPostRenameReferenceRecheckRollsBackWithoutDeletingBytes]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testPostRenameReferenceRecheckRollsBackWithoutDeletingBytes]' passed (0.019 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRepeatedPublicationReusesIdentityWithoutGrowingStore]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRepeatedPublicationReusesIdentityWithoutGrowingStore]' passed (0.012 seconds).
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRunningLifetimeLeasesAndUnknownReferenceScanFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.AvailabilityRuntimeStoreTests testRunningLifetimeLeasesAndUnknownReferenceScanFailClosed]' passed (0.020 seconds).
+Test Suite 'AvailabilityRuntimeStoreTests' passed at 2026-10-30 12:37:48.910.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.081 (0.082) seconds
+Test Suite 'CompanionBoundaryTests' started at 2026-10-30 12:37:48.910.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCancellationBeforeStartAndWhileReceivingCompletesOnce]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/CompanionTLSFixture.swift:35: error: -[DroidBridgeCoreTests.CompanionBoundaryTests testCancellationBeforeStartAndWhileReceivingCompletesOnce] : SecKeyCopyExternalRepresentation called with NULL SecKeyRef (NSInvalidArgumentException)
+*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: 'SecKeyCopyExternalRepresentation called with NULL SecKeyRef'
+*** First throw call stack:
+(
+	0   CoreFoundation                      0x0000000186ef98ec __exceptionPreprocess + 176
+	1   libobjc.A.dylib                     0x00000001869d2418 objc_exception_throw + 88
+	2   CoreFoundation                      0x0000000186fc70f0 -[NSException initWithCoder:] + 0
+	3   Security                            0x000000018a7ec014 _SecKeyCheck + 116
+	4   Security                            0x000000018a7f0cf4 SecKeyCopyExternalRepresentation + 132
+	5   Security                            0x000000018a97cd94 SecIdentityCreate + 124
+	6   Security                            0x000000018a7cca20 build_trust_chains + 340
+	7   CoreFoundation                      0x00000001870268d8 -[__NSDictionaryM __apply:context:] + 128
+	8   Security                            0x000000018a7cc0d0 SecPKCS12Import_ios + 1000
+	9   Security                            0x000000018a982724 SecPKCS12Import + 60
+	10  DroidBridgePackageTests             0x000000010fb62840 $s20DroidBridgeCoreTests19CompanionTLSFixtureC5delay8responseACSd_10Foundation4DataVSSYbctKcfc + 4056
+	11  DroidBridgePackageTests             0x000000010fb61820 $s20DroidBridgeCoreTests19CompanionTLSFixtureC5delay8responseACSd_10Foundation4DataVSSYbctKcfC + 80
+	12  DroidBridgePackageTests             0x000000010fb1d9a4 $s20DroidBridgeCoreTests12BoundaryPeer33_C9DCA30569F0163BEB84E26434B6C206LLC5delay8responseADSd_AA0E5ReplyACLLVSSYbctKcfc + 168
+	13  DroidBridgePackageTests             0x000000010fb0a830 $s20DroidBridgeCoreTests12BoundaryPeer33_C9DCA30569F0163BEB84E26434B6C206LLC5delay8responseADSd_AA0E5ReplyACLLVSSYbctKcfC + 80
+	14  DroidBridgePackageTests             0x000000010fb128error: Exited with unexpected signal code 6
+30 $s20DroidBridgeCoreTests017CompanionBoundaryD0C57testCancellationBeforeStartAndWhileReceivingCompletesOnceyyYaKFTY0_ + 452
+	15  DroidBridgePackageTests             0x000000010fb14211 $s20DroidBridgeCoreTests017CompanionBoundaryD0C57testCancellationBeforeStartAndWhileReceivingCompletesOnceyyYaKFyyYacfU_ToTQ0_ + 1
+	16  DroidBridgePackageTests             0x000000010fb1ee71 $s20DroidBridgeCoreTests017CompanionBoundaryD0C57testCancellationBeforeStartAndWhileReceivingCompletesOnceyyYaKFyyYacfU_ToTATQ0_ + 1
+	17  DroidBridgePackageTests             0x000000010fae0989 $sIeghH_IeAgH_TRTQ0_ + 1
+	18  DroidBridgePackageTests             0x000000010fae1305 $sIeghH_IeAgH_TRTATQ0_ + 1
+	19  DroidBridgePackageTests             0x000000010fae0a65 $sIeAgH_ytIeAgHr_TRTQ0_ + 1
+	20  DroidBridgePackageTests             0x000000010fae1469 $sIeAgH_ytIeAgHr_TRTATQ0_ + 1
+	21  DroidBridgePackageTests             0x000000010fae10dd $sxIeAgHr_xs5Error_pIegHrzo_s8SendableRzs5NeverORs_r0_lTRyt_Tgq5TQ0_ + 1
+	22  DroidBridgePackageTests             0x000000010fae15ad $sxIeAgHr_xs5Error_pIegHrzo_s8SendableRzs5NeverORs_r0_lTRyt_Tgq5TATQ0_ + 1
+	23  libswift_Concurrency.dylib          0x00000002826fb2fd _ZL23completeTaskWithClosurePN5swift12AsyncContextEPNS_10SwiftErrorE + 1
+)
+libc++abi: terminating due to uncaught exception of type NSException
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

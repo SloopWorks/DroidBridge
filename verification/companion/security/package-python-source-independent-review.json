@@ -1,0 +1,29 @@
+{
+  "decision": "accepted_packaging_interpreter_source_only",
+  "timestamp": "2026-10-31T00:36:07.343255+00:00",
+  "source_hashes": {
+    "scripts/package.sh": "5d31894443c23445b027e22d3b6cb8b79ede44a128329810644f6d41c9371ac7",
+    "scripts/verify-package.py": "339038742d092e84c612200315a5559b1379ff7e6ee7c5a9e7346a9210f4bc28",
+    "BUILD.md": "854071ebe1ddfb9821035896a60b854e664c0a83119fb85776e1589095779380"
+  },
+  "independent_evidence": "package-python-selection-independent.json",
+  "failed_build_preserved": "package-python-attempt1-independent.json",
+  "reviewed_contract": [
+    "Capture command-v python3 before adding brew or changing directories; anchor relative path before cd",
+    "Require executable regular caller interpreter and import required stdlib/expat before builds/staging",
+    "Quote selected interpreter in all8 direct Python helper invocations",
+    "Prepend exact selected interpreter directory so child python3 calls and env shebangs resolve same interpreter",
+    "No optional interpreter override, silent fallback, global package install or environment-file changes",
+    "Nested Player closure/signature verifier source remains unchanged from accepted339038 hash",
+    "Existing version/APK/notice/signing gates unchanged"
+  ],
+  "executed_cases": {
+    "working_caller_3_14": "pass",
+    "caller_directory_with_spaces": "pass",
+    "relative_caller_PATH": "pass",
+    "broken_Homebrew_3_15": "rejected at import preflight"
+  },
+  "syntax_and_diffcheck": "pass",
+  "remaining": "Fresh committed package12 and outside-build validation/archive must complete; no build12 success or GUI/runtime/Android claims from this review",
+  "no_packaged_runtime_UI_device_operations": true
+}

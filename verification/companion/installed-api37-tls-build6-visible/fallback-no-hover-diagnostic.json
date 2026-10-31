@@ -1,0 +1,15 @@
+{
+  "scope": "Diagnosticpinnedscrcpy5.0.1existingbundledPlayer+server, exact5582 newdisplay44 --no-mouse-hover, CUA120msmousepressvisibleTapBeta",
+  "pass": true,
+  "texts": [
+    "Input Beta",
+    "Display 44 \u00b7 taps 1 \u00b7 key downs 0",
+    "Type for Beta",
+    "Echo Beta: ",
+    "TAP BETA",
+    "COPY BETA SENTINEL",
+    "READ CLIPBOARD EXPLICITLY",
+    "Clipboard untouched until an explicit action",
+    "TOGGLE 60 HZ MOTION"
+  ]
+}

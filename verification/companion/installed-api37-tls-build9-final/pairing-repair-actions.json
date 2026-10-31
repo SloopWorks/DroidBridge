@@ -1,0 +1,24 @@
+{
+  "mac_local_forget": "real CUA confirmed",
+  "phone_exact_old_selected_trust": "d1d3e816-0214-47f3-8f08-a73cdc134d7e",
+  "phone_forget_confirmed": true,
+  "unrelated_qa_trusts_preserved": true,
+  "events": [
+    {
+      "kind": "android_ui_action",
+      "action": "Forget Mac",
+      "monotonic": 1592864.420724708
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Home",
+      "monotonic": 1592866.467367666
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Pair a new Mac",
+      "monotonic": 1592868.480323833
+    }
+  ],
+  "new_qr_private_only": true
+}

@@ -1,0 +1,886 @@
+[1/386] Building C object third_party/utf8_range/CMakeFiles/utf8_range.dir/utf8_range.c.o
+[2/386] Building C object third_party/utf8_range/CMakeFiles/utf8_validity.dir/utf8_range.c.o
+[3/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/duration.pb.cc.o
+[4/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/any.pb.cc.o
+[5/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/empty.pb.cc.o
+[6/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/api.pb.cc.o
+[7/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/field_mask.pb.cc.o
+[8/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/source_context.pb.cc.o
+[9/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/timestamp.pb.cc.o
+[10/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/struct.pb.cc.o
+[11/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/any_lite.cc.o
+[12/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/any.cc.o
+[13/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/wrappers.pb.cc.o
+[14/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/arena_allocation_policy.cc.o
+[15/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/type.pb.cc.o
+[16/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/arenaz_sampler.cc.o
+[17/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/arena_align.cc.o
+[18/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/arena.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/arena.cc:703:19: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  703 |   absl::MutexLock lock(&mutex_);
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+1 warning generated.
+[19/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/arenastring.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/arenastring.cc:60:6: warning: 'Lock' is deprecated [-Wdeprecated-declarations]
+   60 |   mu.Lock();
+      |      ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:194:3: note: 'Lock' has been explicitly marked deprecated here
+  194 |   ABSL_DEPRECATE_AND_INLINE()
+      |   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/base/macros.h:275:39: note: expanded from macro 'ABSL_DEPRECATE_AND_INLINE'
+  275 | #define ABSL_DEPRECATE_AND_INLINE() [[deprecated]] ABSL_REFACTOR_INLINE
+      |                                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/arenastring.cc:68:6: warning: 'Unlock' is deprecated [-Wdeprecated-declarations]
+   68 |   mu.Unlock();
+      |      ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:203:3: note: 'Unlock' has been explicitly marked deprecated here
+  203 |   ABSL_DEPRECATE_AND_INLINE()
+      |   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/base/macros.h:275:39: note: expanded from macro 'ABSL_DEPRECATE_AND_INLINE'
+  275 | #define ABSL_DEPRECATE_AND_INLINE() [[deprecated]] ABSL_REFACTOR_INLINE
+      |                                       ^
+2 warnings generated.
+[20/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/cpp_features.pb.cc.o
+[21/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/compiler/importer.cc.o
+[22/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/cpp_file_options.pb.cc.o
+[23/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/compiler/parser.cc.o
+[24/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/dynamic_message.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/dynamic_message.cc:869:19: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  869 |   absl::MutexLock lock(&prototypes_mutex_);
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+1 warning generated.
+[25/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/descriptor.pb.cc.o
+[26/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/descriptor_database.cc.o
+[27/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/extension_set_heavy.cc.o
+[28/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/extension_set.cc.o
+[29/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/feature_resolver.cc.o
+[30/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/generated_enum_util.cc.o
+[31/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/generated_message_bases.cc.o
+[32/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/generated_message_tctable_full.cc.o
+[33/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/generated_message_tctable_gen.cc.o
+[34/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/descriptor.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.cc:1796:27: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 1796 |     absl::ReaderMutexLock lock(pool->mutex_);
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.cc:1952:27: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 1952 |     absl::ReaderMutexLock l(&unknown_enum_values_mu_);
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.cc:1961:27: warning: 'WriterMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 1961 |     absl::WriterMutexLock l(&unknown_enum_values_mu_);
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:716:5: note: 'WriterMutexLock' has been explicitly marked deprecated here
+  716 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.cc:2477:27: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2477 |     absl::ReaderMutexLock lock(mutex_);
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+4 warnings generated.
+[35/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/generated_message_util.cc.o
+[36/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/generated_message_tctable_lite.cc.o
+[37/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/generated_message_reflection.cc.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_reflection.cc:12:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_reflection.h:26:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2742:29: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2742 |       absl::ReaderMutexLock lock(&pool->field_memo_table_mutex_);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_reflection.cc:3798:29: note: in instantiation of function template specialization 'google::protobuf::DescriptorPool::MemoizeProjection<google::protobuf::EnumDescriptor, (lambda at /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_reflection.cc:3800:17)>' requested here
+ 3798 |             DescriptorPool::MemoizeProjection(
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_reflection.cc:12:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_reflection.h:26:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2751:23: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2751 |       absl::MutexLock lock(&pool->field_memo_table_mutex_);
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_reflection.cc:3993:8: warning: 'Lock' is deprecated [-Wdeprecated-declarations]
+ 3993 |     mu.Lock();
+      |        ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:194:3: note: 'Lock' has been explicitly marked deprecated here
+  194 |   ABSL_DEPRECATE_AND_INLINE()
+      |   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/base/macros.h:275:39: note: expanded from macro 'ABSL_DEPRECATE_AND_INLINE'
+  275 | #define ABSL_DEPRECATE_AND_INLINE() [[deprecated]] ABSL_REFACTOR_INLINE
+      |                                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_reflection.cc:3995:8: warning: 'Unlock' is deprecated [-Wdeprecated-declarations]
+ 3995 |     mu.Unlock();
+      |        ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:203:3: note: 'Unlock' has been explicitly marked deprecated here
+  203 |   ABSL_DEPRECATE_AND_INLINE()
+      |   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/base/macros.h:275:39: note: expanded from macro 'ABSL_DEPRECATE_AND_INLINE'
+  275 | #define ABSL_DEPRECATE_AND_INLINE() [[deprecated]] ABSL_REFACTOR_INLINE
+      |                                       ^
+4 warnings generated.
+[38/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/implicit_weak_message.cc.o
+[39/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/inlined_string_field.cc.o
+[40/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/io_win32.cc.o
+[41/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/gzip_stream.cc.o
+[42/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/coded_stream.cc.o
+[43/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/internal_feature_helper.cc.o
+[44/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/strtod.cc.o
+[45/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/zero_copy_sink.cc.o
+[46/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/tokenizer.cc.o
+[47/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/zero_copy_stream.cc.o
+[48/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/printer.cc.o
+[49/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/zero_copy_stream_impl.cc.o
+[50/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/io/zero_copy_stream_impl_lite.cc.o
+[51/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/json/internal/message_path.cc.o
+[52/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/json/internal/lexer.cc.o
+[53/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/json/internal/writer.cc.o
+[54/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/json/internal/zero_copy_buffered_stream.cc.o
+[55/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/json/internal/untyped_message.cc.o
+[56/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/json/internal/parser.cc.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/parser.cc:8:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/parser.h:13:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/lexer.h:22:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2742:29: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2742 |       absl::ReaderMutexLock lock(&pool->field_memo_table_mutex_);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/descriptor_traits.h:265:27: note: in instantiation of function template specialization 'google::protobuf::DescriptorPool::MemoizeProjection<google::protobuf::EnumDescriptor, (lambda at /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/descriptor_traits.h:266:31)>' requested here
+  265 |           DescriptorPool::MemoizeProjection(
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/parser.cc:8:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/parser.h:13:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/lexer.h:22:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2751:23: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2751 |       absl::MutexLock lock(&pool->field_memo_table_mutex_);
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/parser.cc:8:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/parser.h:13:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/lexer.h:22:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2742:29: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2742 |       absl::ReaderMutexLock lock(&pool->field_memo_table_mutex_);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/descriptor_traits.h:277:27: note: in instantiation of function template specialization 'google::protobuf::DescriptorPool::MemoizeProjection<google::protobuf::EnumDescriptor, (lambda at /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/descriptor_traits.h:279:15)>' requested here
+  277 |           DescriptorPool::MemoizeProjection(
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/parser.cc:8:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/parser.h:13:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/lexer.h:22:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2751:23: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2751 |       absl::MutexLock lock(&pool->field_memo_table_mutex_);
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+4 warnings generated.
+[57/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/json/internal/unparser.cc.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/unparser.cc:8:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/unparser.h:15:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:114:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2742:29: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2742 |       absl::ReaderMutexLock lock(&pool->field_memo_table_mutex_);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/descriptor_traits.h:265:27: note: in instantiation of function template specialization 'google::protobuf::DescriptorPool::MemoizeProjection<google::protobuf::EnumDescriptor, (lambda at /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/descriptor_traits.h:266:31)>' requested here
+  265 |           DescriptorPool::MemoizeProjection(
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/unparser.cc:8:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/unparser.h:15:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:114:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2751:23: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2751 |       absl::MutexLock lock(&pool->field_memo_table_mutex_);
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/unparser.cc:8:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/unparser.h:15:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:114:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2742:29: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2742 |       absl::ReaderMutexLock lock(&pool->field_memo_table_mutex_);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/descriptor_traits.h:277:27: note: in instantiation of function template specialization 'google::protobuf::DescriptorPool::MemoizeProjection<google::protobuf::EnumDescriptor, (lambda at /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/descriptor_traits.h:279:15)>' requested here
+  277 |           DescriptorPool::MemoizeProjection(
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/unparser.cc:8:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/json/internal/unparser.h:15:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:114:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2751:23: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2751 |       absl::MutexLock lock(&pool->field_memo_table_mutex_);
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+4 warnings generated.
+[58/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/json/json.cc.o
+[59/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/json_enumvalue_options.pb.cc.o
+[60/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/map.cc.o
+[61/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/map_field.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/map_field.cc:269:21: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  269 |     absl::MutexLock lock(&p->mutex());
+      |                     ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/map_field.cc:319:23: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  319 |       absl::MutexLock lock(&p->mutex());
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/map_field.cc:428:23: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  428 |       absl::MutexLock lock(&p.mutex());
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+3 warnings generated.
+[62/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/micro_string.cc.o
+[63/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/message_lite.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message_lite.cc:611:27: warning: 'STLStringResizeUninitializedAmortized<std::string>' is deprecated [-Wdeprecated-declarations]
+  611 |   absl::strings_internal::STLStringResizeUninitializedAmortized(
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/strings/internal/resize_uninitialized.h:79:3: note: 'STLStringResizeUninitializedAmortized<std::string>' has been explicitly marked deprecated here
+   79 | [[deprecated]]
+      |   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message_lite.cc:809:19: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  809 |   absl::MutexLock lock(&shutdown_data->mutex);
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+2 warnings generated.
+[64/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/naming_style.cc.o
+[65/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/raw_ptr.cc.o
+[66/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/reflection_mode.cc.o
+[67/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/port.cc.o
+[68/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/parse_context.cc.o
+[69/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/message.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.cc:616:29: warning: 'WriterMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  616 |       absl::WriterMutexLock lock(&mutex_);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:716:5: note: 'WriterMutexLock' has been explicitly marked deprecated here
+  716 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.cc:631:27: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  631 |     absl::ReaderMutexLock lock(&mutex_);
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.cc:653:27: warning: 'WriterMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  653 |     absl::WriterMutexLock lock(&mutex_);
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:716:5: note: 'WriterMutexLock' has been explicitly marked deprecated here
+  716 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+3 warnings generated.
+[70/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/service.cc.o
+[71/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/repeated_field.cc.o
+[72/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/reflection_ops.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/reflection_ops.cc:103:11: warning: 'GetRepeatedEnum' is deprecated: Please use GetRepeatedEnumValue() instead. GetRepeatedEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+  103 |           HANDLE_TYPE(ENUM, Enum);
+      |           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/reflection_ops.cc:92:37: note: expanded from macro 'HANDLE_TYPE'
+   92 |         to, field, from_reflection->GetRepeated##METHOD(from, field, j)); \
+      |                                     ^
+<scratch space>:105:1: note: expanded from here
+  105 | GetRepeatedEnum
+      | ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:823:19: note: 'GetRepeatedEnum' has been explicitly marked deprecated here
+  823 |   [[nodiscard]] [[deprecated(
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/reflection_ops.cc:136:9: warning: 'GetEnum' is deprecated: Please use GetEnumValue() instead. GetEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+  136 |         HANDLE_TYPE(ENUM, Enum);
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/reflection_ops.cc:125:49: note: expanded from macro 'HANDLE_TYPE'
+  125 |                                from_reflection->Get##METHOD(from, field)); \
+      |                                                 ^
+<scratch space>:132:1: note: expanded from here
+  132 | GetEnum
+      | ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:636:19: note: 'GetEnum' has been explicitly marked deprecated here
+  636 |   [[nodiscard]] [[deprecated(
+      |                   ^
+2 warnings generated.
+[73/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/repeated_ptr_field.cc.o
+[74/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/stubs/common.cc.o
+[75/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/type_id.cc.o
+[76/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/symbol.cc.o
+[77/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/symbol_checker.cc.o
+[78/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/unknown_field_set_lite.cc.o
+[79/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/util/delimited_message_util.cc.o
+[80/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/unknown_field_set.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/unknown_field_set.cc:191:27: warning: 'STLStringResizeUninitializedAmortized<std::string>' is deprecated [-Wdeprecated-declarations]
+  191 |   absl::strings_internal::STLStringResizeUninitializedAmortized(output, size);
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/strings/internal/resize_uninitialized.h:79:3: note: 'STLStringResizeUninitializedAmortized<std::string>' has been explicitly marked deprecated here
+   79 | [[deprecated]]
+      |   ^
+1 warning generated.
+[81/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/text_format.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/text_format.cc:1086:9: warning: 'GetEnum' is deprecated: Please use GetEnumValue() instead. GetEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+ 1086 |         SET_FIELD(Enum, enum, enum_value);
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/text_format.cc:966:25: note: expanded from macro 'SET_FIELD'
+  966 |             reflection->Get##CPPTYPE(*message, field) &&           \
+      |                         ^
+<scratch space>:118:1: note: expanded from here
+  118 | GetEnum
+      | ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:636:19: note: 'GetEnum' has been explicitly marked deprecated here
+  636 |   [[nodiscard]] [[deprecated(
+      |                   ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/text_format.cc:12:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/text_format.h:30:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2742:29: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2742 |       absl::ReaderMutexLock lock(&pool->field_memo_table_mutex_);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/text_format.cc:3270:23: note: in instantiation of function template specialization 'google::protobuf::DescriptorPool::MemoizeProjection<google::protobuf::FieldDescriptor, (lambda at /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/text_format.cc:3271:18)>' requested here
+ 3270 |       DescriptorPool::MemoizeProjection(
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/text_format.cc:12:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/text_format.h:30:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2751:23: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2751 |       absl::MutexLock lock(&pool->field_memo_table_mutex_);
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+3 warnings generated.
+[82/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/util/field_comparator.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_comparator.cc:91:7: warning: 'GetRepeatedEnum' is deprecated: Please use GetRepeatedEnumValue() instead. GetRepeatedEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+   91 |       COMPARE_FIELD(Enum);
+      |       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_comparator.cc:77:31: note: expanded from macro 'COMPARE_FIELD'
+   77 |         *field, reflection_1->GetRepeated##METHOD(message_1, field, index_1), \
+      |                               ^
+<scratch space>:211:1: note: expanded from here
+  211 | GetRepeatedEnum
+      | ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:823:19: note: 'GetRepeatedEnum' has been explicitly marked deprecated here
+  823 |   [[nodiscard]] [[deprecated(
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_comparator.cc:91:7: warning: 'GetRepeatedEnum' is deprecated: Please use GetRepeatedEnumValue() instead. GetRepeatedEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+   91 |       COMPARE_FIELD(Enum);
+      |       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_comparator.cc:78:23: note: expanded from macro 'COMPARE_FIELD'
+   78 |         reflection_2->GetRepeated##METHOD(message_2, field, index_2)));       \
+      |                       ^
+<scratch space>:212:1: note: expanded from here
+  212 | GetRepeatedEnum
+      | ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:823:19: note: 'GetRepeatedEnum' has been explicitly marked deprecated here
+  823 |   [[nodiscard]] [[deprecated(
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_comparator.cc:91:7: warning: 'GetEnum' is deprecated: Please use GetEnumValue() instead. GetEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+   91 |       COMPARE_FIELD(Enum);
+      |       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_comparator.cc:81:47: note: expanded from macro 'COMPARE_FIELD'
+   81 |         Compare##METHOD(*field, reflection_1->Get##METHOD(message_1, field),  \
+      |                                               ^
+<scratch space>:214:1: note: expanded from here
+  214 | GetEnum
+      | ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:636:19: note: 'GetEnum' has been explicitly marked deprecated here
+  636 |   [[nodiscard]] [[deprecated(
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_comparator.cc:91:7: warning: 'GetEnum' is deprecated: Please use GetEnumValue() instead. GetEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+   91 |       COMPARE_FIELD(Enum);
+      |       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_comparator.cc:82:39: note: expanded from macro 'COMPARE_FIELD'
+   82 |                         reflection_2->Get##METHOD(message_2, field)));        \
+      |                                       ^
+<scratch space>:215:1: note: expanded from here
+  215 | GetEnum
+      | ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:636:19: note: 'GetEnum' has been explicitly marked deprecated here
+  636 |   [[nodiscard]] [[deprecated(
+      |                   ^
+4 warnings generated.
+[83/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/util/field_mask_util.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_mask_util.cc:525:9: warning: 'GetEnum' is deprecated: Please use GetEnumValue() instead. GetEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+  525 |         COPY_VALUE(ENUM, Enum)
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_mask_util.cc:512:50: note: expanded from macro 'COPY_VALUE'
+  512 |           destination, field, source_reflection->Get##Name(source, field)); \
+      |                                                  ^
+<scratch space>:143:1: note: expanded from here
+  143 | GetEnum
+      | ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:636:19: note: 'GetEnum' has been explicitly marked deprecated here
+  636 |   [[nodiscard]] [[deprecated(
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_mask_util.cc:561:9: warning: 'GetRepeatedEnum' is deprecated: Please use GetRepeatedEnumValue() instead. GetRepeatedEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+  561 |         COPY_REPEATED_VALUE(ENUM, Enum)
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/field_mask_util.cc:550:30: note: expanded from macro 'COPY_REPEATED_VALUE'
+  550 |           source_reflection->GetRepeated##Name(source, field, i)); \
+      |                              ^
+<scratch space>:170:1: note: expanded from here
+  170 | GetRepeatedEnum
+      | ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:823:19: note: 'GetRepeatedEnum' has been explicitly marked deprecated here
+  823 |   [[nodiscard]] [[deprecated(
+      |                   ^
+2 warnings generated.
+[84/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/util/time_util.cc.o
+[85/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/util/type_resolver_util.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/type_resolver_util.cc:138:29: warning: 'GetRepeatedEnum' is deprecated: Please use GetRepeatedEnumValue() instead. GetRepeatedEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+  138 |               ? reflection->GetRepeatedEnum(options, field, index)
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:823:19: note: 'GetRepeatedEnum' has been explicitly marked deprecated here
+  823 |   [[nodiscard]] [[deprecated(
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/util/type_resolver_util.cc:139:29: warning: 'GetEnum' is deprecated: Please use GetEnumValue() instead. GetEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+  139 |               : reflection->GetEnum(options, field);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:636:19: note: 'GetEnum' has been explicitly marked deprecated here
+  636 |   [[nodiscard]] [[deprecated(
+      |                   ^
+2 warnings generated.
+[86/386] Building C object CMakeFiles/libupb.dir/upb/base/status.c.o
+[87/386] Building C object CMakeFiles/libupb.dir/upb/hash/common.c.o
+[88/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/util/message_differencer.cc.o
+[89/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/wire_format_lite.cc.o
+[90/386] Building C object CMakeFiles/libupb.dir/upb/lex/atoi.c.o
+[91/386] Building C object CMakeFiles/libupb.dir/upb/json/decode.c.o
+[92/386] Building C object CMakeFiles/libupb.dir/upb/lex/round_trip.c.o
+[93/386] Building C object CMakeFiles/libupb.dir/upb/lex/unicode.c.o
+[94/386] Building C object CMakeFiles/libupb.dir/upb/mem/alloc.c.o
+[95/386] Building C object CMakeFiles/libupb.dir/upb/json/encode.c.o
+[96/386] Building C object CMakeFiles/libupb.dir/upb/mem/arena.c.o
+[97/386] Building C object CMakeFiles/libupb.dir/upb/message/accessors.c.o
+[98/386] Building C object CMakeFiles/libupb.dir/upb/message/array.c.o
+[99/386] Building C object CMakeFiles/libupb.dir/upb/message/compare.c.o
+[100/386] Building C object CMakeFiles/libupb.dir/upb/message/compat.c.o
+[101/386] Building C object CMakeFiles/libupb.dir/upb/message/internal/compare_unknown.c.o
+[102/386] Building C object CMakeFiles/libupb.dir/upb/message/copy.c.o
+[103/386] Building C object CMakeFiles/libupb.dir/upb/message/convert.c.o
+[104/386] Building C object CMakeFiles/libupb.dir/upb/message/internal/extension.c.o
+[105/386] Building C object CMakeFiles/libupb.dir/upb/message/internal/iterator.c.o
+[106/386] Building C object CMakeFiles/libupb.dir/upb/message/internal/message.c.o
+[107/386] Building C object CMakeFiles/libupb.dir/upb/message/map.c.o
+[108/386] Building C object CMakeFiles/libupb.dir/upb/message/map_sorter.c.o
+[109/386] Building C object CMakeFiles/libupb.dir/upb/message/merge.c.o
+[110/386] Building C object CMakeFiles/libupb.dir/upb/message/unknown_fields.c.o
+[111/386] Building C object CMakeFiles/libupb.dir/upb/mini_descriptor/build_enum.c.o
+[112/386] Building C object CMakeFiles/libupb.dir/upb/message/message.c.o
+[113/386] Building CXX object CMakeFiles/libprotobuf.dir/src/google/protobuf/wire_format.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/wire_format.cc:1377:39: warning: 'GetRepeatedEnum' is deprecated: Please use GetRepeatedEnumValue() instead. GetRepeatedEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+ 1377 |                 ? message_reflection->GetRepeatedEnum(message, field, j)
+      |                                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:823:19: note: 'GetRepeatedEnum' has been explicitly marked deprecated here
+  823 |   [[nodiscard]] [[deprecated(
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/wire_format.cc:1378:39: warning: 'GetEnum' is deprecated: Please use GetEnumValue() instead. GetEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+ 1378 |                 : message_reflection->GetEnum(message, field);
+      |                                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:636:19: note: 'GetEnum' has been explicitly marked deprecated here
+  636 |   [[nodiscard]] [[deprecated(
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/wire_format.cc:1714:35: warning: 'GetRepeatedEnum' is deprecated: Please use GetRepeatedEnumValue() instead. GetRepeatedEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+ 1714 |               message_reflection->GetRepeatedEnum(message, field, j)->number());
+      |                                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:823:19: note: 'GetRepeatedEnum' has been explicitly marked deprecated here
+  823 |   [[nodiscard]] [[deprecated(
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/wire_format.cc:1718:33: warning: 'GetEnum' is deprecated: Please use GetEnumValue() instead. GetEnum() will be removed in Q1 2027. [-Wdeprecated-declarations]
+ 1718 |             message_reflection->GetEnum(message, field)->number());
+      |                                 ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:636:19: note: 'GetEnum' has been explicitly marked deprecated here
+  636 |   [[nodiscard]] [[deprecated(
+      |                   ^
+4 warnings generated.
+[114/386] Building C object CMakeFiles/libupb.dir/upb/mini_descriptor/internal/base92.c.o
+[115/386] Building C object CMakeFiles/libupb.dir/upb/mini_descriptor/internal/encode.c.o
+[116/386] Building C object CMakeFiles/libupb.dir/upb/mini_table/compat.c.o
+[117/386] Building C object CMakeFiles/libupb.dir/upb/mini_descriptor/link.c.o
+[118/386] Building C object CMakeFiles/libupb.dir/upb/mini_descriptor/decode.c.o
+[119/386] Building C object CMakeFiles/libupb.dir/upb/mini_table/debug_string.c.o
+[120/386] Building C object CMakeFiles/libupb.dir/upb/mini_table/extension_registry.c.o
+[121/386] Building C object CMakeFiles/libupb.dir/upb/mini_table/generated_registry.c.o
+[122/386] Building C object CMakeFiles/libupb.dir/upb/mini_table/internal/message.c.o
+[123/386] Building C object CMakeFiles/libupb.dir/upb/port/port.c.o
+[124/386] Building C object CMakeFiles/libupb.dir/upb/mini_table/message.c.o
+[125/386] Building C object CMakeFiles/libupb.dir/upb/reflection/def_type.c.o
+[126/386] Building C object CMakeFiles/libupb.dir/upb/reflection/desc_state.c.o
+[127/386] Building C object CMakeFiles/libupb.dir/upb/reflection/def_pool.c.o
+[128/386] Building C object CMakeFiles/libupb.dir/upb/reflection/enum_def.c.o
+[129/386] Building C object CMakeFiles/libupb.dir/upb/reflection/enum_reserved_range.c.o
+[130/386] Building C object CMakeFiles/libupb.dir/upb/reflection/enum_value_def.c.o
+[131/386] Building C object CMakeFiles/libupb.dir/upb/reflection/extension_range.c.o
+[132/386] Building C object CMakeFiles/libupb.dir/upb/reflection/internal/strdup2.c.o
+[133/386] Building C object CMakeFiles/libupb.dir/upb/reflection/internal/def_builder.c.o
+[134/386] Building C object CMakeFiles/libupb.dir/upb/reflection/file_def.c.o
+[135/386] Building C object CMakeFiles/libupb.dir/upb/reflection/field_def.c.o
+[136/386] Building C object CMakeFiles/libupb.dir/upb/reflection/message.c.o
+[137/386] Building C object CMakeFiles/libupb.dir/upb/reflection/message_reserved_range.c.o
+[138/386] Building C object CMakeFiles/libupb.dir/upb/reflection/method_def.c.o
+[139/386] Building C object CMakeFiles/libupb.dir/upb/reflection/message_def.c.o
+[140/386] Building C object CMakeFiles/libupb.dir/upb/reflection/oneof_def.c.o
+[141/386] Building C object CMakeFiles/libupb.dir/upb/reflection/service_def.c.o
+[142/386] Building C object CMakeFiles/libupb.dir/upb/text/debug_string.c.o
+[143/386] Building C object CMakeFiles/libupb.dir/upb/text/encode.c.o
+[144/386] Building C object CMakeFiles/libupb.dir/upb/text/internal/encode.c.o
+[145/386] Building C object CMakeFiles/libupb.dir/upb/wire/byte_size.c.o
+[146/386] Building C object CMakeFiles/libupb.dir/upb/util/required_fields.c.o
+[147/386] Building C object CMakeFiles/libupb.dir/upb/wire/decode_fast/select.c.o
+[148/386] Building C object CMakeFiles/libupb.dir/upb/wire/encode.c.o
+[149/386] Building C object CMakeFiles/libupb.dir/upb/util/def_to_proto.c.o
+[150/386] Building C object CMakeFiles/libupb.dir/upb/wire/eps_copy_input_stream.c.o
+[151/386] Building C object CMakeFiles/libupb.dir/upb/wire/internal/back_alloc.c.o
+[152/386] Building C object CMakeFiles/libupb.dir/upb/wire/decode.c.o
+[153/386] Building C object CMakeFiles/libupb.dir/upb/wire/internal/decoder.c.o
+[154/386] Building C object CMakeFiles/libupb.dir/upb/wire/reader.c.o
+[155/386] Building C object CMakeFiles/libupb.dir/upb/reflection/cmake/google/protobuf/descriptor.upb_minitable.c.o
+[156/386] Building C object CMakeFiles/libupb.dir/upb/reflection/cmake/google/protobuf/json_enumvalue_options.upb_minitable.c.o
+[157/386] Linking C static library third_party/utf8_range/libutf8_range.a
+[158/386] Linking CXX static library third_party/utf8_range/libutf8_validity.a
+[159/386] Building C object CMakeFiles/libupb.dir/upb/wire/internal/encoder.c.o
+[160/386] Linking CXX static library libprotobuf.a
+[161/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/code_generator_lite.cc.o
+[162/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/code_generator.cc.o
+[163/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/enum.cc.o
+[164/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field.cc.o
+[165/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/extension.cc.o
+[166/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/command_line_interface.cc.o
+[167/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field_chunk.cc.o
+[168/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field_generators/cord_field.cc.o
+[169/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field_generators/enum_field.cc.o
+[170/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field_generators/map_field.cc.o
+[171/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field_generators/message_field.cc.o
+[172/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field_generators/primitive_field.cc.o
+[173/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field_generators/string_field.cc.o
+[174/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field_generators/string_view_field.cc.o
+[175/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/field_layout.cc.o
+[176/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/ifndef_guard.cc.o
+[177/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/generator.cc.o
+[178/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/helpers.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/compiler/cpp/helpers.cc:2035:19: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2035 |   absl::MutexLock lock(&bootstrap_cache.mutex);
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+1 warning generated.
+[179/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/message_layout_helper.cc.o
+[180/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/file.cc.o
+[181/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/namespace_printer.cc.o
+[182/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/service.cc.o
+[183/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/tracker.cc.o
+[184/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/parse_function_generator.cc.o
+[185/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/c_sharp_features.pb.cc.o
+[186/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_doc_comment.cc.o
+[187/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_enum.cc.o
+[188/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_enum_field.cc.o
+[189/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_field_base.cc.o
+[190/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_generator.cc.o
+[191/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_helpers.cc.o
+[192/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/cpp/message.cc.o
+[193/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_map_field.cc.o
+[194/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_message.cc.o
+[195/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_message_field.cc.o
+[196/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_primitive_field.cc.o
+[197/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_reflection_class.cc.o
+[198/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_repeated_enum_field.cc.o
+[199/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_repeated_message_field.cc.o
+[200/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_repeated_primitive_field.cc.o
+[201/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_source_generator_base.cc.o
+[202/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/names.cc.o
+[203/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/csharp/csharp_wrapper_field.cc.o
+[204/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/context.cc.o
+[205/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/doc_comment.cc.o
+[206/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/field_common.cc.o
+[207/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/file.cc.o
+[208/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/enum.cc.o
+[209/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/enum_field.cc.o
+[210/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/extension.cc.o
+[211/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/generator_factory.cc.o
+[212/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/make_field_gens.cc.o
+[213/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/map_field.cc.o
+[214/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/message_builder.cc.o
+[215/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/message.cc.o
+[216/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/message_field.cc.o
+[217/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/generator.cc.o
+[218/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/service.cc.o
+[219/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/primitive_field.cc.o
+[220/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/full/string_field.cc.o
+[221/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/java_features.pb.cc.o
+[222/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/helpers.cc.o
+[223/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/enum.cc.o
+[224/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/internal_helpers.cc.o
+[225/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/enum_field.cc.o
+[226/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/extension.cc.o
+[227/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/generator_factory.cc.o
+[228/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/make_field_gens.cc.o
+[229/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/map_field.cc.o
+[230/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/message_builder.cc.o
+[231/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/message.cc.o
+[232/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/message_field.cc.o
+[233/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/message_serialization.cc.o
+[234/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/primitive_field.cc.o
+[235/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/lite/string_field.cc.o
+[236/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/name_resolver.cc.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/compiler/java/name_resolver.cc:19:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/compiler/java/java_features.pb.h:24:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_bases.h:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:114:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2742:29: warning: 'ReaderMutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2742 |       absl::ReaderMutexLock lock(&pool->field_memo_table_mutex_);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/compiler/java/name_resolver.cc:140:28: note: in instantiation of function template specialization 'google::protobuf::DescriptorPool::MemoizeProjection<google::protobuf::FileDescriptor, bool (*)(const google::protobuf::FileDescriptor *)>' requested here
+  140 |     return DescriptorPool::MemoizeProjection(descriptor, func);
+      |                            ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/compiler/java/name_resolver.cc:152:29: note: in instantiation of function template specialization 'google::protobuf::compiler::java::MemoizeProjection::operator()<google::protobuf::FileDescriptor, bool (*)(const google::protobuf::FileDescriptor *)>' requested here
+  152 |   return MemoizeProjection()(file, ComputeNeedsOuterClassSuffix);
+      |                             ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:676:5: note: 'ReaderMutexLock' has been explicitly marked deprecated here
+  676 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/compiler/java/name_resolver.cc:19:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/compiler/java/java_features.pb.h:24:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/generated_message_bases.h:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message.h:114:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/descriptor.h:2751:23: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+ 2751 |       absl::MutexLock lock(&pool->field_memo_table_mutex_);
+      |                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+2 warnings generated.
+[237/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/names.cc.o
+[238/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/java/shared_code_generator.cc.o
+[239/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/kotlin/file.cc.o
+[240/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/kotlin/generator.cc.o
+[241/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/kotlin/field.cc.o
+[242/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/enum.cc.o
+[243/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/kotlin/message.cc.o
+[244/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/extension.cc.o
+[245/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/enum_field.cc.o
+[246/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/field.cc.o
+[247/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/generator.cc.o
+[248/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/helpers.cc.o
+[249/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/file.cc.o
+[250/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/line_consumer.cc.o
+[251/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/import_writer.cc.o
+[252/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/map_field.cc.o
+[253/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/message_field.cc.o
+[254/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/names.cc.o
+[255/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/message.cc.o
+[256/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/tf_decode_data.cc.o
+[257/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/oneof.cc.o
+[258/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/objectivec/primitive_field.cc.o
+[259/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/php/names.cc.o
+[260/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/plugin.cc.o
+[261/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/plugin.pb.cc.o
+[262/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/python/helpers.cc.o
+[263/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/php/php_generator.cc.o
+[264/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/python/pyi_generator.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/compiler/python/pyi_generator.cc:609:19: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  609 |   absl::MutexLock lock(&mutex_);
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+1 warning generated.
+[265/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/python/generator.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/compiler/python/generator.cc:240:19: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  240 |   absl::MutexLock lock(&mutex_);
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+1 warning generated.
+[266/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/accessor_case.cc.o
+[267/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/retention.cc.o
+[268/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/ruby/rbs_generator.cc.o
+[269/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/ruby/ruby_generator.cc.o
+[270/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/accessors.cc.o
+[271/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/default_value.cc.o
+[272/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/map.cc.o
+[273/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/repeated_field.cc.o
+[274/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/singular_cord.cc.o
+[275/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/singular_message.cc.o
+[276/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/singular_scalar.cc.o
+[277/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/singular_string.cc.o
+[278/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/unsupported_field.cc.o
+[279/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/accessors/with_presence.cc.o
+[280/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/context.cc.o
+[281/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/crate_mapping.cc.o
+[282/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/enum.cc.o
+[283/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/extension.cc.o
+[284/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/generator.cc.o
+[285/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/naming.cc.o
+[286/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/oneof.cc.o
+[287/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/message.cc.o
+[288/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/relative_path.cc.o
+[289/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/rust_keywords.cc.o
+[290/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/rust_field_type.cc.o
+[291/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/subprocess.cc.o
+[292/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/zip_writer.cc.o
+[293/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/rust/upb_helpers.cc.o
+[294/386] Building CXX object CMakeFiles/libprotoc.dir/upb_generator/common.cc.o
+[295/386] Building CXX object CMakeFiles/libprotoc.dir/src/google/protobuf/compiler/versions.cc.o
+[296/386] Building CXX object CMakeFiles/libprotoc.dir/upb_generator/common/names.cc.o
+[297/386] Building CXX object CMakeFiles/libprotoc.dir/upb_generator/minitable/names.cc.o
+[298/386] Linking C static library libupb.a
+[299/386] Building CXX object CMakeFiles/libprotoc.dir/upb_generator/minitable/names_internal.cc.o
+[300/386] Building CXX object CMakeFiles/libprotoc.dir/upb_generator/file_layout.cc.o
+[301/386] Building CXX object CMakeFiles/libprotoc.dir/upb_generator/plugin.cc.o
+[302/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/src/google/protobuf/compiler/code_generator.cc.o
+[303/386] Linking CXX static library libprotoc.a
+[304/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/src/google/protobuf/compiler/code_generator_lite.cc.o
+[305/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/src/google/protobuf/compiler/plugin.cc.o
+[306/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/src/google/protobuf/compiler/plugin.pb.cc.o
+[307/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/upb_generator/c/names.cc.o
+[308/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/upb_generator/c/names_internal.cc.o
+[309/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/src/google/protobuf/compiler/retention.cc.o
+[310/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/upb_generator/common.cc.o
+[311/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/upb_generator/common/names.cc.o
+[312/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/upb_generator/minitable/names.cc.o
+[313/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/upb_generator/minitable/names_internal.cc.o
+[314/386] Building C object CMakeFiles/protoc-gen-upb.dir/upb_generator/cmake/google/protobuf/compiler/plugin.upb_minitable.c.o
+[315/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/upb_generator/file_layout.cc.o
+[316/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/upb_generator/c/generator.cc.o
+[317/386] Building CXX object CMakeFiles/protoc-gen-upb.dir/upb_generator/plugin.cc.o
+[318/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/src/google/protobuf/compiler/code_generator.cc.o
+[319/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/src/google/protobuf/compiler/code_generator_lite.cc.o
+[320/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/src/google/protobuf/compiler/plugin.cc.o
+[321/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/common/names.cc.o
+[322/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/common.cc.o
+[323/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/src/google/protobuf/compiler/plugin.pb.cc.o
+[324/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/minitable/names.cc.o
+[325/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/minitable/names_internal.cc.o
+[326/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/src/google/protobuf/compiler/retention.cc.o
+[327/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/file_layout.cc.o
+[328/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/reflection/names.cc.o
+[329/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/plugin.cc.o
+[330/386] Building C object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/cmake/google/protobuf/compiler/plugin.upb_minitable.c.o
+[331/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/reflection/generator.cc.o
+[332/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/reflection/header.cc.o
+[333/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/src/google/protobuf/compiler/code_generator.cc.o
+[334/386] Building CXX object CMakeFiles/protoc-gen-upbdefs.dir/upb_generator/reflection/source.cc.o
+[335/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/src/google/protobuf/compiler/code_generator_lite.cc.o
+[336/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/src/google/protobuf/compiler/plugin.cc.o
+[337/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/upb_generator/common.cc.o
+[338/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/upb_generator/common/names.cc.o
+[339/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/src/google/protobuf/compiler/plugin.pb.cc.o
+[340/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/src/google/protobuf/compiler/retention.cc.o
+[341/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/upb_generator/file_layout.cc.o
+[342/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/upb_generator/minitable/names.cc.o
+[343/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/upb_generator/minitable/names_internal.cc.o
+[344/386] Building C object CMakeFiles/protoc-gen-upb_minitable.dir/upb_generator/cmake/google/protobuf/compiler/plugin.upb_minitable.c.o
+[345/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/upb_generator/minitable/main.cc.o
+[346/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/upb_generator/minitable/generator.cc.o
+[347/386] Building CXX object CMakeFiles/protoc-gen-upb_minitable.dir/upb_generator/plugin.cc.o
+[348/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/any_lite.cc.o
+[349/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/arena.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/arena.cc:703:19: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  703 |   absl::MutexLock lock(&mutex_);
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+1 warning generated.
+[350/386] Building CXX object CMakeFiles/protoc.dir/src/google/protobuf/compiler/main.cc.o
+[351/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/arena_allocation_policy.cc.o
+[352/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/arenaz_sampler.cc.o
+[353/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/arena_align.cc.o
+[354/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/arenastring.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/arenastring.cc:60:6: warning: 'Lock' is deprecated [-Wdeprecated-declarations]
+   60 |   mu.Lock();
+      |      ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:194:3: note: 'Lock' has been explicitly marked deprecated here
+  194 |   ABSL_DEPRECATE_AND_INLINE()
+      |   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/base/macros.h:275:39: note: expanded from macro 'ABSL_DEPRECATE_AND_INLINE'
+  275 | #define ABSL_DEPRECATE_AND_INLINE() [[deprecated]] ABSL_REFACTOR_INLINE
+      |                                       ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/arenastring.cc:68:6: warning: 'Unlock' is deprecated [-Wdeprecated-declarations]
+   68 |   mu.Unlock();
+      |      ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:203:3: note: 'Unlock' has been explicitly marked deprecated here
+  203 |   ABSL_DEPRECATE_AND_INLINE()
+      |   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/base/macros.h:275:39: note: expanded from macro 'ABSL_DEPRECATE_AND_INLINE'
+  275 | #define ABSL_DEPRECATE_AND_INLINE() [[deprecated]] ABSL_REFACTOR_INLINE
+      |                                       ^
+2 warnings generated.
+[355/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/generated_enum_util.cc.o
+[356/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/generated_message_util.cc.o
+[357/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/extension_set.cc.o
+[358/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/implicit_weak_message.cc.o
+[359/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/io/io_win32.cc.o
+[360/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/inlined_string_field.cc.o
+[361/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/generated_message_tctable_lite.cc.o
+[362/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/io/zero_copy_stream.cc.o
+[363/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/io/coded_stream.cc.o
+[364/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/io/zero_copy_stream_impl.cc.o
+[365/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/io/zero_copy_stream_impl_lite.cc.o
+[366/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/map.cc.o
+[367/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/message_lite.cc.o
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message_lite.cc:611:27: warning: 'STLStringResizeUninitializedAmortized<std::string>' is deprecated [-Wdeprecated-declarations]
+  611 |   absl::strings_internal::STLStringResizeUninitializedAmortized(
+      |                           ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/strings/internal/resize_uninitialized.h:79:3: note: 'STLStringResizeUninitializedAmortized<std::string>' has been explicitly marked deprecated here
+   79 | [[deprecated]]
+      |   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/protobuf-36.2/src/google/protobuf/message_lite.cc:809:19: warning: 'MutexLock' is deprecated: Use the constructor that takes a reference instead [-Wdeprecated-declarations]
+  809 |   absl::MutexLock lock(&shutdown_data->mutex);
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/include/absl/synchronization/mutex.h:633:5: note: 'MutexLock' has been explicitly marked deprecated here
+  633 |   [[deprecated("Use the constructor that takes a reference instead")]]
+      |     ^
+2 warnings generated.
+[368/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/micro_string.cc.o
+[369/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/raw_ptr.cc.o
+[370/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/port.cc.o
+[371/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/parse_context.cc.o
+[372/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/repeated_field.cc.o
+[373/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/repeated_ptr_field.cc.o
+[374/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/type_id.cc.o
+[375/386] Linking CXX executable protoc-gen-upb-36.2.0
+ld: warning: ignoring duplicate libraries: '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_base.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_cord.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_hash.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_log_globals.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_log_severity.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_random_distributions.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_status.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_strings.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_synchronization.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_time.a'
+[376/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/stubs/common.cc.o
+[377/386] Linking CXX executable protoc-gen-upbdefs-36.2.0
+ld: warning: ignoring duplicate libraries: '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_base.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_cord.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_hash.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_log_globals.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_log_severity.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_random_distributions.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_status.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_strings.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_synchronization.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_time.a'
+[378/386] Linking CXX executable protoc-gen-upb_minitable-36.2.0
+ld: warning: ignoring duplicate libraries: '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_base.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_cord.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_hash.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_log_globals.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_log_severity.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_random_distributions.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_status.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_strings.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_synchronization.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_time.a'
+[379/386] Creating executable symlink protoc-gen-upb
+[380/386] Creating executable symlink protoc-gen-upbdefs
+[381/386] Creating executable symlink protoc-gen-upb_minitable
+[382/386] Linking CXX executable protoc-36.2.0
+ld: warning: ignoring duplicate libraries: '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_base.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_cord.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_hash.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_log_globals.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_log_severity.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_random_distributions.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_status.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_strings.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_synchronization.a', '/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/static-prefix/lib/libabsl_time.a'
+[383/386] Creating executable symlink protoc
+[384/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/unknown_field_set_lite.cc.o
+[385/386] Building CXX object CMakeFiles/libprotobuf-lite.dir/src/google/protobuf/wire_format_lite.cc.o
+[386/386] Linking CXX static library libprotobuf-lite.a

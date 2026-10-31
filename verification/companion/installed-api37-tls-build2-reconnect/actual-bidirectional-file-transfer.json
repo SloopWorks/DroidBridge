@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "mac_to_phone": {
+    "bytes": 2097152,
+    "sha256": "91d3beb88a9b2f778a6c44a1c53b63d3c79931845a9aef84b3fb414610bd1938",
+    "actual_installed_gui_status": "File received and verified on the phone. Open its Received Files screen to save it."
+  },
+  "phone_to_mac": {
+    "bytes": 2097152,
+    "sha256": "528d7c4ccbfb9b6c5be870818614c6bb306e726715cde1f50704f2de017697eb",
+    "exact_expected_fixture_bytes": true,
+    "quarantine_present": true,
+    "actual_installed_gui_status": "File saved after size and SHA-256 verification; the phone confirmed completion. It was not opened."
+  },
+  "native_open_and_save_panels": "Real CUA accessibility + Go to Folder + explicit Open/Save",
+  "production_file_or_catalog_used": false
+}

@@ -1,0 +1,205 @@
+{
+  "serial": "emulator-5580",
+  "companion_uid": 10155,
+  "attacker_uid": 10156,
+  "requested_permissions": [
+    "android.permission.INTERNET"
+  ],
+  "probe_sha256": "7b5707022fc574b3210927e3cc228ddf120e5d55844d54d50add94187e7ad23e",
+  "expected_server_pin": "0630a92cc9e6dcb34e8db0dd3e5de275e6719f8ea6c63819775d47f4d3ef356e",
+  "synthetic_credentials": true,
+  "installed_companion_apk_sha256": "4707ee2032a52ed47eefb36cb80f4ba16a47b553e47a4a25bbfc6147d69ff2d3",
+  "installed_attacker_apk_sha256": "9045f25c68370fd7ba3073afd14ad653998f8a4d690463dd8e1d6221ce794943",
+  "cases": [
+    {
+      "mode": "tls",
+      "operation": "pair",
+      "run_id": "d226a841-f2d3-466c-966f-85e93ad1c7bd",
+      "result": {
+        "code": "server_pin_mismatch",
+        "status": "error"
+      },
+      "attacker_receipt": {
+        "run_id": "d226a841-f2d3-466c-966f-85e93ad1c7bd",
+        "mode": "tls",
+        "claimed_device_id": "260553b5-97e4-4949-9a61-0597d49d0347",
+        "server_pin": "0c11c7f2cc90ae9c4a8d4e17d461f0d0f649d43c0f12c3e6f63d46b5c8a21bb0",
+        "ordinary_permissions": [
+          "android.permission.INTERNET"
+        ],
+        "listening": true,
+        "captures": [
+          {
+            "phase": "tls_handshake",
+            "tls_handshake_completed": false,
+            "captured_bytes": 0,
+            "application_http_bytes": 0,
+            "http_request_prefix": false,
+            "authorization_header_present": false,
+            "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ]
+      },
+      "raw_capture_evidence": [
+        {
+          "path": "tls-pair-0.hex",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "independently_verified_http_bytes": 0
+        }
+      ]
+    },
+    {
+      "mode": "tls",
+      "operation": "reconnect",
+      "run_id": "17b6b4c8-9585-4926-8736-8a3bcd8658b3",
+      "result": {
+        "code": "server_pin_mismatch",
+        "status": "error"
+      },
+      "attacker_receipt": {
+        "run_id": "17b6b4c8-9585-4926-8736-8a3bcd8658b3",
+        "mode": "tls",
+        "claimed_device_id": "260553b5-97e4-4949-9a61-0597d49d0347",
+        "server_pin": "0c11c7f2cc90ae9c4a8d4e17d461f0d0f649d43c0f12c3e6f63d46b5c8a21bb0",
+        "ordinary_permissions": [
+          "android.permission.INTERNET"
+        ],
+        "listening": true,
+        "captures": [
+          {
+            "phase": "tls_handshake",
+            "tls_handshake_completed": false,
+            "captured_bytes": 0,
+            "application_http_bytes": 0,
+            "http_request_prefix": false,
+            "authorization_header_present": false,
+            "captured_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ]
+      },
+      "raw_capture_evidence": [
+        {
+          "path": "tls-reconnect-0.hex",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "independently_verified_http_bytes": 0
+        }
+      ]
+    },
+    {
+      "mode": "plain",
+      "operation": "pair",
+      "run_id": "22b840fa-7d49-4912-acd1-0c6f7c4efe9c",
+      "result": {
+        "code": "server_authentication_failed",
+        "status": "error"
+      },
+      "attacker_receipt": {
+        "run_id": "22b840fa-7d49-4912-acd1-0c6f7c4efe9c",
+        "mode": "plain",
+        "claimed_device_id": "260553b5-97e4-4949-9a61-0597d49d0347",
+        "server_pin": null,
+        "ordinary_permissions": [
+          "android.permission.INTERNET"
+        ],
+        "listening": true,
+        "captures": [
+          {
+            "phase": "plain_read",
+            "tls_handshake_completed": false,
+            "captured_bytes": 1514,
+            "application_http_bytes": 0,
+            "http_request_prefix": false,
+            "authorization_header_present": false,
+            "captured_sha256": "db19b2a6e85423faacfcc1129a74fceca11d512b471593a1975e8801431d4f2b"
+          },
+          {
+            "phase": "plain_read",
+            "tls_handshake_completed": false,
+            "captured_bytes": 1516,
+            "application_http_bytes": 0,
+            "http_request_prefix": false,
+            "authorization_header_present": false,
+            "captured_sha256": "3d6c1c652697b127b6fa20d34eaa8b4d15f0cb2fe19c735385842da10b5d9d95"
+          }
+        ]
+      },
+      "raw_capture_evidence": [
+        {
+          "path": "plain-pair-0.hex",
+          "bytes": 1514,
+          "sha256": "db19b2a6e85423faacfcc1129a74fceca11d512b471593a1975e8801431d4f2b",
+          "independently_verified_http_bytes": 0
+        },
+        {
+          "path": "plain-pair-1.hex",
+          "bytes": 1516,
+          "sha256": "3d6c1c652697b127b6fa20d34eaa8b4d15f0cb2fe19c735385842da10b5d9d95",
+          "independently_verified_http_bytes": 0
+        }
+      ]
+    },
+    {
+      "mode": "plain",
+      "operation": "reconnect",
+      "run_id": "0cb31df5-ef73-4315-a14d-69815c411a68",
+      "result": {
+        "code": "server_authentication_failed",
+        "status": "error"
+      },
+      "attacker_receipt": {
+        "run_id": "0cb31df5-ef73-4315-a14d-69815c411a68",
+        "mode": "plain",
+        "claimed_device_id": "260553b5-97e4-4949-9a61-0597d49d0347",
+        "server_pin": null,
+        "ordinary_permissions": [
+          "android.permission.INTERNET"
+        ],
+        "listening": true,
+        "captures": [
+          {
+            "phase": "plain_read",
+            "tls_handshake_completed": false,
+            "captured_bytes": 1514,
+            "application_http_bytes": 0,
+            "http_request_prefix": false,
+            "authorization_header_present": false,
+            "captured_sha256": "43cc36dd3192d0b056ea677dde3f8710f7c3a556d88794bac1a49c11eb77b100"
+          },
+          {
+            "phase": "plain_read",
+            "tls_handshake_completed": false,
+            "captured_bytes": 1516,
+            "application_http_bytes": 0,
+            "http_request_prefix": false,
+            "authorization_header_present": false,
+            "captured_sha256": "1e93490a23e93377f1338deae3ffafae59418588f0692c9c9a4267c5d05039e1"
+          }
+        ]
+      },
+      "raw_capture_evidence": [
+        {
+          "path": "plain-reconnect-0.hex",
+          "bytes": 1514,
+          "sha256": "43cc36dd3192d0b056ea677dde3f8710f7c3a556d88794bac1a49c11eb77b100",
+          "independently_verified_http_bytes": 0
+        },
+        {
+          "path": "plain-reconnect-1.hex",
+          "bytes": 1516,
+          "sha256": "1e93490a23e93377f1338deae3ffafae59418588f0692c9c9a4267c5d05039e1",
+          "independently_verified_http_bytes": 0
+        }
+      ]
+    }
+  ],
+  "genuine_hello_before_rebind": {
+    "device_id": "260553b5-97e4-4949-9a61-0597d49d0347",
+    "operation": "hello",
+    "status": "ok"
+  },
+  "acceptance": true,
+  "companion_service_restore_action": true,
+  "exact_forward_removed": true
+}

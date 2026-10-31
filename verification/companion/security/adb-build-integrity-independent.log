@@ -1,0 +1,8 @@
+test_embedded_c_cpp_and_assembly_license_blocks_are_retained (__main__.ADBBuildIntegrityTests.test_embedded_c_cpp_and_assembly_license_blocks_are_retained) ... ok
+test_extra_source_file_mode_and_symlink_drift_are_rejected (__main__.ADBBuildIntegrityTests.test_extra_source_file_mode_and_symlink_drift_are_rejected) ... ok
+test_same_mtime_source_edit_is_rejected (__main__.ADBBuildIntegrityTests.test_same_mtime_source_edit_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK

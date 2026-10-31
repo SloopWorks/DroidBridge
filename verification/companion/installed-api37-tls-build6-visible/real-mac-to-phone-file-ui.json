@@ -1,0 +1,29 @@
+{
+  "boundary": "ActualCUAOpenPanel+SendFile -> pinnedphonehashcommit -> AndroidSharingUI",
+  "mac_terminal_status": "File received and verified on the phone. Open its Received Files screen to save it.",
+  "phone_texts": [
+    "Using: Patrick\u2019s MacBook Pro \u00b7 Connected",
+    "Completed on Patrick\u2019s MacBook Pro: share text",
+    "Send selected text",
+    "To Patrick\u2019s MacBook Pro. Paste reads clipboard only after your action. Received text needs an explicit Copy.",
+    "Text or https:// link",
+    "Paste clipboard",
+    "Send to Patrick\u2019s MacBook Pro",
+    "Files and photos",
+    "From an Android app, choose Share \u2192 DroidBridge. Review the receiver first. Two files, 50 MiB each.",
+    "sample.bin \u00b7 Patrick\u2019s MacBook Pro",
+    "Verified on Mac \u00b7 2.0 MiB / 2.0 MiB",
+    "Cancel transfer",
+    "qa6-received-2mib.bin \u00b7 Patrick\u2019s MacBook Pro",
+    "Verified on phone \u00b7 2.0 MiB / 2.0 MiB",
+    "Save qa6-received-2mib.bin\u2026",
+    "Remove inbox copy",
+    "Received from Patrick\u2019s MacBook Pro",
+    "DroidBridge explicit clipboard QA6",
+    "Home",
+    "Apps",
+    "Sharing",
+    "Settings"
+  ],
+  "pass": true
+}

@@ -1,0 +1,213 @@
+{
+  "scope": "Independent framing/extension decoding of all18hex captures and2DERbinary evidence; no values printed, no credential/private key material",
+  "method_note": "Initial broad http/ byte-marker produced a false positive for legitimate TLS ALPN protocol metadata; full TLS ClientHello framing is authoritative and no HTTP application record is present",
+  "hex_files": [
+    {
+      "file": "security/peer-attack-api35/plain-pair-0.hex",
+      "decoded_bytes": 1514,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1514,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35/plain-pair-1.hex",
+      "decoded_bytes": 1516,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1516,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35/plain-reconnect-0.hex",
+      "decoded_bytes": 1514,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1514,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35/plain-reconnect-1.hex",
+      "decoded_bytes": 1516,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1516,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35/tls-pair-0.hex",
+      "decoded_bytes": 0,
+      "tls_client_hello_records": [],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35/tls-reconnect-0.hex",
+      "decoded_bytes": 0,
+      "tls_client_hello_records": [],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35-current/plain-pair-0.hex",
+      "decoded_bytes": 1514,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1514,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35-current/plain-pair-1.hex",
+      "decoded_bytes": 1516,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1516,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35-current/plain-reconnect-0.hex",
+      "decoded_bytes": 1514,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1514,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35-current/plain-reconnect-1.hex",
+      "decoded_bytes": 1516,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1516,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35-current/tls-pair-0.hex",
+      "decoded_bytes": 0,
+      "tls_client_hello_records": [],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api35-current/tls-reconnect-0.hex",
+      "decoded_bytes": 0,
+      "tls_client_hello_records": [],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api37-checked/plain-pair-0.hex",
+      "decoded_bytes": 1514,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1514,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api37-checked/plain-pair-1.hex",
+      "decoded_bytes": 1516,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1516,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api37-checked/plain-reconnect-0.hex",
+      "decoded_bytes": 1514,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1514,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api37-checked/plain-reconnect-1.hex",
+      "decoded_bytes": 1516,
+      "tls_client_hello_records": [
+        {
+          "record_type": 22,
+          "handshake_type": 1,
+          "bytes": 1516,
+          "tls_psk_extension": false
+        }
+      ],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api37-checked/tls-pair-0.hex",
+      "decoded_bytes": 0,
+      "tls_client_hello_records": [],
+      "http_application_or_credential_payload": false
+    },
+    {
+      "file": "security/peer-attack-api37-checked/tls-reconnect-0.hex",
+      "decoded_bytes": 0,
+      "tls_client_hello_records": [],
+      "http_application_or_credential_payload": false
+    }
+  ],
+  "der_files": [
+    {
+      "file": "android/tls-api35-leaf.der",
+      "sha256": "0630a92cc9e6dcb34e8db0dd3e5de275e6719f8ea6c63819775d47f4d3ef356e",
+      "content": "parseable public X509 certificate only",
+      "bytes": 419
+    },
+    {
+      "file": "android/tls-api37-leaf.der",
+      "sha256": "82f9aeab82dcb375f75a490ad81a064e315da5211e033c8938928a930b05ee8d",
+      "content": "parseable public X509 certificate only",
+      "bytes": 418
+    }
+  ],
+  "all_pass": true
+}

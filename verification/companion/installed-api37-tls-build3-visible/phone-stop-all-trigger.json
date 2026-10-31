@@ -1,0 +1,32 @@
+{
+  "physical_display_restored_on": true,
+  "phone_texts_before": [
+    "Using: Patrick\u2019s MacBook Pro \u00b7 Connected",
+    "Completed on Patrick\u2019s MacBook Pro: set screen power",
+    "Input Alpha \u00b7 running",
+    "Stop Input Alpha",
+    "Input Beta \u00b7 running",
+    "Stop Input Beta",
+    "Stop all on Patrick\u2019s MacBook Pro",
+    "Audio destination",
+    "Device-wide, including other Android apps. Capture restrictions may keep Mac output silent. Actual output: {\"message\":\"Another DroidBridge host owns this device's audio. Routing is device-wide; changes apply when that owner refreshes.\",\"phase\":\"shared\",\"route\":\"mac\"}",
+    "Mac",
+    "Phone",
+    "Mac + Phone",
+    "Retry Mac audio",
+    "Phone display",
+    "Display power does not lock or unlock the phone. Mac app windows can continue on supported devices.",
+    "Turn phone display off",
+    "Home",
+    "Apps",
+    "Sharing",
+    "Settings"
+  ],
+  "events": [
+    {
+      "kind": "android_ui_action",
+      "action": "Stop all on Patrick\u2019s MacBook Pro",
+      "monotonic": 1585429.238472333
+    }
+  ]
+}

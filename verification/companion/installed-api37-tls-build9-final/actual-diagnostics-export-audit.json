@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "actual_CUA_native_save_panel": true,
+  "bytes": 377,
+  "sha256": "64719a255de0bfa4e17adbb8a414356e8308e4a1cdb48702a7161c35d75624fe",
+  "allowed_keys": [
+    "battery_percent",
+    "charging",
+    "network_class",
+    "observed_at",
+    "phone_command_journal",
+    "power_save",
+    "profile",
+    "protocol",
+    "received_text_journal",
+    "sdk",
+    "service_running",
+    "thermal_status"
+  ],
+  "excluded_known_identifiers_and_synthetic_contents": true,
+  "mac_received_header": "Mac received 2026-10-30T23:59:04Z",
+  "status": [
+    "Phone",
+    "Google sdk_gphone16k_arm64 \u00b7 Authenticated companion connected",
+    "Redacted diagnostics saved locally.",
+    "Local diagnostics"
+  ]
+}

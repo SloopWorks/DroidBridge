@@ -1,0 +1,57 @@
+
+dev.droidbridge.companion.CompanionConsentDeviceTest:
+Error in forgetConsentActionsFitAndCancelPreservesExistingTrust(dev.droidbridge.companion.CompanionConsentDeviceTest):
+java.lang.AssertionError: Entire action stays inside dialog expected:<219> but was:<104>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest.forgetConsentActionsFitAndCancelPreservesExistingTrust$lambda$6(CompanionConsentDeviceTest.kt:56)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest.$r8$lambda$2zZWeYOJND25WRiZ0ANW0ix7pQQ(CompanionConsentDeviceTest.kt:0)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest$$ExternalSyntheticLambda3.invoke(D8$$SyntheticClass:0)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest.forgetConsentActionsFitAndCancelPreservesExistingTrust$main$lambda$1(CompanionConsentDeviceTest.kt:32)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest.$r8$lambda$OdoqiWn5qH34caSe6QkcXXyKLmg(CompanionConsentDeviceTest.kt:0)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest$$ExternalSyntheticLambda9.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2657)
+	at android.os.Handler.handleCallback(Handler.java:1095)
+	at android.os.Handler.dispatchMessageImpl(Handler.java:135)
+	at android.os.Handler.dispatchMessage(Handler.java:125)
+	at android.os.Looper.loopOnce(Looper.java:296)
+	at android.os.Looper.loop(Looper.java:397)
+	at android.app.ActivityThread.main(ActivityThread.java:9523)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:575)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:939)
+
+
+Time: 2.605
+There was 1 failure:
+1) forgetConsentActionsFitAndCancelPreservesExistingTrust(dev.droidbridge.companion.CompanionConsentDeviceTest)
+java.lang.AssertionError: Entire action stays inside dialog expected:<219> but was:<104>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest.forgetConsentActionsFitAndCancelPreservesExistingTrust$lambda$6(CompanionConsentDeviceTest.kt:56)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest.$r8$lambda$2zZWeYOJND25WRiZ0ANW0ix7pQQ(CompanionConsentDeviceTest.kt:0)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest$$ExternalSyntheticLambda3.invoke(D8$$SyntheticClass:0)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest.forgetConsentActionsFitAndCancelPreservesExistingTrust$main$lambda$1(CompanionConsentDeviceTest.kt:32)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest.$r8$lambda$OdoqiWn5qH34caSe6QkcXXyKLmg(CompanionConsentDeviceTest.kt:0)
+	at dev.droidbridge.companion.CompanionConsentDeviceTest$$ExternalSyntheticLambda9.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2657)
+	at android.os.Handler.handleCallback(Handler.java:1095)
+	at android.os.Handler.dispatchMessageImpl(Handler.java:135)
+	at android.os.Handler.dispatchMessage(Handler.java:125)
+	at android.os.Looper.loopOnce(Looper.java:296)
+	at android.os.Looper.loop(Looper.java:397)
+	at android.app.ActivityThread.main(ActivityThread.java:9523)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:575)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:939)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+

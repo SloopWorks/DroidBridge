@@ -1,0 +1,8 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+[3/4] Emitting module DroidBridgeStreaming
+[4/4] Compiling DroidBridgeStreaming BridgeSession.swift
+[5/5] Compiling DroidBridgeStreaming SessionRecovery.swift
+Build of target: 'DroidBridgeStreaming' complete! (1.73s)

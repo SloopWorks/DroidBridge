@@ -1,0 +1,675 @@
+[0/1] Re-running CMake...
+-- {fmt} version: 12.0.0
+-- Build type: Release
+-- Configuring done (0.8s)
+-- Generating done (0.1s)
+-- Build files have been written to: /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/build
+[1/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/adb_client.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/adb_client.cpp:20:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/adb_client.h:23:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[2/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/adb_wifi.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/adb_wifi.cpp:17:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/adb_wifi.h:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[3/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/auth.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/auth.cpp:46:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[4/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/adb_install.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/adb_install.cpp:34:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/adb_install.cpp:39:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:105:9: warning: 'Done' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  105 |     int Done(int status) {
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:52:17: note: overridden virtual function is here
+   52 |     virtual int Done(int status) = 0;
+      |                 ^
+2 warnings generated.
+[5/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/bugreport.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.cpp:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.h:22:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.cpp:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.h:23:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:105:9: warning: 'Done' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  105 |     int Done(int status) {
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:52:17: note: overridden virtual function is here
+   52 |     virtual int Done(int status) = 0;
+      |                 ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.cpp:74:9: warning: 'Done' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+   74 |     int Done(int unused_) {
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:52:17: note: overridden virtual function is here
+   52 |     virtual int Done(int status) = 0;
+      |                 ^
+3 warnings generated.
+[6/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/console.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/console.cpp:26:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[7/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/detach.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/detach.cpp:17:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/detach.h:23:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.h:41:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[8/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/commandline.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:57:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:67:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.h:23:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:105:9: warning: 'Done' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  105 |     int Done(int status) {
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:52:17: note: overridden virtual function is here
+   52 |     virtual int Done(int status) = 0;
+      |                 ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:1399:9: warning: 'Done' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+ 1399 |     int Done(int status) {
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:105:9: note: overridden virtual function is here
+  105 |     int Done(int status) {
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:1408:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+ 1408 |         binary_proto.ParseFromString(binary_proto_bytes);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:1411:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+ 1411 |         google::protobuf::TextFormat::PrintToString(binary_proto, &string_proto);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:67:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.h:23:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:163:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  163 |         binary_proto.ParseFromString(std::string(buffer_.data() + kHeader_size, expected_size));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:1984:62: note: in instantiation of member function 'ProtoBinaryToText<adb::proto::AdbKnownHosts>::OnStdoutReceived' requested here
+ 1984 |                 ProtoBinaryToText<adb::proto::AdbKnownHosts> callback("\nKnown mDNS hosts:\n");
+      |                                                              ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:67:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.h:23:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:165:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  165 |         google::protobuf::TextFormat::PrintToString(binary_proto, &string_proto);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:163:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  163 |         binary_proto.ParseFromString(std::string(buffer_.data() + kHeader_size, expected_size));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:1998:61: note: in instantiation of member function 'ProtoBinaryToText<adb::proto::MdnsServices>::OnStdoutReceived' requested here
+ 1998 |                 ProtoBinaryToText<adb::proto::MdnsServices> callback("\nServices:\n");
+      |                                                             ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:67:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.h:23:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:165:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  165 |         google::protobuf::TextFormat::PrintToString(binary_proto, &string_proto);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:163:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  163 |         binary_proto.ParseFromString(std::string(buffer_.data() + kHeader_size, expected_size));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:2145:53: note: in instantiation of member function 'ProtoBinaryToText<adb::proto::AppProcesses>::OnStdoutReceived' requested here
+ 2145 |         ProtoBinaryToText<adb::proto::AppProcesses> callback("\nProcesses:\n");
+      |                                                     ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.cpp:67:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/bugreport.h:23:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:165:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  165 |         google::protobuf::TextFormat::PrintToString(binary_proto, &string_proto);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11 warnings generated.
+[9/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/discovered_services.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/discovered_services.cpp:19:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[10/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/incremental.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/incremental.cpp:41:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:26:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/incremental.cpp:41:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:105:9: warning: 'Done' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  105 |     int Done(int status) {
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:52:17: note: overridden virtual function is here
+   52 |     virtual int Done(int status) = 0;
+      |                 ^
+2 warnings generated.
+[11/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/file_sync_client.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/file_sync_client.cpp:42:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/file_sync_client.cpp:52:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:105:9: warning: 'Done' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  105 |     int Done(int status) {
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:52:17: note: overridden virtual function is here
+   52 |     virtual int Done(int status) = 0;
+      |                 ^
+2 warnings generated.
+[12/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/incremental_server.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/incremental_server.cpp:38:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[13/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/incremental_utils.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/incremental_utils.cpp:37:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[14/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/line_printer.cpp.o
+[15/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/pairing/pairing_client.cpp.o
+[16/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/main.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/main.cpp:33:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/main.cpp:44:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:105:9: warning: 'Done' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+  105 |     int Done(int status) {
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/commandline.h:52:17: note: overridden virtual function is here
+   52 |     virtual int Done(int status) = 0;
+      |                 ^
+2 warnings generated.
+[17/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/usb_libusb.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb.cpp:17:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb.h:22:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb_device.h:20:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.h:41:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[18/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/usb_libusb_device.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb_device.cpp:17:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb_device.h:20:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.h:41:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[19/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/usb_libusb_inhouse_hotplug.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb_inhouse_hotplug.cpp:17:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb_inhouse_hotplug.h:19:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb.h:22:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb_device.h:20:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.h:41:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[20/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/usb_libusb_hotplug.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb_hotplug.cpp:17:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb_hotplug.h:19:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb.h:22:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_libusb_device.h:20:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.h:41:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[21/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/transport_emulator.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/transport_emulator.cpp:20:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.h:41:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[22/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/mdns_tracker.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/mdns_tracker.cpp:25:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/mdns_tracker.cpp:92:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   92 |     services.SerializeToString(&proto);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~
+2 warnings generated.
+[23/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/mdns_utils.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/mdns_utils.cpp:17:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/mdns_utils.h:22:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/adb_wifi.h:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[24/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/transport_mdns.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/transport_mdns.cpp:19:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.h:41:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[25/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/pairing_auth/aes_128_gcm.cpp.o
+[26/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/transport_usb.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/transport_usb.cpp:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb.h:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[27/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/pairing_auth/pairing_auth.cpp.o
+[28/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/pairing_connection/pairing_connection.cpp.o
+[29/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/sysdeps_unix.cpp.o
+[30/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/services.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/services.cpp:35:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[31/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/socket_spec.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/socket_spec.cpp:31:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[32/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/sysdeps/errno.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/sysdeps/errno.cpp:25:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[33/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/sysdeps/posix/network.cpp.o
+[34/140] Building CXX object vendor/CMakeFiles/libadb.dir/app_processes.pb.cc.o
+[35/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb_host.pb.cc.o
+[36/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb_known_hosts.pb.cc.o
+[37/140] Building CXX object vendor/CMakeFiles/libadb.dir/key_type.pb.cc.o
+[38/140] Building CXX object vendor/CMakeFiles/libadb.dir/pairing.pb.cc.o
+[39/140] Building CXX object vendor/CMakeFiles/libadb_crypto_defaults.dir/adb/crypto/key.cpp.o
+[40/140] Building CXX object vendor/CMakeFiles/libadb.dir/adb/client/usb_osx.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_osx.cpp:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb.h:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_osx.cpp:133:53: warning: 'kIOMasterPortDefault' is deprecated: first deprecated in macOS 12.0 [-Wdeprecated-declarations]
+  133 |     kern_return_t kr = IOServiceGetMatchingServices(kIOMasterPortDefault, matchingDict, &iter);
+      |                                                     ^~~~~~~~~~~~~~~~~~~~
+      |                                                     kIOMainPortDefault
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/IOKitLib.h:133:19: note: 'kIOMasterPortDefault' has been explicitly marked deprecated here
+  133 | const mach_port_t kIOMasterPortDefault
+      |                   ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_osx.cpp:255:21: warning: bitwise operation between different enumeration types ('(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USBSpec.h:94:1)' and '(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:125:1)') is deprecated [-Wdeprecated-anon-enum-enum-conversion]
+  255 |                     USBmakebmRequestType(kUSBIn, kUSBStandard, kUSBDevice);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:141:18: note: expanded from macro 'USBmakebmRequestType'
+  141 |     (((direction & kUSBRqDirnMask) << kUSBRqDirnShift) | \
+      |        ~~~~~~~~~ ^ ~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_osx.cpp:255:21: warning: bitwise operation between different enumeration types ('(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USBSpec.h:106:1)' and '(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:125:1)') is deprecated [-Wdeprecated-anon-enum-enum-conversion]
+  255 |                     USBmakebmRequestType(kUSBIn, kUSBStandard, kUSBDevice);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:142:13: note: expanded from macro 'USBmakebmRequestType'
+  142 |      ((type & kUSBRqTypeMask) << kUSBRqTypeShift) |      \
+      |        ~~~~ ^ ~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_osx.cpp:255:21: warning: bitwise operation between different enumeration types ('(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USBSpec.h:117:1)' and '(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:125:1)') is deprecated [-Wdeprecated-anon-enum-enum-conversion]
+  255 |                     USBmakebmRequestType(kUSBIn, kUSBStandard, kUSBDevice);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:143:17: note: expanded from macro 'USBmakebmRequestType'
+  143 |      (recipient & kUSBRqRecipientMask))
+      |       ~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_osx.cpp:272:29: warning: bitwise operation between different enumeration types ('(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USBSpec.h:94:1)' and '(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:125:1)') is deprecated [-Wdeprecated-anon-enum-enum-conversion]
+  272 |                             USBmakebmRequestType(kUSBIn, kUSBStandard, kUSBDevice);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:141:18: note: expanded from macro 'USBmakebmRequestType'
+  141 |     (((direction & kUSBRqDirnMask) << kUSBRqDirnShift) | \
+      |        ~~~~~~~~~ ^ ~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_osx.cpp:272:29: warning: bitwise operation between different enumeration types ('(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USBSpec.h:106:1)' and '(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:125:1)') is deprecated [-Wdeprecated-anon-enum-enum-conversion]
+  272 |                             USBmakebmRequestType(kUSBIn, kUSBStandard, kUSBDevice);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:142:13: note: expanded from macro 'USBmakebmRequestType'
+  142 |      ((type & kUSBRqTypeMask) << kUSBRqTypeShift) |      \
+      |        ~~~~ ^ ~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/client/usb_osx.cpp:272:29: warning: bitwise operation between different enumeration types ('(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USBSpec.h:117:1)' and '(unnamed enum at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:125:1)') is deprecated [-Wdeprecated-anon-enum-enum-conversion]
+  272 |                             USBmakebmRequestType(kUSBIn, kUSBStandard, kUSBDevice);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/USB.h:143:17: note: expanded from macro 'USBmakebmRequestType'
+  143 |      (recipient & kUSBRqRecipientMask))
+      |       ~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~
+8 warnings generated.
+[41/140] Building CXX object vendor/CMakeFiles/libadb_crypto_defaults.dir/adb/crypto/rsa_2048_key.cpp.o
+[42/140] Linking CXX static library vendor/libliblog.a
+[43/140] Building CXX object vendor/CMakeFiles/libadb_crypto_defaults.dir/adb/crypto/x509_generator.cpp.o
+[44/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/ashmem-host.cpp.o
+[45/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/android_get_control_file.cpp.o
+[46/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/config_utils.cpp.o
+[47/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/fs.cpp.o
+[48/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/hashmap.cpp.o
+[49/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/iosched_policy.cpp.o
+[50/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/load_file.cpp.o
+[51/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/multiuser.cpp.o
+[52/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/native_handle.cpp.o
+[53/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/record_stream.cpp.o
+[54/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/socket_inaddr_any_server_unix.cpp.o
+[55/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/socket_local_client_unix.cpp.o
+[56/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/socket_local_server_unix.cpp.o
+[57/140] Building CXX object vendor/CMakeFiles/libadb_tls_connection_defaults.dir/adb/tls/adb_ca_list.cpp.o
+[58/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/socket_network_client_unix.cpp.o
+[59/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/sockets_utils.cpp.o
+[60/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/sockets_unix.cpp.o
+[61/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/sockets.cpp.o
+[62/140] Building C object vendor/CMakeFiles/libcutils.dir/core/libcutils/strlcpy.c.o
+[63/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/str_parms.cpp.o
+[64/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/trace-host.cpp.o
+[65/140] Building CXX object vendor/CMakeFiles/libadb_tls_connection_defaults.dir/adb/tls/tls_connection.cpp.o
+[66/140] Building CXX object vendor/CMakeFiles/libcutils.dir/core/libcutils/properties.cpp.o
+[67/140] Building CXX object vendor/CMakeFiles/libcrypto.dir/core/libcrypto_utils/android_pubkey.cpp.o
+[68/140] Building CXX object vendor/CMakeFiles/libdiagnoseusb.dir/core/diagnose_usb/diagnose_usb.cpp.o
+[69/140] Building CXX object vendor/CMakeFiles/libadb_sysdeps.dir/adb/sysdeps/env.cpp.o
+[70/140] Building CXX object vendor/CMakeFiles/libzip.dir/libziparchive/zip_error.cpp.o
+[71/140] Building CXX object vendor/CMakeFiles/libzip.dir/libziparchive/zip_archive_stream_entry.cc.o
+[72/140] Building CXX object vendor/CMakeFiles/libzip.dir/libziparchive/zip_archive.cc.o
+[73/140] Building CXX object vendor/CMakeFiles/libzip.dir/libziparchive/zip_cd_entry_map.cc.o
+[74/140] Building CXX object vendor/CMakeFiles/libzip.dir/libziparchive/zip_writer.cc.o
+[75/140] Linking CXX static library vendor/boringssl/libcrypto.a
+[76/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/bio_ssl.cc.o
+[77/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/d1_srtp.cc.o
+[78/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/d1_pkt.cc.o
+[79/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/d1_lib.cc.o
+[80/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/d1_both.cc.o
+[81/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/dtls_method.cc.o
+[82/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/dtls_record.cc.o
+[83/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/encrypted_client_hello.cc.o
+[84/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/extensions.cc.o
+[85/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/handshake.cc.o
+[86/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/handoff.cc.o
+[87/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/handshake_client.cc.o
+[88/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/s3_lib.cc.o
+[89/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/s3_both.cc.o
+[90/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/s3_pkt.cc.o
+[91/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/handshake_server.cc.o
+[92/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_aead_ctx.cc.o
+[93/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_asn1.cc.o
+[94/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_buffer.cc.o
+[95/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_cert.cc.o
+[96/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_cipher.cc.o
+[97/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_credential.cc.o
+[98/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_file.cc.o
+[99/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_key_share.cc.o
+[100/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_privkey.cc.o
+[101/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_stat.cc.o
+[102/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_session.cc.o
+[103/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_lib.cc.o
+[104/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_transcript.cc.o
+[105/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_versions.cc.o
+[106/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/ssl_x509.cc.o
+[107/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/t1_enc.cc.o
+[108/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/tls13_both.cc.o
+[109/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/tls13_client.cc.o
+[110/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/tls13_enc.cc.o
+[111/140] Linking CXX static library vendor/liblibbase.a
+[112/140] Linking CXX static library vendor/liblibadb.a
+[113/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/tls_method.cc.o
+[114/140] Linking CXX static library vendor/liblibadb_crypto_defaults.a
+[115/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/tls13_server.cc.o
+[116/140] Linking CXX static library vendor/liblibadb_tls_connection_defaults.a
+[117/140] Linking CXX static library vendor/liblibcutils.a
+[118/140] Linking CXX static library vendor/liblibdiagnoseusb.a
+[119/140] Linking CXX static library vendor/liblibadb_sysdeps.a
+[120/140] Linking CXX static library vendor/liblibcrypto.a
+[121/140] Building CXX object vendor/boringssl/CMakeFiles/ssl.dir/ssl/tls_record.cc.o
+[122/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/adb_io.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_io.cpp:32:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[123/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/adb_listeners.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_listeners.cpp:17:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_listeners.h:19:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[124/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/adb_trace.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.cpp:18:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[125/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/adb.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.cpp:20:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.cpp:1379:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+ 1379 |         status.SerializeToString(&server_status_string);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+[126/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/adb_unique_fd.cpp.o
+[127/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/adb_utils.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_utils.cpp:19:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_utils.h:29:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[128/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/fdevent/fdevent.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/fdevent/fdevent.cpp:27:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_utils.h:29:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[129/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/fdevent/fdevent_poll.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/fdevent/fdevent_poll.cpp:47:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[130/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/fdevent/fdevent_epoll.cpp.o
+[131/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/shell_service_protocol.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/shell_service_protocol.cpp:17:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/shell_protocol.h:23:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[132/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/sockets.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/sockets.cpp:42:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[133/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/socket_spec.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/socket_spec.cpp:31:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[134/140] Linking CXX static library vendor/liblibzip.a
+[135/140] Linking CXX static library vendor/boringssl/libssl.a
+[136/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/transport_fd.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport_fd.cpp:30:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_utils.h:29:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+1 warning generated.
+[137/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/types.cpp.o
+[138/140] Building CXX object vendor/CMakeFiles/adb.dir/adb/transport.cpp.o
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.cpp:21:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.h:41:
+In file included from /Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb.h:28:
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/adb_trace.h:52:9: warning: 'VLOG' macro redefined [-Wmacro-redefined]
+   52 | #define VLOG(TAG)                 \
+      |         ^
+/opt/homebrew/include/absl/log/log.h:250:9: note: previous definition is here
+  250 | #define VLOG(verbose_level) ABSL_LOG_INTERNAL_VLOG_IMPL(verbose_level)
+      |         ^
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.cpp:1398:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+ 1398 |         google::protobuf::TextFormat::PrintToString(devices, &proto);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~
+/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/android-tools-37.0.0/vendor/adb/transport.cpp:1400:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+ 1400 |         devices.SerializeToString(&proto);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~
+3 warnings generated.
+[139/140] Linking CXX executable vendor/adb
+ld: warning: ignoring duplicate libraries: 'vendor/boringssl/libcrypto.a'

@@ -1,0 +1,26 @@
+Performing Streamed Install
+adb: failed to install .build/companion-delivery-candidate/DroidBridgeCompanion.apk: Failure [INSTALL_FAILED_UPDATE_INCOMPATIBLE: Existing package dev.droidbridge.companion signatures do not match newer version; ignoring!]
+
+Owned API35 fixture certificate changed; reset only dev.droidbridge.companion
+Success
+Performing Streamed Install
+Success
+Performing Streamed Install
+adb: failed to install .build/companion-delivery-candidate/DroidBridgeCompanion-test.apk: Failure [INSTALL_FAILED_UPDATE_INCOMPATIBLE: Existing package dev.droidbridge.companion.test signatures do not match newer version; ignoring!]
+
+Owned API35 fixture certificate changed; reset only dev.droidbridge.companion.test
+Success
+Performing Streamed Install
+Success
+
+dev.droidbridge.companion.CompanionDeviceTest:..
+dev.droidbridge.companion.CompanionSecurityTest:.......
+dev.droidbridge.companion.CompanionTlsTest:....
+dev.droidbridge.companion.CompanionUXDeviceTest:...
+dev.droidbridge.companion.ReleaseDeliveryDeviceTest:..
+
+Time: 47.688
+
+OK (18 tests)
+
+

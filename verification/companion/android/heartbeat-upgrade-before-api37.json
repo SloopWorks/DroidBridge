@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-10-30T20:48:08.948869+00:00",
+  "device_id": "d562ee9a-1236-4f3c-a0ae-1f47a1b345fa",
+  "server_pin": "82f9aeab82dcb375f75a490ad81a064e315da5211e033c8938928a930b05ee8d",
+  "version_code": 2,
+  "capabilities": [
+    "catalog",
+    "icons",
+    "events",
+    "commands",
+    "sessions",
+    "share",
+    "files",
+    "clipboard",
+    "notifications",
+    "notification_replies",
+    "profiles",
+    "diagnostics",
+    "delivery"
+  ],
+  "package_version_line": "versionCode=2 minSdk=33 targetSdk=35"
+}

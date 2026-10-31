@@ -1,0 +1,48 @@
+{
+  "version": "0.2.0",
+  "version_code": 3,
+  "files": {
+    "DroidBridgeCompanion-test.apk": {
+      "size": 1842553,
+      "sha256": "fe556d6e22ec16999b04749f4579dfe04f48e270b24b9fada452bf15f2da69e1"
+    },
+    "DroidBridgeCompanion.apk": {
+      "size": 2843491,
+      "sha256": "1eaa35f03e47a2f119d8ea699a7cd7fa314ca08cc3a541d779c98dbc8b777c27"
+    }
+  },
+  "source": {
+    "AndroidCompanion/app/src/main/AndroidManifest.xml": "1e2ffe8dc2aad14d4cbce2e65a37106cb9a9cb1dd04135509ece209628cadcd8",
+    "AndroidCompanion/app/src/main/assets/licenses/kotlin-NOTICE.txt": "0b09a83d3ef7795c7dec65e815866597c066c53898f2852a76599b8f5552941a",
+    "AndroidCompanion/app/src/main/assets/licenses/SOURCES.json": "70c5fd3c1fd03c32730c96f09a29c99619e45850d92d4db244ab54b2e14812a5",
+    "AndroidCompanion/app/src/main/assets/licenses/zxing-NOTICE.txt": "4db4b60aace29ec6c5c4f13ca9cac1930d3c0c54bcc67dceead0c10771120e66",
+    "AndroidCompanion/app/src/main/assets/licenses/NOTICE.txt": "0ac85f060da5360fe19ed146a4a11e509c4a1d6b481d298209b6935a5d10e5a9",
+    "AndroidCompanion/app/src/main/assets/licenses/COMPONENTS.txt": "96831dfec44f7f9e8d50ad996a4fedb90b972dd5b8a3733514e8e5e4b3c6089e",
+    "AndroidCompanion/app/src/main/assets/licenses/Apache-2.0.txt": "3f62881f0566227a24b12e5a754cc79f39aaa94883038e95c94812e1f50af42f",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTlsIdentity.kt": "5d612ecec0eca227238bce8ac98a5e27dc74fccb3541834a88ffa5c651ecee63",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt": "30497645e12578122997321c0514cde516a5082ce6c585379a0c5713ec33f1f1",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTransfers.kt": "24dc5588cfe8c5ab31814c51396ae6c0e69ae779ce086e90d61bc00ca501b163",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ProtocolRules.kt": "f658216faed6be14abdd2e7af41753346ffcc85317c649c4fa23dc8e99475e79",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt": "a42dfc8e1d9495288cf023cb58ecc659cbd83f62139797987ffa45b8ed8f07d7",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeNotifications.kt": "de46dc34d0a42266e1cf62ab946e70e4d6f6bd7e2f57586b55027b2c6d74264a",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/SecurePreferences.kt": "601e067742e94caabd6a8a17f8da578de1a3d8b9cfa83b2a4cadf476a2bcf6a2",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/TlsLeafCertificate.kt": "2a5e2280a116b145d42740eddda33d65a177bcf06a58a93afbea8f8bc2760295",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeHttpServer.kt": "cb2a996d1af2dcac55d8204ad0079cbefd70553584ae34ca4c09796b1aa086b9",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeService.kt": "91a6e783b908363394768a3de36e33ed0d6b9d362c27b6f79f28223430a866b4",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ReleaseDelivery.kt": "9a5b6d5ede12900094f2365e7a6c15be8cc54b4bac52c2e62e4b61a9c1f6f080",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ThirdPartyActivity.kt": "ce167a3072e6629cd7394a7f816ac165ec3ecb1ec2cad810a97021a30694ca05",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/SecureJournal.kt": "312f1371104e06a46ed2aa6f2576be99ee12fb8a8859cf56987d40de7e3e1d11",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/TransferProvider.kt": "711ac9cdd3d70565a57d5206eb2ef3f61e0a02081adcddfc5d328ff12fa3391f",
+    "AndroidCompanion/app/src/main/res/drawable/ic_bridge.xml": "39e9b77a89926aa1bed324d078994a0aaec1d384d44bc1cc79f1d40b637cf2b5",
+    "AndroidCompanion/app/src/test/java/dev/droidbridge/companion/ProtocolRulesTest.kt": "56f67f1833fdb46a1f3fa50fc1f7a710569675921eb1f3bfc11642aa3c52fb60",
+    "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PinnedTestClient.kt": "f65e938a8c4d211586ac369ba594c384ceaaa9a2e6cb51c58f6a3216e9f48a00",
+    "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionUXDeviceTest.kt": "06c7f5674542e19913df8afb654d02f61d0c62489f96d5d1b8ee857921832c2e",
+    "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/ReleaseDeliveryDeviceTest.kt": "b128a1434ddb545187097711e02cfbc54d5600785d39852d1aa00356d7814dc4",
+    "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionDeviceTest.kt": "1bec2edaa2e35bcd08ff14a5836cedfd4940c2c67787857b90824cb90ed9247f",
+    "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionSecurityTest.kt": "30075e3379820adc7a9472ce4959995738996d734faf7ab07686cb1bea3c9ca7",
+    "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionTlsTest.kt": "b46ab7b0501edd67456272baf8ada6e14cf12d522943a58b7969b85ee777c9ee"
+  },
+  "device": "owned emulator-5580",
+  "normal_instrumentation": "19 tests passed, zero failures; see notices-api35-instrumentation.txt",
+  "reset_note": "Initial code3 delivery install replaced an owned debug-signed fixture. This is not claimed as update continuity. Subsequent notices APK updated same release signer."
+}

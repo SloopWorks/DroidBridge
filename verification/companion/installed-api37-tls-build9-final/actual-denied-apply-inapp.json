@@ -1,0 +1,237 @@
+{
+  "shipping_installed9": true,
+  "OS_permission_read": "Denied",
+  "OS_permission_changed": false,
+  "fresh_trust_optin_explicitly_requested": true,
+  "filter": "dev.droidbridge.companionfixture",
+  "status": {
+    "action": "status",
+    "ok": true,
+    "buttons": [
+      {
+        "label": "Paired companion phone",
+        "title": "Google sdk_gphone16k_arm64 \u00b7 Connected",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Refresh",
+        "title": "Refresh",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Connection",
+        "title": "Connect",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Apps",
+        "title": "Apps",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Sessions",
+        "title": "Sessions",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Handoff",
+        "title": "Handoff",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Notifications",
+        "title": "Alerts",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Companion section Performance",
+        "title": "Power",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Diagnostics",
+        "title": "Reports",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Companion section Get Mac App",
+        "title": "Install",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Mirror permitted phone notifications",
+        "title": "Mirror permitted phone notifications",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Check Mac Notification Permission",
+        "title": "Check Mac Notification Permission",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Search",
+        "title": "search",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Close",
+        "title": "",
+        "enabled": true,
+        "state": 1
+      },
+      {
+        "label": "Allow notifications from Camera",
+        "title": "Camera",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Allow notifications from Chrome",
+        "title": "Chrome",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Allow notifications from Settings",
+        "title": "Settings",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Allow notifications from TMoble",
+        "title": "TMoble",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Allow notifications from Play Store",
+        "title": "Play Store",
+        "enabled": true,
+        "state": 0
+      },
+      {
+        "label": "Apply Notification Filters",
+        "title": "Apply Notification Filters",
+        "enabled": true,
+        "state": 1
+      }
+    ],
+    "id": 24,
+    "fields": [
+      {
+        "label": "Notification app filter search",
+        "value": ""
+      },
+      {
+        "label": "Advanced notification package allowlist",
+        "value": "dev.droidbridge.companionfixture"
+      }
+    ],
+    "windows": [
+      {
+        "number": 13983,
+        "title": "DroidBridge",
+        "width": 1160,
+        "height": 780,
+        "visible": true
+      },
+      {
+        "number": 13984,
+        "title": "",
+        "width": 64,
+        "height": 64,
+        "visible": false
+      },
+      {
+        "number": 13990,
+        "title": "DroidBridge Companion",
+        "width": 900,
+        "height": 760,
+        "visible": true
+      },
+      {
+        "number": 14016,
+        "title": "Pair Android Companion",
+        "width": 600,
+        "height": 540,
+        "visible": false
+      },
+      {
+        "number": 14066,
+        "title": "Window",
+        "width": 66,
+        "height": 20,
+        "visible": true
+      }
+    ],
+    "texts": [
+      "Phone",
+      "Google sdk_gphone16k_arm64 \u00b7 Authenticated companion connected",
+      "Notification preference receipt: applied. The phone's permission state is available in Diagnostics.",
+      "Optional phone notifications",
+      "Enable Android notification access on the phone and allow DroidBridge notifications on this Mac. Sensitive, hidden and ongoing notifications are excluded by default. Denied Mac permission keeps the in-app list available. Replies work only while Android still advertises that reply action.",
+      "Choose allowed apps below. An empty app selection permits all notifications allowed by Android and the phone's privacy rules. Refresh Apps first if this list is empty.",
+      "Mac notification permission denied. Mirrored items remain available inside DroidBridge; change permission in System Settings if desired.",
+      "No mirrored notifications. Enable permissions and mirroring on the phone."
+    ],
+    "physical_focus_verified": false,
+    "pid": 75770
+  },
+  "events": [
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 215.08
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 163.85
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.99
+    },
+    {
+      "kind": "appkit_action",
+      "action": "set_field",
+      "ok": true,
+      "elapsed_ms": 109.55
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 213.23
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 161.26
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 108.89
+    }
+  ]
+}

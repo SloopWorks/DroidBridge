@@ -1,0 +1,8 @@
+
+dev.droidbridge.companion.CompanionUXDeviceTest:...
+
+Time: 9.207
+
+OK (3 tests)
+
+

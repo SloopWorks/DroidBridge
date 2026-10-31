@@ -1,0 +1,7 @@
+Performing Streamed Install
+Success
+
+Performing Streamed Install
+Success
+
+Starting: Intent { cmp=dev.droidbridge.companion/.MainActivity }

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "Actual installed native AppKit windows and CUA WindowServer input; no direct NSView input calls",
+  "actions": [
+    "Alpha field clicked then physical a,l,p,h,a key events and tap",
+    "Beta opened separately, physical b,e,t,a and tap",
+    "macOS Window menu selected Alpha; physical x without refocusing edit field"
+  ],
+  "observed": {
+    "alpha": "Display35, taps1, keydowns6, Echo alphax",
+    "beta": "Display36, taps1, keydowns4, Echo beta"
+  },
+  "software_keyboard_visible": false,
+  "independent_process_wrappers": false,
+  "resize_verified": false
+}

@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-10-30T23:05:34.616719+00:00",
+  "scope": "Read-only DMG mounted without Finder browsing; copied app to fresh user Applications path outside build directory; no app launch/device contact yet",
+  "installed_app": "/Users/patrick/Applications/DroidBridge Companion QA8.app",
+  "file_inventory_matches_dist": true,
+  "inventory_entries": 198,
+  "codesign_deep_strict_verified": true,
+  "host_sha256": "02f9ecc40b2a9d7d769dee919b1f6f29bdab312b5f52be818b9e78590149a5a7",
+  "broker_sha256": "82bae4c6d6e18f27db9df640f1c53a9e6cec83c8a7103faadd99b28168102386",
+  "apk_sha256": "6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029",
+  "dmg_sha256": "09fc328d551a002e89ee52ee8501cb2d25e6e7058263d41badf442bd809da923",
+  "version": "0.2.0",
+  "build": "8"
+}

@@ -1,26 +1,104 @@
 # Known issues and acceptance boundaries
 
-This file describes actual limitations, not substitutes for the verification report.
+Implementation and acceptance are tracked separately in
+[the companion ledger](verification/companion/RELEASE_CANDIDATE.json) and
+[program status](verification/companion/PROGRAM_STATUS.md). The current 0.2
+candidate is still undergoing final installed/release checks. Earlier pass/fail
+records stay bound to their exact artifacts.
 
-- The packaged runtime is Apple Silicon/macOS 26. Source-only builds may support older macOS with compatible runtime dependencies.
-- Android 13/API33 or newer is required to enforce hidden software keyboards on secondary virtual displays. Earlier Android versions and unreadable API levels are refused. Apps may enforce task affinity, single-instance behavior, orientation, secure capture, or phone-only layouts. DRM/secure content is intentionally not bypassed.
-- Android package labels are discovered dynamically. Created Mac apps and launcher rows extract the resolved launcher activity/alias icon, including adaptive/vector resources. Unavailable row icons have a diagnostic tooltip; wrapper creation reports extraction failure. Optional wallpaper-themed monochrome tint is not reproduced. A label or valid icon does not imply an app permits secondary-display use.
-- The scrcpy fallback owns external SDL windows. Its window input and resize come from upstream scrcpy. DroidBridge's native windows share one process and one Cmd+Tab identity. Separate generated wrapper process/bundle identities and Spotlight indexing were verified. Direct Dock UI and Cmd+Tab switcher automation were blocked/unverified; no claim of their observed behavior is made.
-- Closing the fallback's external player is observed as a backend exit, so its wrapper retains the diagnostic launcher. Use that launcher's Close control or Quit to end the wrapper. Closing a native wrapper window ends its session and exits the wrapper normally.
-- Audio routing is device-wide, with one owner shared across wrappers; per-app volume/isolation and Mac microphone forwarding are not implemented. Mac + Phone capture can remain silent when an app opts out. Output initialized means the host device opened, not proof of audible app sound. Failure leaves video running and offers Retry / Phone. Physical speaker audibility, protected/call audio, OEM policy and Bluetooth route transitions require device-specific verification.
-- Mac-to-Android clipboard paste is supported by the native control protocol. Full bidirectional clipboard synchronization, IME composition, and drag-and-drop file transfer require additional work unless explicitly verified in the report.
-- Session restoration creates a new display and launches the app again; Android owns persistent application state. Closing a display destroys tasks on that display according to scrcpy's default policy.
-- The owner reports DroidBridge working with a Pixel 10 Pro, with a ChatGPT wrapper exception under investigation. Physical Pixel acceptance is the owner’s manual stage; automated verification does not operate it. ChatGPT-specific task/video behavior and Android 17 icon extraction remain unverified locally; thermal limits and protected media are also outside the emulator evidence.
-- The artifact is ad-hoc signed and has not been notarized. Public distribution also needs corresponding-source/license compliance review for bundled runtimes.
-- Bulk onboarding covers launchable applications returned by the device, rather than every background/service package. Running wrappers are skipped safely; extraction, capacity and per-app failures appear in Onboarding Details and can be retried. No Android apps are launched by onboarding itself. Previously completed wrappers are retained when cancellation or a later app fails.
-- Managed Spotlight availability follows bounded background polling and macOS indexing, so search results can briefly lag device connection changes. Launch admission independently refuses unavailable/disabled managed apps. Feature-off preserves managed history. Unmanaged wrappers remain independent until explicitly adopted by onboarding; running or ambiguous manual wrappers are preserved and reported.
+## Pending release evidence
 
-See `verification/REPORT.md` for exact results, blocked checks, and independent review findings. GUI screenshot/automation restrictions must be stated there; a decoded frame is evidence of streaming, not a substitute for a macOS desktop screenshot.
+- **Spotlight:** signed wrapper creation, Android icons, managed availability and
+  stale-result launch refusal have executable evidence. Current test-host user
+  Applications metadata/search UI is blocked or unverified; system-app and
+  synthetic CoreSpotlight controls passed. Actual generated-wrapper Spotlight
+  search/activation remains unproven. Separate bundle IDs or importer output do
+  not prove it. Direct Dock/Cmd+Tab UI automation also remains unverified.
+- **Notifications:** in-app actual reply/dismiss and permission-denied operation
+  have installed evidence. This Mac reports native notification permission
+  Denied, so allowed-state banner delivery is unverified. No OS permission reset
+  or bypass is claimed. Generic package-only alerts can remain as Notification
+  Center history after phone removal; the current in-app list is authoritative.
+  Clear Inbox does not clear that OS history.
+- **Fallback input automation:** the shipped scrcpy path suppresses buttonless
+  hover. Real keyboard/video and earlier no-hover clicks have evidence, while
+  later post-keyboard CUA pointer coordinates were inconclusive/failed. Final
+  correctly targeted two-window click/drag/scroll proof remains pending; do not
+  infer success from command-line flags or native-window input.
+- **Performance:** previous quiet cold-preview/video cohorts failed the original
+  targets. New local-window startup changes still require the coordinated quiet
+  final cohort; no 100 ms preview guarantee is claimed. Profiles configure new
+  stream ceilings, not guaranteed 60 fps or measured battery savings.
+- **Distribution:** current candidate is ad-hoc signed, not Developer ID signed
+  or notarized. Final corresponding-source/artifact review, public versioned
+  download and downloaded-copy installation remain pending. An unavailable Get
+  Mac App result is truthful failure, not successful delivery.
+- Final Mac/APK changed-path, Unicode, recovery and uninstall receipts must be
+  read from the current ledger. Real host sleep/wake is distinct from service
+  restart/monotonic-clock tests. Physical Pixel/USB/Wi-Fi/thermal/audibility
+  acceptance remains the owner's final hardware stage.
 
-Automatic reconnection waits for full Android readiness. Three failed launches pause automatic retry for that outage; close and launch the app to start a fresh intent. Explicit Restore keeps unavailable saved descriptors pending and requires another Restore action once the device is ready.
+## Platform behavior
 
-- Phone screen control is opt-in per device and requires verified Android15+ shell support. Closing windows deliberately does not wake the phone. Explicit ON requests retry after transport/lock errors while that host stays open; quitting the host cancels its pending work. Native wrapper menus expose the controls; for SDL fallback windows use the main DroidBridge launcher/menu. Hardware panel/lock behavior on the physical Pixel remains for owner verification.
+- Packaged binaries require Apple Silicon/macOS 26. Android 13/API 33+ is required
+  to enforce hidden IME policy on trusted virtual displays. Older/unreadable API
+  levels fail before staging. Apps control task affinity, single-instance rules,
+  orientation, app-drawn keypads, capture security and secondary-display support.
+  Protected/incognito/DRM content can be blank; DroidBridge does not bypass it.
+- Main-process native windows share one Cmd+Tab identity; generated wrapper
+  bundles have separate process/application identities and Android launcher icons.
+  Unique names omit hashes; real label collisions get readable disambiguation.
+  Monochrome wallpaper-themed icon tint is not reproduced.
+- Fallback uses upstream external SDL windows; closing a Player is a backend
+  exit, so its wrapper retains diagnostics. Use that diagnostic host's Close or
+  Quit to end it. A normally closed native wrapper session exits its wrapper.
+  Hover-only tooltips are unavailable on both backends.
+- Text injection has Android key-map/complex-composition limits. Explicit
+  clipboard paste/handoff is available; continuous bidirectional synchronization
+  and native drag-and-drop file transfer are not promised. Use Companion Handoff
+  for files. The Android software IME stays hidden in virtual-display sessions.
+- Audio is device-wide, shared across wrappers/backends, with no per-app volume
+  isolation, microphone or call-audio forwarding. Apps may refuse playback capture.
+  Output initialized means the host opened output, not proof of audible media.
+  Retry/Phone leaves video running; physical speakers/Bluetooth need hardware tests.
+- Screen-off is opt-in per device and requires detected Android 15+ command support.
+  Only the physical panel is targeted; lock/PIN policy still applies. Closing
+  sessions leaves it off. Explicit On retries while its host lives; quitting that
+  host cancels pending work. Use the main launcher for fallback screen/audio menus.
+- Closing a virtual display can destroy its Android tasks. Restoration creates a
+  new display/app launch, not a persisted video process. Reconnect waits for full
+  Android readiness; three failed launches pause that outage until deliberate
+  retry. Companion reconnect does not promise gapless stream migration.
+- Bulk onboarding discovers launchable apps, not background/service packages.
+  Running/unrelated/ambiguous wrappers are preserved and reported. Cancel stops
+  new work without deleting completed history. Availability and macOS indexing
+  can lag; independent launch admission still refuses unavailable/disabled apps.
+- Local blank-video detection uses a tiny brightness sample, so dark legitimate
+  UI may retain loading. After5seconds use **Show Android Screen**. This heuristic
+  never identifies or bypasses secure content. Fallback geometry tracking uses
+  public metadata; unavailable metadata preserves previous bounds.
 
-Wrapper loading uses a local screen manufactured from the Android launcher icon; Android controls its own in-app splash afterward. Fallback size tracking relies on public WindowServer metadata and local optical-frame calibration; if metadata is unavailable, the previous known geometry is retained. Changing macOS style/monitor scale during a running fallback session has not been exercised. No screen recording or accessibility permission is requested for this metadata path.
+## Companion trust and uncertain outcomes
 
-Initial native blank-frame detection uses an 8×8 thumbnail and a small brightness threshold; very dark or sparse legitimate UI can also look blank. After 5 seconds, an explanation and **Show Android Screen** button let you reveal the actual stream and interact. This is a presentation heuristic, not evidence that an app blocks capture; it never bypasses Android capture policy.
+Quit/update old main, wrapper and audio hosts before pairing or switching USB/
+Wi-Fi aliases. Pre-0.2 hosts do not publish the new dashboard or hold canonical
+alias leases. An absent dashboard row does not prove an old capture stopped.
+See [COMPATIBILITY.md](COMPATIBILITY.md).
+
+An ad-hoc broker update can make its old Keychain record inaccessible. The app
+fails promptly; Forget locally, remove the old phone Trusted Mac and pair again.
+Retained export/profile intent is separate. Reinstalling/clearing Android data
+changes its identity. Companion Forget/Revoke does not revoke USB/wireless ADB
+access, terminate all independent capture, or erase user-saved content.
+
+The companion service stays off after Android reboots until you explicitly start
+it. During startup, `server_authentication_failed` can also describe an unreachable
+or not-yet-listening service; it does not by itself establish a changed pin or
+lost trust. Start the phone service and allow reconnection before resetting any
+pairing. The emulator restart test recovered the same trust without re-pairing.
+
+Expired/unknown requests do not prove absence of an effect. Text may already be
+in the inbox or selection intent already committed when an acknowledgment is
+lost. Inspect current state before a new deliberate retry. Pending wrapper
+materialization is distinguished from active publication; retry uses a new user
+intent. Uncertain effects are never automatically replayed.

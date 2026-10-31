@@ -1,0 +1,22 @@
+{
+  "acceptance" : false,
+  "android_transport_tested" : false,
+  "availability_adb_version" : "Android Debug Bridge version 1.0.41\nVersion 37.0.0-android-tools\nInstalled as \/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/PortableAvailability\/generations\/bcff0b08c086e07eb93883c93aa8b7cb\/adb\nRunning on Darwin 25.2.0 (arm64)\n",
+  "availability_generation" : "\/Users\/patrick\/workspace\/DroidBridge\/.build\/companion-helper-qa35\/PortableAvailability\/generations\/bcff0b08c086e07eb93883c93aa8b7cb",
+  "error" : "Companion service is starting. Retry shortly.",
+  "fixture" : "actual scoped broker and immutable availability ADB relocation",
+  "installed_legacy_sdk_closure_verified" : true,
+  "installed_legacy_sdk_sha256" : "1e22e72965d8a24046d0fb9bf94b5fcdb57796c2a5910dce2b05b70da619691d",
+  "job" : "dev.droidbridge.companion.broker.qa.dc00d1faf893",
+  "server_started" : false,
+  "source_portable_files" : [
+    "adb",
+    "adb-libbrotlicommon.1.2.0.dylib",
+    "adb-libbrotlidec.1.2.0.dylib",
+    "adb-libbrotlienc.1.2.0.dylib",
+    "adb-liblz4.1.10.0.dylib",
+    "adb-libusb-1.0.0.dylib",
+    "adb-libzstd.1.5.7.dylib",
+    "adb-runtime.json"
+  ]
+}

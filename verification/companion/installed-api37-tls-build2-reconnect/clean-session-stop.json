@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "session": "319518E0-0725-4D7A-AD84-939B84F534DE",
+  "actual_gui_result": "Applied \u00b7 stopped",
+  "terminal_stopped_event": true,
+  "native_window_closed": true,
+  "subsequent_new_session_launch_passed": true,
+  "other_processes_or_devices_stopped": false
+}

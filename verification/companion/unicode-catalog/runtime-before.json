@@ -1,0 +1,9 @@
+{
+  "serial": "emulator-5580",
+  "boot_completed": "1",
+  "developer": "1",
+  "adb": "1",
+  "wifi_debug": "0",
+  "density": "Physical density: 420",
+  "font_scale": "1.0"
+}

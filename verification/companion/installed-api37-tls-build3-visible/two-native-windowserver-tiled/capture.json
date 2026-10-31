@@ -1,0 +1,31 @@
+{
+  "pixels" : [
+    2992,
+    1876
+  ],
+  "scope" : "Actual WindowServer ScreenCaptureKit capture of only two exact owned windows; original desktop positions preserved; all foreign windows excluded",
+  "windows" : [
+    {
+      "frame" : {
+        "height" : 938,
+        "width" : 748,
+        "x" : 748,
+        "y" : 29
+      },
+      "pid" : 77507,
+      "title" : "Input Beta",
+      "window_id" : 13057
+    },
+    {
+      "frame" : {
+        "height" : 938,
+        "width" : 748,
+        "x" : 0,
+        "y" : 29
+      },
+      "pid" : 77504,
+      "title" : "Input Alpha",
+      "window_id" : 13052
+    }
+  ]
+}

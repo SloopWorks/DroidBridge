@@ -1,0 +1,157 @@
+{
+  "binary": "/Users/patrick/workspace/DroidBridge/.build/adb-runtime-work/build/vendor/adb",
+  "server_pid": 97891,
+  "server_port": 5038,
+  "environment": {
+    "ADB_USB": "0",
+    "ADB_MDNS": "0",
+    "ADB_LOCAL_TRANSPORT_MAX_PORT": "0",
+    "ANDROID_USER_HOME": "/Users/patrick/workspace/DroidBridge/.build/adb-server-qa35/android-home"
+  },
+  "tests": [
+    {
+      "argv": [
+        "devices",
+        "-l"
+      ],
+      "code": 0,
+      "stdout": "List of devices attached\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "connect",
+        "127.0.0.1:5581"
+      ],
+      "code": 0,
+      "stdout": "connected to 127.0.0.1:5581\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "devices",
+        "-l"
+      ],
+      "code": 0,
+      "stdout": "List of devices attached\n127.0.0.1:5581         device product:sdk_phone64_arm64 model:Android_SDK_built_for_arm64 device:emu64a transport_id:1\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "-s",
+        "127.0.0.1:5581",
+        "shell",
+        "getprop",
+        "ro.build.version.sdk"
+      ],
+      "code": 0,
+      "stdout": "35\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "-s",
+        "127.0.0.1:5581",
+        "push",
+        "/Users/patrick/workspace/DroidBridge/.build/adb-server-qa35/payload.bin",
+        "/data/local/tmp/droidbridge-source-adb-qa35.bin"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "/Users/patrick/workspace/DroidBridge/.build/adb-server-qa35/payload.bin: 1 file pushed, 0 skipped. 49.9 MB/s (65536 bytes in 0.001s)\n"
+    },
+    {
+      "argv": [
+        "-s",
+        "127.0.0.1:5581",
+        "shell",
+        "sha256sum",
+        "/data/local/tmp/droidbridge-source-adb-qa35.bin"
+      ],
+      "code": 0,
+      "stdout": "115cb62f5c4145917bba3dce0afbf5b067a457a51a1bd8d47f09aacd68ec0d8e  /data/local/tmp/droidbridge-source-adb-qa35.bin\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "-s",
+        "127.0.0.1:5581",
+        "pull",
+        "/data/local/tmp/droidbridge-source-adb-qa35.bin",
+        "/Users/patrick/workspace/DroidBridge/.build/adb-server-qa35/pulled.bin"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": "/data/local/tmp/droidbridge-source-adb-qa35.bin: 1 file pulled, 0 skipped. 63.5 MB/s (65536 bytes in 0.001s)\n"
+    },
+    {
+      "argv": [
+        "-s",
+        "127.0.0.1:5581",
+        "forward",
+        "--no-rebind",
+        "tcp:0",
+        "tcp:37841"
+      ],
+      "code": 0,
+      "stdout": "57859\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "-s",
+        "127.0.0.1:5581",
+        "forward",
+        "--list"
+      ],
+      "code": 0,
+      "stdout": "127.0.0.1:5581 tcp:57859 tcp:37841\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "-s",
+        "127.0.0.1:5581",
+        "forward",
+        "--remove",
+        "tcp:57859"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "-s",
+        "127.0.0.1:5581",
+        "shell",
+        "rm",
+        "/data/local/tmp/droidbridge-source-adb-qa35.bin"
+      ],
+      "code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "disconnect",
+        "127.0.0.1:5581"
+      ],
+      "code": 0,
+      "stdout": "disconnected 127.0.0.1:5581\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "devices",
+        "-l"
+      ],
+      "code": 0,
+      "stdout": "List of devices attached\n\n",
+      "stderr": ""
+    }
+  ],
+  "acceptance": true,
+  "server_exit_code": -15,
+  "owned_port_closed": true
+}

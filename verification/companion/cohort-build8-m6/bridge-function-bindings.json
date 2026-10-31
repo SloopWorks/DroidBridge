@@ -1,0 +1,52 @@
+{
+  "spawn": {
+    "base_sha256": "20633dae760fad021759ac9828ae143e5dd1d0f1f21917877f1423f06cd89242",
+    "current_sha256": "20633dae760fad021759ac9828ae143e5dd1d0f1f21917877f1423f06cd89242",
+    "exact_text_identical": true
+  },
+  "startNative": {
+    "base_sha256": "13bed88cc9e8f008e6c85c5cb1d3e15f5f4a19fc2f3bbc859a3f9d695af67b30",
+    "current_sha256": "13bed88cc9e8f008e6c85c5cb1d3e15f5f4a19fc2f3bbc859a3f9d695af67b30",
+    "exact_text_identical": true
+  },
+  "remoteSocket": {
+    "base_sha256": "1a4bce74f5dec538c7f5e3d680a92df5fd7917e0609fafdb979b3072fe39af0d",
+    "current_sha256": "1a4bce74f5dec538c7f5e3d680a92df5fd7917e0609fafdb979b3072fe39af0d",
+    "exact_text_identical": true
+  },
+  "cleanup": {
+    "base_sha256": "33caa5d30ceb04fcbe4c7a7fe6930cbd13060d228505176037623e4a20fdb7d2",
+    "current_sha256": "33caa5d30ceb04fcbe4c7a7fe6930cbd13060d228505176037623e4a20fdb7d2",
+    "exact_text_identical": true
+  },
+  "resize": {
+    "base_sha256": "d6a0c3454d38eded7b8542f2b18755d341eaab118afae54c7cb1722e46736af6",
+    "current_sha256": "d6a0c3454d38eded7b8542f2b18755d341eaab118afae54c7cb1722e46736af6",
+    "exact_text_identical": true
+  },
+  "sendInput": {
+    "base_sha256": "b9eb710442e78b618ac5301d5d70db2e9bccff5804a743d219f3014f991a0d1a",
+    "current_sha256": "b9eb710442e78b618ac5301d5d70db2e9bccff5804a743d219f3014f991a0d1a",
+    "exact_text_identical": true
+  },
+  "stopAndWait": {
+    "base_sha256": "34dda538c168eb23da02a00b3b06b1edb1935eadfe355e13e13bbbc1195d06ec",
+    "current_sha256": "34dda538c168eb23da02a00b3b06b1edb1935eadfe355e13e13bbbc1195d06ec",
+    "exact_text_identical": true
+  },
+  "stop": {
+    "base_sha256": "b4b78c3f7cc65a6fcd7a6d9dc96b5dcab71fdd7aa007f9e75456abf22131e1f5",
+    "current_sha256": "b4b78c3f7cc65a6fcd7a6d9dc96b5dcab71fdd7aa007f9e75456abf22131e1f5",
+    "exact_text_identical": true
+  },
+  "start": {
+    "base_sha256": "384a487b535155220afad33c37b2d38a7c3a1eaf0ed0010b97393e0654e0986b",
+    "current_sha256": "431d69972bd33d3bdc3f56154deef1a08e65b72dc94c1ae45bc620a74e3d70fe",
+    "exact_text_identical": false
+  },
+  "startExternal": {
+    "base_sha256": "f64edb472fa9def7a51b611b6fec0eb5ee15537eb2a3240d117bdf43440bf8c2",
+    "current_sha256": "6ffa67acdd437be117e7dd2c6685e2bfc2b1e56f78bc3a5e93834d199ba8465d",
+    "exact_text_identical": false
+  }
+}

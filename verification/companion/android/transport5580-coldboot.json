@@ -1,0 +1,19 @@
+{
+  "old_pid": 42241,
+  "launcher_pid": 51943,
+  "arguments": [
+    "/Users/patrick/Library/Android/sdk/emulator/emulator",
+    "-avd",
+    "DroidBridge_API35",
+    "-port",
+    "5580",
+    "-no-window",
+    "-no-snapshot",
+    "-gpu",
+    "auto"
+  ],
+  "userdata_preserved": true,
+  "wipe_data": false,
+  "shared_adb_server_restarted": false,
+  "recovered": false
+}

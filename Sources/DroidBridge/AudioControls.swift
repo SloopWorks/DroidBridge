@@ -105,7 +105,7 @@ struct AudioPresentation: Equatable {
             return AudioPresentation(route: .mac, phase: .phone,
                 message: "Select a device to choose its audio output.", canRetry: false, canUsePhone: false)
         }
-        let capacityFallback = routes[serial] == nil && routes.count >= DroidBridgePreferences.maximumAudioDevices
+        let capacityFallback = routes[serial] == nil && DeviceAudioPreferences.capacityCount(routes) >= DroidBridgePreferences.maximumAudioDevices
         let route = routes[serial] ?? (capacityFallback ? .phone : .mac)
         if let error = mutationErrors[serial] ?? preferenceError {
             return AudioPresentation(route: route, phase: .failed,
@@ -174,7 +174,11 @@ extension LauncherController {
 
     func pollAudioControls() {
         guard !quitting else { return }
-        let active = Set(sessions.values.filter { $0.state == .running && sessionStates[$0.descriptor.id] != "disconnected" }.map { $0.descriptor.device.serial })
+        var active = Set(sessions.values.filter { $0.state == .running && sessionStates[$0.descriptor.id] != "disconnected" }.map { $0.descriptor.device.serial })
+        // Main's phone dashboard also controls independent wrappers. Their
+        // broker-verified running sessions participate in the same device-wide
+        // shared audio lease; no new connection or phone authority is inferred.
+        if !isWrapper { active.formUnion(companion.sessionSnapshot.filter { $0["phase"]?.string == "running" }.compactMap { $0["serial"]?.string }.filter { readySerials.contains($0) }) }
         audioControls.reconcile(activeSerials: active, connectedSerials: readySerials)
     }
 
@@ -196,6 +200,7 @@ extension LauncherController {
     @objc func usePhoneAudio() { if let device = selectedDevice { setAudioRoute(.phone, device: device) } }
 
     func updateAudioPresentation() {
+        guard launcherUI != nil else { return }
         guard !quitting else { return }
         let device = selectedDevice, presentation = audioControls.presentation(for: device?.serial)
         let connected = device.map { $0.state == "device" && readySerials.contains($0.serial) } ?? false

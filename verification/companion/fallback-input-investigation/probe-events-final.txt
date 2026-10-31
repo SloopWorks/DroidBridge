@@ -1,0 +1,7 @@
+--------- beginning of main
+10-30 16:34:22.615 32175 32175 I DroidBridgeInputProbe: action=0 x=350.0 y=293.0 source=4098 tool=1 button=0 flags=0 down=16631513 time=16631513 display=50 mode=true focus=none handled=true taps=0
+10-30 16:34:22.683 32175 32175 I DroidBridgeInputProbe: action=1 x=0.0 y=0.0 source=4098 tool=1 button=0 flags=0 down=16631513 time=16631580 display=50 mode=true focus=none handled=true taps=0
+10-30 16:34:34.346 32175 32175 I DroidBridgeInputProbe: action=0 x=210.0 y=171.0 source=4098 tool=1 button=0 flags=0 down=16643245 time=16643245 display=50 mode=true focus=none handled=true taps=1
+10-30 16:34:34.414 32175 32175 I DroidBridgeInputProbe: action=1 x=0.0 y=0.0 source=4098 tool=1 button=0 flags=0 down=16643245 time=16643308 display=50 mode=true focus=EditText handled=true taps=1
+10-30 16:34:50.802 32175 32175 I DroidBridgeInputProbe: action=0 x=0.0 y=218.0 source=4098 tool=1 button=0 flags=0 down=16659702 time=16659702 display=50 mode=true focus=EditText handled=false taps=1
+10-30 16:34:50.996 32175 32175 I DroidBridgeInputProbe: action=1 x=0.0 y=218.0 source=4098 tool=1 button=0 flags=0 down=16659702 time=16659896 display=50 mode=true focus=EditText handled=false taps=1

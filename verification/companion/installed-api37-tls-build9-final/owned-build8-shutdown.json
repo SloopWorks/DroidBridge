@@ -1,0 +1,9 @@
+{
+  "old_main_pid": 3941,
+  "graceful_quit": "did not exit after observerQuit + actualCUACmdQ >30s; exactPID SIGTERM used",
+  "old_main_exited": true,
+  "old_broker_exact_hash_verified": true,
+  "old_broker_exited": true,
+  "scoped_launchagent_booted_out": "dev.droidbridge.companion.broker.qa.519a8a5dd851",
+  "remaining_forwards": "\n"
+}

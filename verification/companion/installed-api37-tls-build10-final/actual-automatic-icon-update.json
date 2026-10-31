@@ -1,0 +1,30 @@
+{
+  "before": {
+    "label": "Input Alpha",
+    "version_code": 1,
+    "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+    "launchable": true,
+    "package_name": "dev.droidbridge.inputalpha",
+    "export_to_mac": true,
+    "icon_sha256": "dbaaedff599acbcc940c7d85daf7b56a1ef891ea9c5f1757be398433f113c45a"
+  },
+  "after": {
+    "version_code": 2,
+    "launchable": true,
+    "icon_sha256": "e372924729acff0ac99908e67457665cfe69d68b51a3f2dfb2de6d9e513593c0",
+    "export_to_mac": true,
+    "activity_name": "dev.droidbridge.inputalpha.MainActivity",
+    "package_name": "dev.droidbridge.inputalpha",
+    "label": "Input Alpha Updated"
+  },
+  "hash_changed": true,
+  "capture_boundary": "Actual shipping AppKit NSView bitmaps after automatic observed row update, no Refresh. Images independently visually inspected separately.",
+  "visual_inspection": {
+    "main_before": "Blue square",
+    "main_after": "Green triangle",
+    "companion_before": "Blue square",
+    "companion_after": "Green triangle",
+    "passed": true
+  },
+  "passed": true
+}

@@ -1,0 +1,26 @@
+{
+  "phone_texts": [
+    "Input Alpha",
+    "Display 37 \u00b7 taps 0 \u00b7 key downs 0",
+    "Type for Alpha",
+    "Echo Alpha: ",
+    "TAP ALPHA",
+    "COPY ALPHA SENTINEL",
+    "READ CLIPBOARD EXPLICITLY",
+    "Clipboard untouched until an explicit action",
+    "TOGGLE 60 HZ MOTION"
+  ],
+  "events": [
+    {
+      "kind": "android_ui_action",
+      "action": "Apps",
+      "monotonic": 1584459.080653041
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Open on Patrick\u2019s MacBook Pro",
+      "monotonic": 1584464.102006208
+    }
+  ],
+  "scope": "Actual phone Open after second installed main launch registered host then actual CUA Command-Q; first-run registration failed separately"
+}

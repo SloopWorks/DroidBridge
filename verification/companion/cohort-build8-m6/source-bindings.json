@@ -1,0 +1,183 @@
+{
+  "source_anchor": "5720ddf",
+  "current_commit": "a2a37c68d67d7f809ea7e1694fdf030414334435",
+  "historical_evidence_binds_object_hashes_not_full_source_tree": "Prior actual tests store exact compiled Core/Streaming object hashes; this Git comparison is a source audit, not a claim that the current whole module binary is unchanged.",
+  "files": [
+    {
+      "path": "Sources/DroidBridgeCore/CanonicalAliasAdmission.swift",
+      "base_sha256": "968141f94a008a78c49d3712c3be30036cc24d881ff42c8f14b37945c736aff7",
+      "current_commit_sha256": "968141f94a008a78c49d3712c3be30036cc24d881ff42c8f14b37945c736aff7",
+      "working_tree_sha256": "968141f94a008a78c49d3712c3be30036cc24d881ff42c8f14b37945c736aff7",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ManagedApps.swift",
+      "base_sha256": "27453308460194edefb8bc9dcb9814b2f40dea56df9002e3b62ab9169cbda488",
+      "current_commit_sha256": "27453308460194edefb8bc9dcb9814b2f40dea56df9002e3b62ab9169cbda488",
+      "working_tree_sha256": "27453308460194edefb8bc9dcb9814b2f40dea56df9002e3b62ab9169cbda488",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionExportPolicy.swift",
+      "base_sha256": "439254cca3475dfb081d10a69cf83c5255e30acecf4f267f71a2d7a89410b1ac",
+      "current_commit_sha256": "439254cca3475dfb081d10a69cf83c5255e30acecf4f267f71a2d7a89410b1ac",
+      "working_tree_sha256": "439254cca3475dfb081d10a69cf83c5255e30acecf4f267f71a2d7a89410b1ac",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/DeviceAudioPreferences.swift",
+      "base_sha256": "02ce3fe8c0afae151173137cfec72c05ae69f0df4e36cad6c54e78f08f075efd",
+      "current_commit_sha256": "02ce3fe8c0afae151173137cfec72c05ae69f0df4e36cad6c54e78f08f075efd",
+      "working_tree_sha256": "02ce3fe8c0afae151173137cfec72c05ae69f0df4e36cad6c54e78f08f075efd",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerRegistry.swift",
+      "base_sha256": "9111482bcfbd29ef9ea40e40038262c3bfb8b537d2025c107d6d18eb7ab335f1",
+      "current_commit_sha256": "9111482bcfbd29ef9ea40e40038262c3bfb8b537d2025c107d6d18eb7ab335f1",
+      "working_tree_sha256": "9111482bcfbd29ef9ea40e40038262c3bfb8b537d2025c107d6d18eb7ab335f1",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerScheduler.swift",
+      "base_sha256": "c32e5e523cf45764b0b5a00c45aec3a5aac6a10c9937e7b21eb01f776d3c690f",
+      "current_commit_sha256": "c32e5e523cf45764b0b5a00c45aec3a5aac6a10c9937e7b21eb01f776d3c690f",
+      "working_tree_sha256": "c32e5e523cf45764b0b5a00c45aec3a5aac6a10c9937e7b21eb01f776d3c690f",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionCredentialStore.swift",
+      "base_sha256": "8b1b2ccee1d3b010fa612040edcfcd545c23b5614ef4de0faef3357f1535e1e2",
+      "current_commit_sha256": "8b1b2ccee1d3b010fa612040edcfcd545c23b5614ef4de0faef3357f1535e1e2",
+      "working_tree_sha256": "8b1b2ccee1d3b010fa612040edcfcd545c23b5614ef4de0faef3357f1535e1e2",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionForward.swift",
+      "base_sha256": "490ed7602a317c8de9d9e893dbaf198039a13cfe1d31531f74b3196ee44a3c52",
+      "current_commit_sha256": "490ed7602a317c8de9d9e893dbaf198039a13cfe1d31531f74b3196ee44a3c52",
+      "working_tree_sha256": "490ed7602a317c8de9d9e893dbaf198039a13cfe1d31531f74b3196ee44a3c52",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerInstaller.swift",
+      "base_sha256": "6433a2241441b3879af3aab39e24b285568fe37e4fbc4e03b253f80a4defcf02",
+      "current_commit_sha256": "6433a2241441b3879af3aab39e24b285568fe37e4fbc4e03b253f80a4defcf02",
+      "working_tree_sha256": "6433a2241441b3879af3aab39e24b285568fe37e4fbc4e03b253f80a4defcf02",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ADBPortableRuntime.swift",
+      "base_sha256": "2c82830452eb45525a2878666f9912df9a236e3602f20e04352cfce315582f7c",
+      "current_commit_sha256": "2c82830452eb45525a2878666f9912df9a236e3602f20e04352cfce315582f7c",
+      "working_tree_sha256": "2c82830452eb45525a2878666f9912df9a236e3602f20e04352cfce315582f7c",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/DeviceAudioRouter.swift",
+      "base_sha256": "0f3ed1f68a3bdf6972936e6e11d35777a04f4d6b3d10af93ba1735b2847daaac",
+      "current_commit_sha256": "0f3ed1f68a3bdf6972936e6e11d35777a04f4d6b3d10af93ba1735b2847daaac",
+      "working_tree_sha256": "0f3ed1f68a3bdf6972936e6e11d35777a04f4d6b3d10af93ba1735b2847daaac",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/FrameMailbox.swift",
+      "base_sha256": "19c1deed81a98170c3f24924c86cb92c88603316fd2cc17c751383fa00639313",
+      "current_commit_sha256": "19c1deed81a98170c3f24924c86cb92c88603316fd2cc17c751383fa00639313",
+      "working_tree_sha256": "19c1deed81a98170c3f24924c86cb92c88603316fd2cc17c751383fa00639313",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/H264Decoder.swift",
+      "base_sha256": "3a8423d6d5c979d9e208c2fa8dea5e895bb90648f2237c5751c964ca7838dc92",
+      "current_commit_sha256": "3a8423d6d5c979d9e208c2fa8dea5e895bb90648f2237c5751c964ca7838dc92",
+      "working_tree_sha256": "3a8423d6d5c979d9e208c2fa8dea5e895bb90648f2237c5751c964ca7838dc92",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/SocketTransport.swift",
+      "base_sha256": "a8e550c4fcfe29b21504cd5541a8e18aa1ce1757b29a0a0760966fd4b4430770",
+      "current_commit_sha256": "a8e550c4fcfe29b21504cd5541a8e18aa1ce1757b29a0a0760966fd4b4430770",
+      "working_tree_sha256": "a8e550c4fcfe29b21504cd5541a8e18aa1ce1757b29a0a0760966fd4b4430770",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/Protocol.swift",
+      "base_sha256": "f9769d3c5c2180d208cc43d38b4e5845a7e6f64b738a26c1872175a150efc76a",
+      "current_commit_sha256": "f9769d3c5c2180d208cc43d38b4e5845a7e6f64b738a26c1872175a150efc76a",
+      "working_tree_sha256": "f9769d3c5c2180d208cc43d38b4e5845a7e6f64b738a26c1872175a150efc76a",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/SessionRecovery.swift",
+      "base_sha256": "96ee6c40f089e5001aa09048dba53b8f1a592ac826249ec97b1f987ecf0bb2c1",
+      "current_commit_sha256": "96ee6c40f089e5001aa09048dba53b8f1a592ac826249ec97b1f987ecf0bb2c1",
+      "working_tree_sha256": "96ee6c40f089e5001aa09048dba53b8f1a592ac826249ec97b1f987ecf0bb2c1",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeSupervisor/main.c",
+      "base_sha256": "cdbf1314c127acf5f8431318a83403033cda0f35768870b2aef7280ce3f9cc44",
+      "current_commit_sha256": "cdbf1314c127acf5f8431318a83403033cda0f35768870b2aef7280ce3f9cc44",
+      "working_tree_sha256": "cdbf1314c127acf5f8431318a83403033cda0f35768870b2aef7280ce3f9cc44",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridge/NativeWindow.swift",
+      "base_sha256": "7b304a1c6ab63c12fdb1afbb7d27fa202e832911dffede9eeb3992883aa21fda",
+      "current_commit_sha256": "7b304a1c6ab63c12fdb1afbb7d27fa202e832911dffede9eeb3992883aa21fda",
+      "working_tree_sha256": "7b304a1c6ab63c12fdb1afbb7d27fa202e832911dffede9eeb3992883aa21fda",
+      "unchanged_since_source_anchor": true,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/BridgeSession.swift",
+      "base_sha256": "1f5640867eaf55b40902ebff6f0003f6775896cd8bb385a32d4b3d59687e14d5",
+      "current_commit_sha256": "332c1ed8c0a38b32a27fa5dd8d42357ac9a688a93b090b3a8a328a29e6882aa6",
+      "working_tree_sha256": "332c1ed8c0a38b32a27fa5dd8d42357ac9a688a93b090b3a8a328a29e6882aa6",
+      "unchanged_since_source_anchor": false,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerService.swift",
+      "base_sha256": "c3ece28709e9708548706fdcd07ed42a606b428a36ef3bf5ff53d88e1b12a158",
+      "current_commit_sha256": "fcc74783fef0cf0d59f2abaec407db65c2c19f0296b62a029d766b4cbe1cc215",
+      "working_tree_sha256": "fcc74783fef0cf0d59f2abaec407db65c2c19f0296b62a029d766b4cbe1cc215",
+      "unchanged_since_source_anchor": false,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionClient.swift",
+      "base_sha256": "3c0cd83e581027da4c24bfe1e3a16992dbc36ca86a5398070600bdbfadb0ed37",
+      "current_commit_sha256": "f21e12e5af0b189a12c8c7a6520d9536bbff11952ea0033060382c36ccc3abcc",
+      "working_tree_sha256": "f21e12e5af0b189a12c8c7a6520d9536bbff11952ea0033060382c36ccc3abcc",
+      "unchanged_since_source_anchor": false,
+      "working_tree_matches_current_commit": true
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionModels.swift",
+      "base_sha256": "8bf0ba762663dafec5376d190570a6c4f9d8e96e105be6a2a8d5e08d8ff19d5f",
+      "current_commit_sha256": "ddadaea3040cc1473d3b1a7f723193c80abd5ee1bcba458375a188a85abcb8aa",
+      "working_tree_sha256": "ddadaea3040cc1473d3b1a7f723193c80abd5ee1bcba458375a188a85abcb8aa",
+      "unchanged_since_source_anchor": false,
+      "working_tree_matches_current_commit": true
+    }
+  ]
+}

@@ -13,6 +13,8 @@
 #include <util.h>
 #include <fcntl.h>
 #include <termios.h>
+#include <libproc.h>
+#include <sys/proc_info.h>
 
 /* Independent lifetime owner. A crashed GUI cannot run its own cleanup handler.
  * No shell is used, every child lives in its own process group, and cleanup
@@ -31,7 +33,7 @@ static pid_t launch_output(char *const args[], int output) {
     pid_t pid = fork();
     if (pid == 0) {
         setpgid(0, 0);
-        signal(SIGTERM, SIG_DFL); signal(SIGINT, SIG_DFL); signal(SIGHUP, SIG_DFL);
+        signal(SIGTERM, SIG_DFL); signal(SIGINT, SIG_DFL); signal(SIGHUP, SIG_DFL); signal(SIGPIPE, SIG_DFL);
         if (output >= 0) {
             if (dup2(output, STDOUT_FILENO) < 0 || dup2(output, STDERR_FILENO) < 0) _exit(71);
             if (output > STDERR_FILENO) close(output);
@@ -168,10 +170,78 @@ static void failure_receipt(const char *path,const char *tag) {
     fsync(fd); close(fd);
     if (rename(temporary,path)!=0) unlink(temporary);
 }
+/* Mirrors Core's admission under one policy gate. Shared owners on the same
+ * alias coexist; a different alias cannot pass until every cleanup owner exits.
+ * The descriptor remains here, never in the Android client or its child group. */
+static int alias_file(const char *path) {
+    if (!path || path[0] != '/') return -1;
+    int fd=open(path,O_CREAT|O_RDWR|O_CLOEXEC|O_NOFOLLOW,0600);
+    struct stat metadata;
+    if (fd<0) return -1;
+    if (fstat(fd,&metadata)!=0 || !S_ISREG(metadata.st_mode) || metadata.st_uid!=getuid() || (metadata.st_mode&0777)!=0600) {close(fd);return -1;}
+    return fd;
+}
+static int acquire_alias(const char *gate_path,const char *lock_path,const char *serial) {
+    if (!serial || !serial[0] || strlen(serial)>255) return -1;
+    for (const unsigned char *p=(const unsigned char *)serial;*p;++p)
+        if (!( (*p>='a'&&*p<='z') || (*p>='A'&&*p<='Z') || (*p>='0'&&*p<='9') || strchr("._:-%[]",*p))) return -1;
+    int gate=alias_file(gate_path); if (gate<0) return -1;
+    while (flock(gate,LOCK_EX)!=0) {if(errno!=EINTR){close(gate);return -1;}}
+    int fd=alias_file(lock_path);
+    if (fd<0) {close(gate);return -1;}
+    int accepted=0;
+    if (flock(fd,LOCK_EX|LOCK_NB)==0) {
+        size_t size=strlen(serial);
+        accepted=ftruncate(fd,0)==0 && pwrite(fd,serial,size,0)==(ssize_t)size && flock(fd,LOCK_SH)==0;
+    } else if ((errno==EWOULDBLOCK || errno==EAGAIN) && flock(fd,LOCK_SH|LOCK_NB)==0) {
+        char bytes[256]; ssize_t count=pread(fd,bytes,sizeof(bytes),0);
+        accepted=count==(ssize_t)strlen(serial) && !memcmp(bytes,serial,(size_t)count);
+    }
+    flock(gate,LOCK_UN);close(gate);
+    if (!accepted) {close(fd);return -1;}
+    return fd;
+}
+static int same_child(pid_t pid,const struct proc_bsdinfo *original) {
+    struct proc_bsdinfo current;
+    return original->pbi_pid==(uint32_t)pid && proc_pidinfo(pid,PROC_PIDTBSDINFO,0,&current,sizeof(current))==sizeof(current)
+        && current.pbi_start_tvsec==original->pbi_start_tvsec && current.pbi_start_tvusec==original->pbi_start_tvusec
+        && current.pbi_uid==getuid() && getpgid(pid)==pid;
+}
+/* A tiny non-exec guard retains the inherited alias/port/owner descriptors.
+ * It sees explicit completion only AFTER supervisor cleanup. Unexpected EOF
+ * means a supervisor crash, and never grants a second alias over a live child. */
+static pid_t crash_guard(pid_t child,int *completion,char *adb,char *serial,char *forward,char *forward_remote,char *remote,char *failure_file,char *failure_tag,int output_master) {
+    int pipes[2]; if(pipe(pipes)!=0) return -1;
+    if(fcntl(pipes[0],F_SETFD,FD_CLOEXEC)!=0 || fcntl(pipes[1],F_SETFD,FD_CLOEXEC)!=0) {close(pipes[0]);close(pipes[1]);return -1;}
+    struct proc_bsdinfo original; memset(&original,0,sizeof(original));
+    if(proc_pidinfo(child,PROC_PIDTBSDINFO,0,&original,sizeof(original))!=sizeof(original) || original.pbi_ppid!=(uint32_t)getpid()) memset(&original,0,sizeof(original));
+    pid_t guard=fork();
+    if(guard==0) {
+        setpgid(0,0); close(pipes[1]); if(output_master>=0)close(output_master);
+        char byte=0; ssize_t count;
+        do {count=read(pipes[0],&byte,1);} while(count<0 && errno==EINTR);
+        close(pipes[0]);
+        if(count==1 && byte=='C') _exit(0);
+        fprintf(stderr,"{\"event\":\"supervisor_crash_guard_cleanup\",\"child\":%d}\n",child);
+        if(same_child(child,&original)) {
+            kill(-child,SIGTERM); double deadline=monotonic_seconds()+2.0;
+            while(same_child(child,&original) && monotonic_seconds()<deadline) pause_tick();
+            if(same_child(child,&original)) kill(-child,SIGKILL);
+        }
+        if(forward) cleanup_forward(adb,serial,forward,forward_remote);
+        if(remote) {char *args[]={(char *)adb,"-s",(char *)serial,"shell","rm","-f",(char *)remote,NULL};cleanup_command(args);}
+        if(failure_file) failure_receipt(failure_file,failure_tag);
+        _exit(0);
+    }
+    close(pipes[0]);
+    if(guard<0){close(pipes[1]);return -1;}
+    *completion=pipes[1]; return guard;
+}
 int main(int argc, char **argv) {
     pid_t parent = 0; char *adb = NULL, *serial = NULL, *forward = NULL, *remote = NULL, *forward_remote = NULL;
     char *owner_lock = NULL, *owner_token = NULL, *failure_file = NULL, *failure_tag = NULL;
-    int owner_fd = -1;
+    int owner_fd = -1, alias_fd = -1;
+    char *alias_lock = NULL, *alias_gate = NULL, *alias_serial = NULL;
     int command = 0, terminal_output = 0;
     for (int i = 1; i < argc; ++i) {
         if (!strcmp(argv[i], "--")) { command = i + 1; break; }
@@ -185,6 +255,9 @@ int main(int argc, char **argv) {
             if (strcmp(value, "1")) return 64;
             terminal_output = 1;
         } else if (!strcmp(option, "--owner-lock")) owner_lock = value;
+        else if (!strcmp(option, "--alias-lock")) alias_lock = value;
+        else if (!strcmp(option, "--alias-gate")) alias_gate = value;
+        else if (!strcmp(option, "--alias-serial")) alias_serial = value;
         else if (!strcmp(option, "--owner-token")) owner_token = value;
         else if (!strcmp(option, "--failure-file")) failure_file = value;
         else if (!strcmp(option, "--failure-tag")) failure_tag = value;
@@ -196,6 +269,7 @@ int main(int argc, char **argv) {
         else return 64;
     }
     if (!parent || !command || command >= argc || argv[command][0] != '/') return 64;
+    if ((alias_lock || alias_gate || alias_serial) && (!alias_lock || !alias_gate || !alias_serial)) return 64;
     if (owner_token && (!owner_lock || !uuid_token(owner_token))) return 64;
     if ((failure_file || failure_tag) && (!owner_lock || !failure_file || failure_file[0] != '/' || !hex_tag(failure_tag))) return 64;
     if ((forward || remote) && (!adb || !serial || adb[0] != '/')) return 64;
@@ -206,6 +280,7 @@ int main(int argc, char **argv) {
     }
     struct sigaction action; memset(&action, 0, sizeof(action));
     action.sa_handler = request_stop; sigemptyset(&action.sa_mask);
+    signal(SIGPIPE,SIG_IGN);
     sigaction(SIGTERM, &action, NULL); sigaction(SIGINT, &action, NULL); sigaction(SIGHUP, &action, NULL);
     if (failure_file) {struct sigaction failure_action=action;failure_action.sa_handler=request_failure;sigaction(SIGUSR1,&failure_action,NULL);}
     /* Refuse to launch after the original GUI has already exited. */
@@ -219,6 +294,11 @@ int main(int argc, char **argv) {
         }
         fprintf(stderr, "{\"event\":\"supervisor_stopped\",\"reason\":\"parent_missing_before_launch\",\"exit_status\":null,\"signal\":null}\n");
         return 75;
+    }
+    if (alias_lock) {
+        alias_fd=acquire_alias(alias_gate,alias_lock,alias_serial);
+        if (alias_fd<0) {fprintf(stderr,"{\"event\":\"supervisor_alias_busy\"}\n");return 78;}
+        fprintf(stderr,"{\"event\":\"supervisor_alias_acquired\"}\n");
     }
     /* This descriptor belongs to the supervisor, not the GUI or client. It
      * stays locked until process-group teardown AND exact tunnel cleanup finish.
@@ -263,8 +343,13 @@ int main(int argc, char **argv) {
     pid_t child = launch_output(&argv[command], output_slave);
     if (output_slave >= 0) close(output_slave);
     if (child < 0) { if (output_master >= 0) close(output_master); perror("DroidBridge supervisor fork"); return 71; }
-    fprintf(stderr, "{\"event\":\"supervisor_started\",\"parent\":%d,\"child\":%d}\n", parent, child);
+    int guard_completion=-1; pid_t guard_pid=-1;
     int status = -1;
+    if(alias_fd>=0) {
+        guard_pid=crash_guard(child,&guard_completion,adb,serial,forward,forward_remote,remote,failure_file,failure_tag,output_master);
+        if(guard_pid<0) {fprintf(stderr,"{\"event\":\"supervisor_crash_guard_failed\"}\n");terminate_child(child,&status);stopping=1;}
+    }
+    fprintf(stderr, "{\"event\":\"supervisor_started\",\"parent\":%d,\"child\":%d}\n", parent, child);
     const char *reason = "child_exit";
     for (;;) {
         relay_output(output_master);
@@ -286,6 +371,11 @@ int main(int argc, char **argv) {
         char *args[] = {adb, "-s", serial, "shell", "rm", "-f", remote, NULL};
         cleanup_command(args);
     }
+    if(guard_completion>=0) {
+        (void)write(guard_completion,"C",1);close(guard_completion);
+        int guard_status=0;
+        if(!reap(guard_pid,&guard_status,1.0)){kill(guard_pid,SIGKILL);while(waitpid(guard_pid,&guard_status,0)<0&&errno==EINTR){}}
+    }
     if (failure_file && (!strcmp(reason,"child_exit") || latch_failure)) failure_receipt(failure_file,failure_tag);
     char exit_value[16] = "null", signal_value[16] = "null", request_value[16] = "null";
     if (WIFEXITED(status)) snprintf(exit_value, sizeof(exit_value), "%d", WEXITSTATUS(status));
@@ -293,5 +383,6 @@ int main(int argc, char **argv) {
     if (stop_signal) snprintf(request_value, sizeof(request_value), "%d", (int)stop_signal);
     fprintf(stderr, "{\"event\":\"supervisor_stopped\",\"reason\":\"%s\",\"exit_status\":%s,\"signal\":%s,\"requested_signal\":%s}\n", reason, exit_value, signal_value, request_value);
     if (owner_fd >= 0) close(owner_fd);
+    if (alias_fd >= 0) close(alias_fd);
     return WIFEXITED(status) ? WEXITSTATUS(status) : (WIFSIGNALED(status) ? 128 + WTERMSIG(status) : 1);
 }

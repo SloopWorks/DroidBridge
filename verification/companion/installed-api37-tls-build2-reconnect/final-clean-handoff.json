@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "gui_quit": "Actual macOS Command-Q; application drained resources and exited",
+  "remaining_forward": {
+    "serial": "emulator-5582",
+    "local": "tcp:46009",
+    "remote": "tcp:37841",
+    "scoped_receipt_matches": true,
+    "broker_owner_alive": true
+  },
+  "paired_broker_connected": true,
+  "registered_sessions": 0,
+  "native_session_receipts": 0,
+  "audio_runtime_receipts": 0,
+  "phone_service_retained": true,
+  "other_device_mutations": false
+}

@@ -1,0 +1,11 @@
+{
+  "helper_sha256": "298f319bfc6c0d78159bac7bb6e289c667d57054cbf78b388481fee992a56f69",
+  "version": "DroidBridgeAvailability 0.1.8",
+  "exit_code": 0,
+  "stdout": "{\"available\":0,\"enabled\":false,\"registrations\":0,\"messages\":[\"Managed app availability could not be reconciled: Managed app catalog refused: manifest limits\\/version\",\"Managed app repair diagnostics are unavailable\"],\"pendingRegistrations\":0,\"probed\":0,\"transitions\":0}\n",
+  "stderr": "",
+  "manifest_unchanged": true,
+  "active_directory_empty": true,
+  "manifest_v2_rejected": true,
+  "fixture_assertion_note": "The stdout JSON escapes slashes; parse its messages before comparing the version-refusal text."
+}

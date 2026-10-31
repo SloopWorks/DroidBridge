@@ -1,0 +1,29 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling DroidBridgeCoreTests CompanionTLSFixture.swift
+[4/5] Emitting module DroidBridgeCoreTests
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.31s)
+Test Suite 'Selected tests' started at 2026-10-30 12:45:02.622.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 12:45:02.622.
+Test Suite 'CompanionBoundaryTests' started at 2026-10-30 12:45:02.622.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionBoundaryTests testCanonicalCommandCarriesExpiryAndRejectsConflictingRetry]' passed (0.062 seconds).
+Test Suite 'CompanionBoundaryTests' passed at 2026-10-30 12:45:02.684.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.062 (0.062) seconds
+Test Suite 'CompanionSecurityTests' started at 2026-10-30 12:45:02.684.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDifferentTLSLeafCannotHarvestPairingSecretOrSavedBearer]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionSecurityTests testDifferentTLSLeafCannotHarvestPairingSecretOrSavedBearer]' passed (0.087 seconds).
+Test Suite 'CompanionSecurityTests' passed at 2026-10-30 12:45:02.772.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.087 (0.087) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 12:45:02.772.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.149 (0.149) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 12:45:02.772.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.149 (0.150) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

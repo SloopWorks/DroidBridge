@@ -1,0 +1,8 @@
+{
+  "samples": 42,
+  "peak_rss_kib": 40448,
+  "median_rss_kib": 33840.0,
+  "peak_cpu_percent": 8.6,
+  "maximum_cpu_percent_is_not_total_process_tree": true,
+  "not_a_quiet_performance_benchmark": true
+}

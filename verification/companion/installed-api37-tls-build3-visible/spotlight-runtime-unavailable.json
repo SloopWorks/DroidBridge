@@ -1,0 +1,46 @@
+{
+  "passed": false,
+  "scope": "Actual generated wrappers and OS metadata queries; CUA Spotlight bundle/name both timed out. No global indexing or services setting modified.",
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/mdutil",
+        "-s",
+        "/"
+      ],
+      "exit": 0,
+      "stdout": "/:\n\tIndexing enabled. \n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/mdutil",
+        "-s",
+        "/System/Volumes/Data"
+      ],
+      "exit": 0,
+      "stdout": "/System/Volumes/Data:\n\tIndexing enabled. \n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/pgrep",
+        "-x",
+        "Spotlight"
+      ],
+      "exit": 0,
+      "stdout": "604\n41992\n44198\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/bin/launchctl",
+        "print",
+        "gui/501/com.apple.Spotlight"
+      ],
+      "exit": 0,
+      "stdout": "gui/501/com.apple.Spotlight = {\n\tactive count = 9\n\tpath = /System/Library/LaunchAgents/com.apple.Spotlight.plist\n\ttype = LaunchAgent\n\tstate = running\n\n\tprogram = /System/Library/CoreServices/Spotlight.app/Contents/MacOS/Spotlight\n\targuments = {\n\t\t/System/Library/CoreServices/Spotlight.app/Contents/MacOS/Spotlight\n\t}\n\n\tinherited environment = {\n\t\tSSH_AUTH_SOCK => /private/tmp/com.apple.launchd.fy3vGNVY3K/Listeners\n\t}\n\n\tdefault environment = {\n\t\tPATH => /usr/bin:/bin:/usr/sbin:/sbin\n\t}\n\n\tenvironment = {\n\t\tOSLogRateLimit => 64\n\t\tXPC_SERVICE_NAME => com.apple.Spotlight\n\t}\n\n\tdomain = gui/501 [100002]\n\tasid = 100002\n\tminimum runtime = 1\n\tbase minimum runtime = 1\n\texit timeout = 5\n\truns = 1\n\tpid = 604\n\timmediate reason = ipc (mach)\n\tforks = 0\n\texecs = 1\n\tinitialized = 1\n\ttrampolined = 1\n\tstarted suspended = 0\n\tproxy started suspended = 0\n\tchecked allocations = 0 (queried = 1)\n\tchecked allocations reason = no host\n\tchecked allocations flags = 0x0\n\tlast exit code = (never exited)\n\n\tsemaphores = {\n\t\tsuccessful exit => 0\n\t}\n\n\tevent triggers = {\n\t\tcom.apple.spotlight.modelUpdating => {\n\t\t\tkeepalive = 0\n\t\t\tservice = com.apple.Spotlight\n\t\t\tstream = com.apple.xpc.activity\n\t\t\tmonitor = com.apple.UserEventAgent-Aqua\n\t\t\tdescriptor = {\n\t\t\t\t\"Repeating\" => true\n\t\t\t\t\"_SequenceNumber\" => 1\n\t\t\t\t\"GracePeriod\" => 43200\n\t\t\t\t\"Interval\" => 86400\n\t\t\t\t\"Delay\" => 43200\n\t\t\t\t\"Priority\" => \"Maintenance\"\n\t\t\t}\n\t\t}\n\t\tcom.apple.spotlight.sendmlfeedback => {\n\t\t\tkeepalive = 0\n\t\t\tservice = com.apple.Spotlight\n\t\t\tstream = com.apple.xpc.activity\n\t\t\tmonitor = com.apple.UserEventAgent-Aqua\n\t\t\tdescriptor = {\n\t\t\t\t\"Repeating\" => true\n\t\t\t\t\"_SequenceNumber\" => 1\n\t\t\t\t\"GracePeriod\" => 43200\n\t\t\t\t\"Interval\" => 86400\n\t\t\t\t\"Delay\" => 43200\n\t\t\t\t\"Priority\" => \"Utility\"\n\t\t\t}\n\t\t}\n\t}\n\n\tendpoints = {\n\t\t\"com.apple.Spotlight\" = {\n\t\t\tport = 0x8d303\n\t\t\tactive = 1\n\t\t\tmanaged = 1\n\t\t\treset = 0\n\t\t\thide = 0\n\t\t\twatching = 0\n\t\t}\n\t\t\"com.apple.Spotlight.Preferences\" = {\n\t\t\tport = 0x9d73f\n\t\t\tactive = 1\n\t\t\tmanaged = 1\n\t\t\treset = 0\n\t\t\thide = 0\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionRealNotificationDeviceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+dev.droidbridge.companion.CompanionRealNotificationDeviceTest:
+INSTRUMENTATION_STATUS: test=actualListenerRemovesExcludedReplacementsAndFencesEveryNotificationCommand
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionRealNotificationDeviceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=actualListenerRemovesExcludedReplacementsAndFencesEveryNotificationCommand
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+dev.droidbridge.companion.CompanionSecurityTest:
+INSTRUMENTATION_STATUS: test=notificationExposureEvictionCleansOnlyPriorAudienceAndLongPollCannotDeadlock
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=notificationExposureEvictionCleansOnlyPriorAudienceAndLongPollCannotDeadlock
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=notificationScopeIsCanonicalAndCannotReplayAcrossReplacementTrust
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=dev.droidbridge.companion.CompanionSecurityTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=notificationScopeIsCanonicalAndCannotReplayAcrossReplacementTrust
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: droidbridge_notification_matrix={"keys":256,"trusts":8,"reconcile_ms":21,"threshold_ms":3000,"overflow_cleanup":true,"journal_gap_explicit":true}
+INSTRUMENTATION_RESULT: droidbridge_notification_v2_evidence={"actual_android_listener":true,"separate_ordinary_fixture_uid":true,"pinned_tls_commands_events":true,"missing_wrong_scope_rejected_all_three_kinds":true,"cross_trust_replay_rejected":true,"reply_deliveries":1,"utf8_4097_rejected_without_effect":true,"utf8_4096_delivered_once":true,"private_replacement_cleanup":true,"never_exposed_removal_leak":false,"two_recipient_ongoing_cleanup":true,"optout_filter_global_listener_cleanup":true,"scoped_dismissal":true,"revoked_events_status":401}
+INSTRUMENTATION_RESULT: stream=
+
+Time: 14.07
+
+OK (3 tests)
+
+
+INSTRUMENTATION_CODE: -1

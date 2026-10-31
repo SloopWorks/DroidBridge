@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "scope": "Shipping AppKit and anonymous NSXPC fixture. Injected OS authorization/status/post callbacks. No ADB/device operations; no OS permission changed.",
+  "main_visible_without_companion_controller_received_full_catalog": true,
+  "late_adb_discovery_ticket_invalidated": true,
+  "main_and_companion_delta_after_cached_status_token": true,
+  "full_catalog_http_reads_for_delta": 0,
+  "denied_authorization_throw_then_confirmed_denied_applied_inapp_preference": true,
+  "extra_denied_status_await_close_trust_invalid_filter_guarded": true,
+  "non_denied_authorization_error_failed_honestly": true,
+  "prior_notification_origin_and_banner_async_fences": true,
+  "source_checkpoint": "../catalog-sync-source-checkpoint.json",
+  "earlier_failures_retained": [
+    "../macos-ui-catalog-and-denied/attempt1-selector-failure.log",
+    "../macos-ui-catalog-and-denied/attempt2-reused-output-failure.log"
+  ],
+  "installed_candidate9_acceptance": false
+}

@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-10-31T00:16:25.340579+00:00",
+  "scope": "Read-only verified DMG copied outside build directory; offline integrity check only, application not launched because Mac is locked",
+  "installed_app": "/Users/patrick/Applications/DroidBridge Companion QA11.app",
+  "file_inventory_matches_dist": true,
+  "inventory_entries": 198,
+  "codesign_deep_strict_verified": true,
+  "host_sha256": "6d70755ddc5a1386e1ebc6004ebcac987be448fba8b6a620105b30ad2b777e53",
+  "broker_sha256": "d890c6815c7a679a0df3be864b9abac0bd3be9212dbcbb98ce9be08c17e98936",
+  "apk_sha256": "bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b",
+  "dmg_sha256": "7d97c2236dec402e20dce4479b7f7ec00a3bf4adc92985103475ef27f0e496a5",
+  "version": "0.2.0",
+  "build": "11"
+}
