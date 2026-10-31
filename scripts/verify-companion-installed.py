@@ -42,7 +42,7 @@ class InstalledFlow:
         result = subprocess.run([str(self.args.adb), '-s', self.args.serial, *parts], check=True, capture_output=True, timeout=timeout)
         return result.stdout if binary else result.stdout.decode('utf-8', 'strict')
     def nodes(self):
-        self.adb('shell', 'uiautomator', 'dump', '/sdcard/droidbridge-installed-flow.xml')
+        self.adb('shell', 'uiautomator', 'dump', '--display-id', '0', '/sdcard/droidbridge-installed-flow.xml')
         xml = self.adb('shell', 'cat', '/sdcard/droidbridge-installed-flow.xml')
         # The QR screen has an ImageView, not a textual secret. Still retain no
         # raw hierarchy: only exact matching nodes are consumed in memory.

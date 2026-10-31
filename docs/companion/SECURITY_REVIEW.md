@@ -1010,3 +1010,154 @@ lookup before selecting its tab; it is not a passing GUI gate. Corrected AppKit
 execution, installed automatic rename/icon/delete and selection-token behavior,
 observed timing, current full Swift and final package/archive remain required.
 No reviewer GUI/device or OS permission operation was performed in this review.
+
+
+### Source9 full Swift and corrected AppKit checkpoint
+
+Independent verification binds the final source9 gates to committed product
+revision `acb3d5816cb0fcca79518ab9ef7722c2f99a8adc`. All128 files in the full-suite
+pre-run manifest match both current bytes and that exact committed Git revision.
+The completed XCTest log records332 tests, four explicit live-device opt-in
+skips and zero failures in157.852s. The skips are live ADB discovery, adaptive
+icons, repeated native lifecycle and concurrent real streams; separate device
+acceptance is required and they are not converted into passes.
+
+Corrected shipping-source AppKit/anonymous-XPC fixture attempt3 completed with
+exit0 and its PASS line. All seven catalog/authorization production/harness
+checkpoint hashes match current and committed bytes. Source assertions and
+recorded results cover visible main launcher without an existing Companion
+controller, shared token-to-delta updates without full reads, late ADB ticket
+invalidation, Denied-throws→confirmed-Denied in-app preferences, delayed status
+reads crossing close/trust/invalid-filter edits, and refusal of non-Denied errors.
+Earlier selector and reused-output failures remain preserved. The fixture
+injects OS authorization/status callbacks; it changes no notification permission
+and proves no allowed-state OS banner or installed Mac9/APK11 acceptance.
+
+Evidence: `security/catalog-final-gates-independent.json` binds the full log,
+128-file manifest, seven-file source checkpoint and AppKit result/raw run log.
+Final installed automatic refresh/selection/timing, package9 distribution,
+corresponding final committed source archive and performance/publishing remain
+separate acceptance gates. No source, GUI, device or runtime mutation was needed
+for this independent gate inspection.
+
+
+### Provisional build9/source acb3d58 artifact checkpoint
+
+Independent read-only archive review passed against outside-build QA9:
+`DroidBridge-0.2.0-candidateacb3d58-source.tar.gz`, SHA256
+`3d315be9a6fb8dbf102409b7ba146eddbc57318395810c6dc956a36499c86aa7`.
+It binds627 members,543 checksum-covered files and414 exact committed source
+blobs/modes to `acb3d5816cb0fcca79518ab9ef7722c2f99a8adc`, with16 runtime
+formula/version source cohorts,16 ADB notices and unchanged actual source-built
+ADB manifest `65dfa704…a5c9cc9`. Deep/strict app signature verification passed.
+An independently regenerated trusted fixed-pin scrcpy Git archive again matches
+the included upstream source bytes; no reliance on its self-manifest alone.
+
+The inspected QA9 host SHA256 is `60501ff1…8d5558`, broker `7d8fb204…3fc54c`,
+and APK remains the reviewed code11 candidate2 `6fa302dd…809029`. Outer source
+and197 app-file paths contain no private local signing/test APK artifact; the
+sole packaged APK is production code11. Seven specific DEBUG/test strings are
+absent from both host and broker. These checks do not launch or alter the
+application, inspect a device, assert arbitrary secret absence or establish
+Gatekeeper/notarization trust. Reports:
+`security/source-archive-candidateacb3d58-independent.json` and
+`source-archive-candidateacb3d58-upstream-and-bundle.json`. This remains a
+provisional artifact review; installed runtime, observed quit behavior, timing,
+performance and the final committed distribution are separate open gates.
+
+
+### S32 — Unicode metadata and nullable broadcast routing repair
+
+A new installed/UX checkpoint exposed incompatible catalog label measures: the
+Android producer truncated UTF16 units, while Mac readers rejected above256 UTF8
+bytes, despite the intended256-scalar contract. The shared Core validator now
+accepts up to256 Unicode scalars (at most1024 UTF8 bytes), retaining package/hash
+validation and optional activity's512-byte bound. Session registry uses the same
+scalar measure, preventing an arbitrarily long combining grapheme from passing a
+grapheme-count limit. Android producer preserves valid surrogate pairs and
+replaces isolated units with U+FFFD in a bounded256-scalar loop. Optional
+oversized/malformed activity metadata is omitted from the wire, never truncated;
+the full private icon component identity is retained. The response byte cap,
+64-row pages and4096-entry total remain unchanged. Independent source review and
+raw33-test Swift focused log accept these changes; signed APK12 and real wire/
+installed proof remain pending.
+
+Actual installed Mac9 then demonstrated that real package operations changed the
+Android catalog but never advanced the broker hint. Android appended an unscoped
+`target_trust_id` as JSONObject.NULL and read it back with optString as the
+literal string "null", incorrectly filtering broadcast hints as another trust.
+The source repair distinguishes absent/JSON-null from an actual String target
+and rejects other types; literal "null"/malformed String targets remain targeted
+nonmatches. Notification content now explicitly requires an exact target in
+addition to current exposure/action/preference checks.
+
+Review enumerated every production event call. Only catalog_changed (revision
+hash) and profile_changed (profile enum) are broadcasts. File staging requires a
+nonnull selected/exact trusted recipient before provider work and rechecks it
+before publication; file commit uses the authenticated owner. A nullable
+phoneCommand argument resolves selected trust or throws before journal/event
+admission. Clipboard/catalog-preference events are explicitly trust-scoped, as
+are all notifications. The null repair therefore does not broaden an existing
+sensitive-content producer. The new real TLS test requires both paired peers to
+receive the two metadata hints, only the selected peer to receive targeted data,
+malformed targets to reach neither, and unauthenticated reads to return401.
+Source review accepts this design. Until executed signed routing tests and
+installed automatic refresh prove the repaired path, C04 remains failed/open;
+the earlier synthetic engine and source9 full tests are not substituted for it.
+Evidence: `security/unicode-routing-source-review.json`.
+
+
+### APK12 focused routing/Unicode and bounded test-reaping checkpoint
+
+Independent comparison verified all42 files in APK12's application source
+manifest, both APK lengths/SHA256s and the unchanged local Android signer with
+`apksigner`. Product SHA256 is
+`bc17d7b1275929f88ac445b5a2b99869982eabafa423eec53ae1c161e684db2b`
+(2,870,487 bytes). Production DEX contains none of the reviewed security/listener/
+provider fixture descriptors. Raw focused instrumentation completed3/3 in0.579s:
+two-peer nullable metadata broadcasts with exact targeted/malformed/nonstring
+isolation and unauthenticated401; real TLS Unicode64-row snapshot/next page/
+combining-scalar delta with513-byte optional activity omission/private identity
+retained; and stable pinned TLS1.2/1.3 identity. Source assertions and the executed
+cohort were inspected independently; this is not an installed Mac refresh claim.
+Evidence: `security/code12-candidate1-independent.json` and
+`code12-candidate1-apksigner.txt`.
+
+The first full source10 Swift attempt hung in an existing test's Foundation
+waitUntilExit. Its retained process sample explicitly identifies
+CanonicalAliasAdmissionTests.swift:108 and NSConcreteTask.waitUntilExit. The test
+had already asserted the child was dead, crash-guard cleanup logged and the
+canonical lease drained. Replacing that unbounded Foundation wait with WNOHANG,
+EINTR handling, ECHILD acceptance and a finite two-second async deadline is
+accepted as a test-only harness correction; the substantive lifecycle assertions
+remain. Deferred signaling now checks captured PID/start identity; review also
+recommended the same check for the unchanged intentional crash signal. The
+initial Int32 NSError-code compile failure is retained, and corrected focused
+seven-test execution passed. The interrupted full run remains failed/aborted,
+not a product or full-suite pass. Final source10 full Swift, Android12 full36/
+large9, installed automatic C04 and matching final package/source archive remain
+open gates at this checkpoint.
+
+
+### Source10 committed full-gate binding and Android12 full result
+
+Independent review accepts the scoped verification binding for commit
+`0b4b3e3ab7a75ddca3abcbc83aaef00f93e86c88`. All128 final manifest files match
+current bytes and that committed revision. The completed full Swift attempt2
+records335 tests, four explicit live opt-in skips and zero failures in158.232s.
+All74 production/Package.swift files are unchanged from that full-run manifest.
+The sole later difference is the test-only captured-identity guard immediately
+before the intentional supervisor crash signal; its current test file matches
+the commit and the seven owning tests passed in0.101s. This proportionate
+follow-up is accepted. It is not a claim that all final test bytes ran in the335
+full gate. The earlier hung full attempt and the test compile failure remain
+retained failures.
+
+The Android12 raw full instrumentation log completed36/36 in285.923s with no
+failure status; all42 application source hashes still match current bytes and
+the same committed candidate. It uses the exact previously reviewed signed
+APK12 `bc17d7b1…84db2b`. Android large-layout9, final installed Mac10/APK12 C04
+Unicode/lifecycle behavior and final distribution/performance remain open at
+this checkpoint. Exact hashes and scopes:
+`security/source10-final-gates-independent.json`. Review used only local source,
+Git blobs and retained logs; it changed no product, device, GUI or runtime state.

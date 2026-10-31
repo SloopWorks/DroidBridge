@@ -20,7 +20,7 @@ The **scrcpy** backend starts the pinned upstream 5.0.1 client with `--new-displ
 
 The **native** backend pushes the matching scrcpy 5.0.1 server, obtains a random session ID and dynamic loopback ADB forward, and starts the server on Android. Separate video/control connections use scrcpy's version-specific protocol. Session/codec headers and bounded packet lengths are validated. Android MediaCodec emits H.264 Annex-B data; VideoToolbox decodes it, CoreImage creates CGImages, and an AppKit NSView renders those live frames. The native Swift process does not link FFmpeg.
 
-The fallback always adds pinned scrcpy's `--no-mouse-hover`. Buttonless motion caused an InputDispatcher crash on Android15/API35 and prevented clicks on Android17/API37 in actual tests; suppressing it restored input. Clicks, drags and scrolling remain enabled. Hover-only tooltips are unavailable. The native backend also does not forward hover events. Argument-policy tests cover API33–37; actual device evidence is limited to the tested emulator versions.
+The fallback always adds pinned scrcpy's `--no-mouse-hover`. Buttonless motion caused an InputDispatcher crash on Android 15/API 35 and prevented clicks on Android 17/API 37 in actual tests; suppressing it restored input. Clicks, drags and scrolling remain enabled. Hover-only tooltips are unavailable. The native backend also does not forward hover events. Argument-policy tests cover API 33–37; actual device evidence is limited to the tested emulator versions.
 
 The view uses the same aspect-fit transform for drawing and pointer coordinates. Letterbox clicks are rejected; an active drag can finish outside the image with coordinates clamped to the edge. Mouse, drag, scroll, keys, text, Back and Mac-to-Android clipboard paste become scrcpy control messages. Native resize is debounced, bounded, and sends scrcpy's virtual-display resize message. Initial session startup requires an actual decoded frame, rather than merely a process or empty window.
 
@@ -58,7 +58,7 @@ Session configuration pins `showSystemDecorations`; older JSON defaults to true.
 
 ## Physical phone display control
 
-Both backends enable pinned scrcpy virtual-display keep-active behavior and disable startup power-on. Every session uses the owned virtual display's hidden IME policy: `--display-ime-policy=hide` for the fallback and `display_ime_policy=hide` for the native server. This is a runtime invariant, independent of decorations or persisted session configuration. Android's software keyboard cannot be requested locally or redirected to the phone by old saved settings. Shared startup refuses Android versions before API33, or an unreadable API level, before staging or launching anything, because older Android either lacks the hide policy or lacks trusted displays in the pinned runtime. Mac key/text injection still targets the Android display directly. Activity signals target the virtual display every four seconds; no global keyboard, stay-awake or timeout setting changes. Per-device screen-off intent is an opt-in serial set in shared preferences. The launcher and independent wrappers apply it only to their running devices, with finite polling, backoff and a separate short-lived actuation task. Explicit Phone-menu Off/On controls also work without a running session. Pending failed On actions retry while their host remains open; a newer Off intent supersedes them.
+Both backends enable pinned scrcpy virtual-display keep-active behavior and disable startup power-on. Every session uses the owned virtual display's hidden IME policy: `--display-ime-policy=hide` for the fallback and `display_ime_policy=hide` for the native server. This is a runtime invariant, independent of decorations or persisted session configuration. Android's software keyboard cannot be requested locally or redirected to the phone by old saved settings. Shared startup refuses Android versions before API 33, or an unreadable API level, before staging or launching anything, because older Android either lacks the hide policy or lacks trusted displays in the pinned runtime. Mac key/text injection still targets the Android display directly. Activity signals target the virtual display every four seconds; no global keyboard, stay-awake or timeout setting changes. Per-device screen-off intent is an opt-in serial set in shared preferences. The launcher and independent wrappers apply it only to their running devices, with finite polling, backoff and a separate short-lived actuation task. Explicit Phone-menu Off/On controls also work without a running session. Pending failed On actions retry while their host remains open; a newer Off intent supersedes them.
 
 Core `PhoneDisplayPower` serializes actuation across processes with per-device filesystem locks, outside catalog/preference critical sections. Only authorized serials and physical display 0 are addressed. It detects advertised Android 15+ commands, handles nonzero read-only help exits, reads actual display state, and verifies effects. Android 17 uses power-reset and, if normal policy is asleep, the advertised display-scoped power wakeup command. Fresh intent checks before/after asynchronous boundaries compensate superseded effects in either direction. Closing any or all sessions never implicitly wakes the phone; explicit user intent persists. Lock/PIN and secure-content policy remain Android behavior.
 
@@ -71,7 +71,7 @@ Unit, actual emulator, AppKit event/rendering, lifecycle, recovery, supervisor, 
 ## Device-wide audio
 
 Both video backends keep their own audio disabled and share DeviceAudioRouter.
-For each active device, it starts a separate audio-only pinned scrcpy5.0.1 client
+For each active device, it starts a separate audio-only pinned scrcpy 5.0.1 client
 (raw PCM) with no video, input, window, clipboard or power-on. CoreAudio confirms
 an available output; a tracked client patch emits readiness only after successful
 SDL output open/resume. Mac uses output capture; Mac + Phone uses playback+dup;
@@ -88,7 +88,7 @@ Launcher and native-wrapper menus share atomic audio-preferences.json independen
 failure are independent of video sessions. See AUDIO_DESIGN.md and
 verification/audio/ for contracts, limits and executable evidence.
 
-## Android companion boundary (0.2 development candidate)
+## Android companion boundary (0.2)
 
 The companion extends discovery, explicit sharing and controls; scrcpy remains
 the video, input, display-power and audio implementation. No video or PCM crosses
@@ -125,7 +125,7 @@ transport aliases. Cross-process filesystem leases admit concurrent video/audio
 sessions on one selected alias and refuse another alias until cleanup drains.
 Supervisors retain ownership through GUI crashes and exact process/forward/JAR
 teardown. Session registry entries bind process start identity and generation.
-This protocol applies to updated hosts; close old0.1 hosts/audio and update
+This protocol applies to updated hosts; close old 0.1 hosts/audio and update
 wrappers before pairing or switching aliases. Old executables cannot acquire the
 new canonical leases. Companion revocation does not revoke ADB authorization or
 terminate an otherwise independent ADB capture.
@@ -181,3 +181,47 @@ keeps four. Their bounded recovery journals preserve validated current plist
 pins, live process/lease owners and unverified bytes rather than deleting an
 unknown generation. Exact source archives, patches, build recipes and provenance
 are prepared alongside release artifacts; see `docs/companion/ADB_RUNTIME.md`.
+
+### Catalog publication and command deadlines
+
+`CompanionCatalogSync` is one host-owned synchronizer shared by visible launcher
+and Companion catalog surfaces. It observes bounded local broker status once per
+second while a surface is visible; hidden surfaces and independent wrappers do
+not perform catalog HTTP. Broker status exposes an opaque per-trust change token
+produced by authenticated catalog events, reconnect/reset and actual export-map
+changes. The last accepted event ID deduplicates an immediately repeated hint;
+event IDs are not UI generations or a retained deduplication history. Status reads
+neither fetch a catalog nor advance the hint.
+
+The synchronizer retains a complete catalog generation, merges deltas atomically,
+falls back to bounded snapshots on stale/missing bases, and reuses unchanged icon
+hashes. One in-flight pass coalesces newer hints into one successor without
+resetting its retry budget. Device/trust/selection/task generations fence late
+publication. Visible catalog callers include expected trust; the broker checks
+that supplied origin before catalog/export-policy reads. Even legacy network
+reads without that field recheck current trust epoch and transport generation
+before HTTP, after HTTP and after lane release. Exact read retries re-evaluate
+those facts rather than returning cached data after Forget. Mutation receipts
+retain their canonical replay/conflict behavior.
+
+Catalog labels are bounded to 256 Unicode scalars without splitting surrogate
+pairs; optional activity metadata is omitted when it exceeds its UTF8 limit,
+never truncated into a different identity. JSON-null broadcast control metadata
+is distinct from a targeted event. Notifications still require the exact current
+trust recipient; nullable catalog hints cannot broaden notification disclosure.
+
+The pinned hello negotiates `clock_anchor_v1`: service epoch and elapsed uptime
+anchor command deadlines without assuming equal phone/Mac wall clocks. Samples
+have bounded age/RTT. Local queues use sleep-inclusive continuous ticks bound to
+host boot identity. New effects have a fixed 30-second admission budget. An
+owner's execution grant is delivered once, fenced by process start/generation;
+admitted work can complete truthfully later. An unresolved admission becomes
+unknown after 120 seconds, cannot be replayed, and cannot be revived by retry or
+clock/epoch reset. Selection policy commit is durable intent admission; wrapper
+materialization can remain explicitly pending. No receipt proves exactly-once
+execution of an uncertain external effect.
+
+Implementation, source/fixture proof, installed interoperability and public
+release acceptance are distinct. The current cohort is recorded under
+`verification/companion/`; unresolved OS/host/performance gates remain in
+`KNOWN_ISSUES.md` and are not waived by this as-built architecture.

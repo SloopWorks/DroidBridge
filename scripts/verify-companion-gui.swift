@@ -163,11 +163,15 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         let mainBroker = CompanionBrokerIPCClient(endpoint: listener.endpoint, nonce: "fixture-nonce")
         let mainAdapter = CompanionDesktopAdapter(launcher: mainOnly, broker: mainBroker)
         let oldDiscovery = mainOnly.appsLoadToken; mainOnly.loadingAppsSerial = "qa-companion-ui"
+        mainOnly.status.stringValue = "Stale ADB app count"
         try await mainAdapter.refreshStatus(); try await wait { mainOnly.applications.count == 1000 }
         try require(mainAdapter.windowController == nil && mainOnly.appsLoadToken != oldDiscovery && mainOnly.loadingAppsSerial == nil, "Main-only sync did not fence old ADB discovery")
+        try require(mainOnly.status.stringValue == "1000 apps ready. Double-click an app to open it.", "Complete companion catalog left stale ADB footer")
         let fullBeforeDelta = peer.count("catalog")
+        mainOnly.status.stringValue = "Stale pre-delta app count"
         peer.advanceCatalog(); try await adapter.refreshStatus(); try await mainAdapter.refreshStatus()
         try await wait { mainOnly.applications.contains { $0.name == "Updated Companion Search" } }
+        try require(mainOnly.status.stringValue == "1000 apps ready. Double-click an app to open it.", "Companion catalog delta left stale footer")
         search.stringValue = "updated companion"; controller.controlTextDidChange(Notification(name: NSControl.textDidChangeNotification, object: search))
         try await wait { table.numberOfRows == 1 }
         try require(peer.count("catalog") == fullBeforeDelta && peer.count("catalog_changes") == 2, "Visible launcher/companion delta fell back to full or did not propagate")

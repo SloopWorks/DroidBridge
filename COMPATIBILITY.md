@@ -5,12 +5,12 @@ The pinned transport is scrcpy **5.0.1** (client and server must match). The nat
 ## Verified environment
 
 - Apple Silicon macOS host, Swift/AppKit; exact host/build versions are in verification/environment/.
-- Dedicated AVD `DroidBridge_API35`, serial `emulator-5580`, Android 15 / API35 AOSP arm64-v8a image; configuration in `verification/android/avd-config.ini`.
-- Dedicated AVD `DroidBridge_API37`, serial `emulator-5582`, Android 17 / API37 arm64 image: actual native Settings video/resize/cleanup smoke and launcher-icon extraction passed. This is narrower coverage than the API35 full suite; see `verification/launcher-fix/`.
+- Dedicated AVD `DroidBridge_API35`, serial `emulator-5580`, Android 15 / API 35 AOSP arm64-v8a image; configuration in `verification/android/avd-config.ini`.
+- Dedicated AVD `DroidBridge_API37`, serial `emulator-5582`, Android 17/API 37 arm64 image: actual installed companion pairing, native sessions/input, wireless-debugging UI, sharing, notification actions and managed wrappers are recorded under `verification/companion/`. Coverage remains bound to each report's exact Mac/APK cohort; final candidate checks are separate.
 - Three concurrent scrcpy virtual displays: Settings (`com.android.settings`), WebView Shell browser (`org.chromium.webview_shell`), and DroidBridge Test (`dev.droidbridge.testapp`). Logs and MP4 streams under `verification/android` establish display creation and actual frames.
 - The pre-existing user emulator `emulator-5554` was never stopped or reset. An initial launcher check opened and closed Settings on a separate virtual display there; subsequent integration and QA use only the dedicated emulator. Operations always use an explicit serial.
 
-DroidBridge requires Android 13/API33 or later. Although Android 10 introduced virtual displays, Android 10/11 lack hidden-IME policy, while the pinned scrcpy runtime does not request trusted virtual displays on Android 12/12L. These versions are refused before session staging. An unreadable Android API level also fails closed. Feature detection inspects the actual installed CLI for `--new-display` and `--flex-display`, and Android API level. A successful capability query is a preflight signal; only a successful launch proves a given device/app combination.
+DroidBridge requires Android 13/API 33 or later. Although Android 10 introduced virtual displays, Android 10/11 lack hidden-IME policy, while the pinned scrcpy runtime does not request trusted virtual displays on Android 12/12L. These versions are refused before session staging. An unreadable Android API level also fails closed. Feature detection inspects the actual installed CLI for `--new-display` and `--flex-display`, and Android API level. A successful capability query is a preflight signal; only a successful launch proves a given device/app combination.
 
 ## Platform constraints
 
@@ -22,23 +22,23 @@ scrcpy 5.0.1 rejects `--window-width` and `--window-height` together with `--fle
 
 The optional system-decoration toggle uses scrcpy 5.0.1's virtual-display option on both backends. Actual Android 15 and 17 emulator tests cover showing/hiding navigation/taskbar surfaces, changing frames, input and resize. It does not change phone-wide navigation settings, remove app-drawn controls, force a different app layout or hide the IME. See `verification/desktop-mode/ANDROID_REVIEW.md`.
 
-The fallback disables buttonless mouse-hover forwarding on all supported Android versions. Actual Android15/API35 tests reproduced an InputDispatcher crash, and Android17/API37 tests reproduced ignored clicks; adding the pinned client's `--no-mouse-hover` restored input. Clicks, drags, scrolling and keyboard input remain enabled; hover-only tooltips are unavailable, as with native input. Argument-policy tests cover API33–37, rather than claiming actual input tests on every version. See `verification/hidden-ime/`, `verification/companion/installed-api37-tls-build6-visible/` and the matching upstream [scrcpy issue 5477](https://github.com/Genymobile/scrcpy/issues/5477). The flag's behavior is documented in [scrcpy5.0.1 mouse controls](https://github.com/Genymobile/scrcpy/blob/v5.0.1/doc/mouse.md).
+The fallback disables buttonless mouse-hover forwarding on all supported Android versions. Actual Android 15/API 35 tests reproduced an InputDispatcher crash, and Android 17/API 37 tests reproduced ignored clicks; no-hover diagnostic tests restored input. The shipped policy leaves clicks, drags, scrolling and keyboard input enabled, but final post-keyboard OS-pointer automation remains unverified as detailed in KNOWN_ISSUES.md; hover-only tooltips are unavailable, as with native input. Argument-policy tests cover API 33–37, rather than claiming actual input tests on every version. See `verification/hidden-ime/`, `verification/companion/installed-api37-tls-build6-visible/` and the matching upstream [scrcpy issue 5477](https://github.com/Genymobile/scrcpy/issues/5477). The flag's behavior is documented in [scrcpy 5.0.1 mouse controls](https://github.com/Genymobile/scrcpy/blob/v5.0.1/doc/mouse.md).
 
 ## Physical Pixel 10 Pro
 
-The owner reports DroidBridge working on Pixel 10 Pro and ChatGPT working from the main launcher, with a missing-window issue in its standalone wrapper. The matching structured log proves native decoding, but not foreground window state. The 0.1.1 wrapper presentation fix requires the focused physical retest in `verification/launcher-fix/PIXEL_RETEST.md`; this release’s automated verification operates only dedicated emulators. A Pixel's encoder, display density, thermal limits, task policy and USB transport can differ from either emulator. Emulator evidence must not be presented as physical Pixel evidence. No change to the Pixel's desktop-mode or root settings is required.
+The owner reports DroidBridge working on Pixel 10 Pro. The earlier ChatGPT standalone-wrapper missing-window report led to the 0.1.1 presentation/lifecycle fixes and focused retest guide in `verification/launcher-fix/PIXEL_RETEST.md`. This does not establish ChatGPT capture/task compatibility for every Android build. Current companion physical acceptance remains pending; automated verification operates only dedicated emulators. A Pixel's encoder, display density, thermal limits, task policy and USB transport can differ from either emulator. Emulator evidence must not be presented as physical Pixel evidence. No change to the Pixel's desktop-mode or root settings is required.
 
 See `verification/REPORT.md` and independent QA evidence for the final backend-specific acceptance status.
 
 ## Phone screen off
 
-Physical screen controls require Android 15/API35 or newer and advertised shell display-power commands. Android 17 removes `power-on`; DroidBridge detects `power-reset` and display-scoped `cmd power wakeup --display-id 0` instead of assuming API level alone defines syntax. Stock Android15 help omits its functioning legacy power commands; only that observed API35 compatibility path uses the known legacy syntax, with strict command and actual state verification. Actual main display state must be verified. Both backends select hidden IME policy, avoiding a software keyboard inside Mac windows and the physical-display fallback that prevented Android17 typing with the panel off. Native and fallback virtual displays use scrcpy5.0.1 keep-active/no-power-on behavior without changing global stay-awake or timeout settings. Turning the main panel off is separate from locking the device; Android authentication, enterprise policy and capture restrictions still apply. Physical Pixel behavior remains an owner verification stage.
+Physical screen controls require Android 15/API 35 or newer and advertised shell display-power commands. Android 17 removes `power-on`; DroidBridge detects `power-reset` and display-scoped `cmd power wakeup --display-id 0` instead of assuming API level alone defines syntax. Stock Android 15 help omits its functioning legacy power commands; only that observed API 35 compatibility path uses the known legacy syntax, with strict command and actual state verification. Actual main display state must be verified. Both backends select hidden IME policy, avoiding a software keyboard inside Mac windows and the physical-display fallback that prevented Android 17 typing with the panel off. Native and fallback virtual displays use scrcpy 5.0.1 keep-active/no-power-on behavior without changing global stay-awake or timeout settings. Turning the main panel off is separate from locking the device; Android authentication, enterprise policy and capture restrictions still apply. Physical Pixel behavior remains an owner verification stage.
 
 
 ## Companion upgrade boundary
 
-The0.2 companion broker, dashboard and canonical USB/Wi-Fi capture leases apply
-to updated0.2 launcher/wrapper/audio hosts. Before installing or pairing, quit
+The 0.2 companion broker, dashboard and canonical USB/Wi-Fi capture leases apply
+to updated 0.2 launcher/wrapper/audio hosts. Before installing or pairing, quit
 older DroidBridge main apps and copied wrappers, then open the updated host and
 allow managed wrapper maintenance to finish. Running wrappers are preserved and
 wait for a later retry. Independently created manual wrappers need Create / Update
@@ -52,3 +52,40 @@ an old host is still running. The new cohort's two-alias/audio/crash fences are
 separately verified; they do not establish interoperability with an unmodified
 older executable. Android debugging authorization remains separate from
 companion trust and must be revoked separately when removing that access.
+
+## Companion compatibility and permissions
+
+The companion APK requires Android 13/API 33+. The packaged Mac runtime requires
+Apple Silicon/macOS 26; the source's macOS 13 deployment target does not certify
+older bundled libraries. Client/server streaming stays pinned to scrcpy 5.0.1.
+Companion protocol/capabilities are negotiated separately. Unsupported versions,
+missing capabilities, denied permissions and invalid TLS identity fail explicitly.
+
+USB/emulator and Android's authenticated wireless-debugging TLS both carry an
+exact-owned loopback forward to the phone service. Wireless requires its current
+pairing/debugging endpoints; ordinary LAN reachability alone is insufficient.
+Verified phone installation identity unifies transport aliases. Stop existing
+sessions before switching aliases; reconnection has a visible interruption.
+Emulator NAT-based TLS/UI tests do not establish real Wi-Fi coverage on a Pixel.
+
+QR/image/full-link enrollment requires the certificate pin, installation UUID,
+short-lived secret and expiry plus explicit phone approval. Camera permission is
+optional with import/manual alternatives. Notification access, Android foreground
+service notification and optional Mac banner authorization are separate from
+pairing. Clipboard handoff requires foreground explicit action on Android. Work
+profiles, enterprise controls or OEM service restrictions can further limit these
+features; no privilege/root bypass is provided.
+
+Same-signer APK updates preserve data; uninstall/clear-data/rekey creates a new
+phone identity requiring Forget and approved pairing. Ad-hoc Mac broker updates
+may lose access to legacy Keychain ACLs. The supported path is a bounded failure,
+local Forget, removal of the old phone Trusted Mac, and fresh pairing; export and
+profile intent are separate. Automatic cross-update credential continuity is not
+promised. Forget/Revoke stops companion access, not Android ADB authorization or
+already delivered files. Debugging access is revoked separately on the phone.
+
+Profiles set new stream ceilings 15/30/60 fps and background asset/status budgets.
+They do not change phone global power/network settings or retrofit existing
+sessions. Battery/thermal/network readings can be unknown or delayed; observed
+FPS is content/encoder/host dependent. Secure/DRM/incognito surfaces may be black;
+rooting the phone does not create a supported secure-capture mode in DroidBridge.

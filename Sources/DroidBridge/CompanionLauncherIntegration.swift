@@ -24,7 +24,7 @@ extension LauncherController {
             companionIconHashes[key] = app.iconSha256
         }
         applications = apps.filter { $0.launchable != false }.map { AndroidApplication(packageName: $0.packageName, name: $0.label) }
-        appsDeviceSerial = serial; appsError = nil; filterApps()
+        appsDeviceSerial = serial; appsError = nil; status.stringValue = "\(applications.count) apps ready. Double-click an app to open it."; filterApps()
     }
 
     /// The broker has already published accepted policy. This host only

@@ -122,3 +122,47 @@ runtime evidence; it is not an encoder PTS guarantee. Retain the original failed
 short-interval artifact and name the corrected measurement distinctly. This is a
 measurement-boundary correction justified by the executed code, not a higher
 configured ceiling or a retroactive claim that the original interval gate passed.
+
+## Final candidate-8 measurement plan
+
+Precommit **20 process launches per product connection cohort** and **20 per
+standalone AppKit variant** before observing the new results. The product harness
+uses `--samples-per-cohort 20`; its default remains five for compatibility and its
+original five-per-cohort ABBA ordering is unchanged. Do not pool candidate3 with
+candidate8, drop outliers, or stop/restart sampling because a partial result fails.
+Retain raw rows and extremes even when p95 is below the maximum.
+
+The product gate uses nearest-rank p95 (`ceil(0.95*n)`): at n20 this is the19th
+ordered observation, rather than the maximum as at n5. Both connected and
+disconnected preview p95 must stay at or below100ms. The first-video comparison
+requires **both** connected-minus-disconnected p95≤200ms and connected/divided-by-
+disconnected p95≤1.1. These are cohort-distribution contrasts under the interleaved
+control, not a claim that subtracting independent percentiles isolates a causal
+per-launch companion cost. The initial thresholds and measurement boundaries are
+unchanged. Independent AST-level checks validate the old n5 order, n20 allocation,
+nearest-rank example and exact boundary/AND cases without launching any application.
+Evidence: `verification/companion/core/startup-method-review.json`.
+
+Select Balanced before the run and confirm both cohorts use the30fps descriptor;
+the default configuration is also30fps if an optional status response has not yet
+arrived. Record actual connected/disconnected broker state after each transition,
+not just the requested cohort label. Between samples observe a bounded drain of
+the exact previous owned session/supervisor resources; a fixed one-second sleep
+alone does not establish cleanup. Preserve all unrelated state and resources.
+The root/macOS owners will complete those harness preconditions before the quiet
+run. No standalone or product GUI measurements have been performed by this review.
+
+Final harness safeguard review is accepted for execution. It validates actual
+broker connection/profile state before launch and after first video. It identifies
+only new logs with supervisor_started.parent equal to the exact spawned wrapper
+PID, waits for matching terminal logs without cleanup failure and the captured
+process start/command identities to disappear, and does not assume receipt files
+are deleted. Inspection failures still enter a nested finally that terminates and
+reaps the exact Popen child and closes its log. A SIGTERM timeout uses bounded
+SIGKILL/reap, finishes normal supervisor-drain inspection and records a failed
+sample rather than silently accepting forced termination. The observer PID must
+match the child. Six synthetic executions of the **reviewed cleanup AST** cover
+normal flow, process/identity inspection errors, timeout, cleanup failure and PID
+reuse; a separate wrong-observer-PID check rejects stale provenance. These tests
+start no processes or GUI windows. The source-hashed receipt above records them;
+they approve the method, not the still-unexecuted quiet performance gate.

@@ -9,7 +9,7 @@ Scope: C01–C15 in `ROADMAP.md`, `BOUNDARY_CONTRACT.md`,
 ## Acceptance status
 
 **Final end-to-end release acceptance remains pending.** The latest decision is
-in **Installed build6 / current-source review** below; preceding sections are
+in **QA9 source/component review** below; preceding sections are
 historical checkpoints, not a list of still-open bugs. This document preserves
 the first source/layout review and its remediation evidence, followed by the
 current frozen-candidate audit below. The phone and Mac implementation have
@@ -378,3 +378,93 @@ replacement and fallback input remediation. Final release acceptance still needs
 The complete C01–C15 ledger remains in scope. Successful actual build6 sharing,
 clipboard, in-app replies and profile behavior are accepted at their demonstrated
 boundaries; unresolved final-cohort/indexing/delivery gates remain explicit.
+
+## QA9 source/component review
+
+Read-only independent checkpoint against product revision `acb3d58`, the
+shipping AppKit captures/results in
+`verification/companion/macos-ui-catalog-and-denied-attempt3/`, and Android11
+candidate2's actual instrumentation. No GUI/device operation, build or product
+edit was performed by this reviewer. Installed Mac9 checks are still in progress;
+the component fixture explicitly records `installed_candidate9_acceptance:false`.
+
+### Accepted at the demonstrated boundary
+
+- The reviewer visually inspected the700-point Apps, Alerts and Connect captures.
+  Named phone/connection, search, reserved icon space, selected export choices,
+  readable queued-versus-wrapper explanation, app-name notification filters and
+  separate ADB/companion permission guidance remain usable. The catalog status
+  explains automatic updates while visible and exposes Refresh Catalog.
+- `CompanionCatalogSync` and its fixture results demonstrate one shared visible
+  consumer, bounded page/delta reads, partial first-load progress, retained prior
+  snapshot during updates, current-trust/ticket fencing, and three finite retry
+  attempts followed by an explicit Refresh Catalog action. Main-launcher-only
+  demand and delivery of a cached-token delta to both consumers passed; that
+  delta required zero full-catalog HTTP reads. This is component evidence, not
+  actual Android install/remove/rename acceptance.
+- The authorization-error fallback now checks that the OS state is actually
+  Denied before retaining explicit in-app notification sharing. Non-denial
+  errors remain errors. Cancellation, window close/reopen, replaced trust,
+  changed/invalid filters and superseded intent are rechecked after the extra
+  settings await; deferred callback fixture assertions passed. Native banners
+  remain unverified when the OS permission is Denied.
+- The Android11 candidate2 report and raw large-text instrumentation bind APK
+  SHA256 `6fa302dd74bd42d67a4bcc88a9970c8079af880a376263ca3ff42584ef809029`.
+  The actual nine-test320dp/200% run passed in48.715seconds, including zero
+  provider query/type/open before consent or after Cancel, URI/oversize direct
+  clipboard rejection, bounded normal paste, and a real30,179ms uncertain
+  receipt with zero automatic successor requests. This preserves the scoped
+  UX17–UX19 remediation; it is not a new independent device execution by this
+  reviewer. The full34-test and focused3-test records are separately scoped in
+  `android/CODE11_NOTIFICATION_SCOPE_REPORT.md`.
+
+### UX21 — blocking catalog Unicode mismatch
+
+The current catalog boundary disagrees on the meaning of the app-label limit:
+
+| Location at `acb3d58` | Actual bound |
+| --- | --- |
+| `BOUNDARY_CONTRACT.md:115–116` |256 Unicode scalars |
+| Android `BridgeStore.kt:312` | `.take(256)`, therefore256 UTF16 code units |
+| Core `CompanionClient.swift:311` |256 UTF8 bytes for label;512 UTF8 bytes for activity name |
+| Mac `CompanionCatalogSync.swift:154` | The same UTF8 byte checks |
+
+A valid label containing86 CJK scalars occupies258 UTF8 bytes and remains
+unchanged by Android's producer, but both Mac consumers reject it. Core validates
+every item before returning a page/delta, so one such app prevents the entire
+reply from reaching the launcher. Also, taking256 UTF16 units from255 ASCII
+characters followed by one supplementary-plane scalar splits its surrogate
+pair. These are deterministic source/counterexample findings, not an actual
+installed long-label APK reproduction. Root accepted UX21 as a release blocker
+and owns remediation.
+
+Android also emits `activityInfo.name` without the512-byte consumer bound
+(`BridgeStore.kt:313`); the contract needs an explicit compatible activity-name
+rule. An executable activity identity must not be silently truncated. Adjacent
+session labels use Swift grapheme count (`CompanionBrokerRegistry.swift:93`),
+another unit to audit if the scalar rule applies to that field. The wrapper's
+separate whole-character filesystem byte cap is intentional and is not this
+wire-contract bug.
+
+Required acceptance: one agreed scalar/byte contract across producer and both
+consumers, well-formed scalar-safe producer truncation, retained hard JSON/page
+bounds, and regression evidence for CJK, combining marks and supplementary-plane
+characters at/over the boundary. Exercise a real non-ASCII catalog page/delta
+through the installed consumer, preserving correct app identity and readable
+names rather than making an oversized app poison all discovery.
+
+### Installed9 evidence available so far
+
+The reviewer read `actual-qr-image-pairing.json` and
+`actual-denied-apply-inapp.json` in
+`verification/companion/installed-api37-tls-build9-final/`. They record a real
+native file-picker QR import, matching comparison, explicit phone approval and
+pinned TLS; camera capture was not tested. An initial image captured before QR
+rendering failed and remains recorded. Actual Denied permission was read without
+changing OS settings; explicit mirroring/filter preference returned an applied
+receipt, and the UI states that items remain available in DroidBridge. This
+accepts those specific steps only. Final catalog lifecycle, current notification
+private/revoke/re-pair behavior, interruption/recovery, fallback input,
+Spotlight search/activation and public final artifact/version binding still need
+their current-cohort evidence. UX21 must be resolved before final catalog
+acceptance. No complete installed9 or full-program pass is asserted here.
