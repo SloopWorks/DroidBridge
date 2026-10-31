@@ -20,6 +20,8 @@ The packaging script builds/signs the Android release with the persistent local 
 
 The nested fallback Player owns a bounded, hash-inventoried copy of its transitive libraries in `Player.app/Contents/lib`. Packaging verifies the Player independently and every Mach-O signature before publishing the bundle; an outer `codesign --deep` result alone is insufficient. `scripts/verify-package.py <app> --signatures-only` repeats these checks without executing bundled code.
 
+Packaging preserves the caller's Python 3 interpreter ahead of Homebrew tools and checks its required standard-library imports before building. Use a working Python installation with `plistlib`/XML support; a broken Homebrew Python must not silently replace the caller's interpreter.
+
 For an update, quit the old DroidBridge main application before replacing it. Open the new main app once to repair existing managed app names automatically, even with the phone disconnected. Running wrappers wait until they quit; do not run old and new main app versions concurrently during migration. Progress and retry errors appear in the onboarding area and Onboarding Details.
 
 Install by dragging `DroidBridge.app` from the DMG to `/Applications` or `~/Applications`. Launch it, refresh devices, select an authorized Android device or emulator, choose a backend, and launch an app. USB authorization is an Android security prompt and must be accepted on the device.

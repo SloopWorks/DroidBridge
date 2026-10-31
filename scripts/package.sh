@@ -1,7 +1,13 @@
 #!/bin/bash
 set -euo pipefail
+# Capture the caller's Python before adding Homebrew tools. Some Homebrew
+# Python installations have incompatible extension-library dependencies.
+PACKAGE_PYTHON="$(command -v python3)"
+case "$PACKAGE_PYTHON" in /*) ;; *) PACKAGE_PYTHON="$PWD/$PACKAGE_PYTHON" ;; esac
+[ -f "$PACKAGE_PYTHON" ] && [ -x "$PACKAGE_PYTHON" ] || { echo "A working caller python3 is required" >&2; exit 1; }
+"$PACKAGE_PYTHON" -c 'import argparse, hashlib, json, os, pathlib, plistlib, re, secrets, shutil, stat, subprocess, sys, zipfile, zlib, xml.parsers.expat; print("Package Python:", sys.executable, sys.version.split()[0])'
+export PATH="$(dirname "$PACKAGE_PYTHON"):/opt/homebrew/bin:$PATH"
 cd "$(dirname "$0")/.."
-export PATH="/opt/homebrew/bin:$PATH"
 VERSION="${DROIDBRIDGE_VERSION:-0.2.0}"
 BUILD_NUMBER="${DROIDBRIDGE_BUILD_NUMBER:-1}"
 [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Invalid release version" >&2; exit 1; }
@@ -52,9 +58,9 @@ cp .build/release/DroidBridgeAvailability "$RUNTIME/bin/"
 cp .build/release/DroidBridgeCompanionBroker "$RUNTIME/bin/"
 mkdir -p "$APP/Contents/Resources/Companion"
 cp "$COMPANION_APK" "$APP/Contents/Resources/Companion/DroidBridgeCompanion.apk"
-python3 scripts/collect-companion-notices.py "$COMPANION_APK" "$APP/Contents/Resources/licenses/android-companion"
+"$PACKAGE_PYTHON" scripts/collect-companion-notices.py "$COMPANION_APK" "$APP/Contents/Resources/licenses/android-companion"
 shasum -a 256 "$COMPANION_APK" | awk '{print $1 "  DroidBridgeCompanion.apk"}' > "$APP/Contents/Resources/Companion/APK-SHA256.txt"
-python3 scripts/stage-adb-runtime.py --adb "$ADB" --destination "$RUNTIME/bin" --notices-destination "$APP/Contents/Resources/licenses/adb-source-runtime"
+"$PACKAGE_PYTHON" scripts/stage-adb-runtime.py --adb "$ADB" --destination "$RUNTIME/bin" --notices-destination "$APP/Contents/Resources/licenses/adb-source-runtime"
 cp "$SCRCPY" "$RUNTIME/bin/scrcpy"
 cp .build/audio-client/DroidBridgeAudioClient "$RUNTIME/bin/"
 cp "$SERVER" "$RUNTIME/share/scrcpy/scrcpy-server"
@@ -64,7 +70,7 @@ cp scripts/patches/audio-output-ready.patch "$APP/Contents/Resources/licenses/dr
 cp Vendor/scrcpy/LICENSE "$APP/Contents/Resources/licenses/droidbridge-audio-client/"
 printf 'Modified pinned scrcpy 5.0.1 source a60891aea193d92e7e5c3942700eca63f9d19a5f: output readiness, supervised audio identity, unique staged server path and non-rebinding forward lifecycle. Build: scripts/build-audio-client.sh in SloopWorks/DroidBridge.\n' > "$APP/Contents/Resources/licenses/droidbridge-audio-client/NOTICE.txt"
 cp .build/icon-helper/icon-helper.jar "$RUNTIME/share/droidbridge/icon-helper.jar"
-python3 scripts/bundle-dylibs.py "$RUNTIME"
+"$PACKAGE_PYTHON" scripts/bundle-dylibs.py "$RUNTIME"
 mv "$RUNTIME" "$APP/Contents/Resources/Runtime"
 if [ -d "$RUNTIME_STAGE/licenses" ]; then ditto "$RUNTIME_STAGE/licenses" "$APP/Contents/Resources/licenses"; fi
 rm -rf "$RUNTIME_STAGE"
@@ -74,7 +80,7 @@ if [ -f Resources/DroidBridge.icns ]; then cp Resources/DroidBridge.icns "$APP/C
 for file in README.md ARCHITECTURE.md BUILD.md TESTING.md COMPATIBILITY.md KNOWN_ISSUES.md PIXEL_VERIFICATION.md THIRD_PARTY.md WRAPPER_DESIGN.md APP_ONBOARDING_DESIGN.md LAUNCHER_UX_DESIGN.md AUDIO_DESIGN.md; do
     if [ -f "$file" ]; then cp "$file" "$APP/Contents/Resources/"; fi
 done
-if [ -f scripts/collect-licenses.py ]; then python3 scripts/collect-licenses.py "$RUNTIME"; fi
+if [ -f scripts/collect-licenses.py ]; then "$PACKAGE_PYTHON" scripts/collect-licenses.py "$RUNTIME"; fi
 if [ -d Resources/licenses ]; then cp -R Resources/licenses/. "$APP/Contents/Resources/licenses/"; fi
 cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict>
@@ -86,7 +92,7 @@ find "$RUNTIME" -type f \( -name '*.dylib' -o -name adb -o -name scrcpy -o -name
     fi
     sign_adhoc "$item"
 done
-python3 scripts/stage-adb-runtime.py --adb "$RUNTIME/bin/adb"
+"$PACKAGE_PYTHON" scripts/stage-adb-runtime.py --adb "$RUNTIME/bin/adb"
 "$RUNTIME/bin/adb" version > "$RUNTIME/versions.txt"
 "$RUNTIME/bin/scrcpy" --version >> "$RUNTIME/versions.txt"
 shasum -a 256 "$SERVER" >> "$RUNTIME/versions.txt"
@@ -95,17 +101,17 @@ mkdir -p "$PLAYER/Contents/MacOS" "$PLAYER/Contents/Resources"
 cp "$RUNTIME/bin/scrcpy" "$PLAYER/Contents/MacOS/scrcpy"
 # A nested signed application must own its libraries; an escaping symlink makes
 # standalone strict signature verification fail even when the outer app passes.
-python3 scripts/verify-package.py "$PLAYER" --stage-player-libraries-from "$RUNTIME" --output "$BUILD_STAGE/player-libraries.json"
+"$PACKAGE_PYTHON" scripts/verify-package.py "$PLAYER" --stage-player-libraries-from "$RUNTIME" --output "$BUILD_STAGE/player-libraries.json"
 cp "$APP/Contents/Resources/DroidBridge.icns" "$PLAYER/Contents/Resources/"
 cat > "$PLAYER/Contents/Info.plist" <<'PLAYERPLIST'
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>CFBundleIdentifier</key><string>app.droidbridge.player</string><key>CFBundleName</key><string>DroidBridge Player</string><key>CFBundleExecutable</key><string>scrcpy</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>5.0.1</string><key>CFBundleVersion</key><string>1</string><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/></dict></plist>
 PLAYERPLIST
 sign_adhoc "$PLAYER"
-python3 scripts/verify-package.py "$PLAYER" --player-only --output "$BUILD_STAGE/player-verification.json"
+"$PACKAGE_PYTHON" scripts/verify-package.py "$PLAYER" --player-only --output "$BUILD_STAGE/player-verification.json"
 mv "$APP" "$BUILD_STAGE/DroidBridge.app"
 APP="$BUILD_STAGE/DroidBridge.app"
 sign_adhoc "$APP"
-python3 scripts/verify-package.py "$APP" --signatures-only --output "$BUILD_STAGE/signature-verification.json"
+"$PACKAGE_PYTHON" scripts/verify-package.py "$APP" --signatures-only --output "$BUILD_STAGE/signature-verification.json"
 if [ -e "$PUBLISHED_APP" ]; then mv "$PUBLISHED_APP" ".build/package-backups/DroidBridge.previous.$(date +%s).app"; fi
 mv "$APP" "$PUBLISHED_APP"
 APP="$PUBLISHED_APP"
