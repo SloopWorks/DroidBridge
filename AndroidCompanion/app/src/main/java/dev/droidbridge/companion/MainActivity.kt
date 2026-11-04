@@ -21,6 +21,10 @@ import android.util.LruCache
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.concurrent.Executors
@@ -68,7 +72,16 @@ class MainActivity : Activity() {
     private var preparing = false
     private var adapter: AppsAdapter? = null
     private var outcomeList: LinearLayout? = null
+    private var sharingFeed: LinearLayout? = null
+    private var navigation: BottomNavigationView? = null
+    private val navigationIds = linkedMapOf<String, Int>()
+    private var navigationUpdating = false
+    private var updateFallbackNavigation: () -> Unit = {}
     private var pendingShare: Intent? = null
+    private var snippets = JSONArray()
+    private var presets = JSONArray()
+    private var libraryUnavailable = false
+    private var libraryRevision = ""
     private val preferences by lazy { getSharedPreferences("companion-ui", MODE_PRIVATE) }
     private val cache = object : LruCache<String, Bitmap>(4 * 1024 * 1024) { override fun sizeOf(key: String, value: Bitmap) = value.byteCount }
     private val loadingIcons = mutableSetOf<String>()
@@ -76,12 +89,21 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.statusBarColor = Color.rgb(247, 249, 252)
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        store = BridgeStore.get(this); tab = savedInstanceState?.getString("tab") ?: "Home"; query = savedInstanceState?.getString("query") ?: ""
+        window.statusBarColor = getColor(R.color.bridge_background)
+        window.navigationBarColor = getColor(R.color.bridge_background)
+        window.decorView.systemUiVisibility = if (resources.getBoolean(R.bool.bridge_light_bars)) View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR else 0
+        store = BridgeStore.get(this); tab = savedInstanceState?.getString("tab") ?: intent.getStringExtra("tab").takeIf { it in listOf("Home", "Apps", "Sharing", "Settings") } ?: "Home"; query = savedInstanceState?.getString("query") ?: ""
         shell(); showTab()
         if (intent.action == Intent.ACTION_SEND || intent.action == Intent.ACTION_SEND_MULTIPLE) pendingShare = intent
         work.execute { runCatching { store.refreshCatalog() }; handler.post { snapshot() } }
+    }
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent); setIntent(intent)
+        intent.getStringExtra("tab")?.takeIf { it in listOf("Home", "Apps", "Sharing", "Settings") }?.let { page ->
+            navigation?.let { nav -> nav.selectedItemId = navigationIds.getValue(page) } ?: run { tab = page; showTab() }
+        }
+        if (intent.action in listOf(Intent.ACTION_SEND, Intent.ACTION_SEND_MULTIPLE)) pendingShare = intent
+        snapshot()
     }
     override fun onResume() { super.onResume(); handler.post(refresh); presentation = "" }
     override fun onPause() { handler.removeCallbacks(refresh); super.onPause() }
@@ -89,9 +111,13 @@ class MainActivity : Activity() {
     override fun onSaveInstanceState(outState: Bundle) { outState.putString("tab", tab); outState.putString("query", query); super.onSaveInstanceState(outState) }
     private fun dp(v: Int) = (v * resources.displayMetrics.density).toInt()
     private fun text(value: String, size: Float = 16f, bold: Boolean = false) = TextView(this).apply {
-        text = value; textSize = size; setTextColor(Color.rgb(22, 35, 54)); setPadding(0, dp(4), 0, dp(8)); if (bold) setTypeface(typeface, android.graphics.Typeface.BOLD)
+        text = value; textSize = size; setTextColor(getColor(R.color.bridge_on_surface)); setPadding(0, dp(4), 0, dp(8)); if (bold) setTypeface(typeface, android.graphics.Typeface.BOLD)
     }
-    private fun button(value: String, action: () -> Unit) = Button(this).apply { text = value; isAllCaps = false; minHeight = dp(48); setPadding(dp(12), dp(8), dp(12), dp(8)); setOnClickListener { action() } }
+    private fun button(value: String, primary: Boolean = false, tonal: Boolean = false, action: () -> Unit) = MaterialButton(this, null, if (primary || tonal) com.google.android.material.R.attr.materialButtonStyle else com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
+        if (tonal) { backgroundTintList = android.content.res.ColorStateList.valueOf(getColor(R.color.bridge_primary_container)); setTextColor(getColor(R.color.bridge_on_primary_container)) }
+        text = value; isAllCaps = false; minHeight = dp(48); cornerRadius = dp(16); insetTop = dp(4); insetBottom = dp(4)
+        setPadding(dp(16), dp(8), dp(16), dp(8)); maxLines = 4; setOnClickListener { action() }
+    }
     /** Keep platform dialog actions readable at the user's actual font scale. */
     private fun AlertDialog.Builder.showAccessible(): AlertDialog = create().also { it.showAccessible() }
     private fun AlertDialog.showAccessible() {
@@ -126,23 +152,65 @@ class MainActivity : Activity() {
     }
     private fun title(value: String) = text(value, 22f, true).apply { isAccessibilityHeading = true }
     private fun card(name: String, description: String = "", build: LinearLayout.() -> Unit = {}) {
-        content.addView(LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(14), dp(12), dp(14), dp(12)); setBackgroundColor(Color.WHITE); addView(title(name)); if (description.isNotEmpty()) addView(text(description)); build() }, LinearLayout.LayoutParams(-1, -2).apply { bottomMargin = dp(12) })
+        val body = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL; setPadding(dp(18), dp(16), dp(18), dp(16))
+            addView(title(name)); if (description.isNotEmpty()) addView(text(description, 14f)); build()
+        }
+        content.addView(MaterialCardView(this).apply {
+            radius = dp(24).toFloat(); cardElevation = 0f; strokeWidth = dp(1); strokeColor = getColor(R.color.bridge_outline)
+            setCardBackgroundColor(getColor(R.color.bridge_surface)); addView(body)
+        }, LinearLayout.LayoutParams(-1, -2).apply { bottomMargin = dp(14) })
     }
     private fun shell() {
-        val outer = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setBackgroundColor(Color.rgb(247, 249, 252)) }
-        receiver = button("Choose a trusted Mac") { chooseReceiver() }.apply { maxLines = 2; ellipsize = android.text.TextUtils.TruncateAt.END }; outer.addView(receiver, LinearLayout.LayoutParams(-1, -2))
+        val outer = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setBackgroundColor(getColor(R.color.bridge_background)) }
+        outer.addView(text("DroidBridge", 28f, true).apply { setPadding(dp(4), dp(12), 0, dp(8)); isAccessibilityHeading = true })
+        receiver = button("Choose a trusted Mac", tonal = true) { chooseReceiver() }.apply { maxLines = 2; ellipsize = android.text.TextUtils.TruncateAt.END }; outer.addView(receiver, LinearLayout.LayoutParams(-1, -2))
         feedback = text("Start the connection service, then pair your Mac.", 14f).apply { maxLines = 3; ellipsize = android.text.TextUtils.TruncateAt.END; setOnClickListener { AlertDialog.Builder(this@MainActivity).setTitle("Action status").setMessage(text).setPositiveButton("Close", null).showAccessible() }; contentDescription = "Action status; tap to read full message"; setPadding(dp(12), dp(4), dp(12), dp(8)); accessibilityLiveRegion = View.ACCESSIBILITY_LIVE_REGION_POLITE }; outer.addView(feedback)
         host = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }; outer.addView(host, LinearLayout.LayoutParams(-1, 0, 1f))
-        val nav = LinearLayout(this)
-        fun updateNav() { for (i in 0 until nav.childCount) nav.getChildAt(i).apply { isSelected = tag == tab; (this as? Button)?.setTypeface(null, if (isSelected) android.graphics.Typeface.BOLD else android.graphics.Typeface.NORMAL); contentDescription = "$tag${if (isSelected) ", selected" else ""}" } }
-        listOf("Home", "Apps", "Sharing", "Settings").forEach { name -> nav.addView(button(name) { tab = name; showTab(); updateNav() }.apply { tag = name }, LinearLayout.LayoutParams(-2, -2)) }
-        // Complete labels remain reachable horizontally instead of clipping into four fixed columns.
-        outer.addView(HorizontalScrollView(this).apply { isFillViewport = true; addView(nav) }, LinearLayout.LayoutParams(-1, -2))
+        val pages = listOf("Home" to R.drawable.ic_nav_home, "Apps" to R.drawable.ic_nav_apps, "Sharing" to R.drawable.ic_nav_sharing, "Settings" to R.drawable.ic_nav_settings)
+        if (resources.configuration.fontScale < 1.4f) {
+            val nav = BottomNavigationView(this).apply {
+                labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
+                isItemHorizontalTranslationEnabled = false
+                setBackgroundColor(getColor(R.color.bridge_background))
+                val colors = android.content.res.ColorStateList(arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()), intArrayOf(getColor(R.color.bridge_primary), getColor(R.color.bridge_secondary)))
+                itemIconTintList = colors; itemTextColor = colors
+                itemActiveIndicatorColor = android.content.res.ColorStateList.valueOf(getColor(R.color.bridge_primary_container))
+                // The outer shell already accounts for system bars; avoid a second bottom inset.
+                setOnApplyWindowInsetsListener { view, insets -> view.setPadding(view.paddingLeft, view.paddingTop, view.paddingRight, 0); insets }
+                pages.forEach { (name, icon) ->
+                    val id = View.generateViewId(); navigationIds[name] = id
+                    menu.add(0, id, menu.size(), name).setIcon(icon).contentDescription = "$name${if (name == tab) ", selected" else ""}"
+                }
+                selectedItemId = navigationIds.getValue(tab)
+                setOnItemSelectedListener { item ->
+                    if (navigationUpdating) return@setOnItemSelectedListener true
+                    navigationUpdating = true
+                    tab = item.title.toString(); showTab()
+                    navigationUpdating = false
+                    for (i in 0 until menu.size()) menu.getItem(i).contentDescription = "${menu.getItem(i).title}${if (menu.getItem(i).itemId == item.itemId) ", selected" else ""}"
+                    true
+                }
+            }
+            navigation = nav; outer.addView(nav, LinearLayout.LayoutParams(-1, -2))
+        } else {
+            val nav = LinearLayout(this)
+            fun updateNav() { for (i in 0 until nav.childCount) nav.getChildAt(i).apply { isSelected = tag == tab; (this as? Button)?.setTypeface(null, if (isSelected) android.graphics.Typeface.BOLD else android.graphics.Typeface.NORMAL)
+                (this as? MaterialButton)?.let { button -> button.backgroundTintList = android.content.res.ColorStateList.valueOf(if (isSelected) getColor(R.color.bridge_primary_container) else Color.TRANSPARENT); button.strokeWidth = 0 }
+                contentDescription = "$tag${if (isSelected) ", selected" else ""}" } }
+            pages.forEach { (name, _) -> nav.addView(button(name, tonal = name == tab) { tab = name; showTab(); updateNav() }.apply { tag = name }, LinearLayout.LayoutParams(-2, -2)) }
+            outer.addView(HorizontalScrollView(this).apply { isFillViewport = true; addView(nav) }, LinearLayout.LayoutParams(-1, -2)); updateFallbackNavigation = { updateNav() }; updateNav()
+        }
         outer.setOnApplyWindowInsetsListener { view, insets -> val bars = insets.getInsets(android.view.WindowInsets.Type.systemBars() or android.view.WindowInsets.Type.ime()); view.setPadding(dp(12) + bars.left, bars.top, dp(12) + bars.right, bars.bottom); insets }
-        setContentView(outer); outer.requestApplyInsets(); updateNav()
+        setContentView(outer); outer.requestApplyInsets()
     }
     private fun showTab() {
-        host.removeAllViews(); adapter = null; scroll = null; outcomeList = null
+        updateFallbackNavigation()
+        navigation?.let { nav -> navigationIds[tab]?.takeIf { it != nav.selectedItemId && !navigationUpdating }?.let { id ->
+            navigationUpdating = true; nav.selectedItemId = id; navigationUpdating = false
+            for (i in 0 until nav.menu.size()) nav.menu.getItem(i).contentDescription = "${nav.menu.getItem(i).title}${if (nav.menu.getItem(i).itemId == id) ", selected" else ""}"
+        } }
+        host.removeAllViews(); adapter = null; scroll = null; outcomeList = null; sharingFeed = null
         if (tab == "Apps") { content = host; apps(); return }
         content = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
         scroll = ScrollView(this).apply { isFillViewport = true; addView(content) }; host.addView(scroll, LinearLayout.LayoutParams(-1, -1))
@@ -151,7 +219,7 @@ class MainActivity : Activity() {
     private fun updateVisible() {
         // Polls never replace editors, list/search focus or a scrolled accessibility tree.
         if (tab == "Apps") { adapter?.notifyDataSetChanged(); return }
-        if (currentFocus is EditText) { updateOutcomes(); return }
+        if (currentFocus is EditText) { if (tab == "Sharing") refreshSharingFeed() else updateOutcomes(); return }
         val position = scroll?.scrollY ?: 0
         showTab(); scroll?.post { scroll?.scrollTo(0, position) }
     }
@@ -171,7 +239,11 @@ class MainActivity : Activity() {
             val result = runCatching {
                 val revision = store.catalogRevisionLocal()
                 val changedCatalog = if (revision != catalogVersion) store.catalogLocal() else null
-                listOf(store.trusted(), store.peerStatus(), store.commandOutcomes(), store.transfers.listLocal(), changedCatalog, store.pendingPair(), store.receivedTexts(), store.status(), revision)
+                // Read the revision before rows: a concurrent save must trigger the next refresh,
+                // rather than tagging older rows with a successor revision.
+                val savedRevision = runCatching { store.libraryRevision() }.getOrDefault("unavailable")
+                val library = runCatching { store.snippets() to store.presets() }
+                listOf(store.trusted(), store.peerStatus(), store.commandOutcomes(), store.transfers.listLocal(), changedCatalog, store.pendingPair(), store.receivedTexts(), store.status(), revision, library.getOrNull()?.first ?: JSONArray(), library.getOrNull()?.second ?: JSONArray(), library.isFailure, savedRevision)
             }
             handler.post {
                 polling = false; if (!alive) return@post
@@ -181,18 +253,28 @@ class MainActivity : Activity() {
                     val terminalIds = (0 until outcomes.length()).map { outcomes.getJSONObject(it) }.filter { it.optString("status") in listOf("applied", "rejected", "expired") }.map { it.optString("request_id") }.toSet()
                     pendingRequests.entries.removeAll { it.value in terminalIds }
                     (v[4] as? JSONArray)?.let { apps -> catalog = (0 until apps.length()).map { apps.getJSONObject(it) } }
+                    snippets = v[9] as JSONArray; presets = v[10] as JSONArray; libraryUnavailable = v[11] as Boolean; libraryRevision = v[12] as String
                     catalogVersion = v[8] as String; receivedTexts = v[6] as JSONArray; health = v[7] as JSONObject
                     selected = peer.optString("trust_id").takeIf { it.isNotBlank() && it != "null" }
+                    if (feedback.text.toString() == "Start the connection service, then pair your Mac.") announce(when {
+                        !store.running && trusts.length() > 0 -> "Connection is off. Your paired Macs are saved."
+                        !store.running -> "Start the connection service, then pair your Mac."
+                        selected == null -> "Service is on. Pair a Mac to begin."
+                        peer.optBoolean("connected") -> "Ready for actions on ${name()}."
+                        else -> "Waiting for ${name()}. Check Connection setup if needed."
+                    })
                     receiver.text = if (selected == null) "Choose a trusted Mac" else "Using: ${name()} · ${if (peer.optBoolean("connected")) "Connected" else "Not connected"}"
                     val stablePeer = JSONObject(peer.toString()).apply { remove("last_seen_at"); remove("last_seen_elapsed") }
                     val publicTrust = trusts.keys().asSequence().map { it + trusts.getJSONObject(it).optString("name") + trusts.getJSONObject(it).optBoolean("notifications") }.toList()
                     val receivedIDs = (0 until receivedTexts.length()).map { receivedTexts.getJSONObject(it).optString("event_id") }
                     val stableHealth = JSONObject(health.toString()).apply { remove("observed_at") }
-                    val next = "${store.running}:${store.lastError}:$stablePeer:$outcomes:$transfers:$catalogVersion:$publicTrust:$receivedIDs:$stableHealth"
+                    val next = "${store.running}:${store.lastError}:$stablePeer:$outcomes:$transfers:$catalogVersion:$publicTrust:$receivedIDs:$stableHealth:$libraryRevision:$libraryUnavailable"
                     if (next != presentation) { presentation = next; updateVisible() }
                     (0 until outcomes.length()).map { outcomes.getJSONObject(it) }.lastOrNull { it.optString("trust_id") == selected && previousOutcomes[it.optString("request_id")] != it.optString("status") }?.let { changed ->
                         when (changed.optString("status")) {
-                            "applied" -> if (changed.optJSONObject("result")?.optBoolean("materialization_pending") == true)
+                            "applied" -> if (changed.optJSONObject("result")?.optString("phase") == "preset_partial")
+                                announce("Preset needs attention on ${name()}: ${changed.optJSONObject("result")?.optString("failed_step", "step unavailable")}. Check Recent actions before repeating.")
+                            else if (changed.optJSONObject("result")?.optBoolean("materialization_pending") == true)
                                 announce("Spotlight choice saved on ${name()}; its Mac app is pending. Use Retry Spotlight in Recent actions.")
                             else if (audioOutputUnconfirmed(changed)) announce("Audio preference saved on ${name()}; output unconfirmed. Check audio status or use Retry Mac audio.")
                             else announce("Completed on ${name()}: ${changed.optString("kind").replace('_', ' ')}")
@@ -214,9 +296,9 @@ class MainActivity : Activity() {
             .setPositiveButton("Trust Mac") { _, _ -> work.execute { val r = runCatching { store.approvePair(pair.getString("pairing_id")) }; handler.post { announce(if (r.isSuccess) "Mac approved. Waiting for pairing to finish." else "Pairing expired or failed. Start a new attempt."); snapshot() } } }
             .setNegativeButton("Deny") { _, _ -> store.denyPair(); announce("Pairing denied") }.setOnCancelListener { store.denyPair() }.showAccessible()
     }
-    private fun send(kind: String, payload: JSONObject, description: String) {
+    private fun send(kind: String, payload: JSONObject, description: String, recipient: String? = selected) {
         if (kind in listOf("clipboard_text", "share_text", "share_url") && !store.setting("clipboard_enabled")) { announce("Explicit text sharing is off. Enable it in Settings → Sharing permissions before sending."); return }
-        val target = selected
+        val target = recipient
         if (target == null || !store.running) { announce("Start the service, pair, and choose the receiving Mac first."); return }
         val key = "$target:$kind:$payload"
         pendingRequests[key]?.let { id ->
@@ -227,21 +309,30 @@ class MainActivity : Activity() {
         }
         if (pendingRequests.size >= 32) { announce("Too many unresolved actions. Check Mac outcomes and Recent actions before retrying."); return }
         pendingRequests[key] = "admitting"
-        val receiverName = name(); announce("Waiting for $receiverName · $description")
-        work.execute { val r = runCatching { require(store.selectedTrust() == target) { "Receiver changed; review again" }; store.phoneCommand(kind, payload) }
+        val receiverName = trusts.optJSONObject(target)?.optString("name", "Mac") ?: "Mac"; announce("Waiting for $receiverName · $description")
+        work.execute { val r = runCatching { require(store.trusted().has(target)) { "Mac is no longer trusted" }; store.phoneCommand(kind, payload, target) }
             handler.post { r.onSuccess { id -> pendingRequests[key] = id; announce("Queued for $receiverName · $description. Completion not confirmed yet."); snapshot() }.onFailure { pendingRequests.remove(key); announce("Action submission not confirmed. Check Recent actions and the Mac before retrying: ${it.message?.take(180) ?: "check the selected Mac"}") } } }
     }
-    private fun action(label: String, kind: String, payload: JSONObject, description: String = label) = button(label) { send(kind, payload, description) }.apply { isEnabled = selected != null && store.running }
+    private fun action(label: String, kind: String, payload: JSONObject, description: String = label) = button(label, primary = kind == "open_app") { send(kind, payload, description) }.apply { isEnabled = selected != null && store.running }
     private fun home() {
         val status = when { !store.running -> "Connection service off"; selected == null -> "Service on · Pair a Mac"; peer.optBoolean("connected") -> "Connected to ${name()}"; else -> "Waiting for ${name()}" }
         card(status, store.lastError ?: "Keep DroidBridge available to your trusted Mac. Android debugging authorization and companion pairing are separate.") {
-            addView(button(if (store.running) "Stop connection service" else "Start connection service") {
+            addView(button(if (store.running) "Stop connection service" else "Start connection service", primary = !store.running) {
                 if (store.running) AlertDialog.Builder(this@MainActivity).setTitle("Stop companion connection?").setMessage("Companion commands and transfers stop. Existing app video has its own connection.").setPositiveButton("Stop service") { _, _ -> stopService(Intent(this@MainActivity, BridgeService::class.java)); announce("Stopping service…"); handler.postDelayed({ snapshot() }, 500) }.setNegativeButton("Cancel", null).showAccessible()
                 else if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) AlertDialog.Builder(this@MainActivity).setTitle("Connection notification").setMessage("Android shows a notification while the connection service runs. This permission does not share your notifications.").setPositiveButton("Continue") { _, _ -> requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 100); startConnection() }.setNegativeButton("Cancel", null).showAccessible()
                 else startConnection()
             })
             addView(button("Connection setup") { setup() }); addView(button("Pair a new Mac") { pair() }); addView(button("Refresh status") { snapshot(); announce("Refreshing connection status…") })
         }
+        card("Quick actions", "Your selected Mac and saved favorites, one tap away.") {
+            addView(button("Open quick actions", primary = true) { QuickAccess.open(this@MainActivity) })
+            val favorites = preferences.getStringSet("favorites", emptySet()) ?: emptySet()
+            catalog.filter { it.optString("package_name") in favorites }.take(6).forEach { app ->
+                addView(action("Open ${app.optString("label")} on ${name()}", "open_app", JSONObject().put("package_name", app.getString("package_name"))))
+            }
+            if (favorites.isEmpty()) addView(text("Favorite apps in Apps to make them available here.", 14f))
+        }
+        desktopPresets()
         val sessions = peer.optJSONArray("sessions") ?: JSONArray()
         card("Mac sessions", if (!peer.optBoolean("connected")) "Last known state · ${peer.optString("last_seen_at", "No report received")}" else if (sessions.length() == 0) "No apps running on ${name()}" else "${sessions.length()} app windows on ${name()}") {
             for (i in 0 until sessions.length()) { val s = sessions.getJSONObject(i); val label = s.optString("label", s.optString("package_name")); addView(text("$label · ${s.optString("phase", "Unknown")}", bold = true)); addView(action("Stop $label", "stop_session", JSONObject().put("session_id", s.getString("session_id")))) }
@@ -262,7 +353,7 @@ class MainActivity : Activity() {
         store.startPairing(); val deadline = android.os.SystemClock.elapsedRealtime() + 120000
         val uri = store.pairingUri()
         val box = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(16), dp(12), dp(16), dp(12)) }
-        box.addView(text("On your Mac, open Phone → Companion → Pair Phone. Scan this QR, import its image, or paste the pairing link. Approve the same Mac name and comparison code here."))
+        box.addView(text("On your Mac, open DroidBridge → Devices → Pair Phone. Scan this QR, import its image, or paste the pairing link. Approve the same Mac name and comparison code here."))
         val matrix = com.google.zxing.qrcode.QRCodeWriter().encode(uri, com.google.zxing.BarcodeFormat.QR_CODE, 600, 600); val bitmap = Bitmap.createBitmap(600, 600, Bitmap.Config.ARGB_8888)
         for (y in 0 until 600) for (x in 0 until 600) bitmap.setPixel(x, y, if (matrix[x, y]) Color.BLACK else Color.WHITE)
         box.addView(ImageView(this).apply { setImageBitmap(bitmap); contentDescription = "Temporary pairing QR code"; adjustViewBounds = true }, LinearLayout.LayoutParams(-1, dp(240)))
@@ -291,12 +382,16 @@ class MainActivity : Activity() {
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val app = getItem(position); val pkg = app.getString("package_name"); val label = app.getString("label"); val exportTrust = selected
             return LinearLayout(this@MainActivity).apply {
-                orientation = LinearLayout.VERTICAL; setPadding(dp(10), dp(8), dp(10), dp(8)); setBackgroundColor(Color.WHITE)
+                orientation = LinearLayout.VERTICAL; setPadding(dp(10), dp(8), dp(10), dp(8)); setBackgroundColor(getColor(R.color.bridge_surface))
                 val row = LinearLayout(this@MainActivity).apply { gravity = android.view.Gravity.CENTER_VERTICAL }; val icon = ImageView(this@MainActivity).apply { setImageResource(android.R.drawable.sym_def_app_icon) }; row.addView(icon, LinearLayout.LayoutParams(dp(40), dp(40)).apply { marginEnd = dp(10) }); row.addView(text(label, 18f, true), LinearLayout.LayoutParams(0, -2, 1f)); addView(row); loadIcon(app.optString("icon_sha256"), icon)
                 if (catalog.count { it.optString("label") == label } > 1) addView(text(pkg, 12f))
                 addView(CheckBox(this@MainActivity).apply { text = "Include in Spotlight"; minHeight = dp(48); isEnabled = exportTrust != null; isChecked = app.optBoolean("export_to_mac"); setOnCheckedChangeListener { _, enabled -> work.execute { val r = runCatching { store.chooseExport(pkg, enabled, exportTrust ?: throw IllegalArgumentException("Choose a trusted Mac")) }; handler.post { announce(if (r.isSuccess) "Spotlight choice saved on phone and queued for this Mac. Availability is not confirmed yet." else "Spotlight update not confirmed. Check Recent actions and the Mac before retrying."); snapshot() } } } })
                 addView(CheckBox(this@MainActivity).apply { text = "Favorite"; minHeight = dp(48); isChecked = preferences.getStringSet("favorites", emptySet())?.contains(pkg) == true; setOnCheckedChangeListener { _, checked -> val set = (preferences.getStringSet("favorites", emptySet()) ?: emptySet()).toMutableSet(); if (checked) set.add(pkg) else set.remove(pkg); preferences.edit().putStringSet("favorites", set).apply(); notifyDataSetChanged() } })
                 addView(action("Open on ${name()}", "open_app", JSONObject().put("package_name", pkg), "Open $label"))
+                addView(button("Pin Open $label on Mac") {
+                    val trust = selected ?: return@button
+                    announce(if (QuickAccess.pinApp(this@MainActivity, trust, pkg, label)) "Review the home-screen shortcut request. It stays bound to ${name()}." else "This launcher cannot pin shortcuts. Use Apps or Quick actions.")
+                }.apply { isEnabled = selected != null })
             }
         }
     }
@@ -328,17 +423,53 @@ class MainActivity : Activity() {
                     }
                 }
             })
-            addView(button("Send to ${name()}") { val value = input.text.toString(); val url = value.startsWith("https://") || value.startsWith("http://"); val limit = if (url) 8192 else 65536; if (value.toByteArray().size !in 1..limit) input.error = "Enter 1–${limit / 1024} KiB; your draft is unchanged." else send(if (url) "share_url" else "share_text", JSONObject().put("text", value), "Send selected text") }.apply { isEnabled = selected != null && store.running })
+            addView(button("Send, copy or open on Mac…", primary = true) {
+                val value = input.text.toString()
+                if (value.toByteArray().size !in 1..65536) input.error = "Enter 1–64 KiB; your draft is unchanged."
+                else chooseShareReceiver { id, receiverName -> reviewText(value, id, receiverName) }
+            }.apply { isEnabled = trusts.length() > 0 && store.running })
+            addView(button("Save draft as snippet", tonal = true) { saveSnippet(input.text.toString()) })
         }
-        card("Files and photos", "From an Android app, choose Share → DroidBridge. Review the receiver first. Two files, 50 MiB each.") {
+        val feed = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
+        sharingFeed = feed; content.addView(feed)
+        refreshSharingFeed()
+    }
+    /** Refresh stateful results without replacing the user's focused draft editor. */
+    private fun refreshSharingFeed() {
+        val feed = sharingFeed ?: return
+        val container = content; feed.removeAllViews(); content = feed
+        sharingItems(); content = container
+    }
+    private fun sharingItems() {
+        snippetLibrary()
+        card("Files and photos", "Choose files here or share from another Android app. Review the receiver first. Two files per batch, 50 MiB each.") {
+            addView(button("Choose files or photos…", tonal = true) {
+                startActivityForResult(Intent(Intent.ACTION_OPEN_DOCUMENT).setType("*/*").addCategory(Intent.CATEGORY_OPENABLE).putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true), 204)
+            }.apply { isEnabled = !preparing && trusts.length() > 0 && store.running })
             if (preparing) { addView(text("Preparing in private phone storage…")); addView(ProgressBar(this@MainActivity)); addView(button("Cancel preparation") { preparation?.cancel(true); announce("Cancelling preparation…") }) }
-            for (i in 0 until transfers.length()) { val file = transfers.getJSONObject(i); val id = file.getString("transfer_id"); val label = file.getString("display_name"); val stagingState = file.optString("status") == "staging"; val size = if (stagingState) -1 else file.optLong("size", -1); val bytes = file.optLong(if (stagingState) "staged_bytes" else "accepted_bytes", 0)
+            val transferRows = (0 until transfers.length()).map { transfers.getJSONObject(it) }
+            for (batch in transferRows.groupBy { it.optString("batch_id").takeIf { id -> id.isNotEmpty() && id != "null" } ?: it.getString("transfer_id") }.values) {
+                if (batch.size > 1) {
+                    val completed = batch.count { it.optString("status") in listOf("downloaded", "received") }
+                    addView(text("File batch · $completed of ${batch.size} verified", 18f, true))
+                }
+                for (file in batch) { val id = file.getString("transfer_id"); val label = file.getString("display_name"); val stagingState = file.optString("status") == "staging"; val size = if (stagingState) -1 else file.optLong("size", -1); val bytes = file.optLong(if (stagingState) "staged_bytes" else "accepted_bytes", 0)
                 val ownerName = trusts.optJSONObject(file.optString("owner"))?.optString("name") ?: "previously selected Mac"
                 val stageName = when (file.optString("status")) { "staging" -> "Preparing on phone"; "ready" -> "Waiting for Mac download"; "receiving" -> "Receiving on phone"; "received" -> "Verified on phone"; "downloaded" -> "Verified on Mac"; "cancelled" -> "Cancelled"; "failed" -> "Failed"; else -> "Outcome not confirmed" }
                 addView(text("$label · $ownerName", bold = true)); addView(text("$stageName · ${formatBytes(bytes)}${if (size >= 0) " / ${formatBytes(size)}" else " · size unknown"}", 14f))
                 if (size > 0 && file.optString("status") in listOf("ready", "receiving", "staging")) addView(ProgressBar(this@MainActivity, null, android.R.attr.progressBarStyleHorizontal).apply { max = 1000; progress = (bytes * 1000 / size).toInt(); contentDescription = "$label transfer progress" })
-                if (file.optString("direction") == "mac_to_phone" && file.optBoolean("committed")) addView(button("Save $label…") { savingTransfer = id; startActivityForResult(Intent(Intent.ACTION_CREATE_DOCUMENT).setType(file.optString("mime_type", "application/octet-stream")).addCategory(Intent.CATEGORY_OPENABLE).putExtra(Intent.EXTRA_TITLE, label), 202) })
+                if (file.optString("direction") == "mac_to_phone" && file.optBoolean("committed") && file.optString("status") == "received") {
+                    if (file.optString("mime_type").startsWith("image/")) {
+                        val preview = ImageView(this@MainActivity).apply { adjustViewBounds = true; scaleType = ImageView.ScaleType.FIT_CENTER; contentDescription = "Preview of $label" }
+                        addView(preview, LinearLayout.LayoutParams(-1, dp(144))); loadTransferThumbnail(id, preview)
+                    }
+                    addView(button("Save $label…") { savingTransfer = id; startActivityForResult(Intent(Intent.ACTION_CREATE_DOCUMENT).setType(file.optString("mime_type", "application/octet-stream")).addCategory(Intent.CATEGORY_OPENABLE).putExtra(Intent.EXTRA_TITLE, label), 202) })
+                    addView(button("Share $label onward…") { shareReceivedFile(id, file.optString("mime_type", "application/octet-stream")) })
+                }
+                if (file.optString("status") in listOf("failed", "cancelled")) addView(text("To retry, share the original file again. Review its receiver before resending.", 14f))
+                else if (file.optString("status") in listOf("ready", "receiving")) addView(text("Keep the connection service running. Reconnect the same trusted Mac to continue this active transfer.", 14f))
                 if (file.optBoolean("can_cancel")) addView(button(if (file.optBoolean("committed") && file.optString("direction") == "mac_to_phone") "Remove inbox copy" else "Cancel transfer") { work.execute { val r = runCatching { store.transfers.cancelLocal(id) }; handler.post { announce(if (r.isSuccess) "Owned transfer copy removed. Externally saved files are unchanged." else "Could not cancel transfer. Check its latest state."); snapshot() } } })
+                }
             }
         }
         for (i in 0 until receivedTexts.length()) {
@@ -346,11 +477,131 @@ class MainActivity : Activity() {
             val sender = trusts.optJSONObject(item.optString("trust_id"))?.optString("name") ?: "trusted Mac"
             card("Received from $sender", receivedValue.take(2048) + if (receivedValue.length > 2048) "\nPreview shortened; Copy includes all text." else "") {
                 addView(text("${item.optString("created_at")} · Removed after 30 minutes", 12f))
+                addView(button("Save as snippet") { saveSnippet(receivedValue, item.optString("trust_id")) })
                 addView(button("Copy received text") { getSystemService(ClipboardManager::class.java).setPrimaryClip(ClipData.newPlainText("From $sender", receivedValue)); announce("Received text copied on this phone") })
                 addView(button("Remove received text") { work.execute { store.clearReceivedText(item.getString("event_id")); handler.post { announce("Received text removed from DroidBridge. Your clipboard is unchanged."); snapshot() } } })
             }
         }
         operations()
+    }
+    private fun loadTransferThumbnail(id: String, view: ImageView) {
+        val key = "transfer:$id"
+        cache.get(key)?.let { view.setImageBitmap(it); return }
+        if (loadingIcons.size >= 16 || !loadingIcons.add(key)) return
+        imageWork.execute {
+            val image = store.transfers.thumbnail(id)
+            handler.post { loadingIcons.remove(key); if (alive && image != null) { cache.put(key, image); view.setImageBitmap(image) } }
+        }
+    }
+    private fun shareReceivedFile(id: String, mimeType: String) {
+        work.execute {
+            val result = runCatching { store.transfers.shareUri(id) }
+            handler.post { result.onSuccess { uri ->
+                runCatching { startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).setType(mimeType)
+                    .putExtra(Intent.EXTRA_STREAM, uri).apply { clipData = ClipData.newUri(contentResolver, "DroidBridge received file", uri) }
+                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION), "Share received file")) }
+                    .onFailure { announce("No app can receive this file. Save it to a chosen location instead.") }
+            }.onFailure { announce("This inbox file is no longer available. Nothing was shared.") } }
+        }
+    }
+    private fun saveSnippet(value: String, sourceTrust: String? = null) {
+        if (value.toByteArray().size !in 1..65536) { announce("A snippet needs 1–64 KiB of text."); return }
+        work.execute { val result = runCatching { store.saveSnippet(value, sourceTrust) }; handler.post {
+            announce(if (result.isSuccess) "Snippet saved privately on this phone. It stays until you remove it." else "Could not save snippet: ${result.exceptionOrNull()?.message?.take(120)}")
+            snapshot()
+        } }
+    }
+    private fun snippetLibrary() {
+        if (libraryUnavailable) { card("Clipboard & snippets unavailable", "The saved library could not be read. Existing encrypted bytes are retained; connection controls remain available."); return }
+        card("Clipboard & snippets", "${snippets.length()} saved · Only text you explicitly save. Search, pin, copy or send to a named Mac.") {
+            addView(button("Browse and search snippets") { browseSnippets() }.apply { isEnabled = snippets.length() > 0 })
+            if (snippets.length() == 0) addView(text("Save your draft or received text to keep it here.", 14f))
+            (0 until snippets.length()).map { snippets.getJSONObject(it) }.filter { it.optBoolean("pinned") }.take(3).forEach { item ->
+                addView(button("Pinned · ${item.optString("text").take(60)}") { snippetActions(item) })
+            }
+        }
+    }
+    private fun browseSnippets() {
+        val panel = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(20), dp(8), dp(20), dp(8)) }
+        val search = EditText(this).apply { hint = "Search saved snippets"; contentDescription = hint; setSingleLine() }
+        val results = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
+        fun render(query: String) {
+            results.removeAllViews()
+            val items = (0 until snippets.length()).map { snippets.getJSONObject(it) }.filter { it.optString("text").contains(query, true) }.sortedByDescending { it.optBoolean("pinned") }
+            if (items.isEmpty()) results.addView(text("No snippets match your search."))
+            items.forEach { item -> results.addView(button((if (item.optBoolean("pinned")) "Pinned · " else "") + item.optString("text").take(100)) { activeDialog?.dismiss(); snippetActions(item) }) }
+        }
+        panel.addView(search); panel.addView(ScrollView(this).apply { addView(results) }, LinearLayout.LayoutParams(-1, dp(320)))
+        search.addTextChangedListener(watcher { render(it) }); render("")
+        AlertDialog.Builder(this).setTitle("Saved snippets").setView(panel).setNegativeButton("Close", null).showAccessible()
+    }
+    private fun snippetActions(item: JSONObject) {
+        val value = item.getString("text"); val id = item.getString("id")
+        val options = arrayOf("Copy on phone", "Send to Mac…", if (item.optBoolean("pinned")) "Unpin snippet" else "Pin snippet", "Delete snippet")
+        AlertDialog.Builder(this).setTitle(value.take(80)).setItems(options) { _, index -> when (index) {
+            0 -> { getSystemService(ClipboardManager::class.java).setPrimaryClip(ClipData.newPlainText("DroidBridge snippet", value)); announce("Snippet copied on this phone") }
+            1 -> chooseShareReceiver { trust, name -> reviewText(value, trust, name) }
+            2 -> work.execute { store.pinSnippet(id, !item.optBoolean("pinned")); handler.post { announce("Snippet pin updated"); snapshot() } }
+            3 -> AlertDialog.Builder(this).setTitle("Delete saved snippet?").setMessage("The phone's saved copy will be removed. Your clipboard and copies already sent are unchanged.")
+                .setNegativeButton("Cancel", null).setPositiveButton("Delete") { _, _ -> work.execute { store.deleteSnippet(id); handler.post { announce("Snippet deleted"); snapshot() } } }.showAccessible()
+        } }.setNegativeButton("Close", null).showAccessible()
+    }
+    private fun desktopPresets() {
+        if (libraryUnavailable) { card("Desktop presets unavailable", "The saved library could not be read. No preset was run. Existing encrypted bytes are retained."); return }
+        card("Desktop presets", "Save apps, audio, performance and phone display choices for a named Mac. Review before each run.") {
+            addView(button("Create desktop preset", tonal = true) { editPreset() }.apply { isEnabled = selected != null })
+            for (i in 0 until presets.length()) {
+                val preset = presets.getJSONObject(i); val trust = preset.getString("trust_id")
+                val receiverName = trusts.optJSONObject(trust)?.optString("name", "Mac") ?: "Forgotten Mac"
+                addView(text("${preset.optString("name")} · $receiverName", bold = true))
+                addView(button("Run ${preset.optString("name")}", primary = true) {
+                    AlertDialog.Builder(this@MainActivity).setTitle("Run on $receiverName?")
+                        .setMessage("${preset.optString("name")}\n${preset.optJSONArray("packages")?.length() ?: 0} apps · ${preset.optString("audio_route")} audio · ${preset.optString("profile")}\nPhone display: ${if (preset.optBoolean("screen_off")) "off" else "unchanged"}\n\nResults are reported in Recent actions. A partial failure is never retried automatically.")
+                        .setNegativeButton("Cancel", null).setPositiveButton("Run preset") { _, _ ->
+                            val key = "preset:${preset.getString("id")}"
+                            if (pendingRequests.containsKey(key)) { announce("This preset is pending. Check its receipt before repeating."); return@setPositiveButton }
+                            pendingRequests[key] = "admitting"
+                            work.execute {
+                                val result = runCatching { store.runPreset(preset.getString("id")) }
+                                handler.post {
+                                    result.onSuccess { ids -> pendingRequests[key] = ids.optString(0, "unknown") }.onFailure { pendingRequests.remove(key) }
+                                    announce(if (result.isSuccess) "Preset queued for $receiverName. Check Recent actions for completion." else "Preset not submitted: ${result.exceptionOrNull()?.message?.take(140)}"); snapshot()
+                                }
+                            }
+                        }.showAccessible()
+                }.apply { isEnabled = store.running && trusts.has(trust) && !pendingRequests.containsKey("preset:${preset.getString("id")}") })
+                addView(button("Delete ${preset.optString("name")}") { work.execute { store.deletePreset(preset.getString("id")); handler.post { announce("Preset removed"); snapshot() } } })
+            }
+        }
+    }
+    private fun editPreset() {
+        val trust = selected ?: return; val chosen = linkedSetOf<String>()
+        val apps = catalog.sortedBy { it.optString("label").lowercase() }
+        val selectedApps = BooleanArray(apps.size)
+        AlertDialog.Builder(this).setTitle("Choose up to 8 apps").setMultiChoiceItems(apps.map { it.optString("label") }.toTypedArray(), selectedApps) { dialog, which, checked ->
+            val pkg = apps[which].getString("package_name")
+            if (checked && chosen.size >= 8) { (dialog as AlertDialog).listView.setItemChecked(which, false); announce("A preset supports up to 8 apps.") }
+            else if (checked) chosen.add(pkg) else chosen.remove(pkg)
+        }.setNegativeButton("Cancel", null).setPositiveButton("Next") { _, _ ->
+            if (chosen.isEmpty()) { announce("Choose at least one app for a desktop preset."); return@setPositiveButton }
+            val panel = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(20), dp(8), dp(20), dp(8)) }
+            val name = EditText(this).apply { hint = "Preset name"; maxLines = 2; contentDescription = "Preset name" }; panel.addView(name)
+            panel.addView(text("For ${trusts.optJSONObject(trust)?.optString("name", "Mac")} · ${chosen.size} apps", 14f))
+            panel.addView(text("Audio destination", bold = true))
+            val audio = Spinner(this).apply { adapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_dropdown_item, arrayOf("Mac", "Phone", "Mac + Phone")); minimumHeight = dp(48) }; panel.addView(audio)
+            panel.addView(text("Performance for new windows", bold = true))
+            val profile = Spinner(this).apply { adapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_dropdown_item, arrayOf("Balanced", "Responsive", "Battery")); minimumHeight = dp(48) }; panel.addView(profile)
+            val display = CheckBox(this).apply { text = "Turn physical phone display off"; minHeight = dp(48) }; panel.addView(display)
+            val dialog = AlertDialog.Builder(this).setTitle("Save desktop preset").setView(ScrollView(this).apply { addView(panel) }).setNegativeButton("Cancel", null).setPositiveButton("Save", null).showAccessible()
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                val title = name.text.toString().trim()
+                if (title.isEmpty() || title.length > 64) { name.error = "Enter a name, up to 64 characters"; return@setOnClickListener }
+                val route = listOf("mac", "phone", "mac_and_phone")[audio.selectedItemPosition]; val quality = listOf("balanced", "responsive", "battery")[profile.selectedItemPosition]; val off = display.isChecked
+                work.execute { val result = runCatching { store.savePreset(title, chosen.toList(), trust, route, quality, off) }; handler.post {
+                    if (result.isSuccess) { dialog.dismiss(); announce("Preset saved. Run it explicitly from Home."); snapshot() } else name.error = result.exceptionOrNull()?.message?.take(160) ?: "Preset could not be saved"
+                } }
+            }
+        }.showAccessible()
     }
     private fun operations() {
         card("Recent actions", "Queued is not completed. Results below belong to the selected receiving Mac.") {
@@ -369,8 +620,20 @@ class MainActivity : Activity() {
         val selectedOutcomes = (0 until outcomes.length()).map { outcomes.getJSONObject(it) }.filter { it.optString("trust_id") == selected }
         if (selectedOutcomes.isEmpty()) list.addView(text("No recent commands", 14f))
         selectedOutcomes.forEach { o ->
-            val state = when (o.optString("status")) { "queued" -> "Waiting for Mac"; "accepted", "admitted" -> "Accepted · completing"; "applied" -> if (o.optJSONObject("result")?.optBoolean("materialization_pending") == true) "Selection saved · Mac app pending" else if (audioOutputUnconfirmed(o)) "Audio preference saved; output unconfirmed" else "Completed"; "rejected" -> "Rejected"; "expired" -> "Expired · check Mac outcome before retry"; else -> "Outcome not confirmed · check Mac before repeating" }
+            val state = when (o.optString("status")) { "queued" -> "Waiting for Mac"; "accepted", "admitted" -> "Accepted · completing"; "applied" -> if (o.optJSONObject("result")?.optString("phase") == "preset_partial") "Partly completed · needs attention" else if (o.optJSONObject("result")?.optBoolean("materialization_pending") == true) "Selection saved · Mac app pending" else if (audioOutputUnconfirmed(o)) "Audio preference saved; output unconfirmed" else "Completed"; "rejected" -> "Rejected"; "expired" -> "Expired · check Mac outcome before retry"; else -> "Outcome not confirmed · check Mac before repeating" }
             list.addView(text("${o.optString("kind").replace('_', ' ')} · $state${o.optString("error_code").takeIf { it.isNotBlank() }?.let { " · $it" } ?: ""}", 14f))
+            val result = o.optJSONObject("result")
+            if (o.optString("kind") == "run_preset" && result != null) {
+                val steps = if (result.has("completed_steps") && !result.isNull("completed_steps")) "${result.getInt("completed_steps")} steps completed" else "Completed step count unavailable"
+                list.addView(text("$steps${result.optString("failed_step").takeIf { it.isNotEmpty() }?.let { " · Failed: $it" } ?: ""}${result.optString("message").takeIf { it.isNotEmpty() }?.let { "\n$it" } ?: ""}", 14f))
+            }
+            val timing = result?.optJSONObject("timing") ?: o.optJSONObject("timing")
+            if (timing != null) {
+                val parts = listOf("acknowledged_ms" to "Accepted", "completed_ms" to "Completed").mapNotNull { (key, label) ->
+                    if (timing.has(key) && !timing.isNull(key)) "$label in ${timing.optLong(key)} ms" else null
+                }
+                if (parts.isNotEmpty()) list.addView(text(parts.joinToString(" · "), 12f))
+            }
             if (o.optString("kind") == "set_export" && o.optString("status") == "applied" && o.optJSONObject("result")?.optBoolean("materialization_pending") == true && o.optJSONObject("result")?.optBoolean("retryable") == true) {
                 val originalId = o.getString("request_id"); val trust = o.getString("trust_id"); val key = "retry_spotlight:$originalId"
                 list.addView(button("Retry Spotlight on ${trusts.optJSONObject(trust)?.optString("name", "Mac") ?: "Mac"}") {
@@ -418,9 +681,13 @@ class MainActivity : Activity() {
                 getSystemService(ClipboardManager::class.java).setPrimaryClip(ClipData.newPlainText("DroidBridge ${metadata.version} for Mac", metadata.downloadUrl)); announce("Versioned installer link copied. Open it on your Apple Silicon Mac.")
             } }.apply { isEnabled = releaseMetadata != null })
             addView(text("Companion ${packageManager.getPackageInfo(packageName, 0).versionName} · Protocol 1. Update the named app on version mismatch; video remains independent.", 14f))
+            addView(button("Add connection tile") { QuickAccess.requestTile(this@MainActivity, false) { announce("Connection tile request finished. Review Quick Settings to see whether it was added.") } })
+            addView(button("Add actions tile") { QuickAccess.requestTile(this@MainActivity, true) { announce("Actions tile request finished. Review Quick Settings to see whether it was added.") } })
+            addView(button("Add home-screen widget") { announce(if (QuickAccess.pinWidget(this@MainActivity)) "Review the home-screen widget request" else "This launcher cannot pin widgets. Add DroidBridge from its widget picker.") })
             addView(button("Third-party licenses") { startActivity(Intent(this@MainActivity, ThirdPartyActivity::class.java)) })
         }
         card("Diagnostics", "Scoped versions, permissions, battery, thermal and connection facts. No files, clipboard, notifications, hardware IDs or credentials.") {
+            if (CompanionDiagnostics.available) addView(button("Open developer debug drawer") { CompanionDiagnostics.open(this@MainActivity) })
             addView(button("Show diagnostics") { work.execute { val report = store.status().toString(2); handler.post { AlertDialog.Builder(this@MainActivity).setTitle("Device diagnostics").setMessage(report).setPositiveButton("Close", null).showAccessible() } } })
             addView(button("Export redacted diagnostics…") { work.execute { val bytes = store.status().toString(2).toByteArray(); handler.post { if (bytes.size > 65536) announce("Diagnostic report exceeded its safe size limit") else { diagnosticExport = bytes; startActivityForResult(Intent(Intent.ACTION_CREATE_DOCUMENT).setType("application/json").addCategory(Intent.CATEGORY_OPENABLE).putExtra(Intent.EXTRA_TITLE, "DroidBridge-diagnostics.json"), 203) } } } })
         }
@@ -444,37 +711,65 @@ class MainActivity : Activity() {
     private fun formatBytes(n: Long) = when { n < 1024 -> "$n B"; n < 1048576 -> "${n / 1024} KiB"; else -> String.format(java.util.Locale.ROOT, "%.1f MiB", n / 1048576.0) }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode != RESULT_OK || data?.data == null) { if (requestCode == 202) savingTransfer = null; if (requestCode == 203) diagnosticExport = null; return }
-        val uri = data.data!!
+        if (resultCode != RESULT_OK || data == null) { if (requestCode == 202) savingTransfer = null; if (requestCode == 203) diagnosticExport = null; return }
+        if (requestCode == 204) {
+            val uris = data.clipData?.let { clip -> (0 until clip.itemCount).map { clip.getItemAt(it).uri } } ?: listOfNotNull(data.data)
+            if (uris.isEmpty() || uris.size > 2 || uris.any { it.scheme != "content" }) { announce("Select one or two content files, 50 MiB each. Nothing was sent."); return }
+            chooseShareReceiver { recipient, receiverName -> showFileReview(uris, recipient, receiverName, "${uris.size} selected files. File names and sizes are checked after you approve.") }
+            return
+        }
+        val uri = data.data ?: return
         if (requestCode == 202) { val id = savingTransfer ?: return; savingTransfer = null; work.execute { val r = runCatching { store.transfers.exportReceived(id, uri) }; handler.post { announce(if (r.isSuccess) "File saved to selected destination" else "Unable to save; inbox copy retained") } } }
         if (requestCode == 203) { val bytes = diagnosticExport ?: return; diagnosticExport = null; work.execute { val r = runCatching { contentResolver.openOutputStream(uri)!!.use { it.write(bytes) } }; handler.post { announce(if (r.isSuccess) "Redacted diagnostics exported" else "Could not save diagnostics") } } }
     }
+    private fun chooseShareReceiver(action: (String, String) -> Unit) {
+        val ids = trusts.keys().asSequence().toList()
+        if (ids.isEmpty()) { announce("Pair a trusted Mac on Home before sharing. Your draft is unchanged."); return }
+        val labels = ids.map { id ->
+            val n = trusts.getJSONObject(id).optString("name", "Mac")
+            n + if (ids.count { trusts.getJSONObject(it).optString("name") == n } > 1) " · ${id.take(6)}" else ""
+        }.toTypedArray()
+        AlertDialog.Builder(this).setTitle("Send to which Mac?").setItems(labels) { _, i -> action(ids[i], labels[i]) }
+            .setNegativeButton("Cancel", null).showAccessible()
+    }
     private fun reviewShare(intent: Intent) {
-        val recipient = selected ?: run { announce("Choose a trusted Mac, then share again from the sending app."); return }
-        val receiverName = name()
         val value = intent.getCharSequenceExtra(Intent.EXTRA_TEXT)?.toString()
         val uris = if (intent.action == Intent.ACTION_SEND_MULTIPLE) intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM, Uri::class.java) ?: arrayListOf() else arrayListOf<Uri>().apply { intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)?.let { add(it) } }
         if (uris.any { it.scheme != "content" } || uris.size > 2) { announce("Share up to two Android content files, 50 MiB each. Nothing was sent."); return }
-        if (uris.isNotEmpty()) {
-            // Never call an external provider before the user approves this named receiver.
-            val summary = "${uris.size} selected ${if (uris.size == 1) "file" else "files"}\n" +
-                uris.indices.joinToString("\n") { "File ${it + 1}" } +
-                "\nFile names and sizes are checked after you approve."
-            showFileReview(uris, recipient, receiverName, summary)
-        } else if (value != null) {
-            if (value.toByteArray().size !in 1..65536) { announce("Text exceeds the 64 KiB limit. Nothing was sent."); return }
-            AlertDialog.Builder(this).setTitle("Send text to $receiverName?").setMessage(value.take(2048)).setNegativeButton("Cancel", null)
-                .setPositiveButton("Send text") { _, _ -> if (selected == recipient) send("share_text", JSONObject().put("text", value), "Send selected text") else announce("Receiver changed. Review the share again.") }.showAccessible()
-        } else announce("Share contained no supported text or files")
+        if (uris.isEmpty() && value == null) { announce("Share contained no supported text or files"); return }
+        if (uris.isEmpty() && value!!.toByteArray().size !in 1..65536) { announce("Text exceeds the 64 KiB limit. Nothing was sent."); return }
+        chooseShareReceiver { recipient, receiverName ->
+            if (uris.isNotEmpty()) {
+                // Provider metadata is untrusted and is read only after named-recipient approval.
+                val summary = "${uris.size} selected ${if (uris.size == 1) "file" else "files"}\n" +
+                    uris.indices.joinToString("\n") { "File ${it + 1}" } +
+                    "\nFile names and sizes are checked after you approve."
+                showFileReview(uris, recipient, receiverName, summary)
+            } else reviewText(value!!, recipient, receiverName)
+        }
+    }
+    private fun reviewText(value: String, recipient: String, receiverName: String) {
+        val uri = runCatching { Uri.parse(value.trim()) }.getOrNull()
+        val isUrl = uri?.scheme?.lowercase() in listOf("http", "https") && !uri?.host.isNullOrBlank() && value.toByteArray().size <= 8192
+        val choices = if (isUrl) arrayOf("Send to inbox", "Copy on Mac", "Open link on Mac") else arrayOf("Send to inbox", "Copy on Mac")
+        AlertDialog.Builder(this).setTitle("Share with $receiverName").setItems(choices) { _, i ->
+            val action = listOf("send", "copy", "open")[i]
+            AlertDialog.Builder(this).setTitle("${choices[i]} · $receiverName?")
+                .setMessage(value.take(2048) + if (value.length > 2048) "\nPreview shortened; all text will be sent." else "")
+                .setNegativeButton("Cancel", null).setPositiveButton(if (i == 2) "Open link" else "Send") { _, _ ->
+                    send(if (isUrl) "share_url" else "share_text", JSONObject().put("text", value).put("action", action), choices[i], recipient)
+                }.showAccessible()
+        }.setNegativeButton("Cancel", null).showAccessible()
     }
     private fun showFileReview(uris: List<Uri>, recipient: String, receiverName: String, summary: String) {
         AlertDialog.Builder(this).setTitle("Send to $receiverName?")
             .setMessage("$summary\n\nTwo files, 50 MiB each. Files are staged privately, then downloaded and verified by this named Mac. Nothing opens automatically.")
             .setNegativeButton("Cancel", null).setPositiveButton("Send files") { _, _ ->
                 preparing = true; tab = "Sharing"; showTab(); announce("Preparing files for $receiverName…")
+                val batchId = java.util.UUID.randomUUID().toString()
                 preparation = fileWork.submit {
                     val ids = mutableListOf<String>()
-                    val result = runCatching { for (uri in uris) { require(!Thread.currentThread().isInterrupted); ids.add(store.transfers.stage(uri, recipient).getString("transfer_id")) } }
+                    val result = runCatching { for (uri in uris) { require(!Thread.currentThread().isInterrupted); ids.add(store.transfers.stage(uri, recipient, batchId = batchId).getString("transfer_id")) } }
                     if (result.isFailure) ids.forEach { runCatching { store.transfers.cancelLocal(it) } }
                     handler.post {
                         if (!alive) return@post

@@ -75,11 +75,17 @@ struct CompanionDesktopPendingPairing: Equatable {
     private var started = false
     private let generation: Double = 1
     private var publishedDeviceIDs = Set<String>()
+    private var commandWakeup: NSObjectProtocol?
+    private var commandPollInFlight = false
+    private var lastCommandPollMS = -Double.infinity
 
     init(launcher: LauncherController, broker: CompanionBrokerIPCClient = CompanionBrokerIPCClient()) { self.launcher = launcher; self.broker = broker }
 
     func start(installService: Bool = true) {
         guard !started else { return }; started = true
+        commandWakeup = DistributedNotificationCenter.default().addObserver(forName: CompanionCommandWakeup.name, object: String(ProcessInfo.processInfo.processIdentifier), queue: .main) { [weak self] _ in
+            Task { @MainActor [weak self] in try? await self?.pollCommands() }
+        }
         lifecycle = Task { [weak self] in
             guard let self, let launcher = self.launcher else { return }
             if installService, !launcher.isWrapper {
@@ -147,6 +153,7 @@ struct CompanionDesktopPendingPairing: Equatable {
         else { statusMessage = "No paired companion connected. Existing Android app windows work independently." }
         launcher?.pollAudioControls()
         onChange?()
+        if windowController == nil {launcher?.updateLauncherPresentation()}
         catalogVisibilityChanged()
     }
     func device(for serial: String) -> CompanionDesktopDevice? { devices.first { $0.aliases.contains(serial) } }
@@ -154,7 +161,7 @@ struct CompanionDesktopPendingPairing: Equatable {
     private var catalogDemands: [CompanionCatalogSync.Demand] {
         guard let launcher, !launcher.isWrapper, !stopped else { return [] }
         var result: [CompanionCatalogSync.Demand] = []
-        if launcher.window?.isVisible == true, launcher.window?.isMiniaturized != true, let serial = launcher.selectedDevice?.serial, launcher.readySerials.contains(serial), let phone = device(for: serial) {
+        if launcher.window?.isVisible == true, launcher.window?.isMiniaturized != true, launcher.launcherUI?.currentSection == .apps, let serial = launcher.selectedDevice?.serial, launcher.readySerials.contains(serial), let phone = device(for: serial) {
             result.append(.init(phone: phone, serial: serial, consumer: "launcher"))
         }
         if let id = windowController?.catalogDeviceID, let phone = devices.first(where: { $0.id == id }), let serial = (launcher.selectedDevice?.serial).flatMap({ phone.aliases.contains($0) ? $0 : nil }) ?? phone.aliases.first(where: { alias in launcher.devices.contains { $0.serial == alias && $0.state == "device" } }) {
@@ -177,8 +184,11 @@ struct CompanionDesktopPendingPairing: Equatable {
         markedSessionFingerprint = fingerprint; publishRevision &+= 1; lastPublishMS = -Double.infinity
     }
     func show() {
-        if windowController == nil { windowController = CompanionWindowController(adapter: self) }
-        windowController?.showWindow(nil); windowController?.window?.makeKeyAndOrderFront(nil); catalogVisibilityChanged(); NSApp.activate(ignoringOtherApps: true)
+        launcher?.showWorkspace(.devices)
+    }
+    @discardableResult func ensureEmbeddedController() -> CompanionWindowController {
+        if windowController == nil {windowController=CompanionWindowController(adapter:self,embedded:true)}
+        return windowController!
     }
 
     private func publish() async throws {
@@ -202,7 +212,9 @@ struct CompanionDesktopPendingPairing: Equatable {
         lastPublishMS = revision == publishRevision ? CompanionClock.nowMS() : -Double.infinity
     }
     private func pollCommands() async throws {
-        guard !publishedDeviceIDs.isEmpty else { return }
+        guard !publishedDeviceIDs.isEmpty, !commandPollInFlight, !stopped, CompanionClock.nowMS() - lastCommandPollMS >= 100 else { return }
+        commandPollInFlight = true; lastCommandPollMS = CompanionClock.nowMS()
+        defer { commandPollInFlight = false }
         let reply = try await broker.request(operation: "command_poll", payload: ["generation": .number(generation)])
         for value in reply.data["commands"]?.array ?? [] {
             guard let command = value.object, let id = command["id"]?.string, UUID(uuidString: id) != nil, commands[id] == nil else { continue }
@@ -241,18 +253,78 @@ struct CompanionDesktopPendingPairing: Equatable {
     }
     private func apply(_ command: [String: CompanionJSON]) async throws -> [String: CompanionJSON] {
         guard !stopped, !Task.isCancelled, let launcher, !launcher.quitting,
-              let deviceID = command["device_id"]?.string, let phone = devices.first(where: { $0.id == deviceID && $0.connected && $0.paired }),
-              let kind = command["kind"]?.string, let payload = command["payload"]?.object,
-              let device = launcher.devices.first(where: { phone.aliases.contains($0.serial) && $0.state == "device" }) else { throw CompanionBoundaryError("phone_unavailable", "The paired authorized Android device is unavailable.") }
+              let deviceID = command["device_id"]?.string,
+              let kind = command["kind"]?.string, let payload = command["payload"]?.object else { throw CompanionBoundaryError("phone_unavailable", "The paired authorized Android device is unavailable.") }
         guard command["generation"]?.number == generation, let rawDeadline = command["continuous_deadline"]?.object,
               let bootID = rawDeadline["boot_id"]?.string, let issuedMS = rawDeadline["issued_ms"]?.number, let expiresMS = rawDeadline["expires_ms"]?.number,
               let deadline = try? CompanionCommandDeadline(issuedMS: issuedMS, expiresMS: expiresMS, bootID: bootID), deadline.isValid else { throw CompanionBoundaryError("command_expired", "This command expired or belongs to an older Mac owner.") }
         let checkAdmission: () throws -> Void = { [weak self] in
             guard let self, !self.stopped, !Task.isCancelled, !launcher.quitting, deadline.isValid else { throw CompanionBoundaryError("command_expired", "The command expired before a new Android session could be admitted.") }
         }
+        // A persisted-command wake can precede the next periodic status read
+        // after reconnect. Refresh that cache once; never replay an effect or
+        // replace the independent authorized-ADB-device check with a hint.
+        if !devices.contains(where: { $0.id == deviceID && $0.connected && $0.paired }) {
+            try await refreshStatus()
+            try checkAdmission()
+        }
+        guard let phone = devices.first(where: { $0.id == deviceID && $0.connected && $0.paired }),
+              let device = launcher.devices.first(where: { phone.aliases.contains($0.serial) && $0.state == "device" }) else { throw CompanionBoundaryError("phone_unavailable", "The paired authorized Android device is unavailable.") }
         // Commands carry only the canonical phone ID; the explicit serial is
         // selected from that broker-verified alias set, never from the payload.
         switch kind {
+        case "share_text", "share_url", "clipboard_text":
+            let action = try CompanionShareAction.validated(kind: kind, payload: payload)
+            guard let text = payload["text"]?.string else { throw CompanionBoundaryError("invalid_content", "Shared text is unavailable.") }
+            try checkAdmission()
+            switch action {
+            case .send: return ["phase": .string("received_inbox")]
+            case .copy:
+                NSPasteboard.general.clearContents()
+                guard NSPasteboard.general.setString(text, forType: .string) else { throw CompanionBoundaryError("clipboard_unavailable", "The Mac clipboard did not accept the shared text.") }
+                return ["phase": .string("copied_on_mac")]
+            case .open:
+                guard let url = URL(string: text), NSWorkspace.shared.open(url) else { throw CompanionBoundaryError("open_failed", "The Mac did not accept the web link.") }
+                return ["phase": .string("opened_on_mac")]
+            }
+        case "run_preset":
+            let preset = try CompanionDesktopPreset(payload: payload)
+            guard !launcher.isWrapper, let id = command["id"]?.string else { throw CompanionBoundaryError("launcher_unavailable", "Open the updated Mac launcher to use a desktop preset.") }
+            var completed = 0, step = "profile"
+            let route = preset.audioRoute == "mac_and_phone" ? DeviceAudioRoute.macAndPhone : DeviceAudioRoute(rawValue: preset.audioRoute)!
+            do {
+                try checkAdmission()
+                _ = try await broker.request(operation: "command_profile_commit", payload: ["device_id": .string(deviceID), "command_id": .string(id), "generation": .number(generation)])
+                try await refreshStatus(); completed += 1
+                step = "audio"
+                try checkAdmission()
+                try launcher.audioControls.setRoute(route, serial: device.serial)
+                var child = command
+                for package in preset.packages {
+                    step = "app"
+                    child["kind"] = .string("open_app"); child["payload"] = .object(["package_name": .string(package)])
+                    try checkAdmission(); _ = try await apply(child); completed += 1
+                }
+                step = "audio_confirmation"
+                try checkAdmission()
+                let audio = try await waitForAudio(route, serial: device.serial, launcher: launcher)
+                guard audio["output_confirmed"]?.bool != false, audio["phase"]?.string != "saved_for_next_session" else {
+                    return ["phase": .string("preset_partial"), "completed_steps": .number(Double(completed)), "failed_step": .string(step),
+                            "intent_committed": .bool(true), "output_confirmed": .bool(false), "message": .string("Apps opened and audio preference was saved; output remains unconfirmed. Inspect audio before repeating the preset.")]
+                }
+                completed += 1
+                if preset.screenOff {
+                    step = "phone_display"
+                    child["kind"] = .string("set_screen_power"); child["payload"] = .object(["off": .bool(true)])
+                    try checkAdmission(); _ = try await apply(child); completed += 1
+                }
+                return ["phase": .string("preset_completed"), "completed_steps": .number(Double(completed))]
+            } catch {
+                // Earlier effects remain real. Never turn a partially applied preset
+                // into an automatic replay of its already-opened applications.
+                return ["phase": .string("preset_partial"), "completed_steps": .number(Double(completed)), "failed_step": .string(step),
+                        "code": .string((error as? CompanionBoundaryError)?.code ?? "preset_step_failed"), "message": .string(String(error.localizedDescription.prefix(350)))]
+            }
         case "open_app":
             guard !launcher.isWrapper, let package = payload["package_name"]?.string else { throw CompanionBoundaryError("launcher_unavailable", "Open DroidBridge on the Mac to launch an app.") }
             try AndroidDiscovery.validatePackage(package)
@@ -285,6 +357,8 @@ struct CompanionDesktopPendingPairing: Equatable {
             launcher.pollPhoneDisplayControls(); return ["state": .string(off ? "off" : "on"), "verified": .bool(true)]
         case "set_profile":
             guard let raw = payload["profile"]?.string, CompanionPerformanceProfile(rawValue: raw) != nil else { throw CompanionBoundaryError("invalid_profile", "Unsupported performance profile.") }
+            guard let id = command["id"]?.string else { throw CompanionBoundaryError("invalid_command", "Missing admitted profile command.") }
+            _ = try await broker.request(operation: "command_profile_commit", payload: ["device_id": .string(deviceID), "command_id": .string(id), "generation": .number(generation)])
             try await refreshStatus(); return ["profile": .string(raw), "applies_to": .string("new_sessions")]
         case "set_export":
             guard !launcher.isWrapper, let package = payload["package_name"]?.string, let selected = payload["selected"]?.bool else { throw CompanionBoundaryError("launcher_unavailable", "Open DroidBridge on the Mac to update Spotlight apps.") }
@@ -315,6 +389,7 @@ struct CompanionDesktopPendingPairing: Equatable {
 
     func shutdown() async {
         guard !stopped else { return }; stopped = true; lifecycle?.cancel(); hostRegistration?.cancel()
+        if let commandWakeup { DistributedNotificationCenter.default().removeObserver(commandWakeup); self.commandWakeup = nil }
         catalogSync.shutdown(); windowController?.shutdown()
         for task in commands.values { task.cancel() }
         await broker.invalidate()

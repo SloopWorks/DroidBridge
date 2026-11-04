@@ -1,0 +1,1 @@
+Command: ["/usr/bin/clang", "/Users/patrick/workspace/DroidBridge/.build/developer-id-probe/main.c", "-o", "/Users/patrick/workspace/DroidBridge/.build/developer-id-probe/signing-probe"]

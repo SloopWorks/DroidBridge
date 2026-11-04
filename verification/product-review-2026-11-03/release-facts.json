@@ -1,0 +1,251 @@
+{
+  "inspected_at": "2026-11-03T16:49:53.083187+00:00",
+  "reviewed_existing_images": [
+    "verification/launcher-redesign/qa/NSAppearanceNameAqua-1160x780.png",
+    "verification/companion-improvements/macos-component-reconnect-final/900-1-Apps.png",
+    "verification/companion-improvements/macos-component-reconnect-final/700-3-Handoff.png",
+    "verification/companion-improvements/screenshots/mobile-home.png",
+    "verification/companion-improvements/screenshots/mobile-transfers.png",
+    "verification/companion-improvements/installed-system-save/paired-catalog.png"
+  ],
+  "app_info": {
+    "CFBundleName": "DroidBridge",
+    "CFBundleDisplayName": "DroidBridge",
+    "CFBundleIdentifier": "app.droidbridge.desktop",
+    "CFBundleExecutable": "DroidBridge",
+    "CFBundlePackageType": "APPL",
+    "CFBundleShortVersionString": "0.2.0",
+    "CFBundleVersion": "16",
+    "DroidBridgeManagedNamingVersion": 2,
+    "CFBundleIconFile": "DroidBridge",
+    "LSMinimumSystemVersion": "26.0",
+    "NSHighResolutionCapable": true,
+    "NSCameraUsageDescription": "Scan the pairing QR code shown on your Android phone to connect it to this Mac.",
+    "NSHumanReadableCopyright": "Copyright \u00a9 2026 DroidBridge contributors"
+  },
+  "root_documents_present": {
+    "LICENSE": false,
+    "LICENSE.md": false,
+    "LICENSE.txt": false,
+    "COPYING": false,
+    "SECURITY.md": false,
+    "PRIVACY.md": false,
+    ".github": false
+  },
+  "code_inventory": {
+    "Sources": {
+      "files": 75,
+      "lines": 11832,
+      "largest": [
+        [
+          1270,
+          "Sources/DroidBridgeCore/CompanionBrokerService.swift"
+        ],
+        [
+          875,
+          "Sources/DroidBridgeCore/ManagedApps.swift"
+        ],
+        [
+          710,
+          "Sources/DroidBridge/Launcher.swift"
+        ],
+        [
+          676,
+          "Sources/DroidBridge/CompanionWindow.swift"
+        ],
+        [
+          462,
+          "Sources/DroidBridgeCore/CompanionClient.swift"
+        ]
+      ]
+    },
+    "Tests": {
+      "files": 56,
+      "lines": 6359,
+      "largest": [
+        [
+          312,
+          "Tests/DroidBridgeCoreTests/CompanionBrokerTests.swift"
+        ],
+        [
+          304,
+          "Tests/DroidBridgeCoreTests/CompanionCommandSecurityTests.swift"
+        ],
+        [
+          301,
+          "Tests/DroidBridgeCoreTests/ManagedAppsTests.swift"
+        ],
+        [
+          285,
+          "Tests/DroidBridgeCoreTests/ManagedAppNamingQATests.swift"
+        ],
+        [
+          271,
+          "Tests/DroidBridgeCoreTests/PhoneDisplayPowerQATests.swift"
+        ]
+      ]
+    },
+    "AndroidCompanion/app/src/main": {
+      "files": 19,
+      "lines": 2970,
+      "largest": [
+        [
+          783,
+          "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt"
+        ],
+        [
+          742,
+          "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt"
+        ],
+        [
+          253,
+          "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTransfers.kt"
+        ],
+        [
+          162,
+          "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/QuickAccessActivity.kt"
+        ],
+        [
+          158,
+          "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeHttpServer.kt"
+        ]
+      ]
+    },
+    "scripts": {
+      "files": 116,
+      "lines": 10264,
+      "largest": [
+        [
+          629,
+          "scripts/verify-audio-native.py"
+        ],
+        [
+          614,
+          "scripts/verify-audio-fallback.py"
+        ],
+        [
+          469,
+          "scripts/verify-companion-gui.swift"
+        ],
+        [
+          407,
+          "scripts/build-adb-runtime.py"
+        ],
+        [
+          302,
+          "scripts/verify-companion-installed.py"
+        ]
+      ]
+    }
+  },
+  "archives": {
+    "dist/DroidBridge-0.1.0-arm64.dmg": {
+      "bytes": 30020736,
+      "sha256": "33b86bd07d326c1e30bfd77bdd2d16eceb97d6704903f285610e18d09e14bed5"
+    },
+    "dist/DroidBridge-0.1.1-arm64.zip": {
+      "bytes": 26576775,
+      "sha256": "01e1cf72fd0a2ab5fb8aafc3a5769a84e606ade850110e5d10e99ec7bfe03554"
+    },
+    "dist/DroidBridge-0.2.0-arm64.zip": {
+      "bytes": 46976075,
+      "sha256": "e1bab4b6d98772db2b79fe6193047bc8e1d140decfa12f188d47aad3e7d5097b"
+    },
+    "dist/DroidBridge-0.1.6-arm64.dmg": {
+      "bytes": 31094140,
+      "sha256": "de5234865858723c4753295c780cf51374c2136fabe6be7adcb92bfde87675ce"
+    },
+    "dist/DroidBridge-0.1.7-arm64.zip": {
+      "bytes": 27514705,
+      "sha256": "e779fe434bdb9cc52ae0a4965c7afdbc1c335eb1c05a7d45fc9261177724bd82"
+    },
+    "dist/DroidBridge-0.1.1-arm64.dmg": {
+      "bytes": 29964513,
+      "sha256": "195b43cf809b800420e80e37f7c5fe86dc2a7466e81ef9393be92828a8dee7ac"
+    },
+    "dist/DroidBridge-0.1.0-arm64.zip": {
+      "bytes": 26472589,
+      "sha256": "e293f898df955a2f55aea68e63d6cc34253a36d65fb41bbb8a29c9eb49706826"
+    },
+    "dist/DroidBridge-0.1.7-arm64.dmg": {
+      "bytes": 31093654,
+      "sha256": "d647119520b8ffd8cc89c48f4c163b15abce771ed379077c14700923c0bea5b9"
+    },
+    "dist/DroidBridge-0.1.6-arm64.zip": {
+      "bytes": 27511599,
+      "sha256": "0e67a6c754c39aa796d2b8a2b5583034ca58830bac68b61ed99dd356ce976f86"
+    },
+    "dist/DroidBridge-0.2.0-arm64.dmg": {
+      "bytes": 53021325,
+      "sha256": "3ac4dbf26b476c84268a4e56ffb0a0fa21cb80ca16aaa0724059ded5ad7f4be6"
+    },
+    "dist/DroidBridge-0.1.2-arm64.dmg": {
+      "bytes": 30950354,
+      "sha256": "96f6e292e524232f7e2e6a792223ce098e4b316136ccbc6453917e29cc269a68"
+    },
+    "dist/DroidBridge-0.1.3-arm64.zip": {
+      "bytes": 27353737,
+      "sha256": "e4928c5a682fa5d8a930aa9b34d7a3e864c33e5fcb9c5b665fd48a7ac47a5b60"
+    },
+    "dist/DroidBridge-0.1.4-arm64.dmg": {
+      "bytes": 31089011,
+      "sha256": "7022d5e5c6d4e26f7e6eee72c66e1e88d07bc4a058a3a0aea381c5e0834cddeb"
+    },
+    "dist/DroidBridge-0.1.8-arm64.zip": {
+      "bytes": 27741840,
+      "sha256": "5566bfeec1727693a58e783def820535e263c21fd72706fa86e35ae7986659b5"
+    },
+    "dist/DroidBridge-0.1.5-arm64.zip": {
+      "bytes": 27474783,
+      "sha256": "61a83ee639ebb9f402e8e1f0d9c5d48b03b180c283642ecac01aa781804cc384"
+    },
+    "dist/DroidBridge-0.1.3-arm64.dmg": {
+      "bytes": 30946507,
+      "sha256": "c9e7dae032b81a55590a9070f4530514c5a3a9713f06243f6a0d656e181225f6"
+    },
+    "dist/DroidBridge-0.1.2-arm64.zip": {
+      "bytes": 27249783,
+      "sha256": "1195f184e33e8c64671b92c51f8ff5b19679aa0f18d096c9da2920101282d527"
+    },
+    "dist/DroidBridge-0.1.5-arm64.dmg": {
+      "bytes": 31085834,
+      "sha256": "3443eb71e9c04a86ee59cfff9a6769e56dd14eac0e1a666b675ccebe582dfaa2"
+    },
+    "dist/DroidBridge-0.1.8-arm64.dmg": {
+      "bytes": 31465546,
+      "sha256": "987ce7c73c55be80b3622518ac71660958532bed960dd72e65474efcedd0f4ba"
+    },
+    "dist/DroidBridge-0.1.4-arm64.zip": {
+      "bytes": 27443986,
+      "sha256": "d64d7a8b4039e235674b2a4757965b10b35070ab3f30da63205da1f8d8a690b6"
+    }
+  },
+  "verification/companion-improvements/installed-system-save-final/results.json": {
+    "sha256": "b9f35b0cb0223e0c38e599b961852c696afb5f2f1776aafaeec4149701d080ef",
+    "scalar_results": {
+      "passed": true,
+      "scope": "Installed signed Mac app + real Android companion TLS/GUI flow; isolated QA paths",
+      "serial": "emulator-5580",
+      "physical_focus_verified": false
+    }
+  },
+  "verification/companion-improvements/pixel/installation.json": {
+    "sha256": "610a9b56da5d59baa895d5d690fa8c57a55da5e00eb90f0c52b5cd640c217ef5",
+    "scalar_results": {
+      "device_model": "Pixel 10 Pro",
+      "android_api": 37,
+      "android_user": 0,
+      "installed_package": "dev.droidbridge.companion",
+      "version_name": "0.2.0",
+      "version_code": 12,
+      "apk_sha256": "b6277fb903e99bb46e9bb93553de12cda6094f8d00b1abf4b700794a11254abd",
+      "signature_verified_before_install": true,
+      "initial_personal_profile_install": true,
+      "adb_install": "Success",
+      "launch_status": "ok",
+      "cold_launch_reported_ms": 256,
+      "target_resumed_observed": true,
+      "physical_hardware_end_to_end": "not yet complete"
+    }
+  }
+}

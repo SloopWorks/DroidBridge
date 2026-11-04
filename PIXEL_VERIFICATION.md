@@ -1,5 +1,25 @@
 # Pixel 10 Pro physical acceptance
 
+## Current physical checkpoint — 2026-10-30
+
+At the owner's explicit request, the verified release companion was installed in
+the active personal profile (user 0) on the USB-authorized Pixel 10 Pro, API 37.
+Package `dev.droidbridge.companion` version 0.2.0/code 12 launched successfully;
+the installed APK was pulled back and its SHA-256 exactly matched the verified
+`b6277fb903e99bb46e9bb93553de12cda6094f8d00b1abf4b700794a11254abd`
+artifact. No companion was previously installed in that personal profile. No
+test/attacker APK, permission grant, pairing, settings change or data deletion
+was performed. See [installation evidence](verification/companion-improvements/pixel/installation.json).
+
+The phone subsequently disconnected from USB before a focused physical UI smoke
+or pairing could be completed. Those checks remain unverified and require the
+owner to reconnect the phone and leave DroidBridge open. This checkpoint is
+installation/startup evidence, not acceptance of all hardware cases below.
+The original emulator-only automation boundary remains in effect for regression
+suites; the physical install was a specific user-authorized exception.
+
+## Remaining hardware acceptance
+
 Use the final release/build and checksums identified in the companion ledger.
 This is the owner's hardware check, not an emulator pass. Keep results separate
 from automated evidence. Use disposable content and two apps such as Settings

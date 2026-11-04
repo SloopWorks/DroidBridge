@@ -1,0 +1,15 @@
+{
+  "certificate_path": "/Users/patrick/Library/Application Support/DroidBridge/ReleaseSigning/developer-id-application-2026-11-03.cer",
+  "csr_public_key_matches": true,
+  "public_key_sha256": "bebe09bfdf67c03efe3e67dac73a57936195d269ad611a65899950c1143d3a05",
+  "certificate_sha256": "f79676eee4bbb5073b30c09de9083d2309e2fb84d5b4d92e6908c3211709ce20",
+  "public_certificate_metadata": "subject= /UID=2XAXFD3872/CN=Developer ID Application: SloopWorks LLC (2XAXFD3872)/OU=2XAXFD3872/O=SloopWorks LLC/C=US\nissuer= /CN=Developer ID Certification Authority/OU=G2/O=Apple Inc./C=US\nnotBefore=Nov  4 00:01:17 2026 GMT\nnotAfter=Dec  4 00:01:16 2027 GMT\nSHA1 Fingerprint=46:85:38:38:A1:DD:06:FC:62:F7:C4:47:3F:F7:27:C3:9F:F4:6C:3E\n",
+  "download_copy_removed_after_verification": true,
+  "keychain_imported": true,
+  "identity_sha1": "46853838A1DD06FC62F7C4473FF727C39FF46C3E",
+  "local_certificate_trust_verified": true,
+  "login_keychain_unlocked": true,
+  "positive_codesign_verified": false,
+  "signing_probe_result": "codesign timed out after 90 seconds; no-timestamp diagnostic also timed out after 15 seconds; private-key access/authorization remains unresolved",
+  "notarization_profile_configured": false
+}

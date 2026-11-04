@@ -1,0 +1,11 @@
+{
+  "version": "0.2.0",
+  "build": "16",
+  "architecture": "arm64",
+  "minimum_macos": "26.0",
+  "size_bytes": 53021325,
+  "sha256": "3ac4dbf26b476c84268a4e56ffb0a0fa21cb80ca16aaa0724059ded5ad7f4be6",
+  "signing": "ad_hoc_not_notarized",
+  "download_url": "https://github.com/SloopWorks/DroidBridge/releases/download/v0.2.0/DroidBridge-0.2.0-arm64.dmg",
+  "release_url": "https://github.com/SloopWorks/DroidBridge/releases/tag/v0.2.0"
+}

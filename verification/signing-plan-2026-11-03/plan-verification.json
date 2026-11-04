@@ -1,0 +1,16 @@
+{
+  "plan_exists": true,
+  "local_links_valid": true,
+  "git_diff_check_exit": 0,
+  "company_records_checked": true,
+  "agent_history_checked": true,
+  "local_signing_identities_checked": true,
+  "live_portal_personal_team_observed": true,
+  "live_org_portal_verified": false,
+  "implementation_or_credentials_changed": false,
+  "release_acceptance_claimed": false,
+  "final_document_sha256": {
+    "docs/SIGNING_AND_UPGRADE_PLAN.md": "15c998fcdbdbfc4e6ef703fc71390aea4bd273057bb0d4412147e54bd813633d",
+    "docs/PRODUCT_RELEASE_REVIEW.md": "4a7ebdb90a773866a21437fbe46987247b776b8442d36aea40bfeb2245ca140a"
+  }
+}

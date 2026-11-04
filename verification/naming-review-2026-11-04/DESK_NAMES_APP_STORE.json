@@ -1,0 +1,79 @@
+{
+  "checked_at_utc": "2026-11-04T21:49:40.572258+00:00",
+  "method": "Public Apple Search API, US catalog; exact normalized title matching among up to 50 results per query",
+  "limitation": "Negative search does not establish app-name reservation availability, all-region availability or trademark rights. Google Play was checked through indexed web search, not an exhaustive store database.",
+  "results": [
+    {
+      "name": "DroidDesk",
+      "entity": "macSoftware",
+      "country": "us",
+      "url": "https://itunes.apple.com/search?term=DroidDesk&entity=macSoftware&country=us&limit=50",
+      "http_status": 200,
+      "result_count": 36,
+      "exact_name_matches": []
+    },
+    {
+      "name": "DroidDesk",
+      "entity": "software",
+      "country": "us",
+      "url": "https://itunes.apple.com/search?term=DroidDesk&entity=software&country=us&limit=50",
+      "http_status": 200,
+      "result_count": 37,
+      "exact_name_matches": []
+    },
+    {
+      "name": "DroidWorkdeck",
+      "entity": "macSoftware",
+      "country": "us",
+      "url": "https://itunes.apple.com/search?term=DroidWorkdeck&entity=macSoftware&country=us&limit=50",
+      "http_status": 200,
+      "result_count": 42,
+      "exact_name_matches": []
+    },
+    {
+      "name": "DroidWorkdeck",
+      "entity": "software",
+      "country": "us",
+      "url": "https://itunes.apple.com/search?term=DroidWorkdeck&entity=software&country=us&limit=50",
+      "http_status": 200,
+      "result_count": 38,
+      "exact_name_matches": []
+    },
+    {
+      "name": "SloopDesk",
+      "entity": "macSoftware",
+      "country": "us",
+      "url": "https://itunes.apple.com/search?term=SloopDesk&entity=macSoftware&country=us&limit=50",
+      "http_status": 200,
+      "result_count": 21,
+      "exact_name_matches": []
+    },
+    {
+      "name": "SloopDesk",
+      "entity": "software",
+      "country": "us",
+      "url": "https://itunes.apple.com/search?term=SloopDesk&entity=software&country=us&limit=50",
+      "http_status": 200,
+      "result_count": 36,
+      "exact_name_matches": []
+    },
+    {
+      "name": "DroidWorkspace",
+      "entity": "macSoftware",
+      "country": "us",
+      "url": "https://itunes.apple.com/search?term=DroidWorkspace&entity=macSoftware&country=us&limit=50",
+      "http_status": 200,
+      "result_count": 38,
+      "exact_name_matches": []
+    },
+    {
+      "name": "DroidWorkspace",
+      "entity": "software",
+      "country": "us",
+      "url": "https://itunes.apple.com/search?term=DroidWorkspace&entity=software&country=us&limit=50",
+      "http_status": 200,
+      "result_count": 38,
+      "exact_name_matches": []
+    }
+  ]
+}

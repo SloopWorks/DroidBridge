@@ -1,0 +1,9 @@
+{
+  "no_redownload_on_retry" : true,
+  "passed" : true,
+  "retained_during_confirmation_refusal" : true,
+  "same_receipt_identity_on_retry" : true,
+  "saved_destination_retained" : true,
+  "scope" : "Shipping CompanionTransfers controller over anonymous NSXPC fixture; system Save dialog, Finder selection and live-phone transport are separate checks",
+  "verified_bytes" : 160123
+}

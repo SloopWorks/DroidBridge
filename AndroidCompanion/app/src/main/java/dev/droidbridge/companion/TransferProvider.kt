@@ -13,14 +13,15 @@ class TransferProvider : ContentProvider() {
     override fun onCreate() = true
     private fun file(uri: Uri): File {
         val id = uri.lastPathSegment ?: throw IllegalArgumentException("Missing transfer")
-        require(id.matches(Regex("[a-f0-9]{64}")))
-        val dir = File(context!!.filesDir, "received")
-        return File(dir, id).also { require(it.canonicalFile.parentFile == dir.canonicalFile && it.isFile) }
+        require(uri.authority == "${context!!.packageName}.transfers" && uri.pathSegments.size == 1 && runCatching { java.util.UUID.fromString(id) }.isSuccess)
+        return BridgeStore.get(context!!).transfers.sharedFile(id)
     }
     override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor { require(mode == "r"); return ParcelFileDescriptor.open(file(uri), ParcelFileDescriptor.MODE_READ_ONLY) }
-    override fun getType(uri: Uri) = "application/octet-stream"
+    override fun getType(uri: Uri): String { file(uri); return BridgeStore.get(context!!).transfers.sharedMetadata(uri.lastPathSegment!!).getString("mime_type") }
     override fun query(uri: Uri, projection: Array<out String>?, selection: String?, selectionArgs: Array<out String>?, sortOrder: String?): Cursor {
-        val f = file(uri); return MatrixCursor(arrayOf(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE)).apply { addRow(arrayOf<Any>("DroidBridge file", f.length())) }
+        val f = file(uri); val metadata = BridgeStore.get(context!!).transfers.sharedMetadata(uri.lastPathSegment!!)
+        val columns = (projection ?: arrayOf(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE)).filter { it in setOf(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE) }.toTypedArray()
+        return MatrixCursor(columns).apply { addRow(columns.map { if (it == OpenableColumns.DISPLAY_NAME) metadata.getString("display_name") else f.length() }) }
     }
     override fun insert(uri: Uri, values: ContentValues?): Uri? = throw UnsupportedOperationException()
     override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<out String>?) = throw UnsupportedOperationException()

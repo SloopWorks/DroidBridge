@@ -1,0 +1,38 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[1/10] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Compiling DroidBridgeCoreTests BrokerAdmissionTLSPeer.swift
+[4/7] Compiling DroidBridgeCoreTests CompanionProfileCommitTests.swift
+[5/7] Emitting module DroidBridgeCoreTests
+[6/13] Compiling DroidBridgeCoreTests CompanionCleanupSecurityTests.swift
+[7/13] Compiling DroidBridgeCoreTests CompanionCatalogReadScopeTests.swift
+[8/13] Compiling DroidBridgeCoreTests CompanionCommandSecurityTests.swift
+[9/13] Compiling DroidBridgeCoreTests CompanionNotificationSecurityTests.swift
+[10/13] Compiling DroidBridgeCoreTests CompanionCatalogSignalTests.swift
+[11/13] Compiling DroidBridgeCoreTests CompanionBrokerTLSRaceTests.swift
+[11/13] Write Objects.LinkFileList
+[12/13] Linking DroidBridgePackageTests
+Build complete! (2.15s)
+Test Suite 'Selected tests' started at 2026-10-30 19:51:09.779.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 19:51:09.780.
+Test Suite 'CompanionActionsTests' started at 2026-10-30 19:51:09.780.
+Test Case '-[DroidBridgeCoreTests.CompanionActionsTests testPresetsBoundLaunchesAndRejectMalformedOrRepeatedPackages]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionActionsTests testPresetsBoundLaunchesAndRejectMalformedOrRepeatedPackages]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionActionsTests testShareEffectsAreExplicitAndOpeningIsRestrictedToWebLinks]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionActionsTests testShareEffectsAreExplicitAndOpeningIsRestrictedToWebLinks]' passed (0.000 seconds).
+Test Suite 'CompanionActionsTests' passed at 2026-10-30 19:51:09.783.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'CompanionProfileCommitTests' started at 2026-10-30 19:51:09.783.
+Test Case '-[DroidBridgeCoreTests.CompanionProfileCommitTests testProfilePublicationRequiresExactAdmittedOwnerAndAppliedPhoneReceipt]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionProfileCommitTests testProfilePublicationRequiresExactAdmittedOwnerAndAppliedPhoneReceipt]' passed (0.155 seconds).
+Test Suite 'CompanionProfileCommitTests' passed at 2026-10-30 19:51:09.938.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.155 (0.155) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 19:51:09.938.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.157 (0.158) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 19:51:09.938.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.157 (0.159) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

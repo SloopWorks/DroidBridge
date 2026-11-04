@@ -19,7 +19,7 @@ checks remain listed in [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
 
 ## Use
 
-Open DroidBridge and choose a connected device in the sidebar. The **Rendering** section offers **Native AppKit** or **scrcpy fallback**. Search by app name or package, select an app, and click **Launch App** (or double-click it). Launch another app the same way. Close a native window or use the session's Close button to release its display. Use **Restore Previous Sessions** after relaunch; the reconnect checkbox controls restoration after an interrupted connection. **Create / Update Mac App…** creates a separate launchable wrapper under `~/Applications/DroidBridge Apps` for Finder, Dock, and Spotlight indexing.
+Open DroidBridge and choose a connected device in the toolbar. The sidebar contains **Apps**, **Sessions**, **Handoff**, **Notifications** and **Devices** in one management window. In Apps, search by name or package, select an app, and click **Launch App** (or double-click it). Launch another app the same way. Close a native window or use the session's Close button to release its display. **Restore Previous Sessions** in Sessions restores saved sessions for the selected device. **Settings…** (⌘,) contains **Native AppKit** / **scrcpy fallback**, new-window defaults, reconnect and global Spotlight integration. **Device Settings** contains audio, phone-screen policy, performance and bulk app setup. **Create / Update Mac App…** creates a separate launchable wrapper under `~/Applications/DroidBridge Apps` for Finder, Dock, and Spotlight indexing.
 
 Created Mac apps use the launcher activity's icon rendered by Android, including adaptive and vector icons. Each wrapper is a separate Mac application with its own name, icon and process. Run **Create / Update Mac App…** again to update an existing matching wrapper after installing a new DroidBridge version; quit that wrapper first. Updates preserve its launch settings and keep the previous bundle under `~/Applications/DroidBridge Apps/.DroidBridge Backups`. The main launcher's app list loads Android icons asynchronously; unavailable icons have a diagnostic tooltip.
 
@@ -31,7 +31,7 @@ Unexpected session exits keep the wrapper's diagnostics visible instead of silen
 
 Existing managed Mac apps are repaired automatically after installing this update and opening DroidBridge. A compatibility pass updates their copied code at the original paths before a second pass removes the visible hash suffixes. Android icons, backend choices and launch settings are retained; no phone connection is needed for this maintenance. Quit running wrappers to let their updates finish. Later releases also refresh accepted wrappers’ copied runtime from the new host using these saved assets. Unique apps use `App Name.app`; only name collisions on the same device receive a readable package suffix.
 
-**Keep phone screen off during Mac sessions** is an opt-in setting saved separately for each device (Android 15+). Select the device, enable the checkbox, and open an Android app. Use **Phone → Turn Phone Screen Off / On** for immediate control; native wrappers expose the same menu. For an SDL fallback window, use DroidBridge’s main launcher/menu. The Mac windows keep receiving video and input while only the physical Android display is off. Closing a Mac app does not turn the phone screen back on; use the explicit On action. Android 17 uses its supported display-reset/wake commands, detected at runtime. This does not unlock the phone, bypass a PIN or remove secure-content restrictions.
+**Keep phone screen off during Mac sessions** is an opt-in setting saved separately for each device (Android 15+). Select the device, enable the checkbox in **Device Settings**, and open an Android app. Use **Devices → Turn Phone Screen Off / On** for immediate control; native wrappers expose the same menu. For an SDL fallback window, use DroidBridge’s main launcher/menu. The Mac windows keep receiving video and input while only the physical Android display is off. Closing a Mac app does not turn the phone screen back on; use the explicit On action. Android 17 uses its supported display-reset/wake commands, detected at runtime. This does not unlock the phone, bypass a PIN or remove secure-content restrictions.
 
 **Show Android system decorations** applies to new sessions on either backend. Turn it off to remove Android's virtual-display navigation/launcher surfaces when using Mac app switching. App-drawn controls remain controlled by the app. The setting does not change the phone screen or global Android settings.
 
@@ -49,12 +49,12 @@ The [0.1.2 onboarding verification report](verification/onboarding/REPORT.md) re
 
 After a device reboot, discovery and restoration wait for Android boot completion and package services. Interrupted sessions are checked on later four-second polls. Automatic restoration permits three failed launches per outage, with at least eight seconds after each failed attempt; the session remains visible if retries pause. Closing it cancels retry. Turn the reconnect checkbox off to hold interrupted sessions without admitting new ones.
 
-The launcher keeps apps and running sessions together in a two-pane Mac workspace. Search by app name or package, then double-click or press Return in the app list/search field. The selected-app strip contains **Launch App** and **Create / Update Mac App…**. Device, rendering, screen and Spotlight settings live in the independently scrolling sidebar; session cards have their own scroll area with Focus, Close and recovery actions. **Apps → Find App…** (⌘F) searches while the launcher is active; **Window → Launcher** (⌘L) returns from an Android window, and **Settings…** (⌘,) reveals rendering settings. Empty, unauthorized, booting and failed-discovery states offer specific next steps. No app count is shown until a ready device’s catalog has loaded.
+There is one Mac management app and one app catalog. Local sessions and independent launchers appear in **Sessions** with their existing owner-specific controls. **Apps → Find App…** (⌘F) searches while the main window is active; **Window → DroidBridge** (⌘L) returns from an Android window. **View** offers sidebar destinations and Toggle Sidebar. Empty, unauthorized, booting and failed-discovery states offer specific next steps. No app count is shown until a ready device’s catalog has loaded. Closing the management window leaves running Android app windows intact; Quit waits for owned session cleanup.
 
 ## Optional Android companion
 
 Streaming works through authorized ADB without companion pairing. To add the
-companion, open **Phone → Companion…**, select the authorized phone, click
+companion, select the authorized phone in the toolbar, open **Devices**, click
 **Install / Update Android Companion**, then **Open Android Companion**. On the
 phone explicitly start the connection service. Its foreground notification makes
 that service visible; stopping it disconnects companion features without
@@ -67,12 +67,12 @@ the phone's TLS identity; a bare code or old pinless link cannot pair. Camera
 access is optional: image import and full-link entry are alternatives. Treat the
 QR/link as a secret and do not include it in screenshots or reports.
 
-The companion window provides:
+These features are integrated into the same DroidBridge Mac window; there is no separate Mac Companion dashboard:
 
-- **Apps:** names/icons, search, favorites, Open on Mac and per-app Spotlight
+- **Apps:** names/icons, search, favorites, Launch App and per-app Spotlight
   export choices. Visible catalog surfaces consume phone change hints and merge
   bounded deltas; Refresh remains a recovery action. Start bulk wrapper creation
-  with **Add All Device Apps to Spotlight** in the main launcher. Selection saved
+  with **Add All Device Apps…** in Device Settings. Selection saved
   with a wrapper still pending is reported separately; use explicit Retry when
   offered. Wrapper creation does not prove Spotlight has indexed it.
 - **Sessions:** live registered main/wrapper sessions, targeted Stop/Stop All,
@@ -88,11 +88,11 @@ The companion window provides:
   only the apps you want. An empty filter permits all otherwise allowed apps.
   Sensitive/unsupported notifications are excluded or have no Reply action.
   Denied Mac notification permission leaves the in-app list available.
-- **Performance / Diagnostics:** battery, thermal and network observations,
+- **Device Settings / Help → Diagnostics:** battery, thermal and network observations,
   explicit redacted export, and Battery (15 fps) / Balanced (30 fps) / Responsive (60 fps) frame-rate
   ceilings for **new** app windows. Existing streams keep their settings; actual
   rate depends on content, phone and host. No battery-saving guarantee is made.
-- **Get Mac App:** explicit official release metadata lookup and download link,
+- **Help → Release Information:** explicit official release metadata lookup and download link,
   including version/platform, size, SHA-256 and signing status. An unpublished
   version stays unavailable. The phone cannot install or approve software on Mac.
 
@@ -101,6 +101,45 @@ For Wi-Fi, use the Mac wireless setup controls with Android **Wireless debugging
 endpoint. This is Android's authenticated debugging transport; companion QR trust
 is a separate step. Drain current USB sessions before changing aliases. A
 reconnection can have a visible gap and never promises seamless stream migration.
+
+## Companion quick access and saved content
+
+The companion improvements candidate adds Material controls, a connection Quick
+Settings tile, an operations tile/panel, exact-Mac pinned app shortcuts and a home
+widget. Connection controls start/stop the companion service; independent ADB app
+video retains its separate lifetime. The notification offers connection actions
+and transfer progress. Tiles require the appropriate unlocked foreground flow
+for sensitive operations; historical widget data is timestamped rather than
+presented as a fresh connection guarantee. See
+[Quick access](docs/companion/QUICK_ACCESS.md).
+
+Android Share now chooses the named trusted Mac inside the share flow. Text may
+be deliberately sent to the inbox or copied on Mac; valid web links can explicitly
+request Open on Mac. Receiving a normal share does not automatically open it.
+Two-file batches retain separate verified transfer identities and grouped status.
+Verified received images offer bounded previews and received files can be shared
+onward through temporary Android read grants. A saved Mac download offers Reveal
+Saved File, including when its final phone confirmation needs a retry.
+
+Saved snippets are separate from the 30-minute inbox: the user explicitly saves,
+searches, pins, copies or removes them. Up to 64 snippets share a 512 KiB encrypted
+journal with up to eight desktop presets. A preset binds one trusted Mac, up to
+eight apps, audio and a performance profile, plus optional physical-screen off.
+Each explicit run has one durable command receipt; profile confirmation precedes
+audio and app launches. Partial runs preserve completed effects and require
+inspection instead of automatic replay. Action receipts show observed acceptance
+and completion latency, without promising app startup or frame-rate targets.
+Fast commands after reconnect refresh an unavailable cached Mac phone snapshot
+once before refusing; the original command deadline and ADB authorization still
+apply.
+
+SWIP and DebugDrawer are integrated into debug/development builds with explicit
+in-memory opt-in, categorical events and no content upload. Production release
+builds have no diagnostic collectors or inspector. Shipyard Deploy targets a
+separate development application ID; provisioning/publication status is recorded
+with the candidate evidence. See
+[Sloopworks integration](docs/companion/SLOOPWORKS_INTEGRATION.md) and
+[the acceptance map](verification/companion-improvements/REQUIREMENTS.md).
 
 ## Trust, updates and privacy
 

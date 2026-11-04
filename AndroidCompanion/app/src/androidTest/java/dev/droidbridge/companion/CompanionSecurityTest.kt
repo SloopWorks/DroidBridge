@@ -166,6 +166,7 @@ class CompanionSecurityTest {
 
     @Test fun phoneCommandReceiptsAreDurableScopedAndProgressToTerminal() = Peer().use { p ->
         val a = p.pair(); val b = p.pair(); p.store.selectTrust(a.second)
+        p.store.setting("clipboard_enabled", true, Unit)
         val id = p.store.phoneCommand("share_text", JSONObject().put("text", "synthetic-private-command"))
         assertEquals("queued", p.store.commandOutcomes().getJSONObject(0).getString("status"))
         val accepted = JSONObject().put("request_id", id).put("status", "accepted").put("result", JSONObject())

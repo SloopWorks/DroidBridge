@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
+import plistlib
 import subprocess
 import tarfile
 
@@ -36,6 +37,11 @@ def digest(path):
 
 commit = subprocess.check_output(['git', 'rev-parse', args.expected_commit + '^{commit}'], cwd=root, text=True).strip()
 subprocess.run(['/usr/bin/codesign', '--verify', '--deep', '--strict', str(args.app)], check=True, capture_output=True)
+app_info = plistlib.loads((args.app / 'Contents/Info.plist').read_bytes())
+signature = subprocess.check_output(['/usr/bin/codesign', '-d', '--verbose=4', str(args.app)],
+                                    stderr=subprocess.STDOUT, text=True)
+if 'Authority=Developer ID Application:' in signature or app_info.get('DroidBridgeSourceCommit'):
+    require(app_info.get('DroidBridgeSourceCommit') == commit, 'Signed app source identity differs from archive candidate')
 with tarfile.open(args.archive) as archive:
     members = archive.getmembers()
     require(len(members) <= 10000 and sum(m.size for m in members) <= 1_073_741_824, 'Archive exceeds review bounds')

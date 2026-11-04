@@ -1,0 +1,66 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+Shipyard: variant 'development' appears to be signed with the per-developer default debug keystore. Cross-developer in-place updates need a shared development signing identity (design §11): an APK signed with another developer's debug key cannot update this install. Configure a signingConfig backed by the shared dev key. (This check compares keystore paths taken from the AGP DSL — the plugin cannot see the certificate itself.)
+WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.0
+
+This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.
+
+You are strongly encouraged to update your project to use a newer
+Android Gradle plugin that has been tested with compile SDK version 37.0.
+
+If you are already using the latest version of the Android Gradle plugin,
+you may need to wait until a newer version with support for compile SDK version 37.0 is available.
+
+For more information refer to the compatibility table:
+https://d.android.com/r/tools/api-level-support
+
+To suppress this warning, add/update
+    android.suppressUnsupportedCompileSdk=37.0
+to this project's gradle.properties.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig
+> Task :app:checkDebugAarMetadata FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:checkDebugAarMetadata'.
+> Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+   > Could not resolve com.sloopworks.debugdrawer:debugdrawer:0.1.1.
+     Required by:
+         project :app
+      > Could not resolve com.sloopworks.debugdrawer:debugdrawer:0.1.1.
+         > Could not get resource 'https://maven.pkg.github.com/SloopWorks/debugdrawer/com/sloopworks/debugdrawer/debugdrawer/0.1.1/debugdrawer-0.1.1.pom'.
+            > Could not GET 'https://maven.pkg.github.com/SloopWorks/debugdrawer/com/sloopworks/debugdrawer/debugdrawer/0.1.1/debugdrawer-0.1.1.pom'. Received status code 401 from server: Unauthorized
+   > Could not resolve com.sloopworks.debugdrawer:debugdrawer-swip:0.1.1.
+     Required by:
+         project :app
+      > Could not resolve com.sloopworks.debugdrawer:debugdrawer-swip:0.1.1.
+         > Could not get resource 'https://maven.pkg.github.com/SloopWorks/debugdrawer/com/sloopworks/debugdrawer/debugdrawer-swip/0.1.1/debugdrawer-swip-0.1.1.pom'.
+            > Could not GET 'https://maven.pkg.github.com/SloopWorks/debugdrawer/com/sloopworks/debugdrawer/debugdrawer-swip/0.1.1/debugdrawer-swip-0.1.1.pom'. Received status code 401 from server: Unauthorized
+   > Could not resolve works.sloop.swip:swip-core:0.1.12.
+     Required by:
+         project :app
+      > Could not resolve works.sloop.swip:swip-core:0.1.12.
+         > Could not get resource 'https://maven.pkg.github.com/SloopWorks/swip/works/sloop/swip/swip-core/0.1.12/swip-core-0.1.12.pom'.
+            > Could not GET 'https://maven.pkg.github.com/SloopWorks/swip/works/sloop/swip/swip-core/0.1.12/swip-core-0.1.12.pom'. Received status code 401 from server: Unauthorized
+   > Could not resolve works.sloop.swip:swip-debug:0.1.1.
+     Required by:
+         project :app
+      > Could not resolve works.sloop.swip:swip-debug:0.1.1.
+         > Could not get resource 'https://maven.pkg.github.com/SloopWorks/swip/works/sloop/swip/swip-debug/0.1.1/swip-debug-0.1.1.pom'.
+            > Could not GET 'https://maven.pkg.github.com/SloopWorks/swip/works/sloop/swip/swip-debug/0.1.1/swip-debug-0.1.1.pom'. Received status code 401 from server: Unauthorized
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 9s
+2 actionable tasks: 2 executed

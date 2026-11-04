@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 191, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 127, in main
+    flow.phone_click(receiver)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-installed.py", line 63, in phone_click
+    raise RuntimeError(f'Android UI action unavailable: {text}')
+RuntimeError: Android UI action unavailable: Patrick’s MacBook Pro

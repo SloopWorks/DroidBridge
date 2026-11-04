@@ -1,0 +1,67 @@
+{
+  "artifact": {
+    "md5_base64": "RvqjAy2joGzWuJ/9zv3Ugw==",
+    "md5_hex": "46faa3032da3a06cd6b89ffdcefdd483",
+    "sha256": "d73d3754dcd91b0c15715c0c2599bc9e9600e3bdcaf904929ad93163aa276f6e",
+    "size_bytes": 37931696
+  },
+  "build": {
+    "application_id": "dev.droidbridge.companion.dev",
+    "version_code": 12,
+    "version_name": "0.2.0",
+    "build_instance_id": "01a19031-4c14-736f-b3a0-24c1c90706ee",
+    "provenance_digest": "47862bb71681d850e1a90b453886dbacf5b0f3131e38cbe81e7ae1d87da97b54",
+    "metadata_schema": "works.sloop.shipyard.build/1",
+    "min_sdk": 33,
+    "target_sdk": 35,
+    "signing": {
+      "cert_sha256": "15a066e7bf2507cb0e4d5c24defcc97506eeff19b106cb7f76dfc0e92300876b",
+      "scheme": "v2"
+    },
+    "variant": "development"
+  },
+  "marker": {
+    "permission_present": true,
+    "receiver_present": true
+  },
+  "ok": true,
+  "path": "dist/companion-improvements/DroidBridge-Companion-Development.apk",
+  "provenance": {
+    "canonical": "{\"abis\":[],\"agp_version\":\"8.13.2\",\"application_id\":\"dev.droidbridge.companion.dev\",\"branch\":\"main\",\"build_tools_version\":\"35.0.0\",\"dirty\":true,\"gradle_version\":\"8.14.3\",\"head_commit\":\"676fca36b95aece3d59d6bd817964b36112cf1fd\",\"jdk_version\":\"17.0.19\",\"properties\":{\"build_type\":\"development\",\"compile_sdk\":\"37\",\"flavor_name\":\"\",\"min_sdk\":\"33\",\"namespace\":\"dev.droidbridge.companion\",\"shipyard_plugin\":\"works.sloop.shipyard.deploy\",\"target_sdk\":\"35\"},\"repository\":\"git@github.com:SloopWorks/DroidBridge.git\",\"schema\":\"works.sloop.shipyard.provenance/1\",\"variant\":\"development\",\"version_code\":12,\"version_name\":\"0.2.0\",\"workspace_digest\":\"7e1501aa1687e0735caa9b1e3457549f4ae0839d19e2061fc1fa3fe678d92bec\"}",
+    "digest": "47862bb71681d850e1a90b453886dbacf5b0f3131e38cbe81e7ae1d87da97b54",
+    "document": {
+      "abis": [],
+      "agp_version": "8.13.2",
+      "application_id": "dev.droidbridge.companion.dev",
+      "branch": "main",
+      "build_tools_version": "35.0.0",
+      "dirty": true,
+      "gradle_version": "8.14.3",
+      "head_commit": "676fca36b95aece3d59d6bd817964b36112cf1fd",
+      "jdk_version": "17.0.19",
+      "properties": {
+        "build_type": "development",
+        "compile_sdk": "37",
+        "flavor_name": "",
+        "min_sdk": "33",
+        "namespace": "dev.droidbridge.companion",
+        "shipyard_plugin": "works.sloop.shipyard.deploy",
+        "target_sdk": "35"
+      },
+      "repository": "git@github.com:SloopWorks/DroidBridge.git",
+      "schema": "works.sloop.shipyard.provenance/1",
+      "variant": "development",
+      "version_code": 12,
+      "version_name": "0.2.0",
+      "workspace_digest": "7e1501aa1687e0735caa9b1e3457549f4ae0839d19e2061fc1fa3fe678d92bec"
+    }
+  },
+  "signing": {
+    "cert_sha256": "15a066e7bf2507cb0e4d5c24defcc97506eeff19b106cb7f76dfc0e92300876b",
+    "lineage_sha256": null,
+    "not_after": "2056-03-10T05:53:27Z",
+    "not_before": "2026-03-18T05:53:27Z",
+    "scheme": "v2",
+    "subject": "CN=Android Debug,O=Android,C=US"
+  }
+}

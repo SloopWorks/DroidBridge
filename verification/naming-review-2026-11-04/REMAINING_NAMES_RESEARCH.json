@@ -1,0 +1,82 @@
+{
+  "date_local": "2026-11-04",
+  "scope": "Other descriptive nautical candidates plus leading SloopWorks family-name candidates",
+  "method": "Exact-name public web searches; spaced variants and indexed app-store/GitHub checks for leading clean candidates; primary publisher/project pages for main conflicts. Registry RDAP for .com and .app via IANA bootstrap.",
+  "recommendations": {
+    "best_descriptive": "DroidJetty",
+    "best_company_family": "SloopDeck",
+    "other_shortlist": [
+      "SloopDock",
+      "DroidAboard",
+      "DroidMoor"
+    ]
+  },
+  "existing_uses": [
+    {
+      "candidate": "DroidHarbor",
+      "finding": "Existing Android/macOS Quick Share file-transfer application",
+      "source": "https://www.eaceto.dev/projects/droidharbor",
+      "recommendation": "Reject due close category/platform collision"
+    },
+    {
+      "candidate": "DroidDock",
+      "finding": "Existing macOS ADB file manager; separate Android browser mirroring/control project also uses exact name",
+      "sources": [
+        "https://github.com/rajivm1991/DroidDock",
+        "https://github.com/hooware-ai/droiddock"
+      ],
+      "recommendation": "Reject due close category/platform collisions"
+    },
+    {
+      "candidate": "DroidPort",
+      "finding": "Existing Android phone companion for Mac",
+      "source": "https://droidport.app/",
+      "recommendation": "Reject due close category/platform collision"
+    },
+    {
+      "candidate": "DroidLaunch",
+      "finding": "Android boilerplate product promoted by creator in 2024; documentation remains indexed but direct pages returned 404 during this check",
+      "source": "https://www.reddit.com/r/SideProject/comments/1clpunu/",
+      "recommendation": "Set aside due previous Android software use; current operation not established"
+    },
+    {
+      "candidate": "PhoneDeck",
+      "finding": "Existing iPhone/Mac controller app with App Store listing",
+      "sources": [
+        "https://phonedeck.io/",
+        "https://apps.apple.com/us/app/phonedeck/id6773256172"
+      ],
+      "recommendation": "Reject due phone/Mac companion category collision"
+    },
+    {
+      "candidate": "DroidSide",
+      "finding": "Historical Android game descriptions attribute publication to Droidside; current active publisher not verified",
+      "recommendation": "Lower confidence historical collision; not shortlisted"
+    },
+    {
+      "candidate": "SloopSide",
+      "finding": "Existing Sloopside holiday-accommodation business",
+      "source": "https://www.sloopside.co.uk/",
+      "recommendation": "Unrelated category but less distinctive search presence than SloopDeck/SloopDock"
+    },
+    {
+      "candidate": "PhonePier",
+      "finding": "PhonePier phone-stand model indexed by 3D-print aggregators; original model publisher not verified",
+      "recommendation": "Unrelated product-use signal; not shortlisted"
+    }
+  ],
+  "no_obvious_exact_software_collision_surfaced": [
+    "DroidJetty",
+    "DroidAboard",
+    "DroidMoor",
+    "PhoneHarbor",
+    "SloopDeck",
+    "SloopDock",
+    "PocketJetty",
+    "AppMoor",
+    "PhoneAboard",
+    "PhoneAlongside"
+  ],
+  "registry_checks": "REMAINING_DOMAINS.json",
+  "limitations": "No full trademark register, company-name or social-handle clearance. Search absence does not establish uniqueness or app-store name reservation. RDAP 404 does not establish domain purchasability, reservation status or price. No registration, purchase or rename performed."
+}

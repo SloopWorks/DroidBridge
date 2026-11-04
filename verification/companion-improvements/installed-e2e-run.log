@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 142, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 95, in main
+    flow.action("choose_file", path=str(destination))
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-installed.py", line 85, in action
+    raise RuntimeError(f'AppKit action did not return a receipt: {action}')
+RuntimeError: AppKit action did not return a receipt: choose_file

@@ -149,6 +149,7 @@ public actor CompanionBrokerEngine {
     private var forwardReaper: Task<Void, Never>?
     #if DEBUG
     var retiringForwardCount: Int { retiringForwards.count }
+    var queuedControlCount: Int { get async { await scheduler.waitingCount } }
     #endif
     private var receipts: [UUID: BrokerIPCCached] = [:]
     private var pending = Set<UUID>()
@@ -156,6 +157,7 @@ public actor CompanionBrokerEngine {
     private let scheduler = BrokerScheduler()
     private var persistenceFailure = false
     private var persistedBytes: Data?
+    private var notifiedCommands = Set<String>()
     private var persistedFingerprint: CompanionBrokerJournal.Fingerprint?
     private var stopping = false
     private var shutdownFinished = false
@@ -322,6 +324,30 @@ public actor CompanionBrokerEngine {
             return ["status": .string(receipt.status), "result": .object(receipt.result)]
         }
         let deviceID = try uuid(p, "device_id")
+        if operation == "command_profile_commit" {
+            let id = try uuid(p, "command_id"), generation = try integer(p, "generation")
+            guard let command = storage.registry.commands.first(where: { $0.id == id && $0.deviceID == deviceID && $0.owner == owner && $0.generation == generation && $0.admitted == true && $0.status == "accepted" }),
+                  ["set_profile", "run_preset"].contains(command.kind), command.continuousDeadline?.isValid == true,
+                  let profile = command.payload["profile"]?.string, CompanionPerformanceProfile(rawValue: profile) != nil,
+                  let expectedTrust = storage.devices.first(where: { $0.deviceID == deviceID && $0.enabled })?.trustID,
+                  let transport = verified(deviceID) else { throw CompanionBoundaryError("stale_owner", "The exact admitted profile command is no longer current.") }
+            let epoch = trustEpochs[deviceID]
+            let receipt = try await control(deviceID:deviceID) {
+                guard !self.stopping, self.trustEpochs[deviceID] == epoch,
+                      self.storage.devices.contains(where: { $0.deviceID == deviceID && $0.enabled && $0.trustID == expectedTrust }),
+                      self.verified(deviceID)?.generation == transport.generation,
+                      self.storage.registry.commands.contains(where: { $0.id == id && $0.deviceID == deviceID && $0.owner == owner && $0.generation == generation && $0.admitted == true && $0.status == "accepted" && $0.continuousDeadline?.isValid == true }) else {
+                    throw CompanionBoundaryError("stale_owner", "Pairing or command authority changed before the queued profile action was admitted.")
+                }
+                return try await transport.client.sendCommand(kind: "set_profile", payload: ["profile": .string(profile)], requestID: UUID(uuidString: id)!)
+            }
+            guard receipt.status == "applied" else { throw CompanionBoundaryError("profile_outcome_unknown", "The phone did not confirm the profile. Inspect the outcome before retrying the preset.") }
+            guard storage.registry.commands.contains(where: { $0.id == id && $0.owner == owner && $0.generation == generation && $0.admitted == true && $0.status == "accepted" }),
+                  !stopping, trustEpochs[deviceID] == epoch, verified(deviceID)?.generation == transport.generation,
+                  let index = storage.devices.firstIndex(where: { $0.deviceID == deviceID && $0.enabled && $0.trustID == expectedTrust }) else { throw CompanionBoundaryError("profile_outcome_unknown", "The connection changed after the profile request; inspect its outcome before retrying.") }
+            storage.devices[index].profile = profile; try persist()
+            return ["profile": .string(profile), "applies_to": .string("new_sessions")]
+        }
         if operation == "host_command" {
             let commandID = requestID.uuidString.lowercased()
             if storage.registry.commands.contains(where: { $0.id == commandID }) || storage.stopAll.contains(where: { $0.id == commandID }) {
@@ -827,9 +853,14 @@ public actor CompanionBrokerEngine {
                 let budget = try await control(deviceID:deviceID) { try await transport.client.phoneCommandDeadline(event.payload) }
                 guard !stopping, verified(deviceID)?.generation == transport.generation, budget.isValid else { throw CompanionBoundaryError("command_expired", "The phone command expired or its connection changed.") }
                 if ["share_text", "share_url", "clipboard_text"].contains(kind) {
-                    guard let text = payload["text"]?.string, text.utf8.count <= (kind == "share_url" ? 8192 : 65_536) else { throw CompanionBoundaryError("invalid_content", "Shared text exceeds its limit.") }
-                    if kind == "share_url" { guard let url = URL(string: text), ["https", "http"].contains(url.scheme?.lowercased() ?? "") else { throw CompanionBoundaryError("invalid_url", "Only HTTP and HTTPS links can be received.") } }
+                    let action = try CompanionShareAction.validated(kind: kind, payload: payload)
                     if !storage.inbox.contains(where: { $0.id == id }) { storage.inbox.append(.init(id: id, deviceID: deviceID, kind: kind, created: Date(), payload: payload)); boundInbox(); try persist() }
+                    if action != .send {
+                        let receipt = try await enqueueHost(id: id, deviceID: deviceID, kind: kind, payload: payload, continuousDeadline: budget)
+                        try persist()
+                        if receipt.status != "accepted" { try await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: receipt.status, result: receipt.result) } }
+                        return
+                    }
                     try await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: "applied", result: ["state": .string("received_inbox")]) }
                     return
                 }
@@ -838,7 +869,11 @@ public actor CompanionBrokerEngine {
                     if let receipt = try await applyExport(deviceID: deviceID, id: id, payload: payload, continuousDeadline: budget), receipt.status != "accepted" { try await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: receipt.status, result: receipt.result) } }
                     return
                 }
-                guard ["open_app", "stop_session", "stop_all", "set_audio_route", "retry_audio", "set_profile", "set_screen_power", "set_export", "diagnostics_request"].contains(kind) else { throw CompanionBoundaryError("unsupported_command", "The phone requested an unsupported Mac action.") }
+                if kind == "run_preset" {
+                    _ = try CompanionDesktopPreset(payload: payload)
+                    guard payload["trust_id"]?.string.flatMap(UUID.init(uuidString:))?.uuidString.lowercased() == storage.devices.first(where: { $0.deviceID == deviceID })?.trustID else { throw CompanionBoundaryError("trust_changed", "The preset belongs to a different pairing.") }
+                }
+                guard ["open_app", "stop_session", "stop_all", "set_audio_route", "retry_audio", "set_profile", "set_screen_power", "set_export", "diagnostics_request", "run_preset"].contains(kind) else { throw CompanionBoundaryError("unsupported_command", "The phone requested an unsupported Mac action.") }
                 let receipt = try await enqueueHost(id: id, deviceID: deviceID, kind: kind, payload: payload, continuousDeadline: budget)
                 try persist()
                 if receipt.status != "accepted" { try await control(deviceID:deviceID) { try await transport.client.acknowledge(commandID: id, status: receipt.status, result: receipt.result) } }
@@ -1036,7 +1071,7 @@ public actor CompanionBrokerEngine {
     private func enqueueHost(id: String, deviceID: String, kind: String, payload: [String: CompanionJSON], deadline: Date? = nil, continuousDeadline: CompanionCommandDeadline? = nil) async throws -> CompanionBrokerCommand {
         guard !storage.stopAll.contains(where: { $0.id == id.lowercased() }) else { throw CompanionBoundaryError("request_conflict", "A stop-all command identity cannot be reused for another action.") }
         let budget = try continuousDeadline ?? CompanionCommandDeadline(issuedMS: CompanionClock.nowMS(), expiresMS: CompanionClock.nowMS() + 29_999)
-        if ["open_app", "set_export"].contains(kind) { try await ensureLauncher(deviceID) }
+        if ["open_app", "set_export", "run_preset", "share_text", "share_url", "clipboard_text"].contains(kind) { try await ensureLauncher(deviceID) }
         guard !stopping else { throw CancellationError() }
         guard !storage.stopAll.contains(where: { $0.id == id.lowercased() }) else { throw CompanionBoundaryError("request_conflict", "A stop-all command identity cannot be reused for another action.") }
         return try storage.registry.enqueue(id: id, deviceID: deviceID, kind: kind, payload: payload, deadline: deadline, continuousDeadline: budget)
@@ -1196,6 +1231,10 @@ public actor CompanionBrokerEngine {
                 #endif
             }
             persistedBytes = bytes; persistedFingerprint = fingerprint
+            let pending = storage.registry.commands.filter { $0.status == "accepted" && $0.admitted != true }
+            let keys = Set(pending.map { $0.id })
+            for pid in Set(pending.filter { !notifiedCommands.contains($0.id) }.map { $0.owner.pid }) { CompanionCommandWakeup.post(ownerPID: pid) }
+            notifiedCommands = keys
         }
         catch { persistenceFailure = true; throw error }
     }

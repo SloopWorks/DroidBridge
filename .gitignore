@@ -26,3 +26,6 @@ AndroidCompanion/.gradle/
 AndroidCompanion/.kotlin/
 AndroidCompanion/**/build/
 AndroidCompanion/local.properties
+
+# Local authentication handoff captures are not product verification artifacts.
+verification/**/apple-account-*.png

@@ -1,0 +1,105 @@
+{
+  "review_date_local": "2026-11-04",
+  "timezone": "America/Los_Angeles",
+  "method": "Public web search with primary product/store/repository verification for current-name collisions. Exact-name or exact-name-plus-app/software searches for alternatives.",
+  "recommendation": "Rename before public beta because the current name has several close product/category collisions. This is a product/marketing recommendation, not a legal conclusion.",
+  "existing_products": [
+    {
+      "name": "DroidBridge - Android Transfer",
+      "type": "Mac App Store application",
+      "function": "Android file management and transfer on macOS",
+      "url": "https://apps.apple.com/us/app/droidbridge-android-transfer/id6761004630?mt=12"
+    },
+    {
+      "name": "DroidBridge",
+      "publisher": "Lusan Sapkota",
+      "type": "Visual Studio Code extension",
+      "function": "Android mirroring, control and device management",
+      "url": "https://marketplace.visualstudio.com/items?itemName=lusansapkota.droidbridge"
+    },
+    {
+      "name": "DroidBridge",
+      "publisher": "beyondlevi",
+      "type": "GitHub project",
+      "function": "Mac mouse, keyboard and clipboard sharing with Android over USB",
+      "url": "https://github.com/beyondlevi/droidbridge"
+    },
+    {
+      "name": "DroidBridge",
+      "publisher": "Ali-Elmansoury",
+      "type": "GitHub project",
+      "function": "Cross-platform desktop Android device manager using ADB",
+      "url": "https://github.com/Ali-Elmansoury/DroidBridge"
+    },
+    {
+      "name": "DroidBridge Launcher",
+      "publisher": "DNA Mobile Applications",
+      "type": "Google Play application",
+      "function": "Minecraft Java Edition launcher on Android",
+      "url": "https://play.google.com/store/apps/details?id=ca.dnamobile.droidbridgelauncher&hl=en_US"
+    },
+    {
+      "name": "DroidBridge",
+      "publisher": "zephyr7030",
+      "type": "GitHub project",
+      "function": "On-device Android MCP server and automation",
+      "url": "https://github.com/zephyr7030/DroidBridge"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "PocketHarbor",
+      "rationale": "A welcoming desktop home for phone apps; friendly consumer brand."
+    },
+    {
+      "name": "DeskTandem",
+      "rationale": "Phone and Mac work together; clear productivity positioning."
+    },
+    {
+      "name": "AppMoor",
+      "rationale": "Short brand suggesting Android apps anchored on the desktop; spelling may need explanation."
+    },
+    {
+      "name": "PocketPier",
+      "rationale": "Connection between phone and desktop; compact visual identity."
+    },
+    {
+      "name": "DeskRoost",
+      "rationale": "Apps settle into their own desktop windows; friendly visual identity."
+    },
+    {
+      "name": "AppAlcove",
+      "rationale": "Each Android app gets a dedicated place on the Mac."
+    },
+    {
+      "name": "DeskUnfold",
+      "rationale": "Phone apps expand into a desktop workspace."
+    },
+    {
+      "name": "AppPortico",
+      "rationale": "A doorway into Android apps; distinctive architectural identity."
+    },
+    {
+      "name": "PocketLanding",
+      "rationale": "Phone apps land on your Mac; straightforward launch imagery."
+    },
+    {
+      "name": "PocketOutpost",
+      "rationale": "A desktop presence for apps that still run on the phone."
+    }
+  ],
+  "screening_limitations": "No obvious competing software product surfaced for these final alternatives in the preliminary searches. This is not proof of uniqueness. Domains, social handles, trademark registers, phonetic variants and legal clearance were not verified. No name selected or registered. No code or app identifiers renamed.",
+  "screened_out": [
+    "Deskward: existing Android publisher",
+    "Palmframe: existing software products",
+    "DeskFerry: existing software products including a Mac utility",
+    "PocketLoft: existing app result",
+    "AppBerth: existing technology site",
+    "DeskStride: existing desktop automation software",
+    "PocketRunway: existing software project",
+    "PocketParlor: existing games project",
+    "PocketSpan: legacy telecom product and software symbol"
+  ],
+  "suggested_positioning": "Your Android apps. In Mac windows.",
+  "budget_guidance": "Use SloopWorks / existing hosting for the landing-page path initially; do not buy a premium domain before the name is selected and checked."
+}

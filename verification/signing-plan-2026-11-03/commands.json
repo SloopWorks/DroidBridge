@@ -1,0 +1,80 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "log": "00-git.log"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/patrick/workspace/SloopWorks",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "log": "01-git.log"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/patrick/workspace/SloopWorks",
+      "status",
+      "--short"
+    ],
+    "exit_code": 0,
+    "log": "02-git.log"
+  },
+  {
+    "argv": [
+      "security",
+      "find-identity",
+      "-v",
+      "-p",
+      "codesigning"
+    ],
+    "exit_code": 0,
+    "log": "03-security.log"
+  },
+  {
+    "argv": [
+      "codesign",
+      "-dvv",
+      "dist/DroidBridge.app"
+    ],
+    "exit_code": 0,
+    "log": "04-codesign.log"
+  },
+  {
+    "argv": [
+      "rg",
+      "-n",
+      "Apple Developer|organization membership|Organization membership|Enroll .*Apple|Confirm .*auto-renew|Apple.*APPROVED",
+      "/Users/patrick/workspace/SloopWorks/org-facts.md",
+      "/Users/patrick/workspace/SloopWorks/ops/tasks.md",
+      "/Users/patrick/workspace/SloopWorks/compliance/filings-log.md",
+      "/Users/patrick/workspace/SloopWorks/finance/vendors.md"
+    ],
+    "exit_code": 0,
+    "log": "05-rg.log"
+  },
+  {
+    "argv": [
+      "rg",
+      "-n",
+      "ad_hoc_not_notarized|sign_adhoc|codesign|CFBundleIdentifier",
+      "scripts/package.sh",
+      "scripts/create-release-manifest.py",
+      "Sources/DroidBridgeCore/CompanionReleaseMetadata.swift",
+      "Sources/DroidBridge/MacAppWrapper.swift",
+      "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ReleaseDelivery.kt"
+    ],
+    "exit_code": 0,
+    "log": "06-rg.log"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "created_at_utc": "2026-10-31T04:22:32.270894+00:00",
+  "serial": "emulator-5580",
+  "installed_identities": {
+    "dev.droidbridge.companion": {
+      "base_apk_sha256": "b6277fb903e99bb46e9bb93553de12cda6094f8d00b1abf4b700794a11254abd"
+    },
+    "dev.droidbridge.companion.test": {
+      "base_apk_sha256": "b1aee0e064a7f73072278362470554d2ff748a1bed3e10bc5373cb678c4f0d23"
+    },
+    "dev.droidbridge.companion.dev": {
+      "base_apk_sha256": "d73d3754dcd91b0c15715c0c2599bc9e9600e3bdcaf904929ad93163aa276f6e"
+    },
+    "dev.droidbridge.companion.dev.test": {
+      "base_apk_sha256": "ec5e1836cea7b9dc54b8bdabada0779a96187b110b85582942ced80db39f3fb1"
+    }
+  },
+  "release_product_and_test_apks_unchanged": true,
+  "release_profile_data_operations": false,
+  "both_companion_services_absent_before_and_after": true,
+  "development_process_stopped_after_test": true,
+  "diagnostic_tests_passed": 2,
+  "duration_seconds": 2.056,
+  "runtime_test_log": "development-final-diagnostics-test.log",
+  "phone_or_other_emulator_operations": false,
+  "passed": true
+}

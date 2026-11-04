@@ -1,0 +1,9 @@
+{
+  "serial": "emulator-5580",
+  "product_apk_sha256": "d39b022685edbddd989a2a0c173d340b2d5e44808e4438c44612bed7631176af",
+  "test_apk_sha256": "d420f3b6b1565518a96aa1340a63d7331313b2c1a039292e87aeea367342246c",
+  "version_code": 13,
+  "installed_test_count": 4,
+  "passed": true,
+  "scope": "Installed release parser and offline license-viewer instrumentation only; not Mac/Pixel acceptance."
+}

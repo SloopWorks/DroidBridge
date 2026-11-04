@@ -1,0 +1,27 @@
+COMMAND: swift build
+Another instance of SwiftPM (PID: 14406) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/10] Compiling DroidBridge main.swift
+[4/10] Compiling DroidBridge LauncherUI.swift
+[5/10] Emitting module DroidBridge
+[6/10] Compiling DroidBridge DesktopSettings.swift
+[7/10] Compiling DroidBridge CompanionWindow.swift
+[8/10] Compiling DroidBridge Launcher.swift
+[9/19] Compiling DroidBridge CompanionWirelessSetup.swift
+[10/19] Compiling DroidBridge PhoneDisplayControls.swift
+[11/19] Compiling DroidBridge DesktopWorkspace.swift
+[12/19] Compiling DroidBridge CompanionPairingScanner.swift
+[13/19] Compiling DroidBridge CompanionDesktopAdapter.swift
+[14/19] Compiling DroidBridge DeviceOnboardingUI.swift
+[15/19] Compiling DroidBridge ManagedAppNameRepair.swift
+[16/19] Compiling DroidBridge AudioControls.swift
+[17/19] Compiling DroidBridge CompanionLauncherIntegration.swift
+[17/20] Write Objects.LinkFileList
+[18/20] Linking DroidBridge
+[19/20] Applying DroidBridge
+Build complete! (3.93s)
+COMMAND: swiftc shipping DroidBridge UI sources + isolated unified-desktop fixture
+error: input file 'scripts/verify-unified-desktop.swift' was modified during the build
+error: input file 'scripts/verify-unified-desktop.swift' was modified during the build

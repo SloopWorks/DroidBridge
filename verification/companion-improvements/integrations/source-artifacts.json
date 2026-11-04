@@ -1,0 +1,48 @@
+{
+  "source_builds": [
+    {
+      "repository": "sloopworksinstrumentationplatform",
+      "revision": "549429a5541c35709f9f9389d811d4d370cfdc93",
+      "dirty": true
+    },
+    {
+      "repository": "debugdrawer",
+      "revision": "c097f794c1ddffc63d55df0bf0f10f531035e51d",
+      "dirty": false
+    }
+  ],
+  "artifacts": {
+    "com/sloopworks/debugdrawer/debugdrawer/0.1.1/debugdrawer-0.1.1-sources.jar": "9321487e037c84fccb9072ab4b5efb00c376af70f699766b772bd34a5b6dff57",
+    "com/sloopworks/debugdrawer/debugdrawer/0.1.1/debugdrawer-0.1.1.jar": "21ea99a44c20427c1e599029eb36626582eb33a4eac6b9a61ef80808d172c0c1",
+    "com/sloopworks/debugdrawer/debugdrawer/0.1.1/debugdrawer-0.1.1.module": "8219810f2a1bb6fe0348e29c42ac04602ab25c1fedc2462cc212a62c49e54cd0",
+    "com/sloopworks/debugdrawer/debugdrawer/0.1.1/debugdrawer-0.1.1.pom": "ed822399c8773beee86b518471dca52f32350bca9ccaacb2380e7696f6d9c3b3",
+    "com/sloopworks/debugdrawer/debugdrawer-android/0.1.1/debugdrawer-android-0.1.1-sources.jar": "ef96b2d863148f571a19de476b743f130a9e0dfe08ddac2ecd135edc9f1395c0",
+    "com/sloopworks/debugdrawer/debugdrawer-android/0.1.1/debugdrawer-android-0.1.1.aar": "a901ac82ab5cd1974973ac43950d9b54669ac531f84314502a26aac3414a0e6e",
+    "com/sloopworks/debugdrawer/debugdrawer-android/0.1.1/debugdrawer-android-0.1.1.module": "c93328152ce35456a37c42ed4ee7aa5134a950892fcf7e548b800def5afbdb2d",
+    "com/sloopworks/debugdrawer/debugdrawer-android/0.1.1/debugdrawer-android-0.1.1.pom": "5c96114e06f99ddb694c4805dca82cd69096b591f0ee1efc0bc58b2137caa7bf",
+    "com/sloopworks/debugdrawer/debugdrawer-swip/0.1.1/debugdrawer-swip-0.1.1-sources.jar": "85fc1a270987ca2db77eaf55420594320864a0e46a8267a4a08f107ada27e601",
+    "com/sloopworks/debugdrawer/debugdrawer-swip/0.1.1/debugdrawer-swip-0.1.1.jar": "c9f94a5c8d3e313a4d35d459856ad668972cdaae86e2106f8694dad00421d783",
+    "com/sloopworks/debugdrawer/debugdrawer-swip/0.1.1/debugdrawer-swip-0.1.1.module": "9a23680434704ce43f9cc9ccf33a8763dfb008a0e2c24df947cd1d27d201766c",
+    "com/sloopworks/debugdrawer/debugdrawer-swip/0.1.1/debugdrawer-swip-0.1.1.pom": "6805b1fac3a691942590010049e3ea1dc55334b8aee6d6f052ad2e496279b2b9",
+    "com/sloopworks/debugdrawer/debugdrawer-swip-android/0.1.1/debugdrawer-swip-android-0.1.1-sources.jar": "85fc1a270987ca2db77eaf55420594320864a0e46a8267a4a08f107ada27e601",
+    "com/sloopworks/debugdrawer/debugdrawer-swip-android/0.1.1/debugdrawer-swip-android-0.1.1.aar": "9f8db01948edb12f41e3a40345da93de5b3121debf3f9c18ee21ffbef719bbb0",
+    "com/sloopworks/debugdrawer/debugdrawer-swip-android/0.1.1/debugdrawer-swip-android-0.1.1.module": "3bd620f23fc157878fd36ed5e3b3f48bf3de1d68a8a528cfb853c75fe9615e15",
+    "com/sloopworks/debugdrawer/debugdrawer-swip-android/0.1.1/debugdrawer-swip-android-0.1.1.pom": "c429e3e3c030c9c50cd545508ce56dd9f73ee4f9ba2f6671480e78f6044e6838",
+    "works/sloop/swip/swip-core/0.1.12/swip-core-0.1.12-sources.jar": "3212c0229d44b3151c577ae6c092792e8dd65c3fd255a38cb29f23d4337b4241",
+    "works/sloop/swip/swip-core/0.1.12/swip-core-0.1.12.jar": "0408268498f9a155523720b28f959a0802464f9ab65bb1888a072c949b120c5e",
+    "works/sloop/swip/swip-core/0.1.12/swip-core-0.1.12.module": "298a91330ba822a40c25616b40d2aef3a24716df8d7579fec57eb07d08c9018d",
+    "works/sloop/swip/swip-core/0.1.12/swip-core-0.1.12.pom": "bb8e0ae5767e362504c6ed04ed1acd3bc0be47e61bd8d90313b37d32521b973d",
+    "works/sloop/swip/swip-core-android/0.1.12/swip-core-android-0.1.12-sources.jar": "e7bb1435d08feeab023c3589b80b70cd49b64a36ef069cd4cdf12a86bed0a81a",
+    "works/sloop/swip/swip-core-android/0.1.12/swip-core-android-0.1.12.aar": "05f7ac799c059e1c47ee3b79cdee76768098e64c1446a7339933b61497a09169",
+    "works/sloop/swip/swip-core-android/0.1.12/swip-core-android-0.1.12.module": "d8beefb6437faeacf062576585176c49b5f0584b91192e39bd77b22182d4c694",
+    "works/sloop/swip/swip-core-android/0.1.12/swip-core-android-0.1.12.pom": "a92a865d8cc85fe6f0726fc731e8116b77c3a08d63d44f6bbc9af71bc1f7609b",
+    "works/sloop/swip/swip-debug/0.1.1/swip-debug-0.1.1-sources.jar": "c82cf65d8ddb907671919ff1f098036c8c331150830468dd6ce9fb13a290eee8",
+    "works/sloop/swip/swip-debug/0.1.1/swip-debug-0.1.1.jar": "706c9b7f3f090549b818a264080ad2ff83044eabce5f27e4d018248d3314be06",
+    "works/sloop/swip/swip-debug/0.1.1/swip-debug-0.1.1.module": "a3c11f7e48c9510a0a18ad1b51ebbefc29b497af0b700d7a29dd693ce93f71a2",
+    "works/sloop/swip/swip-debug/0.1.1/swip-debug-0.1.1.pom": "2d00bc2a0e5c6acaa2f4adf16da9e12777ddefea0f5b0efc28a7d8acb732dcd3",
+    "works/sloop/swip/swip-debug-android/0.1.1/swip-debug-android-0.1.1-sources.jar": "c82cf65d8ddb907671919ff1f098036c8c331150830468dd6ce9fb13a290eee8",
+    "works/sloop/swip/swip-debug-android/0.1.1/swip-debug-android-0.1.1.aar": "577e5f24b1f291b2b06cea738ff79f1d8880174b8995b2f9d4cd59498a67ad23",
+    "works/sloop/swip/swip-debug-android/0.1.1/swip-debug-android-0.1.1.module": "0af8da2bd12be34f4cac7401de0f35b6d6cd700e74f08c1411c1b966523fc90e",
+    "works/sloop/swip/swip-debug-android/0.1.1/swip-debug-android-0.1.1.pom": "77e27089b56e3d5f7288da25f2692477343ced1664aed154612c185176f05ff5"
+  }
+}

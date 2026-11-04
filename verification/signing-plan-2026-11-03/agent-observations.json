@@ -1,0 +1,25 @@
+{
+  "checked_date": "2026-11-03",
+  "method": "Read existing Codex chat records and selected text-only excerpts of the previously identified Claude Apple session; no agent was messaged or started.",
+  "codex_chats": [
+    {
+      "thread_id": "01a18b7e-eabe-7403-a52f-77994bf9b26d",
+      "title": "Research how Mac apps can be monetized.  How to distribute, collect payment, prevent piracy, which methods work best for niche boutique apps",
+      "finding": "Completed research recommended direct distribution and lightweight licensing; does not establish Developer ID/notarization setup."
+    },
+    {
+      "thread_id": "01a19287-e2a2-7107-a280-0c9082aca027",
+      "title": "Update Sloopworks Q3 filing",
+      "finding": "Completed company-record update; identified the existing Apple Claude session. No separate business agent was updated."
+    }
+  ],
+  "claude_session": {
+    "id": "1b8a677f-37bd-4633-bdb9-465857322bc3",
+    "identified_title": "Apple D-U-N-S number storage",
+    "transcript": "/Users/patrick/.claude/projects/-Users-patrick-workspace-sloopworks/1b8a677f-37bd-4633-bdb9-465857322bc3.jsonl",
+    "reported_success_date": "2026-08-18",
+    "reported_success": "Organization enrollment recorded; signed device install and successful PickedPlate TestFlight upload. Hub records updated and pushed on 2026-08-19.",
+    "developer_id_setup_evidence_found": false,
+    "credential_security_followup": "The agent reported an exposed Admin API private key and repeatedly requested revocation. Current revocation status was not verified. No private key material is copied here."
+  }
+}

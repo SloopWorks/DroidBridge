@@ -1,0 +1,7 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="16dp" android:background="#F4F5FA">
+ <TextView android:id="@+id/widget_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="DroidBridge" android:textColor="#141B2D" android:textSize="18sp" android:textStyle="bold"/>
+ <TextView android:id="@+id/widget_detail" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="#354158" android:textSize="12sp"/>
+ <Button android:id="@+id/widget_actions" android:layout_width="match_parent" android:layout_height="48dp" android:text="Quick actions" android:textAllCaps="false"/>
+ <Button android:id="@+id/widget_favorite1" android:layout_width="match_parent" android:layout_height="48dp" android:text="Apps on Mac" android:textAllCaps="false"/>
+ <Button android:id="@+id/widget_favorite2" android:layout_width="match_parent" android:layout_height="48dp" android:text="Sharing" android:textAllCaps="false"/>
+</LinearLayout>

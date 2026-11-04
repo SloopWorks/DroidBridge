@@ -1,0 +1,117 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+Shipyard: variant 'development' appears to be signed with the per-developer default debug keystore. Cross-developer in-place updates need a shared development signing identity (design §11): an APK signed with another developer's debug key cannot update this install. Configure a signingConfig backed by the shared dev key. (This check compares keystore paths taken from the AGP DSL — the plugin cannot see the certificate itself.)
+WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.0
+
+This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.
+
+You are strongly encouraged to update your project to use a newer
+Android Gradle plugin that has been tested with compile SDK version 37.0.
+
+If you are already using the latest version of the Android Gradle plugin,
+you may need to wait until a newer version with support for compile SDK version 37.0 is available.
+
+For more information refer to the compatibility table:
+https://d.android.com/r/tools/api-level-support
+
+To suppress this warning, add/update
+    android.suppressUnsupportedCompileSdk=37.0
+to this project's gradle.properties.
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDevelopmentBuild UP-TO-DATE
+> Task :app:mergeDevelopmentNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:generateDevelopmentBuildConfig UP-TO-DATE
+> Task :app:generateDevelopmentResValues UP-TO-DATE
+
+> Task :app:generateShipyardDevelopmentMetadata
+Shipyard development: build_instance_id=01a19031-4c14-736f-b3a0-24c1c90706ee provenance_digest=47862bb71681…
+
+> Task :app:checkDevelopmentAarMetadata UP-TO-DATE
+> Task :app:processDevelopmentNavigationResources UP-TO-DATE
+> Task :app:compileDevelopmentNavigationResources UP-TO-DATE
+> Task :app:mapDevelopmentSourceSetPaths UP-TO-DATE
+> Task :app:generateDevelopmentResources UP-TO-DATE
+> Task :app:mergeDevelopmentResources UP-TO-DATE
+> Task :app:packageDevelopmentResources UP-TO-DATE
+> Task :app:parseDevelopmentLocalResources UP-TO-DATE
+> Task :app:createDevelopmentCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDevelopment UP-TO-DATE
+> Task :app:processDevelopmentMainManifest
+> Task :app:processDevelopmentManifest
+> Task :app:javaPreCompileDevelopment UP-TO-DATE
+> Task :app:mergeDevelopmentShaders UP-TO-DATE
+> Task :app:compileDevelopmentShaders NO-SOURCE
+> Task :app:generateDevelopmentAssets UP-TO-DATE
+> Task :app:mergeDevelopmentAssets
+> Task :app:l8DexDesugarLibDevelopment UP-TO-DATE
+> Task :app:compressDevelopmentAssets
+> Task :app:desugarDevelopmentFileDependencies UP-TO-DATE
+> Task :app:checkDevelopmentDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDevelopment UP-TO-DATE
+> Task :app:mergeLibDexDevelopment UP-TO-DATE
+> Task :app:mergeDevelopmentJniLibFolders UP-TO-DATE
+> Task :app:mergeDevelopmentNativeLibs UP-TO-DATE
+> Task :app:stripDevelopmentDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDevelopment UP-TO-DATE
+> Task :app:writeDevelopmentAppMetadata UP-TO-DATE
+> Task :app:writeDevelopmentSigningConfigVersions UP-TO-DATE
+> Task :app:preDevelopmentAndroidTestBuild SKIPPED
+> Task :app:processDevelopmentAndroidTestManifest
+> Task :app:generateDevelopmentAndroidTestBuildConfig
+> Task :app:checkDevelopmentAndroidTestAarMetadata UP-TO-DATE
+> Task :app:processDevelopmentAndroidTestNavigationResources UP-TO-DATE
+> Task :app:compileDevelopmentAndroidTestNavigationResources UP-TO-DATE
+> Task :app:generateDevelopmentAndroidTestResValues UP-TO-DATE
+> Task :app:mapDevelopmentAndroidTestSourceSetPaths UP-TO-DATE
+> Task :app:generateDevelopmentAndroidTestResources UP-TO-DATE
+> Task :app:mergeDevelopmentAndroidTestResources UP-TO-DATE
+> Task :app:javaPreCompileDevelopmentAndroidTest UP-TO-DATE
+> Task :app:mergeDevelopmentAndroidTestShaders UP-TO-DATE
+> Task :app:compileDevelopmentAndroidTestShaders NO-SOURCE
+> Task :app:generateDevelopmentAndroidTestAssets UP-TO-DATE
+> Task :app:mergeDevelopmentAndroidTestAssets UP-TO-DATE
+> Task :app:compressDevelopmentAndroidTestAssets UP-TO-DATE
+> Task :app:desugarDevelopmentAndroidTestFileDependencies UP-TO-DATE
+> Task :app:checkDevelopmentAndroidTestDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDevelopmentAndroidTest UP-TO-DATE
+> Task :app:mergeLibDexDevelopmentAndroidTest UP-TO-DATE
+> Task :app:mergeDevelopmentAndroidTestJniLibFolders UP-TO-DATE
+> Task :app:mergeDevelopmentAndroidTestNativeLibs NO-SOURCE
+> Task :app:stripDevelopmentAndroidTestDebugSymbols NO-SOURCE
+> Task :app:validateSigningDevelopmentAndroidTest UP-TO-DATE
+> Task :app:writeDevelopmentAndroidTestSigningConfigVersions UP-TO-DATE
+> Task :app:processDevelopmentManifestForPackage
+> Task :app:processDevelopmentAndroidTestResources
+> Task :app:processDevelopmentResources
+> Task :app:compileDevelopmentKotlin UP-TO-DATE
+> Task :app:compileDevelopmentJavaWithJavac UP-TO-DATE
+> Task :app:dexBuilderDevelopment UP-TO-DATE
+> Task :app:mergeDevelopmentGlobalSynthetics UP-TO-DATE
+> Task :app:processDevelopmentJavaRes UP-TO-DATE
+> Task :app:mergeDevelopmentJavaResource UP-TO-DATE
+> Task :app:mergeProjectDexDevelopment UP-TO-DATE
+> Task :app:bundleDevelopmentClassesToCompileJar
+> Task :app:packageDevelopment
+> Task :app:createDevelopmentApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleDevelopment
+
+> Task :app:compileDevelopmentAndroidTestKotlin
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionImprovementsUXDeviceTest.kt:160:105 Unnecessary non-null assertion (!!) on a non-null receiver of type 'EditText'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionImprovementsUXDeviceTest.kt:160:130 Unnecessary non-null assertion (!!) on a non-null receiver of type 'EditText'.
+
+> Task :app:compileDevelopmentAndroidTestJavaWithJavac
+> Task :app:dexBuilderDevelopmentAndroidTest
+> Task :app:mergeDevelopmentAndroidTestGlobalSynthetics UP-TO-DATE
+> Task :app:processDevelopmentAndroidTestJavaRes UP-TO-DATE
+> Task :app:mergeDevelopmentAndroidTestJavaResource UP-TO-DATE
+> Task :app:mergeProjectDexDevelopmentAndroidTest
+> Task :app:packageDevelopmentAndroidTest
+> Task :app:createDevelopmentAndroidTestApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleDevelopmentAndroidTest
+
+BUILD SUCCESSFUL in 14s
+72 actionable tasks: 17 executed, 55 up-to-date

@@ -1,0 +1,8 @@
+{
+  "expired_during_refresh_zero_effects" : true,
+  "passed" : true,
+  "scope" : "Shipping adapter over anonymous NSXPC with authorized ADB fixture; no installed transport claim",
+  "shutdown_during_refresh_zero_effects" : true,
+  "stale_cache_refreshed_once_before_effect" : true,
+  "still_disconnected_zero_effects" : true
+}

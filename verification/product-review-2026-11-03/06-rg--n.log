@@ -1,0 +1,29 @@
+UTC: 2026-11-03T16:48:12.634114+00:00
+CWD: /Users/patrick/workspace/DroidBridge
+COMMAND: rg -n 'codesign|signing ==|currentVersion|LSMinimumSystemVersion|sign_adhoc|notary|targetSdk|minSdk|versionCode|applicationIdSuffix' scripts/package.sh scripts/create-release-manifest.py Sources/DroidBridge/MacAppWrapper.swift Sources/DroidBridgeCore/CompanionReleaseMetadata.swift AndroidCompanion/app/build.gradle.kts
+
+AndroidCompanion/app/build.gradle.kts:11:        minSdk = 33
+AndroidCompanion/app/build.gradle.kts:12:        targetSdk = 35
+AndroidCompanion/app/build.gradle.kts:13:        versionCode = 12
+AndroidCompanion/app/build.gradle.kts:31:        applicationIdSuffix = ".dev"
+Sources/DroidBridgeCore/CompanionReleaseMetadata.swift:6:    public static let currentVersion = "0.2.0"
+Sources/DroidBridgeCore/CompanionReleaseMetadata.swift:7:    public static var manifestURL: URL { URL(string: "https://github.com/SloopWorks/DroidBridge/releases/download/v\(currentVersion)/release-manifest.json")! }
+Sources/DroidBridgeCore/CompanionReleaseMetadata.swift:21:        guard version == Self.currentVersion, architecture == "arm64", minimumMacOS == "26.0",
+Sources/DroidBridgeCore/CompanionReleaseMetadata.swift:24:              signing == "ad_hoc_not_notarized",
+Sources/DroidBridge/MacAppWrapper.swift:123:            _ = try await ProcessRunner.run("/usr/bin/codesign", arguments: ["--force", "--sign", "-", player.path], timeout: 30)
+Sources/DroidBridge/MacAppWrapper.swift:128:        var plist: [String: Any] = ["CFBundleIdentifier": identifier, "CFBundleName": name, "CFBundleDisplayName": name, "CFBundleExecutable": "DroidBridge", "CFBundlePackageType": "APPL", "CFBundleShortVersionString": hostInfo["CFBundleShortVersionString"] as? String ?? "0.1.2", "CFBundleVersion": hostInfo["CFBundleVersion"] as? String ?? "3", "CFBundleIconFile": "AndroidApp.icns", "LSMinimumSystemVersion": "26.0", "NSHighResolutionCapable": true, "DroidBridgeWrapperFormat": 2]
+Sources/DroidBridge/MacAppWrapper.swift:139:        _ = try await ProcessRunner.run("/usr/bin/codesign", arguments: ["--force", "--sign", "-", stage.path], timeout: 30)
+Sources/DroidBridge/MacAppWrapper.swift:140:        _ = try await ProcessRunner.run("/usr/bin/codesign", arguments: ["--verify", "--deep", "--strict", stage.path], timeout: 30)
+scripts/create-release-manifest.py:7:subprocess.run(['codesign','--verify','--deep','--strict',str(a.app)],check=True)
+scripts/create-release-manifest.py:8:signing=subprocess.run(['codesign','-dv','--verbose=4',str(a.app)],capture_output=True,text=True,check=True).stderr
+scripts/create-release-manifest.py:11:assert version=='0.2.0' and info['LSMinimumSystemVersion']=='26.0','Update and review versioned delivery policy before another release'
+scripts/package.sh:16:sign_adhoc() {
+scripts/package.sh:19:        if codesign --force --sign - "$1"; then return 0; fi
+scripts/package.sh:87:<key>CFBundleName</key><string>DroidBridge</string><key>CFBundleDisplayName</key><string>DroidBridge</string><key>CFBundleIdentifier</key><string>app.droidbridge.desktop</string><key>CFBundleExecutable</key><string>DroidBridge</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>$VERSION</string><key>CFBundleVersion</key><string>$BUILD_NUMBER</string><key>DroidBridgeManagedNamingVersion</key><integer>2</integer><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/><key>NSCameraUsageDescription</key><string>Scan the pairing QR code shown on your Android phone to connect it to this Mac.</string><key>NSHumanReadableCopyright</key><string>Copyright © 2026 DroidBridge contributors</string></dict></plist>
+scripts/package.sh:93:    sign_adhoc "$item"
+scripts/package.sh:107:<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>CFBundleIdentifier</key><string>app.droidbridge.player</string><key>CFBundleName</key><string>DroidBridge Player</string><key>CFBundleExecutable</key><string>scrcpy</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>5.0.1</string><key>CFBundleVersion</key><string>1</string><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/></dict></plist>
+scripts/package.sh:109:sign_adhoc "$PLAYER"
+scripts/package.sh:113:sign_adhoc "$APP"
+scripts/package.sh:120:codesign --verify --deep --strict "$APP"
+
+EXIT CODE: 0

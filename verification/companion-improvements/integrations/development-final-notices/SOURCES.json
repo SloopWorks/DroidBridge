@@ -1,0 +1,17 @@
+[
+  {
+    "file": "Apache-2.0.txt",
+    "source": "https://raw.githubusercontent.com/zxing/zxing/zxing-3.5.3/LICENSE",
+    "sha256": "3f62881f0566227a24b12e5a754cc79f39aaa94883038e95c94812e1f50af42f"
+  },
+  {
+    "file": "zxing-NOTICE.txt",
+    "source": "https://raw.githubusercontent.com/zxing/zxing/zxing-3.5.3/NOTICE",
+    "sha256": "4db4b60aace29ec6c5c4f13ca9cac1930d3c0c54bcc67dceead0c10771120e66"
+  },
+  {
+    "file": "kotlin-NOTICE.txt",
+    "source": "https://raw.githubusercontent.com/JetBrains/kotlin/v2.3.21/license/NOTICE.txt",
+    "sha256": "0b09a83d3ef7795c7dec65e815866597c066c53898f2852a76599b8f5552941a"
+  }
+]

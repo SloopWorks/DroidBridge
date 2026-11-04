@@ -3,6 +3,7 @@
 import json
 import os
 from pathlib import Path
+import plistlib
 import shutil
 import subprocess
 import sys
@@ -25,6 +26,24 @@ def run(arguments, **kwargs):
 
 
 class DistributionSecurityTests(unittest.TestCase):
+    def test_source_commit_claim_must_match_requested_archive(self):
+        with tempfile.TemporaryDirectory(prefix='distribution-commit-security-') as directory:
+            target = Path(directory)
+            app = target / 'DroidBridge.app'
+            shutil.copytree(APP, app, symlinks=True)
+            plist = app / 'Contents/Info.plist'
+            info = plistlib.loads(plist.read_bytes())
+            info['DroidBridgeSourceCommit'] = '0' * 40
+            plist.write_bytes(plistlib.dumps(info))
+            subprocess.run(['/usr/bin/codesign', '--force', '--sign', '-', str(app)],
+                           check=True, capture_output=True)
+            output = target / 'source.tar.gz'
+            result = run([PACKAGER, '--commit', 'HEAD', '--app', app,
+                          '--adb-runtime', RUNTIME, '--output', output])
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('source identity differs', result.stderr)
+            self.assertFalse(output.exists())
+
     def test_validation_scripts_refuse_optimized_interpreter_before_admission(self):
         for name in GUARDED:
             with self.subTest(script=name, mode='-O'):

@@ -1,0 +1,24 @@
+COMMAND: swift build
+[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Compiling DroidBridge CompanionWindow.swift
+[4/7] Emitting module DroidBridge
+[5/7] Compiling DroidBridge LauncherUI.swift
+[6/16] Compiling DroidBridge main.swift
+[7/16] Compiling DroidBridge CompanionLauncherIntegration.swift
+[8/16] Compiling DroidBridge DesktopSettings.swift
+[9/16] Compiling DroidBridge PhoneDisplayControls.swift
+[10/16] Compiling DroidBridge AudioControls.swift
+[11/16] Compiling DroidBridge DeviceOnboardingUI.swift
+[12/16] Compiling DroidBridge CompanionDesktopAdapter.swift
+[13/16] Compiling DroidBridge ManagedAppNameRepair.swift
+[14/16] Compiling DroidBridge Launcher.swift
+[14/17] Write Objects.LinkFileList
+[15/17] Linking DroidBridge
+[16/17] Applying DroidBridge
+Build complete! (4.36s)
+COMMAND: swiftc shipping DroidBridge UI sources + isolated unified-desktop fixture
+COMMAND: private fixture executable --companion-qa-root <mode-700-private-root> --serial emulator-5580 (ADB/scrcpy disabled)
+PASS: unified desktop isolated AppKit fixture (not live-device acceptance)

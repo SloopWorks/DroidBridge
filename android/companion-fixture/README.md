@@ -31,3 +31,18 @@ companion notification-listener grant, companion global opt-in and the selected
 Mac's package allowlist. Seeing a permission button or notification row does not
 prove a reply or transfer. Record receiver identity and terminal receipts while
 excluding pairing secrets, credentials and unrelated user data from evidence.
+
+`ReceiveActivity` is a separate ordinary-UID Sharesheet recipient labeled
+**DroidBridge transfer verifier**. It hashes only explicitly received companion
+content URIs (50 MiB ceiling), displays SHA-256/byte count/UID/grant status, and
+never writes or uploads the received bytes. A test-only `probe_uri` string starts
+an actual read without granting access, so the negative permission path is proved
+separately from successful delivery. Package visibility is explicit and does not
+relax the companion provider's export or URI-permission checks.
+
+The opt-in instrumentation class is `CompanionShareOnwardDeviceTest`, requiring
+`-e external_receiver 1`. It touches the real product Share onward button, selects
+this recipient in Android's system Sharesheet, compares bytes/digest and exact
+receiver UID, and records screenshots plus `verification/share-onward.json` in
+the companion's external files directory. Coordinate emulator5580 ownership
+before installing either the same-signer fixture or the release test APK.

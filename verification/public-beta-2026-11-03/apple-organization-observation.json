@@ -1,0 +1,14 @@
+{
+  "observed_date": "2026-11-03",
+  "source": "Authenticated Apple Developer Account membership and Certificates pages in Chrome; read-only inspection after owner signed in",
+  "organization": "SloopWorks LLC",
+  "team_id": "2XAXFD3872",
+  "entity_type": "Organization",
+  "role": "Account Holder",
+  "renewal_date": "2027-08-18",
+  "program_agreement_accepted": "2026-08-18",
+  "developer_id_application_certificate_visible": false,
+  "usable_local_developer_id_identity": false,
+  "historical_admin_api_key_revocation": "unconfirmed",
+  "scope": "Membership verified; no certificate issuance, agreement acceptance or notarization performed by this observation"
+}

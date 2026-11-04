@@ -1,0 +1,71 @@
+{
+  "record_type": "Executed command index; full output in referenced logs",
+  "commands": [
+    {
+      "command": "swift test --scratch-path .build/public-beta-check",
+      "output": "swift-suite.log",
+      "exit_code": 0,
+      "result": "340 tests; 4 skipped; no failures"
+    },
+    {
+      "command": "python3 scripts/test-release-signing.py",
+      "output": "release-signing-tests.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/verify-companion-distribution-security.py",
+      "output": "distribution-security.log",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/package.sh",
+      "configuration": {
+        "signing_mode": "adhoc",
+        "build": "17",
+        "output": ".build/public-beta-adhoc-output",
+        "companion_apk": "signed release code13"
+      },
+      "output": "package-adhoc-regression.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/collect-corresponding-source.py --runtime .build/public-beta-adhoc-output/DroidBridge.app/Contents/Resources/Runtime --output .build/public-beta-corresponding-source",
+      "output": "corresponding-source-collection.log",
+      "exit_code": 0
+    },
+    {
+      "command": "AndroidCompanion/build.sh -PsloopworksInternalTools=false :app:assembleRelease",
+      "environment": "fresh GRADLE_USER_HOME; existing owner-local signing configuration; project task outputs reused",
+      "output": "android-fresh-public-build.log",
+      "exit_code": 0
+    },
+    {
+      "command_file": "installed-build17-command.json",
+      "output": "installed-build17.log",
+      "exit_code": 0
+    },
+    {
+      "command": "security import local key after DER conversion, then matching public certificate, into login Keychain",
+      "result": "1 key and 1 certificate imported; Developer ID identity listed",
+      "details": "developer-id-certificate.json",
+      "note": "Initial PEM format imports were rejected without importing a key; temporary DER removed after successful import. No secret values retained."
+    },
+    {
+      "command": "python3 scripts/test-release-signing.py",
+      "output": "release-source-signing-tests.log",
+      "exit_code": 0,
+      "result": "4 tests passed including actual temporary Git repository source policy"
+    },
+    {
+      "command": "python3 scripts/verify-companion-distribution-security.py",
+      "output": "distribution-security-source-binding.log",
+      "exit_code": 0,
+      "result": "7 tests passed including actual re-signed app with conflicting source identity"
+    },
+    {
+      "command": "Targeted SecKeychainItemSetAccess helper for newly created Developer ID key",
+      "output": "developer-id-key-use-status.json",
+      "result": "Exact helper stopped while waiting for OS authorization; read-back confirms apple-tool: only; owner action pending"
+    }
+  ]
+}

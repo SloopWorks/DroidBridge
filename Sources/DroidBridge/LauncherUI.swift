@@ -4,7 +4,7 @@ import DroidBridgeStreaming
 
 /// Presentation only. Reuses the controller's discovery, preferences and session
 /// actions; layout refreshes never perform device, catalog or filesystem work.
-@MainActor final class LauncherUI {
+@MainActor final class LauncherUI: NSObject, NSTableViewDataSource, NSTableViewDelegate, NSToolbarDelegate {
     weak var controller: LauncherController?
     let sidebarScroll=NSScrollView(), appsScroll=NSScrollView(), sessionsScroll=NSScrollView()
     let count=NSTextField(labelWithString:""),connection=NSTextField(wrappingLabelWithString:"")
@@ -16,7 +16,7 @@ import DroidBridgeStreaming
     let empty=NSStackView(), emptyTitle=NSTextField(labelWithString:""),emptyDetail=NSTextField(wrappingLabelWithString:"")
     let emptyAction=NSButton(title:"Refresh Devices",target:nil,action:nil)
     let root=LauncherBackground()
-    init(controller:LauncherController) {self.controller=controller}
+    init(controller:LauncherController) {self.controller=controller;super.init()}
     static func label(_ text:String,size:CGFloat=12,weight:NSFont.Weight = .regular,secondary:Bool=false)->NSTextField {
         let label=NSTextField(wrappingLabelWithString:text);label.font = .systemFont(ofSize:size,weight:weight)
         label.textColor=secondary ? .secondaryLabelColor : .labelColor
@@ -49,54 +49,76 @@ import DroidBridgeStreaming
         button.font = .systemFont(ofSize:12);button.heightAnchor.constraint(greaterThanOrEqualToConstant:height).isActive=true
         button.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
     }
+    private let splitController = NSSplitViewController()
+    private let detailHost = NSView(), appsPage = NSView(), sessionsPage = NSView(), independentSessionsHost = NSView()
+    private let navigationTable = NSTableView()
+    private let favorite = NSButton(title: "Favorite", target: nil, action: nil)
+    private let retryExport = NSButton(title: "Retry Mac App", target: nil, action: nil)
+    private let export = NSButton(checkboxWithTitle: "Available in Spotlight", target: nil, action: nil)
+    private let companionAppStatus = NSTextField(wrappingLabelWithString: "Pair the Android app in Devices for favorites, sharing and notification controls.")
+    private let deviceControls = NSView()
+    private weak var configuredCompanion: CompanionWindowController?
+    private var lastEmbeddedContext: String?
+    private var refreshingPresentation = false
+    private var selectingNavigation = false
+    private var presentedFavorites = Set<String>()
+    private var localSessionsHeight: NSLayoutConstraint?
+    private(set) var currentSection: DesktopWorkspaceSection = .apps
+    private let sidebarSections = DesktopWorkspaceSection.primary
+
     func build() {
-        guard let c=controller,let content=c.window?.contentView else {return}
-        Self.pin(root,in:content)
-        let sidebar=NSVisualEffectView();sidebar.material = .sidebar;sidebar.blendingMode = .behindWindow;sidebar.state = .followsWindowActiveState
-        sidebar.identifier=NSUserInterfaceItemIdentifier("launcher.sidebar")
-        sidebar.translatesAutoresizingMaskIntoConstraints=false;root.addSubview(sidebar)
-        let workspace=LauncherBackground();workspace.identifier=NSUserInterfaceItemIdentifier("launcher.workspace");workspace.translatesAutoresizingMaskIntoConstraints=false;root.addSubview(workspace)
-        NSLayoutConstraint.activate([sidebar.leadingAnchor.constraint(equalTo:root.leadingAnchor),sidebar.topAnchor.constraint(equalTo:root.topAnchor),sidebar.bottomAnchor.constraint(equalTo:root.bottomAnchor),sidebar.widthAnchor.constraint(equalToConstant:240),workspace.leadingAnchor.constraint(equalTo:sidebar.trailingAnchor),workspace.trailingAnchor.constraint(equalTo:root.trailingAnchor),workspace.topAnchor.constraint(equalTo:root.topAnchor),workspace.bottomAnchor.constraint(equalTo:root.bottomAnchor)])
-        Self.pin(sidebarScroll,in:sidebar)
-        let branding=Self.column([Self.label("DroidBridge",size:21,weight:.bold),Self.label("Android apps on your Mac",size:11,secondary:true)],spacing:4)
+        guard let c=controller,let window=c.window else {return}
         c.devicePicker.target=c;c.devicePicker.action=#selector(c.deviceChanged);c.devicePicker.setAccessibilityLabel("Android device")
         c.devicePicker.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
-        connection.font = .systemFont(ofSize:11);connection.maximumNumberOfLines=3;connection.textColor = .secondaryLabelColor
-        let refresh=c.button("Refresh Devices",#selector(c.refreshAction));refresh.image=NSImage(systemSymbolName:"arrow.clockwise",accessibilityDescription:nil);refresh.imagePosition = .imageLeading
-        let companion=c.button("Phone Companion…",#selector(c.showCompanion));companion.setAccessibilityLabel("Open Android companion setup and handoff")
-        c.backendPicker.addItems(withTitles:["Native AppKit","scrcpy fallback"]);c.backendPicker.setAccessibilityLabel("Rendering backend")
+        c.devicePicker.widthAnchor.constraint(greaterThanOrEqualToConstant:190).isActive=true
+        c.devicePicker.widthAnchor.constraint(lessThanOrEqualToConstant:360).isActive=true
+        if c.backendPicker.numberOfItems == 0 {c.backendPicker.addItems(withTitles:["Native AppKit","scrcpy fallback"])}
+        c.backendPicker.setAccessibilityLabel("Rendering backend")
         for button in [c.bulkPreference,c.decorationsPreference] {button.target=c;button.action=#selector(c.sharedPreferenceChanged(_:))}
         c.bulkPreference.state=c.sharedPreferences.bulkWrapperOnboardingEnabled ? .on : .off
         c.decorationsPreference.state=c.sharedPreferences.showAndroidSystemDecorations ? .on : .off
         c.phoneScreenPreference.target=c;c.phoneScreenPreference.action=#selector(c.phoneScreenPreferenceChanged(_:));c.phoneScreenPreference.isEnabled=false
-        c.phoneScreenPreference.toolTip="Applies to the selected device during Mac sessions. Use the Phone menu to turn its screen back on."
-        c.decorationsPreference.toolTip="Applies to new Android app windows; app-drawn controls are unchanged. The Android software keyboard stays hidden."
-        c.reconnect.state = .on
-        for button in [c.phoneScreenPreference,c.decorationsPreference,c.bulkPreference,c.reconnect] {Self.wrapCheckbox(button)}
-        Self.wrapCheckbox(c.reconnect,height:48)
-        c.onboardingButton.target=c;c.onboardingButton.action=#selector(c.onboardDeviceApps);c.onboardingButton.isEnabled=c.sharedPreferences.bulkWrapperOnboardingEnabled
-        c.onboardingButton.title="Add Device Apps…";c.onboardingButton.setAccessibilityLabel("Add All Device Apps to Spotlight");c.onboardingButton.toolTip="Add all launchable apps from the selected device to Spotlight";c.onboardingButton.bezelStyle = .rounded;c.onboardingButton.font = .systemFont(ofSize:12);c.onboardingButton.cell?.wraps=true;c.onboardingButton.cell?.usesSingleLineMode=false;c.onboardingButton.heightAnchor.constraint(equalToConstant:44).isActive=true;c.onboardingButton.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
+        c.phoneScreenPreference.toolTip="Applies to the selected device during Mac sessions. Closing a session leaves its phone screen off; use Turn Phone Screen On explicitly."
+        c.decorationsPreference.toolTip="Applies to new Android app windows. Android app-drawn controls remain unchanged."
+        for button in [c.phoneScreenPreference,c.decorationsPreference,c.bulkPreference,c.reconnect] {Self.wrapCheckbox(button,height:32)}
+        DesktopSettingsWindowController.applyDefaults(to:c)
+        c.onboardingButton.target=c;c.onboardingButton.action=#selector(c.onboardDeviceApps)
+        c.onboardingButton.title="Add All Device Apps…";c.onboardingButton.setAccessibilityLabel("Add All Device Apps to Spotlight");c.onboardingButton.bezelStyle = .rounded
         c.onboardingCancel.target=c;c.onboardingCancel.action=#selector(c.cancelOnboarding);c.onboardingCancel.isEnabled=false;c.onboardingCancel.bezelStyle = .rounded
-        let details=c.button("Details…",#selector(c.showOnboardingDetails));details.setAccessibilityLabel("Onboarding Details")
-        let onboardingActions=NSStackView(views:[c.onboardingCancel,details]);onboardingActions.distribution = .fillEqually;onboardingActions.spacing=8
         c.onboardingProgress.isIndeterminate=false;c.onboardingProgress.minValue=0;c.onboardingProgress.maxValue=1;c.onboardingProgress.setAccessibilityLabel("Spotlight setup progress")
-        c.onboardingStatus.font = .systemFont(ofSize:11);c.onboardingStatus.textColor = .secondaryLabelColor;c.onboardingStatus.maximumNumberOfLines=4;c.onboardingStatus.lineBreakMode = .byTruncatingTail;c.onboardingStatus.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
-        c.audioRoutePicker.addItems(withTitles:["Mac","Phone","Mac + Phone"])
-        for (index,route) in [DeviceAudioRoute.mac,.phone,.macAndPhone].enumerated() {c.audioRoutePicker.item(at:index)?.representedObject=route.rawValue}
-        c.audioRoutePicker.autoenablesItems=false;c.audioRoutePicker.setAccessibilityLabel("Device audio route")
-        c.audioRoutePicker.target=c;c.audioRoutePicker.action=#selector(c.audioRouteChanged(_:))
-        c.audioRoutePicker.toolTip="Device-wide audio: Mac silences phone playback; Mac + Phone depends on the Android app allowing capture."
-        c.audioStatus.font = .systemFont(ofSize:11);c.audioStatus.textColor = .secondaryLabelColor;c.audioStatus.maximumNumberOfLines=5;c.audioStatus.lineBreakMode = .byWordWrapping;c.audioStatus.isSelectable=true
-        c.audioStatus.setAccessibilityLabel("Device audio status");c.audioStatus.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
-        c.audioRetry.bezelStyle = .rounded;c.audioRetry.target=c;c.audioRetry.action=#selector(c.retrySelectedAudio)
-        c.audioUsePhone.bezelStyle = .rounded;c.audioUsePhone.target=c;c.audioUsePhone.action=#selector(c.usePhoneAudio)
-        let audioActions=NSStackView(views:[c.audioRetry,c.audioUsePhone]);audioActions.spacing=6;audioActions.distribution = .fillEqually
-        let audioGroup=Self.group("AUDIO",[c.audioRoutePicker,Self.label("Device-wide Android audio, including apps outside DroidBridge. Mac routing silences phone playback.",size:11,secondary:true),c.audioStatus,audioActions])
-        audioGroup.identifier=NSUserInterfaceItemIdentifier("launcher.audio")
-        let sidebarContent=Self.column([branding,Self.group("DEVICE",[c.devicePicker,connection,refresh,companion]),Self.group("RENDERING",[c.backendPicker,Self.label("Used for new app windows.",size:11,secondary:true),c.phoneScreenPreference,c.decorationsPreference,c.reconnect]),audioGroup,Self.group("SPOTLIGHT",[c.bulkPreference,Self.label("Add this device’s apps to Spotlight and the Dock. They’re available while the device is connected.",size:11,secondary:true),c.onboardingButton,c.onboardingProgress,c.onboardingStatus,onboardingActions])],spacing:22)
-        Self.document(sidebarContent,in:sidebarScroll,padding:16)
+        c.audioRoutePicker.removeAllItems()
+        for (name,route) in [("Mac",DeviceAudioRoute.mac),("Phone",.phone),("Mac + Phone",.macAndPhone)] {c.audioRoutePicker.addItem(withTitle:name);c.audioRoutePicker.lastItem?.representedObject=route.rawValue}
+        c.audioRoutePicker.target=c;c.audioRoutePicker.action=#selector(c.audioRouteChanged(_:));c.audioRoutePicker.setAccessibilityLabel("Selected device audio output")
+        c.audioStatus.font = .systemFont(ofSize:12);c.audioStatus.maximumNumberOfLines=5;c.audioStatus.isSelectable=true
+        c.audioRetry.target=c;c.audioRetry.action=#selector(c.retrySelectedAudio)
+        c.audioUsePhone.target=c;c.audioUsePhone.action=#selector(c.usePhoneAudio)
+        let screenActions=NSStackView(views:[c.button("Turn Phone Screen Off",#selector(c.turnPhoneScreenOff)),c.button("Turn Phone Screen On",#selector(c.turnPhoneScreenOn))]);screenActions.spacing=8
+        let audioActions=NSStackView(views:[c.audioRetry,c.audioUsePhone]);audioActions.spacing=8
+        let onboardingActions=NSStackView(views:[c.onboardingCancel,c.button("Results…",#selector(c.showOnboardingDetails))]);onboardingActions.spacing=8
+        c.onboardingStatus.font = .systemFont(ofSize:12);c.onboardingStatus.maximumNumberOfLines=4
+        Self.pin(Self.column([Self.label("Audio and phone screen",size:17,weight:.semibold),Self.label("These controls apply to the selected device and all its Android app windows.",secondary:true),c.audioRoutePicker,c.audioStatus,audioActions,c.phoneScreenPreference,screenActions,Self.label("Mac app launchers",size:17,weight:.semibold),Self.label("Create managed Mac apps for every launchable app on this device. Enable Spotlight integration in Settings first, or choose individual paired apps in Apps.",secondary:true),c.onboardingButton,c.onboardingProgress,c.onboardingStatus,onboardingActions],spacing:10),in:deviceControls)
 
-        let title=Self.label("Applications",size:25,weight:.bold)
+        let sidebar=NSViewController();let sidebarBackground=NSVisualEffectView();sidebarBackground.material = .sidebar;sidebarBackground.blendingMode = .behindWindow;sidebarBackground.state = .followsWindowActiveState;sidebar.view=sidebarBackground
+        navigationTable.addTableColumn(NSTableColumn(identifier:.init("section")));navigationTable.headerView=nil;navigationTable.style = .sourceList;navigationTable.rowHeight=36;navigationTable.delegate=self;navigationTable.dataSource=self;navigationTable.setAccessibilityLabel("Workspace sections")
+        navigationTable.target=self;navigationTable.action=#selector(selectNavigationRow)
+        sidebarScroll.documentView=navigationTable;sidebarScroll.hasVerticalScroller=true;sidebarScroll.drawsBackground=false;sidebarScroll.borderType = .noBorder
+        let settings=ClosureButton(title:"Settings…") { [weak c] in c?.showLauncherSettings() };settings.image=NSImage(systemSymbolName:"gearshape",accessibilityDescription:nil);settings.imagePosition = .imageLeading
+        let sidebarStack=Self.column([sidebarScroll,settings],spacing:12);Self.pin(sidebarStack,in:sidebarBackground,inset:12)
+        let detail=NSViewController();detail.view=root
+        c.status.font = .systemFont(ofSize:11);c.status.textColor = .secondaryLabelColor;c.status.maximumNumberOfLines=2;c.status.lineBreakMode = .byTruncatingTail;c.status.isSelectable=true
+        let separator=NSBox();separator.boxType = .separator
+        let footer=Self.column([separator,c.status],spacing:8)
+        connection.font = .systemFont(ofSize:12);connection.textColor = .secondaryLabelColor;connection.maximumNumberOfLines=3;connection.isSelectable=true
+        let connectionAction=ClosureButton(title:"Connection…") { [weak c] in c?.showWorkspace(.devices) }
+        let sharedContext=NSStackView(views:[connection,connectionAction]);sharedContext.spacing=12;sharedContext.alignment = .centerY
+        let body=Self.column([sharedContext,detailHost,footer],spacing:10);Self.pin(body,in:root,inset:20)
+        detailHost.setContentHuggingPriority(.defaultLow,for:.vertical);detailHost.heightAnchor.constraint(greaterThanOrEqualToConstant:300).isActive=true
+        let sideItem=NSSplitViewItem(sidebarWithViewController:sidebar);sideItem.minimumThickness=190;sideItem.maximumThickness=250;sideItem.canCollapse=true
+        splitController.addSplitViewItem(sideItem);splitController.addSplitViewItem(NSSplitViewItem(viewController:detail))
+        window.contentViewController=splitController
+        let toolbar=NSToolbar(identifier:"DroidBridge.workspace");toolbar.delegate=self;toolbar.displayMode = .iconOnly;toolbar.allowsUserCustomization=false;window.toolbar=toolbar;window.toolbarStyle = .unified
+        let workspace=appsPage
+        let title=Self.label("Apps",size:25,weight:.bold)
         count.font = .systemFont(ofSize:12);count.textColor = .secondaryLabelColor;count.lineBreakMode = .byTruncatingTail;count.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
         let header=Self.column([title,count],spacing:4)
         c.search.placeholderString="Search apps or package names";c.search.delegate=c;c.search.setAccessibilityLabel("Search Android apps")
@@ -125,30 +147,104 @@ import DroidBridgeStreaming
         create.bezelStyle = .rounded;create.target=c;create.action=#selector(c.createWrapper)
         let selectedRow=NSStackView(views:[selectedIcon,selectionLabels,launch,create]);selectedRow.spacing=12;selectedRow.alignment = .centerY
         let selectedCard=Self.card(selectedRow);selectedCard.identifier=NSUserInterfaceItemIdentifier("launcher.app-actions")
-        let sessionsTitle=Self.label("Sessions",size:15,weight:.semibold)
-        sessionCount.font = .systemFont(ofSize:11);sessionCount.textColor = .secondaryLabelColor
+
+        favorite.bezelStyle = .rounded;favorite.target=self;favorite.action=#selector(toggleFavorite);favorite.setAccessibilityLabel("Favorite selected Android app")
+        export.target=self;export.action=#selector(changeExport);export.setAccessibilityLabel("Selected Android app available in Spotlight")
+        companionAppStatus.font = .systemFont(ofSize:11);companionAppStatus.textColor = .secondaryLabelColor;companionAppStatus.maximumNumberOfLines=3
+        retryExport.target=self;retryExport.action=#selector(retrySelectedExport);retryExport.bezelStyle = .rounded;retryExport.isHidden=true
+        let selectionOptions=NSStackView(views:[favorite,export,retryExport]);selectionOptions.spacing=16
+        let appBody=Self.column([header,c.search,browser,selectedCard,selectionOptions,companionAppStatus],spacing:12);Self.pin(appBody,in:workspace)
+        let sessionHeader=NSStackView(views:[Self.label("Sessions",size:25,weight:.bold),sessionCount,NSView(),restore]);sessionHeader.spacing=10
         restore.bezelStyle = .rounded;restore.target=c;restore.action=#selector(c.restoreAction)
-        let spacer=NSView();spacer.setContentHuggingPriority(.defaultLow,for:.horizontal)
-        let sessionHeader=NSStackView(views:[sessionsTitle,sessionCount,spacer,restore]);sessionHeader.spacing=8
+        sessionCount.font = .systemFont(ofSize:11);sessionCount.textColor = .secondaryLabelColor
         c.sessionList.orientation = .vertical;c.sessionList.alignment = .leading;c.sessionList.spacing=8
-        Self.document(c.sessionList,in:sessionsScroll,padding:2)
-        sessionsScroll.identifier=NSUserInterfaceItemIdentifier("launcher.sessions");sessionsScroll.heightAnchor.constraint(greaterThanOrEqualToConstant:100).isActive=true;sessionsScroll.heightAnchor.constraint(lessThanOrEqualToConstant:180).isActive=true
-        let sessionHeight=sessionsScroll.heightAnchor.constraint(equalToConstant:145);sessionHeight.priority = .defaultHigh;sessionHeight.isActive=true
-        let separator=NSBox();separator.boxType = .separator
-        c.status.font = .systemFont(ofSize:11);c.status.textColor = .secondaryLabelColor;c.status.maximumNumberOfLines=2;c.status.lineBreakMode = .byTruncatingTail;c.status.isSelectable=true;c.status.setContentCompressionResistancePriority(.defaultLow,for:.horizontal)
-        let diagnostics=c.button("Diagnostics…",#selector(c.openDiagnostics));diagnostics.setAccessibilityLabel("Open Diagnostics")
-        let footer=NSStackView(views:[c.status,diagnostics]);footer.spacing=12;footer.alignment = .centerY
-        let main=Self.column([header,c.search,browser,selectedCard,sessionHeader,sessionsScroll,separator,footer],spacing:12)
-        Self.pin(main,in:workspace,inset:24)
-        self.refresh()
+        Self.document(c.sessionList,in:sessionsScroll,padding:2);sessionsScroll.heightAnchor.constraint(greaterThanOrEqualToConstant:60).isActive=true
+        let localHeight=sessionsScroll.heightAnchor.constraint(equalToConstant:60);localHeight.priority = .defaultHigh;localHeight.isActive=true;localSessionsHeight=localHeight
+        let sessionsBody=Self.column([sessionHeader,Self.label("App windows for the selected device",secondary:true),sessionsScroll,Self.label("Independent Android app launchers",size:15,weight:.semibold),independentSessionsHost],spacing:10)
+        independentSessionsHost.heightAnchor.constraint(greaterThanOrEqualToConstant:180).isActive=true;Self.pin(sessionsBody,in:sessionsPage)
+        navigationTable.reloadData();navigationTable.selectRowIndexes(IndexSet(integer:0),byExtendingSelection:false)
+        show(.apps)
+        refresh()
+    }
+    func show(_ section:DesktopWorkspaceSection) {
+        guard let c=controller else {return}
+        currentSection=section
+        let selected=sidebarSections.firstIndex(of:section == .deviceSettings ? .devices : section)
+        if let selected,navigationTable.selectedRow != selected {selectingNavigation=true;navigationTable.selectRowIndexes(IndexSet(integer:selected),byExtendingSelection:false);selectingNavigation=false}
+        else if selected == nil {selectingNavigation=true;navigationTable.deselectAll(nil);selectingNavigation=false}
+        detailHost.subviews.forEach {$0.removeFromSuperview()}
+        switch section {
+        case .apps: Self.pin(appsPage,in:detailHost)
+        case .sessions:
+            let panel=prepareCompanion();let view=panel.embeddedView(for:.sessions);view.removeFromSuperview();Self.pin(view,in:independentSessionsHost);Self.pin(sessionsPage,in:detailHost)
+        default:
+            let panel=prepareCompanion();let view=panel.embeddedView(for:section.companionPage);view.removeFromSuperview();Self.pin(view,in:detailHost)
+        }
+        c.window?.title=section.title
+        updateEmbeddedContext()
+        if section == .apps {c.window?.makeFirstResponder(c.search)}
+        else {c.window?.makeFirstResponder(navigationTable)}
+        c.companion.catalogVisibilityChanged()
+    }
+    private func prepareCompanion()->CompanionWindowController {
+        let panel=controller!.companion.ensureEmbeddedController()
+        if configuredCompanion !== panel {
+            configuredCompanion=panel;lastEmbeddedContext=nil
+            panel.setDeviceSettingsHeader(deviceControls)
+            panel.onCatalogChange={ [weak self,weak panel] in
+                guard let self,let panel,let controller=self.controller else {return}
+                let favorites=panel.favoriteAppPackages
+                if favorites != self.presentedFavorites {self.presentedFavorites=favorites;controller.filterApps()}
+                else {controller.updateLauncherPresentation()}
+            }
+        }
+        return panel
+    }
+    private func updateEmbeddedContext() {
+        guard let c=controller else {return}
+        let phone=c.selectedDevice.flatMap {c.companion.device(for:$0.serial)}
+        if configuredCompanion == nil,phone != nil {_ = prepareCompanion()}
+        guard let panel=configuredCompanion else {return}
+        let page=currentSection.companionPage
+        let key="\(currentSection.rawValue)|\(c.selectedDevice?.serial ?? "")|\(phone?.id ?? "")|\(phone?.trustID ?? "")|\(c.window?.isVisible == true)|\(c.window?.isMiniaturized == true)"
+        guard key != lastEmbeddedContext else {return};lastEmbeddedContext=key
+        panel.setHostContext(window:c.window,activePage:page,selectedSerial:c.selectedDevice?.serial)
+    }
+    func hostWindowClosed() {lastEmbeddedContext=nil;configuredCompanion?.hostWindowClosed();controller?.companion.catalogVisibilityChanged()}
+    @objc private func toggleFavorite() {if let package=controller?.selectedApp?.packageName {configuredCompanion?.toggleAppFavorite(package:package)}}
+    @objc private func changeExport() {if let package=controller?.selectedApp?.packageName {configuredCompanion?.setAppExport(package:package,selected:export.state == .on)}}
+    @objc private func retrySelectedExport() {if let package=controller?.selectedApp?.packageName {configuredCompanion?.setAppExport(package:package,selected:true)}}
+    @objc private func connectDevice() {controller?.showWorkspace(.devices)}
+    @objc private func selectNavigationRow() {tableViewSelectionDidChange(Notification(name:NSTableView.selectionDidChangeNotification))}
+    func numberOfRows(in tableView:NSTableView)->Int {sidebarSections.count}
+    func tableView(_ tableView:NSTableView,viewFor tableColumn:NSTableColumn?,row:Int)->NSView? {
+        guard sidebarSections.indices.contains(row) else {return nil}
+        let section=sidebarSections[row],cell=NSTableCellView();let text=NSTextField(labelWithString:section.title),image=NSImageView(image:NSImage(systemSymbolName:section.symbol,accessibilityDescription:nil) ?? NSImage())
+        text.font = .systemFont(ofSize:13);text.translatesAutoresizingMaskIntoConstraints=false;image.translatesAutoresizingMaskIntoConstraints=false;cell.addSubview(image);cell.addSubview(text);cell.textField=text;cell.imageView=image
+        NSLayoutConstraint.activate([image.leadingAnchor.constraint(equalTo:cell.leadingAnchor,constant:8),image.centerYAnchor.constraint(equalTo:cell.centerYAnchor),image.widthAnchor.constraint(equalToConstant:20),image.heightAnchor.constraint(equalToConstant:18),text.leadingAnchor.constraint(equalTo:image.trailingAnchor,constant:8),text.trailingAnchor.constraint(equalTo:cell.trailingAnchor,constant:-8),text.centerYAnchor.constraint(equalTo:cell.centerYAnchor)])
+        cell.setAccessibilityLabel(section.title);return cell
+    }
+    func tableViewSelectionDidChange(_ notification:Notification) {guard !selectingNavigation,sidebarSections.indices.contains(navigationTable.selectedRow) else {return};let section=sidebarSections[navigationTable.selectedRow];if currentSection != section {show(section)}}
+    func toolbarAllowedItemIdentifiers(_ toolbar:NSToolbar)->[NSToolbarItem.Identifier] {[.toggleSidebar,.init("device"),.init("refresh"),.flexibleSpace,.init("device-settings")]}
+    func toolbarDefaultItemIdentifiers(_ toolbar:NSToolbar)->[NSToolbarItem.Identifier] {[.toggleSidebar,.init("device"),.init("refresh"),.flexibleSpace,.init("device-settings")]}
+    func toolbar(_ toolbar:NSToolbar,itemForItemIdentifier id:NSToolbarItem.Identifier,willBeInsertedIntoToolbar flag:Bool)->NSToolbarItem? {
+        guard let c=controller else {return nil};let item=NSToolbarItem(itemIdentifier:id)
+        if id.rawValue == "device" {item.label="Android Device";item.view=c.devicePicker}
+        else if id.rawValue == "refresh" {item.label="Refresh Devices";item.image=NSImage(systemSymbolName:"arrow.clockwise",accessibilityDescription:"Refresh Devices");item.target=c;item.action=#selector(c.refreshAction)}
+        else if id.rawValue == "device-settings" {item.label="Device Settings";item.image=NSImage(systemSymbolName:"slider.horizontal.3",accessibilityDescription:"Device Settings");item.target=c;item.action=#selector(c.showDeviceSettings)}
+        else {return nil};return item
     }
     func refresh() {
-        guard let c=controller else {return}
+        guard let c=controller,!refreshingPresentation else {return}
+        refreshingPresentation=true;defer {refreshingPresentation=false}
+        updateEmbeddedContext()
         let device=c.selectedDevice
         let ready=device.map {c.readySerials.contains($0.serial)} ?? false
         if let device {
             connection.stringValue=(device.state == "device" ? (ready ? "Connected and ready" : "Waiting for Android to finish starting") : device.state == "unauthorized" ? "Unlock the phone and allow USB debugging" : "Device unavailable: \(device.state)") + "\n" + device.serial
             connection.toolTip="\(device.model)\n\(device.serial)\n\(device.state)"
+            let phone=c.companion.device(for:device.serial)
+            connection.stringValue += phone?.paired == true ? (phone?.connected == true ? " · Android app paired and connected" : " · Android app paired, disconnected") : " · Android app not paired"
         } else {connection.stringValue="Connect a phone with USB debugging enabled, or start an emulator."}
         let catalogLoaded=device.map {$0.state == "device" && ready && c.appsDeviceSerial == $0.serial} ?? false
         if let device {
@@ -159,7 +255,8 @@ import DroidBridgeStreaming
         c.onboardingButton.isEnabled=c.canOnboardSelectedDevice
         launch.isEnabled=c.canLaunchSelectedApp
         create.isEnabled=c.canLaunchSelectedApp && !c.creatingWrapper && !c.onboardingPending && !c.onboarding.isRunning && c.managedNameRepair?.isRunning != true
-        restore.isEnabled = !c.pending.isEmpty && c.restoreTask == nil && !c.quitting
+        restore.isEnabled = !c.restorableSessions.isEmpty && c.restoreTask == nil && !c.quitting
+        restore.title=c.selectedDevice == nil ? "Restore Sessions for All Devices" : "Restore Previous Sessions"
         if let app=c.selectedApp,let device {
             selectedName.stringValue=app.name;selectedPackage.stringValue=app.packageName
             selectedName.toolTip=app.name;selectedPackage.toolTip=app.packageName
@@ -171,7 +268,9 @@ import DroidBridgeStreaming
             emptyDetail.toolTip=nil
             let query=c.search.stringValue.trimmingCharacters(in:.whitespacesAndNewlines)
             let searching=catalogLoaded && !query.isEmpty
-            emptyAction.title=searching ? "Clear Search" : "Refresh Devices";emptyAction.action=searching ? #selector(c.clearAppSearch) : #selector(c.refreshAction)
+            emptyAction.title=searching ? "Clear Search" : device == nil ? "Connect Device…" : "Refresh Devices"
+            emptyAction.target=device == nil ? self : c
+            emptyAction.action=searching ? #selector(c.clearAppSearch) : device == nil ? #selector(connectDevice) : #selector(c.refreshAction)
             if device == nil {emptyTitle.stringValue="Connect your Android device";emptyDetail.stringValue="Enable USB debugging and connect over USB, or start an Android emulator."}
             else if device?.state == "unauthorized" {emptyTitle.stringValue="Authorize this Mac";emptyDetail.stringValue="Unlock your phone and allow USB debugging, then refresh."}
             else if !ready {emptyTitle.stringValue="Getting your device ready";emptyDetail.stringValue="Applications will appear once Android is connected and has finished starting."}
@@ -180,7 +279,19 @@ import DroidBridgeStreaming
             else if !query.isEmpty {emptyTitle.stringValue="No matching applications";emptyDetail.stringValue="Try another app name or Android package."}
             else {emptyTitle.stringValue=c.refreshing ? "Loading applications…" : "No applications found";emptyDetail.stringValue="Refresh to read the launchable apps on this device."}
         }
-        sessionCount.stringValue=c.sessions.isEmpty ? "" : "\(c.sessions.count) sessions"
+        if let package=c.selectedApp?.packageName,let state=configuredCompanion?.appPresentation(package:package) {
+            favorite.isEnabled=true;favorite.title=state.favorite ? "Remove Favorite" : "Favorite"
+            favorite.setAccessibilityLabel(state.favorite ? "Remove selected Android app from favorites" : "Favorite selected Android app")
+            export.isEnabled = !state.pending;export.state=state.exported ? .on : .off
+            retryExport.isHidden = !state.pending
+            companionAppStatus.stringValue=state.pending ? "Spotlight selection is saved; Mac app creation is pending." : "Favorites are saved on this Mac. Spotlight availability follows the paired phone’s selection."
+        } else {
+            favorite.isEnabled=false;export.isEnabled=false;export.state = .off
+            retryExport.isHidden=true
+            companionAppStatus.stringValue="Pair the Android app in Devices to manage favorites and per-app Spotlight availability. Launching apps does not require pairing."
+        }
+        sessionCount.stringValue=c.visibleSessions.isEmpty ? "" : "\(c.visibleSessions.count) sessions"
+        localSessionsHeight?.constant=c.visibleSessions.isEmpty ? 60 : min(220,max(110,CGFloat(c.visibleSessions.count)*100))
         c.status.toolTip=c.status.stringValue
     }
     static func sessionEmptyLabel()->NSView {

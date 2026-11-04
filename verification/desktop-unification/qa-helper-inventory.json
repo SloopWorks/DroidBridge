@@ -1,0 +1,74 @@
+[
+  {
+    "label": "dev.droidbridge.companion.broker.qa.9f28c62afb07",
+    "serial": "emulator-5580",
+    "root": "/Users/patrick/Library/Application Support/DroidBridge/BetaVerification/build-17/qa",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.4c9243d71e19",
+    "serial": "emulator-5580",
+    "root": "/Users/patrick/workspace/DroidBridge/.build/companion-improvements-qa-20261030-transport",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.45c2d5c23b75",
+    "serial": "emulator-5580",
+    "root": "/Users/patrick/workspace/DroidBridge/.build/companion-improvements-qa-20261030-final",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.79ff229429cc",
+    "serial": "emulator-5582",
+    "root": "/Users/patrick/Applications/DroidBridge Companion QA Data",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.519a8a5dd851",
+    "serial": "emulator-5582",
+    "root": "/Users/patrick/Applications/DroidBridge Companion Final QA Data",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.68330bb4920c",
+    "serial": "emulator-5582",
+    "root": "/Users/patrick/workspace/DroidBridge/.build/companion-macos-qa37",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.9f81083cdec0",
+    "serial": "emulator-5580",
+    "root": "/Users/patrick/workspace/DroidBridge/.build/companion-improvements-qa-20261030",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.cfb7476a550f",
+    "serial": "emulator-5580",
+    "root": "/Users/patrick/workspace/DroidBridge/.build/companion-improvements-qa-system-save",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.deef46a5027d",
+    "serial": "emulator-5580",
+    "root": "/private/tmp/droidbridge-unified-installed-4xx9zujs",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.7ab4f33e468a",
+    "serial": "emulator-5580",
+    "root": "/Users/patrick/workspace/DroidBridge/.build/companion-improvements-qa-20261030-verified",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.eb7b5208c262",
+    "serial": "emulator-5580",
+    "root": "/Users/patrick/workspace/DroidBridge/.build/companion-improvements-qa-system-save-final",
+    "host_pids": []
+  },
+  {
+    "label": "dev.droidbridge.companion.broker.qa.55b8f9272437",
+    "serial": "emulator-5580",
+    "root": "/private/tmp/droidbridge-unified-installed-ioi45rxr",
+    "host_pids": []
+  }
+]

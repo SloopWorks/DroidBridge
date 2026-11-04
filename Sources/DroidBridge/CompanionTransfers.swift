@@ -42,6 +42,7 @@ private actor CompanionTransferFile {
     private var pendingReceipt: (device: String, id: String, bytes: Int64, hash: String, request: UUID)?
     private(set) var confirmationPending = false
     private(set) var running = false
+    private(set) var savedDestination: URL?
     private(set) var message = "Files stay local to the paired phone and Mac. Maximum 50 MiB per file."
     var onChange: (() -> Void)?
     init(broker: CompanionBrokerIPCClient) { self.broker = broker }
@@ -89,6 +90,7 @@ private actor CompanionTransferFile {
                 let actual = try await file.metadata(stage)
                 guard actual.0 == Int64(size), actual.1 == hash else { throw CompanionBoundaryError("file_integrity_failed", "The received file did not match its declared size and SHA-256. It was not saved.") }
                 try Task.checkCancellation(); try await file.publish(stage, destination: destination)
+                await self?.didSave(destination)
                 let request = UUID()
                 do {
                     let receipt = try await broker.request(operation: "transfer_receipt", payload: ["device_id": .string(device), "transfer_id": .string(id), "accepted_bytes": .number(size), "sha256": .string(hash), "status": .string("downloaded")], requestID: request)
@@ -101,6 +103,11 @@ private actor CompanionTransferFile {
             } catch { await file.close(); await file.remove(stage); throw error }
         }
     }
+    func revealSavedFile() {
+        guard let destination = savedDestination, FileManager.default.fileExists(atPath: destination.path) else { message = "No saved file is available to reveal."; onChange?(); return }
+        NSWorkspace.shared.activateFileViewerSelecting([destination])
+    }
+    private func didSave(_ destination: URL) { savedDestination = destination }
     private func savePendingReceipt(device: String, id: String, bytes: Int64, hash: String, request: UUID) { pendingReceipt = (device, id, bytes, hash, request); confirmationPending = true }
     func retryConfirmation() {
         guard task == nil, let receipt = pendingReceipt else { return }

@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "certificate_trust_passed": true,
+  "keychain_unlocked": true,
+  "with_timestamp": "timed out after 90 seconds",
+  "without_timestamp": "timed out after 15 seconds",
+  "portable_adb_signing": "not reached",
+  "scope": "Local key-use diagnosis; no notarization or publication performed"
+}

@@ -1,0 +1,14 @@
+COMMAND: /usr/bin/codesign -dvv dist/DroidBridge.app
+Executable=/Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/MacOS/DroidBridge
+Identifier=app.droidbridge.desktop
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20400 size=14000 flags=0x2(adhoc) hashes=431+3 location=embedded
+Signature=adhoc
+Info.plist entries=13
+TeamIdentifier=not set
+Sealed Resources version=2 rules=13 files=212
+Internal requirements count=0 size=12
+EXIT CODE: 0
+COMMAND: python3 scripts/verify-package.py dist/DroidBridge.app --signatures-only --output /Users/patrick/workspace/DroidBridge/verification/product-review-2026-11-03/package-checks.json
+PASS package checks; report /Users/patrick/workspace/DroidBridge/verification/product-review-2026-11-03/package-checks.json
+EXIT CODE: 0

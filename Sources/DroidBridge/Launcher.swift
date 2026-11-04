@@ -3,7 +3,7 @@ import DroidBridgeCore
 import DroidBridgeStreaming
 
 @MainActor
-final class LauncherController: NSWindowController, NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate {
+final class LauncherController: NSWindowController, NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate {
     let toolchain = Toolchain()
     lazy var companion = CompanionDesktopAdapter(launcher: self)
     lazy var discovery = AndroidDiscovery(toolchain: toolchain)
@@ -21,6 +21,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     lazy var sessionList = NSStackView()
     lazy var status = LauncherStatusField(wrappingLabelWithString: "Looking for Android devices…")
     var launcherUI: LauncherUI?
+    var settingsWindowController: DesktopSettingsWindowController?
     lazy var reconnect: NSButton = {
         let button = NSButton(checkboxWithTitle: "Reconnect interrupted sessions automatically", target: nil, action: nil)
         button.state = .on
@@ -42,6 +43,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     var deviceSelectionTask:Task<Void,Never>?
     var deviceSelectionTasks:[UUID:Task<Void,Never>]=[:]
     var sessionPresentation:[LauncherSessionPresentation]?
+    private var presentedSessionSerial: String?
     var sessionErrors: [UUID: String] = [:]
     var iconData: [String: Data] = [:]
     var companionIconHashes: [String: String] = [:]
@@ -183,6 +185,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         guard !launcherUIReady else { return }
         launcherUIReady = true
         if window == nil { window = Self.makeLauncherWindow() }
+        window?.delegate = self
         CompanionLaunchTrace.record("launcher_ui_begin")
         buildUI()
         if !devices.isEmpty {
@@ -199,6 +202,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     override func showWindow(_ sender: Any?) {
         prepareLauncherUIIfNeeded()
         super.showWindow(sender)
+        updateLauncherPresentation()
         companion.catalogVisibilityChanged()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
@@ -209,7 +213,11 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         status.onChange={ [weak self] in self?.updateLauncherPresentation() }
         updateSessions()
     }
-    func updateLauncherPresentation() {guard let launcherUI else { return };launcherUI.refresh();updateAudioPresentation()}
+    func updateLauncherPresentation() {
+        guard let launcherUI else { return }
+        if presentedSessionSerial != selectedDevice?.serial {presentedSessionSerial=selectedDevice?.serial;sessionPresentation=nil;updateSessions();return}
+        launcherUI.refresh();updateAudioPresentation();settingsWindowController?.refresh()
+    }
     func tableViewSelectionDidChange(_ notification:Notification) {updateLauncherPresentation()}
     var canLaunchSelectedApp:Bool {
         guard let device=selectedDevice else {return false}
@@ -224,9 +232,17 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
         if canLaunchSelectedApp {launchAction()} else {NSSound.beep()}
         return true
     }
-    @objc func focusAppSearch() {showWindow(nil);window?.makeKeyAndOrderFront(nil);window?.makeFirstResponder(search);refreshDevices(forceApps:true)}
+    @objc func focusAppSearch() {showWorkspace(.apps);window?.makeFirstResponder(search);refreshDevices(forceApps:true)}
     @objc func clearAppSearch() {search.stringValue="";filterApps();window?.makeFirstResponder(search)}
-    @objc func showLauncherSettings() {showWindow(nil);window?.makeKeyAndOrderFront(nil);backendPicker.scrollToVisible(backendPicker.bounds);window?.makeFirstResponder(backendPicker);refreshDevices(forceApps:true)}
+    @objc func showLauncherSettings() {
+        prepareLauncherUIIfNeeded()
+        if settingsWindowController == nil {settingsWindowController=DesktopSettingsWindowController(launcher:self)}
+        settingsWindowController?.refresh();settingsWindowController?.showWindow(nil);settingsWindowController?.window?.makeKeyAndOrderFront(nil)
+    }
+    func showWorkspace(_ section:DesktopWorkspaceSection) {showWindow(nil);launcherUI?.show(section);window?.makeKeyAndOrderFront(nil);NSApp.activate(ignoringOtherApps:true)}
+    @objc func showDeviceSettings() {showWorkspace(.deviceSettings)}
+    func windowWillClose(_ notification:Notification) {launcherUI?.hostWindowClosed()}
+    func windowDidDeminiaturize(_ notification:Notification) {updateLauncherPresentation();companion.catalogVisibilityChanged()}
     func numberOfRows(in tableView: NSTableView) -> Int { filtered.count }
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard filtered.indices.contains(row) else {return nil}
@@ -288,7 +304,13 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     func filterApps() {
         let previousPackage=selectedApp?.packageName
         let query = search.stringValue.trimmingCharacters(in:.whitespacesAndNewlines).lowercased()
-        filtered = applications.filter { query.isEmpty || $0.name.lowercased().contains(query) || $0.packageName.lowercased().contains(query) }
+        let favorites=companion.windowController?.favoriteAppPackages ?? []
+        filtered = applications.filter { query.isEmpty || $0.name.lowercased().contains(query) || $0.packageName.lowercased().contains(query) }.sorted { a,b in
+            let af=favorites.contains(a.packageName),bf=favorites.contains(b.packageName)
+            if af != bf {return af}
+            let order=a.name.localizedStandardCompare(b.name)
+            return order == .orderedSame ? a.packageName < b.packageName : order == .orderedAscending
+        }
         table.reloadData()
         if !filtered.isEmpty {table.selectRowIndexes(IndexSet(integer:filtered.firstIndex(where:{$0.packageName==previousPackage}) ?? 0),byExtendingSelection:false)}
         else {table.deselectAll(nil)}
@@ -585,16 +607,27 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     func updateSessions() {
         companion.markSessionsChanged()
         guard launcherUI != nil else { return }
-        let presentation=sessions.values.map {LauncherSessionPresentation(controller:self,session:$0)}.sorted {$0.id.uuidString<$1.id.uuidString}
+        let visible=visibleSessions
+        let presentation=visible.values.map {LauncherSessionPresentation(controller:self,session:$0)}.sorted {$0.id.uuidString<$1.id.uuidString}
         guard presentation != sessionPresentation else {updateLauncherPresentation();return}
         sessionPresentation=presentation
         for view in sessionList.arrangedSubviews {sessionList.removeArrangedSubview(view);view.removeFromSuperview()}
-        if sessions.isEmpty {sessionList.addArrangedSubview(LauncherUI.sessionEmptyLabel())}
-        for (id,session) in sessions.sorted(by:{$0.value.descriptor.application.name.localizedStandardCompare($1.value.descriptor.application.name) == .orderedAscending}) {
+        if visible.isEmpty {sessionList.addArrangedSubview(LauncherUI.sessionEmptyLabel())}
+        for (id,session) in visible.sorted(by:{$0.value.descriptor.application.name.localizedStandardCompare($1.value.descriptor.application.name) == .orderedAscending}) {
             let row=LauncherUI.sessionCard(controller:self,id:id,session:session)
             sessionList.addArrangedSubview(row);row.widthAnchor.constraint(equalTo:sessionList.widthAnchor).isActive=true
         }
         updateLauncherPresentation()
+    }
+    var visibleSessions: [UUID:BridgeSession] {
+        guard let selected=selectedDevice else {return sessions}
+        let aliases=Set(companion.device(for:selected.serial)?.aliases ?? [selected.serial])
+        return sessions.filter {aliases.contains($0.value.descriptor.device.serial)}
+    }
+    var restorableSessions: [SessionDescriptor] {
+        guard let selected=selectedDevice else {return pending}
+        let aliases=Set(companion.device(for:selected.serial)?.aliases ?? [selected.serial])
+        return pending.filter {aliases.contains($0.device.serial)}
     }
     func save() {
         var intents=Dictionary(pending.map {($0.id,$0)},uniquingKeysWith:{first,_ in first})
@@ -604,9 +637,10 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     }
     @objc func restoreAction() {
         guard restoreTask == nil,!quitting else {return}
-        let restore=pending
+        let restore=restorableSessions
+        guard !restore.isEmpty else {return}
         restoreTask=Task {
-            defer {restoreTask=nil}
+            defer {restoreTask=nil;updateLauncherPresentation()}
             for descriptor in restore {
                 guard !quitting,!Task.isCancelled else {break}
                 if let device = devices.first(where: { $0.serial == descriptor.device.serial && $0.state == "device" }), await DeviceReadiness.isReady(device: device, toolchain: toolchain) {
@@ -673,6 +707,7 @@ final class LauncherController: NSWindowController, NSTableViewDataSource, NSTab
     }
     func shutdownAndWait() async {
         quitting = true
+        settingsWindowController?.close();launcherUI?.hostWindowClosed()
         await companion.shutdown()
         for task in deviceSelectionTasks.values {task.cancel()}
         if let preview=launchPreview {preview.onClose=nil;preview.close();launchPreview=nil}

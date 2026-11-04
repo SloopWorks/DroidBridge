@@ -1,0 +1,14 @@
+{
+  "product_apk": {
+    "path": "dist/companion-improvements/DroidBridge-Companion.apk",
+    "sha256": "b6277fb903e99bb46e9bb93553de12cda6094f8d00b1abf4b700794a11254abd"
+  },
+  "instrumentation_apk": {
+    "path": "dist/companion-improvements/DroidBridge-Companion-Tests.apk",
+    "sha256": "b1aee0e064a7f73072278362470554d2ff748a1bed3e10bc5373cb678c4f0d23"
+  },
+  "external_receiver_fixture_apk": {
+    "path": ".build/companion-fixture/DroidBridgeCompanionFixture.apk",
+    "sha256": "8deb452ff6e880547abacbc1c6946d8ccfd9414f28dc37717830216180c2f40f"
+  }
+}

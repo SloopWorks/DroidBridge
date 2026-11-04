@@ -1,0 +1,10 @@
+{
+  "created_for": "SloopWorks Developer ID Application",
+  "team_expected": "2XAXFD3872",
+  "csr": "/Users/patrick/Library/Application Support/DroidBridge/ReleaseSigning/developer-id-2026-11-03.certSigningRequest",
+  "csr_sha256": "df137a01aa35ab11073ee0b03c20411526f8ab56abeccf115326636841059707",
+  "private_key_location": "Private mode-600 file outside Git, pending certificate import into login Keychain. Key bytes never printed.",
+  "csr_self_signature_verified": true,
+  "portal_certificate_created": false,
+  "timestamp": "2026-11-03T23:58:26.630995+00:00"
+}

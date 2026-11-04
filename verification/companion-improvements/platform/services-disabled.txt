@@ -1,0 +1,95 @@
+ACTIVITY MANAGER SERVICES (dumpsys activity services)
+  User 0 active services:
+  * ServiceRecord{1de055c u0 dev.droidbridge.companion/.OperationsTileService c:com.android.systemui}
+    intent={act=android.service.quicksettings.action.QS_TILE cmp=dev.droidbridge.companion/.OperationsTileService}
+    packageName=dev.droidbridge.companion
+    processName=dev.droidbridge.companion
+    targetSdkVersion=35
+    permission=android.permission.BIND_QUICK_SETTINGS_TILE
+    baseDir=/data/app/~~RIHszRo98tNLLwH1LNiD8w==/dev.droidbridge.companion-81Z-8s0ZqgXV4rkTTog5Kw==/base.apk
+    dataDir=/data/user/0/dev.droidbridge.companion
+    app=ProcessRecord{e1e96ea 2860:dev.droidbridge.companion/u0a157}
+    useNewWiuLogic_forCapabilities()=true
+    useNewWiuLogic_forStart()=true
+    useNewBfslLogic()=true
+    mAllowWiu_noBinding=DENIED
+    mAllowWiu_inBindService=PROC_STATE_PERSISTENT_UI
+    mAllowWiu_byBindings=DENIED
+    getFgsAllowWiu_legacy=PROC_STATE_PERSISTENT_UI
+    getFgsAllowWiu_new=DENIED
+    getFgsAllowWiu_forStart=DENIED
+    getFgsAllowWiu_forCapabilities=DENIED
+    allowUiJobScheduling=false
+    recentCallingPackage=com.android.systemui
+    recentCallingUid=10120
+    mAllowStart_noBinding=DENIED
+    mAllowStart_inBindService=PROC_STATE_PERSISTENT_UI
+    mAllowStart_byBindings=DENIED
+    getFgsAllowStart_legacy=PROC_STATE_PERSISTENT_UI
+    getFgsAllowStart_new=DENIED
+    getFgsAllowStart=DENIED
+    startForegroundCount=0
+    infoAllowStartForeground=[callingPackage: com.android.systemui; callingUid: 10120; uidState: PERU; uidBFSL: [BFSL]; intent: Intent { act=android.service.quicksettings.action.QS_TILE cmp=dev.droidbridge.companion/.OperationsTileService (has extras) }; code:PROC_STATE_PERSISTENT_UI; tempAllowListReason:<null>; targetSdkVersion:35; callerTargetSdkVersion:35; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+    createTime=-7s672ms startingBgTimeout=--
+    lastActivity=-7s672ms restartTime=-7s672ms createdFromFg=true
+    Bindings:
+    * IntentBindRecord{3463fa7 CREATE}:
+      intent={act=android.service.quicksettings.action.QS_TILE cmp=dev.droidbridge.companion/.OperationsTileService}
+      binder=android.os.BinderProxy@e782c54
+      requested=true received=true hasBound=true doRebind=false
+      * Client AppBindRecord{3a4a7fd ProcessRecord{a8b3f69 915:com.android.systemui/u0a120}}
+        Per-process Connections:
+          ConnectionRecord{f7737cf u0 CR WPRI FGSA dev.droidbridge.companion/.OperationsTileService:@d52b02e flags=0x2000021}
+    All Connections:
+      ConnectionRecord{f7737cf u0 CR WPRI FGSA dev.droidbridge.companion/.OperationsTileService:@d52b02e flags=0x2000021}
+
+  * ServiceRecord{2d981eb u0 dev.droidbridge.companion/.ConnectionTileService c:com.android.systemui}
+    intent={act=android.service.quicksettings.action.QS_TILE cmp=dev.droidbridge.companion/.ConnectionTileService}
+    packageName=dev.droidbridge.companion
+    processName=dev.droidbridge.companion
+    targetSdkVersion=35
+    permission=android.permission.BIND_QUICK_SETTINGS_TILE
+    baseDir=/data/app/~~RIHszRo98tNLLwH1LNiD8w==/dev.droidbridge.companion-81Z-8s0ZqgXV4rkTTog5Kw==/base.apk
+    dataDir=/data/user/0/dev.droidbridge.companion
+    app=ProcessRecord{e1e96ea 2860:dev.droidbridge.companion/u0a157}
+    useNewWiuLogic_forCapabilities()=true
+    useNewWiuLogic_forStart()=true
+    useNewBfslLogic()=true
+    mAllowWiu_noBinding=DENIED
+    mAllowWiu_inBindService=PROC_STATE_PERSISTENT_UI
+    mAllowWiu_byBindings=DENIED
+    getFgsAllowWiu_legacy=PROC_STATE_PERSISTENT_UI
+    getFgsAllowWiu_new=DENIED
+    getFgsAllowWiu_forStart=DENIED
+    getFgsAllowWiu_forCapabilities=DENIED
+    allowUiJobScheduling=false
+    recentCallingPackage=com.android.systemui
+    recentCallingUid=10120
+    mAllowStart_noBinding=DENIED
+    mAllowStart_inBindService=PROC_STATE_PERSISTENT_UI
+    mAllowStart_byBindings=DENIED
+    getFgsAllowStart_legacy=PROC_STATE_PERSISTENT_UI
+    getFgsAllowStart_new=DENIED
+    getFgsAllowStart=DENIED
+    startForegroundCount=0
+    infoAllowStartForeground=[callingPackage: com.android.systemui; callingUid: 10120; uidState: PERU; uidBFSL: [BFSL]; intent: Intent { act=android.service.quicksettings.action.QS_TILE cmp=dev.droidbridge.companion/.ConnectionTileService (has extras) }; code:PROC_STATE_PERSISTENT_UI; tempAllowListReason:<null>; targetSdkVersion:35; callerTargetSdkVersion:35; startForegroundCount:0; bindFromPackage:null: isBindService:true]
+    createTime=-7s671ms startingBgTimeout=--
+    lastActivity=-7s671ms restartTime=-7s671ms createdFromFg=true
+    Bindings:
+    * IntentBindRecord{2f8ccf2 CREATE}:
+      intent={act=android.service.quicksettings.action.QS_TILE cmp=dev.droidbridge.companion/.ConnectionTileService}
+      binder=android.os.BinderProxy@78d2f43
+      requested=true received=true hasBound=true doRebind=false
+      * Client AppBindRecord{c55b9c0 ProcessRecord{a8b3f69 915:com.android.systemui/u0a120}}
+        Per-process Connections:
+          ConnectionRecord{35da13a u0 CR WPRI FGSA dev.droidbridge.companion/.ConnectionTileService:@2528065 flags=0x2000021}
+    All Connections:
+      ConnectionRecord{35da13a u0 CR WPRI FGSA dev.droidbridge.companion/.ConnectionTileService:@2528065 flags=0x2000021}
+
+  Connection bindings to services:
+  * ConnectionRecord{35da13a u0 CR WPRI FGSA dev.droidbridge.companion/.ConnectionTileService:@2528065 flags=0x2000021}
+    binding=AppBindRecord{c55b9c0 dev.droidbridge.companion/.ConnectionTileService:com.android.systemui}
+    conn=android.os.BinderProxy@2528065 flags=0x2000021
+  * ConnectionRecord{f7737cf u0 CR WPRI FGSA dev.droidbridge.companion/.OperationsTileService:@d52b02e flags=0x2000021}
+    binding=AppBindRecord{3a4a7fd dev.droidbridge.companion/.OperationsTileService:com.android.systemui}
+    conn=android.os.BinderProxy@d52b02e flags=0x2000021

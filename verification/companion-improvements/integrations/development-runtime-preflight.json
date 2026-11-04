@@ -1,0 +1,13 @@
+{
+  "serial": "emulator-5580",
+  "release_installed_identities": {
+    "dev.droidbridge.companion": {
+      "base_apk_sha256": "b6277fb903e99bb46e9bb93553de12cda6094f8d00b1abf4b700794a11254abd"
+    },
+    "dev.droidbridge.companion.test": {
+      "base_apk_sha256": "b1aee0e064a7f73072278362470554d2ff748a1bed3e10bc5373cb678c4f0d23"
+    }
+  },
+  "both_companion_services_initially_absent": true,
+  "scope": "Separate development package runtime only; no release data reads or resets"
+}

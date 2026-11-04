@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 185, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 70, in main
+    assert result.returncode == 0 and "OK (1 test)" in result.stdout and "FAILURES" not in result.stdout, "Actual desktop command instrumentation failed; inspect its log"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Actual desktop command instrumentation failed; inspect its log

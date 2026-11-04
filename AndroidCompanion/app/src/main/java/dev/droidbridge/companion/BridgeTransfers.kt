@@ -21,7 +21,7 @@ class BridgeTransfers(private val context: Context, private val store: BridgeSto
         var localBytes: Long = 0, var next: Int = 0, var committed: Boolean = false,
         var status: String = "receiving", var remoteBytes: Long = 0,
         val created: Long = System.currentTimeMillis(), val chunks: MutableMap<Int, String> = mutableMapOf(),
-        val cancelled: AtomicBoolean = AtomicBoolean(false))
+        val cancelled: AtomicBoolean = AtomicBoolean(false), val batchId: String? = null)
     private val root = File(context.filesDir, "transfers").apply { mkdirs() }
     private val records = LinkedHashMap<String, Transfer>()
     private val journal = SecureJournal(context, "transfers", 262144)
@@ -75,7 +75,7 @@ class BridgeTransfers(private val context: Context, private val store: BridgeSto
                     require(file.isFile && file.length() >= local)
                     if (file.length() != local) RandomAccessFile(file, "rw").use { it.setLength(local) }
                 }
-                records[value.getString("transfer_id")] = Transfer(value.getString("transfer_id"), value.getString("owner"), value.getString("display_name"), value.getString("mime_type"), size, value.getString("sha256"), file, value.getString("direction"), if (status == "failed") 0 else local, value.getInt("next_index"), value.getBoolean("committed"), status, value.optLong("remote_bytes", 0), value.getLong("created"), chunks)
+                records[value.getString("transfer_id")] = Transfer(value.getString("transfer_id"), value.getString("owner"), value.getString("display_name"), value.getString("mime_type"), size, value.getString("sha256"), file, value.getString("direction"), if (status == "failed") 0 else local, value.getInt("next_index"), value.getBoolean("committed"), status, value.optLong("remote_bytes", 0), value.getLong("created"), chunks, batchId = value.optString("batch_id").takeIf { it.isNotEmpty() && it != "null" })
             }
             require(records.values.sumOf { it.localBytes } <= 100L * 1024 * 1024)
         }.onFailure { healthy = false; records.clear() }
@@ -124,6 +124,7 @@ class BridgeTransfers(private val context: Context, private val store: BridgeSto
     private fun info(t: Transfer) = JSONObject().put("transfer_id", t.id).put("display_name", t.name).put("mime_type", t.mime).put("size", t.size).put("sha256", t.sha)
         .put("direction", t.direction).put("next_index", t.next).put("accepted_bytes", if (t.direction == "phone_to_mac") t.remoteBytes else t.localBytes)
         .put("staged_bytes", t.localBytes).put("committed", t.committed).put("chunk_size", 65536).put("status", t.status)
+        .put("batch_id", t.batchId ?: JSONObject.NULL)
     @Synchronized fun put(id: String, owner: String, index: Int, hash: String, bytes: ByteArray): JSONObject {
         val t = owned(id, owner)
         require(t.direction == "mac_to_phone" && index >= 0 && bytes.size <= 65536 && hash.matches(Regex("[a-f0-9]{64}")))
@@ -163,10 +164,11 @@ class BridgeTransfers(private val context: Context, private val store: BridgeSto
         stagingReads[id]?.let { cancelRead(it) }
         return JSONObject().put("cancelled", true)
     }
-    fun stage(uri: Uri, recipientTrustId: String = store.selectedTrust() ?: throw IllegalArgumentException("Choose a trusted Mac"), onProgress: (Long) -> Unit = {}): JSONObject {
+    fun stage(uri: Uri, recipientTrustId: String = store.selectedTrust() ?: throw IllegalArgumentException("Choose a trusted Mac"), batchId: String? = null, onProgress: (Long) -> Unit = {}): JSONObject {
         require(uri.scheme == "content" && store.trusted().has(recipientTrustId))
+        require(batchId == null || runCatching { UUID.fromString(batchId) }.isSuccess)
         val id = UUID.randomUUID().toString(); val file = File(root, UUID.randomUUID().toString())
-        val t = Transfer(id, recipientTrustId, "Shared file", "application/octet-stream", 0, "", file, "phone_to_mac", status = "staging")
+        val t = Transfer(id, recipientTrustId, "Shared file", "application/octet-stream", 0, "", file, "phone_to_mac", status = "staging", batchId = batchId)
         val read = StageRead(t, android.os.SystemClock.elapsedRealtime() + 30_000)
         synchronized(this) {
             if (stagingReads.size >= 2) throw BridgeFailure(429, "staging_reader_capacity")
@@ -221,6 +223,27 @@ class BridgeTransfers(private val context: Context, private val store: BridgeSto
     }
     @Synchronized fun listLocal(): JSONArray { expire(); return JSONArray(records.values.map { info(it).put("owner", it.owner).put("can_cancel", it.status !in listOf("cancelled", "failed")) }) }
     @Synchronized fun received() = JSONArray(records.values.filter { it.direction == "mac_to_phone" && it.committed && !it.cancelled.get() }.map { info(it) })
+    @Synchronized internal fun sharedFile(id: String): File {
+        expire()
+        val t = records[id] ?: throw BridgeFailure(404, "unknown_transfer")
+        require(healthy && t.direction == "mac_to_phone" && t.committed && t.status == "received" && !t.cancelled.get()) { "Only a verified received file may be shared" }
+        require(t.file.canonicalFile.parentFile == root.canonicalFile && t.file.isFile && t.file.length() == t.size)
+        return t.file
+    }
+    @Synchronized internal fun sharedMetadata(id: String): JSONObject { sharedFile(id); return info(records.getValue(id)) }
+    fun shareUri(id: String): Uri { sharedFile(id); return Uri.Builder().scheme("content").authority("${context.packageName}.transfers").appendPath(id).build() }
+    fun thumbnail(id: String, maxEdge: Int = 256): android.graphics.Bitmap? = runCatching {
+        require(maxEdge in 32..512)
+        val metadata = sharedMetadata(id)
+        require(metadata.getString("mime_type").startsWith("image/"))
+        val file = sharedFile(id)
+        val bounds = android.graphics.BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        android.graphics.BitmapFactory.decodeFile(file.path, bounds)
+        require(bounds.outWidth in 1..32768 && bounds.outHeight in 1..32768)
+        var sample = 1
+        while (bounds.outWidth / sample > maxEdge || bounds.outHeight / sample > maxEdge) sample *= 2
+        android.graphics.BitmapFactory.decodeFile(file.path, android.graphics.BitmapFactory.Options().apply { inSampleSize = sample })
+    }.getOrNull()
     fun exportReceived(id: String, destination: Uri) {
         val t = synchronized(this) { (records[id] ?: throw BridgeFailure(404, "unknown_transfer")).also { require(it.committed && it.direction == "mac_to_phone" && !it.cancelled.get()) } }
         context.contentResolver.openOutputStream(destination)!!.use { out -> t.file.inputStream().use { it.copyTo(out, 65536) } }

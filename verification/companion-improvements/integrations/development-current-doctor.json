@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "name": "cli",
+      "status": "ok",
+      "detail": "shipyard-deploy 0.1.0 (darwin/arm64, go1.27.0)"
+    },
+    {
+      "name": "state dir",
+      "status": "ok",
+      "detail": "/Users/patrick/Library/Application Support/shipyard-deploy (0700)"
+    },
+    {
+      "name": "credential store",
+      "status": "ok",
+      "detail": "file (the only store consulted)"
+    },
+    {
+      "name": "credential",
+      "status": "ok",
+      "detail": "found in the file store"
+    },
+    {
+      "name": "keychain store",
+      "status": "ok",
+      "detail": "macOS Keychain (service works.sloop.shipyard-deploy)"
+    },
+    {
+      "name": "server",
+      "status": "ok",
+      "detail": "https://shipyard-deploy-dev.patjackson52.workers.dev version 0.1.0"
+    },
+    {
+      "name": "transfer mode",
+      "status": "ok",
+      "detail": "presigned_r2"
+    },
+    {
+      "name": "clock skew",
+      "status": "ok",
+      "detail": "local clock differs from the server by 211ms"
+    },
+    {
+      "name": "project config",
+      "status": "ok",
+      "detail": "/Users/patrick/workspace/DroidBridge/AndroidCompanion/.shipyard-deploy.yaml (project droidbridge, 2 channel rule(s))"
+    },
+    {
+      "name": "server source",
+      "status": "ok",
+      "detail": "https://shipyard-deploy-dev.patjackson52.workers.dev (.shipyard-deploy.yaml (a server `login` recorded))"
+    }
+  ],
+  "ok": true,
+  "server": "https://shipyard-deploy-dev.patjackson52.workers.dev",
+  "server_source": ".shipyard-deploy.yaml (a server `login` recorded)",
+  "status": "ok"
+}

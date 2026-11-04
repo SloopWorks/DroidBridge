@@ -1,0 +1,3 @@
+COMMAND: git diff --check
+EXIT CODE: 0
+Missing local links: []

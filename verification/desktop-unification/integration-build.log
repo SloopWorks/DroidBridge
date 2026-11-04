@@ -1,0 +1,40 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/12] Compiling DroidBridge DesktopWorkspace.swift
+[4/12] Compiling DroidBridge Launcher.swift
+[5/18] Compiling DroidBridge main.swift
+[6/18] Compiling DroidBridge PhoneDisplayControls.swift
+[7/18] Compiling DroidBridge AudioControls.swift
+[8/18] Compiling DroidBridge CompanionLauncherIntegration.swift
+[9/18] Compiling DroidBridge ManagedAppNameRepair.swift
+[10/18] Compiling DroidBridge DeviceOnboardingUI.swift
+[11/18] Compiling DroidBridge LauncherUI.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/LauncherUI.swift:213:95: warning: 'minSize' was deprecated in macOS 12.0: This property is no longer recommended. Instead, let the system automatically measure the size of the view using constraints. [#DeprecatedDeclaration]
+211 |     func toolbar(_ toolbar:NSToolbar,itemForItemIdentifier id:NSToolbarItem.Identifier,willBeInsertedIntoToolbar flag:Bool)->NSToolbarItem? {
+212 |         guard let c=controller else {return nil};let item=NSToolbarItem(itemIdentifier:id)
+213 |         if id.rawValue == "device" {item.label="Android Device";item.view=c.devicePicker;item.minSize=NSSize(width:190,height:26);item.maxSize=NSSize(width:360,height:26)}
+    |                                                                                               `- warning: 'minSize' was deprecated in macOS 12.0: This property is no longer recommended. Instead, let the system automatically measure the size of the view using constraints. [#DeprecatedDeclaration]
+214 |         else if id.rawValue == "refresh" {item.label="Refresh Devices";item.image=NSImage(systemSymbolName:"arrow.clockwise",accessibilityDescription:"Refresh Devices");item.target=c;item.action=#selector(c.refreshAction)}
+215 |         else if id.rawValue == "device-settings" {item.label="Device Settings";item.image=NSImage(systemSymbolName:"slider.horizontal.3",accessibilityDescription:"Device Settings");item.target=c;item.action=#selector(c.showDeviceSettings)}
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/LauncherUI.swift:213:136: warning: 'maxSize' was deprecated in macOS 12.0: This property is no longer recommended. Instead, let the system automatically measure the size of the view using constraints. [#DeprecatedDeclaration]
+211 |     func toolbar(_ toolbar:NSToolbar,itemForItemIdentifier id:NSToolbarItem.Identifier,willBeInsertedIntoToolbar flag:Bool)->NSToolbarItem? {
+212 |         guard let c=controller else {return nil};let item=NSToolbarItem(itemIdentifier:id)
+213 |         if id.rawValue == "device" {item.label="Android Device";item.view=c.devicePicker;item.minSize=NSSize(width:190,height:26);item.maxSize=NSSize(width:360,height:26)}
+    |                                                                                                                                        `- warning: 'maxSize' was deprecated in macOS 12.0: This property is no longer recommended. Instead, let the system automatically measure the size of the view using constraints. [#DeprecatedDeclaration]
+214 |         else if id.rawValue == "refresh" {item.label="Refresh Devices";item.image=NSImage(systemSymbolName:"arrow.clockwise",accessibilityDescription:"Refresh Devices");item.target=c;item.action=#selector(c.refreshAction)}
+215 |         else if id.rawValue == "device-settings" {item.label="Device Settings";item.image=NSImage(systemSymbolName:"slider.horizontal.3",accessibilityDescription:"Device Settings");item.target=c;item.action=#selector(c.showDeviceSettings)}
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[12/18] Emitting module DroidBridge
+[13/18] Compiling DroidBridge CompanionDesktopAdapter.swift
+[14/18] Compiling DroidBridge DesktopSettings.swift
+[15/18] Compiling DroidBridge CompanionWindow.swift
+[16/20] Compiling DroidBridge CompanionWirelessSetup.swift
+[17/20] Compiling DroidBridge CompanionPairingScanner.swift
+[17/20] Write Objects.LinkFileList
+[18/20] Linking DroidBridge
+[19/20] Applying DroidBridge
+Build complete! (3.46s)

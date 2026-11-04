@@ -1,0 +1,1 @@
+    topResumedActivity=ActivityRecord{41744bb u0 dev.droidbridge.companion.test/dev.droidbridge.companion.PlatformWidgetHostActivity t1109}

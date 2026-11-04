@@ -1,0 +1,62 @@
+{
+  "date_local": "2026-11-04",
+  "candidates": [
+    "DroidDesk",
+    "DroidWorkdeck",
+    "SloopDesk",
+    "DroidWorkspace"
+  ],
+  "method": "Exact/spaced-name web searches and indexed Google Play/GitHub searches; primary existing product pages checked; public Apple Search API US Mac/iOS catalog; official-registry RDAP .com/.app via IANA bootstrap.",
+  "recommendation": "SloopDesk has the cleanest preliminary product-name screen among these four. Reject DroidDesk. Treat DroidWorkdeck with caution because Workdeck is already used in related productivity software. DroidWorkspace is a descriptive fallback with a registered .com.",
+  "findings": [
+    {
+      "name": "DroidDesk",
+      "exact_software_conflicts": [
+        {
+          "description": "Android Linux-desktop project",
+          "url": "https://github.com/orailnoor/DroidDesk"
+        },
+        {
+          "description": "Physical Android remote-device rental/control service",
+          "url": "https://droiddesk.io/"
+        }
+      ],
+      "decision": "Reject due existing Android desktop/remote-control uses"
+    },
+    {
+      "name": "DroidWorkdeck",
+      "exact_software_conflicts": [],
+      "component_name_uses": [
+        {
+          "name": "Workdeck",
+          "url": "https://workdeck.com/en/",
+          "description": "Digital workplace and productivity software"
+        },
+        {
+          "name": "AI WorkDeck",
+          "url": "https://www.workdeck.ai/en/start",
+          "description": "Desktop productivity/document software"
+        }
+      ],
+      "decision": "Caution: no exact product found, but significant Workdeck component overlap in software; no legal conclusion"
+    },
+    {
+      "name": "SloopDesk",
+      "exact_software_conflicts": [],
+      "other_occurrence": {
+        "description": "SLOOPDESK appears among role labels in a Dutch-language construction/architecture presentation; no product identified",
+        "url": "https://old.vlaanderen-circulair.be/src/Frontend/Files/userfiles/files/Blog/241210%20NAV%20CIRCULAIR%20BOUWEN%20-%20rol%20architect_publiek.pdf"
+      },
+      "decision": "Best preliminary candidate; use Android/Mac subtitle for clarity"
+    },
+    {
+      "name": "DroidWorkspace",
+      "exact_software_conflicts": [],
+      "other_occurrences": "Historical development-directory names in programming support posts; not evidence of a branded product",
+      "decision": "Fallback: descriptive but long/generic; .com already registered"
+    }
+  ],
+  "domain_evidence": "DESK_NAMES_DOMAINS.json",
+  "app_store_evidence": "DESK_NAMES_APP_STORE.json",
+  "limits": "No comprehensive trademark/company-name/social-handle clearance. No app-store title reservation verified. Registry 404 does not prove purchasability or standard price. No domain purchased, account changed or product renamed."
+}

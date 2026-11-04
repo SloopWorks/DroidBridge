@@ -4,11 +4,57 @@ DroidBridge is a Swift/AppKit application. Android executes every application on
 
 ## Modules
 
+### Companion quick access, saved library and desktop effects
+
+Android Quick Settings, launcher shortcuts, the widget and the connection
+notification are alternate explicit entry points into the existing companion
+service and trust-targeted command journal. Their UI never grants ADB permission
+or changes its independent video lifetime. Sensitive operations enter an unlocked
+foreground review; exact trust identities are checked again before admission.
+Widget historical state includes its observation time. See
+`docs/companion/QUICK_ACCESS.md`.
+
+`CompanionLibrary` atomically publishes bounded encrypted snippets and presets.
+Saved content has an explicit user-controlled lifetime separate from received
+inbox expiry. `run_preset` is one owner-fenced command, with confirmed performance
+profile publication before audio/app steps. Every child launch checks the same
+live admission deadline; partial completion remains visible and cannot silently
+replay after restart. New `command_profile_commit` broker mutation requires the
+exact admitted command, owning process/generation, live transport and applied
+phone receipt before changing the serving profile.
+
+Shares bind their selected recipient independently of the dashboard selection.
+The default action only stores content in the Mac inbox. Explicit copy/open
+requests cross the normal durable host-admission fence; URL opening accepts only
+HTTP(S) URLs with a host and no embedded credentials. `TransferProvider` exposes
+only complete verified received transfers through scoped Android read grants;
+cancellation/expiry prevents new opens. Thumbnail decoding has bounded dimensions
+and sampling. Mac downloads retain their verified saved destination for an
+explicit Finder reveal, independent of pending completion acknowledgment.
+
+After durable command publication, the broker posts a payload-free process-bound
+distributed notification. The desktop adapter coalesces wakeups with a 100 ms
+floor and one in-flight poll; its regular 500 ms poll remains missed-wakeup
+recovery. Notifications convey no command, content, authority or execution grant.
+When that wake precedes the periodic connected-device snapshot after reconnect,
+the adapter refreshes broker status once before refusing a cached unavailable
+phone. It validates the admitted deadline before and after that await and still
+requires an independently authorized current ADB device. No effect is replayed.
+Phone receipt timing uses one monotonic process epoch; unavailable intervals are
+not fabricated. Debug-only categorical SWIP events respect explicit consent and
+DebugDrawer privacy; release collectors are absent. Development distribution uses
+Shipyard Deploy's separate `.dev` package. See
+`docs/companion/SLOOPWORKS_INTEGRATION.md`.
+
 `DroidBridgeCore` contains Codable device/application/session descriptors, backend selection, strict external-input validation, aspect-fit coordinate transforms, bundled-first tool resolution, and asynchronous bounded subprocess execution. The process runner uses executable/argument arrays rather than a shell and stages combined output in bounded temporary files.
 
 `DroidBridgeStreaming` owns `@MainActor BridgeSession`, state transitions, logs/metrics, startup fencing, scrcpy protocol serialization, socket transport, H.264 decoding, and recovery receipts. The public session operations are async `start()`, synchronous `resize(width:height:)`, `sendInput(_:)`, `stop()`, and async `stopAndWait()`. Frame/state/metric callbacks return to the main actor; socket and decoder work runs on background queues. A stopped session is terminal; restoration creates a new session.
 
-`LauncherUI` composes the native two-pane launcher using existing controller-owned controls and selectors. Its presentation refresh performs no network, catalog or process admission. Sidebar and session documents track their own scroll viewport widths. A per-session presentation fingerprint preserves control identity and keyboard focus during unchanged polling. App discovery uses explicit loading/error serials plus a request-generation fence; superseded selection tasks are retained and all are drained on shutdown. Launch and Spotlight setup enablement share their action predicates, and numeric app counts require an authorized, ready, matching loaded catalog. Return routes only from search/table; Find App menu validation leaves Android-window shortcuts alone.
+`LauncherUI` composes one native split-view management window: Apps, Sessions, Handoff, Notifications and Devices share a live ADB selection and one visible application catalog. `CompanionWindowController` supplies retained embedded task views without creating a second management NSWindow. It receives explicit host visibility, route and selected-transport context; close/navigation cancels or fences selection-bound work. Devices retains an explicit Saved Pairing selector for offline local trust management without retargeting live ADB actions. Local session cards and independent broker registrations share Sessions; exact local IDs are excluded from the independent list. Session presentation and restore intent are scoped to the selected device's authenticated aliases, with all-device recovery when no device is selected.
+
+`DesktopSettingsWindowController` owns a conventional Command-Comma Settings window for General, Integration and About; device audio/screen/profile controls remain contextual in Device Settings. Settings reuses controller-owned controls and existing shared preferences, with scoped QA defaults for backend, reconnect and remembered pane. No cloud account or licensing UI is invented. Diagnostics and manual release information are Help destinations.
+
+Presentation refresh performs no network, catalog or process admission. Sidebar and session documents track their own scroll viewport widths. A per-session presentation fingerprint preserves control identity and keyboard focus during unchanged polling. App discovery uses explicit loading/error serials plus a request-generation fence; superseded selection tasks are retained and all are drained on shutdown. Launch and Spotlight setup enablement share their action predicates, and numeric app counts require an authorized, ready, matching loaded catalog. Return routes only from search/table; Find App and workspace navigation shortcuts leave Android-window shortcuts alone.
 
 `DroidBridge` owns the native launcher, device/app search, session registry, native rendering views/windows, keyboard/mouse mapping, persistence, reconnect polling, menus and application wrappers. No video decoding or blocking ADB command runs in UI composition.
 

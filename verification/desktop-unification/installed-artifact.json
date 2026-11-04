@@ -1,0 +1,8 @@
+{
+  "path": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/unified-0.2.0-20/DroidBridge.app",
+  "version": "0.2.0",
+  "build": "20",
+  "signing": "ad-hoc local test build; not notarized",
+  "sha256": "d0a4207cd7dbf9567d5e6e12004d1bbace97ecc31a1e33bd9c966fd73f530b55",
+  "outside_build_directory": true
+}

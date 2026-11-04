@@ -1,0 +1,11 @@
+{
+  "observed_date": "2026-11-03",
+  "method": "Read-only CUA view of the existing Chrome profile; account page opened in a separate temporary tab. No account switching, renewal, acceptance, credential creation or uploads.",
+  "url": "https://developer.apple.com/account/",
+  "observed_team": "GJXK92Q6N4",
+  "observed_enrollment_type": "Individual",
+  "observed_status": "Your Apple Developer Program membership has expired.",
+  "observed_renewal_date": "May 24, 2016",
+  "org_live_membership_verified": false,
+  "interpretation": "This is the historical personal team described in the canonical SloopWorks records, not the organization team. Do not renew it for DroidBridge."
+}

@@ -1,0 +1,40 @@
+
+dev.droidbridge.companion.CompanionImprovementsUXDeviceTest:...
+dev.droidbridge.companion.CompanionUXDeviceTest:...
+dev.droidbridge.companion.CompanionConsentInputDeviceTest:..
+dev.droidbridge.companion.QuickAccessDeviceTest:.
+Error in forgedRevokedShortcutNeverAdmitsAnOperation(dev.droidbridge.companion.QuickAccessDeviceTest):
+java.lang.AssertionError: Condition did not become true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.QuickAccessDeviceTest.waitFor(QuickAccessDeviceTest.kt:28)
+	at dev.droidbridge.companion.QuickAccessDeviceTest.forgedRevokedShortcutNeverAdmitsAnOperation(QuickAccessDeviceTest.kt:79)
+
+Error in selectedTextOnlyEnqueuesAfterForegroundReviewAndTargetsChosenTrust(dev.droidbridge.companion.QuickAccessDeviceTest):
+java.lang.AssertionError: Condition did not become true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.QuickAccessDeviceTest.waitFor(QuickAccessDeviceTest.kt:28)
+	at dev.droidbridge.companion.QuickAccessDeviceTest.selectedTextOnlyEnqueuesAfterForegroundReviewAndTargetsChosenTrust(QuickAccessDeviceTest.kt:48)
+
+dev.droidbridge.companion.CompanionLibraryDeviceTest:....
+
+Time: 33.247
+There were 2 failures:
+1) forgedRevokedShortcutNeverAdmitsAnOperation(dev.droidbridge.companion.QuickAccessDeviceTest)
+java.lang.AssertionError: Condition did not become true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.QuickAccessDeviceTest.waitFor(QuickAccessDeviceTest.kt:28)
+	at dev.droidbridge.companion.QuickAccessDeviceTest.forgedRevokedShortcutNeverAdmitsAnOperation(QuickAccessDeviceTest.kt:79)
+2) selectedTextOnlyEnqueuesAfterForegroundReviewAndTargetsChosenTrust(dev.droidbridge.companion.QuickAccessDeviceTest)
+java.lang.AssertionError: Condition did not become true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.QuickAccessDeviceTest.waitFor(QuickAccessDeviceTest.kt:28)
+	at dev.droidbridge.companion.QuickAccessDeviceTest.selectedTextOnlyEnqueuesAfterForegroundReviewAndTargetsChosenTrust(QuickAccessDeviceTest.kt:48)
+
+FAILURES!!!
+Tests run: 15,  Failures: 2
+
+

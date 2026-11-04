@@ -10,8 +10,12 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
     private var connections: [NSXPCConnection] = []
     private var transferBytes = Data()
     private var metadata: [String: CompanionJSON] = [:]
+    private var downloadReceiptFailures = 0
+    private var downloadReceiptIDs: [UUID] = []
     private var recoveryFinished = false
     private var activeProfile = "balanced"
+    private var companionConnected = true
+    private var nextStatusDelay: TimeInterval = 0
     private var catalogToken = UUID().uuidString.lowercased()
     private var catalogGeneration = "fixture-generation"
     private var renamed = false
@@ -27,6 +31,8 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
     var operations: [String] = []
     func advanceCatalog() { lock.lock(); renamed = true; catalogGeneration = "fixture-generation-2"; catalogToken = UUID().uuidString.lowercased(); lock.unlock() }
     func setProfile(_ profile: String) { lock.lock(); activeProfile = profile; lock.unlock() }
+    func setConnected(_ value: Bool) { lock.lock(); companionConnected = value; lock.unlock() }
+    func delayNextStatus(_ seconds: TimeInterval) { lock.lock(); nextStatusDelay = seconds; lock.unlock() }
     func captureNotificationTrust() { lock.lock(); notificationOriginTrust = activeTrustID; lock.unlock() }
     func omitNotificationTrust() { lock.lock(); notificationOriginTrust = nil; lock.unlock() }
     func setTrustID(_ id: String) { lock.lock(); activeTrustID = id; lock.unlock() }
@@ -36,6 +42,8 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
     func admissionCalled(_ id: String) -> Bool { lock.lock(); defer { lock.unlock() }; return admissionCalls.contains(id) }
     func acknowledgment(_ id: String) -> [String: CompanionJSON]? { lock.lock(); defer { lock.unlock() }; return acknowledgments[id] }
     func count(_ operation: String) -> Int { lock.lock(); defer { lock.unlock() }; return operations.filter { $0 == operation }.count }
+    func failNextDownloadReceipt() { lock.lock(); downloadReceiptFailures = 1; lock.unlock() }
+    func receiptIDs() -> [UUID] { lock.lock(); defer { lock.unlock() }; return downloadReceiptIDs }
     func listener(_ listener: NSXPCListener, shouldAcceptNewConnection connection: NSXPCConnection) -> Bool {
         connection.exportedInterface = NSXPCInterface(with: CompanionBrokerXPCProtocol.self); connection.exportedObject = self; connection.resume(); lock.lock(); connections.append(connection); lock.unlock(); return true
     }
@@ -63,7 +71,10 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
                 guard p["app_path"]?.string == "/Fixture.app" else { throw CompanionBoundaryError("host_identity_mismatch", "Only the expected fixture host may register") }
                 if registrationFailures > 0 { registrationFailures -= 1; throw CompanionBoundaryError("broker_unavailable", "Fixture first bootstrap not ready", retryable: true) }
                 data = ["status": .string("registered")]
-            case "status": data = ["devices": .array([.object(["device_id": .string(device), "device_name": .string("QA Phone with a Long Readable Name"), "serial": .string("qa-companion-ui"), "aliases": .array([.string("qa-companion-ui")]), "connected": .bool(true), "paired": .bool(true), "profile": .string("balanced"), "capabilities": .array(["catalog", "icons", "share", "clipboard", "notifications", "notification_scope_v2", "profiles"].map(CompanionJSON.string))])]), "sessions": .array([.object(["session_id": .string("6803ee5e-496c-413e-ac22-e740b23043eb"), "device_id": .string(device), "label": .string("Independent wrapper fixture"), "backend": .string("native"), "phase": .string("running")])])]
+            case "status":
+                let delay = nextStatusDelay; nextStatusDelay = 0
+                if delay > 0 { lock.unlock(); Thread.sleep(forTimeInterval: delay); lock.lock() }
+                data = ["devices": .array([.object(["device_id": .string(device), "device_name": .string("QA Phone with a Long Readable Name"), "serial": .string("qa-companion-ui"), "aliases": .array([.string("qa-companion-ui")]), "connected": .bool(companionConnected), "paired": .bool(true), "profile": .string("balanced"), "capabilities": .array(["catalog", "icons", "share", "clipboard", "notifications", "notification_scope_v2", "profiles"].map(CompanionJSON.string))])]), "sessions": .array([.object(["session_id": .string("6803ee5e-496c-413e-ac22-e740b23043eb"), "device_id": .string(device), "label": .string("Independent wrapper fixture"), "backend": .string("native"), "phase": .string("running")])])]
             case "export_selection_get": data = ["selection": .object([:])]
             case "recover_pairing":
                 guard p["device_id"]?.string == device else { throw CompanionBoundaryError("invalid_recovery", "Recovery must target the exact pending phone") }
@@ -81,7 +92,11 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
             case "transfer_begin": metadata = p; transferBytes = Data(); data = ["status": .string("receiving")]
             case "transfer_chunk": guard let text = p["bytes"]?.string, let chunk = Data(base64Encoded: text), chunk.count <= 65_536 else { throw CompanionBoundaryError("invalid_chunk", "Bad fixture chunk") }; transferBytes.append(chunk); data = ["accepted_bytes": .number(Double(transferBytes.count))]
             case "transfer_commit": guard metadata["sha256"]?.string == CompanionClient.sha256(transferBytes), metadata["size"]?.number == Double(transferBytes.count) else { throw CompanionBoundaryError("integrity", "Fixture transfer mismatch") }; data = ["committed": .bool(true), "transfer_id": metadata["transfer_id"]!, "accepted_bytes": .number(Double(transferBytes.count))]
-            case "transfer_receipt": guard p["accepted_bytes"]?.number == Double(transferBytes.count), p["sha256"]?.string == CompanionClient.sha256(transferBytes) else { throw CompanionBoundaryError("integrity", "Fixture download receipt mismatch") }; data = ["status": .string("downloaded"), "transfer_id": p["transfer_id"]!, "accepted_bytes": p["accepted_bytes"]!]
+            case "transfer_receipt":
+                guard p["accepted_bytes"]?.number == Double(transferBytes.count), p["sha256"]?.string == CompanionClient.sha256(transferBytes) else { throw CompanionBoundaryError("integrity", "Fixture download receipt mismatch") }
+                downloadReceiptIDs.append(input.requestID)
+                if downloadReceiptFailures > 0 { downloadReceiptFailures -= 1; throw CompanionBoundaryError("fixture_disconnected", "Confirmation unavailable after verified local publication", retryable: true) }
+                data = ["status": .string("downloaded"), "transfer_id": p["transfer_id"]!, "accepted_bytes": p["accepted_bytes"]!]
             case "transfer_download": let index = Int(p["index"]?.number ?? 0), start = index * 65_536; data = ["bytes": .string(transferBytes.subdata(in: start..<min(start + 65_536, transferBytes.count)).base64EncodedString())]
             default: break
             }
@@ -199,14 +214,27 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         stop.performClick(nil); try await wait { peer.operations.contains("command_status") }
         try require(peer.operations.contains("host_command"), "Stop did not dispatch to broker-local exact-owner command")
         let transfer = CompanionTransfers(broker: broker)
-        let source = output.appendingPathComponent(".fixture-source"), saved = output.appendingPathComponent(".fixture-received")
-        defer { try? FileManager.default.removeItem(at: source); try? FileManager.default.removeItem(at: saved) }
+        let source = output.appendingPathComponent(".fixture-source"), saved = output.appendingPathComponent(".fixture-received"), pendingSaved = output.appendingPathComponent(".fixture-confirmation-pending")
+        defer { try? FileManager.default.removeItem(at: source); try? FileManager.default.removeItem(at: saved); try? FileManager.default.removeItem(at: pendingSaved) }
         let fixture = Data((0..<160_123).map { UInt8($0 % 251) }); try fixture.write(to: source)
         transfer.send(source, device: peer.device); try await wait { !transfer.running }
         try require(transfer.message.contains("received and verified"), "Upload did not confirm actual final hash: \(transfer.message)")
         transfer.receive(["transfer_id": .string(UUID().uuidString), "size": .number(Double(fixture.count)), "sha256": .string(CompanionClient.sha256(fixture))], destination: saved, device: peer.device)
         try await wait { !transfer.running }; try require((try? Data(contentsOf: saved)) == fixture, "Downloaded fixture bytes differ")
         try require(transfer.message.contains("SHA-256 verification"), "Download incorrectly reported completion")
+        try require(transfer.savedDestination == saved && !transfer.confirmationPending, "Verified saved destination was not retained for explicit reveal")
+        peer.failNextDownloadReceipt()
+        transfer.receive(["transfer_id": .string(UUID().uuidString), "size": .number(Double(fixture.count)), "sha256": .string(CompanionClient.sha256(fixture))], destination: pendingSaved, device: peer.device)
+        try await wait { !transfer.running }
+        try require(transfer.confirmationPending && transfer.savedDestination == pendingSaved && transfer.message.contains("Phone confirmation is pending"), "Confirmation refusal hid the already verified saved file")
+        try require((try? Data(contentsOf: pendingSaved)) == fixture, "Confirmation refusal damaged the published bytes")
+        let downloadsBeforeRetry = peer.count("transfer_download")
+        transfer.retryConfirmation(); try await wait { !transfer.running }
+        let receiptIDs = peer.receiptIDs()
+        try require(!transfer.confirmationPending && transfer.message.contains("previously saved file") && receiptIDs.count == 3 && receiptIDs[1] == receiptIDs[2], "Confirmation retry did not reuse the exact receipt identity")
+        try require(peer.count("transfer_download") == downloadsBeforeRetry && transfer.savedDestination == pendingSaved && (try? Data(contentsOf: pendingSaved)) == fixture, "Confirmation retry redownloaded or changed the saved destination")
+        let recoveryEvidence: [String: Any] = ["passed": true, "scope": "Shipping CompanionTransfers controller over anonymous NSXPC fixture; system Save dialog, Finder selection and live-phone transport are separate checks", "verified_bytes": fixture.count, "saved_destination_retained": true, "retained_during_confirmation_refusal": true, "same_receipt_identity_on_retry": true, "no_redownload_on_retry": true]
+        try JSONSerialization.data(withJSONObject: recoveryEvidence, options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("verified-file-recovery.json"))
         let wireless = CompanionWirelessSetup(tools: Toolchain()); wireless.showWindow(nil)
         let wirelessWindow = try XCT(wireless.window, "Wireless setup missing"), wirelessContent = try XCT(wireless.window?.contentView, "Wireless content missing")
         wirelessWindow.setContentSize(NSSize(width: 500, height: 380))
@@ -398,6 +426,42 @@ private final class FixtureBroker: NSObject, NSXPCListenerDelegate, CompanionBro
         bannerController.shutdown(); bannerController.window?.orderOut(nil)
         try JSONSerialization.data(withJSONObject: ["passed": true, "scope": "Shipping AppKit controller + deferred authorization/settings/add seams + anonymous NSXPC; no OS permission requested", "superseded_approval_no_rpc": true, "explicit_off_retry_applied": true, "replaced_trust_no_rpc": true, "invalid_edited_allowlist_no_rpc": true, "red_close_reopen_no_rpc": true, "shutdown_late_approval_no_rpc": true, "denied_banners_preserve_explicit_in_app_list": true, "late_settings_opt_out_no_banner": true, "late_add_close_reopen_exact_retraction": true, "late_settings_replaced_trust_no_banner": true], options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("notification-authorization-fences.json"))
         await adapter.shutdown(); window.orderOut(nil); launcher.window?.orderOut(nil)
+        // Model the installed reconnect race with an authorized current ADB
+        // device and a stale disconnected broker cache. No real Android effect
+        // is permitted in this anonymous-peer component fixture.
+        for scenario in ["reconnected", "disconnected", "expired_during_refresh", "shutdown_during_refresh"] {
+            let reconnectPeer = FixtureBroker(), reconnectListener = NSXPCListener.anonymous()
+            reconnectListener.delegate = reconnectPeer; reconnectListener.resume()
+            let reconnectBroker = CompanionBrokerIPCClient(endpoint: reconnectListener.endpoint, nonce: "fixture-nonce")
+            let reconnectLauncher = LauncherController(); reconnectLauncher.onboardingPending = true
+            reconnectLauncher.devices = [AndroidDevice(serial: "qa-companion-ui", model: "QA Phone")]
+            let reconnectAdapter = CompanionDesktopAdapter(launcher: reconnectLauncher, broker: reconnectBroker)
+            try await reconnectAdapter.refreshStatus(); reconnectAdapter.start(installService: false)
+            try await wait { reconnectPeer.count("session_publish") >= 1 && reconnectPeer.count("command_poll") >= 1 }
+            reconnectPeer.setConnected(false); try await reconnectAdapter.refreshStatus()
+            let statusBefore = reconnectPeer.count("status")
+            reconnectPeer.setConnected(scenario != "disconnected")
+            if scenario == "expired_during_refresh" || scenario == "shutdown_during_refresh" { reconnectPeer.delayNextStatus(2) }
+            let issued = CompanionClock.nowMS()
+            let request = command("set_profile", deadline: ["boot_id": .string(CompanionClock.bootID), "issued_ms": .number(issued), "expires_ms": .number(issued + (scenario == "expired_during_refresh" ? 1200 : 30_000))], payload: ["profile": .string("balanced")])
+            let id = request["id"]!.string!
+            reconnectPeer.enqueue(request); CompanionCommandWakeup.post(ownerPID: ProcessInfo.processInfo.processIdentifier)
+            if scenario == "shutdown_during_refresh" {
+                try await wait { reconnectPeer.count("status") > statusBefore }
+                await reconnectAdapter.shutdown()
+                try require(reconnectPeer.acknowledgment(id) == nil && reconnectPeer.count("command_profile_commit") == 0, "Shutdown during reconnect refresh caused an effect")
+            } else {
+                try await wait { reconnectPeer.acknowledgment(id) != nil }
+                let applied = scenario == "reconnected"
+                try require(reconnectPeer.acknowledgment(id)?["status"]?.string == (applied ? "applied" : "rejected"), "Reconnect cache result is incorrect: \(scenario)")
+                try require(reconnectPeer.count("command_profile_commit") == (applied ? 1 : 0), "Reconnect refresh widened effect admission: \(scenario)")
+                if applied { try require(reconnectPeer.count("status") == statusBefore + 2, "Command must refresh the stale cache once, then refresh after profile commit") }
+                if !applied { try require(reconnectPeer.acknowledgment(id)?["result"]?.object?["code"]?.string == (scenario == "disconnected" ? "phone_unavailable" : "command_expired"), "Reconnect refusal lost its reason") }
+                await reconnectAdapter.shutdown()
+            }
+            reconnectLauncher.window?.orderOut(nil); reconnectListener.invalidate()
+        }
+        try JSONSerialization.data(withJSONObject: ["passed": true, "scope": "Shipping adapter over anonymous NSXPC with authorized ADB fixture; no installed transport claim", "stale_cache_refreshed_once_before_effect": true, "still_disconnected_zero_effects": true, "expired_during_refresh_zero_effects": true, "shutdown_during_refresh_zero_effects": true], options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("reconnect-command-cache.json"))
         let result: [String: Any] = ["passed": true, "scope": "Shipping AppKit + anonymous NSXPC fixture; no Android or installed-app acceptance", "surfaces": 8, "catalog_count": 1000, "local_search": true, "exact_owner_command_route": true, "explicit_pending_pairing_recovery": true, "registration_transient_retry": true, "registration_exhaustion_attempts": 8, "registration_result_survives_status_read": true, "post_readiness_admission_refused_without_session": true, "chunked_file_roundtrip_bytes": fixture.count, "sha256_match": true, "camera_capture_verified": false, "phone_pairing_verified": false, "physical_focus_verified": false, "clipboard_read": false, "setup_narrow_validation_scroll": true, "captures": captures + ["wireless-narrow-validation.png", "scanner-narrow-validation.png"]]
         try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("results.json"))
     }

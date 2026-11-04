@@ -1,0 +1,326 @@
+{
+  "passed": false,
+  "scope": "Installed signed Mac app + real Android companion TLS/GUI flow; isolated QA paths",
+  "serial": "emulator-5580",
+  "physical_focus_verified": false,
+  "events": [
+    {
+      "kind": "installed_host_started",
+      "pid": 45263,
+      "executable_sha256": "d0a4207cd7dbf9567d5e6e12004d1bbace97ecc31a1e33bd9c966fd73f530b55",
+      "qa_scope": true
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 854.37
+    },
+    {
+      "kind": "appkit_action",
+      "action": "show_companion",
+      "ok": true,
+      "elapsed_ms": 160.71
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.78
+    },
+    {
+      "kind": "appkit_action",
+      "action": "select_adb",
+      "ok": true,
+      "elapsed_ms": 105.02
+    },
+    {
+      "kind": "unified_toolbar_device_selected",
+      "serial": "emulator-5580"
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 209.48
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 107.29
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.08
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.52
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.63
+    },
+    {
+      "kind": "gui_companion_install_confirmed",
+      "bundled_apk_sha256": "61ec1bbfa833d5237f862e8caf114f4ee4ec99a56743d808a458b5688c5a6616",
+      "exact_selected_device": "emulator-5580"
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 212.6
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Start connection service",
+      "monotonic": 222490.876737
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Pair a new Mac",
+      "monotonic": 222497.281874916
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 159.06
+    },
+    {
+      "kind": "appkit_action",
+      "action": "set_field",
+      "ok": true,
+      "elapsed_ms": 50.77
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 109.33
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.23
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.01
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.03
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.52
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.08
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 106.46
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 51.02
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.75
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.6
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 54.92
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.58
+    },
+    {
+      "kind": "comparison_code_matched",
+      "matched": true,
+      "code_retained": false
+    },
+    {
+      "kind": "android_ui_action",
+      "action": "Trust Mac",
+      "monotonic": 222505.525448416
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.56
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 52.58
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 104.78
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 55.28
+    },
+    {
+      "kind": "actual_phone_approved_pairing",
+      "tls_pinned": true,
+      "pairing_path": "manual",
+      "camera_verified": false
+    },
+    {
+      "kind": "appkit_action",
+      "action": "capture",
+      "ok": true,
+      "elapsed_ms": 161.47
+    },
+    {
+      "kind": "appkit_action",
+      "action": "navigate",
+      "ok": true,
+      "elapsed_ms": 109.81
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 107.95
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 111.44
+    },
+    {
+      "kind": "appkit_action",
+      "action": "set_field",
+      "ok": true,
+      "elapsed_ms": 106.49
+    },
+    {
+      "kind": "appkit_action",
+      "action": "select_app",
+      "ok": true,
+      "elapsed_ms": 107.05
+    },
+    {
+      "kind": "appkit_action",
+      "action": "capture",
+      "ok": true,
+      "elapsed_ms": 160.75
+    },
+    {
+      "kind": "appkit_action",
+      "action": "click",
+      "ok": true,
+      "elapsed_ms": 212.28
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 112.97
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 107.98
+    },
+    {
+      "kind": "appkit_action",
+      "action": "capture",
+      "ok": true,
+      "elapsed_ms": 54.7
+    },
+    {
+      "kind": "actual_native_android_window",
+      "package": "dev.droidbridge.companionfixture",
+      "first_decoded_frame_confirmed": true,
+      "visible_window_elapsed_ms": 3630.35
+    },
+    {
+      "kind": "appkit_action",
+      "action": "navigate",
+      "ok": true,
+      "elapsed_ms": 109.2
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 53.31
+    },
+    {
+      "kind": "appkit_action",
+      "action": "status",
+      "ok": true,
+      "elapsed_ms": 105.57
+    },
+    {
+      "kind": "appkit_action",
+      "action": "capture",
+      "ok": true,
+      "elapsed_ms": 153.09
+    },
+    {
+      "kind": "appkit_action",
+      "action": "clipboard_save",
+      "ok": true,
+      "elapsed_ms": 51.57
+    },
+    {
+      "kind": "appkit_action",
+      "action": "clipboard_restore",
+      "ok": true,
+      "elapsed_ms": 110.11
+    }
+  ],
+  "error": "Actual desktop command instrumentation failed; inspect its log"
+}

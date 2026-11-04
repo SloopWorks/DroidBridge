@@ -1,0 +1,52 @@
+{
+  "scope": "Actual phone command through pinned TLS, broker owner admission and installed Mac effects",
+  "actions": [
+    {
+      "kind": "set_profile",
+      "status": "applied",
+      "result": {},
+      "timing": {
+        "queued_uptime_ms": 3142027,
+        "acknowledged_ms": 535,
+        "completed_ms": 595
+      }
+    },
+    {
+      "kind": "share_text",
+      "status": "applied",
+      "result": {
+        "phase": "copied_on_mac"
+      },
+      "timing": {
+        "queued_uptime_ms": 3142697,
+        "acknowledged_ms": 52,
+        "completed_ms": 81
+      }
+    },
+    {
+      "kind": "share_url",
+      "status": "applied",
+      "result": {
+        "phase": "opened_on_mac"
+      },
+      "timing": {
+        "queued_uptime_ms": 3142783,
+        "acknowledged_ms": 57,
+        "completed_ms": 99
+      }
+    },
+    {
+      "kind": "run_preset",
+      "status": "applied",
+      "result": {
+        "phase": "preset_completed",
+        "completed_steps": 3
+      },
+      "timing": {
+        "queued_uptime_ms": 3142976,
+        "acknowledged_ms": 189,
+        "completed_ms": 2607
+      }
+    }
+  ]
+}

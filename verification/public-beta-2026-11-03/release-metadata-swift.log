@@ -1,0 +1,246 @@
+Building for debugging...
+[0/28] /Users/patrick/workspace/DroidBridge/.build/public-beta-check/arm64-apple-macosx/debug/DroidBridgePackageTests.derived/runner.swift
+[1/28] Write sources
+[5/28] Write DroidBridgeSupervisor-entitlement.plist
+[6/28] Write sources
+[8/28] Write DroidBridgeAvailability-entitlement.plist
+[9/28] Write sources
+[10/28] Write DroidBridgeCompanionBroker-entitlement.plist
+[10/28] Write DroidBridge-entitlement.plist
+[12/28] Write swift-version--58304C5D6DBC2206.txt
+[13/71] Compiling DroidBridgeSupervisor main.c
+[14/71] Write Objects.LinkFileList
+[15/71] Linking DroidBridgeSupervisor
+[16/71] Applying DroidBridgeSupervisor
+[18/71] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[19/74] Compiling DroidBridgeCore CoreAvailabilityAuthority.swift
+[20/74] Compiling DroidBridgeCore DeviceAudioPreferences.swift
+[21/74] Compiling DroidBridgeCore DeviceAudioRoute.swift
+[22/74] Compiling DroidBridgeCore DeviceReadiness.swift
+[23/74] Compiling DroidBridgeCore DeviceSelection.swift
+[24/74] Compiling DroidBridgeCore DroidBridgePreferences.swift
+[25/74] Compiling DroidBridgeCore ScrcpyStartupLease.swift
+[26/74] Compiling DroidBridgeCore StartupFrameVisibility.swift
+[27/74] Compiling DroidBridgeCore Toolchain.swift
+[28/74] Compiling DroidBridgeCore CompanionReleaseMetadata.swift
+[29/74] Compiling DroidBridgeCore CompanionSetupValidation.swift
+[30/74] Compiling DroidBridgeCore CompanionWirelessADB.swift
+[31/74] Compiling DroidBridgeCore CompanionCredentialStore.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[32/74] Compiling DroidBridgeCore CompanionDiagnostics.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[33/74] Compiling DroidBridgeCore CompanionExportPolicy.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[34/74] Compiling DroidBridgeCore InputGeometry.swift
+[35/74] Compiling DroidBridgeCore ManagedAppRegistrationExecutor.swift
+[36/74] Compiling DroidBridgeCore ManagedApps.swift
+[37/74] Compiling DroidBridgeCore PhoneDisplayPower.swift
+[38/74] Compiling DroidBridgeCore ProcessRunner.swift
+[39/74] Compiling DroidBridgeCore ScrcpyPortLease.swift
+[40/74] Compiling DroidBridgeCore CompanionForward.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[41/74] Compiling DroidBridgeCore CompanionModels.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[42/74] Compiling DroidBridgeCore CompanionPendingCredentialStore.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[43/74] Compiling DroidBridgeCore CompanionBrokerInstaller.swift
+[44/74] Compiling DroidBridgeCore CompanionBrokerJournal.swift
+[45/74] Compiling DroidBridgeCore CompanionBrokerRegistry.swift
+[46/74] Compiling DroidBridgeCore CompanionBrokerScheduler.swift
+[47/74] Compiling DroidBridgeCore ManagedAppsCopy.swift
+[48/74] Compiling DroidBridgeCore ManagedAvailabilityMonitor.swift
+[49/74] Compiling DroidBridgeCore Models.swift
+[50/74] Compiling DroidBridgeCore ADBPortableRuntime.swift
+[51/74] Compiling DroidBridgeCore AndroidDiscovery.swift
+[52/74] Compiling DroidBridgeCore AndroidIconProvider.swift
+[53/74] Compiling DroidBridgeCore AvailabilityRuntimeStore.swift
+[54/74] Compiling DroidBridgeCore CompanionPerformanceProfile.swift
+[55/74] Compiling DroidBridgeCore CompanionQAScope.swift
+[56/74] Compiling DroidBridgeCore CompanionQRImageReader.swift
+[57/74] Compiling DroidBridgeCore CompanionBrokerService.swift
+[58/74] Compiling DroidBridgeCore CompanionBrokerTestingHooks.swift
+[59/74] Compiling DroidBridgeCore CompanionClient.swift
+[60/74] Compiling DroidBridgeCore CanonicalAliasAdmission.swift
+[61/74] Compiling DroidBridgeCore CompanionActions.swift
+[62/74] Compiling DroidBridgeCore CompanionBrokerHost.swift
+[63/74] Compiling DroidBridgeCore CompanionBrokerIPC.swift
+[64/87] Compiling DroidBridgeCompanionBroker main.swift
+[65/87] Emitting module DroidBridgeCompanionBroker
+[65/87] Write Objects.LinkFileList
+[67/87] Emitting module DroidBridgeAvailability
+[68/87] Compiling DroidBridgeAvailability main.swift
+[68/87] Write Objects.LinkFileList
+[70/87] Compiling DroidBridgeStreaming Protocol.swift
+[70/87] Linking DroidBridgeCompanionBroker
+[71/87] Linking DroidBridgeAvailability
+[72/87] Applying DroidBridgeCompanionBroker
+[73/87] Applying DroidBridgeAvailability
+[75/87] Compiling DroidBridgeStreaming FrameMailbox.swift
+[76/87] Compiling DroidBridgeStreaming SessionRecovery.swift
+[77/87] Compiling DroidBridgeStreaming SocketTransport.swift
+[78/87] Compiling DroidBridgeStreaming H264Decoder.swift
+[79/87] Compiling DroidBridgeStreaming BridgeSession.swift
+[80/87] Compiling DroidBridgeStreaming DeviceAudioArtifacts.swift
+[81/87] Compiling DroidBridgeStreaming DeviceAudioRouter.swift
+[82/87] Emitting module DroidBridgeStreaming
+[83/159] Compiling DroidBridge NativeWindow.swift
+[84/159] Compiling DroidBridge PhoneDisplayControls.swift
+[85/159] Compiling DroidBridge ManagedAppNameRepair.swift
+[86/159] Compiling DroidBridge LauncherUI.swift
+[87/159] Compiling DroidBridge MacAppWrapper.swift
+[88/160] Compiling DroidBridge main.swift
+[89/160] Compiling DroidBridge DeviceOnboardingUI.swift
+[90/160] Compiling DroidBridge DeviceOnboardingAgent.swift
+[91/160] Compiling DroidBridge Launcher.swift
+[92/160] Compiling DroidBridgeCoreTests ADBPortableRuntimeTests.swift
+[93/160] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[94/160] Compiling DroidBridgeCoreTests AndroidIconProviderTests.swift
+[95/160] Compiling DroidBridgeCoreTests AvailabilityRuntimeStoreTests.swift
+[96/160] Emitting module DroidBridge
+[97/160] Compiling DroidBridgeCoreTests BrokerAdmissionTLSPeer.swift
+[98/160] Compiling DroidBridgeCoreTests CanonicalAliasAdmissionTests.swift
+[99/160] Compiling DroidBridgeCoreTests CompanionPendingAdmissionTests.swift
+[100/160] Compiling DroidBridgeCoreTests CompanionPerformanceTests.swift
+[101/160] Compiling DroidBridgeCoreTests CompanionActionsTests.swift
+[102/160] Compiling DroidBridgeCoreTests CompanionBoundaryTests.swift
+[102/160] Write Objects.LinkFileList
+[103/160] Linking DroidBridge
+[104/160] Applying DroidBridge
+[106/160] Emitting module DroidBridgeCoreTests
+[111/164] Compiling DroidBridgeCoreTests PhoneDisplayPowerTests.swift
+[112/164] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[113/164] Compiling DroidBridgeCoreTests ScrcpyPortLeaseTests.swift
+[114/164] Compiling DroidBridgeCoreTests ScrcpyStartupLeaseTests.swift
+[115/164] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[116/164] Compiling DroidBridgeCoreTests NativeDiagnosticsTests.swift
+[117/164] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[118/164] Compiling DroidBridgeCoreTests PhoneDisplayPowerQATests.swift
+[119/164] Compiling DroidBridgeCoreTests CompanionDiagnosticsTests.swift
+[120/164] Compiling DroidBridgeCoreTests CompanionExportPolicyTests.swift
+[121/164] Compiling DroidBridgeCoreTests CompanionJournalSecurityTests.swift
+[122/164] Compiling DroidBridgeCoreTests CompanionNotificationSecurityTests.swift
+[123/164] Compiling DroidBridgeCoreTests InputGeometryTests.swift
+[124/164] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[125/164] Compiling DroidBridgeCoreTests ManagedAppNamingQATests.swift
+[126/164] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[129/164] Compiling DroidBridgeCoreTests CompanionProfileCommitTests.swift
+[130/164] Compiling DroidBridgeCoreTests CompanionQAScopeTests.swift
+[131/164] Compiling DroidBridgeCoreTests CompanionQRImageReaderTests.swift
+[132/164] Compiling DroidBridgeCoreTests CompanionReleaseMetadataTests.swift
+[133/164] Compiling DroidBridgeCoreTests CompanionSecurityTests.swift
+[134/164] Compiling DroidBridgeCoreTests CompanionSetupValidationTests.swift
+[135/164] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[136/164] Compiling DroidBridgeCoreTests StartupFrameVisibilityTests.swift
+[137/164] Compiling DroidBridgeCoreTests StreamingTests.swift
+[138/164] Compiling DroidBridgeCoreTests SupervisorDiagnosticsTests.swift
+[143/164] Compiling DroidBridgeCoreTests CompanionTLSFixture.swift
+[144/164] Compiling DroidBridgeCoreTests CompanionWirelessADBTests.swift
+[145/164] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[146/164] Compiling DroidBridgeCoreTests DeviceAudioPreferencesTests.swift
+[147/164] Compiling DroidBridgeCoreTests DeviceAudioQATests.swift
+[148/164] Compiling DroidBridgeCoreTests DeviceAudioReadinessTests.swift
+[149/164] Compiling DroidBridgeCoreTests DeviceAudioTests.swift
+[150/164] Compiling DroidBridgeCoreTests DeviceReadinessTests.swift
+[151/164] Compiling DroidBridgeCoreTests DeviceSelectionTests.swift
+[152/164] Compiling DroidBridgeCoreTests DroidBridgePreferencesTests.swift
+[153/164] Compiling DroidBridgeCoreTests FrameMailboxTests.swift
+[154/164] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[155/164] Compiling DroidBridgeCoreTests CompanionCatalogSignalTests.swift
+[156/164] Compiling DroidBridgeCoreTests CompanionCleanupSecurityTests.swift
+[157/164] Compiling DroidBridgeCoreTests CompanionClockTests.swift
+[158/164] Compiling DroidBridgeCoreTests CompanionCommandSecurityTests.swift
+[159/164] Compiling DroidBridgeCoreTests CompanionBrokerSchedulerTests.swift
+[160/164] Compiling DroidBridgeCoreTests CompanionBrokerTLSRaceTests.swift
+[161/164] Compiling DroidBridgeCoreTests CompanionBrokerTests.swift
+[162/164] Compiling DroidBridgeCoreTests CompanionCatalogReadScopeTests.swift
+[163/166] Compiling DroidBridgePackageTests runner.swift
+[164/166] Emitting module DroidBridgePackageTests
+[164/166] Write Objects.LinkFileList
+[165/166] Linking DroidBridgePackageTests
+Build complete! (29.74s)
+Test Suite 'Selected tests' started at 2026-11-03 16:00:52.550.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-03 16:00:52.552.
+Test Suite 'CompanionReleaseMetadataTests' started at 2026-11-03 16:00:52.552.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testNotarizedMetadataRequiresReviewedTeamSourceAndBuild]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testNotarizedMetadataRequiresReviewedTeamSourceAndBuild]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataBindsExactVersionPlatformAndOfficialArtifact]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataBindsExactVersionPlatformAndOfficialArtifact]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataRefusesSubstitutedURLsUnknownSigningAndUnsafeBounds]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testReleaseMetadataRefusesSubstitutedURLsUnknownSigningAndUnsafeBounds]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testWireMetadataRejectsDuplicateEscapedKeysNestedValuesAndByteAbuse]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionReleaseMetadataTests testWireMetadataRejectsDuplicateEscapedKeysNestedValuesAndByteAbuse]' passed (0.000 seconds).
+Test Suite 'CompanionReleaseMetadataTests' passed at 2026-11-03 16:00:52.556.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-03 16:00:52.556.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'Selected tests' passed at 2026-11-03 16:00:52.556.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.006) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

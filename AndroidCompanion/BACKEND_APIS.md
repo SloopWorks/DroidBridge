@@ -11,7 +11,11 @@ HTTP authentication.
 - `commandOutcomes() -> JSONArray`: request_id,kind,trust_id,status,created_at,
   expires_at,error_code. Status is queued/accepted/applied/rejected/unknown/expired.
   Original payloads remain encrypted and are omitted from this UI projection.
-- `peerStatus()`: selected trust_id/mac_name, connected, sessions, and optional
+  Optional `timing.acknowledged_ms` and `timing.completed_ms` are elapsed durations
+  from local admission within the same monotonic process epoch. Missing durations
+  remain unavailable. Preset results retain phase, completed_steps and failed_step
+  when supplied; an absent completed_steps is not zero.
+- `peerStatus(trustId = selectedTrust())`: exact trust_id/mac_name, connected, sessions, and optional
   last_seen_at/audio_route/audio_status/profile. Connected requires a fresh
   authenticated per-trust state heartbeat within15seconds and a running service.
   Service running alone does not mean a paired Mac is connected.
@@ -27,7 +31,7 @@ HTTP authentication.
   max8 items/512KiB encoded aggregate/30minutes, encrypted at rest. Getter includes
   event_id,trust_id,created_at,text. Receipt never changes Android's clipboard;
   Copy is an explicit foreground user action. Event journal carries metadata only.
-- `transfers.stage(contentUri,recipientTrustId,onProgress)`: pins the confirmed
+- `transfers.stage(contentUri,recipientTrustId,batchId?,onProgress)`: pins the confirmed
   recipient before reading. `staged_bytes` is local preparation; outgoing
   `accepted_bytes` is independently confirmed remote receipt, initially zero.
 - `transfers.listLocal()/cancelLocal(id)`: states staging/ready/receiving/received/
@@ -41,6 +45,31 @@ HTTP authentication.
   cancellation. Such a call may retain its bounded worker until it returns; the
  30-second budget is not an absolute guarantee for an arbitrary provider. Received
   files require explicit Android Save; none is executed.
+- `snippets()/saveSnippet(text,sourceTrustId?)/pinSnippet(id,pinned)/deleteSnippet(id)`:
+  explicitly saved encrypted content, separate from the expiring inbox. Maximum
+  64 snippets, 64 KiB per text, sharing a 512 KiB aggregate journal with presets.
+  Saving commits the new journal before exposing it to readers. Clipboard reads
+  and writes remain explicit foreground actions.
+- `presets()/savePreset(name,packages,trustId,audioRoute,profile,screenOff)/deletePreset(id)`:
+  at most eight named presets, each with one exact trust and one to eight distinct
+  packages. `runPreset(id)` admits one `run_preset` command with one durable receipt;
+  it does not submit independently replayable child commands. Partial completion
+  retains earlier effects and requires inspection before a new explicit run.
+- `libraryRevision()` is a cached content fingerprint. Read it before mapping
+  snippets/presets so unchanged UI polling does not serialize the library.
+- `transfers.shareUri(id)` validates a complete, verified inbound transfer and
+  returns an application-specific `content://` URI. The read-only provider uses
+  temporary recipient grants; cancellation/expiry refuses subsequent opens.
+  `batch_id` groups independently verified transfers without changing byte,
+  concurrency, expiry or receipt limits.
+
+For `share_text` and `share_url`, `action` is `send` (default inbox delivery),
+`copy` (explicit Mac clipboard effect) or, for valid HTTP(S) URLs, `open`.
+The named recipient is captured inside the share flow independently of dashboard
+selection. Mac copy/open effects require durable owner admission; receiving an
+ordinary share does not automatically modify the Mac clipboard or open content.
+Selected-text, tile, shortcut, widget and notification entry-point contracts are
+documented in [Quick access](../docs/companion/QUICK_ACCESS.md).
 
 Mac download completion is acknowledged by authenticated
 `POST /v1/transfers/<id>/receipt` with request_id,status downloaded,accepted_bytes

@@ -1,0 +1,67 @@
+[0/1] Planning build
+Building for debugging...
+[0/11] Write sources
+[3/11] Write swift-version--58304C5D6DBC2206.txt
+[5/13] Compiling DroidBridgeCore CompanionBrokerService.swift
+[6/13] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[7/16] Emitting module DroidBridgeAvailability
+[7/17] Write Objects.LinkFileList
+[9/17] Emitting module DroidBridgeCompanionBroker
+[9/18] Write Objects.LinkFileList
+[11/18] Emitting module DroidBridgeStreaming
+[11/30] Linking DroidBridgeCompanionBroker
+[12/30] Linking DroidBridgeAvailability
+[13/30] Applying DroidBridgeCompanionBroker
+[13/30] Applying DroidBridgeAvailability
+[16/30] Compiling DroidBridgeCoreTests CompanionCatalogReadScopeTests.swift
+[17/30] Emitting module DroidBridgeCoreTests
+[18/30] Compiling DroidBridgeCoreTests CompanionBrokerTLSRaceTests.swift
+[19/30] Compiling DroidBridgeCoreTests CompanionNotificationSecurityTests.swift
+[20/30] Compiling DroidBridgeCoreTests CompanionCommandSecurityTests.swift
+[21/30] Compiling DroidBridgeCoreTests CompanionPendingAdmissionTests.swift
+[22/30] Compiling DroidBridgeCoreTests CompanionProfileCommitTests.swift
+[23/30] Compiling DroidBridgeCoreTests CompanionCatalogSignalTests.swift
+[24/30] Compiling DroidBridgeCoreTests CompanionBrokerTests.swift
+[25/30] Compiling DroidBridgeCoreTests CompanionCleanupSecurityTests.swift
+[25/31] Write Objects.LinkFileList
+[27/31] Emitting module DroidBridge
+[28/31] Compiling DroidBridge CompanionDesktopAdapter.swift
+[28/32] Write Objects.LinkFileList
+[29/32] Linking DroidBridgePackageTests
+[30/32] Linking DroidBridge
+[31/32] Applying DroidBridge
+Build complete! (6.18s)
+Test Suite 'Selected tests' started at 2026-10-30 20:02:27.332.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-10-30 20:02:27.333.
+Test Suite 'CompanionProfileCommitTests' started at 2026-10-30 20:02:27.333.
+Test Case '-[DroidBridgeCoreTests.CompanionProfileCommitTests testProfilePublicationRequiresExactAdmittedOwnerAndAppliedPhoneReceipt]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionProfileCommitTests testProfilePublicationRequiresExactAdmittedOwnerAndAppliedPhoneReceipt]' passed (0.126 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionProfileCommitTests testRevocationWhileQueuedCannotSendProfileThroughCapturedTransport]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionProfileCommitTests testRevocationWhileQueuedCannotSendProfileThroughCapturedTransport]' passed (0.104 seconds).
+Test Suite 'CompanionProfileCommitTests' passed at 2026-10-30 20:02:27.562.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.229 (0.230) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-10-30 20:02:27.562.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.229 (0.230) seconds
+Test Suite 'Selected tests' passed at 2026-10-30 20:02:27.562.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.229 (0.230) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

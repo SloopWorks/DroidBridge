@@ -33,4 +33,19 @@ final class CompanionReleaseMetadataTests: XCTestCase {
             Data([0xc3, 0x28])
         ] { XCTAssertThrowsError(try CompanionReleaseMetadata.decode(bytes)) }
     }
+
+    func testNotarizedMetadataRequiresReviewedTeamSourceAndBuild() throws {
+        let fields: [String: Any] = ["signing": "developer_id_notarized", "schema_version": 2,
+            "team_id": CompanionReleaseMetadata.releaseTeamID, "source_commit": String(repeating: "b", count: 40),
+            "source_dirty": false, "build": "17"]
+        let valid = try metadata(fields)
+        try valid.validate()
+        XCTAssertTrue(valid.brokerPayload["installation"]?.string?.contains("macOS verifies") == true)
+        for change: [String: Any] in [["team_id": "AAAAAAAAAA"], ["schema_version": 1],
+            ["source_dirty": true], ["source_commit": "main"], ["build": "0"], ["build": "1.5"],
+            ["team_id": NSNull()], ["source_dirty": NSNull()], ["build": NSNull()]] {
+            XCTAssertThrowsError(try metadata(fields.merging(change) { _, new in new }).validate())
+        }
+        XCTAssertThrowsError(try metadata(fields.merging(["signing": "ad_hoc_not_notarized"]) { _, new in new }).validate())
+    }
 }

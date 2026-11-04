@@ -14,6 +14,32 @@ import java.util.UUID
 
 /** Native UI reports committed routing intent separately from unconfirmed output. */
 class CompanionReceiptDeviceTest {
+    @Test fun unknownPresetNeverInventsZeroCompletedSteps() {
+        val instrumentation = InstrumentationRegistry.getInstrumentation()
+        val store = BridgeStore.get(instrumentation.targetContext); val previous = store.selectedTrust()
+        val secret = store.startPairing()
+        val pairing = store.requestPair(JSONObject().put("request_id", UUID.randomUUID().toString()).put("pairing_secret", secret).put("mac_id", UUID.randomUUID().toString()).put("mac_name", "Unknown preset regression Mac"))
+        val trust = store.approvePair(pairing.getString("pairing_id")).trustId
+        store.denyPair(); store.selectTrust(trust)
+        val id = store.phoneCommand("run_preset", JSONObject().put("trust_id", trust).put("packages", org.json.JSONArray(listOf("com.android.settings")))
+            .put("profile", "balanced").put("audio_route", "phone").put("screen_off", false), trust)
+        store.commandReceipt(id, JSONObject().put("request_id", id).put("status", "unknown").put("result", JSONObject().put("code", "admitted_outcome_unknown")), trust)
+        val activity = instrumentation.startActivitySync(Intent(instrumentation.targetContext, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) as Activity
+        fun nodes(view: View): List<View> = listOf(view) + if (view is ViewGroup) (0 until view.childCount).flatMap { nodes(view.getChildAt(it)) } else emptyList()
+        try {
+            val deadline = SystemClock.elapsedRealtime() + 6000
+            var found = false
+            while (!found && SystemClock.elapsedRealtime() < deadline) {
+                instrumentation.runOnMainSync {
+                    val labels = nodes(activity.window.decorView).filterIsInstance<TextView>().map { it.text.toString() }
+                    found = labels.any { it.contains("Completed step count unavailable") }
+                    assertFalse(labels.any { it.contains("0 steps completed") })
+                }
+                if (!found) Thread.sleep(40)
+            }
+            assertTrue("Unknown outcomes preserve unavailable step counts", found)
+        } finally { instrumentation.runOnMainSync { activity.finish() }; store.revoke(trust); previous?.let(store::selectTrust) }
+    }
     @Test fun savedAudioPreferenceNeverClaimsUnconfirmedOutputCompleted() {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val store = BridgeStore.get(instrumentation.targetContext)
