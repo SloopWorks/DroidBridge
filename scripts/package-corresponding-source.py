@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import plistlib
 import re
 import shutil
 import subprocess
@@ -31,6 +32,12 @@ def digest(path):
         for block in iter(lambda:file.read(1048576),b''):value.update(block)
     return value.hexdigest()
 commit=run(['git','rev-parse',args.commit+'^{commit}'])
+app_info=plistlib.loads((args.app/'Contents/Info.plist').read_bytes())
+signature=subprocess.check_output(['/usr/bin/codesign','-d','--verbose=4',str(args.app.resolve())],stderr=subprocess.STDOUT,text=True)
+if 'Authority=Developer ID Application:' in signature:
+    assert app_info.get('DroidBridgeSourceCommit')==commit,'Signed app source identity differs from requested source archive'
+elif app_info.get('DroidBridgeSourceCommit'):
+    assert app_info['DroidBridgeSourceCommit']==commit,'App source identity differs from requested source archive'
 manifest=json.loads((args.dependencies/'MANIFEST.json').read_text())
 assert len(manifest)>=1,'No verified dependency source'
 origins=json.loads((args.app/'Contents/Resources/Runtime/dependencies.json').read_text())

@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "scope": "Actual CUA continuation of the exact installed build20 after the scripted observer route failed; original scripted results remain failed. These checks do not claim public release or all-device accessibility acceptance.",
+  "installed_artifact": "installed-artifact.json",
+  "scripted_result": "../unified-desktop/installed/results.json",
+  "scripted_stop": "Test observer reported navigate success while workspace was not key and remained Sessions; Refresh Inbox was absent. Physical Handoff selection worked immediately.",
+  "file_handoff": {
+    "bytes": 2097152,
+    "sha256": "528d7c4ccbfb9b6c5be870818614c6bb306e726715cde1f50704f2de017697eb",
+    "real_macos_save_panel": true,
+    "phone_completion_confirmed_in_ui": true,
+    "finder_exact_saved_file_selected": true
+  },
+  "native_input": {
+    "package": "dev.droidbridge.testapp",
+    "display": 10,
+    "counter": 1,
+    "text": "unifiedreview",
+    "ticks_changed": true,
+    "pointer_and_text_through_cua": true
+  },
+  "checks": [
+    "one workspace with task sidebar",
+    "Cmd+Comma opens Settings",
+    "General Integration About render in native window",
+    "Settings close/reopen retains About",
+    "Cmd+1 and Cmd+2 navigate when workspace key",
+    "Cmd+F plus Return launches exact selected Android app",
+    "Cmd+1 does not steal shortcut from Android app window",
+    "close exact input-test session preserves both Companion Verification sessions",
+    "Cmd+Control+S toggles sidebar",
+    "closing management preserves Android windows",
+    "Cmd+L reopens Sessions with same two sessions",
+    "native minimum-size resize clamps; lower session controls reachable by scrolling"
+  ],
+  "limits": [
+    "system dark-mode native rendering not repeated; fixture light/dark captures passed",
+    "VoiceOver, Increase Contrast, Reduce Transparency and Full Keyboard Access not certified",
+    "physical Pixel10Pro verification remains owner-deferred",
+    "no new Spotlight indexing or native-notification-banner acceptance claim"
+  ]
+}

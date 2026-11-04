@@ -1,0 +1,13 @@
+<resources>
+    <color name="bridge_background">#10141D</color>
+    <color name="bridge_surface">#1A2130</color>
+    <color name="bridge_on_surface">#E4EAF5</color>
+    <color name="bridge_outline">#364257</color>
+    <color name="bridge_primary">#ABC7FF</color>
+    <color name="bridge_on_primary">#082D70</color>
+    <color name="bridge_primary_container">#254575</color>
+    <color name="bridge_on_primary_container">#DAE7FF</color>
+    <color name="bridge_secondary">#B7C6DF</color>
+    <color name="bridge_container">#232D3F</color>
+    <bool name="bridge_light_bars">false</bool>
+</resources>

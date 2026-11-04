@@ -1,0 +1,11 @@
+UTC: 2026-11-03T16:48:10.740143+00:00
+CWD: /Users/patrick/workspace/DroidBridge
+COMMAND: git log -5 --oneline
+
+676fca3 Merge Android companion implementation and verification checkpoint
+be628a0 Record companion verification checkpoint and pending release gates
+94b51c2 Preserve the packaging caller Python interpreter
+08dc203 Keep fallback Player libraries inside its signed app bundle
+62186d3 Finish companion user guides and catalog presentation regression checks
+
+EXIT CODE: 0

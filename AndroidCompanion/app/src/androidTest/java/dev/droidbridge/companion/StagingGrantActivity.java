@@ -11,14 +11,15 @@ public final class StagingGrantActivity extends Activity {
         super.onCreate(state);
         String token=getIntent().getStringExtra("token");
         if(token==null || !UUID.fromString(token).toString().equals(token))throw new IllegalArgumentException("Invalid nonce");
+        String targetPackage = getPackageName().substring(0, getPackageName().length() - ".test".length());
         String[] paths={"stall/"+token+"/a","stall/"+token+"/b","small/"+token,"status/"+token,"cleanup/"+token,"query-stall/"+token};
         ClipData clip=null;
         for(String path:paths){
-            Uri uri=Uri.parse("content://dev.droidbridge.companion.test.staging/"+path);
-            grantUriPermission("dev.droidbridge.companion",uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri uri=Uri.parse("content://"+getPackageName()+".staging/"+path);
+            grantUriPermission(targetPackage,uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);
             if(clip==null)clip=ClipData.newRawUri("Synthetic transfer fixture",uri);else clip.addItem(new ClipData.Item(uri));
         }
-        Intent target=new Intent(Intent.ACTION_MAIN).setClassName("dev.droidbridge.companion","dev.droidbridge.companion.MainActivity")
+        Intent target=new Intent(Intent.ACTION_MAIN).setClassName(targetPackage,"dev.droidbridge.companion.MainActivity")
             .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_ACTIVITY_NEW_TASK);
         target.setClipData(clip);startActivity(target);finish();
     }

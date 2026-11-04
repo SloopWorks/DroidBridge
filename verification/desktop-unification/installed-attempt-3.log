@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 185, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 42, in main
+    flow.start(); flow.prepare_phone(); flow.pair_by_import(); flow.launch_fixture()
+                                        ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-installed.py", line 193, in pair_by_import
+    self.wait_text('Trust is pending phone approval', timeout=20)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-installed.py", line 93, in wait_text
+    raise RuntimeError(f'Mac state was not observed: {text}')
+RuntimeError: Mac state was not observed: Trust is pending phone approval

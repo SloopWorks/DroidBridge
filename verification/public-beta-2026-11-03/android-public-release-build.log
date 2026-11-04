@@ -1,0 +1,64 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.0
+
+This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.
+
+You are strongly encouraged to update your project to use a newer
+Android Gradle plugin that has been tested with compile SDK version 37.0.
+
+If you are already using the latest version of the Android Gradle plugin,
+you may need to wait until a newer version with support for compile SDK version 37.0 is available.
+
+For more information refer to the compatibility table:
+https://d.android.com/r/tools/api-level-support
+
+To suppress this warning, add/update
+    android.suppressUnsupportedCompileSdk=37.0
+to this project's gradle.properties.
+> Task :app:buildKotlinToolingMetadata
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:generateReleaseBuildConfig
+> Task :app:checkReleaseAarMetadata
+> Task :app:processReleaseNavigationResources
+> Task :app:generateReleaseResValues
+> Task :app:compileReleaseNavigationResources
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:generateReleaseResources
+> Task :app:packageReleaseResources
+> Task :app:mergeReleaseResources
+> Task :app:parseReleaseLocalResources
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :app:preReleaseUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileRelease
+> Task :app:javaPreCompileReleaseUnitTest
+> Task :app:processReleaseManifestForPackage
+> Task :app:processReleaseResources
+
+> Task :app:compileReleaseKotlin
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt:30:39 This class is not recommended for use in Kotlin. Use 'kotlin.Any' instead.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt:588:59 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt:589:49 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:92:16 'var statusBarColor: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:93:16 'var navigationBarColor: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:94:26 'var systemUiVisibility: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:94:104 'static field SYSTEM_UI_FLAG_LIGHT_STATUS_BAR: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:94:144 'static field SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR: Int' is deprecated. Deprecated in Java.
+
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:bundleReleaseClassesToCompileJar
+> Task :app:bundleReleaseClassesToRuntimeJar
+> Task :app:processReleaseJavaRes
+> Task :app:compileReleaseUnitTestKotlin
+> Task :app:compileReleaseUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processReleaseUnitTestJavaRes
+> Task :app:testReleaseUnitTest
+w: Detected multiple Kotlin daemon sessions at 
+
+BUILD SUCCESSFUL in 23s
+27 actionable tasks: 27 executed

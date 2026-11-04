@@ -1,0 +1,57 @@
+
+dev.droidbridge.companion.QuickAccessDeviceTest:....
+dev.droidbridge.companion.PlatformWidgetDeviceTest:
+Error in actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect(dev.droidbridge.companion.PlatformWidgetDeviceTest):
+java.lang.AssertionError: Actual widget favorite not rendered
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.PlatformWidgetDeviceTest.actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect$waitFor(PlatformWidgetDeviceTest.kt:41)
+	at dev.droidbridge.companion.PlatformWidgetDeviceTest.actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect(PlatformWidgetDeviceTest.kt:52)
+
+dev.droidbridge.companion.PlatformNotificationDeviceTest:
+Error in transferProgressAndSystemNotificationActionUseRealService(dev.droidbridge.companion.PlatformNotificationDeviceTest):
+java.lang.AssertionError: SystemUI transfer action did not appear
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.PlatformNotificationDeviceTest.transferProgressAndSystemNotificationActionUseRealService$waitFor(PlatformNotificationDeviceTest.kt:38)
+	at dev.droidbridge.companion.PlatformNotificationDeviceTest.transferProgressAndSystemNotificationActionUseRealService(PlatformNotificationDeviceTest.kt:52)
+
+dev.droidbridge.companion.CompanionReceiptDeviceTest:.
+Error in savedAudioPreferenceNeverClaimsUnconfirmedOutputCompleted(dev.droidbridge.companion.CompanionReceiptDeviceTest):
+java.lang.IllegalArgumentException: Pairing rate limit
+	at dev.droidbridge.companion.BridgeStore.requestPair(BridgeStore.kt:142)
+	at dev.droidbridge.companion.CompanionReceiptDeviceTest.savedAudioPreferenceNeverClaimsUnconfirmedOutputCompleted(CompanionReceiptDeviceTest.kt:49)
+
+Error in unknownPresetNeverInventsZeroCompletedSteps(dev.droidbridge.companion.CompanionReceiptDeviceTest):
+java.lang.IllegalArgumentException: Pairing rate limit
+	at dev.droidbridge.companion.BridgeStore.requestPair(BridgeStore.kt:142)
+	at dev.droidbridge.companion.CompanionReceiptDeviceTest.unknownPresetNeverInventsZeroCompletedSteps(CompanionReceiptDeviceTest.kt:21)
+
+
+Time: 57.688
+There were 4 failures:
+1) actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect(dev.droidbridge.companion.PlatformWidgetDeviceTest)
+java.lang.AssertionError: Actual widget favorite not rendered
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.PlatformWidgetDeviceTest.actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect$waitFor(PlatformWidgetDeviceTest.kt:41)
+	at dev.droidbridge.companion.PlatformWidgetDeviceTest.actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect(PlatformWidgetDeviceTest.kt:52)
+2) transferProgressAndSystemNotificationActionUseRealService(dev.droidbridge.companion.PlatformNotificationDeviceTest)
+java.lang.AssertionError: SystemUI transfer action did not appear
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.PlatformNotificationDeviceTest.transferProgressAndSystemNotificationActionUseRealService$waitFor(PlatformNotificationDeviceTest.kt:38)
+	at dev.droidbridge.companion.PlatformNotificationDeviceTest.transferProgressAndSystemNotificationActionUseRealService(PlatformNotificationDeviceTest.kt:52)
+3) savedAudioPreferenceNeverClaimsUnconfirmedOutputCompleted(dev.droidbridge.companion.CompanionReceiptDeviceTest)
+java.lang.IllegalArgumentException: Pairing rate limit
+	at dev.droidbridge.companion.BridgeStore.requestPair(BridgeStore.kt:142)
+	at dev.droidbridge.companion.CompanionReceiptDeviceTest.savedAudioPreferenceNeverClaimsUnconfirmedOutputCompleted(CompanionReceiptDeviceTest.kt:49)
+4) unknownPresetNeverInventsZeroCompletedSteps(dev.droidbridge.companion.CompanionReceiptDeviceTest)
+java.lang.IllegalArgumentException: Pairing rate limit
+	at dev.droidbridge.companion.BridgeStore.requestPair(BridgeStore.kt:142)
+	at dev.droidbridge.companion.CompanionReceiptDeviceTest.unknownPresetNeverInventsZeroCompletedSteps(CompanionReceiptDeviceTest.kt:21)
+
+FAILURES!!!
+Tests run: 9,  Failures: 4
+
+

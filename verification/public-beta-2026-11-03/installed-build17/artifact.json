@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "build": "17",
+  "signing": "ad_hoc_not_notarized",
+  "installed_app": "/Users/patrick/Library/Application Support/DroidBridge/BetaVerification/build-17/DroidBridge.app",
+  "executable_sha256": "7c3e053a7b42874c7eebd6896c815557277031555d812ea41a17c759c1ddfe12",
+  "bundled_apk_sha256": "d39b022685edbddd989a2a0c173d340b2d5e44808e4438c44612bed7631176af",
+  "macos_native_video": "Actual decoded frame and visible Android fixture content observed",
+  "serial": "emulator-5580",
+  "physical_focus_verified": false,
+  "developer_id_gatekeeper_verified": false,
+  "note": "Public beta packaging source changed after this regression (documentation and signing setup); use a new immutable cohort for final release."
+}

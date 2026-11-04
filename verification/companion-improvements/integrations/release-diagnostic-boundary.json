@@ -1,0 +1,11 @@
+{
+  "apk": "DroidBridge-Companion.apk",
+  "sha256": "b6277fb903e99bb46e9bb93553de12cda6094f8d00b1abf4b700794a11254abd",
+  "diagnostic_markers_absent": [
+    "works/sloop/swip",
+    "com/sloopworks/debugdrawer",
+    "swip_pub_droidbridge",
+    "CompanionDiagnosticsActivity"
+  ],
+  "passed": true
+}

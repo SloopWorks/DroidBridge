@@ -1,0 +1,279 @@
+Fetching distribution.
+Downloading https://services.gradle.org/distributions/gradle-9.4.1-bin.zip
+.............10%.............20%.............30%.............40%.............50%.............60%..............70%.............80%.............90%.............100%
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :schema-dayfold
+WARNING: The option setting 'android.builtInKotlin=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.newDsl=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/schema-dayfold/build.gradle.kts:35:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+WARNING: API 'libraryVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling libraryVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'testVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling testVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'unitTestVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling unitTestVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :schema-droidbridge
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/schema-droidbridge/build.gradle.kts:32:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :schema-stash
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/schema-stash/build.gradle.kts:32:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-bugreport
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-bugreport/build.gradle.kts:49:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-bugreport-ui
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-bugreport-ui/build.gradle.kts:26:30: 'val runtime: String' is deprecated. Specify dependency directly.
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-bugreport-ui/build.gradle.kts:27:30: 'val foundation: String' is deprecated. Specify dependency directly.
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-bugreport-ui/build.gradle.kts:28:30: 'val ui: String' is deprecated. Specify dependency directly.
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-bugreport-ui/build.gradle.kts:46:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-bugreport-uploader
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-bugreport-uploader/build.gradle.kts:24:30: 'val runtime: String' is deprecated. Specify dependency directly.
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-bugreport-uploader/build.gradle.kts:53:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-core
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-core/build.gradle.kts:67:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-debug
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-debug/build.gradle.kts:32:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-lifecycle
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-lifecycle/build.gradle.kts:36:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-logging
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-logging/build.gradle.kts:33:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-rk
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-rk/build.gradle.kts:34:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-rk-recorder
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-rk-recorder/build.gradle.kts:41:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-sentry
+w: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/swip-sentry/build.gradle.kts:43:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Task :swip-core:generateCommonMainSwipDbInterface UP-TO-DATE
+> Task :swip-core:androidReleaseSourcesJar UP-TO-DATE
+> Task :swip-core:preBuild UP-TO-DATE
+> Task :swip-core:preReleaseBuild UP-TO-DATE
+> Task :swip-core:checkReleaseAarMetadata UP-TO-DATE
+> Task :swip-core:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :swip-core:mergeReleaseNativeLibs NO-SOURCE
+> Task :swip-core:stripReleaseDebugSymbols NO-SOURCE
+> Task :swip-core:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :swip-core:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :swip-core:kmpPartiallyResolvedDependenciesChecker
+> Task :swip-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :swip-core:generateReleaseBuildConfig UP-TO-DATE
+> Task :swip-core:generateReleaseResources UP-TO-DATE
+> Task :swip-core:packageReleaseResources UP-TO-DATE
+> Task :swip-core:processReleaseNavigationResources UP-TO-DATE
+> Task :swip-core:parseReleaseLocalResources UP-TO-DATE
+> Task :swip-core:generateReleaseRFile UP-TO-DATE
+> Task :swip-core:compileReleaseKotlinAndroid UP-TO-DATE
+> Task :swip-core:extractReleaseAnnotations UP-TO-DATE
+> Task :swip-core:generateReleaseAssets UP-TO-DATE
+> Task :swip-core:releaseAssetsCopyForAGP NO-SOURCE
+> Task :swip-core:mergeReleaseAssets UP-TO-DATE
+> Task :swip-core:javaPreCompileRelease UP-TO-DATE
+> Task :swip-core:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :swip-core:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :swip-core:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :swip-core:prepareLintJarForPublish UP-TO-DATE
+> Task :swip-core:prepareReleaseArtProfile UP-TO-DATE
+> Task :swip-core:processReleaseManifest UP-TO-DATE
+> Task :swip-core:processReleaseJavaRes UP-TO-DATE
+> Task :swip-core:mergeReleaseJavaResource UP-TO-DATE
+> Task :swip-core:syncReleaseLibJars UP-TO-DATE
+> Task :swip-core:writeReleaseAarMetadata UP-TO-DATE
+> Task :swip-core:bundleReleaseAar UP-TO-DATE
+> Task :swip-core:generateMetadataFileForAndroidReleasePublication
+> Task :swip-core:generatePomFileForAndroidReleasePublication
+> Task :swip-core:publishAndroidReleasePublicationToDroidBridgeLocalRepository
+> Task :swip-core:transformCommonMainDependenciesMetadata UP-TO-DATE
+> Task :swip-core:compileCommonMainKotlinMetadata UP-TO-DATE
+> Task :swip-core:generateProjectStructureMetadata UP-TO-DATE
+> Task :swip-core:metadataCommonMainProcessResources NO-SOURCE
+> Task :swip-core:metadataCommonMainClasses UP-TO-DATE
+> Task :swip-core:allMetadataJar UP-TO-DATE
+> Task :swip-core:buildKotlinToolingMetadata UP-TO-DATE
+> Task :swip-core:sourcesJar UP-TO-DATE
+> Task :swip-core:generateMetadataFileForKotlinMultiplatformPublication
+> Task :swip-core:generatePomFileForKotlinMultiplatformPublication
+> Task :swip-core:publishKotlinMultiplatformPublicationToDroidBridgeLocalRepository
+> Task :swip-debug:androidReleaseSourcesJar UP-TO-DATE
+> Task :swip-debug:preBuild UP-TO-DATE
+> Task :swip-debug:preReleaseBuild UP-TO-DATE
+> Task :swip-debug:checkReleaseAarMetadata UP-TO-DATE
+> Task :swip-debug:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :swip-debug:mergeReleaseNativeLibs NO-SOURCE
+> Task :swip-debug:stripReleaseDebugSymbols NO-SOURCE
+> Task :swip-debug:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :swip-debug:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :swip-core:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :swip-debug:kmpPartiallyResolvedDependenciesChecker
+> Task :swip-debug:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :swip-debug:generateReleaseResources UP-TO-DATE
+> Task :swip-debug:packageReleaseResources UP-TO-DATE
+> Task :swip-debug:processReleaseNavigationResources UP-TO-DATE
+> Task :swip-debug:parseReleaseLocalResources UP-TO-DATE
+> Task :swip-debug:generateReleaseRFile UP-TO-DATE
+> Task :swip-debug:compileReleaseKotlinAndroid UP-TO-DATE
+> Task :swip-debug:extractReleaseAnnotations UP-TO-DATE
+> Task :swip-debug:generateReleaseAssets UP-TO-DATE
+> Task :swip-debug:releaseAssetsCopyForAGP NO-SOURCE
+> Task :swip-debug:mergeReleaseAssets UP-TO-DATE
+> Task :swip-debug:javaPreCompileRelease UP-TO-DATE
+> Task :swip-debug:compileReleaseJavaWithJavac NO-SOURCE
+> Task :swip-debug:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :swip-debug:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :swip-debug:prepareLintJarForPublish UP-TO-DATE
+> Task :swip-debug:prepareReleaseArtProfile UP-TO-DATE
+> Task :swip-debug:processReleaseManifest UP-TO-DATE
+> Task :swip-debug:processReleaseJavaRes UP-TO-DATE
+> Task :swip-debug:mergeReleaseJavaResource UP-TO-DATE
+> Task :swip-debug:syncReleaseLibJars UP-TO-DATE
+> Task :swip-debug:writeReleaseAarMetadata UP-TO-DATE
+> Task :swip-debug:bundleReleaseAar UP-TO-DATE
+> Task :swip-debug:generateMetadataFileForAndroidReleasePublication
+> Task :swip-core:exportTargetPublicationCoordinatesForReleaseApiElements UP-TO-DATE
+> Task :swip-core:exportTargetPublicationCoordinatesForReleaseRuntimeElements UP-TO-DATE
+> Task :swip-debug:generatePomFileForAndroidReleasePublication
+> Task :swip-debug:publishAndroidReleasePublicationToDroidBridgeLocalRepository
+> Task :swip-core:commonizeNativeDistribution UP-TO-DATE
+> Task :swip-core:transformNativeMainDependenciesMetadata UP-TO-DATE
+> Task :swip-core:compileNativeMainKotlinMetadata NO-SOURCE
+> Task :swip-core:metadataNativeMainProcessResources NO-SOURCE
+> Task :swip-core:metadataNativeMainClasses UP-TO-DATE
+> Task :swip-core:transformAppleMainDependenciesMetadata UP-TO-DATE
+> Task :swip-core:compileAppleMainKotlinMetadata NO-SOURCE
+> Task :swip-core:metadataAppleMainProcessResources NO-SOURCE
+> Task :swip-core:metadataAppleMainClasses UP-TO-DATE
+> Task :swip-core:transformIosMainDependenciesMetadata UP-TO-DATE
+> Task :swip-core:compileIosMainKotlinMetadata UP-TO-DATE
+> Task :swip-core:metadataIosMainProcessResources NO-SOURCE
+> Task :swip-core:metadataIosMainClasses UP-TO-DATE
+> Task :swip-core:exportCommonSourceSetsMetadataLocationsForMetadataApiElements UP-TO-DATE
+> Task :swip-core:iosArm64MetadataElements UP-TO-DATE
+> Task :swip-core:iosSimulatorArm64MetadataElements UP-TO-DATE
+> Task :swip-debug:transformCommonMainDependenciesMetadata UP-TO-DATE
+> Task :swip-debug:compileCommonMainKotlinMetadata UP-TO-DATE
+> Task :swip-core:exportRootPublicationCoordinatesForMetadataApiElements UP-TO-DATE
+> Task :swip-debug:generateProjectStructureMetadata UP-TO-DATE
+> Task :swip-debug:metadataCommonMainProcessResources NO-SOURCE
+> Task :swip-debug:metadataCommonMainClasses UP-TO-DATE
+> Task :swip-debug:allMetadataJar UP-TO-DATE
+> Task :swip-debug:buildKotlinToolingMetadata UP-TO-DATE
+> Task :swip-debug:sourcesJar UP-TO-DATE
+> Task :swip-debug:generateMetadataFileForKotlinMultiplatformPublication
+> Task :swip-debug:generatePomFileForKotlinMultiplatformPublication
+> Task :swip-debug:publishKotlinMultiplatformPublicationToDroidBridgeLocalRepository
+
+[Incubating] Problems report is available at: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 1m 23s
+89 actionable tasks: 14 executed, 75 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.4.1/userguide/configuration_cache_enabling.html

@@ -18,7 +18,7 @@ import java.util.UUID
 class CompanionRealNotificationDeviceTest {
     private val instrumentation get() = InstrumentationRegistry.getInstrumentation()
     private val target get() = instrumentation.targetContext
-    private val fixture = "dev.droidbridge.companion.test"
+    private val fixture get() = instrumentation.context.packageName
     private val component = ComponentName("dev.droidbridge.companion", "dev.droidbridge.companion.BridgeNotifications")
     private fun shell(command: String): String = ParcelFileDescriptor.AutoCloseInputStream(instrumentation.uiAutomation.executeShellCommand(command)).use { it.readBytes().toString(Charsets.UTF_8) }
     private fun waitFor(message: String, check: () -> Boolean) {

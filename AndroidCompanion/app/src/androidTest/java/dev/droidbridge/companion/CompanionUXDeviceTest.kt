@@ -12,6 +12,7 @@ import android.widget.ListView
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.*
 import org.junit.Test
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /** Actual installed native views. Never pairs, changes trust, launches remote apps or reads clipboard. */
 class CompanionUXDeviceTest {
@@ -19,7 +20,10 @@ class CompanionUXDeviceTest {
     private fun nodes(view: View): List<View> = listOf(view) + if (view is ViewGroup) (0 until view.childCount).flatMap { nodes(view.getChildAt(it)) } else emptyList()
     private fun launch(): Activity = instrumentation.startActivitySync(Intent(instrumentation.targetContext, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     private fun main(action: () -> Unit) = instrumentation.runOnMainSync(action)
-    private fun click(activity: Activity, label: String) = main { nodes(activity.window.decorView).filterIsInstance<Button>().single { it.text.toString() == label }.performClick() }
+    private fun click(activity: Activity, label: String) = main { val nav = nodes(activity.window.decorView).filterIsInstance<BottomNavigationView>().singleOrNull()
+        val item = nav?.menu?.let { menu -> (0 until menu.size()).map { menu.getItem(it) }.singleOrNull { it.title.toString() == label } }
+        if (item != null) nav.findViewById<View>(item.itemId).performClick()
+        else nodes(activity.window.decorView).filterIsInstance<Button>().single { it.text.toString() == label }.performClick() }
 
     @Test fun navigationHasCompleteLabelsAndSelectedSemanticsAtCurrentFontScale() {
         val activity = launch()
@@ -28,19 +32,33 @@ class CompanionUXDeviceTest {
             for (label in listOf("Home", "Apps", "Sharing", "Settings")) {
                 click(activity, label)
                 main {
-                    val nav = nodes(activity.window.decorView).filterIsInstance<HorizontalScrollView>().single()
-                    val button = nodes(nav).filterIsInstance<Button>().single { it.text.toString() == label }
-                    nav.scrollTo(button.left, 0)
+                    val fallback = nodes(activity.window.decorView).filterIsInstance<HorizontalScrollView>().singleOrNull()
+                    fallback?.let { nav -> val button = nodes(nav).filterIsInstance<Button>().single { it.text.toString() == label }; nav.scrollTo(button.left, 0) }
                 }
                 instrumentation.waitForIdleSync()
                 main {
-                    val button = nodes(activity.window.decorView).filterIsInstance<Button>().single { it.text.toString() == label }
-                    assertTrue("$label selected", button.isSelected)
-                    assertTrue(button.contentDescription.toString().contains("selected"))
-                    assertTrue("$label visible after nav scroll", button.getGlobalVisibleRect(Rect()))
-                    val layout = button.layout ?: throw AssertionError("No layout for $label")
-                    assertTrue("$label not vertically clipped", button.height - button.compoundPaddingTop - button.compoundPaddingBottom >= layout.height)
-                    for (line in 0 until layout.lineCount) assertEquals("$label not ellipsized", 0, layout.getEllipsisCount(line))
+                    val material = nodes(activity.window.decorView).filterIsInstance<BottomNavigationView>().singleOrNull()
+                    if (material != null) {
+                        val item = (0 until material.menu.size()).map { material.menu.getItem(it) }.single { it.title.toString() == label }
+                        val itemView = material.findViewById<View>(item.itemId)
+                        assertTrue("$label selected", item.isChecked)
+                        assertTrue(item.contentDescription.toString().contains("selected"))
+                        assertTrue("$label visible", itemView.getGlobalVisibleRect(Rect()))
+                        val labels = nodes(itemView).filterIsInstance<android.widget.TextView>().filter { it.visibility == View.VISIBLE && it.text.toString() == label }
+                        assertTrue("Visible full label", labels.isNotEmpty())
+                        labels.forEach { text ->
+                            val layout = text.layout ?: throw AssertionError("No layout for $label")
+                            for (line in 0 until layout.lineCount) assertEquals("$label not ellipsized", 0, layout.getEllipsisCount(line))
+                        }
+                    } else {
+                        val button = nodes(activity.window.decorView).filterIsInstance<Button>().single { it.text.toString() == label }
+                        assertTrue("$label selected", button.isSelected)
+                        assertTrue(button.contentDescription.toString().contains("selected"))
+                        assertTrue("$label visible after nav scroll", button.getGlobalVisibleRect(Rect()))
+                        val layout = button.layout ?: throw AssertionError("No layout for $label")
+                        assertTrue("$label not vertically clipped", button.height - button.compoundPaddingTop - button.compoundPaddingBottom >= layout.height)
+                        for (line in 0 until layout.lineCount) assertEquals("$label not ellipsized", 0, layout.getEllipsisCount(line))
+                    }
                 }
             }
         } finally { main { activity.finish() } }

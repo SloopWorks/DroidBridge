@@ -19,12 +19,12 @@ class CompanionStagingDeadlineTest {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val target = instrumentation.targetContext
         val token = UUID.randomUUID().toString()
-        val prefix = "content://dev.droidbridge.companion.test.staging/"
+        val prefix = "content://${instrumentation.context.packageName}.staging/"
         fun uri(path: String) = Uri.parse(prefix + path)
         // Shell starts only this exported test-APK grant Activity; the URI owner itself
         // grants nonce-scoped reads. No shell grant or provider permission bypass occurs.
         val launched = android.os.ParcelFileDescriptor.AutoCloseInputStream(instrumentation.uiAutomation.executeShellCommand(
-            "am start -W -n dev.droidbridge.companion.test/dev.droidbridge.companion.StagingGrantActivity --es token $token")).use { it.readBytes().toString(Charsets.UTF_8) }
+            "am start -W -n ${instrumentation.context.packageName}/dev.droidbridge.companion.StagingGrantActivity --es token $token")).use { it.readBytes().toString(Charsets.UTF_8) }
         assertTrue("Fixture grant Activity started", launched.contains("Status: ok"))
         fun pipeCount(): Int = target.contentResolver.query(uri("status/$token"), null, null, null, null)!!.use { check(it.moveToFirst()); it.getInt(0) }
         val grantDeadline = SystemClock.elapsedRealtime() + 5000

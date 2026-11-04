@@ -61,6 +61,67 @@ class InstalledFlow:
                 return False
             time.sleep(.15)
         raise RuntimeError(f'Android UI action unavailable: {text}')
+    def phone_choose_trusted_mac(self, name, trust_id, timeout=40):
+        """Select this trust in the actual receiver dialog; retain no identifiers."""
+        assert self.args.serial in ('emulator-5580', 'emulator-5582'), 'Exact QA emulator required'
+        assert isinstance(name, str) and name and isinstance(trust_id, str) and re.fullmatch(r'[A-Fa-f0-9-]{36}', trust_id), 'Valid receiver identity required'
+        labels = (name + ' · ' + trust_id[:6], name)
+        deadline = time.monotonic() + timeout
+        swipes = 0
+        def bounds(node):
+            match = re.fullmatch(r'\[(-?\d+),(-?\d+)\]\[(-?\d+),(-?\d+)\]', node.get('bounds', ''))
+            if not match:
+                return None
+            left, top, right, bottom = map(int, match.groups())
+            return (left, top, right, bottom) if left >= 0 and top >= 0 and right > left and bottom > top else None
+        while time.monotonic() < deadline:
+            nodes = self.nodes()
+            title = next((n for n in nodes if n.get('text') == 'Send to which Mac?'), None)
+            if title is None:
+                time.sleep(.15)
+                continue
+            parents = {child: parent for parent in nodes for child in parent}
+            # The title and receiver list are siblings inside Android's dialog.
+            # Use their smallest common container, never a background scroller.
+            dialog = title
+            lists = []
+            while dialog in parents:
+                dialog = parents[dialog]
+                lists = [n for n in dialog.iter('node') if n.get('class', '').endswith(('.ListView', '.RecyclerView'))]
+                if lists:
+                    break
+            if not lists:
+                time.sleep(.15)
+                continue
+            receiver_nodes = [n for item in lists for n in item.iter('node')]
+            for label in labels:  # Android adds the exact trust prefix only for duplicate names.
+                for node in receiver_nodes:
+                    if node.get('text') != label or node.get('clickable') != 'true' or node.get('enabled') != 'true':
+                        continue
+                    rect = bounds(node)
+                    if rect is None:
+                        continue
+                    left, top, right, bottom = rect
+                    x, y = (left + right)//2, (top + bottom)//2
+                    list_bounds = [bounds(item) for item in lists if bounds(item)]
+                    if not any(l <= x < r and t <= y < b for l, t, r, b in list_bounds):
+                        continue
+                    self.adb('shell', 'input', 'tap', str(x), str(y))
+                    self.events.append({'kind': 'android_ui_action', 'action': 'Choose exact trusted Mac', 'receiver_disambiguated': label == labels[0], 'list_swipes': swipes, 'monotonic': time.monotonic()})
+                    return True
+            scroll = next((n for n in lists if n.get('scrollable') == 'true' and n.get('enabled') == 'true' and bounds(n)), None)
+            if scroll is None or swipes >= 8:
+                break
+            left, top, right, bottom = bounds(scroll)
+            x = (left + right)//2
+            inset = max(1, (bottom - top)//5)
+            start, end = bottom - inset, top + inset
+            if start <= end:
+                break
+            self.adb('shell', 'input', 'swipe', str(x), str(start), str(x), str(end), '350')
+            swipes += 1
+            time.sleep(.2)
+        raise RuntimeError('The exact trusted Mac was not available in the expected receiver dialog')
     def action(self, action, **fields):
         self.sequence += 1
         command = {'id': self.sequence, 'action': action, **fields}
@@ -91,8 +152,8 @@ class InstalledFlow:
                 return value
             time.sleep(.15)
         raise RuntimeError(f'Mac state was not observed: {text}')
-    def capture(self, name, window='DroidBridge Companion'):
-        self.action('capture', window=window, name=name)
+    def capture(self, name, window=None):
+        self.action('capture', name=name, **({'window': window} if window else {}))
         data = (self.root / name).read_bytes()
         (self.output / name).write_bytes(data)
         return hashlib.sha256(data).hexdigest()
@@ -115,10 +176,26 @@ class InstalledFlow:
         deadline = time.monotonic() + 20
         while time.monotonic() < deadline:
             state = self.action('status')
-            if any(b['label'] == 'ADB device for companion setup' and b['title'] for b in state['buttons']):
+            if any(b['label'] == 'Android device' and self.args.serial in b['title'] for b in state['buttons']):
+                self.require_workspace(state)
                 break
             time.sleep(.15)
+        else:
+            raise RuntimeError('The exact QA Android device did not appear in the workspace toolbar')
         self.action('select_adb', serial=self.args.serial)
+        self.events.append({'kind': 'unified_toolbar_device_selected', 'serial': self.args.serial})
+    def require_workspace(self, state):
+        hosts = [w for w in state['windows'] if w.get('workspace_host')]
+        assert len(hosts) == 1, 'Expected one unified workspace host'
+        assert not any(w['title'] == 'DroidBridge Companion' for w in state['windows']), 'A separate Companion window was created'
+        number = hosts[0]['number']
+        if hasattr(self, 'workspace_window_number'):
+            assert number == self.workspace_window_number, 'Navigation replaced the workspace host'
+        self.workspace_window_number = number
+        return hosts[0]
+    def navigate(self, section):
+        self.action('navigate', section=section)
+        self.require_workspace(self.action('status'))
     def prepare_phone(self):
         apk = self.args.app.resolve(strict=True) / 'Contents/Resources/Companion/DroidBridgeCompanion.apk'
         assert apk.is_file(), 'The installed candidate must bundle its Android companion APK'
@@ -196,15 +273,14 @@ try Data(link.utf8).write(to: URL(fileURLWithPath: CommandLine.arguments[2]), op
         # Close the original expiring QR sheet only after credential acceptance.
         self.adb('shell', 'input', 'keyevent', '4')
     def launch_fixture(self):
-        self.action('click', title='Apps', label='Companion section Apps')
-        self.action('click', title='Refresh Catalog')
-        self.wait_text('apps loaded', timeout=25)
+        self.navigate('apps')
+        self.wait_text('apps ready.', timeout=30)
+        self.action('set_field', label='Search Android apps', value=FIXTURE)
+        self.action('select_app', package=FIXTURE)
         self.capture('paired-catalog.png')
-        self.action('set_field', window='DroidBridge', label='Search Android apps', value=FIXTURE)
-        self.action('select_app', window='DroidBridge', package=FIXTURE)
         start = time.monotonic()
         self.launch_started_at = time.time()
-        self.action('click', window='DroidBridge', title='Launch App')
+        self.action('click', title='Launch App')
         deadline = time.monotonic() + 35
         while time.monotonic() < deadline:
             receipt = self.action('status')
@@ -235,11 +311,11 @@ try Data(link.utf8).write(to: URL(fileURLWithPath: CommandLine.arguments[2]), op
         (self.output/'native-session.log.jsonl').write_bytes(running.read_bytes())
         (self.output/'native-session.log').write_bytes(running.with_suffix('').read_bytes()[:262144])
         self.events.append({'kind': 'actual_native_android_window', 'package': FIXTURE, 'first_decoded_frame_confirmed': True, 'visible_window_elapsed_ms': round((time.monotonic()-start)*1000, 2)})
-        self.action('click', title='Sessions', label='Companion section Sessions')
+        self.navigate('sessions')
         self.wait_text('Companion Verification', timeout=12)
         self.capture('registered-native-session.png')
     def finish(self, passed, error=None):
-        value = {'passed': passed, 'scope': 'Installed signed Mac app + real Android companion TLS/GUI flow; isolated QA paths', 'serial': self.args.serial, 'physical_focus_verified': False, 'events': self.events}
+        value = {'passed': passed, 'scope': 'Installed Mac app + real Android companion TLS/GUI flow; isolated QA paths; signing acceptance separate', 'serial': self.args.serial, 'physical_focus_verified': False, 'events': self.events}
         if error: value['error'] = error
         (self.output/'results.json').write_text(json.dumps(value, indent=2))
         if self.process is not None and not self.args.leave_running:

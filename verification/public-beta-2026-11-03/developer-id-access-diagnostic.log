@@ -1,0 +1,6 @@
+Command: ["/usr/bin/security", "verify-cert", "-c", "/Users/patrick/Library/Application Support/DroidBridge/ReleaseSigning/developer-id-application-2026-11-03.cer", "-p", "codeSign", "-L"]
+...certificate verification successful.
+
+Exit: 0
+Command: ["/usr/bin/codesign", "--force", "--sign", "46853838A1DD06FC62F7C4473FF727C39FF46C3E", "--timestamp=none", "--options", "runtime", "/Users/patrick/workspace/DroidBridge/.build/developer-id-probe/signing-probe"]
+Timed out after 15 seconds. No acceptance claim.

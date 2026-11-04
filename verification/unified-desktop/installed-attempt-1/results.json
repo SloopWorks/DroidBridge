@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "scope": "Installed signed Mac app + real Android companion TLS/GUI flow; isolated QA paths",
+  "serial": "emulator-5580",
+  "physical_focus_verified": false,
+  "events": [
+    {
+      "kind": "installed_host_started",
+      "pid": 33850,
+      "executable_sha256": "d0a4207cd7dbf9567d5e6e12004d1bbace97ecc31a1e33bd9c966fd73f530b55",
+      "qa_scope": true
+    }
+  ],
+  "error": "AppKit action did not return a receipt: status"
+}

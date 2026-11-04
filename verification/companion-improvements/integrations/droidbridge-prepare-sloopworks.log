@@ -1,0 +1,765 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :schema-dayfold
+WARNING: The option setting 'android.builtInKotlin=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.newDsl=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: API 'libraryVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling libraryVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'testVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling testVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'unitTestVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling unitTestVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :schema-droidbridge
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :schema-stash
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-bugreport
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-bugreport-ui
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-bugreport-uploader
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-core
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-debug
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-lifecycle
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-logging
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-rk
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-rk-recorder
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :swip-sentry
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Task :swip-core:generateCommonMainSwipDbInterface UP-TO-DATE
+> Task :swip-core:androidReleaseSourcesJar UP-TO-DATE
+> Task :swip-core:preBuild UP-TO-DATE
+> Task :swip-core:preReleaseBuild UP-TO-DATE
+> Task :swip-core:checkReleaseAarMetadata UP-TO-DATE
+> Task :swip-core:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :swip-core:mergeReleaseNativeLibs NO-SOURCE
+> Task :swip-core:stripReleaseDebugSymbols NO-SOURCE
+> Task :swip-core:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :swip-core:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :swip-core:kmpPartiallyResolvedDependenciesChecker
+> Task :swip-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :swip-core:generateReleaseBuildConfig UP-TO-DATE
+> Task :swip-core:generateReleaseResources UP-TO-DATE
+> Task :swip-core:packageReleaseResources UP-TO-DATE
+> Task :swip-core:processReleaseNavigationResources UP-TO-DATE
+> Task :swip-core:parseReleaseLocalResources UP-TO-DATE
+> Task :swip-core:generateReleaseRFile UP-TO-DATE
+> Task :swip-core:compileReleaseKotlinAndroid UP-TO-DATE
+> Task :swip-core:extractReleaseAnnotations UP-TO-DATE
+> Task :swip-core:generateReleaseAssets UP-TO-DATE
+> Task :swip-core:releaseAssetsCopyForAGP NO-SOURCE
+> Task :swip-core:mergeReleaseAssets UP-TO-DATE
+> Task :swip-core:javaPreCompileRelease UP-TO-DATE
+> Task :swip-core:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :swip-core:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :swip-core:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :swip-core:prepareLintJarForPublish UP-TO-DATE
+> Task :swip-core:prepareReleaseArtProfile UP-TO-DATE
+> Task :swip-core:processReleaseManifest UP-TO-DATE
+> Task :swip-core:processReleaseJavaRes UP-TO-DATE
+> Task :swip-core:mergeReleaseJavaResource UP-TO-DATE
+> Task :swip-core:syncReleaseLibJars UP-TO-DATE
+> Task :swip-core:writeReleaseAarMetadata
+> Task :swip-core:generatePomFileForAndroidReleasePublication
+> Task :swip-core:bundleReleaseAar UP-TO-DATE
+> Task :swip-core:generateMetadataFileForAndroidReleasePublication
+> Task :swip-core:publishAndroidReleasePublicationToDroidBridgeLocalRepository
+> Task :swip-core:transformCommonMainDependenciesMetadata UP-TO-DATE
+> Task :swip-core:compileCommonMainKotlinMetadata UP-TO-DATE
+> Task :swip-core:generateProjectStructureMetadata UP-TO-DATE
+> Task :swip-core:metadataCommonMainProcessResources NO-SOURCE
+> Task :swip-core:metadataCommonMainClasses UP-TO-DATE
+> Task :swip-core:allMetadataJar UP-TO-DATE
+> Task :swip-core:buildKotlinToolingMetadata UP-TO-DATE
+> Task :swip-core:sourcesJar UP-TO-DATE
+> Task :swip-core:generateMetadataFileForKotlinMultiplatformPublication
+> Task :swip-core:generatePomFileForKotlinMultiplatformPublication
+> Task :swip-core:publishKotlinMultiplatformPublicationToDroidBridgeLocalRepository
+> Task :swip-debug:androidReleaseSourcesJar UP-TO-DATE
+> Task :swip-debug:preBuild UP-TO-DATE
+> Task :swip-debug:preReleaseBuild UP-TO-DATE
+> Task :swip-debug:checkReleaseAarMetadata UP-TO-DATE
+> Task :swip-debug:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :swip-debug:mergeReleaseNativeLibs NO-SOURCE
+> Task :swip-debug:stripReleaseDebugSymbols NO-SOURCE
+> Task :swip-debug:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :swip-debug:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :swip-core:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :swip-debug:kmpPartiallyResolvedDependenciesChecker
+> Task :swip-debug:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :swip-debug:generateReleaseResources UP-TO-DATE
+> Task :swip-debug:packageReleaseResources UP-TO-DATE
+> Task :swip-debug:processReleaseNavigationResources UP-TO-DATE
+> Task :swip-debug:parseReleaseLocalResources UP-TO-DATE
+> Task :swip-debug:generateReleaseRFile UP-TO-DATE
+> Task :swip-debug:compileReleaseKotlinAndroid UP-TO-DATE
+> Task :swip-debug:extractReleaseAnnotations UP-TO-DATE
+> Task :swip-debug:generateReleaseAssets UP-TO-DATE
+> Task :swip-debug:releaseAssetsCopyForAGP NO-SOURCE
+> Task :swip-debug:mergeReleaseAssets UP-TO-DATE
+> Task :swip-debug:javaPreCompileRelease UP-TO-DATE
+> Task :swip-debug:compileReleaseJavaWithJavac NO-SOURCE
+> Task :swip-debug:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :swip-debug:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :swip-debug:prepareLintJarForPublish UP-TO-DATE
+> Task :swip-debug:prepareReleaseArtProfile UP-TO-DATE
+> Task :swip-debug:processReleaseManifest UP-TO-DATE
+> Task :swip-debug:processReleaseJavaRes UP-TO-DATE
+> Task :swip-debug:mergeReleaseJavaResource UP-TO-DATE
+> Task :swip-debug:syncReleaseLibJars UP-TO-DATE
+> Task :swip-debug:writeReleaseAarMetadata UP-TO-DATE
+> Task :swip-debug:bundleReleaseAar UP-TO-DATE
+> Task :swip-debug:generateMetadataFileForAndroidReleasePublication
+> Task :swip-core:exportTargetPublicationCoordinatesForReleaseApiElements UP-TO-DATE
+> Task :swip-core:exportTargetPublicationCoordinatesForReleaseRuntimeElements UP-TO-DATE
+> Task :swip-debug:generatePomFileForAndroidReleasePublication
+> Task :swip-debug:publishAndroidReleasePublicationToDroidBridgeLocalRepository
+> Task :swip-core:commonizeNativeDistribution UP-TO-DATE
+> Task :swip-core:transformNativeMainDependenciesMetadata UP-TO-DATE
+> Task :swip-core:compileNativeMainKotlinMetadata NO-SOURCE
+> Task :swip-core:metadataNativeMainProcessResources NO-SOURCE
+> Task :swip-core:metadataNativeMainClasses UP-TO-DATE
+> Task :swip-core:transformAppleMainDependenciesMetadata UP-TO-DATE
+> Task :swip-core:compileAppleMainKotlinMetadata NO-SOURCE
+> Task :swip-core:metadataAppleMainProcessResources NO-SOURCE
+> Task :swip-core:metadataAppleMainClasses UP-TO-DATE
+> Task :swip-core:transformIosMainDependenciesMetadata UP-TO-DATE
+> Task :swip-core:compileIosMainKotlinMetadata UP-TO-DATE
+> Task :swip-core:metadataIosMainProcessResources NO-SOURCE
+> Task :swip-core:metadataIosMainClasses UP-TO-DATE
+> Task :swip-core:exportCommonSourceSetsMetadataLocationsForMetadataApiElements UP-TO-DATE
+> Task :swip-core:iosArm64MetadataElements UP-TO-DATE
+> Task :swip-core:iosSimulatorArm64MetadataElements UP-TO-DATE
+> Task :swip-debug:transformCommonMainDependenciesMetadata UP-TO-DATE
+> Task :swip-debug:compileCommonMainKotlinMetadata UP-TO-DATE
+> Task :swip-core:exportRootPublicationCoordinatesForMetadataApiElements
+> Task :swip-debug:generateProjectStructureMetadata
+> Task :swip-debug:metadataCommonMainProcessResources NO-SOURCE
+> Task :swip-debug:metadataCommonMainClasses UP-TO-DATE
+> Task :swip-debug:allMetadataJar UP-TO-DATE
+> Task :swip-debug:buildKotlinToolingMetadata UP-TO-DATE
+> Task :swip-debug:sourcesJar UP-TO-DATE
+> Task :swip-debug:generateMetadataFileForKotlinMultiplatformPublication
+> Task :swip-debug:generatePomFileForKotlinMultiplatformPublication
+> Task :swip-debug:publishKotlinMultiplatformPublicationToDroidBridgeLocalRepository
+
+[Incubating] Problems report is available at: file:///Users/patrick/workspace/sloopworksinstrumentationplatform/sdk-kmp/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 9s
+89 actionable tasks: 17 executed, 72 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.4.1/userguide/configuration_cache_enabling.html
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Calculating task graph as configuration cache cannot be reused because content of 1st init script, '../../../../var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/droidbridge-sloopworks-7w8lu0n6/local-repository.gradle', has changed.
+
+> Configure project :sdk-kmp:schema-dayfold
+WARNING: The option setting 'android.builtInKotlin=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.newDsl=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: API 'libraryVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling libraryVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'testVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling testVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'unitTestVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling unitTestVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:schema-droidbridge
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:schema-stash
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-bugreport
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-bugreport-ui
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-bugreport-uploader
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-core
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-debug
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-lifecycle
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-logging
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-rk
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-rk-recorder
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :sdk-kmp:swip-sentry
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :debugdrawer
+WARNING: The option setting 'android.usesSdkInManifest.disallowed=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.sdk.defaultTargetSdkToCompileSdkIfUnset=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.enableAppCompileTimeRClass=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.builtInKotlin=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.newDsl=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.r8.optimizedResourceShrinking=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.defaults.buildfeatures.resvalues=true' is deprecated.
+The current default is 'false'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: API 'libraryVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling libraryVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'testVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling testVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: API 'unitTestVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling unitTestVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :debugdrawer-components
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :debugdrawer-compose-inspector
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :debugdrawer-noop
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :debugdrawer-redux
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Configure project :debugdrawer-swip
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+w: ⚠️ The 'org.jetbrains.kotlin.multiplatform' plugin deprecated compatibility with Android Gradle plugin: 'com.android.library'
+The 'org.jetbrains.kotlin.multiplatform' plugin is not compatible with 'com.android.library' starting with Android Gradle Plugin 9.0.0.
+Solution: Please use the 'com.android.kotlin.multiplatform.library' plugin instead of 'com.android.library'.
+See https://kotl.in/gradle/agp-new-kmp for more details.
+
+
+> Task :sdk-kmp:swip-core:preBuild UP-TO-DATE
+> Task :sdk-kmp:swip-debug:preBuild UP-TO-DATE
+> Task :sdk-kmp:swip-debug:preReleaseBuild UP-TO-DATE
+> Task :sdk-kmp:swip-core:preReleaseBuild UP-TO-DATE
+> Task :debugdrawer:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :sdk-kmp:swip-debug:kmpPartiallyResolvedDependenciesChecker
+> Task :sdk-kmp:swip-core:kmpPartiallyResolvedDependenciesChecker
+> Task :sdk-kmp:swip-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :sdk-kmp:swip-core:metadataCommonMainProcessResources NO-SOURCE
+> Task :debugdrawer:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :sdk-kmp:swip-core:generateProjectStructureMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-core:exportTargetPublicationCoordinatesForReleaseApiElements UP-TO-DATE
+> Task :sdk-kmp:swip-core:exportTargetPublicationCoordinatesForReleaseRuntimeElements UP-TO-DATE
+> Task :sdk-kmp:swip-debug:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :sdk-kmp:swip-debug:exportTargetPublicationCoordinatesForReleaseRuntimeElements UP-TO-DATE
+> Task :sdk-kmp:swip-debug:exportTargetPublicationCoordinatesForReleaseApiElements UP-TO-DATE
+> Task :sdk-kmp:swip-debug:writeReleaseAarMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-core:generateReleaseBuildConfig UP-TO-DATE
+> Task :sdk-kmp:swip-core:processReleaseNavigationResources UP-TO-DATE
+> Task :sdk-kmp:swip-core:generateReleaseResources UP-TO-DATE
+> Task :debugdrawer:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :debugdrawer:generateResourceAccessorsForAndroidMain SKIPPED
+> Task :sdk-kmp:swip-core:metadataAppleMainProcessResources NO-SOURCE
+> Task :sdk-kmp:swip-core:metadataIosMainProcessResources NO-SOURCE
+> Task :debugdrawer:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :debugdrawer:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :sdk-kmp:swip-core:javaPreCompileRelease UP-TO-DATE
+> Task :sdk-kmp:swip-debug:processReleaseNavigationResources UP-TO-DATE
+> Task :sdk-kmp:swip-debug:generateReleaseResources UP-TO-DATE
+> Task :sdk-kmp:swip-debug:javaPreCompileRelease UP-TO-DATE
+> Task :sdk-kmp:swip-core:metadataNativeMainProcessResources NO-SOURCE
+> Task :debugdrawer:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :debugdrawer:generateResourceAccessorsForCommonMain SKIPPED
+> Task :debugdrawer:generateActualResourceCollectorsForAndroidMain SKIPPED
+> Task :debugdrawer:generateComposeResClass SKIPPED
+> Task :debugdrawer:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :sdk-kmp:swip-debug:metadataNativeMainProcessResources NO-SOURCE
+> Task :debugdrawer:convertXmlValueResourcesForAndroidRelease NO-SOURCE
+> Task :debugdrawer:preBuild UP-TO-DATE
+> Task :sdk-kmp:swip-debug:metadataCommonMainProcessResources NO-SOURCE
+> Task :debugdrawer:preReleaseBuild UP-TO-DATE
+> Task :sdk-kmp:swip-debug:metadataAppleMainProcessResources NO-SOURCE
+> Task :sdk-kmp:swip-debug:metadataIosMainProcessResources NO-SOURCE
+> Task :debugdrawer:copyNonXmlValueResourcesForAndroidRelease NO-SOURCE
+> Task :sdk-kmp:swip-debug:exportRootPublicationCoordinatesForMetadataApiElements UP-TO-DATE
+> Task :debugdrawer:kmpPartiallyResolvedDependenciesChecker
+> Task :debugdrawer:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :debugdrawer:generateReleaseAssets UP-TO-DATE
+> Task :sdk-kmp:swip-core:writeReleaseAarMetadata
+> Task :debugdrawer:prepareComposeResourcesTaskForAndroidRelease NO-SOURCE
+> Task :debugdrawer:generateResourceAccessorsForAndroidRelease SKIPPED
+> Task :debugdrawer:releaseAssetsCopyForAGP NO-SOURCE
+> Task :debugdrawer:generateReleaseResValues UP-TO-DATE
+> Task :debugdrawer:processReleaseNavigationResources UP-TO-DATE
+> Task :debugdrawer:copyReleaseComposeResourcesToAndroidAssets UP-TO-DATE
+> Task :debugdrawer:javaPreCompileRelease UP-TO-DATE
+> Task :debugdrawer:generateReleaseResources UP-TO-DATE
+> Task :debugdrawer:mergeReleaseAssets UP-TO-DATE
+> Task :debugdrawer:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :sdk-kmp:swip-core:exportRootPublicationCoordinatesForMetadataApiElements
+> Task :debugdrawer:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :debugdrawer:prepareLintJarForPublish UP-TO-DATE
+> Task :sdk-kmp:swip-debug:packageReleaseResources UP-TO-DATE
+> Task :debugdrawer:prepareReleaseArtProfile UP-TO-DATE
+> Task :debugdrawer:writeReleaseAarMetadata UP-TO-DATE
+> Task :debugdrawer:mergeReleaseNativeLibs NO-SOURCE
+> Task :debugdrawer:stripReleaseDebugSymbols NO-SOURCE
+> Task :debugdrawer:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :sdk-kmp:swip-debug:parseReleaseLocalResources UP-TO-DATE
+> Task :debugdrawer:packageReleaseResources UP-TO-DATE
+> Task :debugdrawer:processReleaseManifest UP-TO-DATE
+> Task :sdk-kmp:swip-debug:generateProjectStructureMetadata
+> Task :debugdrawer:metadataCommonMainProcessResources NO-SOURCE
+> Task :debugdrawer:generateProjectStructureMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-debug:generateReleaseRFile UP-TO-DATE
+> Task :debugdrawer:convertXmlValueResourcesForAppleMain NO-SOURCE
+> Task :debugdrawer:convertXmlValueResourcesForIosMain NO-SOURCE
+> Task :debugdrawer:convertXmlValueResourcesForNativeMain NO-SOURCE
+> Task :debugdrawer:parseReleaseLocalResources UP-TO-DATE
+> Task :debugdrawer:copyNonXmlValueResourcesForNativeMain NO-SOURCE
+> Task :debugdrawer:copyNonXmlValueResourcesForAppleMain NO-SOURCE
+> Task :debugdrawer:copyNonXmlValueResourcesForIosMain NO-SOURCE
+> Task :debugdrawer:prepareComposeResourcesTaskForIosMain NO-SOURCE
+> Task :debugdrawer:generateResourceAccessorsForIosMain SKIPPED
+> Task :debugdrawer:prepareComposeResourcesTaskForAppleMain NO-SOURCE
+> Task :debugdrawer:generateResourceAccessorsForAppleMain SKIPPED
+> Task :debugdrawer:generatePomFileForKotlinMultiplatformPublication
+> Task :debugdrawer:prepareComposeResourcesTaskForNativeMain NO-SOURCE
+> Task :debugdrawer:androidReleaseSourcesJar UP-TO-DATE
+> Task :debugdrawer:generateReleaseRFile UP-TO-DATE
+> Task :debugdrawer:generateResourceAccessorsForNativeMain SKIPPED
+> Task :debugdrawer-swip:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :debugdrawer-swip:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :debugdrawer-swip:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :debugdrawer-swip:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :debugdrawer:sourcesJar UP-TO-DATE
+> Task :debugdrawer-swip:generateComposeResClass SKIPPED
+> Task :debugdrawer-swip:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :debugdrawer-swip:preBuild UP-TO-DATE
+> Task :debugdrawer-swip:preReleaseBuild UP-TO-DATE
+> Task :debugdrawer:buildKotlinToolingMetadata UP-TO-DATE
+> Task :debugdrawer-swip:convertXmlValueResourcesForAndroidRelease NO-SOURCE
+> Task :debugdrawer-swip:copyNonXmlValueResourcesForAndroidRelease NO-SOURCE
+> Task :debugdrawer-swip:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :debugdrawer-swip:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :debugdrawer-swip:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :debugdrawer-swip:generateResourceAccessorsForAndroidMain SKIPPED
+> Task :debugdrawer-swip:prepareComposeResourcesTaskForAndroidRelease NO-SOURCE
+> Task :debugdrawer-swip:generateResourceAccessorsForAndroidRelease SKIPPED
+> Task :debugdrawer-swip:generateResourceAccessorsForCommonMain SKIPPED
+> Task :debugdrawer-swip:kmpPartiallyResolvedDependenciesChecker
+> Task :debugdrawer-swip:generateActualResourceCollectorsForAndroidMain SKIPPED
+> Task :debugdrawer-swip:generateReleaseResValues UP-TO-DATE
+> Task :debugdrawer-swip:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :debugdrawer-swip:mergeReleaseNativeLibs NO-SOURCE
+> Task :debugdrawer-swip:stripReleaseDebugSymbols NO-SOURCE
+> Task :debugdrawer-swip:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :debugdrawer-swip:copyReleaseComposeResourcesToAndroidAssets UP-TO-DATE
+> Task :debugdrawer-swip:androidReleaseSourcesJar UP-TO-DATE
+> Task :debugdrawer-swip:generateReleaseAssets UP-TO-DATE
+> Task :debugdrawer-swip:releaseAssetsCopyForAGP NO-SOURCE
+> Task :debugdrawer-swip:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :debugdrawer-swip:mergeReleaseAssets UP-TO-DATE
+> Task :debugdrawer-swip:processReleaseNavigationResources UP-TO-DATE
+> Task :debugdrawer-swip:generateReleaseResources UP-TO-DATE
+> Task :debugdrawer-swip:prepareLintJarForPublish UP-TO-DATE
+> Task :debugdrawer-swip:prepareReleaseArtProfile UP-TO-DATE
+> Task :debugdrawer-swip:packageReleaseResources UP-TO-DATE
+> Task :debugdrawer-swip:writeReleaseAarMetadata UP-TO-DATE
+> Task :debugdrawer-swip:parseReleaseLocalResources UP-TO-DATE
+> Task :debugdrawer:exportTargetPublicationCoordinatesForReleaseApiElements UP-TO-DATE
+> Task :debugdrawer:exportTargetPublicationCoordinatesForReleaseRuntimeElements UP-TO-DATE
+> Task :debugdrawer-swip:processReleaseManifest UP-TO-DATE
+> Task :debugdrawer-swip:generateReleaseRFile UP-TO-DATE
+> Task :debugdrawer:metadataNativeMainProcessResources NO-SOURCE
+> Task :debugdrawer:metadataAppleMainProcessResources NO-SOURCE
+> Task :debugdrawer:metadataIosMainProcessResources NO-SOURCE
+> Task :debugdrawer:exportRootPublicationCoordinatesForMetadataApiElements UP-TO-DATE
+> Task :debugdrawer-swip:generateProjectStructureMetadata UP-TO-DATE
+> Task :debugdrawer-swip:metadataCommonMainProcessResources NO-SOURCE
+> Task :debugdrawer-swip:buildKotlinToolingMetadata UP-TO-DATE
+> Task :debugdrawer-swip:convertXmlValueResourcesForAppleMain NO-SOURCE
+> Task :debugdrawer-swip:copyNonXmlValueResourcesForAppleMain NO-SOURCE
+> Task :debugdrawer-swip:generatePomFileForAndroidReleasePublication
+> Task :debugdrawer:generatePomFileForAndroidReleasePublication
+> Task :debugdrawer-swip:convertXmlValueResourcesForIosMain NO-SOURCE
+> Task :debugdrawer-swip:copyNonXmlValueResourcesForIosMain NO-SOURCE
+> Task :debugdrawer-swip:convertXmlValueResourcesForNativeMain NO-SOURCE
+> Task :debugdrawer-swip:copyNonXmlValueResourcesForNativeMain NO-SOURCE
+> Task :debugdrawer-swip:prepareComposeResourcesTaskForIosMain NO-SOURCE
+> Task :debugdrawer-swip:generateResourceAccessorsForIosMain SKIPPED
+> Task :debugdrawer-swip:prepareComposeResourcesTaskForNativeMain NO-SOURCE
+> Task :debugdrawer-swip:generateResourceAccessorsForNativeMain SKIPPED
+> Task :debugdrawer-swip:generatePomFileForKotlinMultiplatformPublication
+> Task :debugdrawer-swip:javaPreCompileRelease UP-TO-DATE
+> Task :sdk-kmp:swip-core:packageReleaseResources UP-TO-DATE
+> Task :sdk-kmp:swip-core:generateCommonMainSwipDbInterface UP-TO-DATE
+> Task :sdk-kmp:swip-core:parseReleaseLocalResources UP-TO-DATE
+> Task :sdk-kmp:swip-core:generateReleaseRFile UP-TO-DATE
+> Task :sdk-kmp:swip-core:commonizeNativeDistribution UP-TO-DATE
+> Task :sdk-kmp:swip-debug:commonizeNativeDistribution UP-TO-DATE
+> Task :sdk-kmp:swip-core:transformCommonMainDependenciesMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-core:transformNativeMainDependenciesMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-core:transformAppleMainDependenciesMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-core:transformIosMainDependenciesMetadata UP-TO-DATE
+> Task :debugdrawer-swip:prepareComposeResourcesTaskForAppleMain NO-SOURCE
+> Task :debugdrawer-swip:generateResourceAccessorsForAppleMain SKIPPED
+> Task :debugdrawer-swip:sourcesJar UP-TO-DATE
+> Task :debugdrawer-swip:checkReleaseAarMetadata UP-TO-DATE
+> Task :debugdrawer:checkReleaseAarMetadata UP-TO-DATE
+> Task :debugdrawer:commonizeNativeDistribution UP-TO-DATE
+> Task :sdk-kmp:swip-core:compileReleaseKotlinAndroid UP-TO-DATE
+> Task :sdk-kmp:swip-core:compileCommonMainKotlinMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-core:metadataCommonMainClasses UP-TO-DATE
+> Task :sdk-kmp:swip-core:compileNativeMainKotlinMetadata NO-SOURCE
+> Task :sdk-kmp:swip-core:metadataNativeMainClasses UP-TO-DATE
+> Task :sdk-kmp:swip-core:compileAppleMainKotlinMetadata NO-SOURCE
+> Task :sdk-kmp:swip-core:metadataAppleMainClasses UP-TO-DATE
+> Task :sdk-kmp:swip-core:allMetadataJar UP-TO-DATE
+> Task :sdk-kmp:swip-core:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :sdk-kmp:swip-core:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :debugdrawer:transformCommonMainDependenciesMetadata UP-TO-DATE
+> Task :debugdrawer:compileReleaseKotlinAndroid UP-TO-DATE
+> Task :debugdrawer:compileReleaseJavaWithJavac NO-SOURCE
+> Task :debugdrawer:processReleaseJavaRes UP-TO-DATE
+> Task :debugdrawer:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :debugdrawer:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :debugdrawer:mergeReleaseJavaResource UP-TO-DATE
+> Task :debugdrawer:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :debugdrawer:transformNativeMainDependenciesMetadata UP-TO-DATE
+> Task :debugdrawer:compileCommonMainKotlinMetadata UP-TO-DATE
+> Task :debugdrawer:metadataCommonMainClasses UP-TO-DATE
+> Task :debugdrawer:compileNativeMainKotlinMetadata NO-SOURCE
+> Task :sdk-kmp:swip-debug:compileReleaseKotlinAndroid UP-TO-DATE
+> Task :debugdrawer:allMetadataJar UP-TO-DATE
+> Task :debugdrawer:metadataNativeMainClasses UP-TO-DATE
+> Task :debugdrawer:extractReleaseAnnotations UP-TO-DATE
+> Task :debugdrawer:transformAppleMainDependenciesMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-debug:compileReleaseJavaWithJavac NO-SOURCE
+> Task :debugdrawer:syncReleaseLibJars UP-TO-DATE
+> Task :debugdrawer:compileAppleMainKotlinMetadata NO-SOURCE
+> Task :debugdrawer:metadataAppleMainClasses UP-TO-DATE
+> Task :sdk-kmp:swip-debug:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :debugdrawer:transformIosMainDependenciesMetadata UP-TO-DATE
+> Task :debugdrawer:bundleReleaseAar UP-TO-DATE
+> Task :debugdrawer:generateMetadataFileForKotlinMultiplatformPublication
+> Task :debugdrawer:generateMetadataFileForAndroidReleasePublication
+> Task :debugdrawer-swip:compileReleaseKotlinAndroid UP-TO-DATE
+> Task :debugdrawer-swip:compileReleaseJavaWithJavac NO-SOURCE
+> Task :debugdrawer-swip:processReleaseJavaRes UP-TO-DATE
+> Task :debugdrawer-swip:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :debugdrawer-swip:extractReleaseAnnotations UP-TO-DATE
+> Task :debugdrawer-swip:mergeReleaseJavaResource UP-TO-DATE
+> Task :debugdrawer-swip:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :debugdrawer-swip:syncReleaseLibJars UP-TO-DATE
+> Task :debugdrawer-swip:bundleReleaseAar UP-TO-DATE
+> Task :debugdrawer-swip:generateMetadataFileForAndroidReleasePublication
+> Task :debugdrawer:publishKotlinMultiplatformPublicationToDroidBridgeLocalRepository
+> Task :debugdrawer:publishAndroidReleasePublicationToDroidBridgeLocalRepository
+> Task :debugdrawer-swip:publishAndroidReleasePublicationToDroidBridgeLocalRepository
+> Task :sdk-kmp:swip-core:compileIosMainKotlinMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-core:metadataIosMainClasses UP-TO-DATE
+> Task :debugdrawer:compileIosMainKotlinMetadata UP-TO-DATE
+> Task :debugdrawer:metadataIosMainClasses UP-TO-DATE
+> Task :sdk-kmp:swip-core:iosArm64MetadataElements UP-TO-DATE
+> Task :sdk-kmp:swip-core:iosSimulatorArm64MetadataElements UP-TO-DATE
+> Task :sdk-kmp:swip-core:exportCommonSourceSetsMetadataLocationsForMetadataApiElements UP-TO-DATE
+> Task :debugdrawer:iosSimulatorArm64MetadataElements UP-TO-DATE
+> Task :debugdrawer:iosArm64MetadataElements UP-TO-DATE
+> Task :debugdrawer:exportCommonSourceSetsMetadataLocationsForMetadataApiElements UP-TO-DATE
+> Task :sdk-kmp:swip-debug:transformCommonMainDependenciesMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-debug:transformNativeMainDependenciesMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-debug:compileCommonMainKotlinMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-debug:transformAppleMainDependenciesMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-debug:metadataCommonMainClasses UP-TO-DATE
+> Task :sdk-kmp:swip-debug:compileNativeMainKotlinMetadata NO-SOURCE
+> Task :sdk-kmp:swip-debug:metadataNativeMainClasses UP-TO-DATE
+> Task :sdk-kmp:swip-debug:transformIosMainDependenciesMetadata UP-TO-DATE
+> Task :sdk-kmp:swip-debug:allMetadataJar UP-TO-DATE
+> Task :sdk-kmp:swip-debug:compileAppleMainKotlinMetadata NO-SOURCE
+> Task :sdk-kmp:swip-debug:metadataAppleMainClasses UP-TO-DATE
+> Task :sdk-kmp:swip-debug:compileIosMainKotlinMetadata NO-SOURCE
+> Task :sdk-kmp:swip-debug:metadataIosMainClasses UP-TO-DATE
+> Task :sdk-kmp:swip-debug:exportCommonSourceSetsMetadataLocationsForMetadataApiElements UP-TO-DATE
+> Task :sdk-kmp:swip-debug:iosArm64MetadataElements UP-TO-DATE
+> Task :sdk-kmp:swip-debug:iosSimulatorArm64MetadataElements UP-TO-DATE
+> Task :debugdrawer-swip:transformCommonMainDependenciesMetadata UP-TO-DATE
+> Task :debugdrawer-swip:compileCommonMainKotlinMetadata UP-TO-DATE
+> Task :debugdrawer-swip:metadataCommonMainClasses UP-TO-DATE
+> Task :debugdrawer-swip:allMetadataJar UP-TO-DATE
+> Task :debugdrawer-swip:generateMetadataFileForKotlinMultiplatformPublication
+> Task :debugdrawer-swip:publishKotlinMultiplatformPublicationToDroidBridgeLocalRepository
+
+[Incubating] Problems report is available at: file:///Users/patrick/workspace/debugdrawer/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 12s
+142 actionable tasks: 19 executed, 123 up-to-date
+Configuration cache entry stored.
+Source artifacts ready. Build with -PsloopworksLocalMaven=/Users/patrick/workspace/DroidBridge/AndroidCompanion/build/sloopworks-maven

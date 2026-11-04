@@ -1,0 +1,86 @@
+UTC: 2026-11-03T16:48:10.711306+00:00
+CWD: /Users/patrick/workspace/DroidBridge
+COMMAND: git status --short
+
+ M ARCHITECTURE.md
+ M AndroidCompanion/BACKEND_APIS.md
+ M AndroidCompanion/README.md
+ M AndroidCompanion/app/build.gradle.kts
+ M AndroidCompanion/app/src/androidTest/AndroidManifest.xml
+ M AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionConsentDeviceTest.kt
+ M AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionConsentInputDeviceTest.kt
+ M AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionRealNotificationDeviceTest.kt
+ M AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionReceiptDeviceTest.kt
+ M AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionSecurityTest.kt
+ M AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionStagingDeadlineTest.kt
+ M AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionUXDeviceTest.kt
+ M AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/NotificationProbeActivity.java
+ M AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/StagingGrantActivity.java
+ M AndroidCompanion/app/src/main/AndroidManifest.xml
+ M AndroidCompanion/app/src/main/assets/licenses/COMPONENTS.txt
+ M AndroidCompanion/app/src/main/assets/licenses/NOTICE.txt
+ M AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeService.kt
+ M AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt
+ M AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTransfers.kt
+ M AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt
+ M AndroidCompanion/app/src/main/java/dev/droidbridge/companion/TransferProvider.kt
+ M AndroidCompanion/build.gradle.kts
+ M AndroidCompanion/settings.gradle.kts
+ M PIXEL_VERIFICATION.md
+ M README.md
+ M Sources/DroidBridge/CompanionDesktopAdapter.swift
+ M Sources/DroidBridge/CompanionTransfers.swift
+ M Sources/DroidBridge/CompanionWindow.swift
+ M Sources/DroidBridgeCore/CompanionBrokerRegistry.swift
+ M Sources/DroidBridgeCore/CompanionBrokerService.swift
+ M Tests/DroidBridgeCoreTests/BrokerAdmissionTLSPeer.swift
+ M android/companion-fixture/AndroidManifest.xml
+ M android/companion-fixture/README.md
+ M docs/companion/INSTALLED_QA_RUNBOOK.md
+ M scripts/verify-companion-actions.m
+ M scripts/verify-companion-broker-rpc.swift
+ M scripts/verify-companion-gui.swift
+?? AndroidCompanion/.shipyard-deploy.yaml
+?? AndroidCompanion/AGENTS.md
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionDesktopE2EDeviceTest.kt
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionImprovementsUXDeviceTest.kt
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionLibraryDeviceTest.kt
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionShareOnwardDeviceTest.kt
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformNotificationDeviceTest.kt
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformPinnedShortcutDeviceTest.kt
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformUiProof.kt
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformWidgetDeviceTest.kt
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformWidgetHostActivity.java
+?? AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/QuickAccessDeviceTest.kt
+?? AndroidCompanion/app/src/androidTestDebug/
+?? AndroidCompanion/app/src/debug/
+?? AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTiles.kt
+?? AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeWidget.kt
+?? AndroidCompanion/app/src/main/java/dev/droidbridge/companion/CompanionLibrary.kt
+?? AndroidCompanion/app/src/main/java/dev/droidbridge/companion/QuickAccess.kt
+?? AndroidCompanion/app/src/main/java/dev/droidbridge/companion/QuickAccessActivity.kt
+?? AndroidCompanion/app/src/main/res/drawable/ic_bridge_status.xml
+?? AndroidCompanion/app/src/main/res/drawable/ic_nav_apps.xml
+?? AndroidCompanion/app/src/main/res/drawable/ic_nav_home.xml
+?? AndroidCompanion/app/src/main/res/drawable/ic_nav_settings.xml
+?? AndroidCompanion/app/src/main/res/drawable/ic_nav_sharing.xml
+?? AndroidCompanion/app/src/main/res/layout/
+?? AndroidCompanion/app/src/main/res/values-night/
+?? AndroidCompanion/app/src/main/res/values/
+?? AndroidCompanion/app/src/main/res/xml/
+?? AndroidCompanion/app/src/release/
+?? AndroidCompanion/app/src/test/java/dev/droidbridge/companion/QuickAccessStateTest.kt
+?? AndroidCompanion/prepare-sloopworks.py
+?? AndroidCompanion/verify-release-diagnostics.py
+?? Sources/DroidBridgeCore/CompanionActions.swift
+?? Tests/DroidBridgeCoreTests/CompanionActionsTests.swift
+?? Tests/DroidBridgeCoreTests/CompanionProfileCommitTests.swift
+?? android/companion-fixture/ReceiveActivity.java
+?? docs/companion/QUICK_ACCESS.md
+?? docs/companion/SLOOPWORKS_INTEGRATION.md
+?? scripts/verify-companion-improvements.py
+?? verification/companion-improvements/
+?? verification/companion/platform-build.log
+?? verification/product-review-2026-11-03/
+
+EXIT CODE: 0

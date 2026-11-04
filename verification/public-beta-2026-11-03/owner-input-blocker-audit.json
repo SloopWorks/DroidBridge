@@ -1,0 +1,20 @@
+{
+  "checked_at_utc": "2026-11-04T00:32:34.931695+00:00",
+  "goal": "complete tasks needed for public beta release",
+  "previous_goal_turn_classification": "progress: source identity binding implemented and 11 regression tests passed",
+  "blocker_audit": "Same signing/notarization owner-input condition observed in the certificate-install goal turn and two subsequent goal turns. Current authoritative checks confirm unchanged state.",
+  "current_checks": {
+    "key_partition_readback": "apple-tool: only; apple: absent",
+    "notarytool_history_exit_code": 69,
+    "notarytool_history_result": "No Keychain password item found for profile DroidBridge-notary",
+    "git_diff_check_exit_code": 0
+  },
+  "live_job_wait": false,
+  "required_owner_actions": [
+    "Run the prepared Authorize DroidBridge Signing.command and complete local macOS authorization",
+    "Store validated notarization credentials in Keychain profile DroidBridge-notary without exposing credentials in chat",
+    "Confirm historical exposed Admin API key revocation; arrange encrypted recovery backup"
+  ],
+  "remaining_release_scope": "Signed/notarized candidate, committed source cohort/source archive, installed signed wrapper/runtime/migration evidence, owner physical checks, beta terms and final publication approval/download verification. See docs/PUBLIC_BETA_STATUS.md.",
+  "reason_agent_cannot_complete_now": "Computer-control tool explicitly blocks SecurityAgent; owner account credential entry is required. No alternative access path or assumed approval will be used."
+}

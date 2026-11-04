@@ -13,7 +13,7 @@ import DroidBridgeCore
             do {
                 guard line.utf8.count <= 65_536 else { throw CompanionBoundaryError("input_too_large", "Test request exceeds its bound.") }
                 let value = try JSONDecoder().decode([String: CompanionJSON].self, from: Data(line.utf8))
-                guard let operation = value["operation"]?.string, ["status", "catalog", "catalog_changes", "export_selection_get", "export_selection_set", "command_status", "inbox_list", "diagnostics", "notification_preferences", "notification_reply", "notification_dismiss"].contains(operation) else { throw CompanionBoundaryError("unsupported_test_operation", "This driver permits only catalog/notification acceptance operations.") }
+                guard let operation = value["operation"]?.string, ["status", "catalog", "catalog_changes", "export_selection_get", "export_selection_set", "command_status", "inbox_list", "diagnostics", "notification_preferences", "notification_reply", "notification_dismiss", "trust_list"].contains(operation) else { throw CompanionBoundaryError("unsupported_test_operation", "This driver permits only catalog/notification acceptance operations.") }
                 let id: UUID
                 if let raw = value["request_id"]?.string { guard let parsed = UUID(uuidString: raw) else { throw CompanionBoundaryError("invalid_request", "Invalid test request identity") }; id = parsed }
                 else { id = UUID() }

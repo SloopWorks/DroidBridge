@@ -2,7 +2,7 @@
 
 Ordinary Android 13+ application; no root or privileged app-streaming permissions.
 Use `./build.sh :app:assembleDebug :app:assembleDebugAndroidTest :app:testDebugUnitTest` with
-JDK17 and Android SDK35. APKs are below `app/build/outputs/apk/`.
+JDK17 and Android SDK37 (runtime target/min remain 35/33). APKs are below `app/build/outputs/apk/`.
 
 The foreground connection service must be started explicitly in the phone UI.
 Pairing lasts two minutes and requires approval of the named Mac on the phone.
@@ -43,8 +43,8 @@ SHA-256/signing policy. Android cannot install or approve Mac software. An
 unpublished release is shown as unavailable, not as a successful delivery.
 
 Third-party notices are available offline from Settings. The release runtime
-classpath contains ZXing core3.5.3, Kotlin standard library2.3.21 and IntelliJ
-annotations13.0. Exact upstream texts and hashes are in `app/src/main/assets/licenses`;
+classpath contains ZXing core3.5.3, Kotlin standard library2.3.21, Material
+Components1.13.0, AndroidX Activity1.11.0 and their transitive runtime dependencies. Exact upstream texts and hashes are in `app/src/main/assets/licenses`;
 Mac packaging extracts notices from the actual bundled APK and verifies byte
 agreement. Build/test dependencies and the attacker APK are not bundled.
 
@@ -60,3 +60,29 @@ checked between I/O steps and configured connect/read timeouts of up to 5 second
 per step. An in-flight network operation may finish after the elapsed budget;
 this is not an absolute 10-second wall-clock deadline. No device identity, trust
 or shared content is included in this public versioned HTTPS lookup.
+
+## Development diagnostics and distribution
+
+Debug and `.dev` development builds use the actual SWIP/DebugDrawer libraries
+through the debug-only Settings → Local diagnostics screen. Collection starts
+OFF, requires explicit opt-in, stays bounded in memory and never uploads. Release
+uses an inert twin and excludes the collectors/inspector. Run
+`./verify-release-diagnostics.py app/build/outputs/apk/release/app-release.apk`
+to check the packaged DEX boundary.
+
+For isolated source verification when private Maven read credentials are not
+available:
+
+```
+./prepare-sloopworks.py --workspace /Users/patrick/workspace
+./build.sh -PsloopworksLocalMaven="$PWD/build/sloopworks-maven" :app:assembleDevelopment
+```
+
+`development` has application ID `dev.droidbridge.companion.dev`, preserving the
+ordinary companion install. Its connection service must not run beside another
+companion service on the same Android user because both own loopback port37841.
+Shipyard Deploy embeds development build identity before signing; its repository
+configuration uses the existing trusted development server and NOTIFY channels.
+Project registration currently requires an administrator; a local build is not a
+published/installed build. See
+[the integration contract](../docs/companion/SLOOPWORKS_INTEGRATION.md).

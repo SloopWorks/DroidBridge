@@ -9,11 +9,16 @@ import javax.net.ssl.HttpsURLConnection
 class ReleaseDelivery : AutoCloseable {
     @Volatile private var connection: HttpsURLConnection? = null
     @Volatile private var closed = false
-    data class Metadata(val version: String, val size: Long, val sha256: String, val downloadUrl: String, val releaseUrl: String) {
-        fun summary() = "DroidBridge $version · Apple Silicon · macOS 26+\n${String.format(java.util.Locale.ROOT, "%.1f", size / 1048576.0)} MiB\nSHA-256: $sha256\nAd-hoc signed; not notarized. macOS may require explicit approval. A checksum verifies bytes, not a Developer ID identity."
+    data class Metadata(val version: String, val size: Long, val sha256: String, val downloadUrl: String, val releaseUrl: String, val signing: String) {
+        fun summary(): String {
+            val trust = if (signing == "developer_id_notarized") "The official release reports Developer ID signing and Apple notarization. macOS verifies the downloaded app when you open it."
+                else "Development release: ad-hoc signed; not notarized. macOS may require explicit approval."
+            return "DroidBridge $version · Apple Silicon · macOS 26+\n${String.format(java.util.Locale.ROOT, "%.1f", size / 1048576.0)} MiB\nSHA-256: $sha256\n$trust A checksum verifies bytes, not a Developer ID identity."
+        }
     }
     companion object {
         const val VERSION = "0.2.0"
+        const val RELEASE_TEAM = "2XAXFD3872"
         const val MANIFEST = "https://github.com/SloopWorks/DroidBridge/releases/download/v$VERSION/release-manifest.json"
         fun parse(bytes: ByteArray): Metadata {
             require(bytes.size <= 16384) { "Release metadata exceeds its size limit" }
@@ -24,11 +29,25 @@ class ReleaseDelivery : AutoCloseable {
             require(size is Number && size.toDouble().isFinite() && size.toDouble() == size.toLong().toDouble() && size.toLong() in 1..268435456)
             require(json.getString("version") == VERSION && json.getString("architecture") == "arm64" && json.getString("minimum_macos") == "26.0")
             val sha = json.getString("sha256"); require(sha.matches(Regex("[a-f0-9]{64}")))
-            require(json.getString("signing") == "ad_hoc_not_notarized")
+            val signing = json.getString("signing")
+            when (signing) {
+                "ad_hoc_not_notarized" -> {
+                    require(!json.has("schema_version") || json.get("schema_version") == 1)
+                    require(!json.has("team_id") && !json.has("source_commit") && !json.has("source_dirty"))
+                }
+                "developer_id_notarized" -> {
+                    require(json.get("schema_version") == 2 && json.getString("team_id") == RELEASE_TEAM)
+                    require(json.get("source_dirty") == false)
+                    require(json.get("source_commit") is String && json.get("build") is String)
+                    require(json.getString("source_commit").matches(Regex("[a-f0-9]{40}")))
+                    require(json.getString("build").matches(Regex("[1-9][0-9]*")))
+                }
+                else -> require(false) { "Unknown installer signing policy" }
+            }
             val download = "https://github.com/SloopWorks/DroidBridge/releases/download/v$VERSION/DroidBridge-$VERSION-arm64.dmg"
             val release = "https://github.com/SloopWorks/DroidBridge/releases/tag/v$VERSION"
             require(json.getString("download_url") == download && json.getString("release_url") == release)
-            return Metadata(VERSION, size.toLong(), sha, download, release)
+            return Metadata(VERSION, size.toLong(), sha, download, release, signing)
         }
         private fun allowed(url: URL): Boolean = url.protocol == "https" && url.userInfo == null && (url.port == -1 || url.port == 443) &&
             url.host in setOf("github.com", "release-assets.githubusercontent.com", "objects.githubusercontent.com")

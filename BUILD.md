@@ -30,9 +30,48 @@ Install by dragging `DroidBridge.app` from the DMG to `/Applications` or `~/Appl
 
 The current candidate is locally ad-hoc signed. No Developer ID signature or notarization was used or is claimed. A valid development/distribution identity is not itself a Developer ID/notarization credential. Gatekeeper behavior for downloaded ad-hoc builds may require Finder's Open or Privacy & Security approval. Do not disable Gatekeeper globally.
 
+## Developer ID release packaging
+
+The default `scripts/package.sh` produces an ad-hoc development artifact. The
+public signing lane requires an installed Developer ID Application identity and
+a working notarization credential stored with `notarytool store-credentials` in
+the local Keychain. Keep credentials and private signing keys outside Git.
+
+```sh
+export DROIDBRIDGE_SIGNING_MODE=developer-id
+export DROIDBRIDGE_SIGNING_IDENTITY='<40-character identity SHA-1 fingerprint>'
+export DROIDBRIDGE_DEVELOPMENT_TEAM=2XAXFD3872
+export DROIDBRIDGE_NOTARY_PROFILE='<local Keychain profile name>'
+export DROIDBRIDGE_VERSION=0.2.0
+export DROIDBRIDGE_BUILD_NUMBER='<positive build number>'
+scripts/package.sh
+```
+
+The script preflights credentials, signs nested code with hardened runtime and a
+secure timestamp, notarizes and staples the app and DMG, and checks Gatekeeper.
+The release manifest requires committed source inputs. Commit the reviewed
+candidate before running this lane; verification records may remain untracked.
+The app embeds the frozen source commit before signing. Packaging refuses a
+changed source tree or revision, and release metadata/source archives must match
+that signed identity.
+Successful local checks publish artifacts to `dist/`; they do not upload them.
+`DROIDBRIDGE_OUTPUT_DIR` can isolate a candidate in another local directory.
+
+The release lane clones the source-built ADB cohort before signing it and updates
+its hashes and provenance. Use the exact `adb` parent directory recorded in
+`release-evidence-<version>-<build>/package-inputs.json` as `--adb-runtime` when
+packaging corresponding source. Preserve that directory until source delivery is
+verified. The original development ADB cohort remains independently usable.
+
+Retain `release-evidence-*`, `release-manifest.json` and `SHA256SUMS` with the
+candidate. A pending or timed-out notarization request is not acceptance. Inspect
+the retained submission ID and Apple's status before submitting again. A positive
+Developer ID run, installed runtime tests and source review are separate gates;
+an ad-hoc regression does not establish any of them.
+
 ## Uninstall
 
-First use **Phone → Companion… → Connection → Forget Pairing on This Mac** for
+First use **Devices → Forget Pairing on This Mac** in the main window for
 each saved phone, then remove this Mac from the phone's Trusted Macs. Stop the
 phone connection service. Quit DroidBridge, all wrappers and audio hosts. The
 broker can outlive the GUI, so unload **both** owned per-user services before
@@ -116,7 +155,7 @@ signing material lives outside Git under
 another signer cannot update the existing app in place. Never publish the key or
 signing properties. Unsigned APK output is not an installable release.
 
-After installation use **Phone → Companion… → Install / Update Android
+After installation use **Devices → Install / Update Android
 Companion** through an authorized device. Start the phone service explicitly and
 pair separately. Android 13+ is required. See `AndroidCompanion/README.md` and
 `docs/companion/BOUNDARY_CONTRACT.md` for build/protocol details.

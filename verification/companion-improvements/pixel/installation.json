@@ -1,0 +1,16 @@
+{
+  "device_model": "Pixel 10 Pro",
+  "android_api": 37,
+  "android_user": 0,
+  "installed_package": "dev.droidbridge.companion",
+  "version_name": "0.2.0",
+  "version_code": 12,
+  "apk_sha256": "b6277fb903e99bb46e9bb93553de12cda6094f8d00b1abf4b700794a11254abd",
+  "signature_verified_before_install": true,
+  "initial_personal_profile_install": true,
+  "adb_install": "Success",
+  "launch_status": "ok",
+  "cold_launch_reported_ms": 256,
+  "target_resumed_observed": true,
+  "physical_hardware_end_to_end": "not yet complete"
+}

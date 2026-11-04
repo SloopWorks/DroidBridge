@@ -1,0 +1,3935 @@
+{
+  "action_receipts" : {
+    "delivery_metadata" : true,
+    "diagnostics" : true,
+    "handoff_selected_phone" : true,
+    "notifications_follow_exact_trust" : true,
+    "profiles_follow_selected_phone" : true,
+    "stop_exact_session" : true
+  },
+  "broker_operations" : [
+    "status",
+    "inbox_list",
+    "export_selection_get",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "inbox_list",
+    "share_send",
+    "host_command",
+    "command_status",
+    "profile_set",
+    "command_status",
+    "status",
+    "notification_preferences",
+    "status",
+    "status",
+    "status",
+    "status",
+    "status",
+    "status",
+    "export_selection_get",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "catalog",
+    "profile_set",
+    "inbox_list",
+    "command_status",
+    "status",
+    "notification_preferences",
+    "diagnostics",
+    "delivery"
+  ],
+  "focus_and_drafts_retained" : true,
+  "layout_cases" : [
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            218,
+            632,
+            922,
+            28
+          ],
+          "label" : "Search Android apps"
+        },
+        {
+          "frame" : [
+            226,
+            638.5,
+            16,
+            15
+          ],
+          "label" : "Search"
+        },
+        {
+          "frame" : [
+            1118.5,
+            638,
+            15,
+            15
+          ],
+          "label" : "Close"
+        },
+        {
+          "frame" : [
+            244,
+            634,
+            868.5,
+            20
+          ],
+          "label" : "NSTextView"
+        },
+        {
+          "frame" : [
+            219,
+            192,
+            920,
+            399
+          ],
+          "label" : "Installed Android applications"
+        },
+        {
+          "frame" : [
+            449.5,
+            133,
+            100.5,
+            28
+          ],
+          "label" : "Launch App"
+        },
+        {
+          "frame" : [
+            562,
+            135,
+            187,
+            24
+          ],
+          "label" : "Create \/ Update Mac App…"
+        },
+        {
+          "frame" : [
+            218,
+            79,
+            72,
+            24
+          ],
+          "label" : "Favorite selected Android app"
+        },
+        {
+          "frame" : [
+            306,
+            83,
+            148.5,
+            16
+          ],
+          "label" : "Selected Android app available in Spotlight"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "apps",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            956.5,
+            693.5,
+            183.5,
+            24
+          ],
+          "label" : "Restore Previous Sessions"
+        },
+        {
+          "frame" : [
+            254,
+            360,
+            850,
+            24
+          ],
+          "label" : "Refresh Sessions"
+        },
+        {
+          "frame" : [
+            492.5,
+            322,
+            52.5,
+            24
+          ],
+          "label" : "Stop"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "sessions",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            255,
+            415,
+            848,
+            98
+          ],
+          "label" : "Text or web link to share with phone"
+        },
+        {
+          "frame" : [
+            254,
+            376,
+            84,
+            24
+          ],
+          "label" : "Send Text"
+        },
+        {
+          "frame" : [
+            346,
+            376,
+            114.5,
+            24
+          ],
+          "label" : "Send Web Link"
+        },
+        {
+          "frame" : [
+            468.5,
+            376,
+            117.5,
+            24
+          ],
+          "label" : "Send Clipboard"
+        },
+        {
+          "frame" : [
+            254,
+            338,
+            90.5,
+            24
+          ],
+          "label" : "Send File…"
+        },
+        {
+          "frame" : [
+            352.5,
+            338,
+            119.5,
+            24
+          ],
+          "label" : "Cancel Transfer"
+        },
+        {
+          "frame" : [
+            480,
+            338,
+            107,
+            24
+          ],
+          "label" : "Refresh Inbox"
+        },
+        {
+          "frame" : [
+            595,
+            338,
+            103,
+            24
+          ],
+          "label" : "Clear Inbox…"
+        },
+        {
+          "frame" : [
+            254,
+            270,
+            163,
+            24
+          ],
+          "label" : "Retry File Confirmation"
+        },
+        {
+          "frame" : [
+            425,
+            270,
+            129.5,
+            24
+          ],
+          "label" : "Reveal Saved File"
+        },
+        {
+          "frame" : [
+            254,
+            170,
+            55.5,
+            24
+          ],
+          "label" : "Copy"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "handoff",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            531,
+            850,
+            16
+          ],
+          "label" : "Mirror permitted phone notifications"
+        },
+        {
+          "frame" : [
+            254,
+            493,
+            850,
+            24
+          ],
+          "label" : "Check Mac Notification Permission"
+        },
+        {
+          "frame" : [
+            254,
+            411,
+            850,
+            24
+          ],
+          "label" : "Notification app filter search"
+        },
+        {
+          "frame" : [
+            260,
+            415.5,
+            16,
+            15
+          ],
+          "label" : "Search"
+        },
+        {
+          "frame" : [
+            254,
+            -33613,
+            850,
+            34010
+          ],
+          "label" : "Apps permitted to mirror notifications"
+        },
+        {
+          "frame" : [
+            278,
+            362,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 0"
+        },
+        {
+          "frame" : [
+            278,
+            328,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 1"
+        },
+        {
+          "frame" : [
+            278,
+            294,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 10"
+        },
+        {
+          "frame" : [
+            278,
+            260,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 100"
+        },
+        {
+          "frame" : [
+            278,
+            226,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 101"
+        },
+        {
+          "frame" : [
+            254,
+            179,
+            850,
+            24
+          ],
+          "label" : "Advanced notification package allowlist"
+        },
+        {
+          "frame" : [
+            254,
+            141,
+            850,
+            24
+          ],
+          "label" : "Apply Notification Filters"
+        },
+        {
+          "frame" : [
+            254,
+            73,
+            850,
+            24
+          ],
+          "label" : "Refresh Notifications"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            131.5,
+            24
+          ],
+          "label" : "Dismiss on Phone"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "notifications",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            347,
+            678,
+            411,
+            24
+          ],
+          "label" : "Saved phone pairing to manage"
+        },
+        {
+          "frame" : [
+            790,
+            678,
+            71,
+            24
+          ],
+          "label" : "Refresh"
+        },
+        {
+          "frame" : [
+            254,
+            470,
+            238.5,
+            24
+          ],
+          "label" : "Install \/ Update Android Companion"
+        },
+        {
+          "frame" : [
+            500.5,
+            470,
+            180.5,
+            24
+          ],
+          "label" : "Open Android Companion"
+        },
+        {
+          "frame" : [
+            254,
+            432,
+            148,
+            24
+          ],
+          "label" : "Connect Companion"
+        },
+        {
+          "frame" : [
+            410,
+            432,
+            99.5,
+            24
+          ],
+          "label" : "Pair Phone…"
+        },
+        {
+          "frame" : [
+            517.5,
+            432,
+            141.5,
+            24
+          ],
+          "label" : "Set Up Wi-Fi ADB…"
+        },
+        {
+          "frame" : [
+            254,
+            394,
+            56.5,
+            24
+          ],
+          "label" : "Retry"
+        },
+        {
+          "frame" : [
+            318.5,
+            394,
+            165,
+            24
+          ],
+          "label" : "Disconnect Companion"
+        },
+        {
+          "frame" : [
+            254,
+            356,
+            850,
+            24
+          ],
+          "label" : "Forget Pairing on This Mac…"
+        },
+        {
+          "frame" : [
+            254,
+            288,
+            850,
+            24
+          ],
+          "label" : "Retry Mac Launch Registration"
+        },
+        {
+          "frame" : [
+            254,
+            203,
+            850,
+            24
+          ],
+          "label" : "Refresh Trusted Macs"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "devices",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            155,
+            850,
+            24
+          ],
+          "label" : "Companion performance profile"
+        },
+        {
+          "frame" : [
+            254,
+            117,
+            850,
+            24
+          ],
+          "label" : "Apply to New App Windows"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            850,
+            24
+          ],
+          "label" : "Refresh Battery, Thermal and Network Status"
+        },
+        {
+          "frame" : [
+            254,
+            596,
+            850,
+            24
+          ],
+          "label" : "Selected device audio output"
+        },
+        {
+          "frame" : [
+            254,
+            504,
+            850,
+            32
+          ],
+          "label" : "Keep phone screen off during Mac sessions"
+        },
+        {
+          "frame" : [
+            254,
+            470,
+            162,
+            24
+          ],
+          "label" : "Turn Phone Screen Off"
+        },
+        {
+          "frame" : [
+            424,
+            470,
+            160,
+            24
+          ],
+          "label" : "Turn Phone Screen On"
+        },
+        {
+          "frame" : [
+            254,
+            366,
+            850,
+            24
+          ],
+          "label" : "Add All Device Apps to Spotlight"
+        },
+        {
+          "frame" : [
+            254,
+            277,
+            66,
+            24
+          ],
+          "label" : "Cancel"
+        },
+        {
+          "frame" : [
+            328,
+            277,
+            79,
+            24
+          ],
+          "label" : "Results…"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "deviceSettings",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            523,
+            145.5,
+            24
+          ],
+          "label" : "Refresh Diagnostics"
+        },
+        {
+          "frame" : [
+            407.5,
+            523,
+            118.5,
+            24
+          ],
+          "label" : "Export Report…"
+        },
+        {
+          "frame" : [
+            254,
+            189,
+            850,
+            320
+          ],
+          "label" : "Redacted companion diagnostics"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "diagnostics",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            521,
+            135,
+            24
+          ],
+          "label" : "Official Releases…"
+        },
+        {
+          "frame" : [
+            397,
+            521,
+            167,
+            24
+          ],
+          "label" : "Refresh Release Details"
+        },
+        {
+          "frame" : [
+            254,
+            483,
+            145.5,
+            24
+          ],
+          "label" : "Download Installer…"
+        },
+        {
+          "frame" : [
+            407.5,
+            483,
+            148,
+            24
+          ],
+          "label" : "Copy Download Link"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "delivery",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            218,
+            492,
+            682,
+            28
+          ],
+          "label" : "Search Android apps"
+        },
+        {
+          "frame" : [
+            226,
+            498.5,
+            16,
+            15
+          ],
+          "label" : "Search"
+        },
+        {
+          "frame" : [
+            878.5,
+            498,
+            15,
+            15
+          ],
+          "label" : "Close"
+        },
+        {
+          "frame" : [
+            244,
+            494,
+            628.5,
+            20
+          ],
+          "label" : "NSTextView"
+        },
+        {
+          "frame" : [
+            219,
+            192,
+            680,
+            259
+          ],
+          "label" : "Installed Android applications"
+        },
+        {
+          "frame" : [
+            449.5,
+            133,
+            100.5,
+            28
+          ],
+          "label" : "Launch App"
+        },
+        {
+          "frame" : [
+            562,
+            135,
+            187,
+            24
+          ],
+          "label" : "Create \/ Update Mac App…"
+        },
+        {
+          "frame" : [
+            218,
+            79,
+            72,
+            24
+          ],
+          "label" : "Favorite selected Android app"
+        },
+        {
+          "frame" : [
+            306,
+            83,
+            148.5,
+            16
+          ],
+          "label" : "Selected Android app available in Spotlight"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "apps",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            716.5,
+            553.5,
+            183.5,
+            24
+          ],
+          "label" : "Restore Previous Sessions"
+        },
+        {
+          "frame" : [
+            254,
+            205,
+            610,
+            24
+          ],
+          "label" : "Refresh Sessions"
+        },
+        {
+          "frame" : [
+            492.5,
+            167,
+            52.5,
+            24
+          ],
+          "label" : "Stop"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "sessions",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            255,
+            275,
+            608,
+            98
+          ],
+          "label" : "Text or web link to share with phone"
+        },
+        {
+          "frame" : [
+            254,
+            236,
+            84,
+            24
+          ],
+          "label" : "Send Text"
+        },
+        {
+          "frame" : [
+            346,
+            236,
+            114.5,
+            24
+          ],
+          "label" : "Send Web Link"
+        },
+        {
+          "frame" : [
+            468.5,
+            236,
+            117.5,
+            24
+          ],
+          "label" : "Send Clipboard"
+        },
+        {
+          "frame" : [
+            254,
+            198,
+            90.5,
+            24
+          ],
+          "label" : "Send File…"
+        },
+        {
+          "frame" : [
+            352.5,
+            198,
+            119.5,
+            24
+          ],
+          "label" : "Cancel Transfer"
+        },
+        {
+          "frame" : [
+            480,
+            198,
+            107,
+            24
+          ],
+          "label" : "Refresh Inbox"
+        },
+        {
+          "frame" : [
+            595,
+            198,
+            103,
+            24
+          ],
+          "label" : "Clear Inbox…"
+        },
+        {
+          "frame" : [
+            254,
+            130,
+            163,
+            24
+          ],
+          "label" : "Retry File Confirmation"
+        },
+        {
+          "frame" : [
+            425,
+            130,
+            129.5,
+            24
+          ],
+          "label" : "Reveal Saved File"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            55.5,
+            24
+          ],
+          "label" : "Copy"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "handoff",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            376,
+            610,
+            16
+          ],
+          "label" : "Mirror permitted phone notifications"
+        },
+        {
+          "frame" : [
+            254,
+            338,
+            610,
+            24
+          ],
+          "label" : "Check Mac Notification Permission"
+        },
+        {
+          "frame" : [
+            254,
+            241,
+            610,
+            24
+          ],
+          "label" : "Notification app filter search"
+        },
+        {
+          "frame" : [
+            260,
+            245.5,
+            16,
+            15
+          ],
+          "label" : "Search"
+        },
+        {
+          "frame" : [
+            254,
+            -33783,
+            610,
+            34010
+          ],
+          "label" : "Apps permitted to mirror notifications"
+        },
+        {
+          "frame" : [
+            278,
+            192,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 0"
+        },
+        {
+          "frame" : [
+            278,
+            158,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 1"
+        },
+        {
+          "frame" : [
+            278,
+            124,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 10"
+        },
+        {
+          "frame" : [
+            278,
+            90,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 100"
+        },
+        {
+          "frame" : [
+            278,
+            56,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 101"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Advanced notification package allowlist"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Apply Notification Filters"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Refresh Notifications"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            131.5,
+            24
+          ],
+          "label" : "Dismiss on Phone"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "notifications",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            347,
+            538,
+            411,
+            24
+          ],
+          "label" : "Saved phone pairing to manage"
+        },
+        {
+          "frame" : [
+            790,
+            538,
+            71,
+            24
+          ],
+          "label" : "Refresh"
+        },
+        {
+          "frame" : [
+            254,
+            315,
+            238.5,
+            24
+          ],
+          "label" : "Install \/ Update Android Companion"
+        },
+        {
+          "frame" : [
+            500.5,
+            315,
+            180.5,
+            24
+          ],
+          "label" : "Open Android Companion"
+        },
+        {
+          "frame" : [
+            254,
+            277,
+            148,
+            24
+          ],
+          "label" : "Connect Companion"
+        },
+        {
+          "frame" : [
+            410,
+            277,
+            99.5,
+            24
+          ],
+          "label" : "Pair Phone…"
+        },
+        {
+          "frame" : [
+            517.5,
+            277,
+            141.5,
+            24
+          ],
+          "label" : "Set Up Wi-Fi ADB…"
+        },
+        {
+          "frame" : [
+            254,
+            239,
+            56.5,
+            24
+          ],
+          "label" : "Retry"
+        },
+        {
+          "frame" : [
+            318.5,
+            239,
+            165,
+            24
+          ],
+          "label" : "Disconnect Companion"
+        },
+        {
+          "frame" : [
+            254,
+            201,
+            610,
+            24
+          ],
+          "label" : "Forget Pairing on This Mac…"
+        },
+        {
+          "frame" : [
+            254,
+            133,
+            610,
+            24
+          ],
+          "label" : "Retry Mac Launch Registration"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Refresh Trusted Macs"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "devices",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Companion performance profile"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Apply to New App Windows"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Refresh Battery, Thermal and Network Status"
+        },
+        {
+          "frame" : [
+            254,
+            478,
+            610,
+            24
+          ],
+          "label" : "Selected device audio output"
+        },
+        {
+          "frame" : [
+            254,
+            386,
+            610,
+            32
+          ],
+          "label" : "Keep phone screen off during Mac sessions"
+        },
+        {
+          "frame" : [
+            254,
+            352,
+            162,
+            24
+          ],
+          "label" : "Turn Phone Screen Off"
+        },
+        {
+          "frame" : [
+            424,
+            352,
+            160,
+            24
+          ],
+          "label" : "Turn Phone Screen On"
+        },
+        {
+          "frame" : [
+            254,
+            248,
+            610,
+            24
+          ],
+          "label" : "Add All Device Apps to Spotlight"
+        },
+        {
+          "frame" : [
+            254,
+            159,
+            66,
+            24
+          ],
+          "label" : "Cancel"
+        },
+        {
+          "frame" : [
+            328,
+            159,
+            79,
+            24
+          ],
+          "label" : "Results…"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "deviceSettings",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            383,
+            145.5,
+            24
+          ],
+          "label" : "Refresh Diagnostics"
+        },
+        {
+          "frame" : [
+            407.5,
+            383,
+            118.5,
+            24
+          ],
+          "label" : "Export Report…"
+        },
+        {
+          "frame" : [
+            254,
+            49,
+            610,
+            320
+          ],
+          "label" : "Redacted companion diagnostics"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "diagnostics",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            381,
+            135,
+            24
+          ],
+          "label" : "Official Releases…"
+        },
+        {
+          "frame" : [
+            397,
+            381,
+            167,
+            24
+          ],
+          "label" : "Refresh Release Details"
+        },
+        {
+          "frame" : [
+            254,
+            343,
+            145.5,
+            24
+          ],
+          "label" : "Download Installer…"
+        },
+        {
+          "frame" : [
+            407.5,
+            343,
+            148,
+            24
+          ],
+          "label" : "Copy Download Link"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "delivery",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            218,
+            632,
+            922,
+            28
+          ],
+          "label" : "Search Android apps"
+        },
+        {
+          "frame" : [
+            226,
+            638.5,
+            16,
+            15
+          ],
+          "label" : "Search"
+        },
+        {
+          "frame" : [
+            1118.5,
+            638,
+            15,
+            15
+          ],
+          "label" : "Close"
+        },
+        {
+          "frame" : [
+            244,
+            634,
+            868.5,
+            20
+          ],
+          "label" : "NSTextView"
+        },
+        {
+          "frame" : [
+            219,
+            192,
+            920,
+            399
+          ],
+          "label" : "Installed Android applications"
+        },
+        {
+          "frame" : [
+            449.5,
+            133,
+            100.5,
+            28
+          ],
+          "label" : "Launch App"
+        },
+        {
+          "frame" : [
+            562,
+            135,
+            187,
+            24
+          ],
+          "label" : "Create \/ Update Mac App…"
+        },
+        {
+          "frame" : [
+            218,
+            79,
+            72,
+            24
+          ],
+          "label" : "Favorite selected Android app"
+        },
+        {
+          "frame" : [
+            306,
+            83,
+            148.5,
+            16
+          ],
+          "label" : "Selected Android app available in Spotlight"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "apps",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            956.5,
+            693.5,
+            183.5,
+            24
+          ],
+          "label" : "Restore Previous Sessions"
+        },
+        {
+          "frame" : [
+            254,
+            360,
+            850,
+            24
+          ],
+          "label" : "Refresh Sessions"
+        },
+        {
+          "frame" : [
+            492.5,
+            322,
+            52.5,
+            24
+          ],
+          "label" : "Stop"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "sessions",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            255,
+            415,
+            848,
+            98
+          ],
+          "label" : "Text or web link to share with phone"
+        },
+        {
+          "frame" : [
+            254,
+            376,
+            84,
+            24
+          ],
+          "label" : "Send Text"
+        },
+        {
+          "frame" : [
+            346,
+            376,
+            114.5,
+            24
+          ],
+          "label" : "Send Web Link"
+        },
+        {
+          "frame" : [
+            468.5,
+            376,
+            117.5,
+            24
+          ],
+          "label" : "Send Clipboard"
+        },
+        {
+          "frame" : [
+            254,
+            338,
+            90.5,
+            24
+          ],
+          "label" : "Send File…"
+        },
+        {
+          "frame" : [
+            352.5,
+            338,
+            119.5,
+            24
+          ],
+          "label" : "Cancel Transfer"
+        },
+        {
+          "frame" : [
+            480,
+            338,
+            107,
+            24
+          ],
+          "label" : "Refresh Inbox"
+        },
+        {
+          "frame" : [
+            595,
+            338,
+            103,
+            24
+          ],
+          "label" : "Clear Inbox…"
+        },
+        {
+          "frame" : [
+            254,
+            270,
+            163,
+            24
+          ],
+          "label" : "Retry File Confirmation"
+        },
+        {
+          "frame" : [
+            425,
+            270,
+            129.5,
+            24
+          ],
+          "label" : "Reveal Saved File"
+        },
+        {
+          "frame" : [
+            254,
+            170,
+            55.5,
+            24
+          ],
+          "label" : "Copy"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "handoff",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            531,
+            850,
+            16
+          ],
+          "label" : "Mirror permitted phone notifications"
+        },
+        {
+          "frame" : [
+            254,
+            493,
+            850,
+            24
+          ],
+          "label" : "Check Mac Notification Permission"
+        },
+        {
+          "frame" : [
+            254,
+            411,
+            850,
+            24
+          ],
+          "label" : "Notification app filter search"
+        },
+        {
+          "frame" : [
+            260,
+            415.5,
+            16,
+            15
+          ],
+          "label" : "Search"
+        },
+        {
+          "frame" : [
+            254,
+            -33613,
+            850,
+            34010
+          ],
+          "label" : "Apps permitted to mirror notifications"
+        },
+        {
+          "frame" : [
+            278,
+            362,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 0"
+        },
+        {
+          "frame" : [
+            278,
+            328,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 1"
+        },
+        {
+          "frame" : [
+            278,
+            294,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 10"
+        },
+        {
+          "frame" : [
+            278,
+            260,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 100"
+        },
+        {
+          "frame" : [
+            278,
+            226,
+            802,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 101"
+        },
+        {
+          "frame" : [
+            254,
+            179,
+            850,
+            24
+          ],
+          "label" : "Advanced notification package allowlist"
+        },
+        {
+          "frame" : [
+            254,
+            141,
+            850,
+            24
+          ],
+          "label" : "Apply Notification Filters"
+        },
+        {
+          "frame" : [
+            254,
+            73,
+            850,
+            24
+          ],
+          "label" : "Refresh Notifications"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            131.5,
+            24
+          ],
+          "label" : "Dismiss on Phone"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "notifications",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            347,
+            678,
+            411,
+            24
+          ],
+          "label" : "Saved phone pairing to manage"
+        },
+        {
+          "frame" : [
+            790,
+            678,
+            71,
+            24
+          ],
+          "label" : "Refresh"
+        },
+        {
+          "frame" : [
+            254,
+            470,
+            238.5,
+            24
+          ],
+          "label" : "Install \/ Update Android Companion"
+        },
+        {
+          "frame" : [
+            500.5,
+            470,
+            180.5,
+            24
+          ],
+          "label" : "Open Android Companion"
+        },
+        {
+          "frame" : [
+            254,
+            432,
+            148,
+            24
+          ],
+          "label" : "Connect Companion"
+        },
+        {
+          "frame" : [
+            410,
+            432,
+            99.5,
+            24
+          ],
+          "label" : "Pair Phone…"
+        },
+        {
+          "frame" : [
+            517.5,
+            432,
+            141.5,
+            24
+          ],
+          "label" : "Set Up Wi-Fi ADB…"
+        },
+        {
+          "frame" : [
+            254,
+            394,
+            56.5,
+            24
+          ],
+          "label" : "Retry"
+        },
+        {
+          "frame" : [
+            318.5,
+            394,
+            165,
+            24
+          ],
+          "label" : "Disconnect Companion"
+        },
+        {
+          "frame" : [
+            254,
+            356,
+            850,
+            24
+          ],
+          "label" : "Forget Pairing on This Mac…"
+        },
+        {
+          "frame" : [
+            254,
+            288,
+            850,
+            24
+          ],
+          "label" : "Retry Mac Launch Registration"
+        },
+        {
+          "frame" : [
+            254,
+            203,
+            850,
+            24
+          ],
+          "label" : "Refresh Trusted Macs"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "devices",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            155,
+            850,
+            24
+          ],
+          "label" : "Companion performance profile"
+        },
+        {
+          "frame" : [
+            254,
+            117,
+            850,
+            24
+          ],
+          "label" : "Apply to New App Windows"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            850,
+            24
+          ],
+          "label" : "Refresh Battery, Thermal and Network Status"
+        },
+        {
+          "frame" : [
+            254,
+            596,
+            850,
+            24
+          ],
+          "label" : "Selected device audio output"
+        },
+        {
+          "frame" : [
+            254,
+            504,
+            850,
+            32
+          ],
+          "label" : "Keep phone screen off during Mac sessions"
+        },
+        {
+          "frame" : [
+            254,
+            470,
+            162,
+            24
+          ],
+          "label" : "Turn Phone Screen Off"
+        },
+        {
+          "frame" : [
+            424,
+            470,
+            160,
+            24
+          ],
+          "label" : "Turn Phone Screen On"
+        },
+        {
+          "frame" : [
+            254,
+            366,
+            850,
+            24
+          ],
+          "label" : "Add All Device Apps to Spotlight"
+        },
+        {
+          "frame" : [
+            254,
+            277,
+            66,
+            24
+          ],
+          "label" : "Cancel"
+        },
+        {
+          "frame" : [
+            328,
+            277,
+            79,
+            24
+          ],
+          "label" : "Results…"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "deviceSettings",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            523,
+            145.5,
+            24
+          ],
+          "label" : "Refresh Diagnostics"
+        },
+        {
+          "frame" : [
+            407.5,
+            523,
+            118.5,
+            24
+          ],
+          "label" : "Export Report…"
+        },
+        {
+          "frame" : [
+            254,
+            189,
+            850,
+            320
+          ],
+          "label" : "Redacted companion diagnostics"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "diagnostics",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            733,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            521,
+            135,
+            24
+          ],
+          "label" : "Official Releases…"
+        },
+        {
+          "frame" : [
+            397,
+            521,
+            167,
+            24
+          ],
+          "label" : "Refresh Release Details"
+        },
+        {
+          "frame" : [
+            254,
+            483,
+            145.5,
+            24
+          ],
+          "label" : "Download Installer…"
+        },
+        {
+          "frame" : [
+            407.5,
+            483,
+            148,
+            24
+          ],
+          "label" : "Copy Download Link"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            704
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            741,
+            788,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "delivery",
+      "size" : [
+        1160,
+        780
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            218,
+            492,
+            682,
+            28
+          ],
+          "label" : "Search Android apps"
+        },
+        {
+          "frame" : [
+            226,
+            498.5,
+            16,
+            15
+          ],
+          "label" : "Search"
+        },
+        {
+          "frame" : [
+            878.5,
+            498,
+            15,
+            15
+          ],
+          "label" : "Close"
+        },
+        {
+          "frame" : [
+            244,
+            494,
+            628.5,
+            20
+          ],
+          "label" : "NSTextView"
+        },
+        {
+          "frame" : [
+            219,
+            192,
+            680,
+            259
+          ],
+          "label" : "Installed Android applications"
+        },
+        {
+          "frame" : [
+            449.5,
+            133,
+            100.5,
+            28
+          ],
+          "label" : "Launch App"
+        },
+        {
+          "frame" : [
+            562,
+            135,
+            187,
+            24
+          ],
+          "label" : "Create \/ Update Mac App…"
+        },
+        {
+          "frame" : [
+            218,
+            79,
+            72,
+            24
+          ],
+          "label" : "Favorite selected Android app"
+        },
+        {
+          "frame" : [
+            306,
+            83,
+            148.5,
+            16
+          ],
+          "label" : "Selected Android app available in Spotlight"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "apps",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            716.5,
+            553.5,
+            183.5,
+            24
+          ],
+          "label" : "Restore Previous Sessions"
+        },
+        {
+          "frame" : [
+            254,
+            205,
+            610,
+            24
+          ],
+          "label" : "Refresh Sessions"
+        },
+        {
+          "frame" : [
+            492.5,
+            167,
+            52.5,
+            24
+          ],
+          "label" : "Stop"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "sessions",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            255,
+            275,
+            608,
+            98
+          ],
+          "label" : "Text or web link to share with phone"
+        },
+        {
+          "frame" : [
+            254,
+            236,
+            84,
+            24
+          ],
+          "label" : "Send Text"
+        },
+        {
+          "frame" : [
+            346,
+            236,
+            114.5,
+            24
+          ],
+          "label" : "Send Web Link"
+        },
+        {
+          "frame" : [
+            468.5,
+            236,
+            117.5,
+            24
+          ],
+          "label" : "Send Clipboard"
+        },
+        {
+          "frame" : [
+            254,
+            198,
+            90.5,
+            24
+          ],
+          "label" : "Send File…"
+        },
+        {
+          "frame" : [
+            352.5,
+            198,
+            119.5,
+            24
+          ],
+          "label" : "Cancel Transfer"
+        },
+        {
+          "frame" : [
+            480,
+            198,
+            107,
+            24
+          ],
+          "label" : "Refresh Inbox"
+        },
+        {
+          "frame" : [
+            595,
+            198,
+            103,
+            24
+          ],
+          "label" : "Clear Inbox…"
+        },
+        {
+          "frame" : [
+            254,
+            130,
+            163,
+            24
+          ],
+          "label" : "Retry File Confirmation"
+        },
+        {
+          "frame" : [
+            425,
+            130,
+            129.5,
+            24
+          ],
+          "label" : "Reveal Saved File"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            55.5,
+            24
+          ],
+          "label" : "Copy"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "handoff",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            376,
+            610,
+            16
+          ],
+          "label" : "Mirror permitted phone notifications"
+        },
+        {
+          "frame" : [
+            254,
+            338,
+            610,
+            24
+          ],
+          "label" : "Check Mac Notification Permission"
+        },
+        {
+          "frame" : [
+            254,
+            241,
+            610,
+            24
+          ],
+          "label" : "Notification app filter search"
+        },
+        {
+          "frame" : [
+            260,
+            245.5,
+            16,
+            15
+          ],
+          "label" : "Search"
+        },
+        {
+          "frame" : [
+            254,
+            -33783,
+            610,
+            34010
+          ],
+          "label" : "Apps permitted to mirror notifications"
+        },
+        {
+          "frame" : [
+            278,
+            192,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 0"
+        },
+        {
+          "frame" : [
+            278,
+            158,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 1"
+        },
+        {
+          "frame" : [
+            278,
+            124,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 10"
+        },
+        {
+          "frame" : [
+            278,
+            90,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 100"
+        },
+        {
+          "frame" : [
+            278,
+            56,
+            562,
+            16
+          ],
+          "label" : "Allow notifications from Phone 0 Android App 101"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Advanced notification package allowlist"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Apply Notification Filters"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Refresh Notifications"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            131.5,
+            24
+          ],
+          "label" : "Dismiss on Phone"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "notifications",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            347,
+            538,
+            411,
+            24
+          ],
+          "label" : "Saved phone pairing to manage"
+        },
+        {
+          "frame" : [
+            790,
+            538,
+            71,
+            24
+          ],
+          "label" : "Refresh"
+        },
+        {
+          "frame" : [
+            254,
+            315,
+            238.5,
+            24
+          ],
+          "label" : "Install \/ Update Android Companion"
+        },
+        {
+          "frame" : [
+            500.5,
+            315,
+            180.5,
+            24
+          ],
+          "label" : "Open Android Companion"
+        },
+        {
+          "frame" : [
+            254,
+            277,
+            148,
+            24
+          ],
+          "label" : "Connect Companion"
+        },
+        {
+          "frame" : [
+            410,
+            277,
+            99.5,
+            24
+          ],
+          "label" : "Pair Phone…"
+        },
+        {
+          "frame" : [
+            517.5,
+            277,
+            141.5,
+            24
+          ],
+          "label" : "Set Up Wi-Fi ADB…"
+        },
+        {
+          "frame" : [
+            254,
+            239,
+            56.5,
+            24
+          ],
+          "label" : "Retry"
+        },
+        {
+          "frame" : [
+            318.5,
+            239,
+            165,
+            24
+          ],
+          "label" : "Disconnect Companion"
+        },
+        {
+          "frame" : [
+            254,
+            201,
+            610,
+            24
+          ],
+          "label" : "Forget Pairing on This Mac…"
+        },
+        {
+          "frame" : [
+            254,
+            133,
+            610,
+            24
+          ],
+          "label" : "Retry Mac Launch Registration"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Refresh Trusted Macs"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "devices",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Companion performance profile"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Apply to New App Windows"
+        },
+        {
+          "frame" : [
+            254,
+            71,
+            610,
+            24
+          ],
+          "label" : "Refresh Battery, Thermal and Network Status"
+        },
+        {
+          "frame" : [
+            254,
+            478,
+            610,
+            24
+          ],
+          "label" : "Selected device audio output"
+        },
+        {
+          "frame" : [
+            254,
+            386,
+            610,
+            32
+          ],
+          "label" : "Keep phone screen off during Mac sessions"
+        },
+        {
+          "frame" : [
+            254,
+            352,
+            162,
+            24
+          ],
+          "label" : "Turn Phone Screen Off"
+        },
+        {
+          "frame" : [
+            424,
+            352,
+            160,
+            24
+          ],
+          "label" : "Turn Phone Screen On"
+        },
+        {
+          "frame" : [
+            254,
+            248,
+            610,
+            24
+          ],
+          "label" : "Add All Device Apps to Spotlight"
+        },
+        {
+          "frame" : [
+            254,
+            159,
+            66,
+            24
+          ],
+          "label" : "Cancel"
+        },
+        {
+          "frame" : [
+            328,
+            159,
+            79,
+            24
+          ],
+          "label" : "Results…"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "deviceSettings",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            383,
+            145.5,
+            24
+          ],
+          "label" : "Refresh Diagnostics"
+        },
+        {
+          "frame" : [
+            407.5,
+            383,
+            118.5,
+            24
+          ],
+          "label" : "Export Report…"
+        },
+        {
+          "frame" : [
+            254,
+            49,
+            610,
+            320
+          ],
+          "label" : "Redacted companion diagnostics"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "diagnostics",
+      "size" : [
+        920,
+        640
+      ]
+    },
+    {
+      "appearance" : "NSAppearanceNameDarkAqua",
+      "controls" : [
+        {
+          "frame" : [
+            521.5,
+            593,
+            104,
+            24
+          ],
+          "label" : "Connection…"
+        },
+        {
+          "frame" : [
+            254,
+            381,
+            135,
+            24
+          ],
+          "label" : "Official Releases…"
+        },
+        {
+          "frame" : [
+            397,
+            381,
+            167,
+            24
+          ],
+          "label" : "Refresh Release Details"
+        },
+        {
+          "frame" : [
+            254,
+            343,
+            145.5,
+            24
+          ],
+          "label" : "Download Installer…"
+        },
+        {
+          "frame" : [
+            407.5,
+            343,
+            148,
+            24
+          ],
+          "label" : "Copy Download Link"
+        },
+        {
+          "frame" : [
+            20,
+            56,
+            166,
+            564
+          ],
+          "label" : "Workspace sections"
+        },
+        {
+          "frame" : [
+            20,
+            20,
+            166,
+            24
+          ],
+          "label" : "Settings…"
+        },
+        {
+          "frame" : [
+            501,
+            648,
+            314,
+            36
+          ],
+          "label" : "Android device"
+        }
+      ],
+      "section" : "delivery",
+      "size" : [
+        920,
+        640
+      ]
+    }
+  ],
+  "passed" : true,
+  "private_storage" : true,
+  "routes" : [
+    "apps",
+    "sessions",
+    "handoff",
+    "notifications",
+    "devices",
+    "deviceSettings",
+    "diagnostics",
+    "delivery"
+  ],
+  "scope" : "Shipping AppKit controls + anonymous NSXPC fixture only; no physical-input, Android-video, OS-notification, Spotlight, signing or installer acceptance",
+  "settings_windows" : 1,
+  "workspace_host_windows" : 1
+}

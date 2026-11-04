@@ -1,0 +1,10 @@
+version: 1
+project: droidbridge
+server: https://shipyard-deploy-dev.patjackson52.workers.dev
+packages:
+  dev.droidbridge.companion.dev:
+    variant: development
+    signer: droidbridge-development
+channels:
+  main: { branch: main, mode: NOTIFY, ttl: 7d }
+  default: { branch: "*", channel: "dev-{branch_slug}", mode: NOTIFY, ttl: 48h }

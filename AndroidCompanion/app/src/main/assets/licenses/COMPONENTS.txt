@@ -12,4 +12,14 @@ IntelliJ IDEA annotations 13.0 — Copyright 2000-2012 JetBrains s.r.o. Apache L
 https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/
 See Apache-2.0.txt.
 
+Material Components for Android 1.13.0 — Copyright The Android Open Source Project. Apache License 2.0.
+https://github.com/material-components/material-components-android/tree/1.13.0
+See Apache-2.0.txt. AndroidX transitive runtime libraries are covered by their
+Android Open Source Project Apache License 2.0 notices in the resolved artifacts.
+https://android.googlesource.com/platform/frameworks/support/
+
+AndroidX Activity 1.11.0 and its AndroidX runtime dependencies — Copyright The Android Open Source Project. Apache License 2.0.
+https://developer.android.com/jetpack/androidx/releases/activity
+See Apache-2.0.txt.
+
 The Android framework is supplied by the device. Instrumentation, attacker and QA fixture dependencies are not included in the production APK.

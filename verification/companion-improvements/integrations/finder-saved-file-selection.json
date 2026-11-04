@@ -1,0 +1,27 @@
+{
+  "observed_at_utc": "2026-10-31T04:19:30.368527+00:00",
+  "reviewer": "systems_integrations independent reviewer",
+  "method": "Read-only cua.getApp(com.apple.finder) accessibility observation; no clicks, key presses, file opening or navigation",
+  "finder_window": "companion-improvements-qa-system-save-final",
+  "observed_selected_row": "222 row (selected)",
+  "observed_selected_item_name": "received-fixture.bin",
+  "observed_selected_item_url": "file:///Users/patrick/workspace/DroidBridge/.build/companion-improvements-qa-system-save-final/received-fixture.bin",
+  "observed_selection_count": 1,
+  "observed_view": "list view",
+  "sanitized_ax_excerpt": [
+    "Window: companion-improvements-qa-system-save-final, App: Finder",
+    "222 row (selected)",
+    "225 text field Value: received-fixture.bin; URL: file:///Users/patrick/workspace/DroidBridge/.build/companion-improvements-qa-system-save-final/received-fixture.bin",
+    "Selected: 222 row (selected)"
+  ],
+  "owned_file": ".build/companion-improvements-qa-system-save-final/received-fixture.bin",
+  "size_bytes": 2097152,
+  "sha256": "528d7c4ccbfb9b6c5be870818614c6bb306e726715cde1f50704f2de017697eb",
+  "matches_installed_flow_verified_handoff": true,
+  "installed_flow_results": "verification/companion-improvements/installed-system-save-final/results.json",
+  "installed_flow_passed": true,
+  "finder_reveal_control_executed_in_installed_flow": true,
+  "unrelated_directory_contents_retained": false,
+  "phone_or_emulator_operations_by_reviewer": false,
+  "passed": true
+}

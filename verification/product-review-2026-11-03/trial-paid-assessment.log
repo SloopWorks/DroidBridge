@@ -1,0 +1,21 @@
+COMMAND: rg -n 'func launch|admissionCheck|session.start|func apply|checkAdmission' Sources/DroidBridge/Launcher.swift Sources/DroidBridge/CompanionDesktopAdapter.swift
+Sources/DroidBridge/CompanionDesktopAdapter.swift:250:    private func apply(_ command: [String: CompanionJSON]) async throws -> [String: CompanionJSON] {
+Sources/DroidBridge/CompanionDesktopAdapter.swift:257:        let checkAdmission: () throws -> Void = { [weak self] in
+Sources/DroidBridge/CompanionDesktopAdapter.swift:265:            try checkAdmission()
+Sources/DroidBridge/CompanionDesktopAdapter.swift:275:            try checkAdmission()
+Sources/DroidBridge/CompanionDesktopAdapter.swift:292:                try checkAdmission()
+Sources/DroidBridge/CompanionDesktopAdapter.swift:296:                try checkAdmission()
+Sources/DroidBridge/CompanionDesktopAdapter.swift:302:                    try checkAdmission(); _ = try await apply(child); completed += 1
+Sources/DroidBridge/CompanionDesktopAdapter.swift:305:                try checkAdmission()
+Sources/DroidBridge/CompanionDesktopAdapter.swift:315:                    try checkAdmission(); _ = try await apply(child); completed += 1
+Sources/DroidBridge/CompanionDesktopAdapter.swift:330:            guard let session = await launcher.launch(device: device, app: value, configuration: config, admissionCheck: checkAdmission), session.state == .running else { throw CompanionBoundaryError("launch_failed", "The Android app did not reach a running Mac window. See DroidBridge diagnostics.") }
+Sources/DroidBridge/Launcher.swift:104:    func launchOptions() -> [String:String] {
+Sources/DroidBridge/Launcher.swift:408:    @objc func launchAction() {
+Sources/DroidBridge/Launcher.swift:414:    func launch(device: AndroidDevice, app: AndroidApplication, configuration: SessionConfiguration, readinessChecked: Bool = false,replacing:UUID? = nil,restoring:UUID? = nil,replacementReason:String = "session_replacement", admissionCheck: (() throws -> Void)? = nil) async -> BridgeSession? {
+Sources/DroidBridge/Launcher.swift:436:        do { try admissionCheck?() }
+Sources/DroidBridge/Launcher.swift:487:        do { try await session.start(); status.stringValue = "\(app.name) is running with \(configuration.backend == .native ? "native AppKit" : "scrcpy")." }
+Sources/DroidBridge/Launcher.swift:650:    func launchArgumentsIfNeeded() async {
+EXIT CODE: 0
+COMMAND: git diff --check
+EXIT CODE: 0
+Missing local document links: []

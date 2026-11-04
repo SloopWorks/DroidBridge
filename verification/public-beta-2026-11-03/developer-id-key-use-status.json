@@ -1,0 +1,8 @@
+{
+  "cause": "New Developer ID key partition list contains apple-tool: and lacks apple:",
+  "readback": "Existing partition IDs: [\"apple-tool:\"]\nRead-only inspection complete",
+  "automatic_correction": "Stopped exact owned helper awaiting OS authorization; no change confirmed",
+  "owner_command": "/Users/patrick/Library/Application Support/DroidBridge/ReleaseSigning/Authorize DroidBridge Signing.command",
+  "ui_constraint": "Computer-control tool explicitly blocks com.apple.SecurityAgent",
+  "notarization_profile": "DroidBridge-notary is still absent"
+}

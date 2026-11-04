@@ -1,0 +1,120 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit_code": 0,
+      "log": "00-git-status.log",
+      "started_at": "2026-11-03T16:48:10.711306+00:00"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "log": "01-git-rev-parse.log",
+      "started_at": "2026-11-03T16:48:10.733607+00:00"
+    },
+    {
+      "argv": [
+        "git",
+        "log",
+        "-5",
+        "--oneline"
+      ],
+      "exit_code": 0,
+      "log": "02-git-log.log",
+      "started_at": "2026-11-03T16:48:10.740143+00:00"
+    },
+    {
+      "argv": [
+        "sw_vers"
+      ],
+      "exit_code": 0,
+      "log": "03-sw_vers-info.log",
+      "started_at": "2026-11-03T16:48:10.746220+00:00"
+    },
+    {
+      "argv": [
+        "swift",
+        "--version"
+      ],
+      "exit_code": 0,
+      "log": "04-swift---version.log",
+      "started_at": "2026-11-03T16:48:10.756133+00:00"
+    },
+    {
+      "argv": [
+        "rg",
+        "--files",
+        "Sources",
+        "Tests",
+        "scripts",
+        "AndroidCompanion/app/src/main"
+      ],
+      "exit_code": 0,
+      "log": "05-rg---files.log",
+      "started_at": "2026-11-03T16:48:12.626472+00:00"
+    },
+    {
+      "argv": [
+        "rg",
+        "-n",
+        "codesign|signing ==|currentVersion|LSMinimumSystemVersion|sign_adhoc|notary|targetSdk|minSdk|versionCode|applicationIdSuffix",
+        "scripts/package.sh",
+        "scripts/create-release-manifest.py",
+        "Sources/DroidBridge/MacAppWrapper.swift",
+        "Sources/DroidBridgeCore/CompanionReleaseMetadata.swift",
+        "AndroidCompanion/app/build.gradle.kts"
+      ],
+      "exit_code": 0,
+      "log": "06-rg--n.log",
+      "started_at": "2026-11-03T16:48:12.634114+00:00"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "LICENSE",
+        "LICENSE.md",
+        "LICENSE.txt",
+        "COPYING",
+        ".github"
+      ],
+      "exit_code": 0,
+      "log": "07-git-ls-files.log",
+      "started_at": "2026-11-03T16:48:12.640389+00:00"
+    },
+    {
+      "argv": [
+        "swift",
+        "build",
+        "--scratch-path",
+        "/Users/patrick/workspace/DroidBridge/.build/product-review-2026-11-03"
+      ],
+      "exit_code": 0,
+      "log": "08-swift-build.log",
+      "started_at": "2026-11-03T16:48:12.645931+00:00"
+    },
+    {
+      "argv": [
+        "swift",
+        "test",
+        "--scratch-path",
+        "/Users/patrick/workspace/DroidBridge/.build/product-review-2026-11-03"
+      ],
+      "exit_code": 0,
+      "log": "09-swift-test.log",
+      "started_at": "2026-11-03T16:48:30.624823+00:00"
+    }
+  ],
+  "source_changed_during_checks": [],
+  "live_device_tests_executed": false,
+  "release_acceptance": "not_assessed",
+  "scope": "Review and isolated default Swift build/test only; DROIDBRIDGE_* opt-ins removed from child environment."
+}

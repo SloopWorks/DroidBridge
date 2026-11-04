@@ -79,6 +79,24 @@ class BridgeStore private constructor(val context: Context) {
     private val notificationExposure = LinkedHashMap<String, NotificationExposure>()
 
     val transfers by lazy { BridgeTransfers(context, this) }
+    private val library by lazy { CompanionLibrary(context) }
+    fun snippets() = library.snippets()
+    fun libraryRevision() = library.revision()
+    fun saveSnippet(text: String, sourceTrustId: String? = null) = library.saveSnippet(text, sourceTrustId)
+    fun pinSnippet(id: String, pinned: Boolean) = library.pinSnippet(id, pinned)
+    fun deleteSnippet(id: String) = library.deleteSnippet(id)
+    fun presets() = library.presets()
+    fun savePreset(name: String, packages: List<String>, trustId: String, audioRoute: String, profile: String, screenOff: Boolean): JSONObject {
+        require(trusted().has(trustId)) { "Choose a trusted Mac" }
+        return library.savePreset(name, packages, trustId, audioRoute, profile, screenOff)
+    }
+    fun deletePreset(id: String) = library.deletePreset(id)
+    fun runPreset(id: String): JSONArray {
+        val preset = library.preset(id)
+        val trust = preset.getString("trust_id")
+        require(running && peerStatus(trust).getBoolean("connected")) { "Connect the preset's trusted Mac first" }
+        return JSONArray().put(phoneCommand("run_preset", preset, trust))
+    }
     @Volatile var running = false
     @Volatile var lastError: String? = null
     val state: JSONObject get() = peerStatus()
@@ -376,8 +394,13 @@ class BridgeStore private constructor(val context: Context) {
         if (!phoneJournalHealthy) throw BridgeFailure(503, "phone_command_journal_unavailable")
         val trust = recipientTrustId ?: selectedTrust() ?: throw IllegalArgumentException("Choose a trusted Mac first")
         require(trusted().has(trust))
-        require(kind in listOf("open_app", "stop_session", "set_audio_route", "set_profile", "clipboard_text", "share_text", "share_url", "set_screen_power", "set_export", "retry_audio"))
+        require(kind in listOf("open_app", "stop_session", "set_audio_route", "set_profile", "clipboard_text", "share_text", "share_url", "set_screen_power", "set_export", "retry_audio", "run_preset"))
         require(payload.toString().toByteArray().size <= 65536)
+        if (kind in listOf("clipboard_text", "share_text", "share_url")) {
+            require(setting("clipboard_enabled")) { "Explicit text sharing is disabled" }
+            val action = payload.optString("action", "send")
+            require(action in listOf("send", "copy", "open") && (action != "open" || kind == "share_url"))
+        }
         when (kind) {
             "open_app" -> require(ProtocolRules.packageName(payload.getString("package_name")))
             "stop_session" -> require(runCatching { java.util.UUID.fromString(payload.getString("session_id")) }.isSuccess)
@@ -387,6 +410,15 @@ class BridgeStore private constructor(val context: Context) {
             "set_export" -> { require(ProtocolRules.packageName(payload.getString("package_name"))); require(payload.get("selected") is Boolean) }
             "clipboard_text", "share_text" -> require(payload.getString("text").toByteArray().size <= 65536)
             "share_url" -> { val url = payload.optString("url", payload.optString("text")); require(url.length <= 8192 && android.net.Uri.parse(url).scheme in listOf("http", "https")) }
+            "run_preset" -> {
+                require(payload.getString("trust_id") == trust)
+                val packages = payload.getJSONArray("packages")
+                require(packages.length() in 1..8)
+                val names = (0 until packages.length()).map { packages.getString(it) }
+                require(names.distinct().size == names.size && names.all(ProtocolRules::packageName))
+                require(payload.getString("audio_route") in listOf("mac", "phone", "mac_and_phone"))
+                require(payload.getString("profile") in listOf("balanced", "responsive", "battery") && payload.get("screen_off") is Boolean)
+            }
         }
         repairExportIntents(trust)
         expireOutcomes()
@@ -397,14 +429,23 @@ class BridgeStore private constructor(val context: Context) {
         }
         val id = java.util.UUID.randomUUID().toString(); val now = java.time.Instant.now()
         val issued = android.os.SystemClock.elapsedRealtime()
-        val command = JSONObject().put("request_id", id).put("kind", kind).put("payload", payload).put("expires_at", now.plusSeconds(30).toString())
+        val wirePayload = JSONObject(payload.toString())
+        if (kind == "share_url" && !wirePayload.has("text")) wirePayload.put("text", wirePayload.getString("url"))
+        val command = JSONObject().put("request_id", id).put("kind", kind).put("payload", wirePayload).put("expires_at", now.plusSeconds(30).toString())
             .put("clock_epoch", epoch).put("issued_uptime_ms", issued).put("expires_uptime_ms", issued + 30_000)
         val value = JSONObject().put("request_id", id).put("kind", kind).put("trust_id", trust).put("status", "queued")
             .put("created_at", now.toString()).put("expires_at", now.plusSeconds(30).toString()).put("command", command)
+            .put("timing", JSONObject().put("queued_uptime_ms", issued))
         outcomes[id] = value
         try { savePhoneCommands() } catch (failure: Exception) { outcomes.remove(id); throw BridgeFailure(429, "phone_command_byte_capacity") }
         event("command", command, trust)
+        CompanionDiagnostics.record(diagnosticOperation(kind), "requested", 0)
         return id
+    }
+    private fun diagnosticOperation(kind: String) = when (kind) {
+        "open_app" -> "launch"; "stop_session" -> "stop"; "set_audio_route", "retry_audio" -> "audio"
+        "set_screen_power" -> "screen"; "clipboard_text" -> "clipboard"; "share_text", "share_url" -> "share"
+        "run_preset" -> "preset"; else -> "connection"
     }
     private fun expireOutcomes() {
         val now = android.os.SystemClock.elapsedRealtime()
@@ -475,18 +516,35 @@ class BridgeStore private constructor(val context: Context) {
         if (current == "admitted" && status == "accepted") throw BridgeFailure(409, "receipt_regression")
         if (status == current && value.has("receipt_hash") && value.getString("receipt_hash") != hash) throw BridgeFailure(409, "receipt_conflict")
         val previous = JSONObject(value.toString())
+        val timing = JSONObject(value.optJSONObject("timing")?.toString() ?: "{}")
+        val elapsed = android.os.SystemClock.elapsedRealtime() - value.getJSONObject("command").getLong("issued_uptime_ms")
+        if (value.getJSONObject("command").optString("clock_epoch") == epoch && elapsed >= 0) {
+            if (status in listOf("accepted", "admitted") && !timing.has("acknowledged_ms")) timing.put("acknowledged_ms", elapsed)
+            if (status in listOf("applied", "rejected", "unknown") && !timing.has("completed_ms")) timing.put("completed_ms", elapsed)
+        }
         val summary = JSONObject()
         val result = request.optJSONObject("result") ?: JSONObject()
         for (key in listOf("intent_committed", "materialization_pending", "wrapper_created", "retryable", "output_confirmed")) {
             if (result.has(key)) { require(result.get(key) is Boolean); summary.put(key, result.getBoolean(key)) }
         }
         if (result.has("phase")) { val phase = result.get("phase"); require(phase is String && phase.length <= 80); summary.put("phase", phase) }
+        if (result.has("completed_steps")) { val steps = result.getInt("completed_steps"); require(steps in 0..11); summary.put("completed_steps", steps) }
+        for (key in listOf("failed_step", "message")) if (result.has(key)) {
+            val text = result.get(key); require(text is String && text.length <= 350); summary.put(key, text)
+        }
+        value.put("timing", timing)
         if (status == "admitted" && current != "admitted") {
             value.put("admission_epoch", epoch).put("admitted_uptime_ms", android.os.SystemClock.elapsedRealtime())
         }
         value.put("receipt_hash", hash).put("status", status).put("result", summary)
             .put("error_code", request.optString("error_code", result.optString("code", "")).take(80))
         try { savePhoneCommands() } catch (failure: Exception) { outcomes[id] = previous; throw BridgeFailure(503, "receipt_persistence_failed") }
+        CompanionDiagnostics.record(diagnosticOperation(value.getString("kind")), when {
+            result.optString("phase") == "preset_partial" -> "failed"
+            status == "rejected" -> "failed"
+            status == "admitted" -> "accepted"
+            else -> status
+        }, elapsed.coerceIn(0, 300000))
         // Receipt publication follows durable original outcome.
         return JSONObject().put("accepted", true).put("command_id", id).put("status", status)
     }
@@ -522,8 +580,7 @@ class BridgeStore private constructor(val context: Context) {
         peerStates[trustId] = value
         return JSONObject().put("accepted", true)
     }
-    fun peerStatus(): JSONObject {
-        val trust = selectedTrust()
+    fun peerStatus(trust: String? = selectedTrust()): JSONObject {
         val record = trust?.let { trusted().optJSONObject(it) }
         val snapshot = trust?.let { peerStates[it] }
         val fresh = snapshot != null && android.os.SystemClock.elapsedRealtime() - snapshot.getLong("last_seen_elapsed") in 0..15000

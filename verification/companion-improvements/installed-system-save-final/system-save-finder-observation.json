@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "scope": "Actual macOS Save dialog and subsequent Finder selection observed through CUA; synthetic fixture only",
+  "save_dialog_actions": [
+    "Set Save As to received-fixture.bin",
+    "Use Go to Folder to select the owned isolated QA root",
+    "Click the actual Save button"
+  ],
+  "finder_window": "companion-improvements-qa-system-save-final",
+  "selected_name": "received-fixture.bin",
+  "selected_relative_path": ".build/companion-improvements-qa-system-save-final/received-fixture.bin",
+  "selected_row_observed": true,
+  "one_item_selected_observed": true,
+  "preview_name_and_2_1_mb_observed": true,
+  "finder_screenshot_visually_inspected": true,
+  "saved_bytes": 2097152,
+  "saved_sha256": "528d7c4ccbfb9b6c5be870818614c6bb306e726715cde1f50704f2de017697eb",
+  "personal_content_exported": false
+}

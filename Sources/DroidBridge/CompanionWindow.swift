@@ -3,10 +3,57 @@ import UserNotifications
 import UniformTypeIdentifiers
 import DroidBridgeCore
 
+enum CompanionPage: String, CaseIterable {
+    case connection, apps, sessions, handoff, notifications, performance, diagnostics, delivery
+}
+
+enum CompanionTaskCommand: String, CaseIterable {
+    case sendText, sendWebLink, sendClipboard, sendFile, refreshInbox, refreshNotifications, refreshDiagnostics, exportDiagnostics, refreshRelease
+    var title: String {
+        switch self {
+        case .sendText: return "Send Text"
+        case .sendWebLink: return "Send Web Link"
+        case .sendClipboard: return "Send Clipboard"
+        case .sendFile: return "Send File…"
+        case .refreshInbox: return "Refresh Inbox"
+        case .refreshNotifications: return "Refresh Notifications"
+        case .refreshDiagnostics: return "Refresh Diagnostics"
+        case .exportDiagnostics: return "Export Report…"
+        case .refreshRelease: return "Refresh Release Details"
+        }
+    }
+    var page: CompanionPage {
+        switch self {
+        case .sendText, .sendWebLink, .sendClipboard, .sendFile, .refreshInbox: return .handoff
+        case .refreshNotifications: return .notifications
+        case .refreshDiagnostics, .exportDiagnostics: return .diagnostics
+        case .refreshRelease: return .delivery
+        }
+    }
+}
+
+struct CompanionAppPresentation {
+    let exported: Bool
+    let favorite: Bool
+    let pending: Bool
+}
+
 @MainActor final class CompanionWindowController: NSWindowController, NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate {
     private let adapter: CompanionDesktopAdapter
+    private let embedded: Bool
+    private let contentRoot = LauncherBackground()
+    private weak var hostWindow: NSWindow?
+    private var activePage: CompanionPage?
+    private var hostSerial: String?
+    private var managingSavedPairing = false
+    private var phoneHeader: NSStackView?
+    private var deviceSettingsContent: NSStackView?
+    private var taskButtons: [CompanionTaskCommand: NSButton] = [:]
+    private weak var deviceSettingsHeader: NSView?
+    var onCatalogChange: (() -> Void)?
+    var favoriteAppPackages: Set<String> { favoritePackages }
     private let phones = NSPopUpButton(), adbDevices = NSPopUpButton()
-    private let status = NSTextField(wrappingLabelWithString: "Choose an authorized Android device, start its companion service, then connect and pair.")
+    private let status = NSTextField(wrappingLabelWithString: "")
     private let detail = NSTextField(wrappingLabelWithString: "")
     private let tabs = NSTabView()
     private let navigation = NSStackView()
@@ -43,6 +90,8 @@ import DroidBridgeCore
     private var presentedCatalogOrigin: String?
     private var catalogToken = UUID(), changingPhone = false, stopped = false
     private var items: [[String: CompanionJSON]] = []
+    private var inboxToken = UUID()
+    private var inboxLoadingToken: UUID?
     private var mirrorShown = Set<String>()
     private var lastInboxMS = -Double.infinity
     private var presentedDevices: [CompanionDesktopDevice] = []
@@ -61,7 +110,7 @@ import DroidBridgeCore
     private let postNotification: @MainActor (UNNotificationRequest) async throws -> Void
     private let removeNotifications: @MainActor ([String]) -> Void
 
-    init(adapter: CompanionDesktopAdapter, authorizeNotifications: @escaping @MainActor () async throws -> Bool = {
+    init(adapter: CompanionDesktopAdapter, embedded: Bool = false, authorizeNotifications: @escaping @MainActor () async throws -> Bool = {
         try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
     }, notificationsAuthorized: @escaping @MainActor () async -> Bool = {
         await UNUserNotificationCenter.current().notificationSettings().authorizationStatus == .authorized
@@ -73,21 +122,21 @@ import DroidBridgeCore
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: $0)
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: $0)
     }) {
-        self.adapter = adapter
+        self.adapter = adapter; self.embedded = embedded
         self.authorizeNotifications = authorizeNotifications
         self.notificationsAuthorized = notificationsAuthorized; self.notificationsDenied = notificationsDenied; self.postNotification = postNotification; self.removeNotifications = removeNotifications
-        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 900, height: 760), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
-        window.title = "DroidBridge Companion"; window.contentMinSize = NSSize(width: 700, height: 570); window.isReleasedWhenClosed = false; window.center()
-        window.contentView = LauncherBackground()
+        let window: NSWindow? = embedded ? nil : NSWindow(contentRect: NSRect(x: 0, y: 0, width: 900, height: 760), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
+        window?.title = "DroidBridge Companion"; window?.contentMinSize = NSSize(width: 700, height: 570); window?.isReleasedWhenClosed = false; window?.center()
+        window?.contentView = contentRoot
         super.init(window: window)
-        window.delegate = self
+        window?.delegate = self
         build()
         transfers.onChange = { [weak self] in guard let self else { return }; self.transferStatus.stringValue = self.transfers.message }
         adapter.onChange = { [weak self] in self?.refreshState() }
         refresh = Task { [weak self] in
             while !Task.isCancelled {
                 guard let self, !self.stopped else { return }
-                if self.window?.isVisible == true { self.refreshState(); if CompanionClock.nowMS() - self.lastInboxMS >= 3000 { await self.loadInbox() } }
+                if self.surfaceVisible { self.refreshState(); if CompanionClock.nowMS() - self.lastInboxMS >= 3000 { await self.loadInbox() } }
                 try? await Task.sleep(nanoseconds: 1_000_000_000)
             }
         }
@@ -95,18 +144,100 @@ import DroidBridgeCore
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
     override func showWindow(_ sender: Any?) { windowClosed = false; super.showWindow(sender); adapter.catalogVisibilityChanged() }
-    var catalogDeviceID: String? { !stopped && !windowClosed && window?.isVisible == true && window?.isMiniaturized != true ? selectedID : nil }
+    private var surfaceVisible: Bool {
+        let owner = embedded ? hostWindow : window
+        return !stopped && !windowClosed && owner?.isVisible == true && owner?.isMiniaturized != true && (!embedded || activePage != nil)
+    }
+    var catalogDeviceID: String? {
+        surfaceVisible && (!embedded || activePage == .apps || activePage == .notifications) ? selectedID : nil
+    }
+    /// Pages retain their action controllers while the workspace changes routes.
+    /// Embedded mode never allocates or presents another NSWindow.
+    func embeddedView(for page: CompanionPage) -> NSView {
+        selectPage(CompanionPage.allCases.firstIndex(of: page) ?? 0)
+        phoneHeader?.isHidden = embedded && page != .connection
+        return contentRoot
+    }
+    func setHostContext(window: NSWindow?, activePage: CompanionPage?, selectedSerial: String?) {
+        guard embedded else { return }
+        let changedSelection = hostSerial != selectedSerial
+        let leavingPage = self.activePage != activePage
+        hostWindow = window; self.activePage = activePage; hostSerial = selectedSerial
+        windowClosed = false
+        if changedSelection || (managingSavedPairing && activePage != .connection) {
+            managingSavedPairing = false
+            notificationIntent = UUID(); actionToken = UUID()
+            action?.cancel(); action = nil; pairingTask?.cancel(); scanner?.close(); progress.stopAnimation(nil)
+            selectedID = selectedSerial.flatMap { adapter.device(for: $0)?.id }
+            clearPhoneContent()
+        }
+        if leavingPage { notificationIntent = UUID() }
+        refreshState(); adapter.catalogVisibilityChanged()
+    }
+    func hostWindowClosed() {
+        activePage = nil
+        windowWillClose(Notification(name: NSWindow.willCloseNotification))
+    }
+    func appPresentation(package: String) -> CompanionAppPresentation? {
+        guard let app = apps.first(where: { $0.packageName == package }) else { return nil }
+        return .init(exported: selection[package] ?? app.exportToMac ?? true, favorite: favoritePackages.contains(package), pending: pendingExports.contains(package))
+    }
+    func setAppExport(package: String, selected: Bool) {
+        guard let app = apps.first(where: { $0.packageName == package }) else { return }
+        setExport(app, selected: selected)
+    }
+    func toggleAppFavorite(package: String) {
+        guard apps.contains(where: { $0.packageName == package }) else { return }
+        toggleFavorite(package)
+    }
+    func setDeviceSettingsHeader(_ view: NSView) {
+        guard deviceSettingsHeader !== view, let content = deviceSettingsContent else { return }
+        if let previous = deviceSettingsHeader { content.removeArrangedSubview(previous); previous.removeFromSuperview() }
+        deviceSettingsHeader = view
+        content.insertArrangedSubview(view, at: 0)
+        view.widthAnchor.constraint(equalTo: content.widthAnchor).isActive = true
+    }
+    func canPerform(_ command: CompanionTaskCommand) -> Bool {
+        updateTaskButtonEnablement()
+        let currentPage: CompanionPage?
+        if embedded { currentPage = activePage }
+        else if let selected = tabs.selectedTabViewItem, let index = tabs.tabViewItems.firstIndex(where: { $0 === selected }), CompanionPage.allCases.indices.contains(index) { currentPage = CompanionPage.allCases[index] }
+        else { currentPage = nil }
+        guard surfaceVisible, currentPage == command.page, let button = taskButtons[command] else { return false }
+        return button.isEnabled && !button.isHiddenOrHasHiddenAncestor
+    }
+    func perform(_ command: CompanionTaskCommand) {
+        guard canPerform(command) else { return }
+        taskButtons[command]?.performClick(nil)
+    }
+    private func updateTaskButtonEnablement() {
+        let idle = !stopped && action == nil
+        let online = phone?.paired == true && phone?.connected == true
+        for (command, button) in taskButtons {
+            switch command {
+            case .refreshRelease: button.isEnabled = idle
+            case .exportDiagnostics: button.isEnabled = idle && !diagnostics.string.isEmpty
+            case .refreshInbox, .refreshNotifications: button.isEnabled = idle && online && inboxLoadingToken != inboxToken
+            default: button.isEnabled = idle && online
+            }
+        }
+    }
     func windowWillClose(_ notification: Notification) {
-        windowClosed = true; notificationIntent = UUID(); actionToken = UUID()
-        action?.cancel(); action = nil; progress.stopAnimation(nil); adapter.catalogVisibilityChanged()
+        windowClosed = true; notificationIntent = UUID(); actionToken = UUID(); inboxToken = UUID()
+        action?.cancel(); action = nil; pairingTask?.cancel(); scanner?.close(); progress.stopAnimation(nil); adapter.catalogVisibilityChanged()
     }
     private var phone: CompanionDesktopDevice? { adapter.devices.first { $0.id == selectedID } }
     private var localDefaults: UserDefaults { CompanionQAScope.current.flatMap { UserDefaults(suiteName: "dev.droidbridge.companion.qa.\($0.serviceSuffix)") } ?? .standard }
-    private var serial: String? { adbDevices.selectedItem?.representedObject as? String ?? adapter.launcher?.selectedDevice?.serial }
+    private var serial: String? { embedded ? hostSerial : adbDevices.selectedItem?.representedObject as? String ?? adapter.launcher?.selectedDevice?.serial }
     private func label(_ text: String, heading: Bool = false) -> NSTextField { let field = NSTextField(wrappingLabelWithString: text); field.font = .systemFont(ofSize: heading ? 16 : 12, weight: heading ? .semibold : .regular); return field }
     private func column(_ views: [NSView]) -> NSStackView { let stack = NSStackView(views: views); stack.orientation = .vertical; stack.alignment = .leading; stack.spacing = 14; return stack }
     private func row(_ views: [NSView]) -> NSStackView { let stack = NSStackView(views: views); stack.spacing = 8; stack.alignment = .centerY; return stack }
     private func button(_ title: String, _ handler: @escaping () -> Void) -> NSButton { ClosureButton(title: title, handler: handler) }
+    private func taskButton(_ command: CompanionTaskCommand, title: String? = nil, _ handler: @escaping () -> Void) -> NSButton {
+        let view = button(title ?? command.title, handler)
+        taskButtons[command] = view
+        return view
+    }
     private func page(_ title: String, _ content: NSStackView) {
         let scroll = NSScrollView(); scroll.hasVerticalScroller = true; scroll.drawsBackground = false
         let document = LauncherDocumentView(); content.translatesAutoresizingMaskIntoConstraints = false; document.addSubview(content)
@@ -124,14 +255,17 @@ import DroidBridgeCore
     private func build() {
         tabs.tabViewType = .noTabsNoBorder
         navigation.spacing = 5; navigation.distribution = .fillEqually
-        phones.target = self; phones.action = #selector(phoneChanged); phones.setAccessibilityLabel("Paired companion phone")
+        phones.target = self; phones.action = #selector(phoneChanged); phones.setAccessibilityLabel(embedded ? "Saved phone pairing to manage" : "Paired companion phone")
         adbDevices.setAccessibilityLabel("ADB device for companion setup")
         status.maximumNumberOfLines = 4; status.lineBreakMode = .byWordWrapping; status.isSelectable = true; status.setAccessibilityLabel("Companion action result")
         detail.maximumNumberOfLines = 3; detail.textColor = .secondaryLabelColor
         progress.isIndeterminate = true; progress.style = .spinning; progress.isDisplayedWhenStopped = false; progress.controlSize = .small
-        let header = row([label("Phone", heading: true), phones, progress, button("Refresh") { [weak self] in self?.run("Refreshing connection…") { [weak self] in try await self?.adapter.refreshStatus(); return "Connection status refreshed." } }])
-        let content = column([header, detail, status, navigation, tabs]); content.translatesAutoresizingMaskIntoConstraints = false; window?.contentView?.addSubview(content)
-        if let view = window?.contentView { NSLayoutConstraint.activate([content.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18), content.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18), content.topAnchor.constraint(equalTo: view.topAnchor, constant: 18), content.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -18), header.widthAnchor.constraint(equalTo: content.widthAnchor), detail.widthAnchor.constraint(equalTo: content.widthAnchor), status.widthAnchor.constraint(equalTo: content.widthAnchor), navigation.widthAnchor.constraint(equalTo: content.widthAnchor), tabs.widthAnchor.constraint(equalTo: content.widthAnchor)]) }
+        let header = row([label(embedded ? "Saved pairing" : "Phone", heading: true), phones, progress, button("Refresh") { [weak self] in self?.run("Refreshing connection…") { [weak self] in try await self?.adapter.refreshStatus(); return "Connection status refreshed." } }]); phoneHeader = header
+        navigation.isHidden = embedded
+        adbDevices.isHidden = embedded
+        let content = column([header, detail, status, navigation, tabs]); content.translatesAutoresizingMaskIntoConstraints = false; contentRoot.addSubview(content)
+        let view = contentRoot
+        NSLayoutConstraint.activate([content.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18), content.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18), content.topAnchor.constraint(equalTo: view.topAnchor, constant: 18), content.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -18), header.widthAnchor.constraint(equalTo: content.widthAnchor), detail.widthAnchor.constraint(equalTo: content.widthAnchor), status.widthAnchor.constraint(equalTo: content.widthAnchor), navigation.widthAnchor.constraint(equalTo: content.widthAnchor), tabs.widthAnchor.constraint(equalTo: content.widthAnchor)])
         buildConnection(); buildApps(); buildSessions(); buildHandoff(); buildNotifications(); buildPerformance(); buildDiagnostics(); buildDelivery()
     }
     private func buildConnection() {
@@ -147,7 +281,7 @@ import DroidBridgeCore
         retryHost.isEnabled = adapter.launcher?.isWrapper == false && Bundle.main.bundleURL.pathExtension == "app"
         pendingPairings.orientation = .vertical; pendingPairings.alignment = .leading; pendingPairings.spacing = 10
         hostRegistration.setAccessibilityLabel("Mac phone-launch registration")
-        let content = column([label("Two permissions, one local connection", heading: true), label("USB or Android's paired wireless debugging authorizes ADB. Companion pairing separately authorizes this Mac's app catalog, handoff and phone dashboard. Select its authorized ADB device, install/open the companion if needed, then start its connection service on the phone."), adbDevices, row([install, open]), row([connect, pair, wifi]), row([retry, disconnect]), forget, hostRegistration, retryHost, pendingPairings, label("Trusted Macs", heading: true), button("Refresh Trusted Macs") { [weak self] in self?.loadTrusts() }, trusts, label("If no ADB device appears: enable Developer options and USB debugging on Android, connect USB, unlock the phone and accept its debugging prompt. A QR code does not grant ADB access. Revoke an untrusted Mac from either companion UI. If a local credential becomes unreadable after an unsigned update, use Forget Pairing on This Mac, remove the old trust on the phone, and pair with a fresh link.")])
+        let content = column([label("Two permissions, one local connection", heading: true), label(embedded ? "USB or Android's paired wireless debugging authorizes the Android device selected in the toolbar. Install, Open, Connect and Pair always use that device. Saved pairing above selects whose trust you manage, including an offline phone; it does not change the setup device. Companion pairing separately authorizes app catalog, sharing and phone dashboard access." : "USB or Android's paired wireless debugging authorizes ADB. Companion pairing separately authorizes this Mac's app catalog, handoff and phone dashboard. Select its authorized ADB device, install/open the companion if needed, then start its connection service on the phone."), adbDevices, row([install, open]), row([connect, pair, wifi]), row([retry, disconnect]), forget, hostRegistration, retryHost, pendingPairings, label("Trusted Macs", heading: true), button("Refresh Trusted Macs") { [weak self] in self?.loadTrusts() }, trusts, label("If no ADB device appears: enable Developer options and USB debugging on Android, connect USB, unlock the phone and accept its debugging prompt. A QR code does not grant ADB access. Revoke an untrusted Mac from either companion UI. If a local credential becomes unreadable after an unsigned update, use Forget Pairing on This Mac, remove the old trust on the phone, and pair with a fresh link.")])
         page("Connection", content)
     }
     private func buildApps() {
@@ -158,12 +292,12 @@ import DroidBridgeCore
         page("Apps", column([label("Choose apps for Spotlight", heading: true), label("Checked apps are eligible for managed Mac wrappers while this phone is authorized and available. Updating a choice is queued first; DroidBridge reports the actual wrapper result separately. Existing running app windows are preserved."), row([appSearch, button("Refresh Catalog") { [weak self] in self?.loadCatalog() }]), appStatus, scroll]))
     }
     private func buildSessions() {
-        page("Sessions", column([label("Mac app sessions", heading: true), label("This dashboard includes independently running Mac wrappers registered with the local broker. Phone commands target the exact owning process. After this installed DroidBridge app registers once, it opens automatically for phone launch requests."), button("Refresh Sessions") { [weak self] in self?.run("Refreshing sessions…") { [weak self] in try await self?.adapter.refreshStatus(); return "Sessions refreshed." } }, sessions]))
+        page("Sessions", column([label("Sessions in other Mac apps", heading: true), label("These independently running Mac wrappers are registered with the local broker. Stop targets the exact owning process. After this installed DroidBridge app registers once, it opens automatically for phone launch requests."), button("Refresh Sessions") { [weak self] in self?.run("Refreshing sessions…") { [weak self] in try await self?.adapter.refreshStatus(); return "Sessions refreshed." } }, sessions]))
     }
     private func buildHandoff() {
         outgoing.isRichText = false; outgoing.font = .systemFont(ofSize: 13); outgoing.setAccessibilityLabel("Text or web link to share with phone")
-        let editor = NSScrollView(); editor.documentView = outgoing; editor.hasVerticalScroller = true; editor.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        page("Handoff", column([label("Send deliberately, receive privately", heading: true), label("Send selected text, a web link, a file, or the current Mac clipboard. Clipboard contents are read only when you click Send Clipboard. Received items stay here until you choose Copy, Save or Open Link."), editor, row([button("Send Text") { [weak self] in self?.sendText(url: false) }, button("Send Web Link") { [weak self] in self?.sendText(url: true) }, button("Send Clipboard") { [weak self] in self?.sendClipboard() }]), row([button("Send File…") { [weak self] in self?.sendFile() }, button("Cancel Transfer") { [weak self] in self?.transfers.cancel() }, button("Refresh Inbox") { [weak self] in Task { await self?.loadInbox(force: true) } }, button("Clear Inbox…") { [weak self] in self?.clearInbox() }]), transferStatus, button("Retry File Confirmation") { [weak self] in self?.transfers.retryConfirmation() }, label("Received from phone", heading: true), inbox]))
+        let editor = NSScrollView(); editor.documentView = outgoing; editor.hasVerticalScroller = true; editor.borderType = .bezelBorder; editor.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        page("Handoff", column([label("Send deliberately, receive privately", heading: true), label("Send selected text, a web link, a file, or the current Mac clipboard. Clipboard contents are read only when you click Send Clipboard. Received items stay here until you choose Copy, Save or Open Link."), label("Text or web link", heading: true), editor, row([taskButton(.sendText) { [weak self] in self?.sendText(url: false) }, taskButton(.sendWebLink) { [weak self] in self?.sendText(url: true) }, taskButton(.sendClipboard) { [weak self] in self?.sendClipboard() }]), row([taskButton(.sendFile) { [weak self] in self?.sendFile() }, button("Cancel Transfer") { [weak self] in self?.transfers.cancel() }, taskButton(.refreshInbox) { [weak self] in Task { await self?.loadInbox(force: true) } }, button("Clear Inbox…") { [weak self] in self?.clearInbox() }]), transferStatus, row([button("Retry File Confirmation") { [weak self] in self?.transfers.retryConfirmation() }, button("Reveal Saved File") { [weak self] in self?.transfers.revealSavedFile() }]), label("Received from phone", heading: true), inbox]))
     }
     private func buildNotifications() {
         notificationOptIn.target = self; notificationOptIn.action = #selector(setNotifications)
@@ -171,21 +305,24 @@ import DroidBridgeCore
         notificationSearch.placeholderString = "Search app names for notification filters"; notificationSearch.delegate = self; notificationSearch.setAccessibilityLabel("Notification app filter search")
         let column = NSTableColumn(identifier: .init("notification-app")); column.width = 600; notificationTable.addTableColumn(column); notificationTable.headerView = nil; notificationTable.rowHeight = 34; notificationTable.delegate = self; notificationTable.dataSource = self; notificationTable.setAccessibilityLabel("Apps permitted to mirror notifications")
         let scroll = NSScrollView(); scroll.documentView = notificationTable; scroll.hasVerticalScroller = true; scroll.heightAnchor.constraint(equalToConstant: 180).isActive = true
-        page("Notifications", self.column([label("Optional phone notifications", heading: true), label("Enable Android notification access on the phone and allow DroidBridge notifications on this Mac. Sensitive, hidden and ongoing notifications are excluded by default. Denied Mac permission keeps the in-app list available. Replies work only while Android still advertises that reply action."), notificationOptIn, button("Check Mac Notification Permission") { [weak self] in self?.checkMacNotificationPermission() }, label("Choose allowed apps below. An empty app selection permits all notifications allowed by Android and the phone's privacy rules. Refresh Apps first if this list is empty."), notificationSearch, scroll, notificationFilters, button("Apply Notification Filters") { [weak self] in self?.setNotifications() }, notificationStatus, notificationItems]))
+        page("Notifications", self.column([label("Optional phone notifications", heading: true), label("Enable Android notification access on the phone and allow DroidBridge notifications on this Mac. Sensitive, hidden and ongoing notifications are excluded by default. Denied Mac permission keeps the in-app list available. Replies work only while Android still advertises that reply action."), notificationOptIn, button("Check Mac Notification Permission") { [weak self] in self?.checkMacNotificationPermission() }, label("Choose allowed apps below. An empty app selection permits all notifications allowed by Android and the phone's privacy rules. If this list is empty, open Apps or refresh the selected device's connection to update its shared app catalog."), notificationSearch, scroll, notificationFilters, button("Apply Notification Filters") { [weak self] in self?.setNotifications() }, notificationStatus, taskButton(.refreshNotifications) { [weak self] in Task { await self?.loadInbox(force: true) } }, notificationItems]))
     }
     private func buildPerformance() {
         profile.addItems(withTitles: ["Balanced · 30 fps", "Responsive · up to 60 fps", "Battery · 15 fps"]); profile.setAccessibilityLabel("Companion performance profile")
-        page("Performance", column([label("Quality and power", heading: true), profile, button("Apply to New App Windows") { [weak self] in self?.setProfile() }, label("Profiles apply to newly opened Android app windows. Existing windows keep their current frame-rate ceiling. Responsive uses more encoder/network/power capacity; Battery reduces frame rate and background asset work. Actual frame rate depends on Android, network conditions and visible content."), button("Refresh Battery, Thermal and Network Status") { [weak self] in self?.loadDiagnostics() }, health, label("Sensor readings and permission availability appear in Diagnostics with their observation time. Unknown readings remain unknown. Use the main launcher's per-device phone-screen and device-wide audio controls; those policies apply across wrappers.")]))
+        let content = column([label("Quality and power", heading: true), profile, button("Apply to New App Windows") { [weak self] in self?.setProfile() }, label("Profiles apply to newly opened Android app windows. Existing windows keep their current frame-rate ceiling. Responsive uses more encoder/network/power capacity; Battery reduces frame rate and background asset work. Actual frame rate depends on Android, network conditions and visible content."), button("Refresh Battery, Thermal and Network Status") { [weak self] in self?.loadDiagnostics() }, health, label(embedded ? "Sensor readings and permission availability appear in Diagnostics with their observation time. Unknown readings remain unknown. Audio and phone-screen policies apply across independent Mac app wrappers." : "Sensor readings and permission availability appear in Diagnostics with their observation time. Unknown readings remain unknown. Use the main launcher's per-device phone-screen and device-wide audio controls; those policies apply across wrappers.")])
+        deviceSettingsContent = content
+        page("Performance", content)
     }
     private func buildDiagnostics() {
         diagnostics.isEditable = false; diagnostics.isRichText = false; diagnostics.font = .monospacedSystemFont(ofSize: 11, weight: .regular); diagnostics.setAccessibilityLabel("Redacted companion diagnostics")
         let scroll = NSScrollView(); scroll.documentView = diagnostics; scroll.hasVerticalScroller = true; scroll.heightAnchor.constraint(equalToConstant: 320).isActive = true
-        page("Diagnostics", column([label("Local diagnostics", heading: true), label("Exports include bounded capability, permission and connection counters. Clipboard, shared content, notification bodies, credentials and hardware identifiers are excluded. Nothing is uploaded."), row([button("Refresh Diagnostics") { [weak self] in self?.loadDiagnostics() }, button("Export Report…") { [weak self] in self?.exportDiagnostics() }]), scroll]))
+        page("Diagnostics", column([label("Local diagnostics", heading: true), label("Exports include bounded capability, permission and connection counters. Clipboard, shared content, notification bodies, credentials and hardware identifiers are excluded. Nothing is uploaded."), row([taskButton(.refreshDiagnostics) { [weak self] in self?.loadDiagnostics() }, taskButton(.exportDiagnostics) { [weak self] in self?.exportDiagnostics() }]), scroll]))
     }
     private func buildDelivery() {
+        if embedded { delivery.stringValue = "Review official DroidBridge releases and download a Mac update explicitly. Compare its version, architecture, checksum and signing information before installing. Updates are installed manually." }
         let open = button("Download Installer…") { [weak self] in if let url = self?.downloadURL { NSWorkspace.shared.open(url) } }; open.isEnabled = false; downloadButton = open
         let copy = button("Copy Download Link") { [weak self] in if let url = self?.downloadURL { NSPasteboard.general.clearContents(); NSPasteboard.general.setString(url.absoluteString, forType: .string) } }; copy.isEnabled = false; copyDownloadButton = copy
-        page("Get Mac App", column([label("Deliver DroidBridge for Mac", heading: true), delivery, row([button("Official Releases…") { if let url = URL(string: "https://github.com/SloopWorks/DroidBridge/releases") { NSWorkspace.shared.open(url) } }, button("Refresh Delivery Details") { [weak self] in self?.loadDelivery() }]), row([open, copy]), label("Use the release's version, architecture, checksum and signing information. Current local builds may be ad-hoc signed; downloading or transferring a DMG does not install it, bypass Gatekeeper or establish trust. The phone's Get Mac App screen provides the same official download and setup guidance. No received installer is run automatically.")]))
+        page("Get Mac App", column([label(embedded ? "Release Information" : "Deliver DroidBridge for Mac", heading: true), delivery, row([button("Official Releases…") { if let url = URL(string: "https://github.com/SloopWorks/DroidBridge/releases") { NSWorkspace.shared.open(url) } }, taskButton(.refreshRelease, title: embedded ? "Refresh Release Details" : "Refresh Delivery Details") { [weak self] in self?.loadDelivery() }]), row([open, copy]), label(embedded ? "Downloading a disk image does not install an update. Current local builds may be ad-hoc signed. Review the release's signing information and follow macOS installation prompts; no installer is run automatically." : "Use the release's version, architecture, checksum and signing information. Current local builds may be ad-hoc signed; downloading or transferring a DMG does not install it, bypass Gatekeeper or establish trust. The phone's Get Mac App screen provides the same official download and setup guidance. No received installer is run automatically.")]))
     }
 
     func refreshState() {
@@ -197,11 +334,14 @@ import DroidBridgeCore
             for device in adapter.devices { phones.addItem(withTitle: "\(device.name) · \(device.connected ? "Connected" : "Offline")"); phones.lastItem?.representedObject = device.id }
             presentedDevices = adapter.devices
         }
-        if let previous, let index = phones.itemArray.firstIndex(where: { ($0.representedObject as? String) == previous }) { phones.selectItem(at: index) }
+        if embedded {
+            let desired = managingSavedPairing && activePage == .connection ? previous : hostSerial.flatMap { adapter.device(for: $0)?.id }
+            phones.selectItem(at: desired.flatMap { id in phones.itemArray.firstIndex(where: { ($0.representedObject as? String) == id }) } ?? -1)
+        } else if let previous, let index = phones.itemArray.firstIndex(where: { ($0.representedObject as? String) == previous }) { phones.selectItem(at: index) }
         else if let serial = adapter.launcher?.selectedDevice?.serial, let device = adapter.device(for: serial), let index = adapter.devices.firstIndex(where: { $0.id == device.id }) { phones.selectItem(at: index) }
         selectedID = phones.selectedItem?.representedObject as? String
         let catalogOrigin = phone.flatMap { value in value.trustID.map { value.id + ":" + $0 } }
-        if presentedCatalogOrigin != catalogOrigin { clearPhoneContent(); presentedCatalogOrigin = catalogOrigin }
+        if presentedCatalogOrigin != catalogOrigin { presentedCatalogOrigin = catalogOrigin; clearPhoneContent() }
         let notificationTrust = phone.flatMap { value in value.trustID.map { value.id + ":" + $0 } }
         if presentedNotificationTrust != notificationTrust {
             presentedNotificationTrust = notificationTrust; notificationIntent = UUID(); notificationOptIn.state = .off; renderInbox()
@@ -213,31 +353,34 @@ import DroidBridgeCore
             presentedADBDevices = adapter.launcher?.devices ?? []
         }
         if let selectedSerial, let index = adbDevices.itemArray.firstIndex(where: { ($0.representedObject as? String) == selectedSerial }) { adbDevices.selectItem(at: index) }
-        detail.stringValue = phone.map { "\($0.name) · \($0.connected ? "Authenticated companion connected" : "Companion offline")\($0.error.map { " · \($0)" } ?? "")" } ?? adapter.statusMessage
+        detail.stringValue = phone.map { "\($0.name) · \($0.connected ? "Authenticated companion connected" : "Companion offline")\($0.error.map { " · \($0)" } ?? "")" } ?? (embedded ? "The selected Android device has no saved companion pairing. Connect and pair it in Devices." : adapter.statusMessage)
         hostRegistration.stringValue = adapter.hostRegistrationMessage.isEmpty ? "For phone launch setup, open the installed main DroidBridge app once." : adapter.hostRegistrationMessage
         if previous != selectedID, !changingPhone { clearPhoneContent() }
         if presentedProfile != phone?.profile || previous != selectedID { profile.selectItem(at: phone?.profile == .responsive ? 1 : phone?.profile == .battery ? 2 : 0); presentedProfile = phone?.profile }
         renderSessions()
+        updateTaskButtonEnablement()
     }
-    @objc private func phoneChanged() { selectedID = phones.selectedItem?.representedObject as? String; clearPhoneContent(); refreshState(); loadCatalog(); loadTrusts(); Task { await loadInbox(force: true) } }
+    @objc private func phoneChanged() { managingSavedPairing = embedded; selectedID = phones.selectedItem?.representedObject as? String; clearPhoneContent(); refreshState(); loadCatalog(); loadTrusts(); Task { await loadInbox(force: true) } }
     private func clearPhoneContent() {
-        notificationIntent = UUID()
+        notificationIntent = UUID(); inboxToken = UUID(); lastInboxMS = -Double.infinity
         catalogTask?.cancel(); catalogToken = UUID(); apps = []; filtered = []; selection = [:]; pendingExports.removeAll(); appTable.reloadData(); items = []; renderInbox(); trusts.setViews([]); diagnostics.string = ""; appStatus.stringValue = "Choose Refresh Catalog to read this paired phone's apps."
         for task in iconTasks.values { task.cancel() }; iconTasks.removeAll(); iconQueue.removeAll(); icons.removeAll()
         favoritePackages = Set(localDefaults.stringArray(forKey: "companion-favorites-\(selectedID ?? "none")") ?? [])
         notificationSelection = []; notificationFilters.stringValue = ""; notificationOptIn.state = .off; notificationApps = []; notificationTable.reloadData()
         health.stringValue = "Battery, charging, thermal and network status: unknown. Refresh to request a current observation."
         presentedSessions = []; presentedSessionPhone = nil
+        onCatalogChange?()
     }
     private func run(_ message: String, action work: @escaping () async throws -> String) {
         guard action == nil else { status.stringValue = "Wait for the current action or cancel it first."; return }
         status.stringValue = message; progress.startAnimation(nil)
         let token = UUID(); actionToken = token
         action = Task { [weak self] in
-            do { let result = try await work(); if !Task.isCancelled { self?.status.stringValue = result } }
-            catch { if !Task.isCancelled { self?.status.stringValue = error.localizedDescription } }
-            if self?.actionToken == token { self?.progress.stopAnimation(nil); self?.action = nil }
+            do { let result = try await work(); if !Task.isCancelled, self?.actionToken == token { self?.status.stringValue = result } }
+            catch { if !Task.isCancelled, self?.actionToken == token { self?.status.stringValue = error.localizedDescription } }
+            if self?.actionToken == token { self?.progress.stopAnimation(nil); self?.action = nil; self?.updateTaskButtonEnablement() }
         }
+        updateTaskButtonEnablement()
     }
     private func connect() {
         guard let serial else { status.stringValue = "Connect and authorize an Android device first, then click Refresh Devices in DroidBridge."; return }
@@ -310,10 +453,12 @@ import DroidBridgeCore
     }
     private func loadTrusts() {
         guard let phone else { return }
+        let token = inboxToken
         run("Reading trusted Macs…") { [weak self] in
             guard let self else { throw CancellationError() }
             let reply = try await self.adapter.broker.request(operation: "trust_list", payload: ["device_id": .string(phone.id)])
-            guard self.selectedID == phone.id else { throw CancellationError() }
+            try Task.checkCancellation()
+            guard self.inboxToken == token, self.selectedID == phone.id, self.phone?.trustID == phone.trustID else { throw CancellationError() }
             let rows: [NSView] = (reply.data["items"]?.array ?? []).compactMap { value in
                 guard let o = value.object, let id = o["trust_id"]?.string else { return nil }
                 return self.row([self.label(o["mac_name"]?.string ?? "Trusted Mac"), self.button("Revoke…") { [weak self] in self?.revoke(id, phone: phone) }])
@@ -364,6 +509,7 @@ import DroidBridgeCore
         run("Finishing the phone-approved local pairing…") { [weak self] in
             guard let self else { throw CancellationError() }
             let reply = try await self.adapter.broker.request(operation: "recover_pairing", payload: ["device_id": .string(pending.id)])
+            try Task.checkCancellation()
             guard reply.data["status"]?.string == "approved" else { throw CompanionBoundaryError("pairing_not_complete", "The approved pairing could not be completed. Forget the pending pairing and use a fresh phone link.") }
             self.selectedID = pending.id
             try await self.adapter.refreshStatus()
@@ -385,7 +531,7 @@ import DroidBridgeCore
         guard !stopped, selectedID == origin.id, phone?.trustID == origin.trustID else { return }; appStatus.stringValue = text
     }
     func acceptCatalog(_ snapshot: CompanionCatalogSync.Snapshot, phone origin: CompanionDesktopDevice, complete: Bool) {
-        guard !stopped, !windowClosed, window?.isVisible == true, selectedID == origin.id, phone?.trustID == origin.trustID else { return }
+        guard surfaceVisible, selectedID == origin.id, phone?.trustID == origin.trustID else { return }
         apps = snapshot.apps; selection = snapshot.selection; filterApps()
         appStatus.stringValue = "\(apps.count) apps loaded\(complete ? ". Changes update automatically while this window is visible." : " · reading more…")"
         if complete {
@@ -393,17 +539,17 @@ import DroidBridgeCore
             catalogTask = Task { [weak self] in
                 guard let self else { return }
                 let chosen = Set(snapshot.selection.compactMap { $0.value ? $0.key : nil })
-                guard !chosen.isEmpty, let catalog = self.adapter.launcher?.managedCatalog else { self.pendingExports.removeAll(); return }
+                guard !chosen.isEmpty, let catalog = self.adapter.launcher?.managedCatalog else { self.pendingExports.removeAll(); self.onCatalogChange?(); return }
                 let aliases = Set(origin.aliases)
                 guard let active = try? await Task.detached(priority: .utility, operation: {
                     Set(try catalog.records().filter { aliases.contains($0.deviceSerial) && $0.availability == .active && $0.location == .active }.map(\.packageName))
                 }).value, !Task.isCancelled, self.catalogToken == token, self.selectedID == origin.id, self.phone?.trustID == origin.trustID else { return }
-                self.pendingExports = chosen.subtracting(active); self.appTable.reloadData()
+                self.pendingExports = chosen.subtracting(active); self.appTable.reloadData(); self.onCatalogChange?()
             }
         }
     }
     func controlTextDidChange(_ obj: Notification) { if obj.object as? NSTextField === notificationFilters { notificationIntent = UUID() } else if obj.object as? NSSearchField === notificationSearch { filterNotificationApps() } else { filterApps() } }
-    private func filterApps() { let query = appSearch.stringValue; filtered = apps.filter { query.isEmpty || $0.label.localizedCaseInsensitiveContains(query) || $0.packageName.localizedCaseInsensitiveContains(query) }.sorted { a, b in let af = favoritePackages.contains(a.packageName), bf = favoritePackages.contains(b.packageName); return af != bf ? af : a.label.localizedStandardCompare(b.label) == .orderedAscending }; appTable.reloadData(); filterNotificationApps() }
+    private func filterApps() { let query = appSearch.stringValue; filtered = apps.filter { query.isEmpty || $0.label.localizedCaseInsensitiveContains(query) || $0.packageName.localizedCaseInsensitiveContains(query) }.sorted { a, b in let af = favoritePackages.contains(a.packageName), bf = favoritePackages.contains(b.packageName); return af != bf ? af : a.label.localizedStandardCompare(b.label) == .orderedAscending }; appTable.reloadData(); filterNotificationApps(); onCatalogChange?() }
     private func filterNotificationApps() { let query = notificationSearch.stringValue; notificationApps = apps.filter { query.isEmpty || $0.label.localizedCaseInsensitiveContains(query) || $0.packageName.localizedCaseInsensitiveContains(query) }; notificationTable.reloadData() }
     func numberOfRows(in tableView: NSTableView) -> Int { tableView === notificationTable ? notificationApps.count : filtered.count }
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row index: Int) -> NSView? {
@@ -456,23 +602,29 @@ import DroidBridgeCore
             let id = UUID()
             do { _ = try await self.adapter.broker.request(operation: "export_selection_set", payload: ["device_id": .string(phone.id), "package_name": .string(app.packageName), "selected": .bool(selected)], requestID: id) }
             catch { self.appTable.reloadData(); throw error }
+            try Task.checkCancellation()
+            guard self.selectedID == phone.id, self.phone?.trustID == phone.trustID else { throw CancellationError() }
             self.selection[app.packageName] = selected
-            if !selected { self.pendingExports.remove(app.packageName) }; self.appTable.reloadData()
+            if !selected { self.pendingExports.remove(app.packageName) }; self.appTable.reloadData(); self.onCatalogChange?()
             return try await self.waitForHostReceipt(id, device: phone.id, pending: "Choice saved; waiting for the Mac wrapper update…", onApplied: { result in
+                guard !Task.isCancelled, self.selectedID == phone.id, self.phone?.trustID == phone.trustID else { return }
                 if result["materialization_pending"]?.bool == true { self.pendingExports.insert(app.packageName) }
                 else { self.pendingExports.remove(app.packageName) }
-                self.appTable.reloadData()
+                self.appTable.reloadData(); self.onCatalogChange?()
             })
         }
     }
     private func renderSessions() {
-        let values = adapter.sessionSnapshot.filter { $0["device_id"]?.string == selectedID }
+        let localIDs = Set(adapter.launcher?.sessions.keys.map { $0.uuidString.lowercased() } ?? [])
+        let values = adapter.sessionSnapshot.filter {
+            $0["device_id"]?.string == selectedID && (!embedded || !localIDs.contains($0["session_id"]?.string?.lowercased() ?? ""))
+        }
         guard values != presentedSessions || selectedID != presentedSessionPhone else { return }; presentedSessions = values; presentedSessionPhone = selectedID
         let rows: [NSView] = values.map { value in
             let id = value["session_id"]?.string ?? "", title = value["label"]?.string ?? value["package"]?.string ?? "Android app", phase = value["phase"]?.string ?? "unknown"
             return row([label("\(title) · \(phase) · \(value["backend"]?.string ?? "unknown")"), button("Stop") { [weak self] in self?.sendRemoteCommand("stop_session", payload: ["session_id": .string(id)]) }])
         }
-        sessions.setViews(rows.isEmpty ? [label("No Mac sessions are registered for this phone.")] : rows)
+        sessions.setViews(rows.isEmpty ? [label(embedded ? "No sessions are registered in other Mac apps for this phone." : "No Mac sessions are registered for this phone.")] : rows)
     }
     private func sendRemoteCommand(_ kind: String, payload: [String: CompanionJSON]) {
         guard let phone else { return }
@@ -514,6 +666,10 @@ import DroidBridgeCore
     }
     func loadInbox(force: Bool = false) async {
         guard let phone, phone.connected, force || CompanionClock.nowMS() - lastInboxMS >= 3000 else { return }; lastInboxMS = CompanionClock.nowMS()
+        let token = inboxToken
+        guard inboxLoadingToken != token else { return }
+        inboxLoadingToken = token; updateTaskButtonEnablement()
+        defer { if inboxLoadingToken == token { inboxLoadingToken = nil; updateTaskButtonEnablement() } }
         do {
             var result: [[String: CompanionJSON]] = [], cursor: String?
             repeat {
@@ -522,9 +678,9 @@ import DroidBridgeCore
                 result += (reply.data["items"]?.array ?? []).compactMap(\.object); cursor = reply.data["next_cursor"]?.string
                 guard result.count <= 64 else { throw CompanionBoundaryError("inbox_too_large", "The inbox exceeded its bound.") }
             } while cursor != nil
-            guard !Task.isCancelled, selectedID == phone.id else { return }
+            guard !stopped, !windowClosed, !Task.isCancelled, inboxToken == token, selectedID == phone.id, self.phone?.trustID == phone.trustID else { return }
             if items != result { items = result; renderInbox(); await showNotifications() }
-        } catch { if force { status.stringValue = error.localizedDescription } }
+        } catch { if force, !stopped, !windowClosed, !Task.isCancelled, inboxToken == token, selectedID == phone.id, self.phone?.trustID == phone.trustID { status.stringValue = error.localizedDescription } }
     }
     private func renderInbox() {
         var shareRows: [NSView] = [], noteRows: [NSView] = []
@@ -628,7 +784,20 @@ import DroidBridgeCore
     private func setProfile() { guard let phone else { return }; let value = ["balanced", "responsive", "battery"][max(0, min(2, profile.indexOfSelectedItem))]; run("Saving performance profile…") { [weak self] in guard let self else { throw CancellationError() }; let id = UUID(); _ = try await self.adapter.broker.request(operation: "profile_set", payload: ["device_id": .string(phone.id), "profile": .string(value)], requestID: id); let result = try await self.waitForHostReceipt(id, device: phone.id, pending: "Profile accepted; waiting for the Mac owner…"); try await self.adapter.refreshStatus(); return result + " · New app windows only; existing frame rates are preserved." } }
     private func loadDiagnostics() {
         guard let phone else { return }
-        run("Reading redacted diagnostics…") { [weak self] in guard let self else { throw CancellationError() }; let reply = try await self.adapter.broker.request(operation: "diagnostics", payload: ["device_id": .string(phone.id)]); let redacted = CompanionDiagnostics.sanitized(reply.data); let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]; let bytes = try encoder.encode(redacted); guard bytes.count <= 262144 else { throw CompanionBoundaryError("diagnostics_too_large", "The diagnostic report exceeded its bound.") }; self.health.stringValue = CompanionDiagnostics.healthSummary(redacted); self.diagnostics.string = "Mac received \(ISO8601DateFormatter().string(from: Date()))\n" + String(decoding: bytes, as: UTF8.self); return "Redacted diagnostic snapshot updated." }
+        let token = inboxToken
+        run("Reading redacted diagnostics…") { [weak self] in
+            guard let self else { throw CancellationError() }
+            let reply = try await self.adapter.broker.request(operation: "diagnostics", payload: ["device_id": .string(phone.id)])
+            try Task.checkCancellation()
+            guard self.inboxToken == token, self.selectedID == phone.id, self.phone?.trustID == phone.trustID else { throw CancellationError() }
+            let redacted = CompanionDiagnostics.sanitized(reply.data)
+            let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+            let bytes = try encoder.encode(redacted)
+            guard bytes.count <= 262144 else { throw CompanionBoundaryError("diagnostics_too_large", "The diagnostic report exceeded its bound.") }
+            self.health.stringValue = CompanionDiagnostics.healthSummary(redacted)
+            self.diagnostics.string = "Mac received \(ISO8601DateFormatter().string(from: Date()))\n" + String(decoding: bytes, as: UTF8.self)
+            return "Redacted diagnostic snapshot updated."
+        }
     }
     private func exportDiagnostics() { guard !diagnostics.string.isEmpty else { status.stringValue = "Refresh diagnostics before exporting."; return }; let panel = NSSavePanel(); panel.nameFieldStringValue = "DroidBridge-Companion-Diagnostics.txt"; if panel.runModal() == .OK, let url = panel.url { let text = diagnostics.string; run("Saving redacted diagnostics…") { try await Task.detached { try text.write(to: url, atomically: true, encoding: .utf8) }.value; return "Redacted diagnostics saved locally." } } }
     private func loadDelivery() {
@@ -637,6 +806,7 @@ import DroidBridgeCore
             guard let self else { throw CancellationError() }
             var payload: [String: CompanionJSON] = [:]; if let phoneID { payload["device_id"] = .string(phoneID) }
             let reply = try await self.adapter.broker.request(operation: "delivery", payload: payload), data = reply.data
+            try Task.checkCancellation()
             self.downloadURL = nil; self.downloadButton?.isEnabled = false; self.copyDownloadButton?.isEnabled = false
             guard let version = data["version"]?.string, version.utf8.count <= 40, let architecture = data["architecture"]?.string, architecture.utf8.count <= 40,
                   let minimum = data["minimum_macos"]?.string, minimum.utf8.count <= 40,
@@ -647,7 +817,7 @@ import DroidBridgeCore
                 return "Release details unavailable. No installer was downloaded or run."
             }
             self.downloadURL = url; self.downloadButton?.isEnabled = true; self.copyDownloadButton?.isEnabled = true
-            let signing = String((data["signing"]?.string ?? "Not verified").prefix(120)), instructions = String((data["installation"]?.string ?? "Download on the Mac, verify its checksum, install, then pair.").prefix(2000))
+            let signing = String((data["signing"]?.string ?? "Not verified").prefix(120)), instructions = String((data["installation"]?.string ?? (self.embedded ? "Download the update, verify its checksum and signing information, then install it manually." : "Download on the Mac, verify its checksum, install, then pair.")).prefix(2000))
             self.delivery.stringValue = "DroidBridge \(version) · \(architecture) · macOS \(minimum)+\n\(ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file))\nSigning: \(signing)\nSHA-256: \(hash)\n\(instructions)\nSource: \(url.absoluteString)"
             return "Versioned release details loaded. Download or copy the link explicitly; no installer was run."
         }

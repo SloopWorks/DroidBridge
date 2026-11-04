@@ -1,0 +1,51 @@
+{
+  "config": {
+    "content": "# Shipyard Deploy project configuration.\n# Schema: contracts/schemas/project-config.schema.json\n#\n# This file is a default, never an authority. Precedence, weakest first:\n#   built-in default < this file < SHIPYARD_DEPLOY_* env < command-line flag\n# The Gradle plugin adds one rung: this file < shipyardDeploy { } DSL.\nversion: 1\n\n# Control plane. SHIPYARD_DEPLOY_SERVER and --server both override it.\nserver: https://shipyard-deploy-dev.patjackson52.workers.dev\n\nproject: droidbridge\n\n# What this repository publishes. `signer` is documentation: the CLI checks\n# the real signature against the fingerprints registered on the package.\npackages:\n  dev.droidbridge.companion.dev: { variant: development, signer: droidbridge-development }\n\n# Branch to channel routing. An exact `branch` match wins; otherwise the\n# first `branch: \"*\"` rule does. {branch_slug} is the branch lowercased,\n# non-alphanumerics collapsed to '-', truncated to 40 characters.\nchannels:\n  main: { branch: main, mode: AUTO_INSTALL_WHEN_ALLOWED, ttl: 7d }\n  default: { branch: \"*\", channel: \"dev-{branch_slug}\", mode: NOTIFY, ttl: 48h }\n",
+    "path": "AndroidCompanion/.shipyard-deploy.yaml",
+    "project": "droidbridge"
+  },
+  "files": [
+    "/Users/patrick/workspace/DroidBridge/AndroidCompanion/AGENTS.md"
+  ],
+  "ok": false,
+  "plugin_snippet": "plugins {\n    id(\"com.android.application\")\n    id(\"works.sloop.shipyard.deploy\")\n}\n\n// No shipyardDeploy { } block is needed: the project, the variant to opt in\n// (development) and the branch-to-channel rules all come from .shipyard-deploy.yaml.\n// Add the block only to override the file — for example cliPath, when the\n// shipyard-deploy binary is not on PATH.",
+  "status": "failed",
+  "steps": [
+    {
+      "name": "detect",
+      "status": "done",
+      "detail": "AndroidCompanion (module app, applicationId dev.droidbridge.companion)"
+    },
+    {
+      "name": "apk",
+      "status": "done",
+      "detail": "dev.droidbridge.companion.dev 0.2.0 (12), signer 15a066e7bf25…"
+    },
+    {
+      "name": "application id",
+      "status": "done",
+      "detail": "dev.droidbridge.companion.dev  (variant development)"
+    },
+    {
+      "name": "doctor",
+      "status": "done",
+      "detail": "https://shipyard-deploy-dev.patjackson52.workers.dev (ok)"
+    },
+    {
+      "name": "project",
+      "status": "failed",
+      "detail": "project \"droidbridge\" does not exist and this token cannot create it (admin only)",
+      "command": "curl -sS -X POST \"$SHIPYARD_DEPLOY_SERVER/v1/projects\" -H \"Authorization: Bearer $ADMIN_TOKEN\" -H 'content-type: application/json' -d '{\"slug\":\"droidbridge\",\"display_name\":\"droidbridge\"}'"
+    },
+    {
+      "name": "config",
+      "status": "already",
+      "detail": "/Users/patrick/workspace/DroidBridge/AndroidCompanion/.shipyard-deploy.yaml exists; pass --force to rewrite it"
+    },
+    {
+      "name": "agent notes",
+      "status": "done",
+      "detail": "updated the shipyard-deploy block in /Users/patrick/workspace/DroidBridge/AndroidCompanion/AGENTS.md"
+    }
+  ]
+}

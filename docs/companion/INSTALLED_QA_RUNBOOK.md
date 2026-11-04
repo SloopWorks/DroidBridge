@@ -1,5 +1,73 @@
 # Next installed companion verification
 
+## Companion improvements candidate (2026-10-30)
+
+The current improvement workstream owns only `DroidBridge_API35` on
+`emulator-5580`. The API37/5582 ledger below is retained historical planning;
+it does not authorize this workstream to operate 5582 or the physical phone.
+Coordinate one device owner at a time, including test-APK installation.
+
+Build the signed APK and copy it to `dist/companion-improvements/` before
+packaging. Pass that exact copy as `DROIDBRIDGE_COMPANION_APK` to
+`scripts/package.sh`; verify the bundled copy has the same hash. The candidate
+manifest binds APK bytes and product-source hashes. Preserve earlier failed
+logs and distinguish their hashes from final-candidate evidence.
+
+`scripts/verify-companion-improvements.py` extends the installed pairing/native
+launch runner with four actual phone-to-Mac commands, exact clipboard comparison
+and restoration, an owned loopback web URL, preset receipts, a deterministic
+2 MiB phone-to-Mac handoff, and decoded-frame continuity after the companion
+service stops. It requires a fresh output directory and an existing private
+mode-700 QA root. Example (replace the root with a fresh owned directory):
+
+```sh
+python3 scripts/verify-companion-improvements.py \
+  --app dist/DroidBridge.app \
+  --qa-root /absolute/private/qa-root \
+  --output verification/companion-improvements/installed-e2e-new \
+  --adb /Users/patrick/Library/Android/sdk/platform-tools/adb \
+  --serial emulator-5580
+```
+
+The system Save panel and Finder selection require an unlocked Mac and real CUA
+interaction. A programmatic panel-selection attempt is not that acceptance gate.
+The runner prints its private destination and waits for CUA to complete the real
+Save panel. `--defer-system-save` runs the independent installed transport and
+decoded-frame checks, writes `component-results.json`, and deliberately keeps
+the overall `results.json` incomplete. It never turns a skipped dialog green.
+The first run reached actual applied command receipts and native decoded content,
+then timed out selecting the Save panel while the Mac was locked. Its overall
+`results.json` remains failed; successful preceding checkpoints are recorded
+separately and must not turn the complete flow green.
+
+The subsequent unlocked run in
+`verification/companion-improvements/installed-system-save-final/` passed the
+complete flow. CUA completed the real Save panel, the script verified the saved
+2 MiB file and phone completion receipt, and an independent reviewer observed
+the exact selected file in Finder. Bind CUA only after the isolated host is
+actually running: an older idle DroidBridge process at the same bundle path can
+otherwise receive the automation binding. Close only a positively identified
+idle host through normal Quit; never terminate unrelated active sessions to
+resolve a tool-selection ambiguity.
+
+The owner later explicitly authorized installing the verified release on the
+Pixel. That personal-profile install, pulled APK hash and startup passed; the
+USB transport disconnected before further physical UI/pairing. See
+`verification/companion-improvements/pixel/installation.json` and
+`PIXEL_VERIFICATION.md`. This specific authorization does not broaden the normal
+emulator regression runner's scope or permit personal-data/permission mutations.
+
+`scripts/verify-companion-gui.sh` uses the shipping AppKit/controller code over an
+anonymous NSXPC fixture, with Android tools disabled. Its verified-file recovery
+check proves destination retention after local publication, explicit receipt
+retry with the original UUID and no redownload. It does not prove system-panel
+interaction, Finder selection or live-phone transfer.
+
+Final acceptance and external distribution status live in
+`verification/companion-improvements/REPORT.md`.
+
+## Retained API37 verification plan
+
 This is an execution plan, not acceptance evidence. Use a fresh
 `verification/companion/installed-api37-build3-*` directory and retain failed
 attempts. Only the coordinated owner may operate `emulator-5582`; `5580` belongs

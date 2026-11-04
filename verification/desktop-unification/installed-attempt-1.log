@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 163, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 41, in main
+    flow.start(); flow.prepare_phone(); flow.pair_by_import(); flow.launch_fixture()
+    ~~~~~~~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-installed.py", line 113, in start
+    self.action('status', window='DroidBridge')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-installed.py", line 85, in action
+    raise RuntimeError(f'AppKit action did not return a receipt: {action}')
+RuntimeError: AppKit action did not return a receipt: status

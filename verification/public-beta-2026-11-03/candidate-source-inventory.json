@@ -1,0 +1,2418 @@
+{
+  "scope": "Review inventory of current working source; not a committed/accepted release identity",
+  "created_at_utc": "2026-11-04T00:31:33.040679+00:00",
+  "base_commit": "676fca36b95aece3d59d6bd817964b36112cf1fd",
+  "entries": [
+    {
+      "path": ".gitattributes",
+      "sha256": "b5a173e7627d421ddb7d017f0c929dfc153501c47b5a8aad5d54087d40794dfe",
+      "size": 335
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "9d3c9c6a83c3aa3693bdb0386ef9db24ae8508d1d5fcff1bdaa3b504aee45d5c",
+      "size": 821
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "dc829b5cafa091d86e7c9b3d741cfaf294765112965d0d26e4ee6b3c47081579",
+      "size": 2447
+    },
+    {
+      "path": "APP_ONBOARDING_DESIGN.md",
+      "sha256": "75eaf9eb51cc9bcd0d6a1d35244b7a4663bef200ec36de6ef548bd5673c84bec",
+      "size": 7301
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "sha256": "0cbc0e032ceb08debcaa9a771067fc0854e599c6ad3b769b0dab9b264c159d14",
+      "size": 29789
+    },
+    {
+      "path": "AUDIO_DESIGN.md",
+      "sha256": "89d88bedf2885d89ff553dc10b5ff5493418f16b58bc23119401f819ee18bdb7",
+      "size": 5188
+    },
+    {
+      "path": "AndroidCompanion/.gitignore",
+      "sha256": "acdf4e72a50f42d8275adf368df9a1cdbe35eccc6fe9ede5e0d71682b6b38bb7",
+      "size": 59
+    },
+    {
+      "path": "AndroidCompanion/.shipyard-deploy.yaml",
+      "sha256": "00bfabf05a1224ffcfe65339e3fcc81efece100392447e3d5ec3a3114f9aec62",
+      "size": 336
+    },
+    {
+      "path": "AndroidCompanion/AGENTS.md",
+      "sha256": "64258184a9f2c27146c35d3b703ab51b578557ab8a5495c023dd76a50492e90e",
+      "size": 3166
+    },
+    {
+      "path": "AndroidCompanion/BACKEND_APIS.md",
+      "sha256": "308e61b0b40341125b1dc419910cc90de2af97e1c6ca7519bc9d740a00e0d53c",
+      "size": 7149
+    },
+    {
+      "path": "AndroidCompanion/README.md",
+      "sha256": "f5a6bb212ba7e5db6bf6dc68974627bac719c5ce2d30c3f77b64e595cf908abb",
+      "size": 4987
+    },
+    {
+      "path": "AndroidCompanion/THIRD_PARTY.md",
+      "sha256": "1bee2c28f6563c06e9191a13de412958a74bbafef798a0c9f29520119da38040",
+      "size": 481
+    },
+    {
+      "path": "AndroidCompanion/TLS.md",
+      "sha256": "131129dfc1acfe560ebe66e585929c4a7211590c45242743846d187d2082fcce",
+      "size": 3182
+    },
+    {
+      "path": "AndroidCompanion/app/build.gradle.kts",
+      "sha256": "5d7ef74d4c320b0644547dc096dd8dcb22cceb6e011f4bde5a6542d92d97f982",
+      "size": 4040
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/AndroidManifest.xml",
+      "sha256": "7c5089e8cfe4d4b113f35bb2c2cba6540aca6329b61cbe1b128d07d46d02518a",
+      "size": 1093
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionConsentDeviceTest.kt",
+      "sha256": "ede1eb1d578fdf840ba6ca659b8d3926ffdf8f74f239ed853b841645a6412b9a",
+      "size": 5008
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionConsentInputDeviceTest.kt",
+      "sha256": "e5639e94b9a5f892b9c59fe9bef2a34843a2358987887eda1e3a039490b6868e",
+      "size": 12402
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionDesktopE2EDeviceTest.kt",
+      "sha256": "509f761280b8ec60af4b36d438356526d7fa54879dbb74d11adf8a0faa961129",
+      "size": 5362
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionDeviceTest.kt",
+      "sha256": "07c7478ffb8884300d25aa232077a11680e49803ddc0d7ef0a7b387a172026d1",
+      "size": 4391
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionImprovementsUXDeviceTest.kt",
+      "sha256": "126fbe423c736d159f7f28dc1a67888dd2d056cf15006a267bf7fcdbf869af11",
+      "size": 13814
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionLibraryDeviceTest.kt",
+      "sha256": "8357e219252b78c0918372ab4437a75c950ce9207d9e9c8cf3842f88f7f23bda",
+      "size": 6716
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionPairingExpiryDeviceTest.kt",
+      "sha256": "d77a2b23384eb997fdd6e03d0c99db034048514a3f245f0015d5d87451926c56",
+      "size": 6616
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionRealNotificationDeviceTest.kt",
+      "sha256": "c4b0b7d75061bca47187dce322ff8726a031a57dde8670f95784960791efc6ad",
+      "size": 15533
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionReceiptDeviceTest.kt",
+      "sha256": "056c92129c5258f2524a1cd637a6a2dea31b27d1169ed0e06a2bb0027423f9c6",
+      "size": 9364
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionSecurityTest.kt",
+      "sha256": "2fd682893ac57636c23d5179f40219b604afb296264350a6bdea9404660def67",
+      "size": 40755
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionShareOnwardDeviceTest.kt",
+      "sha256": "b6db633608a49c9ca2f6a35405ded508ced4256916fac5e04f7b51c4d3d288e3",
+      "size": 8585
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionStagingDeadlineTest.kt",
+      "sha256": "8116e9b4e99b2a96d7f6ffb7d54d3a627969479165c2290984eb763a243ce92c",
+      "size": 6488
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionTlsTest.kt",
+      "sha256": "b46ab7b0501edd67456272baf8ada6e14cf12d522943a58b7969b85ee777c9ee",
+      "size": 5502
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionUXDeviceTest.kt",
+      "sha256": "148ac92198bff05e063ba0f2e490e1671e67b29d8247d5ad0e65d5cbedfa3053",
+      "size": 6649
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/NotificationProbeActivity.java",
+      "sha256": "317d1d069c09546c9133fea00fdfc2b15f92f04fe525f6d1b4b465aa284167b2",
+      "size": 2520
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/NotificationProbeReceiver.java",
+      "sha256": "359e5850b7905ac81385ab74e50a8f8db2a9e59e350783ed948b22114ecf1dec",
+      "size": 784
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PinnedTestClient.kt",
+      "sha256": "f65e938a8c4d211586ac369ba594c384ceaaa9a2e6cb51c58f6a3216e9f48a00",
+      "size": 1943
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformNotificationDeviceTest.kt",
+      "sha256": "90fd7a55b84af2b52e56eff056195746df555691448fb117099be0874e0f91ab",
+      "size": 5136
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformPinnedShortcutDeviceTest.kt",
+      "sha256": "c60f978f3c99199802efe02ba98093d1bb49ada43c27f43ca8cbcee13e2cbf65",
+      "size": 4489
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformUiProof.kt",
+      "sha256": "1ac4fe4fd53d382a91cad68b403830d0da5ae0bfc0a60dc2f86921277c2238a8",
+      "size": 3802
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformWidgetDeviceTest.kt",
+      "sha256": "bcd9a53b6d9fd5546df4b2b96a93629ead0e4db8c6b92b5a02c6c4d0e503d0b0",
+      "size": 6195
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/PlatformWidgetHostActivity.java",
+      "sha256": "738b5861b3af1e6e3f134cb55fc8b2651eed4dac4cba2f40c2c0f0c360cb5ebe",
+      "size": 2802
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/QuickAccessDeviceTest.kt",
+      "sha256": "2ba6dafa6e914e9e0a58ba5b885de9acb0ec1603e47b5f4591698a78ff3ab0b6",
+      "size": 9310
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/ReleaseDeliveryDeviceTest.kt",
+      "sha256": "d6574ac4a3f729239345579d9216b22decd74dc3c98fb9b0f68239d53dd9a9d0",
+      "size": 3997
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/StagingGrantActivity.java",
+      "sha256": "617e4057f4f5c84d17cee4e38c062d921469e8f9e21e784c2b42f61dc7a352dc",
+      "size": 1500
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/StalledTransferProvider.java",
+      "sha256": "07d9f6cec7e81d91bf4963ffb7575212eda1002c7035226387214eb307f49412",
+      "size": 5106
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/TestCommandClock.kt",
+      "sha256": "b964697dfebda2f8dab7040ec5a5184a078f595f3b6e453b5404ed18dc991118",
+      "size": 488
+    },
+    {
+      "path": "AndroidCompanion/app/src/androidTestDebug/java/dev/droidbridge/companion/CompanionDiagnosticsDeviceTest.kt",
+      "sha256": "66ba0178477abbd9947aaae1ced25bfad877d8df86bf35b5ed47aab4542a7be8",
+      "size": 4966
+    },
+    {
+      "path": "AndroidCompanion/app/src/debug/AndroidManifest.xml",
+      "sha256": "20d17d9bb58766c74845ad1f3ed26e74668a3c597953504a953d088e138f0c06",
+      "size": 320
+    },
+    {
+      "path": "AndroidCompanion/app/src/debug/java/dev/droidbridge/companion/CompanionDiagnostics.kt",
+      "sha256": "aa31ee5280acab4fda725c00666b33f71376e244ee72c4379fb2a15903f53ba4",
+      "size": 6201
+    },
+    {
+      "path": "AndroidCompanion/app/src/debug/java/works/sloop/swip/schema/droidbridge/AnonymousSafe.kt",
+      "sha256": "4652b706fdcd0ed6f6465a315de8e3da920599bfae61c38d48a42345f40b6afc",
+      "size": 350
+    },
+    {
+      "path": "AndroidCompanion/app/src/debug/java/works/sloop/swip/schema/droidbridge/Critical.kt",
+      "sha256": "989fc3eeea6c72afc3269c87d9460667dc3be1144c8f432337c88af5ccb26407",
+      "size": 178
+    },
+    {
+      "path": "AndroidCompanion/app/src/debug/java/works/sloop/swip/schema/droidbridge/Events.kt",
+      "sha256": "0bd162c78447e181306a1b8caeb0c7d3a61c43fac352dc9b14d707add6065bee",
+      "size": 1801
+    },
+    {
+      "path": "AndroidCompanion/app/src/debug/java/works/sloop/swip/schema/droidbridge/Init.kt",
+      "sha256": "370d7689e163ae5e2dbbfcf3809b18bc0f97dfd7e9b448f7da92c15972d66e60",
+      "size": 2349
+    },
+    {
+      "path": "AndroidCompanion/app/src/debug/java/works/sloop/swip/schema/droidbridge/PseudonymousStrip.kt",
+      "sha256": "25b0a6eb42ee84ea9c3de99377bc4142500e70601a2f2f5ccea74f8f69b5fc82",
+      "size": 321
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/AndroidManifest.xml",
+      "sha256": "904d6ce06654426d3f98c1a88de546bb998a1436dabd257731440c334fc2dc74",
+      "size": 3638
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/assets/licenses/Apache-2.0.txt",
+      "sha256": "3f62881f0566227a24b12e5a754cc79f39aaa94883038e95c94812e1f50af42f",
+      "size": 13320
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/assets/licenses/COMPONENTS.txt",
+      "sha256": "1de24fe5237001dc1a7f076b687f9f058ed9e2eb4218a347b64fbca7094b2652",
+      "size": 1356
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/assets/licenses/NOTICE.txt",
+      "sha256": "5550d3db2d0f052cf2fafa244e69a2a372ca8f383866a302bceefb08b5cd1c86",
+      "size": 944
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/assets/licenses/SOURCES.json",
+      "sha256": "70c5fd3c1fd03c32730c96f09a29c99619e45850d92d4db244ab54b2e14812a5",
+      "size": 628
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/assets/licenses/kotlin-NOTICE.txt",
+      "sha256": "0b09a83d3ef7795c7dec65e815866597c066c53898f2852a76599b8f5552941a",
+      "size": 482
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/assets/licenses/zxing-NOTICE.txt",
+      "sha256": "4db4b60aace29ec6c5c4f13ca9cac1930d3c0c54bcc67dceead0c10771120e66",
+      "size": 664
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeHttpServer.kt",
+      "sha256": "cb2a996d1af2dcac55d8204ad0079cbefd70553584ae34ca4c09796b1aa086b9",
+      "size": 13016
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeNotifications.kt",
+      "sha256": "81c85cad4556c69f4365ab39ae4871def95e472523d925aa85dda54ad4997230",
+      "size": 5777
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeService.kt",
+      "sha256": "3c3f045342eee16a696a064852cac5297ec76a0a26cf81275824c68f46929ae2",
+      "size": 5983
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt",
+      "sha256": "54310199bf42937df93eb86393917662492747e7408daef54c8f81d3c0ae8431",
+      "size": 57376
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTiles.kt",
+      "sha256": "218bcd91b4c85107b5dc6a0eb54b7bcd4446ddc9b2d4e54ee2523a4febb88d63",
+      "size": 2839
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTlsIdentity.kt",
+      "sha256": "5d612ecec0eca227238bce8ac98a5e27dc74fccb3541834a88ffa5c651ecee63",
+      "size": 7227
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeTransfers.kt",
+      "sha256": "546d34c0ac61ed2ecd64daf059092b3fab423a3ee4252c8b9b8ecec630eab08b",
+      "size": 18425
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeWidget.kt",
+      "sha256": "f01fa34907d67a901f394c4eb9bb170de88804f1fdea4872853776c630e143a5",
+      "size": 3377
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/CompanionLibrary.kt",
+      "sha256": "3b02a5fcd66d4115472d552c137e8c7bdfb3b55e41e573b4221f361673554244",
+      "size": 4527
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt",
+      "sha256": "cd00df9d02f41d076d86836db54b71d0ee6cdd9bd7b0131028230f4b4362d3ef",
+      "size": 79053
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ProtocolRules.kt",
+      "sha256": "a898763c6cc3fb154e4b9a59a28cd605cc60690ac45fbb3b38b189ca9f292052",
+      "size": 4356
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/QuickAccess.kt",
+      "sha256": "022e9f319a7c06924d102abd8107a86e54f71ffc630992f68b582ea196d2cc6e",
+      "size": 3844
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/QuickAccessActivity.kt",
+      "sha256": "4c290964b94fe1aaea45d18bd6546d980f1fc288876d6503a733a366d3f13cb0",
+      "size": 12331
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ReleaseDelivery.kt",
+      "sha256": "4e26d0b8c6cdd437640bc7d3b2bf6676566abaad720728260a067a7e64d5c5b7",
+      "size": 6261
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/SecureJournal.kt",
+      "sha256": "312f1371104e06a46ed2aa6f2576be99ee12fb8a8859cf56987d40de7e3e1d11",
+      "size": 2161
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/SecurePreferences.kt",
+      "sha256": "601e067742e94caabd6a8a17f8da578de1a3d8b9cfa83b2a4cadf476a2bcf6a2",
+      "size": 1993
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/ThirdPartyActivity.kt",
+      "sha256": "ce167a3072e6629cd7394a7f816ac165ec3ecb1ec2cad810a97021a30694ca05",
+      "size": 1617
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/TlsLeafCertificate.kt",
+      "sha256": "2a5e2280a116b145d42740eddda33d65a177bcf06a58a93afbea8f8bc2760295",
+      "size": 3973
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/TransferProvider.kt",
+      "sha256": "b4867b2a92d7bf180c841eaa893b9ce7d657615a2a4424d80f4f2c6027d15572",
+      "size": 2098
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/drawable/ic_bridge.xml",
+      "sha256": "39e9b77a89926aa1bed324d078994a0aaec1d384d44bc1cc79f1d40b637cf2b5",
+      "size": 451
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/drawable/ic_bridge_status.xml",
+      "sha256": "186e23d60efaaea047f045b611a77f5a7b06fd50f7df2a8dddac72d92d77e4de",
+      "size": 298
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/drawable/ic_nav_apps.xml",
+      "sha256": "3e5dcbe7f8108404d8ca63ad51eb79f468699f3411ba163916d2fb01cf288e62",
+      "size": 307
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/drawable/ic_nav_home.xml",
+      "sha256": "f325625ab570518d270fb973269cd72f33b1fdcbd198badd244b4bddc45c15df",
+      "size": 289
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/drawable/ic_nav_settings.xml",
+      "sha256": "7dbd5c0e76f8847a306a925c1811eca8541ede10e6d3ef0722da2b2f5c62def5",
+      "size": 340
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/drawable/ic_nav_sharing.xml",
+      "sha256": "98c231202260cd3e7bab21919f51cc51a4eeb9ebd69c354cbd8e6b2e0647f7a5",
+      "size": 341
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/layout/bridge_widget.xml",
+      "sha256": "786870092a4259d80ac238ce961437c9b2f2ce4a12cbeb20c414ea6c5dab79aa",
+      "size": 1132
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/values-night/colors.xml",
+      "sha256": "d053ef73560b99d9c5363912e0f61d70ead0e4056b50ae2cc2b97f9842dd0297",
+      "size": 599
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/values/colors.xml",
+      "sha256": "5027a34c5f08142eb1b453b432466f1fd7ea2a66c0081cc116f9333267763a4c",
+      "size": 598
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/values/quick_access_strings.xml",
+      "sha256": "e74e2ee09c7e18c692349e480f8ce3b88ad016dce208337d072f5ef5d472dba9",
+      "size": 164
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/values/themes.xml",
+      "sha256": "f9175c95f19c63236c1a47026a6406ec133ab267712950b15f122a50ce88f7f5",
+      "size": 1135
+    },
+    {
+      "path": "AndroidCompanion/app/src/main/res/xml/bridge_widget.xml",
+      "sha256": "aef1368c9896d955200451468286f97b1ede7f4482fadfee64d56f3c122f86ea",
+      "size": 399
+    },
+    {
+      "path": "AndroidCompanion/app/src/release/java/dev/droidbridge/companion/CompanionDiagnostics.kt",
+      "sha256": "2ed753db865240bacd6c92f632e4c731e0176bfa65b5630694a10b0f77e49b8a",
+      "size": 438
+    },
+    {
+      "path": "AndroidCompanion/app/src/test/java/dev/droidbridge/companion/ProtocolRulesTest.kt",
+      "sha256": "23e875f62fd65bdf2919483f55083ecf4df8a872449fc0b492945ea405dfcdb6",
+      "size": 4119
+    },
+    {
+      "path": "AndroidCompanion/app/src/test/java/dev/droidbridge/companion/QuickAccessStateTest.kt",
+      "sha256": "571fa72a87227a67f5682967a5aad88921e893516dbaaff81d5c122b7b680d07",
+      "size": 886
+    },
+    {
+      "path": "AndroidCompanion/attacker/build.gradle.kts",
+      "sha256": "2154b504862c7d3adbc513aaaae215a6b7fcea8c98d487bdabd27a5ed9c4022c",
+      "size": 484
+    },
+    {
+      "path": "AndroidCompanion/attacker/src/main/AndroidManifest.xml",
+      "sha256": "ef8bf23a96258b6cb69d376acbc570ae4c02c2454881a7adbde1e726f503f968",
+      "size": 579
+    },
+    {
+      "path": "AndroidCompanion/attacker/src/main/java/dev/droidbridge/peerattack/AttackActivity.kt",
+      "sha256": "4f175685f9b5e7226eda5fa7f9d81cb771a920c4f8da71ddf58852c997912c9c",
+      "size": 6344
+    },
+    {
+      "path": "AndroidCompanion/attacker/src/main/java/dev/droidbridge/peerattack/BridgeTlsIdentity.kt",
+      "sha256": "f785d458d44665d595a51b65322494de752d001f461310880b6c602753a717be",
+      "size": 7227
+    },
+    {
+      "path": "AndroidCompanion/attacker/src/main/java/dev/droidbridge/peerattack/TlsLeafCertificate.kt",
+      "sha256": "ac453943bd48c365650b9f3c70c620fe6d0bfc7590a79441ff31cc061dfd3c59",
+      "size": 3971
+    },
+    {
+      "path": "AndroidCompanion/build.gradle.kts",
+      "sha256": "a791cabcbc41daf9860017d0c827f56c88d01129fd60b23e94154f59cd427433",
+      "size": 640
+    },
+    {
+      "path": "AndroidCompanion/build.sh",
+      "sha256": "9d70fb65d262a835471d45bf02440ddc3fd2c20f8f14480e1a12076ba5f5abf0",
+      "size": 255
+    },
+    {
+      "path": "AndroidCompanion/gradle.properties",
+      "sha256": "fbde4a16c23e025b2c67f40a0634bd9f9a656b88bdafa6f70605aec836ff383d",
+      "size": 126
+    },
+    {
+      "path": "AndroidCompanion/gradle/wrapper/gradle-8.14.3.sha256",
+      "sha256": "60c245da1664d87dc1c8711326e128cb4991ad321a66022b83e4c538aebfde25",
+      "size": 64
+    },
+    {
+      "path": "AndroidCompanion/gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+      "size": 43764
+    },
+    {
+      "path": "AndroidCompanion/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "7d09e69815e4c5a1c20cab8bc15cccd07922939f16bd6470a7436f709774eae4",
+      "size": 340
+    },
+    {
+      "path": "AndroidCompanion/gradlew",
+      "sha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409",
+      "size": 8733
+    },
+    {
+      "path": "AndroidCompanion/gradlew.bat",
+      "sha256": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b",
+      "size": 2937
+    },
+    {
+      "path": "AndroidCompanion/prepare-local-signing.py",
+      "sha256": "065e9af9a88fcaca118f1cc0488020c26edb2eb033b95a04323beb578d8d88b7",
+      "size": 1299
+    },
+    {
+      "path": "AndroidCompanion/prepare-sloopworks.py",
+      "sha256": "0a300219486548cfd4acffe4dd7f71f882cfe03d9d76b6086c8865e846e54bd6",
+      "size": 3408
+    },
+    {
+      "path": "AndroidCompanion/settings.gradle.kts",
+      "sha256": "8ccc27e48a2e2def6a5686ab0c2b64ee82e378d2d0100df663750fe7e2b5a783",
+      "size": 1578
+    },
+    {
+      "path": "AndroidCompanion/verify-release-diagnostics.py",
+      "sha256": "2988e0b69072167a3eb6a7fd868bb40d12d42a9d0a99f9b6ae86ba2483d431b1",
+      "size": 1020
+    },
+    {
+      "path": "BUILD.md",
+      "sha256": "ea0d713d14c1f32b3b260acd57108474020f86356664f1ac03e0253318b8d294",
+      "size": 12873
+    },
+    {
+      "path": "COMPATIBILITY.md",
+      "sha256": "b6a9c7e3a253f4acb7f7d074d5a48579d554a96edf113019001b5679634f7575",
+      "size": 10509
+    },
+    {
+      "path": "KNOWN_ISSUES.md",
+      "sha256": "c259885e4771adb71ad83f01ea5e5fcc1ee78944be505c30111782e65e590b19",
+      "size": 7013
+    },
+    {
+      "path": "LAUNCHER_UX_DESIGN.md",
+      "sha256": "cfd5e6d7ff240d97c3c02db6e74c67de6c169f525ffe3e2a3be53fa3c1989512",
+      "size": 13541
+    },
+    {
+      "path": "PIXEL_VERIFICATION.md",
+      "sha256": "6a3a926e53c4923c0b32908414309841cfa82cbd3245edb63768f58af2ba1fce",
+      "size": 7702
+    },
+    {
+      "path": "PRIVACY.md",
+      "sha256": "f78f127ee6f32f4a011353bbab50404849eb583d4020760ae5020c18fa50b940",
+      "size": 2320
+    },
+    {
+      "path": "Package.swift",
+      "sha256": "2c25dc0308036917eb0ae03a28c20ddaa8444bacb4dcf6fed713c35c94a5b37e",
+      "size": 1118
+    },
+    {
+      "path": "README.md",
+      "sha256": "d1eb2faacc3e9acdb5b202f1f66420b19168aabd54bbdf1bad15659251206dde",
+      "size": 17895
+    },
+    {
+      "path": "Resources/DroidBridge.icns",
+      "sha256": "6dfbc1796658d384d6b45589f467c585ba2e41ec86e37118aed6faa49eafda47",
+      "size": 130190
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_128x128.png",
+      "sha256": "babe38cbb219b631e288f590db0f3be4f2e5b7afda00a4bedf1be5ff1bb4464c",
+      "size": 4614
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_128x128@2x.png",
+      "sha256": "7fdc70136e2268275a8bf3e43e868f614792c1f62e72b2604ab2a8e72faaea95",
+      "size": 9714
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_16x16.png",
+      "sha256": "b43b489f8fc9c534794419a7a6d9bca258d983dad264787d971b63f7b9c61c85",
+      "size": 699
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_16x16@2x.png",
+      "sha256": "527025b8af67d1875c08646a3e2e2164885534e81b4d3f0bf1b7785004f39a12",
+      "size": 1259
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_256x256.png",
+      "sha256": "7fdc70136e2268275a8bf3e43e868f614792c1f62e72b2604ab2a8e72faaea95",
+      "size": 9714
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_256x256@2x.png",
+      "sha256": "c47cab7f0dc13cd475504f93c15223ea1b40f69c231747169cdfe3f6654ec812",
+      "size": 22211
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_32x32.png",
+      "sha256": "527025b8af67d1875c08646a3e2e2164885534e81b4d3f0bf1b7785004f39a12",
+      "size": 1259
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_32x32@2x.png",
+      "sha256": "92bd00b82033c9ee0284ac634fed1ee77cd81ce2bc58916c21127ad142a6d269",
+      "size": 2174
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_512x512.png",
+      "sha256": "c47cab7f0dc13cd475504f93c15223ea1b40f69c231747169cdfe3f6654ec812",
+      "size": 22211
+    },
+    {
+      "path": "Resources/DroidBridge.iconset/icon_512x512@2x.png",
+      "sha256": "6fe76ddfc798c963d1db2e8af9745d88049b2d3fe65af16f06f9c80417ae7555",
+      "size": 54827
+    },
+    {
+      "path": "Resources/Release.entitlements",
+      "sha256": "6ed8a8e216398d988fb0d117bb05bc8c8e5588ba10c686f2411806f77037b101",
+      "size": 248
+    },
+    {
+      "path": "Resources/licenses/android-platform-tools-NOTICE.txt",
+      "sha256": "f74735e1636534c2165b51815c4de870a2a06c24d8fe3e8c91149c841b81d33e",
+      "size": 1153968
+    },
+    {
+      "path": "Resources/licenses/brotli-1.2.0-INSTALL_RECEIPT.json",
+      "sha256": "abae85a0ed88dcf7987629dba837c4d91b1c058198dad66c4f2e2c78aa5fcf4a",
+      "size": 1009
+    },
+    {
+      "path": "Resources/licenses/brotli-1.2.0-LICENSE",
+      "sha256": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94",
+      "size": 1084
+    },
+    {
+      "path": "Resources/licenses/dav1d-1.5.4-COPYING",
+      "sha256": "dd92c3c2247c5651606fc23a5e2d6a1ebc5ace9a3e49cbde0e12f05ad1cb1ee5",
+      "size": 1317
+    },
+    {
+      "path": "Resources/licenses/dav1d-1.5.4-INSTALL_RECEIPT.json",
+      "sha256": "d33336361f3a20022dcf8fc63ebb360ff1d94e671cdbadbf81b7c886d938f717",
+      "size": 958
+    },
+    {
+      "path": "Resources/licenses/ffmpeg-9.0.2_1-COPYING.GPLv2",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "size": 18092
+    },
+    {
+      "path": "Resources/licenses/ffmpeg-9.0.2_1-COPYING.GPLv3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "size": 35147
+    },
+    {
+      "path": "Resources/licenses/ffmpeg-9.0.2_1-COPYING.LGPLv2.1",
+      "sha256": "246041b6ecf9bc32d718a62c57877c78b5eb397b6467e74ed7ae2626ab189c30",
+      "size": 26517
+    },
+    {
+      "path": "Resources/licenses/ffmpeg-9.0.2_1-COPYING.LGPLv3",
+      "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+      "size": 7651
+    },
+    {
+      "path": "Resources/licenses/ffmpeg-9.0.2_1-INSTALL_RECEIPT.json",
+      "sha256": "f916d7a44fad7a6445da84890c0de2fc474ccef832cf4f776726df053d5e26ef",
+      "size": 4935
+    },
+    {
+      "path": "Resources/licenses/ffmpeg-9.0.2_1-LICENSE.md",
+      "sha256": "2e1d16c72fd74e12063776371da757322f8b77589386532f4fd8634bde7de1af",
+      "size": 4346
+    },
+    {
+      "path": "Resources/licenses/homebrew-formulae.json",
+      "sha256": "e0e00b2a3820474def67994344999567cfa0a3cbab9196eafcc4537253464274",
+      "size": 57187
+    },
+    {
+      "path": "Resources/licenses/lame-4.0-COPYING",
+      "sha256": "e64f9c5a18f56828c10a575df13ade641aa3af4512a7afe6c411256943b57aaf",
+      "size": 25281
+    },
+    {
+      "path": "Resources/licenses/lame-4.0-INSTALL_RECEIPT.json",
+      "sha256": "386f4c02686a05a289721a52c92c36cc4dd22c8eeaf42fa8ef5be9f34100dd09",
+      "size": 1137
+    },
+    {
+      "path": "Resources/licenses/lame-4.0-LICENSE",
+      "sha256": "5c1f8d44f1eacbea3e1c31ff6ee11a4e1690ccbed4ee4af16de3b6eb61dc69a8",
+      "size": 503
+    },
+    {
+      "path": "Resources/licenses/libusb-1.0.30-COPYING",
+      "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a",
+      "size": 26436
+    },
+    {
+      "path": "Resources/licenses/libusb-1.0.30-INSTALL_RECEIPT.json",
+      "sha256": "38df35ed492cfa69a88a00b60813029fa7b73ea010de10b3159b9b49237dee57",
+      "size": 965
+    },
+    {
+      "path": "Resources/licenses/libvpx-1.17.0-INSTALL_RECEIPT.json",
+      "sha256": "45972704c563fe747280087a951e020b5fe07cc02e6dcd932072208d0a1b9ed2",
+      "size": 1042
+    },
+    {
+      "path": "Resources/licenses/libvpx-1.17.0-LICENSE",
+      "sha256": "8267348d5af1262c11d1a08de2f5afc77457755f1ac658627dd9acf71011d615",
+      "size": 1537
+    },
+    {
+      "path": "Resources/licenses/lz4-1.10.0-INSTALL_RECEIPT.json",
+      "sha256": "90849673497d26ebf34a66e5a0dd86e5daabd9ed3a6a30ffc892afd9e42e0107",
+      "size": 939
+    },
+    {
+      "path": "Resources/licenses/lz4-1.10.0-LICENSE",
+      "sha256": "4bc9c403f6b679cc076dee210e0e21c27b4e8f6d3fb43d85364c76657bfaaac5",
+      "size": 646
+    },
+    {
+      "path": "Resources/licenses/mpg123-1.33.7-COPYING",
+      "sha256": "c22482728a634a8dfdb4ff72a96d4c1ed64cd8f3e79335c401751ac591609366",
+      "size": 40718
+    },
+    {
+      "path": "Resources/licenses/mpg123-1.33.7-INSTALL_RECEIPT.json",
+      "sha256": "4ea93cc677e57339ee099af43a3b7c001ad3583c4a93207cad0ad9136673a346",
+      "size": 1031
+    },
+    {
+      "path": "Resources/licenses/openssl@4-4.1.0-INSTALL_RECEIPT.json",
+      "sha256": "f3f43f5f9d3f96498d6c0c79bcd9cb65c56972b0ecc6646300c14035f5d78ea8",
+      "size": 1535
+    },
+    {
+      "path": "Resources/licenses/openssl@4-4.1.0-LICENSE.txt",
+      "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+      "size": 10175
+    },
+    {
+      "path": "Resources/licenses/opus-1.6.1-COPYING",
+      "sha256": "01e1167d54a096d123cf6dfbbeb19587278845c6481d2d66d545669846079551",
+      "size": 1945
+    },
+    {
+      "path": "Resources/licenses/opus-1.6.1-INSTALL_RECEIPT.json",
+      "sha256": "13379c77203733b516b111ba226e752c825eaedf44aea7f2dafef8a35dea07a9",
+      "size": 959
+    },
+    {
+      "path": "Resources/licenses/runtime-notices.json",
+      "sha256": "9d4a5fe24c138e7ecc3cd680b36be99bd6258eb2198503fde0bf41483c20d20d",
+      "size": 2861
+    },
+    {
+      "path": "Resources/licenses/scrcpy-Apache-2.0.txt",
+      "sha256": "01c12035bf35af37241298dc7ad538eb2a07e5c940437bc6876feeaa9d1951d0",
+      "size": 11387
+    },
+    {
+      "path": "Resources/licenses/sdl3-3.4.18-INSTALL_RECEIPT.json",
+      "sha256": "c6924ab78f9a1fadef513a6e3fa408f03566fcc68caf444be7280822070b0a96",
+      "size": 1044
+    },
+    {
+      "path": "Resources/licenses/sdl3-3.4.18-LICENSE.txt",
+      "sha256": "1c040b8271b37e5076359f8fd54240e371114112924d2df81ef87c7d6a1dfdfd",
+      "size": 884
+    },
+    {
+      "path": "Resources/licenses/svt-av1-4.2.0-INSTALL_RECEIPT.json",
+      "sha256": "9e001f464bce8434c5892376feae381f6b7e56f9a1473ec995704a956fdb7364",
+      "size": 962
+    },
+    {
+      "path": "Resources/licenses/svt-av1-4.2.0-LICENSE-BSD2.md",
+      "sha256": "c582fcbeb9cf972a60d298bfaf41dc5adff2dd14208946edcb9bb56a281e8438",
+      "size": 1316
+    },
+    {
+      "path": "Resources/licenses/svt-av1-4.2.0-LICENSE.md",
+      "sha256": "0acc2fcb27472bdc9aaf8b71f37055bbdac4f54671b7d922f241bd7fcd0dd3e6",
+      "size": 1709
+    },
+    {
+      "path": "Resources/licenses/x264-r3222-COPYING",
+      "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670",
+      "size": 17992
+    },
+    {
+      "path": "Resources/licenses/x264-r3222-INSTALL_RECEIPT.json",
+      "sha256": "aa1de18caad391d7dfd6307bb134866fc780d2be6b36355199e3f02e45432479",
+      "size": 959
+    },
+    {
+      "path": "Resources/licenses/x265-4.3-COPYING",
+      "sha256": "d8afb1bcc7a2cfc603683b168d6987ef0a48e59e0da3693bf55c5d33b67e2b49",
+      "size": 18120
+    },
+    {
+      "path": "Resources/licenses/x265-4.3-INSTALL_RECEIPT.json",
+      "sha256": "e10b9380d8c112a4572bef80e514b2695621f928016c70a934da50f4e957d069",
+      "size": 1043
+    },
+    {
+      "path": "Resources/licenses/xz-5.8.4-COPYING",
+      "sha256": "616a3ad264ce29b8f1cb97e53037b139d406899ca8d1f799651e17bfa09830b8",
+      "size": 3119
+    },
+    {
+      "path": "Resources/licenses/xz-5.8.4-COPYING.0BSD",
+      "sha256": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+      "size": 607
+    },
+    {
+      "path": "Resources/licenses/xz-5.8.4-COPYING.GPLv2",
+      "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6",
+      "size": 17984
+    },
+    {
+      "path": "Resources/licenses/xz-5.8.4-COPYING.GPLv3",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "size": 35149
+    },
+    {
+      "path": "Resources/licenses/xz-5.8.4-COPYING.LGPLv2.1",
+      "sha256": "20e50fe7aae3e56378ebf0417d9de904f55a0e61e4df315333e632a4d3555d95",
+      "size": 26419
+    },
+    {
+      "path": "Resources/licenses/xz-5.8.4-INSTALL_RECEIPT.json",
+      "sha256": "ecb1a45b60ee300408b79668514ea72671782156afede6baf089ad2a3a42eee3",
+      "size": 1118
+    },
+    {
+      "path": "Resources/licenses/zstd-1.5.7_1-COPYING",
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+      "size": 18091
+    },
+    {
+      "path": "Resources/licenses/zstd-1.5.7_1-INSTALL_RECEIPT.json",
+      "sha256": "05374a4301269093e089f49494f36ce09fb0607b9cd2fb653954ece2a1d0cb68",
+      "size": 1307
+    },
+    {
+      "path": "Resources/licenses/zstd-1.5.7_1-LICENSE",
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+      "size": 1549
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "73c11fd8b1267a6e5485cf3e9135fdfe4dbded1ba71f30bc1850558356bbd20a",
+      "size": 973
+    },
+    {
+      "path": "SUPPORT.md",
+      "sha256": "59e40671fde47d05e9894fd568ac3337be5703dd23b2973994c0d90790ac6c20",
+      "size": 1126
+    },
+    {
+      "path": "Sources/DroidBridge/AudioControls.swift",
+      "sha256": "dde9c80e189c7b16b57b0b27554ad2b35edf729c6c2074f33fdc5c19e768c2e0",
+      "size": 11737
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionCatalogSync.swift",
+      "sha256": "d73e214f3ece2eaf86058bf33b2f46867107a9da3bd5ffb504d4a3410761eaeb",
+      "size": 11743
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionDesktopAdapter.swift",
+      "sha256": "1f72a4e9036dd6556eb25d73b626beb3e94e7ce4983527d6b4f636177cc512f0",
+      "size": 32040
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionLaunchTrace.swift",
+      "sha256": "d6423668918dcbfcc248a10d29e00cdb535200a336f007d92c82f3b33e9fcd15",
+      "size": 1078
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionLauncherIntegration.swift",
+      "sha256": "553ecfd17c6672901b4c1b98ba5900e9f78727a2b69959acadd01e95d3dffc6c",
+      "size": 6239
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionPairingScanner.swift",
+      "sha256": "26c825a24c38cb09cac66acea41f5a2865154c9aac8b2e2aa0b028fc5401eb05",
+      "size": 9988
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionTransfers.swift",
+      "sha256": "cacb931ddf7b1c2377eea79c09f9c634e50277a8e0c417c97e57493cf02b486c",
+      "size": 12455
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionWindow.swift",
+      "sha256": "a43c996496cdf5a08d47e1cf4cac1cfe4dee60bd96863ffe80eac4e25d6b7e00",
+      "size": 73533
+    },
+    {
+      "path": "Sources/DroidBridge/CompanionWirelessSetup.swift",
+      "sha256": "588fcb47b700366200ebab740c624cd9f524679a1e6a627c13850a92f74d21b5",
+      "size": 7132
+    },
+    {
+      "path": "Sources/DroidBridge/DeviceOnboarding.swift",
+      "sha256": "8614d8ba61915adf99e94bd3e4a199ec35088f05a0af3f888fb71c60f805115e",
+      "size": 9908
+    },
+    {
+      "path": "Sources/DroidBridge/DeviceOnboardingAgent.swift",
+      "sha256": "f0ab0bcd5ebdbe08399618fa1eb98b08159cd541d2860fff4ecede8e2432962e",
+      "size": 6412
+    },
+    {
+      "path": "Sources/DroidBridge/DeviceOnboardingUI.swift",
+      "sha256": "afb29bae11f675e930279136316b3acb9ae29c723f43e5ccf961445bda0e34c0",
+      "size": 3447
+    },
+    {
+      "path": "Sources/DroidBridge/Launcher.swift",
+      "sha256": "aa53e0560a9d02a83a4816feeb4b325704080020fa08b876915395baa987c5fb",
+      "size": 50300
+    },
+    {
+      "path": "Sources/DroidBridge/LauncherUI.swift",
+      "sha256": "b1b893aeb5d0605f72d51b584a53c18a2d1d86c470ab579f11d45cf35c84f246",
+      "size": 27961
+    },
+    {
+      "path": "Sources/DroidBridge/MacAppWrapper.swift",
+      "sha256": "a992f2a0cd4ba540f1e2e3526230d1327759f73e78398f90f8a841afe202be67",
+      "size": 16677
+    },
+    {
+      "path": "Sources/DroidBridge/ManagedAppNameRepair.swift",
+      "sha256": "57ba7557ea3e1004e9422244df12a035c8a749bea9fbd5bdcb1f7455e70c0594",
+      "size": 11241
+    },
+    {
+      "path": "Sources/DroidBridge/NativeWindow.swift",
+      "sha256": "7b304a1c6ab63c12fdb1afbb7d27fa202e832911dffede9eeb3992883aa21fda",
+      "size": 17268
+    },
+    {
+      "path": "Sources/DroidBridge/PhoneDisplayControls.swift",
+      "sha256": "514b38e16eb48a078113a82670d5387e6dfdc558f9e39a9da02a9b3f0f99b978",
+      "size": 7220
+    },
+    {
+      "path": "Sources/DroidBridge/main.swift",
+      "sha256": "2d89e08af3217493b581795304fab03108f0f12bc6ad88e6ace1b70505a94bb9",
+      "size": 9253
+    },
+    {
+      "path": "Sources/DroidBridgeAvailability/main.swift",
+      "sha256": "4a3dcb6899e17ff80ebcab2009280fa89049f8b5c847cb0665fa66571972a084",
+      "size": 3880
+    },
+    {
+      "path": "Sources/DroidBridgeCompanionBroker/main.swift",
+      "sha256": "de4a463ed3113e21c57cd115503d1dd67997bac6fd05ef23fbbef1c21db72165",
+      "size": 1241
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ADBPortableRuntime.swift",
+      "sha256": "2c82830452eb45525a2878666f9912df9a236e3602f20e04352cfce315582f7c",
+      "size": 7052
+    },
+    {
+      "path": "Sources/DroidBridgeCore/AndroidDiscovery.swift",
+      "sha256": "f8b00e025baa053e44fe52ca8364669215271aeca62b3449d32bf6f9cb0b3e61",
+      "size": 5380
+    },
+    {
+      "path": "Sources/DroidBridgeCore/AndroidIconProvider.swift",
+      "sha256": "01de6b63d46c46e77b62c6d445d0d0b22cd7e55d28b590632b83e02c31a7906e",
+      "size": 14376
+    },
+    {
+      "path": "Sources/DroidBridgeCore/AvailabilityRuntimeStore.swift",
+      "sha256": "8b687b0ea928703a55a1de9b163a7e5b9b35967d57c512a5445abb858e9d392c",
+      "size": 29422
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CanonicalAliasAdmission.swift",
+      "sha256": "968141f94a008a78c49d3712c3be30036cc24d881ff42c8f14b37945c736aff7",
+      "size": 7846
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionActions.swift",
+      "sha256": "64fd4fb48703aaf7feacc4c51e11002bb5502fdaa729dfe275d643654f35718c",
+      "size": 2901
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerHost.swift",
+      "sha256": "55689542b97970d8a0e79cb63d6c40d78b88ec3eea73a25f47a08b4d344f92aa",
+      "size": 4178
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerIPC.swift",
+      "sha256": "ad7c4ec728b7f7e614faa5265f7535ab3494621495509ae398c589d344373824",
+      "size": 10712
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerInstaller.swift",
+      "sha256": "6433a2241441b3879af3aab39e24b285568fe37e4fbc4e03b253f80a4defcf02",
+      "size": 15633
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerJournal.swift",
+      "sha256": "7c0d7769afa6ac42fdbc2a00263271072b5ec2a21cc8119bda791faaf6fe16cb",
+      "size": 3600
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerRegistry.swift",
+      "sha256": "6f2a99fa6eff74d573761ba883740f666b35993c4eee93c8aa761810c88a1bdc",
+      "size": 18086
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerScheduler.swift",
+      "sha256": "c32e5e523cf45764b0b5a00c45aec3a5aac6a10c9937e7b21eb01f776d3c690f",
+      "size": 3633
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerService.swift",
+      "sha256": "c1813c754f7dde32596c83f7b7424ef73d639fafcf4c8bf552828c4ea95c0c63",
+      "size": 112630
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionBrokerTestingHooks.swift",
+      "sha256": "abc7a224338f1c1b02ceb4e78ed916618734f336fe2158e8f545f94ac3fc034e",
+      "size": 879
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionClient.swift",
+      "sha256": "1e578c8395f978022872f5cef5f29a4eb611a590dbadc7fba1c06cccc8263fe7",
+      "size": 38350
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionCredentialStore.swift",
+      "sha256": "8b1b2ccee1d3b010fa612040edcfcd545c23b5614ef4de0faef3357f1535e1e2",
+      "size": 4754
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionDiagnostics.swift",
+      "sha256": "c293cfb540ae9561eb1f39f062d6223797ecaf6fb597d6b744b112704a7a1613",
+      "size": 3845
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionExportPolicy.swift",
+      "sha256": "439254cca3475dfb081d10a69cf83c5255e30acecf4f267f71a2d7a89410b1ac",
+      "size": 6527
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionForward.swift",
+      "sha256": "490ed7602a317c8de9d9e893dbaf198039a13cfe1d31531f74b3196ee44a3c52",
+      "size": 6830
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionModels.swift",
+      "sha256": "7af7afe7318aceeaccf3501414300f60c3893d3993f995d4ad765acaea801519",
+      "size": 13629
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift",
+      "sha256": "08373092719fbbf51e475703df89b13bc00c75a4ffd1193ffe3253d76a5e8f5c",
+      "size": 3792
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionPerformanceProfile.swift",
+      "sha256": "56d670d8b9b12fe466251bdf37ca9aaaeeeed4a623aab6287fe2856eb2b4c7c9",
+      "size": 889
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionQAScope.swift",
+      "sha256": "bf3ac0fd6dc14ed4d4685ebf73403a588a03962a2125ce7a3bb2ead71a41bfba",
+      "size": 3186
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionQRImageReader.swift",
+      "sha256": "4d6c4920e70d69d4b0de65df6d8043fdf168dffd0be27ebbc4f010f60692d680",
+      "size": 1874
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionReleaseMetadata.swift",
+      "sha256": "ca32e0c643767219ce3c1475cf2fd4b5934c6416e027ae8415b694a64e378d8f",
+      "size": 10468
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionSetupValidation.swift",
+      "sha256": "62f5cd19b13c68c26a43dd358e3d63fee1c4aa0e50860008acaa5dcf9ff57f69",
+      "size": 4506
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CompanionWirelessADB.swift",
+      "sha256": "bf96094ae79114e7c359966acaaacd190ebbb05302ea390f440d56d2c6ccd9c6",
+      "size": 4797
+    },
+    {
+      "path": "Sources/DroidBridgeCore/CoreAvailabilityAuthority.swift",
+      "sha256": "c2d9c3cfc94f731c75f3e175a31a30a652f67e458fb66181567ce9692d4d3d7b",
+      "size": 5751
+    },
+    {
+      "path": "Sources/DroidBridgeCore/DeviceAudioPreferences.swift",
+      "sha256": "02ce3fe8c0afae151173137cfec72c05ae69f0df4e36cad6c54e78f08f075efd",
+      "size": 3475
+    },
+    {
+      "path": "Sources/DroidBridgeCore/DeviceAudioRoute.swift",
+      "sha256": "b9480532a15d256cf42abf580f52f3939b5d73b3514e3959b0bb57dd533c73f1",
+      "size": 647
+    },
+    {
+      "path": "Sources/DroidBridgeCore/DeviceReadiness.swift",
+      "sha256": "7e5170ef613363be40f0170a7a16dfd13c0d1af4159479fc12ddcab59e400fa5",
+      "size": 1834
+    },
+    {
+      "path": "Sources/DroidBridgeCore/DeviceSelection.swift",
+      "sha256": "e0bd1b3cd19ccb1aa5204e2af1f7783e8e71be59b394a0a55be03daa92bee23f",
+      "size": 600
+    },
+    {
+      "path": "Sources/DroidBridgeCore/DroidBridgePreferences.swift",
+      "sha256": "5376c4a1e5aa57c654e4b7f3944bf1f6e94c39fb2a3213335a18c042dc52b39f",
+      "size": 4634
+    },
+    {
+      "path": "Sources/DroidBridgeCore/InputGeometry.swift",
+      "sha256": "be7efb7033ef40c554804ff981c852361a3c94c09a8456ba4d764f945f04ebc2",
+      "size": 1090
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ManagedAppRegistrationExecutor.swift",
+      "sha256": "95ad78b3777018a21849e411ad67ca110c3860c9abfc4f9329578f88cebc3594",
+      "size": 606
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ManagedApps.swift",
+      "sha256": "27453308460194edefb8bc9dcb9814b2f40dea56df9002e3b62ab9169cbda488",
+      "size": 69163
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ManagedAppsCopy.swift",
+      "sha256": "e4d84fc0919a8787d4ffa3e44dfeb7396949ee3dd0fa869e4bf5c411a620f415",
+      "size": 4338
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ManagedAvailabilityMonitor.swift",
+      "sha256": "1ab219d07da31c826efcc2fe46602c61bf4c38159a56b52cab444d8536ea3ae1",
+      "size": 9319
+    },
+    {
+      "path": "Sources/DroidBridgeCore/Models.swift",
+      "sha256": "9b300cb718def600c062de8ce49ca0584402a2a780c131964c97c3ab67b2afed",
+      "size": 3467
+    },
+    {
+      "path": "Sources/DroidBridgeCore/PhoneDisplayPower.swift",
+      "sha256": "ac8cfdcef11709818ce6d463020d3ef159a7111272ff1edbfc320f0511f0e60a",
+      "size": 10328
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ProcessRunner.swift",
+      "sha256": "3c98f5766a576d76d426618f900ee9cbb1b9dceb5fafefa50cf1da989c0741c5",
+      "size": 3215
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ScrcpyPortLease.swift",
+      "sha256": "a451508e59586d045921ffb916e1f5e3cfd0243233b061d08e9a153700a843fe",
+      "size": 2549
+    },
+    {
+      "path": "Sources/DroidBridgeCore/ScrcpyStartupLease.swift",
+      "sha256": "f77c54245a9811c30b682cd7a7af016373a441b127998993c639479b7244a717",
+      "size": 2116
+    },
+    {
+      "path": "Sources/DroidBridgeCore/StartupFrameVisibility.swift",
+      "sha256": "0739e4128052cc31d59bc92ce0f4e82ddf76ed8fae98e7394fc37ea85ad90bd5",
+      "size": 979
+    },
+    {
+      "path": "Sources/DroidBridgeCore/Toolchain.swift",
+      "sha256": "5b0f9d1e4ca3f4ae3ab5d7a747dd0a8475976eeb83f7bf223598e3c18267cb8b",
+      "size": 2799
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/BridgeSession.swift",
+      "sha256": "332c1ed8c0a38b32a27fa5dd8d42357ac9a688a93b090b3a8a328a29e6882aa6",
+      "size": 26874
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/DeviceAudioArtifacts.swift",
+      "sha256": "6d5f678d7f6f965d4186af876b92de1c74a2589a7531abfec60d435d543d569c",
+      "size": 6504
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/DeviceAudioRouter.swift",
+      "sha256": "0f3ed1f68a3bdf6972936e6e11d35777a04f4d6b3d10af93ba1735b2847daaac",
+      "size": 24621
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/FrameMailbox.swift",
+      "sha256": "19c1deed81a98170c3f24924c86cb92c88603316fd2cc17c751383fa00639313",
+      "size": 1947
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/H264Decoder.swift",
+      "sha256": "3a8423d6d5c979d9e208c2fa8dea5e895bb90648f2237c5751c964ca7838dc92",
+      "size": 5798
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/Protocol.swift",
+      "sha256": "f9769d3c5c2180d208cc43d38b4e5845a7e6f64b738a26c1872175a150efc76a",
+      "size": 3093
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/SessionRecovery.swift",
+      "sha256": "96ee6c40f089e5001aa09048dba53b8f1a592ac826249ec97b1f987ecf0bb2c1",
+      "size": 3885
+    },
+    {
+      "path": "Sources/DroidBridgeStreaming/SocketTransport.swift",
+      "sha256": "a8e550c4fcfe29b21504cd5541a8e18aa1ce1757b29a0a0760966fd4b4430770",
+      "size": 8458
+    },
+    {
+      "path": "Sources/DroidBridgeSupervisor/main.c",
+      "sha256": "cdbf1314c127acf5f8431318a83403033cda0f35768870b2aef7280ce3f9cc44",
+      "size": 20762
+    },
+    {
+      "path": "TESTING.md",
+      "sha256": "1c66b60b9dbd63716e0e3eba8c91097ab5c84090f616b25223d25406fa21187b",
+      "size": 17310
+    },
+    {
+      "path": "THIRD_PARTY.md",
+      "sha256": "3bff8ab6f131e8382bfc4253441910acd1da91c5d0a9a1ab98c48975bc40055b",
+      "size": 4127
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/ADBPortableRuntimeTests.swift",
+      "sha256": "d074149dc3b601689afa3d1d5aa1e905720bddbb1c87d580fc0ac32f2f2ad2e4",
+      "size": 7935
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/AndroidDiscoveryTests.swift",
+      "sha256": "459d7178c47a8d8aff1e7c48b5aebc48df2189ed1184e2bfac0c8172e0c1ee00",
+      "size": 2582
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/AndroidIconProviderTests.swift",
+      "sha256": "7f1f717389cec0ab72b1be50ca073e4b857f0c04bb485da457cd5b38e00467f2",
+      "size": 20710
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/AvailabilityRuntimeStoreTests.swift",
+      "sha256": "30334484bc8627df4b152333374b74de2a8af354846979533d303890412c51b5",
+      "size": 22088
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/BrokerAdmissionTLSPeer.swift",
+      "sha256": "328e5d2f32765462515fe4c8119e0527ddb2657d43727b33dd99278034f298e9",
+      "size": 11477
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CanonicalAliasAdmissionTests.swift",
+      "sha256": "7e87a4859abf35a18198b680d8699803b3537c8012b4c6690ebacdc4250746d2",
+      "size": 11407
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionActionsTests.swift",
+      "sha256": "e0e36b05907149454e535aa707ad125a9a5395179c0edc49339bb3fddccb75bb",
+      "size": 2469
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionBoundaryTests.swift",
+      "sha256": "d2f9de82e0b2a80a4a0d5e685084793dd471e00850b4bcbeef4c9b9d0d4b3323",
+      "size": 16809
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionBrokerSchedulerTests.swift",
+      "sha256": "13384403e0ec5ff1eeb10b40f01b3610992e03972073b8ced3ba087a72ec72cd",
+      "size": 4950
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionBrokerTLSRaceTests.swift",
+      "sha256": "1255f203fa9dda06d2d99b8676f9bf50ca11fcd0a393ef194fdcefbb824bbfb2",
+      "size": 17975
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionBrokerTests.swift",
+      "sha256": "dfed86de5ba5cb6fe7378eb3bc959c5321a9f1b8922d33f9a71a33a11c5004bc",
+      "size": 26351
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionCatalogReadScopeTests.swift",
+      "sha256": "7d16bd782fa46fa39f5fd48c9b1bc1602705b68dc0849eda8aba63292e173980",
+      "size": 10738
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionCatalogSignalTests.swift",
+      "sha256": "43444fd1a876f45b78b05d2d0a98d9cdbff11d385e338eeb09538de0b0cf8143",
+      "size": 11551
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionCleanupSecurityTests.swift",
+      "sha256": "fcba43a9f7000b4e1a8d47ceb62e1b0b3bc62f51f4ddfd3d34dae7470c462a19",
+      "size": 12341
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionClockTests.swift",
+      "sha256": "4639c1e7d98d524bc11e4aed63474a33f595419deaf3081364c9f3e0b7661c99",
+      "size": 19293
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionCommandSecurityTests.swift",
+      "sha256": "1b961e815ce6f64820a0efc677ad892e81dd1de26c06875887752d624685a547",
+      "size": 25829
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionDiagnosticsTests.swift",
+      "sha256": "1c2e01583f04d83f9936f7f92dd8b9a3a4f2b6a8228424d79bf0a559b61e9782",
+      "size": 1670
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionExportPolicyTests.swift",
+      "sha256": "e634b44da649ab44aa95b470d8c797e89050b1a582aea2c799000b6bb82c7d11",
+      "size": 15679
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionJournalSecurityTests.swift",
+      "sha256": "4618a3fbb661befa0df73ea902a2b4e739085bb1c34af08ac3c0ebd945c8f8ce",
+      "size": 3546
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionNotificationSecurityTests.swift",
+      "sha256": "17662de87266015f42b5b22eb736347efbdb6e6292d9e15287d0b645c9af8dd1",
+      "size": 15223
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionPendingAdmissionTests.swift",
+      "sha256": "9ff1cd6b2ee30de0354886e1d9de35feedb67a9fee887d2176e860f155d1b336",
+      "size": 6893
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionPerformanceTests.swift",
+      "sha256": "e77619aa9ec3caaa580b7feb54279b755f7bc2a84e1ab1afd55ca33ec096e950",
+      "size": 1742
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionProfileCommitTests.swift",
+      "sha256": "9c60380f8f48d977240f9714b618b48a67b546a5a346e69b48fb15a09ca07268",
+      "size": 7614
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionQAScopeTests.swift",
+      "sha256": "76be37f02219149c8388e7f8f31732d2a80f3ec09409040e07f64820696346d0",
+      "size": 2836
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionQRImageReaderTests.swift",
+      "sha256": "722f2343fbd56ef35bb016e3e6c6b1a5653230cf7ad0de455af8bd735dfd9e72",
+      "size": 2279
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionReleaseMetadataTests.swift",
+      "sha256": "9144764621f64cd49fec659f262c44fc4bf9cb124e8433230868d798a07871c0",
+      "size": 3670
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionSecurityTests.swift",
+      "sha256": "726e0a26461b7b0004258b47ab97e692481edfd08e1daeea2e9638503cb19029",
+      "size": 10119
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionSetupValidationTests.swift",
+      "sha256": "b8c48163e8b8fb7652a445085edfeb55c2cec2bf24797a91e79be116e419ec1c",
+      "size": 3312
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionTLSFixture.swift",
+      "sha256": "1c4b13573c6cb33ea7010688729d79fcdd519ea1ec295a8a5840f84d0b26f78f",
+      "size": 9041
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/CompanionWirelessADBTests.swift",
+      "sha256": "b08dda128b115a14771afef0016f9535f8b90fda5c6f9c9c831368c7fedcaf44",
+      "size": 2415
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/DesktopConfigurationTests.swift",
+      "sha256": "d5e91d7217dcd3bd4fab0b3aaf988a74b3e9dbbd170778379de6c00da7f7ee89",
+      "size": 1607
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/DeviceAudioPreferencesTests.swift",
+      "sha256": "c0dd1b87a26670be4df38baa02a22f39085fba9d2fc82614b8d134f8bddd1dc1",
+      "size": 3023
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/DeviceAudioQATests.swift",
+      "sha256": "4acec08dc47ba9900f8e24ba331fb379b02932ac28c0d341e5ac9a1c582a7bfa",
+      "size": 18307
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/DeviceAudioReadinessTests.swift",
+      "sha256": "9eb353fd16dc67c9bba2ba360f7e6450ab7a21409d9d5bb4af51a0b304bc840e",
+      "size": 1548
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/DeviceAudioTests.swift",
+      "sha256": "d56396875c094c0b1bd56501c93f0e8aafe569a1e0155854da0cb37a97652085",
+      "size": 13117
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/DeviceReadinessTests.swift",
+      "sha256": "30c9d594cc38b2117fb0bdf27a9b8e3f755bb4769f2b3c0ec28d17351f9f63d1",
+      "size": 3542
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/DeviceSelectionTests.swift",
+      "sha256": "cd10b3b0cc74a6ca0ac61a212457bc81ecf539d5ef1999f7610cb293a575e22f",
+      "size": 959
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/DroidBridgePreferencesTests.swift",
+      "sha256": "067e48ffbe61e679121dcf6884373dd02eff59e6bf40df0d9d6215dc5e503736",
+      "size": 3954
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/FrameMailboxTests.swift",
+      "sha256": "4b366b8c1834ec7d53088ee70ae4fc19a17e4eef9eac233e59d6b3c46fe137ec",
+      "size": 2169
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/HiddenIMEArgumentTests.swift",
+      "sha256": "bbf72a588ccace8a3c3ad4fcae8f3bdc14341a1c4e0d84a0b7d098612046a956",
+      "size": 8528
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/InputGeometryTests.swift",
+      "sha256": "afc72408965a4e77182b406fd412ad6a6be866b9e34c9f9d827739b1007878b4",
+      "size": 1237
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/ManagedAppCatalogQATests.swift",
+      "sha256": "59d9b51b730f5ad405fa469e0a06610ccfed02afdbdc098d21854378a35fb0b5",
+      "size": 6837
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/ManagedAppNamingQATests.swift",
+      "sha256": "2013658cb909c671711a8de7d0bab4959e3dd32c9e81f56d45186812d1799ab7",
+      "size": 21809
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/ManagedAppsTests.swift",
+      "sha256": "cb8d095c1b0b4f09556f9359999b25be8ac5829de51ab55747678f2571bd0fef",
+      "size": 24840
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/ManagedAvailabilityMonitorTests.swift",
+      "sha256": "dc6aa542c5366e1752c0043c1a08802d94c9f09aad4a72a8947153213983c727",
+      "size": 8564
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/NativeDiagnosticsTests.swift",
+      "sha256": "e90ed0cdfc9e163a03178489b8e35a2fe3ba0a98ab234e6fb54287d542a9359d",
+      "size": 1738
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/NativeStartupExitTests.swift",
+      "sha256": "fbc217d06d860896214885d584d5c6c520f150388fc5f503557149c66c8c1e23",
+      "size": 3732
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/PhoneDisplayPowerQATests.swift",
+      "sha256": "17ec4f0fbf4b8040229d04d9f352b0252692b55a4f8b441853b74210879be892",
+      "size": 17137
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/PhoneDisplayPowerTests.swift",
+      "sha256": "1665b3a793dec630de078074135c79885b9f70f71ca814e963c6ea61cc3e8679",
+      "size": 8273
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/QALifecycleTests.swift",
+      "sha256": "a0d75f533c5e853e5a9e330bbd0267eedaa7b5f081d6ced10a633120a1b95c84",
+      "size": 8060
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/ScrcpyPortLeaseTests.swift",
+      "sha256": "6fbb4c11d959a8c3fd4a2acea989818a89768b62a3e16ee3792b6927b10c1629",
+      "size": 3770
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/ScrcpyStartupLeaseTests.swift",
+      "sha256": "37646702ea7b71da04f6d2192789c639f365afb8407cd66d897b91c878acf3f7",
+      "size": 3967
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/SessionRecoveryTests.swift",
+      "sha256": "a243d8bb6f8fe2d22ef2eb4134bfc6d8ea5e8e953c7064ee7fae4b610aee186f",
+      "size": 3581
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/StartupFrameVisibilityTests.swift",
+      "sha256": "cbd8d5059b34e314aff4c7a590200cb6f2e58e04813015018c629382b9b805db",
+      "size": 1205
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/StreamingTests.swift",
+      "sha256": "946110892386cdaa60f8496a37a3015dd89f8c28bcebec211a2467adb34e90ff",
+      "size": 10271
+    },
+    {
+      "path": "Tests/DroidBridgeCoreTests/SupervisorDiagnosticsTests.swift",
+      "sha256": "dc34d62ef1bdf93b49eafc93efc361904a16afc63bf745ade905e1df4a103d9f",
+      "size": 4781
+    },
+    {
+      "path": "WRAPPER_DESIGN.md",
+      "sha256": "2babcb57f488d114c2aa5602a8f03e99b8a7a15cdf7cdcf5b487e28060182e6e",
+      "size": 5755
+    },
+    {
+      "path": "android/companion-fixture/AndroidManifest.xml",
+      "sha256": "b5b369d436956c465cb5a0dcf8a3e8b1bdfdddf8ec577be7510be69d21204126",
+      "size": 1379
+    },
+    {
+      "path": "android/companion-fixture/FixtureProvider.java",
+      "sha256": "99cd29e2708e0f075581b452ba25a797de79d3be7bda26e8dbbe329d4613ebf8",
+      "size": 2640
+    },
+    {
+      "path": "android/companion-fixture/MainActivity.java",
+      "sha256": "c0856ab32a8bc66ac03224fbb0826c8c8b5c6584119d837fae404dc95444c358",
+      "size": 5570
+    },
+    {
+      "path": "android/companion-fixture/README.md",
+      "sha256": "b0e8182e704f5b0055be36cffb8a59c9fd402946c3645cbda7d6b796a2bf0c1b",
+      "size": 2981
+    },
+    {
+      "path": "android/companion-fixture/ReceiveActivity.java",
+      "sha256": "817416f154fc199ddb0d7497629cffacf7359d5c0940f4c0946632d78fb816cd",
+      "size": 2983
+    },
+    {
+      "path": "android/companion-fixture/ReplyReceiver.java",
+      "sha256": "6aae040f486a2a874a532b30cae4c85ea00968e9b358f35cc43272ed67fdf7d8",
+      "size": 863
+    },
+    {
+      "path": "android/desktop-input-fixture/AndroidManifest.xml.in",
+      "sha256": "5830206edb055c7343ac5512f3f0b788a4f7d489125fff9d115985a8c6b545e7",
+      "size": 698
+    },
+    {
+      "path": "android/desktop-input-fixture/MainActivity.java.in",
+      "sha256": "3222b986fd98e286ea9b80e90aebea047ef185a5dcbe99800f21517229d8c4a5",
+      "size": 6185
+    },
+    {
+      "path": "android/desktop-input-fixture/README.md",
+      "sha256": "8fc19e5d417043235a057d8e014e43060f85305c41009f4298fcde8b4b5246c5",
+      "size": 1423
+    },
+    {
+      "path": "android/desktop-input-probe/AndroidManifest.xml.in",
+      "sha256": "5830206edb055c7343ac5512f3f0b788a4f7d489125fff9d115985a8c6b545e7",
+      "size": 698
+    },
+    {
+      "path": "android/desktop-input-probe/MainActivity.java.in",
+      "sha256": "c650d3f9f318a8186f66e5f6c7f8a828b63654bff1a10dcd587fa3c144838aca",
+      "size": 7004
+    },
+    {
+      "path": "android/desktop-input-probe/README.md",
+      "sha256": "85f17ba79358f0cb6fe73afabf6d18ea87efe2ed9b72fa1d48d326c0a1affb19",
+      "size": 1193
+    },
+    {
+      "path": "android/icon-helper/dev/droidbridge/icons/IconHelper.java",
+      "sha256": "b478dda16c0662eb061614a8f167c893e57b7b51a88f9f7721cf4f3e3cb57245",
+      "size": 4005
+    },
+    {
+      "path": "android/icon-helper/fixture/AndroidManifest.xml",
+      "sha256": "88a2b49e8fe5548154a3a47f5e7455eb3cbe78c2a3e38e735299fcf5fcb28ba7",
+      "size": 1084
+    },
+    {
+      "path": "android/icon-helper/fixture/MainActivity.java",
+      "sha256": "0c44ddd79d5a1f062806d9fe968c63ce92b7f674613e974d33253d42a6d144d0",
+      "size": 344
+    },
+    {
+      "path": "android/icon-helper/fixture/build.sh",
+      "sha256": "2fb265e7c2dc285f686e49491693e5da8af7e6eb50d4d7f698a291ca907cf0e6",
+      "size": 1368
+    },
+    {
+      "path": "android/icon-helper/fixture/res/drawable/application_icon.xml",
+      "sha256": "6e2c5f3e9423fef8d2de58f481fc5e62fd96b5fcbd38f70d2341d6ff5b909f80",
+      "size": 257
+    },
+    {
+      "path": "android/icon-helper/fixture/res/drawable/launcher_foreground.xml",
+      "sha256": "07f864bb3cd714f4a6e12cee6c12806023c823bae835849b158ab0f625bfa47e",
+      "size": 284
+    },
+    {
+      "path": "android/icon-helper/fixture/res/mipmap-anydpi-v26/launcher_icon.xml",
+      "sha256": "43043a3c22c9972b6d0e4a8146e6f6bed8607a041897ecf48fb427d589b8b3c1",
+      "size": 217
+    },
+    {
+      "path": "android/icon-helper/fixture/res/values/colors.xml",
+      "sha256": "2b69331d50aa3f0777446011dfdf5c09a4cb97e8d9d49153dc7f7132a8e84809",
+      "size": 75
+    },
+    {
+      "path": "android/unicode-label-fixture/AndroidManifest.xml.in",
+      "sha256": "5830206edb055c7343ac5512f3f0b788a4f7d489125fff9d115985a8c6b545e7",
+      "size": 698
+    },
+    {
+      "path": "android/unicode-label-fixture/MainActivity.java.in",
+      "sha256": "06e0d8ee0defaabd1a3e8f14bd5d9db3a1c61c0dbc096c66b97c892c16ec7c6e",
+      "size": 785
+    },
+    {
+      "path": "android/unicode-label-fixture/README.md",
+      "sha256": "02284435c8c4eccd46ee0009f1630789ef13722c67c232d50e0cdad8b2599e9e",
+      "size": 977
+    },
+    {
+      "path": "docs/BETA_RELEASE_NOTES.md",
+      "sha256": "d41a7b414c83b83323175d0f9056874a3572a46af694bb8cf669bde054e73b96",
+      "size": 3711
+    },
+    {
+      "path": "docs/PRODUCT_RELEASE_REVIEW.md",
+      "sha256": "4a7ebdb90a773866a21437fbe46987247b776b8442d36aea40bfeb2245ca140a",
+      "size": 31364
+    },
+    {
+      "path": "docs/PUBLIC_BETA_STATUS.md",
+      "sha256": "d011ca50c99d08b387e2a40f0f098c80437c550530aebd41277584952035b76b",
+      "size": 5377
+    },
+    {
+      "path": "docs/SIGNING_AND_UPGRADE_PLAN.md",
+      "sha256": "dd7e9113155a889659c0aee7a02980c6da45c881ef89c5271dbeb5388629722c",
+      "size": 21250
+    },
+    {
+      "path": "docs/companion/ADB_RUNTIME.md",
+      "sha256": "f7eda5cd52916c57c3d38c0d0596b9fb6562e61ae8a8350369ed8a9973e89922",
+      "size": 5578
+    },
+    {
+      "path": "docs/companion/ANDROID_CAPABILITIES.md",
+      "sha256": "dc6bc1da6ca2fec8331d52419d3e73200875a8dc8a3f5d99fadf42c8e4e4189a",
+      "size": 6121
+    },
+    {
+      "path": "docs/companion/BOUNDARY_CONTRACT.md",
+      "sha256": "e51875259b1192f4a36c71c41f777c60cd80fa5185a4089f456bbdd1142fce4b",
+      "size": 30410
+    },
+    {
+      "path": "docs/companion/BROKER_IPC.md",
+      "sha256": "970a76ba66efd154a3abcadff348f6ae9bc98634523355baf159a1dc58ba5399",
+      "size": 10729
+    },
+    {
+      "path": "docs/companion/INSTALLED_QA_RUNBOOK.md",
+      "sha256": "47fb153de2823a8f3155f9159b8897322a30cdc94ef9289873c39a30810b9ed3",
+      "size": 12765
+    },
+    {
+      "path": "docs/companion/MACOS_INTEGRATION.md",
+      "sha256": "b5a27945a801945e8fe6989a91a1c68f6bc61d3b1f601791b89772e9801418d9",
+      "size": 23496
+    },
+    {
+      "path": "docs/companion/PERFORMANCE_GATE_REVIEW.md",
+      "sha256": "684aeeabc7ea3fe9fff1af04c052d908020a417937f66c5ebb79f198943f66a6",
+      "size": 11000
+    },
+    {
+      "path": "docs/companion/QUICK_ACCESS.md",
+      "sha256": "82f849b1d2bb988094af3348f9200316ce8dc0c10709c35849edb787b0f7c349",
+      "size": 4161
+    },
+    {
+      "path": "docs/companion/ROADMAP.md",
+      "sha256": "1f54cec4605677506018d8687d3cb1bb68bf8557b912e20c6b0d27785007bc2b",
+      "size": 15239
+    },
+    {
+      "path": "docs/companion/SECURITY_REVIEW.md",
+      "sha256": "42ddae4603c5961d58c9d70260df89694c36055c5b3e75ac498cf2daf44a36c4",
+      "size": 78345
+    },
+    {
+      "path": "docs/companion/SLOOPWORKS_INTEGRATION.md",
+      "sha256": "0876da33b8c1884cfa0e8e9169f504632b0bf97ce67637eca6b38b7ab6c08bab",
+      "size": 9470
+    },
+    {
+      "path": "docs/companion/SYSTEMS_REVIEW.md",
+      "sha256": "9e673cc3acf5ff98d796a8ba58bc27633918720f1fa307ea9c1aa5635683e8be",
+      "size": 15826
+    },
+    {
+      "path": "docs/companion/UX_FLOWS.md",
+      "sha256": "33f6c09bef945ba061c40c87baec09fe2f3ede2a1d0d3c77ad768599333d3903",
+      "size": 20353
+    },
+    {
+      "path": "docs/companion/UX_REVIEW.md",
+      "sha256": "ae8a210ef86083cc733dcea85ac77e36763ab02bfeca48ff29ba5876fd12dd5f",
+      "size": 41272
+    },
+    {
+      "path": "scripts/analyze-companion-video-metrics.py",
+      "sha256": "e2cbe2bd58ff813674c924c3236a3c392e2b208b1434be7fa363390081174795",
+      "size": 5112
+    },
+    {
+      "path": "scripts/android-build-testapp.sh",
+      "sha256": "b9d85f5aff04ea3ed21c66d5d7e34329f686e5bd7560ce58572bff2cccb4ed52",
+      "size": 1825
+    },
+    {
+      "path": "scripts/android-emulator.sh",
+      "sha256": "d2e6d73b1af6a5539b727c3b21f9df919ee40c3d29dc58a19e20c67606e52d6f",
+      "size": 746
+    },
+    {
+      "path": "scripts/android-testapp/AndroidManifest.xml",
+      "sha256": "fcbee22aeafea8c49b179ea3729146b9d07b9e9f1a414442396d3bf53eea5db1",
+      "size": 776
+    },
+    {
+      "path": "scripts/android-testapp/MainActivity.java",
+      "sha256": "758386da7623613a1eb07c2667fe7cddc4f97d4deecec2f5683ee98dad0a38e8",
+      "size": 4328
+    },
+    {
+      "path": "scripts/android-testapp/SecondaryActivity.java",
+      "sha256": "1e8d40f69100d5883d3e3f15d4c224c4143b269e115abaa843e4de1143b4d817",
+      "size": 884
+    },
+    {
+      "path": "scripts/android-verify.py",
+      "sha256": "21c9adf6a7df7a7efa0614555baf539332b1fd6b745d12fc9e9a1d8a2145af02",
+      "size": 4049
+    },
+    {
+      "path": "scripts/audit-evidence-qr.swift",
+      "sha256": "bd119d9fdb2f1acec9de6734dd7e5fd6593dcffab8d68ffafb43c7f4d472d847",
+      "size": 2608
+    },
+    {
+      "path": "scripts/benchmark-adb-runtime.py",
+      "sha256": "8b76142388a6b058cbfca824e38b69082593433301d9a1111f781dfdf47448ae",
+      "size": 2591
+    },
+    {
+      "path": "scripts/bootstrap.sh",
+      "sha256": "9980269d07c2a5e5e8dc43f03f22b4f397dffe8634c02a5ba04a4a9e4f0e968f",
+      "size": 977
+    },
+    {
+      "path": "scripts/build-adb-runtime.py",
+      "sha256": "08ba5e3a2d0e35c060319d95879baeec51dbfa0c87aae18fc3ad1a5a90dabbf3",
+      "size": 25331
+    },
+    {
+      "path": "scripts/build-adb-runtime.sh",
+      "sha256": "17792a093ad3dea68ed3557d4ca8951dac20b68fd0fd5ff4e7501e862f8a8278",
+      "size": 101
+    },
+    {
+      "path": "scripts/build-audio-client.sh",
+      "sha256": "19cab5cde1f8cdaccaebeaa4af966835768d46e33957927ebcfb51b06c9dd3a3",
+      "size": 1574
+    },
+    {
+      "path": "scripts/build-companion-client-probe.py",
+      "sha256": "883b27d6331205474713f2cfc09fc829e5d9fe1ca46f99e185a3f21926244c4c",
+      "size": 2322
+    },
+    {
+      "path": "scripts/build-companion-client-probe.sh",
+      "sha256": "9d8b5cfa558318d6616d8e46baf75f5370325a6e600ebedd14db23ded7dcd83b",
+      "size": 389
+    },
+    {
+      "path": "scripts/build-companion-fixture.sh",
+      "sha256": "66af5970869e245b41e3db918a45c68da56dbedc418f6f8f0cf272fe6bfe7780",
+      "size": 1577
+    },
+    {
+      "path": "scripts/build-desktop-input-fixture.py",
+      "sha256": "db4fce1bedfc301d44656ac9346af6ed3a21adbfc51842abca12c752fe43415e",
+      "size": 3829
+    },
+    {
+      "path": "scripts/build-icon-helper.sh",
+      "sha256": "fcf1a36bfeec620c96ed44fb54931dc856960fb1d21575b88537b4aa200c1b18",
+      "size": 933
+    },
+    {
+      "path": "scripts/build-input-probe.py",
+      "sha256": "3db218a05fc348b869583639d61aa8ac5e4019c58a95a7d1f804db05731654c6",
+      "size": 3550
+    },
+    {
+      "path": "scripts/build-unicode-label-fixture.py",
+      "sha256": "f4a93f5da73b5416d1a5725b5475b8b92b6fa3662601cc1db53b28cc18384ca2",
+      "size": 3900
+    },
+    {
+      "path": "scripts/bundle-dylibs.py",
+      "sha256": "e473eed6543164b14e9c59d45fe0e046d8d32e59169fe90ef9a968774f65770c",
+      "size": 3306
+    },
+    {
+      "path": "scripts/capture-companion-windows.swift",
+      "sha256": "485c7d6f625ebb446a85722cf916abf332b44880a805f75801301689d99eeec8",
+      "size": 3659
+    },
+    {
+      "path": "scripts/collect-companion-notices.py",
+      "sha256": "b695985873bc980ce6c5fd99081e19337617cac9daaf08d25d4b5232f6bcbf66",
+      "size": 1207
+    },
+    {
+      "path": "scripts/collect-corresponding-source.py",
+      "sha256": "2ded1115feda892510ca7f087812bd8bd32ab4d73c2c5f657d820fa56a420ac7",
+      "size": 4994
+    },
+    {
+      "path": "scripts/collect-licenses.py",
+      "sha256": "93fc4311e2da1ccae97b3601c9dac8bfd8bed9588b9f8a465dde371b99d193d1",
+      "size": 2278
+    },
+    {
+      "path": "scripts/create-release-manifest.py",
+      "sha256": "3a21fed4a8f5f3a03e950f5912b2ec0adc89b81ed4b7327624d6fb8cfd3b93ac",
+      "size": 3537
+    },
+    {
+      "path": "scripts/fixtures/launch-ux.py",
+      "sha256": "b0a5abaac58c976b1ecab48908ada6965fe8d70803b0aacdab5c7b13064500a4",
+      "size": 3311
+    },
+    {
+      "path": "scripts/icon.swift",
+      "sha256": "d3bcacd98d30750a3cc070b97757f9de4238a9090ae67ad7353be4984f81ee6c",
+      "size": 2471
+    },
+    {
+      "path": "scripts/package-corresponding-source.py",
+      "sha256": "26d0105c6fdf47bc31fdc2bdb31f2c71aa7526c13bf8522d70ad98b6cfcaaf83",
+      "size": 11192
+    },
+    {
+      "path": "scripts/package.sh",
+      "sha256": "94fa7fe00c2b1a9a3ac8f201d1b150805ffcd40bb3c80008f6142ce4a87a6613",
+      "size": 13121
+    },
+    {
+      "path": "scripts/patches/android-tools-adb-includes.patch",
+      "sha256": "7c6039ba5c29c7dacd229bd257e4ecfa8360bd2206eb606ffa3464f7d647295a",
+      "size": 678
+    },
+    {
+      "path": "scripts/patches/android-tools-boringssl-headers.patch",
+      "sha256": "78c4c25c46b3e9ae857f156a2d27bdb4c16a1805f45dea1c776848a3a5f4f0ec",
+      "size": 688
+    },
+    {
+      "path": "scripts/patches/android-tools-protobuf-logging.patch",
+      "sha256": "c8bf80c57096dbd5b8e0d832bb3183dd8261e306eed0442834765e2495f1d326",
+      "size": 1097
+    },
+    {
+      "path": "scripts/patches/audio-output-ready.patch",
+      "sha256": "d9d91f9b6e416a4b583f81bae1adeb8ee80ed4c5d4f0ac16bf689d11a4272c5a",
+      "size": 5586
+    },
+    {
+      "path": "scripts/probe-companion-spotlight.swift",
+      "sha256": "d553de4f814ab94755fe6da054e260a070979b652b369ca3306977d732e146dd",
+      "size": 3506
+    },
+    {
+      "path": "scripts/release_signing.py",
+      "sha256": "7c1d7bc94a86eb7fc86ed8718c20be5b7f19ecc9dc998b5e4fef9ce131b7009e",
+      "size": 10594
+    },
+    {
+      "path": "scripts/stage-adb-runtime.py",
+      "sha256": "8c0674201dd699647ca8ba19bc33ebc61b183a4fdae8004edebc614d02c09bb6",
+      "size": 6968
+    },
+    {
+      "path": "scripts/test-macos-wrappers.sh",
+      "sha256": "52a15e413d5743dea535ec110fc3ea243cad9408cf71c2542911d426f006d24d",
+      "size": 548
+    },
+    {
+      "path": "scripts/test-macos-wrappers.swift",
+      "sha256": "a8546607a7b6bdc1bb160ede4e4bc5950661fec763d1643151b2df620ae2b6da",
+      "size": 16868
+    },
+    {
+      "path": "scripts/test-release-signing.py",
+      "sha256": "5362feb3faeea0080f24ca199fa62d7a0444b26b6fd3f4a3c899e9c4e45b3443",
+      "size": 4091
+    },
+    {
+      "path": "scripts/verify-adb-build-integrity.py",
+      "sha256": "4365876a35fc3dd9384a8ec3b654a2ad199c79048ba7ee5df82a38ba9bc2fabb",
+      "size": 2730
+    },
+    {
+      "path": "scripts/verify-adb-helper-portability.sh",
+      "sha256": "69a3ff249608329491acee3bb9d53f84bad6dbc6d68281fa8e71e7ccf7e0a30a",
+      "size": 332
+    },
+    {
+      "path": "scripts/verify-adb-helper-portability.swift",
+      "sha256": "ac248711c65d809843b59b761e01bb5c9b29cc4dcb6eca07f03ea03be92140a1",
+      "size": 14664
+    },
+    {
+      "path": "scripts/verify-api37-native.swift",
+      "sha256": "1a0acb2f64ce1aaf8ee077b63034722470e8e81b87436c5a20cd4a15c1927563",
+      "size": 3869
+    },
+    {
+      "path": "scripts/verify-app-name-migration.py",
+      "sha256": "66857664eab6cff8b4ed0ee78cacbcf33d187b63029b5a28ad1d8880e0f2a0d6",
+      "size": 6795
+    },
+    {
+      "path": "scripts/verify-appkit-startup-baseline.m",
+      "sha256": "f74310fa8c3153c1981d24de1e4a433419d109930fa4d8289c3f2ab6d07252c5",
+      "size": 2878
+    },
+    {
+      "path": "scripts/verify-appkit-startup-baseline.py",
+      "sha256": "616904ec55ca41f50d0037dacce25ffae919a3df5033bed7d18d6937626a8d5d",
+      "size": 9614
+    },
+    {
+      "path": "scripts/verify-appkit-startup-baseline.swift",
+      "sha256": "7e89f0093a4885905a1e136efc4017427a7d950f63ed4833b9773e6701cd6f29",
+      "size": 2582
+    },
+    {
+      "path": "scripts/verify-appkit.sh",
+      "sha256": "f7256e09b6937dca1722e53ad0f2aa29dfa37a87ba7c8039221a875431fbbdd9",
+      "size": 449
+    },
+    {
+      "path": "scripts/verify-appkit.swift",
+      "sha256": "9a106a840dfc2bdb7cc2258184bbf352d777d7906a78d9bbd4f4f843783895ba",
+      "size": 9372
+    },
+    {
+      "path": "scripts/verify-audio-actions.m",
+      "sha256": "77d1532316e8fdb6a9bb388bef23ea6451552cf5a32ac0460f864318c87a0294",
+      "size": 11209
+    },
+    {
+      "path": "scripts/verify-audio-client.py",
+      "sha256": "18e459eb4a89039919270ebf7bc9f82c083eea7f45bdabed7eec3fcafd2016f6",
+      "size": 2110
+    },
+    {
+      "path": "scripts/verify-audio-fallback.py",
+      "sha256": "228363bebb609ca9cd33656b2696c212b3d39bbab5c2c7aead4a855761ddc9a2",
+      "size": 41681
+    },
+    {
+      "path": "scripts/verify-audio-native.py",
+      "sha256": "1bc4b0c099f3a28869e89c9b80e14f36ffa4e0d120db10b4c784d3cb62967dc1",
+      "size": 36331
+    },
+    {
+      "path": "scripts/verify-audio-player-capture.c",
+      "sha256": "a2aa44465531a267c5448d9b61fdb3cd0ab971fe2ef74e8cb15a6eb66e729237",
+      "size": 7350
+    },
+    {
+      "path": "scripts/verify-audio-samples.c",
+      "sha256": "3df36e0053b36e5367f6ff9c76d7871834c5cdd2d8946331df9b0f916bb7e425",
+      "size": 4183
+    },
+    {
+      "path": "scripts/verify-audio-wrappers.swift",
+      "sha256": "e21c915b4ac274c34677257b9a52cc5f5e661f33d745d060a443bc74e60f6dba",
+      "size": 3420
+    },
+    {
+      "path": "scripts/verify-availability-migration.sh",
+      "sha256": "ae55cc20bd834468c9da476766fbe292b9605cb24297f89d101c07de0a8ec24c",
+      "size": 368
+    },
+    {
+      "path": "scripts/verify-availability-migration.swift",
+      "sha256": "c0032b09ffd13e0b5cf0e7676ad66eeab1f022f7791dd72369ab1025ddaabe71",
+      "size": 7963
+    },
+    {
+      "path": "scripts/verify-cgevent.swift",
+      "sha256": "3bacb9dd12cfc326434b83343d7aaa82ef829da8da553e45a903390280b77316",
+      "size": 1791
+    },
+    {
+      "path": "scripts/verify-clean-name-launch.py",
+      "sha256": "a662d2d047bad60d9ade830f471216d9edf10770f0427949dad80a90ed11eaa3",
+      "size": 3732
+    },
+    {
+      "path": "scripts/verify-companion-actions.m",
+      "sha256": "9371cf6b6383704eefea831c51c1e4133bcc35edc7846854d45da716b69de9cf",
+      "size": 9824
+    },
+    {
+      "path": "scripts/verify-companion-alias-runtime.py",
+      "sha256": "b31657093e5cdda27e544fb6f648371b2fcd97320aa0d631bedd2055054d3992",
+      "size": 4461
+    },
+    {
+      "path": "scripts/verify-companion-alias-runtime.swift",
+      "sha256": "4a981bd7be601ed0d11be8c7a1d1353577be75f8ef8be3a9b0c02fd7446d7c0e",
+      "size": 19847
+    },
+    {
+      "path": "scripts/verify-companion-broker-rpc.swift",
+      "sha256": "cab146f0c6c9e357adced3fcc044fb1f44102962c1d9eeacfeee0f23b43e31ec",
+      "size": 2384
+    },
+    {
+      "path": "scripts/verify-companion-broker.swift",
+      "sha256": "3d423e7638bda31c873136ae1171fe817ef9b2adec9edfebf9ab572a3dd0c99c",
+      "size": 1025
+    },
+    {
+      "path": "scripts/verify-companion-catalog-installed.py",
+      "sha256": "9d9bdfe3c5e0df66e827a4038bce4ff3b27ae1da48404dcb411894730a58c6f6",
+      "size": 9420
+    },
+    {
+      "path": "scripts/verify-companion-catalog-sync.sh",
+      "sha256": "911ce8b0244191672c3f82f13b4ff3e798df007183dcd4e11d554948ee2d8196",
+      "size": 531
+    },
+    {
+      "path": "scripts/verify-companion-catalog-sync.swift",
+      "sha256": "4e542b9733f121e64274a30b7a21e8afb4caa6f54f1092f4ef63b07bc3cae540",
+      "size": 11623
+    },
+    {
+      "path": "scripts/verify-companion-client.swift",
+      "sha256": "41b386175573b788ea09d418cfa2835b2efe50514df18edffbae9d4d20f0eb83",
+      "size": 3040
+    },
+    {
+      "path": "scripts/verify-companion-distribution-security.py",
+      "sha256": "064496049e0d63e2d847fdd0e8df84de67cf6247b6dbfcfeaa0bd7eac3241ed5",
+      "size": 6994
+    },
+    {
+      "path": "scripts/verify-companion-forward-runtime.swift",
+      "sha256": "5855d045f16b9a0ee4094aefed5b7de8921c4f6c1a81df47a6e2d1843c70d5e8",
+      "size": 4719
+    },
+    {
+      "path": "scripts/verify-companion-gui.sh",
+      "sha256": "8d7a8189e1d691361cc8d60af952980f61a84db9f5a07863f15fccbd0216aed8",
+      "size": 599
+    },
+    {
+      "path": "scripts/verify-companion-gui.swift",
+      "sha256": "4fa0c2f0d2e90a2d73f66b30128d4818584fa942336292b6abeb7ecd44adb991",
+      "size": 51849
+    },
+    {
+      "path": "scripts/verify-companion-improvements.py",
+      "sha256": "35cb2a5b9b8ddfca9bfd47d3f17d03104fdb6a1a98b01105ea1394ae355fc7fc",
+      "size": 11804
+    },
+    {
+      "path": "scripts/verify-companion-installed.py",
+      "sha256": "273977ee64b269b5f24675c0afe2a16cc51b7591f83824c07c63f82310f78207",
+      "size": 17459
+    },
+    {
+      "path": "scripts/verify-companion-keychain-update.py",
+      "sha256": "9e1eed2c75efb1ab2ae03cb25a0ee0eb6c5e1f1ed52a8609a4267b5f681bd12a",
+      "size": 5895
+    },
+    {
+      "path": "scripts/verify-companion-keychain-update.swift",
+      "sha256": "46460d23896f8e3755b296957885cb7b0e5ac8c1e9a5792b958330215d7fe093",
+      "size": 3431
+    },
+    {
+      "path": "scripts/verify-companion-lazy-wrapper.swift",
+      "sha256": "9c24e2691cbb32b0f4f54359fb2dad1cd405d105f6fee25471376b5e16b15259",
+      "size": 2925
+    },
+    {
+      "path": "scripts/verify-companion-peer-attack.py",
+      "sha256": "42d4bab7f1a698c0e8c8776bd129514f16fd1921ed775e30e4970e242eb08a05",
+      "size": 11513
+    },
+    {
+      "path": "scripts/verify-companion-performance.swift",
+      "sha256": "6f214ceb9dd94c3ae0a0a57d8be3669803e3c86563770df90dc3b8bf489e14f4",
+      "size": 6324
+    },
+    {
+      "path": "scripts/verify-companion-preview.py",
+      "sha256": "5e782c12406bd4885a483b1222413d0c1756c6f1eb8cca550f08d7c1392687e3",
+      "size": 12620
+    },
+    {
+      "path": "scripts/verify-companion-source-archive.py",
+      "sha256": "6ad4ddddacac2718d72a07309c04a25263581941b6fd345cecb46083300daa82",
+      "size": 9416
+    },
+    {
+      "path": "scripts/verify-companion-spotlight-activation.swift",
+      "sha256": "9b17ef8f9ef6304843290a178f4a90ca3bd18b52a3d3145957fd793f56777585",
+      "size": 6575
+    },
+    {
+      "path": "scripts/verify-companion-window-observer.m",
+      "sha256": "409d65826a7ae40a698ef1a9b329de3a0fc4449a444e4592cafd93b7f43bdc85",
+      "size": 2577
+    },
+    {
+      "path": "scripts/verify-companion-wireless-gui.py",
+      "sha256": "d3a95e5cda9f262b2f52ee16603c25ff01fc9d76d0bac40cd2742fd6a8d3e48d",
+      "size": 9812
+    },
+    {
+      "path": "scripts/verify-device-onboarding.sh",
+      "sha256": "6771e9a694831415b6635e41d585e38e2738b27817ded762eaf918cf91db68b4",
+      "size": 616
+    },
+    {
+      "path": "scripts/verify-device-onboarding.swift",
+      "sha256": "50c99bfd8d6603fa19a93fb6e3e0519ddb16eb3aa1725e0a61982adc9ed9e97e",
+      "size": 4014
+    },
+    {
+      "path": "scripts/verify-hidden-ime-fallback-sdl.c",
+      "sha256": "6f61c4096ef2fa3c01abcf6f04ba807db39ac31551d83cad53e6d8a4d8370314",
+      "size": 930
+    },
+    {
+      "path": "scripts/verify-hidden-ime-fallback.m",
+      "sha256": "5aae2ae4f3912e0aedc7fa2447063df60a8b3165d94562fb6f84be94ce0c3f7a",
+      "size": 11130
+    },
+    {
+      "path": "scripts/verify-hidden-ime-fallback.py",
+      "sha256": "90c0ba56b8e5b1dbd4d52cb70f6e315c4e276cf58073340644408e784867e844",
+      "size": 16556
+    },
+    {
+      "path": "scripts/verify-hidden-ime-native.py",
+      "sha256": "02dcaaf1f07c87a08e11008a03277a0792752fa489b007681193816e55a3562c",
+      "size": 12852
+    },
+    {
+      "path": "scripts/verify-hidden-ime-state.py",
+      "sha256": "4343e358b26ab11eb8395d2e7c9ccdc436a33debf1b9b7ba13a41fa26911004a",
+      "size": 6290
+    },
+    {
+      "path": "scripts/verify-hidden-ime-upgrade.py",
+      "sha256": "6b5726fb621c49d4a8b235f78f8fceb3ef2afff854d987ddb93b558c27eb4a08",
+      "size": 4011
+    },
+    {
+      "path": "scripts/verify-installed-icon-recovery.py",
+      "sha256": "0a311b903096b3013d6b85e4bc44f21ce93459ff9f50b6d4b869d141f33c7367",
+      "size": 6632
+    },
+    {
+      "path": "scripts/verify-installed-launch-ux.py",
+      "sha256": "39981bc7e8098c6b0bf29c1257ddbefcb7bccd48de93497706235808cc7a90f0",
+      "size": 6499
+    },
+    {
+      "path": "scripts/verify-installed-launcher.py",
+      "sha256": "4cc39f9ccb96d4722baab445161bd44d7f4e38089c48ae60842ab466a3c24f3b",
+      "size": 12445
+    },
+    {
+      "path": "scripts/verify-installed.py",
+      "sha256": "0f56861103923f28c77fc36f64d6b39bc8c89b0094926378513a3e562773405f",
+      "size": 8911
+    },
+    {
+      "path": "scripts/verify-intent-replacement.sh",
+      "sha256": "64c4a4c37f376d519999c5913ccbe8dbb4f94dbceccaf0ca6b118da4e2b49dd4",
+      "size": 1387
+    },
+    {
+      "path": "scripts/verify-intent-replacement.swift",
+      "sha256": "44c8f99d0b5107f9fde1897055f1b25d4511cd0442f7ea3dbb94f16846333e3a",
+      "size": 3330
+    },
+    {
+      "path": "scripts/verify-launch-race.sh",
+      "sha256": "70e4f44ab10fe2e531e82f9e08fac123fe329a86ac90b6a3cc569470226e5af1",
+      "size": 1835
+    },
+    {
+      "path": "scripts/verify-launch-race.swift",
+      "sha256": "a1b4920d3565b0a127d143563b649bcf8efb696252a4f8d7a0d4a5a76b840f4f",
+      "size": 2597
+    },
+    {
+      "path": "scripts/verify-launch-ux.sh",
+      "sha256": "1fffbc3d072cd50fa3c9a6670262c115e77607112b8cfde894e88a02c2142162",
+      "size": 2419
+    },
+    {
+      "path": "scripts/verify-launch-ux.swift",
+      "sha256": "084c8e0d307fb28a84c96de0d1d420b3c9b76d1397d350755aa72a369205605a",
+      "size": 16283
+    },
+    {
+      "path": "scripts/verify-launcher-redesign.sh",
+      "sha256": "95e3a0aa1d2c4a563eb6eac8d93795d7c2684140f10cbaaa99a6624c5731515b",
+      "size": 1584
+    },
+    {
+      "path": "scripts/verify-launcher-redesign.swift",
+      "sha256": "34c85c40ffbe41389dd579ffcaa314fc2616bce17d17679473c7339c01bb9788",
+      "size": 20158
+    },
+    {
+      "path": "scripts/verify-managed-agent.py",
+      "sha256": "f052739d2875030fd7089166441a230d495b4da0f5a92fdc2fd6871cae178bd4",
+      "size": 3636
+    },
+    {
+      "path": "scripts/verify-managed-apps.sh",
+      "sha256": "06899a56c27cd15b3d3f525ab8bc7e3ad795d065e92f61f2bc9f6dd30453266d",
+      "size": 393
+    },
+    {
+      "path": "scripts/verify-managed-apps.swift",
+      "sha256": "4e49bf67164774cbb643886bbdc72c49c128f731d98c81754b242a9170c89d60",
+      "size": 14513
+    },
+    {
+      "path": "scripts/verify-managed-availability.swift",
+      "sha256": "294d9d3130808606b232d5ee4a93fd5a21271e7c9e3868ef95e9ffdb0c5b477c",
+      "size": 1224
+    },
+    {
+      "path": "scripts/verify-managed-concurrent.py",
+      "sha256": "4709da16e9c303f851ca9a243d6c4c06e862d3b9ea4774421d17fc3ca4650c6f",
+      "size": 5276
+    },
+    {
+      "path": "scripts/verify-onboarding-cancel.sh",
+      "sha256": "b55417e858a74d53ada554340d96bea8e7f8cabbe930e044aafcbc7146e11731",
+      "size": 1109
+    },
+    {
+      "path": "scripts/verify-onboarding-cancel.swift",
+      "sha256": "e44bc454356a2dd7b8330fa408fb3090f0f0223e2e42d0de5efd376d9cc1dd8a",
+      "size": 1711
+    },
+    {
+      "path": "scripts/verify-package.py",
+      "sha256": "339038742d092e84c612200315a5559b1379ff7e6ee7c5a9e7346a9210f4bc28",
+      "size": 15237
+    },
+    {
+      "path": "scripts/verify-packaged-adb.py",
+      "sha256": "44d9fc267befa6111c1170b25ecd2065f548f5ec4c9fe3afcb742a477f6a33e2",
+      "size": 6655
+    },
+    {
+      "path": "scripts/verify-phone-power.py",
+      "sha256": "8f94c712f4d1cfda3604967a694a3fc6029271e38220f238fbf2cace77187afa",
+      "size": 2921
+    },
+    {
+      "path": "scripts/verify-phone-power.swift",
+      "sha256": "d46cf7d16d24e67c8eaad37b055c2f54f6906ef23a111185464427ad74de0d39",
+      "size": 1733
+    },
+    {
+      "path": "scripts/verify-player-events.m",
+      "sha256": "662b847375f2d840d7b06e0975fd77cd65139baa0cf8adb4aa956feb7c4fd989",
+      "size": 4145
+    },
+    {
+      "path": "scripts/verify-player-events.py",
+      "sha256": "fa5e55b9a6151ca142e45bf276fe956c1478f4fd19d194f02345ca3d19127e85",
+      "size": 3328
+    },
+    {
+      "path": "scripts/verify-reconnect.py",
+      "sha256": "8f90d8b4c454399d6c5c1b391f56d3032a0aa187b13dd09d4381ff993875125d",
+      "size": 6593
+    },
+    {
+      "path": "scripts/verify-screen-off-relaunch.py",
+      "sha256": "8cae1aa50e4e3ad584bc8c07b8f4ea9d2819fc8f8fc2892bfb40b3ee95979e0e",
+      "size": 3664
+    },
+    {
+      "path": "scripts/verify-sdl-input.c",
+      "sha256": "717c199e53f1bd74659257d79a740750eb01c1678b355e6cb4a017c37da3e112",
+      "size": 4278
+    },
+    {
+      "path": "scripts/verify-sdl-input.py",
+      "sha256": "ee4c93482f16573586f7e8a4c9aecab4adac27786749a1b5b0cad07897aba23d",
+      "size": 5888
+    },
+    {
+      "path": "scripts/verify-supervisor.py",
+      "sha256": "bf1cf943bba6672cf6be63875b0482095f3710b6bbf76f2d5a0c0a8228b0a726",
+      "size": 4539
+    },
+    {
+      "path": "scripts/verify-unbuffered.c",
+      "sha256": "3803e2090a9a9cbbabfab0a79049fbb870df261ffa225dc06b15dc15f9d75121",
+      "size": 318
+    },
+    {
+      "path": "scripts/verify-wrapper-close.m",
+      "sha256": "75e127ec636e293e9abc155304b2ed49085987e35118e92674e661b1c73b8b27",
+      "size": 1454
+    },
+    {
+      "path": "scripts/verify-wrapper-close.py",
+      "sha256": "be49cec9cd89d2fa5b45ce14100dc2635b8d16d7e568151ed7a3cfee2a082f95",
+      "size": 4126
+    },
+    {
+      "path": "scripts/verify-wrapper-failure-fixture.py",
+      "sha256": "5e6bdc775333b118d0e9a12f4486b269e8700062f0303f4c07223965098d9a91",
+      "size": 3576
+    },
+    {
+      "path": "scripts/verify-wrapper-failure.sh",
+      "sha256": "3caccb2876c8fb135f4301402603a292e8bcf69b6892ef07d8859f7991cd1cbf",
+      "size": 2040
+    },
+    {
+      "path": "scripts/verify-wrapper-failure.swift",
+      "sha256": "06d515e7eb1142d2099abbf6772c4ba097b64bc791fe95b5aa84c99f69cb699a",
+      "size": 10991
+    }
+  ],
+  "excluded": "verification, Git-ignored build/cache/dist/local files; credentials stored outside repository"
+}

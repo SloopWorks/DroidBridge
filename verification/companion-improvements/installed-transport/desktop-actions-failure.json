@@ -1,0 +1,17 @@
+{
+  "scope": "Actual phone command through pinned TLS, broker owner admission and installed Mac effects",
+  "actions": [
+    {
+      "kind": "set_profile",
+      "status": "rejected",
+      "result": {
+        "message": "The paired authorized Android device is unavailable."
+      },
+      "timing": {
+        "queued_uptime_ms": 2678556,
+        "acknowledged_ms": 54,
+        "completed_ms": 75
+      }
+    }
+  ]
+}

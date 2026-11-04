@@ -1,0 +1,85 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+Shipyard: variant 'development' appears to be signed with the per-developer default debug keystore. Cross-developer in-place updates need a shared development signing identity (design §11): an APK signed with another developer's debug key cannot update this install. Configure a signingConfig backed by the shared dev key. (This check compares keystore paths taken from the AGP DSL — the plugin cannot see the certificate itself.)
+WARNING: We recommend using a newer Android Gradle plugin to use compile SDK version 37.0
+
+This Android Gradle plugin (8.13.2) was tested up to compile SDK version 36.1.
+
+You are strongly encouraged to update your project to use a newer
+Android Gradle plugin that has been tested with compile SDK version 37.0.
+
+If you are already using the latest version of the Android Gradle plugin,
+you may need to wait until a newer version with support for compile SDK version 37.0 is available.
+
+For more information refer to the compatibility table:
+https://d.android.com/r/tools/api-level-support
+
+To suppress this warning, add/update
+    android.suppressUnsupportedCompileSdk=37.0
+to this project's gradle.properties.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig
+> Task :app:checkDebugAarMetadata
+> Task :app:processDebugNavigationResources
+> Task :app:generateDebugResValues
+> Task :app:compileDebugNavigationResources
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:parseDebugLocalResources
+> Task :app:mergeDebugResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebug
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processDebugAndroidTestManifest
+> Task :app:generateDebugAndroidTestBuildConfig
+> Task :app:checkDebugAndroidTestAarMetadata
+> Task :app:processDebugAndroidTestNavigationResources
+> Task :app:compileDebugAndroidTestNavigationResources
+> Task :app:generateDebugAndroidTestResValues
+> Task :app:mapDebugAndroidTestSourceSetPaths
+> Task :app:generateDebugAndroidTestResources
+> Task :app:processDebugManifestForPackage
+> Task :app:mergeDebugAndroidTestResources
+> Task :app:processDebugAndroidTestResources
+> Task :app:processDebugResources
+
+> Task :app:compileDebugKotlin
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt:30:39 This class is not recommended for use in Kotlin. Use 'kotlin.Any' instead.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt:588:59 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/BridgeStore.kt:589:49 Unnecessary safe call on a non-null receiver of type 'JSONObject'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:92:16 'var statusBarColor: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:93:16 'var navigationBarColor: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:94:26 'var systemUiVisibility: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:94:104 'static field SYSTEM_UI_FLAG_LIGHT_STATUS_BAR: Int' is deprecated. Deprecated in Java.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt:94:144 'static field SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR: Int' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:testDebugUnitTest
+
+> Task :app:compileDebugAndroidTestKotlin
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionImprovementsUXDeviceTest.kt:160:105 Unnecessary non-null assertion (!!) on a non-null receiver of type 'EditText'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionImprovementsUXDeviceTest.kt:160:130 Unnecessary non-null assertion (!!) on a non-null receiver of type 'EditText'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionUXDeviceTest.kt:74:23 Unnecessary non-null assertion (!!) on a non-null receiver of type 'EditText'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionUXDeviceTest.kt:81:23 Unnecessary non-null assertion (!!) on a non-null receiver of type 'EditText'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionUXDeviceTest.kt:93:107 Unnecessary non-null assertion (!!) on a non-null receiver of type 'EditText'.
+w: file:///Users/patrick/workspace/DroidBridge/AndroidCompanion/app/src/androidTest/java/dev/droidbridge/companion/CompanionUXDeviceTest.kt:93:132 Unnecessary non-null assertion (!!) on a non-null receiver of type 'EditText'.
+
+BUILD SUCCESSFUL in 24s
+37 actionable tasks: 37 executed

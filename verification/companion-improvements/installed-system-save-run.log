@@ -1,0 +1,9 @@
+Awaiting real CUA Save dialog interaction: save to /Users/patrick/workspace/DroidBridge/.build/companion-improvements-qa-system-save/received-fixture.bin
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 163, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 139, in main
+    assert destination.exists(), "Complete the real system Save dialog using CUA on the unlocked Mac"
+           ~~~~~~~~~~~~~~~~~~^^
+AssertionError: Complete the real system Save dialog using CUA on the unlocked Mac

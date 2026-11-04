@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "scope": "Actual installed phone/Mac commands, pinned transport downloads and decoded-frame independence; system Save dialog and Finder selection remain unverified",
+  "applied_commands": 4,
+  "hash_verified_downloads": 3,
+  "decoded_frames_after_service_stop": true,
+  "system_save_dialog_verified": false
+}

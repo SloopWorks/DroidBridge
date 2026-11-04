@@ -13,18 +13,39 @@ public struct CompanionReleaseMetadata: Codable, Sendable, Equatable {
     public let signing: String
     public let downloadURL: String
     public let releaseURL: String
+    public let schemaVersion: Int?
+    public let teamID: String?
+    public let sourceCommit: String?
+    public let sourceDirty: Bool?
+    public let build: String?
+    // Product trust policy; company records remain in SloopWorks/org-facts.md.
+    public static let releaseTeamID = "2XAXFD3872"
     enum CodingKeys: String, CodingKey {
         case version, architecture, sha256, signing
         case minimumMacOS = "minimum_macos", sizeBytes = "size_bytes", downloadURL = "download_url", releaseURL = "release_url"
+        case schemaVersion = "schema_version", teamID = "team_id", sourceCommit = "source_commit", sourceDirty = "source_dirty", build
     }
     public func validate() throws {
         guard version == Self.currentVersion, architecture == "arm64", minimumMacOS == "26.0",
               sizeBytes > 0, sizeBytes <= 268_435_456,
               sha256.range(of: "^[a-f0-9]{64}$", options: .regularExpression) != nil,
-              signing == "ad_hoc_not_notarized",
               downloadURL == "https://github.com/SloopWorks/DroidBridge/releases/download/v\(version)/DroidBridge-\(version)-arm64.dmg",
               releaseURL == "https://github.com/SloopWorks/DroidBridge/releases/tag/v\(version)" else {
             throw CompanionBoundaryError("invalid_release_metadata", "Official installer metadata did not match this release's version, platform or URL policy.")
+        }
+        switch signing {
+        case "ad_hoc_not_notarized":
+            guard schemaVersion == nil || schemaVersion == 1, teamID == nil, sourceCommit == nil, sourceDirty == nil else {
+                throw CompanionBoundaryError("invalid_release_metadata", "Development installer metadata cannot assert a release identity.")
+            }
+        case "developer_id_notarized":
+            guard schemaVersion == 2, teamID == Self.releaseTeamID, sourceDirty == false,
+                  let sourceCommit, sourceCommit.range(of: "^[a-f0-9]{40}$", options: .regularExpression) != nil,
+                  let build, build.range(of: "^[1-9][0-9]*$", options: .regularExpression) != nil else {
+                throw CompanionBoundaryError("invalid_release_metadata", "Signed installer metadata is missing its reviewed team, build or source identity.")
+            }
+        default:
+            throw CompanionBoundaryError("invalid_release_metadata", "Unknown installer signing policy.")
         }
     }
     public static func fetch() async throws -> Self {
@@ -69,10 +90,13 @@ public struct CompanionReleaseMetadata: Codable, Sendable, Equatable {
         try metadata.validate(); return metadata
     }
     public var brokerPayload: [String: CompanionJSON] {
-        ["version": .string(version), "architecture": .string(architecture), "minimum_macos": .string(minimumMacOS),
+        let trust = signing == "developer_id_notarized"
+            ? "The official release reports Developer ID signing and Apple notarization. macOS verifies the downloaded app when you open it; a checksum verifies bytes, not developer identity."
+            : "This development release is ad-hoc signed and not notarized; macOS may require explicit approval."
+        return ["version": .string(version), "architecture": .string(architecture), "minimum_macos": .string(minimumMacOS),
          "size_bytes": .number(Double(sizeBytes)), "sha256": .string(sha256), "signing": .string(signing),
          "download_url": .string(downloadURL), "release_url": .string(releaseURL),
-         "installation": .string("Download on your Apple Silicon Mac running macOS 26 or later. Verify SHA-256, open the DMG and copy DroidBridge to Applications. This release is ad-hoc signed and not notarized; macOS may require explicit approval. The phone cannot install or approve Mac software. Nothing runs automatically.")]
+         "installation": .string("Download on your Apple Silicon Mac running macOS 26 or later. Verify SHA-256, open the DMG and copy DroidBridge to Applications. \(trust) The phone cannot install or approve Mac software. Nothing runs automatically.")]
     }
 }
 

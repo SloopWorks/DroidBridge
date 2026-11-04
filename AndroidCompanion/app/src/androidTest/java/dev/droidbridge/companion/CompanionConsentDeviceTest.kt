@@ -6,6 +6,7 @@ import android.graphics.Rect
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.test.platform.app.InstrumentationRegistry
 import org.json.JSONObject
 import org.junit.Assert.*
@@ -43,7 +44,11 @@ class CompanionConsentDeviceTest {
             return found
         }
         try {
-            main { nodes(activity.window.decorView).filterIsInstance<Button>().single { it.text.toString() == "Settings" }.performClick() }
+            main {
+                val nav = nodes(activity.window.decorView).filterIsInstance<BottomNavigationView>().singleOrNull()
+                if (nav == null) nodes(activity.window.decorView).filterIsInstance<Button>().single { it.text.toString() == "Settings" }.performClick()
+                else { val item = (0 until nav.menu.size()).map { nav.menu.getItem(it) }.single { it.title.toString() == "Settings" }; nav.findViewById<View>(item.itemId).performClick() }
+            }
             waitUntil { forgetButton() != null }
             main { forgetButton()!!.performClick() }
             instrumentation.waitForIdleSync()

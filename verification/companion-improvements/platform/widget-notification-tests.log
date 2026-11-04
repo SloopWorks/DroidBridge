@@ -1,0 +1,37 @@
+
+dev.droidbridge.companion.PlatformWidgetDeviceTest:
+Error in actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect(dev.droidbridge.companion.PlatformWidgetDeviceTest):
+java.lang.AssertionError: Actual widget favorite not rendered
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.PlatformWidgetDeviceTest.actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect$waitFor(PlatformWidgetDeviceTest.kt:39)
+	at dev.droidbridge.companion.PlatformWidgetDeviceTest.actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect(PlatformWidgetDeviceTest.kt:48)
+
+dev.droidbridge.companion.PlatformNotificationDeviceTest:
+Error in transferProgressAndSystemNotificationActionUseRealService(dev.droidbridge.companion.PlatformNotificationDeviceTest):
+java.lang.AssertionError: SystemUI transfer action did not appear
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.PlatformNotificationDeviceTest.transferProgressAndSystemNotificationActionUseRealService$waitFor(PlatformNotificationDeviceTest.kt:36)
+	at dev.droidbridge.companion.PlatformNotificationDeviceTest.transferProgressAndSystemNotificationActionUseRealService(PlatformNotificationDeviceTest.kt:49)
+
+
+Time: 24.397
+There were 2 failures:
+1) actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect(dev.droidbridge.companion.PlatformWidgetDeviceTest)
+java.lang.AssertionError: Actual widget favorite not rendered
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.PlatformWidgetDeviceTest.actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect$waitFor(PlatformWidgetDeviceTest.kt:39)
+	at dev.droidbridge.companion.PlatformWidgetDeviceTest.actualHostedFavoriteOpensExactTrustWithoutAdmittingAnEffect(PlatformWidgetDeviceTest.kt:48)
+2) transferProgressAndSystemNotificationActionUseRealService(dev.droidbridge.companion.PlatformNotificationDeviceTest)
+java.lang.AssertionError: SystemUI transfer action did not appear
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at dev.droidbridge.companion.PlatformNotificationDeviceTest.transferProgressAndSystemNotificationActionUseRealService$waitFor(PlatformNotificationDeviceTest.kt:36)
+	at dev.droidbridge.companion.PlatformNotificationDeviceTest.transferProgressAndSystemNotificationActionUseRealService(PlatformNotificationDeviceTest.kt:49)
+
+FAILURES!!!
+Tests run: 2,  Failures: 2
+
+

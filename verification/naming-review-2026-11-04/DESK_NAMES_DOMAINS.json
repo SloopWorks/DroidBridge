@@ -1,0 +1,74 @@
+{
+  "checked_at_utc": "2026-11-04T21:48:47.948520+00:00",
+  "bootstrap_source": "https://data.iana.org/rdap/dns.json",
+  "method": "Registry RDAP via IANA bootstrap; system curl with normal certificate validation",
+  "limitation": "No registration record does not establish purchasability, reserved/premium status, price or trademark rights. No purchase or registration performed.",
+  "results": [
+    {
+      "domain": "droiddesk.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/droiddesk.com",
+      "http_status": 200,
+      "result": "registered",
+      "registry_name": "DROIDDESK.COM"
+    },
+    {
+      "domain": "droiddesk.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/droiddesk.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "droidworkdeck.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/droidworkdeck.com",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "droidworkdeck.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/droidworkdeck.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "sloopdesk.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/sloopdesk.com",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "sloopdesk.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/sloopdesk.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "droidworkspace.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/droidworkspace.com",
+      "http_status": 200,
+      "result": "registered",
+      "registry_name": "DROIDWORKSPACE.COM"
+    },
+    {
+      "domain": "droidworkspace.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/droidworkspace.app",
+      "http_status": 404,
+      "result": "no registration found"
+    }
+  ],
+  "endpoint_controls": [
+    {
+      "domain": "google.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/google.com",
+      "http_status": 200,
+      "result": "registered",
+      "registry_name": "GOOGLE.COM"
+    },
+    {
+      "domain": "droidport.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/droidport.app",
+      "http_status": 200,
+      "result": "registered",
+      "registry_name": "droidport.app"
+    }
+  ]
+}

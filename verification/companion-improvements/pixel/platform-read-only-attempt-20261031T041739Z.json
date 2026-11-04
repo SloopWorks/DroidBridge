@@ -1,0 +1,13 @@
+{
+  "captured_at_utc": "2026-10-31T04:17:39.326217+00:00",
+  "target_label": "Pixel 10 Pro",
+  "requested_scope": "Read-only DroidBridge UI inspection in personal profile 0; only while the companion is foreground",
+  "own_companion_foreground_guard_passed": false,
+  "targeted_usb_transport_available_at_followup": false,
+  "ui_inspection_completed": false,
+  "screenshot_captured": false,
+  "mutations_performed": false,
+  "personal_content_exported": false,
+  "result": "Not verified: own-app foreground could not be established before the selected USB target became unavailable.",
+  "limits": "No UI/layout or API 37 hardware acceptance claim. No serial, clipboard content, notification body, other-app identity or profile data retained."
+}

@@ -1,0 +1,33 @@
+{
+  "mac_version": "0.2.0",
+  "mac_build": "16",
+  "signing": "ad-hoc; not Developer ID signed or notarized",
+  "android_release": {
+    "path": "dist/companion-improvements/DroidBridge-Companion.apk",
+    "bytes": 12119176,
+    "sha256": "b6277fb903e99bb46e9bb93553de12cda6094f8d00b1abf4b700794a11254abd"
+  },
+  "bundled_android_release": {
+    "path": "dist/DroidBridge.app/Contents/Resources/Companion/DroidBridgeCompanion.apk",
+    "bytes": 12119176,
+    "sha256": "b6277fb903e99bb46e9bb93553de12cda6094f8d00b1abf4b700794a11254abd"
+  },
+  "mac_executable": {
+    "path": "dist/DroidBridge.app/Contents/MacOS/DroidBridge",
+    "bytes": 7085056,
+    "sha256": "6a8888d4be953f6045ac9ac58f33dcdf09e156911587303d083cf30246319813"
+  },
+  "signature_verified": true,
+  "archives": [
+    {
+      "path": "dist/DroidBridge-0.2.0-arm64.dmg",
+      "bytes": 53021325,
+      "sha256": "3ac4dbf26b476c84268a4e56ffb0a0fa21cb80ca16aaa0724059ded5ad7f4be6"
+    },
+    {
+      "path": "dist/DroidBridge-0.2.0-arm64.zip",
+      "bytes": 46976075,
+      "sha256": "e1bab4b6d98772db2b79fe6193047bc8e1d140decfa12f188d47aad3e7d5097b"
+    }
+  ]
+}

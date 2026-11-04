@@ -1,8 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.droidbridge.companionfixture">
   <uses-sdk android:minSdkVersion="33" android:targetSdkVersion="35"/>
   <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+  <queries>
+    <package android:name="dev.droidbridge.companion"/>
+    <package android:name="dev.droidbridge.companion.dev"/>
+  </queries>
   <application android:label="Companion Verification" android:theme="@android:style/Theme.Material.Light.NoActionBar" android:allowBackup="false">
     <activity android:name=".MainActivity" android:exported="true" android:resizeableActivity="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
+    <activity android:name=".ReceiveActivity" android:exported="true" android:label="DroidBridge transfer verifier">
+      <intent-filter><action android:name="android.intent.action.SEND"/><category android:name="android.intent.category.DEFAULT"/><data android:mimeType="*/*"/></intent-filter>
+    </activity>
     <receiver android:name=".ReplyReceiver" android:exported="false"/>
     <provider android:name=".FixtureProvider" android:authorities="dev.droidbridge.companionfixture.files" android:exported="false" android:grantUriPermissions="true"/>
   </application>

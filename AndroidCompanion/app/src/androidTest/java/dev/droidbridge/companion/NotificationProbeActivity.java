@@ -11,7 +11,7 @@ public final class NotificationProbeActivity extends Activity {
         String token=getIntent().getStringExtra("token"),mode=getIntent().getStringExtra("mode");
         if(token==null||!UUID.fromString(token).toString().equals(token)||!Arrays.asList("public","private","ongoing","cancel").contains(mode)){finish();return;}
         int generation=getIntent().getIntExtra("generation",1);if(generation<1||generation>1000){finish();return;}
-        grantUriPermission("dev.droidbridge.companion",Uri.parse("content://dev.droidbridge.companion.test.staging/notification-status/"+token),Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        grantUriPermission(getPackageName().substring(0, getPackageName().length() - ".test".length()),Uri.parse("content://"+getPackageName()+".staging/notification-status/"+token),Intent.FLAG_GRANT_READ_URI_PERMISSION);
         NotificationManager manager=getSystemService(NotificationManager.class);
         manager.createNotificationChannel(new NotificationChannel(CHANNEL,"Synthetic notification regression",NotificationManager.IMPORTANCE_LOW));
         int id=token.hashCode()&0x7fffffff;

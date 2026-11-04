@@ -30,6 +30,18 @@ class ReleaseDeliveryDeviceTest {
         rejected(("[".repeat(20) + "0" + "]".repeat(20)).toByteArray())
         try { ReleaseDelivery.parse(byteArrayOf(0xc3.toByte(), 0x28)); fail("Malformed UTF8 accepted") } catch (_: java.nio.charset.CharacterCodingException) {}
     }
+    @Test fun notarizedMetadataRequiresReviewedTeamSourceAndBuild() {
+        fun signed() = manifest().put("signing", "developer_id_notarized").put("schema_version", 2)
+            .put("team_id", ReleaseDelivery.RELEASE_TEAM).put("source_commit", "b".repeat(40))
+            .put("source_dirty", false).put("build", "17")
+        val valid = ReleaseDelivery.parse(signed().toString().toByteArray())
+        assertTrue(valid.summary().contains("macOS verifies"))
+        for ((key, value) in listOf("team_id" to "AAAAAAAAAA", "schema_version" to 1,
+            "source_dirty" to true, "source_commit" to "main", "build" to "0", "build" to 17,
+            "signing" to "ad_hoc_not_notarized")) {
+            rejected(signed().put(key, value).toString().toByteArray())
+        }
+    }
     @Test fun offlineLicenseViewerIncludesShippedComponentsAndCanClose() {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val activity = instrumentation.startActivitySync(Intent(instrumentation.targetContext, ThirdPartyActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))

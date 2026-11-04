@@ -1,0 +1,40 @@
+{
+  "review_date_local": "2026-11-04",
+  "name": "DroidDeck",
+  "variants": [
+    "DroidDeck",
+    "Droid Deck",
+    "Droid-Deck"
+  ],
+  "recommendation": "Remove from the shortlist because of existing exact-name Android and phone/computer software uses. Product/marketing judgment; no legal clearance determination.",
+  "verified_uses": [
+    {
+      "product": "DroidDeck Android gaming/Linux environment",
+      "source": "https://github.com/Droid-Deck/DroidDeck",
+      "status": "Primary repository and releases verified",
+      "overlap": "Android app with gaming/desktop integration; substantial exact-name search presence"
+    },
+    {
+      "product": "DroidDeck Android/Windows button deck",
+      "source": "https://github.com/ggfto/DroidDeck",
+      "website": "https://me.gf2.in/DroidDeck/",
+      "status": "Primary repository, project website and releases verified",
+      "overlap": "Phone/computer companion software; README and landing page distinguish it from the gaming project"
+    },
+    {
+      "product": "DroidDeck Android Debug & Mirror Console for Mac",
+      "source": "https://www.sonwa.cn/en.html",
+      "status": "Developer product/support website verified; direct Mac App Store listing not independently located",
+      "overlap": "Mac-to-Android USB/Wi-Fi debugging, mirroring, files and performance monitoring advertised"
+    }
+  ],
+  "important_distinction": "Gaming guide/download domains found in search were not counted as separate independent products. The gaming repository says it has no standalone official website.",
+  "search_scope": [
+    "Exact name and spaced form",
+    "Android and Mac software",
+    "GitHub repositories and releases",
+    "Indexed Apple App Store and Google Play pages",
+    "Trademark-related indexed web search"
+  ],
+  "limits": "No comprehensive live USPTO/EUIPO or other trademark-register clearance search. No finding of legal infringement or freedom to use. App-store search results are not exhaustive. No app installed, account changed, name registered or repository renamed."
+}

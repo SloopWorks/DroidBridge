@@ -124,7 +124,7 @@ public struct CompanionBrokerRegistry: Codable, Sendable {
             host = hosts.first { $0.owner == session.owner && $0.generation == session.generation && $0.deviceID == deviceID && $0.commandProtocol == 2 }
         } else {
             host = hosts.filter { $0.deviceID == deviceID && $0.commandProtocol == 2 }.sorted { ($0.role == "launcher" ? 0 : 1, $0.owner.pid) < ($1.role == "launcher" ? 0 : 1, $1.owner.pid) }.first
-            if kind == "open_app", host?.role != "launcher" { throw CompanionBoundaryError(hosts.contains(where: { $0.deviceID == deviceID && $0.commandProtocol != 2 }) ? "owner_update_required" : "launcher_unavailable", "Open the updated DroidBridge launcher on the Mac to launch another app.") }
+            if ["open_app", "run_preset"].contains(kind), host?.role != "launcher" { throw CompanionBoundaryError(hosts.contains(where: { $0.deviceID == deviceID && $0.commandProtocol != 2 }) ? "owner_update_required" : "launcher_unavailable", "Open the updated DroidBridge launcher on the Mac to launch another app.") }
         }
         guard let host else { throw CompanionBoundaryError(hosts.contains(where: { $0.deviceID == deviceID && $0.commandProtocol != 2 }) ? "owner_update_required" : "owner_unavailable", "Open the updated DroidBridge app and update or recreate older wrappers before controlling their sessions.") }
         let command = CompanionBrokerCommand(id: id, deviceID: deviceID, kind: kind, payload: payload, owner: host.owner, generation: host.generation, expires: deadline ?? now.addingTimeInterval(budget.remainingMS(nowMS: nowMS, bootID: bootID) / 1000), continuousDeadline: budget, admitted: false, status: "accepted", result: [:])

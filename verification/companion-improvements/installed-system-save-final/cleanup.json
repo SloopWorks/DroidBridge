@@ -1,0 +1,7 @@
+{
+  "scope": "Only the completed isolated system-Save run",
+  "owned_broker_unloaded": true,
+  "pairing_cleanup_passed": true,
+  "owned_finder_verification_window_closed_normally": true,
+  "phone_apk_installed_before_usb_disconnect": true
+}

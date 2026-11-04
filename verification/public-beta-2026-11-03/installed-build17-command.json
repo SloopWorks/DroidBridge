@@ -1,0 +1,15 @@
+[
+  "python3",
+  "scripts/verify-companion-installed.py",
+  "--app",
+  "/Users/patrick/Library/Application Support/DroidBridge/BetaVerification/build-17/DroidBridge.app",
+  "--serial",
+  "emulator-5580",
+  "--adb",
+  "/Users/patrick/Library/Android/sdk/platform-tools/adb",
+  "--qa-root",
+  "/Users/patrick/Library/Application Support/DroidBridge/BetaVerification/build-17/qa",
+  "--output",
+  "/Users/patrick/workspace/DroidBridge/verification/public-beta-2026-11-03/installed-build17",
+  "--trace"
+]

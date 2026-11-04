@@ -1,0 +1,125 @@
+{
+  "checked_at_utc": "2026-11-04T16:19:10.736614+00:00",
+  "bootstrap_source": "https://data.iana.org/rdap/dns.json",
+  "method": "Registry RDAP via IANA bootstrap; system curl with normal certificate validation",
+  "limitation": "Registry 404 does not establish purchasability, standard pricing, absence of reservation or trademark rights. Initial Python request failed local CA validation; system curl used without disabling TLS checks.",
+  "results": [
+    {
+      "domain": "droidjetty.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/droidjetty.com",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "droidjetty.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/droidjetty.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "droidaboard.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/droidaboard.com",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "droidaboard.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/droidaboard.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "droidmoor.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/droidmoor.com",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "droidmoor.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/droidmoor.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "phoneharbor.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/phoneharbor.com",
+      "http_status": 200,
+      "result": "registered",
+      "registry_name": "PHONEHARBOR.COM"
+    },
+    {
+      "domain": "phoneharbor.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/phoneharbor.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "sloopdeck.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/sloopdeck.com",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "sloopdeck.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/sloopdeck.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "sloopdock.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/sloopdock.com",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "sloopdock.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/sloopdock.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "sloopside.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/sloopside.com",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "sloopside.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/sloopside.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "pocketjetty.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/pocketjetty.com",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "pocketjetty.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/pocketjetty.app",
+      "http_status": 404,
+      "result": "no registration found"
+    },
+    {
+      "domain": "appmoor.com",
+      "rdap_url": "https://rdap.verisign.com/com/v1/domain/appmoor.com",
+      "http_status": 200,
+      "result": "registered",
+      "registry_name": "APPMOOR.COM"
+    },
+    {
+      "domain": "appmoor.app",
+      "rdap_url": "https://pubapi.registry.google/rdap/domain/appmoor.app",
+      "http_status": 404,
+      "result": "no registration found"
+    }
+  ],
+  "endpoint_control": {
+    "domain": "droidport.app",
+    "rdap_url": "https://pubapi.registry.google/rdap/domain/droidport.app",
+    "http_status": 200,
+    "registry_name": "droidport.app",
+    "purpose": "Verify the .app endpoint returns real registrations rather than treating endpoint errors as unregistered domains"
+  }
+}

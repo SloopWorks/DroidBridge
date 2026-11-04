@@ -9,6 +9,7 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
     let deviceID=UUID().uuidString.lowercased(),trustID=UUID().uuidString.lowercased(),pairingID=UUID()
     let url:URL,serverPin:String
     private let directory:URL,process:Process
+    func setCommandStatus(_ status: String) throws { try status.write(to: directory.appendingPathComponent("command-status"), atomically: true, encoding: .utf8) }
     var requestedPaths:[String] { ((try? String(contentsOf:directory.appendingPathComponent("paths.txt"))) ?? "").split(separator:"\n").map(String.init) }
     var stateBodies:[[String:Any]] { ((try? String(contentsOf:directory.appendingPathComponent("states.jsonl"))) ?? "").split(separator:"\n").compactMap {try? JSONSerialization.jsonObject(with:Data($0.utf8)) as? [String:Any]} }
     var commandBodies:[[String:Any]] { ((try? String(contentsOf:directory.appendingPathComponent("commands.jsonl"))) ?? "").split(separator:"\n").compactMap {try? JSONSerialization.jsonObject(with:Data($0.utf8)) as? [String:Any]} }
@@ -83,7 +84,7 @@ final class BrokerAdmissionTLSPeer:@unchecked Sendable {
               if path=='/v1/hello':data={'device_id':device,'device_name':'TLS broker fixture','protocol_min':1,'protocol_max':1,'capabilities':['clock_anchor_v1']+(['notification_scope_v2'] if notification_scope else [])+(['state_heartbeat'] if heartbeat else []),'pairing_available':True,'clock_epoch':clock_epoch,'server_uptime_ms':int(time.monotonic()*1000),'server_time':int(time.time())}
               elif path=='/v1/pair':data={'pairing_id':pair,'status':'pending','expires_at':(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(seconds=120)).isoformat().replace('+00:00','Z'),'comparison_code':'ABCDEF12','clock_epoch':clock_epoch,'expires_uptime_ms':pair_expiry}
               elif path=='/v1/pair/'+pair:data={'pairing_id':pair,'status':'approved','credential':'A'*43,'trust_id':trust,'device_id':device,'capabilities':[]}
-              elif path=='/v1/commands':data={'request_id':request,'status':'applied','result':{}}
+              elif path=='/v1/commands':data={'request_id':request,'status':(root/'command-status').read_text().strip() if (root/'command-status').exists() else 'applied','result':{}}
               elif path=='/v1/identity':data={'device_id':device,'trust_id':trust,'protocol':1}
               elif path=='/v1/catalog':data={'generation':'c'*64,'items':[],'next_cursor':None}
               elif path=='/v1/catalog/changes':data={'generation':'c'*64,'items':[],'deleted':[]}

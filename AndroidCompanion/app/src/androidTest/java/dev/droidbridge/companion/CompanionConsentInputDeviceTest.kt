@@ -19,6 +19,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import org.json.JSONObject
 import org.junit.Assert.*
 import org.junit.Test
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.UUID
 
 /** Real native consent/paste controls against a nonce-granted external test provider. */
@@ -32,7 +33,10 @@ class CompanionConsentInputDeviceTest {
         while (!predicate() && SystemClock.elapsedRealtime() < deadline) { Thread.sleep(40); instrumentation.waitForIdleSync() }
         assertTrue(message, predicate())
     }
-    private fun click(activity: Activity, label: String) = main { nodes(activity.window.decorView).filterIsInstance<Button>().single { it.text.toString() == label }.performClick() }
+    private fun click(activity: Activity, label: String) = main { val nav = nodes(activity.window.decorView).filterIsInstance<BottomNavigationView>().singleOrNull()
+        val item = nav?.menu?.let { menu -> (0 until menu.size()).map { menu.getItem(it) }.singleOrNull { it.title.toString() == label } }
+        if (item != null) nav.findViewById<View>(item.itemId).performClick()
+        else nodes(activity.window.decorView).filterIsInstance<Button>().single { it.text.toString() == label }.performClick() }
     private fun launch(intent: Intent = Intent(target, MainActivity::class.java)): MainActivity = instrumentation.startActivitySync(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) as MainActivity
     private fun editor(activity: Activity): EditText = nodes(activity.window.decorView).filterIsInstance<EditText>().single()
     private fun text(activity: Activity): String = nodes(activity.window.decorView).filterIsInstance<TextView>().joinToString("\n") { it.text.toString() }
@@ -51,11 +55,11 @@ class CompanionConsentInputDeviceTest {
     private fun grant(): Pair<Uri, Uri> {
         val token = UUID.randomUUID().toString()
         val result = ParcelFileDescriptor.AutoCloseInputStream(instrumentation.uiAutomation.executeShellCommand(
-            "am start -W -n dev.droidbridge.companion.test/dev.droidbridge.companion.StagingGrantActivity --es token $token")).use { it.readBytes().toString(Charsets.UTF_8) }
+            "am start -W -n ${instrumentation.context.packageName}/dev.droidbridge.companion.StagingGrantActivity --es token $token")).use { it.readBytes().toString(Charsets.UTF_8) }
         assertTrue("Real owner grant Activity started", result.contains("Status: ok"))
-        val status = Uri.parse("content://dev.droidbridge.companion.test.staging/status/$token")
+        val status = Uri.parse("content://${instrumentation.context.packageName}.staging/status/$token")
         waitFor("Exact nonce read grant ready") { runCatching { counts(status) }.isSuccess }
-        return Uri.parse("content://dev.droidbridge.companion.test.staging/query-stall/$token") to status
+        return Uri.parse("content://${instrumentation.context.packageName}.staging/query-stall/$token") to status
     }
     private fun addTemporaryTrust(store: BridgeStore): String {
         val secret = store.startPairing()
@@ -77,6 +81,13 @@ class CompanionConsentInputDeviceTest {
             val started = SystemClock.elapsedRealtime()
             val shareActivity = launch(Intent(Intent.ACTION_SEND).setClass(target, MainActivity::class.java).setType("application/octet-stream").putExtra(Intent.EXTRA_STREAM, uri)); share = shareActivity
             waitFor("Actual file consent sheet appears without provider metadata") { var present = false; main { present = shareActivity.activeDialog != null }; present }
+            main {
+                val chooser = shareActivity.activeDialog!!
+                val list = chooser.listView
+                val index = (0 until list.adapter.count).single { list.adapter.getItem(it).toString().contains("Input regression Mac") }
+                list.performItemClick(list.getChildAt(index), index, list.adapter.getItemId(index))
+            }
+            instrumentation.waitForIdleSync()
             val elapsed = SystemClock.elapsedRealtime() - started
             main {
                 val dialog = shareActivity.activeDialog!!

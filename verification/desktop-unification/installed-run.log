@@ -1,0 +1,12 @@
+Retaining failed scoped UI for diagnosis before cleanup; use stop-installed-runner to finish
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 195, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-improvements.py", line 146, in main
+    flow.action("click", title="Refresh Inbox")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-companion-installed.py", line 139, in action
+    assert value['ok'], f'AppKit action failed: {action}'
+           ~~~~~^^^^^^
+AssertionError: AppKit action failed: click

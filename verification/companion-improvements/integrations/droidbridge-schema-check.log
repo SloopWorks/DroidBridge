@@ -1,0 +1,5 @@
+
+> swip@0.0.0 swip /Users/patrick/workspace/sloopworksinstrumentationplatform
+> tsx packages/schema/bin/swip.ts schema check
+
+swip schema check: OK

@@ -1,0 +1,18 @@
+<resources>
+    <style name="Theme.DroidBridge" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/bridge_primary</item>
+        <item name="colorOnPrimary">@color/bridge_on_primary</item>
+        <item name="colorPrimaryContainer">@color/bridge_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/bridge_on_primary_container</item>
+        <item name="colorSecondary">@color/bridge_secondary</item>
+        <item name="colorSurface">@color/bridge_background</item>
+        <item name="colorOnSurface">@color/bridge_on_surface</item>
+        <item name="colorSurfaceContainer">@color/bridge_container</item>
+        <item name="android:windowLightStatusBar">@bool/bridge_light_bars</item>
+        <item name="android:windowLightNavigationBar">@bool/bridge_light_bars</item>
+        <item name="android:statusBarColor">@color/bridge_background</item>
+        <item name="android:navigationBarColor">@color/bridge_background</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+</resources>
