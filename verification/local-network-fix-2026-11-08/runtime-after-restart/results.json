@@ -1,0 +1,187 @@
+[
+  {
+    "case" : "cancel_before_admission",
+    "passed" : true
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "native",
+    "bundle" : "\/tmp\/droidbridge-app-icons.kAywfm\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.testapp7\/Android Launch Probe.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 36.08990478515625,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qaee826befec9b",
+    "package" : "dev.droidbridge.testapp7",
+    "passed" : true,
+    "pid" : 11140,
+    "presented_decoded_video" : true,
+    "running_icon_pixel_error" : 0.00238037109375,
+    "seconds" : 5.314445972442627,
+    "session" : "7F089733-B9C7-4A19-8C7D-6F268EA4B423",
+    "stages" : [
+      "Checking existing app…",
+      "Loading Android launcher icon…",
+      "Opening app…",
+      "Preparing Mac app…"
+    ]
+  },
+  {
+    "app_uuids" : [
+      "4FF5ACFC-8DE9-85C7-950D-F5E46BA52A89"
+    ],
+    "case" : "isolated_executable_identities",
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qaee826befec9b",
+    "passed" : true,
+    "player_uuids" : [
+      "1232FF2C-259F-8499-9032-1835A8DCEBCF"
+    ],
+    "source_player_uuids" : [
+      "F156D224-F62A-3E44-AB31-CFF48D211757"
+    ],
+    "source_uuids" : [
+      "D4DA42B9-72EA-3944-A369-4B08A03BE424"
+    ]
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "native",
+    "bundle" : "\/tmp\/droidbridge-app-icons.kAywfm\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.testapp7\/Android Launch Probe.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 36.08990478515625,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qaee826befec9b",
+    "package" : "dev.droidbridge.testapp7",
+    "passed" : true,
+    "pid" : 11140,
+    "presented_decoded_video" : true,
+    "running_icon_pixel_error" : 0.00238037109375,
+    "seconds" : 0.59229505062103271,
+    "session" : "7F089733-B9C7-4A19-8C7D-6F268EA4B423",
+    "stages" : [
+      "Bringing app to front…",
+      "Checking existing app…"
+    ]
+  },
+  {
+    "app_uuids" : [
+      "4FF5ACFC-8DE9-85C7-950D-F5E46BA52A89"
+    ],
+    "case" : "isolated_executable_identities",
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qaee826befec9b",
+    "passed" : true,
+    "player_uuids" : [
+      "1232FF2C-259F-8499-9032-1835A8DCEBCF"
+    ],
+    "source_player_uuids" : [
+      "F156D224-F62A-3E44-AB31-CFF48D211757"
+    ],
+    "source_uuids" : [
+      "D4DA42B9-72EA-3944-A369-4B08A03BE424"
+    ]
+  },
+  {
+    "case" : "reuse_same_process_session_and_unhide",
+    "passed" : true
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "native",
+    "bundle" : "\/tmp\/droidbridge-app-icons.kAywfm\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.iconfixture\/Android Icon Alias.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 42.1484375,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.pb5ae9250195affe596a9bf76.qaee826befec9b",
+    "package" : "dev.droidbridge.iconfixture",
+    "passed" : true,
+    "pid" : 11476,
+    "presented_decoded_video" : true,
+    "running_icon_pixel_error" : 0,
+    "seconds" : 3.9963319301605225,
+    "session" : "A83FFB05-2FA1-42B3-ABDA-0A2CDD043929",
+    "stages" : [
+      "Checking existing app…",
+      "Opening app…",
+      "Preparing Mac app…"
+    ]
+  },
+  {
+    "app_uuids" : [
+      "88F7B305-5DC9-859F-A543-1730A29AF0D0"
+    ],
+    "case" : "isolated_executable_identities",
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.pb5ae9250195affe596a9bf76.qaee826befec9b",
+    "passed" : true,
+    "player_uuids" : [
+      "0110A240-07CD-86D6-9102-27552EBB4988"
+    ],
+    "source_player_uuids" : [
+      "F156D224-F62A-3E44-AB31-CFF48D211757"
+    ],
+    "source_uuids" : [
+      "D4DA42B9-72EA-3944-A369-4B08A03BE424"
+    ]
+  },
+  {
+    "case" : "two_distinct_android_app_identities",
+    "passed" : true
+  },
+  {
+    "case" : "management_restart_rediscovers_unpaired_apps",
+    "passed" : true
+  },
+  {
+    "case" : "missing_snapshot_never_claims_running",
+    "passed" : true
+  },
+  {
+    "case" : "close_exact_independent_apps",
+    "passed" : true
+  },
+  {
+    "case" : "personalized_stopped_app_reuse",
+    "passed" : true
+  },
+  {
+    "case" : "cancel_during_icon_extraction",
+    "passed" : true
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "scrcpy",
+    "bundle" : "\/tmp\/droidbridge-app-icons.kAywfm\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/scrcpy\/dev.droidbridge.testapp7\/Android Launch Probe.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 36.0902099609375,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.scrcpy.p6d2e3bc49949f7682981a4f4.qaee826befec9b",
+    "package" : "dev.droidbridge.testapp7",
+    "passed" : true,
+    "pid" : 11608,
+    "presented_decoded_video" : false,
+    "running_icon_pixel_error" : 0,
+    "seconds" : 4.9664449691772461,
+    "session" : "5A172017-87B9-4011-A1F6-D8DCE7759E14",
+    "stages" : [
+      "Checking existing app…",
+      "Loading Android launcher icon…",
+      "Opening app…",
+      "Preparing Mac app…"
+    ]
+  },
+  {
+    "app_uuids" : [
+      "B16334C5-65A4-8831-85A9-6F691CC87A65"
+    ],
+    "case" : "isolated_executable_identities",
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.scrcpy.p6d2e3bc49949f7682981a4f4.qaee826befec9b",
+    "passed" : true,
+    "player_uuids" : [
+      "3D2E6CEB-2F8B-89B1-8EE1-649B13026083"
+    ],
+    "source_player_uuids" : [
+      "F156D224-F62A-3E44-AB31-CFF48D211757"
+    ],
+    "source_uuids" : [
+      "D4DA42B9-72EA-3944-A369-4B08A03BE424"
+    ]
+  },
+  {
+    "case" : "fallback_wrapper_and_video",
+    "passed" : true
+  }
+]

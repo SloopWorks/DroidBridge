@@ -330,6 +330,65 @@ public final class ManagedAppCatalog: @unchecked Sendable {
     public static func bundleIdentifier(serial: String, packageName: String) -> String { "app.droidbridge.managed.d\(deviceHash(serial)).\(packageName)" }
 
     public func records() throws -> [ManagedAppRecord] { try locked { manifest in manifest.records.values.sorted { $0.key < $1.key } } }
+
+    /// Upgrade retained generations, including versions predating UUID isolation.
+    /// Serialize with publication; never touch current, staged or running apps.
+    public func retireBackups(runningBundlePaths: Set<String>) throws -> WrapperBackup.Migration {
+        let running = Set(runningBundlePaths.map { Self.canonical(URL(fileURLWithPath: $0)) })
+        return try locked { manifest in
+            var result = WrapperBackup.Migration()
+            for category in ["backups", "manual-backups"] {
+                let root = paths.privateRoot.appendingPathComponent(category)
+                do {
+                try rejectSymlink(root, below: paths.privateRoot)
+                guard fm.fileExists(atPath: root.path) else { continue }
+                let devices = try fm.contentsOfDirectory(at: root, includingPropertiesForKeys: nil)
+                guard devices.count <= 10_000 else { throw ManagedAppCatalogError.invalid("backup device limit") }
+                for device in devices where device.lastPathComponent.range(of: "^[a-f0-9]{24}$", options: .regularExpression) != nil {
+                    do {
+                    try rejectSymlink(device, below: paths.privateRoot)
+                    let backups = try fm.contentsOfDirectory(at: device, includingPropertiesForKeys: nil)
+                    guard backups.count <= 20_000 else { throw ManagedAppCatalogError.invalid("backup generation limit") }
+                    for backup in backups where backup.pathExtension == "app" {
+                        guard result.retired.count < 16 else { return result }
+                        do {
+                        try rejectSymlink(backup, below: paths.privateRoot)
+                        let canonical = Self.canonical(backup)
+                        guard !running.contains(where: { $0 == canonical || $0.hasPrefix(canonical + "/") }),
+                              !fm.fileExists(atPath: backup.appendingPathComponent(".launch-services-unregistered").path) else { continue }
+                        let info = try boundedDictionary(WrapperBackup.infoURL(backup), plist: true)
+                        let config = try boundedDictionary(backup.appendingPathComponent("Contents/Resources/launch.json"), plist: false)
+                        guard let package = config["package"] as? String, let serial = config["serial"] as? String,
+                              Self.deviceHash(serial) == device.lastPathComponent,
+                              backup.lastPathComponent.hasPrefix(package + "-"),
+                              let generation = UUID(uuidString: String(backup.deletingPathExtension().lastPathComponent.dropFirst(package.count + 1))),
+                              category == "manual-backups" || info["DroidBridgeManagedGeneration"] as? String == generation.uuidString else { throw ManagedAppCatalogError.invalid("backup generation ownership") }
+                        guard !manifest.publications.values.contains(where: { $0.previous?.generation == generation || $0.candidate.generation == generation }) else { continue }
+                        try WrapperBackup.retire(backup); result.retired.append(backup)
+                        } catch { result.note(backup, error) }
+                    }
+                    } catch { result.note(device, error) }
+                }
+                } catch { result.note(root, error) }
+            }
+            return result
+        }
+    }
+
+    public func completeBackupUnregistration(_ backup: URL) throws {
+        try locked { _ in
+            let category = backup.deletingLastPathComponent().deletingLastPathComponent()
+            guard ["backups", "manual-backups"].contains(category.lastPathComponent),
+                  category.deletingLastPathComponent().path == paths.privateRoot.path else { throw ManagedAppCatalogError.invalid("backup receipt path") }
+            try rejectSymlink(backup, below: paths.privateRoot)
+            guard !fm.fileExists(atPath: backup.appendingPathComponent("Contents/Info.plist").path) else { throw ManagedAppCatalogError.invalid("backup is still launchable") }
+            try WrapperBackup.retire(backup)
+            let receipt = backup.appendingPathComponent(".launch-services-unregistered")
+            try rejectSymlink(receipt, below: paths.privateRoot)
+            try Data("unregistered by exact URL\n".utf8).write(to: receipt, options: .atomic)
+            try fm.setAttributes([.posixPermissions: 0o600], ofItemAtPath: receipt.path)
+        }
+    }
     public func canRepairNames(runningBundlePaths: Set<String> = []) throws -> Bool {
         let running = Set(runningBundlePaths.map { Self.canonical(URL(fileURLWithPath:$0)) })
         return try locked { cleanNamesAllowed($0,running:running) }
@@ -603,14 +662,15 @@ public final class ManagedAppCatalog: @unchecked Sendable {
                 try validateManual(adoption, serial: record.deviceSerial, package: record.packageName)
                 try moveManualExclusive(adoption.bundleURL, backup)
             } else { try validateManual(adoption, serial: record.deviceSerial, package: record.packageName, at: backup) }
+            try WrapperBackup.retire(backup)
         }
         if let previous = publication.previous {
             let backup = paths.privateRoot.appendingPathComponent("backups/\(previous.deviceHash)/\(previous.packageName)-\(previous.generation.uuidString).app")
             let other = previous.location == .active ? previous.inactiveBundleURL : previous.activeBundleURL
             let existing = [previous.bundleURL,other].filter { fm.fileExists(atPath:$0.path) }
             guard existing.count <= 1 else { throw ManagedAppCatalogError.invalid("ambiguous previous-generation locations") }
-            if let source = existing.first { try validateBundle(source,record:previous); try moveExclusive(source,backup) }
-            else if fm.fileExists(atPath:backup.path) { try validateBundle(backup,record:previous) }
+            if let source = existing.first { try validateBundle(source,record:previous); try moveExclusive(source,backup); try WrapperBackup.retire(backup) }
+            else if fm.fileExists(atPath:backup.path) { try validateBundle(backup,record:previous); try WrapperBackup.retire(backup) }
             else {
                 // User deletion is repairable; metadata history remains even
                 // when no previous bundle bytes survive. Foreign bytes never qualify.
@@ -653,7 +713,8 @@ public final class ManagedAppCatalog: @unchecked Sendable {
     }
     private func validateBundle(_ url: URL, record: ManagedAppRecord) throws {
         try rejectSymlink(url, below: root(containing: url))
-        let info = try boundedDictionary(url.appendingPathComponent("Contents/Info.plist"), plist: true)
+        let isBackup = ["backups", "manual-backups"].contains(url.deletingLastPathComponent().deletingLastPathComponent().lastPathComponent)
+        let info = try boundedDictionary(isBackup ? WrapperBackup.infoURL(url) : url.appendingPathComponent("Contents/Info.plist"), plist: true)
         try rejectSymlink(url.appendingPathComponent("Contents/MacOS/DroidBridge"), below: root(containing: url))
         let launch = try boundedDictionary(url.appendingPathComponent("Contents/Resources/launch.json"), plist: false)
         guard info["CFBundleIdentifier"] as? String == record.bundleIdentifier,
@@ -836,7 +897,7 @@ public final class ManagedAppCatalog: @unchecked Sendable {
         try validateManualPath(adoption.bundleURL)
         let url = override ?? adoption.bundleURL
         if override != nil { try rejectSymlink(url, below: paths.privateRoot) }
-        let infoURL = url.appendingPathComponent("Contents/Info.plist"), configURL = url.appendingPathComponent("Contents/Resources/launch.json")
+        let infoURL = override == nil ? url.appendingPathComponent("Contents/Info.plist") : WrapperBackup.infoURL(url), configURL = url.appendingPathComponent("Contents/Resources/launch.json")
         let info = try manualDictionary(infoURL, plist: true), config = try manualDictionary(configURL, plist: false)
         guard info["CFBundleIdentifier"] as? String == "app.droidbridge.wrapper.\(package)", info["CFBundleExecutable"] as? String == "DroidBridge", info["CFBundlePackageType"] as? String == "APPL", config["serial"] as? String == serial,
               config["package"] as? String == package, let backend = config["backend"] as? String, BackendKind(rawValue: backend) != nil,

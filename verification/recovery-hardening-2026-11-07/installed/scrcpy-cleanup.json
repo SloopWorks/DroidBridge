@@ -1,0 +1,12 @@
+[
+  {
+    "elapsed_seconds": 0.021,
+    "servers": [
+      " 6668 sh -c CLASSPATH=/data/local/tmp/scrcpy-server.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=4bfa8c33 log_level=info audio=false max_fps=30 power_on=false new_display=720x1080/240 flex_display=true display_ime_policy=hide keep_active=true"
+    ]
+  },
+  {
+    "elapsed_seconds": 0.246,
+    "servers": []
+  }
+]

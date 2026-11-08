@@ -1,0 +1,7 @@
+{"backend":"scrcpy","details":{"height":"702","launcher_visible":"false","width":"468","window_number":"5453"},"device":"emulator-5580","event":"loading_window_presented","package":"dev.droidbridge.testapp7","session":"580AA8CB-4A61-4133-8FDF-1E916232E4CA","timestamp":"2026-11-08T06:43:52Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp7","session":"580AA8CB-4A61-4133-8FDF-1E916232E4CA","state":"starting","timestamp":"2026-11-08T06:43:52Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp7","session":"580AA8CB-4A61-4133-8FDF-1E916232E4CA","state":"running","timestamp":"2026-11-08T06:43:53Z"}
+{"backend":"scrcpy","details":{"native_window_visible":"false"},"device":"emulator-5580","event":"launcher_hidden","package":"dev.droidbridge.testapp7","session":"580AA8CB-4A61-4133-8FDF-1E916232E4CA","timestamp":"2026-11-08T06:43:54Z"}
+{"backend":"scrcpy","device":"emulator-5580","event":"session_stop_requested","package":"dev.droidbridge.testapp7","reason":"application_quit","session":"580AA8CB-4A61-4133-8FDF-1E916232E4CA","timestamp":"2026-11-08T06:43:54Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp7","session":"580AA8CB-4A61-4133-8FDF-1E916232E4CA","state":"stopping","timestamp":"2026-11-08T06:43:54Z"}
+{"backend":"scrcpy","device":"emulator-5580","package":"dev.droidbridge.testapp7","session":"580AA8CB-4A61-4133-8FDF-1E916232E4CA","state":"stopped","timestamp":"2026-11-08T06:43:54Z"}

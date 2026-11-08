@@ -11,6 +11,10 @@ final class AndroidVideoView: NSView {
     var applicationIcon: NSImage?
     let progress = NSProgressIndicator()
     let revealVideoButton = NSButton(title:"Show Android Screen",target:nil,action:nil)
+    let retryButton = NSButton(title: "Retry", target: nil, action: nil)
+    var canRetry = false { didSet { retryButton.isHidden = !canRetry } }
+    var onRetry: (() -> Void)?
+    @objc private func retry(_ sender: Any?) { onRetry?() }
     var canRevealVideo = false {didSet {revealVideoButton.isHidden = !canRevealVideo}}
     var onRevealVideo: (() -> Void)?
     @objc private func revealVideo(_ sender:Any?) {onRevealVideo?()}
@@ -21,6 +25,9 @@ final class AndroidVideoView: NSView {
         addSubview(progress)
         revealVideoButton.bezelStyle = .rounded;revealVideoButton.target=self;revealVideoButton.action=#selector(revealVideo(_:));revealVideoButton.isHidden=true
         addSubview(revealVideoButton)
+        retryButton.bezelStyle = .rounded; retryButton.target = self; retryButton.action = #selector(retry(_:)); retryButton.isHidden = true
+        retryButton.setAccessibilityLabel("Retry Android connection")
+        addSubview(retryButton)
         updateLoading()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
@@ -28,6 +35,7 @@ final class AndroidVideoView: NSView {
         super.layout()
         progress.frame = NSRect(x: bounds.midX - 8, y: bounds.height < 360 ? bounds.height-28 : bounds.midY+86, width: 16, height: 16)
         revealVideoButton.frame=NSRect(x:max(8,bounds.midX-90),y:min(bounds.midY+125,bounds.height-40),width:min(180,bounds.width-16),height:28)
+        retryButton.frame = revealVideoButton.frame
     }
     func updateLoading() {
         if frameImage == nil && statusMessage == nil { progress.startAnimation(nil) }
@@ -172,6 +180,9 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
         window.delegate = self
     }
     func attach(_ session: BridgeSession) {
+        blankNoticeTask?.cancel(); blankNoticeTask = nil
+        pendingBlankFrame = nil; firstBlankFrameAt = nil; initialBlankFrames = 0; blankVideoNotice = false
+        video.frameImage = nil; video.statusMessage = nil; video.canRevealVideo = false; video.canRetry = false; video.dragging = false
         self.session = session
         qaMetricsEnabled = CompanionQAScope.current != nil && ProcessInfo.processInfo.arguments.contains("--companion-launch-trace")
         qaMetricsSamples = 0; qaMetricsLastTime = Double.leastNormalMagnitude
@@ -192,8 +203,8 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
         }
         video.input = { [weak session] event in session?.sendInput(event) }
         session.onStartupProgress = { [weak video] message in video?.loadingMessage = message }
-        session.onFrame = { [weak self] frame in
-            guard let self else { return }
+        session.onFrame = { [weak self, weak session] frame in
+            guard let self, let session, self.session === session else { return }
             let first = self.video.frameImage == nil
             if first && !StartupFrameVisibility.hasVisibleContent(frame) {
                 self.initialBlankFrames += 1;self.pendingBlankFrame=frame

@@ -1,0 +1,8 @@
+{"backend":"native","details":{"height":"702","launcher_visible":"false","width":"468","window_number":"4645"},"device":"emulator-5580","event":"loading_window_presented","package":"dev.droidbridge.testapp7","session":"7CB5D059-9F85-4BAD-B2C6-E1F78E4D7613","timestamp":"2026-11-07T17:58:50Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp7","session":"7CB5D059-9F85-4BAD-B2C6-E1F78E4D7613","state":"starting","timestamp":"2026-11-07T17:58:50Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp7","session":"7CB5D059-9F85-4BAD-B2C6-E1F78E4D7613","state":"running","timestamp":"2026-11-07T17:58:51Z"}
+{"backend":"native","details":{"attempt":"1"},"device":"emulator-5580","event":"recovery_succeeded","package":"dev.droidbridge.testapp7","session":"7CB5D059-9F85-4BAD-B2C6-E1F78E4D7613","timestamp":"2026-11-07T17:58:51Z"}
+{"backend":"native","details":{"initial_blank_frames":"1","window_number":"4645"},"device":"emulator-5580","event":"native_content_presented","package":"dev.droidbridge.testapp7","session":"7CB5D059-9F85-4BAD-B2C6-E1F78E4D7613","timestamp":"2026-11-07T17:58:51Z"}
+{"backend":"native","device":"emulator-5580","event":"session_stop_requested","package":"dev.droidbridge.testapp7","reason":"application_quit","session":"7CB5D059-9F85-4BAD-B2C6-E1F78E4D7613","timestamp":"2026-11-07T17:58:51Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp7","session":"7CB5D059-9F85-4BAD-B2C6-E1F78E4D7613","state":"stopping","timestamp":"2026-11-07T17:58:51Z"}
+{"backend":"native","device":"emulator-5580","package":"dev.droidbridge.testapp7","session":"7CB5D059-9F85-4BAD-B2C6-E1F78E4D7613","state":"stopped","timestamp":"2026-11-07T17:58:51Z"}

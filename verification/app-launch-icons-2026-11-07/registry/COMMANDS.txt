@@ -1,0 +1,21 @@
+2026-11-07
+swift test --filter DesktopAppSessionsTests > verification/app-launch-icons-2026-11-07/registry/swift-test.log 2>&1
+Initial attempt: registry source and tests compiled; app executable build encountered concurrent integration changes in AppLaunch.swift and MacAppWrapper.swift. No tests executed in that attempt. See swift-test.log.
+
+swift test --filter DesktopAppSessionsTests > verification/app-launch-icons-2026-11-07/registry/swift-test-complete.log 2>&1
+First executable run: temporary directory alias /var rejected by secure descriptor walk. Fixed test fixture to resolve realpath explicitly.
+
+swift test --filter DesktopAppSessionsTests > verification/app-launch-icons-2026-11-07/registry/swift-test-canonical-root.log 2>&1
+Second run exposed Foundation standardizedFileURL canonicalizing existing /private/var paths back to /var. Replaced root lexical-path guard with explicit component validation; retained descriptor-relative O_NOFOLLOW traversal and owner/mode validation.
+
+swift test --filter DesktopAppSessionsTests > verification/app-launch-icons-2026-11-07/registry/swift-test-final.log 2>&1
+PASS: Executed 10 tests, 0 failures, 1.128 seconds. Contended-lock test completed in 1.019 seconds and successfully retried after unlocking. This verifies registry behavior only; app icon/window acceptance remains parent-owned executable QA.
+
+swift test --filter DesktopAppSessionsTests > verification/app-launch-icons-2026-11-07/registry/swift-test-backend.log 2>&1
+PASS after actual session backend support: Executed 11 tests, 0 failures, 1.123 seconds. Added native-to-scrcpy retry roundtrip preserving snapshot launch identity and backward-compatible decoding when session backend is omitted.
+
+swift test --filter DesktopAppSessionsTests > verification/app-launch-icons-2026-11-07/registry/swift-test-cancellation.log 2>&1
+PASS after cancellation-aware lock waits: Executed 12 tests, 0 failures, 1.234 seconds. Async cancellation-under-contention test proves CancellationError is returned before the normal lock deadline.
+
+swift test --filter DesktopAppSessionsTests > verification/app-launch-icons-2026-11-07/registry/swift-test-directory-hint.log 2>&1
+PASS after process identity equality correction: Executed 13 tests, 0 failures, 1.228 seconds. Same bundle path with isDirectory true/false URL hints reads the same registry identity; exact owner/path mismatch and obsolete-generation cleanup remain rejected.

@@ -1,0 +1,59 @@
+[
+  {
+    "attempts" : 1,
+    "case" : "connected_transport_failure_1",
+    "device_absence_observed" : false,
+    "frames" : 5,
+    "same_window" : true
+  },
+  {
+    "attempts" : 2,
+    "case" : "connected_transport_failure_2",
+    "device_absence_observed" : false,
+    "frames" : 5,
+    "same_window" : true
+  },
+  {
+    "attempts" : 3,
+    "case" : "connected_transport_failure_3",
+    "device_absence_observed" : false,
+    "frames" : 5,
+    "same_window" : true
+  },
+  {
+    "attempts" : 3,
+    "case" : "flapping_ceiling",
+    "no_fourth_automatic_launch" : true
+  },
+  {
+    "automatic_launches" : 0,
+    "case" : "permanent_failure"
+  },
+  {
+    "automatic_launches" : 0,
+    "case" : "reconnect_disabled"
+  },
+  {
+    "attempts_consumed_while_asleep" : 0,
+    "case" : "sleep_wait_and_wake",
+    "resumed_frames" : 5
+  },
+  {
+    "case" : "close_sleeping_intent",
+    "resurrected" : false
+  },
+  {
+    "case" : "close_during_readiness",
+    "resurrected" : false
+  },
+  {
+    "case" : "quit_during_readiness",
+    "resurrected" : false
+  },
+  {
+    "case" : "exact_cleanup",
+    "remaining_receipts" : 0,
+    "remaining_scrcpy_forwards" : 0,
+    "remaining_servers" : 0
+  }
+]

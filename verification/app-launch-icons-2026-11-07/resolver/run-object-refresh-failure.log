@@ -1,0 +1,3 @@
+COMMAND: swiftc shipping UI sources except main + existing Core/Streaming objects + metadata-only resolver fixture
+error: input file '/Users/patrick/workspace/DroidBridge/.build/arm64-apple-macosx/debug/DroidBridgeCore.build/DesktopAppSessions.swift.o' was modified during the build
+error: input file '/Users/patrick/workspace/DroidBridge/.build/arm64-apple-macosx/debug/DroidBridgeCore.build/DesktopAppSessions.swift.o' was modified during the build

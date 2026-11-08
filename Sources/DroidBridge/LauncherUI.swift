@@ -16,6 +16,11 @@ import DroidBridgeStreaming
     let empty=NSStackView(), emptyTitle=NSTextField(labelWithString:""),emptyDetail=NSTextField(wrappingLabelWithString:"")
     let emptyAction=NSButton(title:"Refresh Devices",target:nil,action:nil)
     let root=LauncherBackground()
+    let appLaunchSpinner = NSProgressIndicator()
+    let appLaunchLabel = NSTextField(wrappingLabelWithString: "")
+    let appLaunchCancel = NSButton(title: "Cancel", target: nil, action: nil)
+    let appLaunchDismiss = NSButton(title: "Dismiss", target: nil, action: nil)
+    let appLaunchBanner = NSStackView()
     init(controller:LauncherController) {self.controller=controller;super.init()}
     static func label(_ text:String,size:CGFloat=12,weight:NSFont.Weight = .regular,secondary:Bool=false)->NSTextField {
         let label=NSTextField(wrappingLabelWithString:text);label.font = .systemFont(ofSize:size,weight:weight)
@@ -111,7 +116,19 @@ import DroidBridgeStreaming
         connection.font = .systemFont(ofSize:12);connection.textColor = .secondaryLabelColor;connection.maximumNumberOfLines=3;connection.isSelectable=true
         let connectionAction=ClosureButton(title:"Connection…") { [weak c] in c?.showWorkspace(.devices) }
         let sharedContext=NSStackView(views:[connection,connectionAction]);sharedContext.spacing=12;sharedContext.alignment = .centerY
-        let body=Self.column([sharedContext,detailHost,footer],spacing:10);Self.pin(body,in:root,inset:20)
+        appLaunchSpinner.style = .spinning;appLaunchSpinner.controlSize = .small;appLaunchSpinner.isIndeterminate = true
+        appLaunchSpinner.widthAnchor.constraint(equalToConstant:18).isActive = true
+        appLaunchSpinner.heightAnchor.constraint(equalToConstant:18).isActive = true
+        appLaunchSpinner.setAccessibilityLabel("Opening Android app")
+        appLaunchLabel.font = .systemFont(ofSize:12,weight:.medium);appLaunchLabel.maximumNumberOfLines = 3;appLaunchLabel.isSelectable = true
+        appLaunchLabel.setAccessibilityIdentifier("launcher.app-launch-progress")
+        appLaunchCancel.target=c;appLaunchCancel.action=#selector(c.cancelAppLaunch)
+        appLaunchCancel.setAccessibilityLabel("Cancel opening app")
+        appLaunchDismiss.target=c;appLaunchDismiss.action=#selector(c.dismissAppLaunchProgress)
+        appLaunchBanner.orientation = .horizontal;appLaunchBanner.alignment = .centerY;appLaunchBanner.spacing = 10
+        for view in [appLaunchSpinner,appLaunchLabel,appLaunchCancel,appLaunchDismiss] {appLaunchBanner.addArrangedSubview(view)}
+        appLaunchLabel.setContentHuggingPriority(.defaultLow,for:.horizontal)
+        let body=Self.column([sharedContext,appLaunchBanner,detailHost,footer],spacing:10);Self.pin(body,in:root,inset:20)
         detailHost.setContentHuggingPriority(.defaultLow,for:.vertical);detailHost.heightAnchor.constraint(greaterThanOrEqualToConstant:300).isActive=true
         let sideItem=NSSplitViewItem(sidebarWithViewController:sidebar);sideItem.minimumThickness=190;sideItem.maximumThickness=250;sideItem.canCollapse=true
         splitController.addSplitViewItem(sideItem);splitController.addSplitViewItem(NSSplitViewItem(viewController:detail))
@@ -254,6 +271,16 @@ import DroidBridgeStreaming
         count.toolTip=count.stringValue
         c.onboardingButton.isEnabled=c.canOnboardSelectedDevice
         launch.isEnabled=c.canLaunchSelectedApp
+        launch.title=c.appLaunchProgress?.busy == true ? "Opening…" : "Launch App"
+        appLaunchBanner.isHidden=c.appLaunchProgress == nil
+        if let progress=c.appLaunchProgress {
+            appLaunchLabel.stringValue="\(progress.name) — \(progress.message)"
+            appLaunchLabel.toolTip=appLaunchLabel.stringValue
+            appLaunchSpinner.isHidden = !progress.busy
+            if progress.busy {appLaunchSpinner.startAnimation(nil)} else {appLaunchSpinner.stopAnimation(nil)}
+            appLaunchCancel.isHidden = !progress.busy;appLaunchCancel.isEnabled=progress.canCancel
+            appLaunchDismiss.isHidden = progress.busy
+        } else {appLaunchSpinner.stopAnimation(nil)}
         create.isEnabled=c.canLaunchSelectedApp && !c.creatingWrapper && !c.onboardingPending && !c.onboarding.isRunning && c.managedNameRepair?.isRunning != true
         restore.isEnabled = !c.restorableSessions.isEmpty && c.restoreTask == nil && !c.quitting
         restore.title=c.selectedDevice == nil ? "Restore Sessions for All Devices" : "Restore Previous Sessions"
@@ -261,7 +288,7 @@ import DroidBridgeStreaming
             selectedName.stringValue=app.name;selectedPackage.stringValue=app.packageName
             selectedName.toolTip=app.name;selectedPackage.toolTip=app.packageName
             selectedIcon.image=c.icons[c.iconKey(device,app)] ?? NSImage(systemSymbolName:"app",accessibilityDescription:nil)
-        } else {selectedName.stringValue="Select an app";selectedPackage.stringValue="Launch it here or create a Mac app for Spotlight.";selectedIcon.image=NSImage(systemSymbolName:"app",accessibilityDescription:nil)}
+        } else {selectedName.stringValue="Select an app";selectedPackage.stringValue="Open it in its own Mac app window.";selectedIcon.image=NSImage(systemSymbolName:"app",accessibilityDescription:nil)}
         empty.isHidden = !c.filtered.isEmpty
         appsScroll.isHidden=c.filtered.isEmpty
         if c.filtered.isEmpty {
@@ -290,8 +317,9 @@ import DroidBridgeStreaming
             retryExport.isHidden=true
             companionAppStatus.stringValue="Pair the Android app in Devices to manage favorites and per-app Spotlight availability. Launching apps does not require pairing."
         }
-        sessionCount.stringValue=c.visibleSessions.isEmpty ? "" : "\(c.visibleSessions.count) sessions"
-        localSessionsHeight?.constant=c.visibleSessions.isEmpty ? 60 : min(220,max(110,CGFloat(c.visibleSessions.count)*100))
+        let sessionTotal=c.visibleSessions.count+c.visibleLaunchedApps.count
+        sessionCount.stringValue=sessionTotal == 0 ? "" : "\(sessionTotal) app windows"
+        localSessionsHeight?.constant=sessionTotal == 0 ? 60 : min(320,max(110,CGFloat(sessionTotal)*100))
         c.status.toolTip=c.status.stringValue
     }
     static func sessionEmptyLabel()->NSView {
@@ -303,6 +331,7 @@ import DroidBridgeStreaming
         let name=label(descriptor.application.name,size:13,weight:.semibold);name.maximumNumberOfLines=1;name.lineBreakMode = .byTruncatingTail;name.toolTip=descriptor.application.name
         let state=c.sessionStates[id] ?? "starting"
         let stateLabel=label(state.capitalized,size:11,weight:.medium,secondary:true);stateLabel.setContentCompressionResistancePriority(.required,for:.horizontal)
+        if state == "disconnected" {stateLabel.stringValue = "Waiting to reconnect"}
         if state == "running" {stateLabel.textColor = .systemGreen} else if state == "failed" || state == "disconnected" {stateLabel.textColor = .systemOrange}
         let top=NSStackView(views:[name,stateLabel]);top.spacing=12
         let detail=label("\(descriptor.device.model.replacingOccurrences(of:"_",with:" ")) · \(descriptor.configuration.backend == .native ? "Native AppKit" : "scrcpy")",size:11,secondary:true);detail.maximumNumberOfLines=1;detail.lineBreakMode = .byTruncatingTail
@@ -323,6 +352,17 @@ import DroidBridgeStreaming
         let card=Self.card(column(rows,spacing:6));card.toolTip=c.sessionErrors[id]
         card.setAccessibilityLabel("\(descriptor.application.name), \(state), \(descriptor.device.model)")
         return card
+    }
+    static func launchedAppCard(controller c:LauncherController,app:LaunchedDesktopApp)->NSView {
+        let name=label(app.app.name,size:13,weight:.semibold)
+        let phase=label(app.phase,size:11,secondary:true)
+        if app.phase == "Running" {phase.textColor = .systemGreen}
+        let detail=label("\(app.device.model.replacingOccurrences(of:"_",with:" ")) · \(app.actualBackend == .native ? "Native AppKit" : "scrcpy")",size:11,secondary:true)
+        let focus=ClosureButton(title:"Open App") { [weak c] in c?.focusLaunchedApp(app.process.owner.pid) }
+        let close=ClosureButton(title:"Close App") { [weak c] in c?.closeLaunchedApp(app.process.owner.pid) }
+        let actions=NSStackView(views:[focus,close]);actions.spacing=8
+        let content=column([name,phase,detail,actions],spacing:6)
+        return card(content)
     }
 }
 

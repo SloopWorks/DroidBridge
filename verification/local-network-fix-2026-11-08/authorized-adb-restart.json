@@ -1,0 +1,16 @@
+{
+  "authorization": "User explicitly answered: Allow one ADB restart",
+  "old_pid": 987,
+  "old_identity": "501 Sun Nov  8 09:37:15 2026     adb",
+  "old_server_status": "usb_backend: LIBUSB\nmdns_backend: LIBADBMDNS\nversion: \"37.0.0\"\nbuild: \"android-tools\"\nexecutable_absolute_path: \"/Users/patrick/Applications/DroidBridge.app/Contents/Resources/Runtime/bin/adb\"\nlog_absolute_path: \"/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T//adb.501.log\"\nos: \"Darwin 25.2.0 (arm64)\"\ntrace_level: \"\"\nburst_mode: false\nmdns_enabled: true\nkeystore_path: \"/Users/patrick/.android/adbkey\"\nknown_hosts_path: \"/Users/patrick/.android/adb_known_hosts.pb\"\n",
+  "restart_started_utc": "2026-11-08T19:34:14.021091+00:00",
+  "restart_started_local": "2026-11-08 11:34:14",
+  "stop": "One SIGTERM sent to the validated exact old server PID; no subsequent shared-server stop authorized.",
+  "new_pid": 2056,
+  "new_identity": "501 Sun Nov  8 11:34:17 2026     adb",
+  "new_server_status": "usb_backend: LIBUSB\nmdns_backend: LIBADBMDNS\nversion: \"37.0.0\"\nbuild: \"14910828\"\nexecutable_absolute_path: \"/Users/patrick/Library/Android/sdk/platform-tools/adb\"\nlog_absolute_path: \"/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T//adb.501.log\"\nos: \"Darwin 25.2.0 (arm64)\"\ntrace_level: \"\"\nburst_mode: false\nmdns_enabled: true\nkeystore_path: \"/Users/patrick/.android/adbkey\"\nknown_hosts_path: \"/Users/patrick/.android/adb_known_hosts.pb\"\n",
+  "verified_utc": "2026-11-08T19:35:53.786498+00:00",
+  "observation_start_local": "2026-11-08 11:35:53",
+  "replacement_is_droidbridge_bundled": false,
+  "replacement_note": "Replacement reports Android SDK platform-tools executable, with mDNS enabled. It is preserved; no second stop performed. This does not establish that DroidBridge started it. DroidBridge-owned disabled-mDNS behavior was tested separately."
+}

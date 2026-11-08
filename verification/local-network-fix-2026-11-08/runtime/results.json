@@ -1,0 +1,141 @@
+[
+  {
+    "case" : "cancel_before_admission",
+    "passed" : true
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "native",
+    "bundle" : "\/tmp\/droidbridge-app-icons.P9UAEr\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.testapp7\/Android Launch Probe.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 36.0902099609375,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qaa3150b7d38b1",
+    "package" : "dev.droidbridge.testapp7",
+    "passed" : true,
+    "pid" : 37611,
+    "presented_decoded_video" : true,
+    "running_icon_pixel_error" : 0.00238037109375,
+    "seconds" : 5.174333930015564,
+    "session" : "C7B585CA-82CF-416D-A983-DB5217E47CA2",
+    "stages" : [
+      "Checking existing app…",
+      "Loading Android launcher icon…",
+      "Opening app…",
+      "Preparing Mac app…"
+    ]
+  },
+  {
+    "app_uuids" : [
+      "035DA823-287D-8A93-9F2F-D7A87673EDBC"
+    ],
+    "case" : "isolated_executable_identities",
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qaa3150b7d38b1",
+    "passed" : true,
+    "player_uuids" : [
+      "94FA9AD8-7CC7-8A0A-AD56-A9E609990567"
+    ],
+    "source_player_uuids" : [
+      "F156D224-F62A-3E44-AB31-CFF48D211757"
+    ],
+    "source_uuids" : [
+      "F2D9B3E2-5114-34E7-8929-E74008B7048B"
+    ]
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "native",
+    "bundle" : "\/tmp\/droidbridge-app-icons.P9UAEr\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.testapp7\/Android Launch Probe.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 36.0902099609375,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qaa3150b7d38b1",
+    "package" : "dev.droidbridge.testapp7",
+    "passed" : true,
+    "pid" : 37611,
+    "presented_decoded_video" : true,
+    "running_icon_pixel_error" : 0.00238037109375,
+    "seconds" : 0.57523298263549805,
+    "session" : "C7B585CA-82CF-416D-A983-DB5217E47CA2",
+    "stages" : [
+      "Bringing app to front…",
+      "Checking existing app…"
+    ]
+  },
+  {
+    "app_uuids" : [
+      "035DA823-287D-8A93-9F2F-D7A87673EDBC"
+    ],
+    "case" : "isolated_executable_identities",
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qaa3150b7d38b1",
+    "passed" : true,
+    "player_uuids" : [
+      "94FA9AD8-7CC7-8A0A-AD56-A9E609990567"
+    ],
+    "source_player_uuids" : [
+      "F156D224-F62A-3E44-AB31-CFF48D211757"
+    ],
+    "source_uuids" : [
+      "F2D9B3E2-5114-34E7-8929-E74008B7048B"
+    ]
+  },
+  {
+    "case" : "reuse_same_process_session_and_unhide",
+    "passed" : true
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "native",
+    "bundle" : "\/tmp\/droidbridge-app-icons.P9UAEr\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.iconfixture\/Android Icon Alias.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 42.14825439453125,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.pb5ae9250195affe596a9bf76.qaa3150b7d38b1",
+    "package" : "dev.droidbridge.iconfixture",
+    "passed" : true,
+    "pid" : 37709,
+    "presented_decoded_video" : true,
+    "running_icon_pixel_error" : 0,
+    "seconds" : 4.0779330730438232,
+    "session" : "06C29308-FE95-4331-9AD9-C550C69DFBB6",
+    "stages" : [
+      "Checking existing app…",
+      "Opening app…",
+      "Preparing Mac app…"
+    ]
+  },
+  {
+    "app_uuids" : [
+      "B5452179-1DA9-816D-9CA7-D75D08B2054E"
+    ],
+    "case" : "isolated_executable_identities",
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.pb5ae9250195affe596a9bf76.qaa3150b7d38b1",
+    "passed" : true,
+    "player_uuids" : [
+      "B58F22BD-2DD9-8AD1-BAD0-D077EA50F631"
+    ],
+    "source_player_uuids" : [
+      "F156D224-F62A-3E44-AB31-CFF48D211757"
+    ],
+    "source_uuids" : [
+      "F2D9B3E2-5114-34E7-8929-E74008B7048B"
+    ]
+  },
+  {
+    "case" : "two_distinct_android_app_identities",
+    "passed" : true
+  },
+  {
+    "case" : "management_restart_rediscovers_unpaired_apps",
+    "passed" : true
+  },
+  {
+    "case" : "missing_snapshot_never_claims_running",
+    "passed" : true
+  },
+  {
+    "case" : "close_exact_independent_apps",
+    "passed" : true
+  },
+  {
+    "error" : "message(\"Personalized stopped app failed provenance\/reuse validation\")",
+    "passed" : false
+  }
+]

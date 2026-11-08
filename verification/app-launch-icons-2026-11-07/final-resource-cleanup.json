@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "baselineAndFinalDisplayCount": 1,
+  "forwardsRestored": true,
+  "noAndroidServers": true,
+  "stoppedOwnedAvd": "DroidBridge_API35",
+  "port": 5580,
+  "sharedAdbServerUntouched": true,
+  "userEmulator5554Untouched": true,
+  "checks": [
+    {
+      "command": [
+        "/Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+        "-s",
+        "emulator-5580",
+        "shell",
+        "cmd",
+        "display",
+        "get-displays"
+      ],
+      "exit": 0,
+      "stdout": "Displays:\nDisplay id 0: DisplayInfo{\"Built-in Screen\", displayId 0, displayGroupId 0, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_TRUSTED, real 1080 x 1920, largest app 1920 x 1920, smallest app 1080 x 1080, appVsyncOff 1000000, presDeadline 16666666, mode 1, renderFrameRate 60.000004, defaultMode 1, userPreferredModeId -1, supportedModes [{id=1, width=1080, height=1920, fps=60.000004, vsync=60.000004, synthetic=false, alternativeRefreshRates=[], supportedHdrTypes=[]}], appsSupportedModes [{id=1, width=1080, height=1920, fps=60.000004, vsync=60.000004, synthetic=false, alternativeRefreshRates=[], supportedHdrTypes=[]}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, userDisabledHdrTypes [], minimalPostProcessingSupported false, rotation 0, state ON, committedState ON, type INTERNAL, uniqueId \"local:4619827259835644672\", app 1080 x 1920, density 420 (420.0 x 420.0) dpi, layerStack 0, colorMode 0, supportedColorModes [0], address {port=0, model=0x401cec6a7a2b7b}, deviceProductInfo DeviceProductInfo{name=EMU_display_0, manufacturerPnpId=GGL, productId=1, modelYear=null, manufactureDate=ManufactureDate{week=27, year=2006}, connectionToSinkType=0}, removeMode 0, refreshRateOverride 60.000004, brightnessMinimum 0.0, brightnessMaximum 1.0, brightnessDefault 0.39763778, installOrientation ROTATION_0, layoutLimitedRefreshRate null, hdrSdrRatio not_available, thermalRefreshRateThrottling {}, thermalBrightnessThrottlingDataId default}, DisplayMetrics{density=2.625, width=1080, height=1920, scaledDensity=2.625, xdpi=420.0, ydpi=420.0}, isValid=true\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+        "forward",
+        "--list"
+      ],
+      "exit": 0,
+      "stdout": "\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+        "-s",
+        "emulator-5580",
+        "shell",
+        "ps",
+        "-A",
+        "-o",
+        "PID,ARGS"
+      ],
+      "exit": 0,
+      "stdout": "  PID ARGS                       \n    1 init second_stage\n    2 [kthreadd]\n    3 [pool_workqueue_release]\n    4 [kworker/R-rcu_g]\n    5 [kworker/R-slub_]\n    6 [kworker/R-netns]\n    7 [kworker/0:0-virtio_vsock]\n    9 [kworker/0:0H-kblockd]\n   10 [kworker/u4:0-events_unbound]\n   11 [kworker/R-mm_pe]\n   12 [kworker/u4:1-events_unbound]\n   13 [rcu_tasks_kthread]\n   14 [rcu_tasks_trace_kthread]\n   15 [ksoftirqd/0]\n   16 [rcu_preempt]\n   17 [rcub/0]\n   18 [rcu_exp_gp_kthread_worker]\n   19 [rcu_exp_par_gp_kthread_worker]\n   20 [migration/0]\n   21 [idle_inject/0]\n   22 [cpuhp/0]\n   23 [cpuhp/1]\n   24 [idle_inject/1]\n   25 [migration/1]\n   26 [ksoftirqd/1]\n   29 [kworker/R-inet_]\n   30 [kauditd]\n   31 [khungtaskd]\n   32 [oom_reaper]\n   33 [kworker/R-write]\n   34 [kcompactd0]\n   35 [khugepaged]\n   36 [kworker/R-kbloc]\n   37 [kworker/R-edac-]\n   38 [kworker/R-devfr]\n   39 [watchdogd]\n   42 [kswapd0]\n   44 [erofs_worker/0]\n   45 [erofs_worker/1]\n   46 [kworker/R-kthro]\n   47 [dmabuf-deferred-free-worker]\n   48 [kworker/R-nvme-]\n   49 [kworker/R-nvme-]\n   50 [kworker/R-nvme-]\n   51 [kworker/R-uas]\n   52 [kworker/R-dm_bu]\n   53 [kworker/R-mld]\n   54 [kworker/R-ipv6_]\n   58 [khvcd]\n   59 [hwrng]\n   63 [jbd2/vdd1-8]\n   64 [kworker/R-ext4-]\n   65 [kworker/R-kdmfl]\n   66 [kworker/R-kdmfl]\n   67 [kworker/R-kdmfl]\n   68 [kworker/R-kdmfl]\n   69 [kworker/R-kdmfl]\n   70 [kworker/R-ext4-]\n   71 [kworker/R-ext4-]\n   72 [kworker/R-ext4-]\n   73 [kworker/R-ext4-]\n   76 init subcontext u:r:vendor_init:s0 16\n   78 ueventd\n   85 [kworker/R-kdmfl]\n   87 [kworker/R-kdmfl]\n   88 [kworker/R-kdmfl]\n   89 [kworker/R-kdmfl]\n   90 [kworker/R-kdmfl]\n   93 [kworker/R-kdmfl]\n   94 [kworker/R-kdmfl]\n   95 [kworker/R-kdmfl]\n   97 [kworker/R-kdmfl]\n   99 [kworker/R-kdmfl]\n  100 [kworker/R-kdmfl]\n  101 [kworker/R-kdmfl]\n  103 [kworker/R-kdmfl]\n  107 [kworker/R-kdmfl]\n  109 [kworker/R-kdmfl]\n  110 [kworker/R-kdmfl]\n  113 [kworker/R-kdmfl]\n  114 [kworker/R-kdmfl]\n  115 [kworker/R-kdmfl]\n  116 [kworker/R-kdmfl]\n  118 [kworker/R-kdmfl]\n  123 [kworker/R-ext4-]\n  124 [kworker/R-ext4-]\n  125 [kworker/R-ext4-]\n  130 prng_seeder\n  132 logd\n  133 lmkd\n  134 servicemanager\n  135 hwservicemanager\n  136 sh\n  137 [kworker/R-cfg80]\n  138 qemu-props\n  140 [psimon]\n  141 [sugov:0]\n  142 [sugov:1]\n  150 [irq/35-goldfish_pipe_dprctd]\n  153 vold --blkid_context=u:r:blkid:s0 --blkid_untrusted_context=u:r:blkid_untrusted:s0 --fsck_context=u:r:fsck:s0 --fsck_untrusted_context=u:r:fsck_untrusted:s0\n  155 [kworker/R-kdmfl]\n  159 [kworker/R-usbip]\n  162 android.system.suspend-service\n  163 keystore2 /data/misc/keystore\n  164 android.hardware.atrace@1.0-service\n  165 android.hardware.security.keymint-service\n  178 [kworker/R-blk_c]\n  184 [jbd2/dm-42-8]\n  185 [kworker/R-ext4-]\n  189 tombstoned\n  235 [kworker/R-kveri]\n  236 [kworker/R-kveri]\n  237 [kworker/R-ext4-]\n  238 [kworker/R-ext4-]\n  239 [kworker/R-kveri]\n  240 [kworker/R-kveri]\n  241 [kworker/R-ext4-]\n  242 [kworker/R-kveri]\n  243 [kworker/R-kveri]\n  244 [kworker/R-ext4-]\n  245 [kworker/R-ext4-]\n  246 [kworker/R-ext4-]\n  247 [kworker/R-kveri]\n  248 [kworker/R-kveri]\n  249 [kworker/R-ext4-]\n  250 [kworker/R-ext4-]\n  251 [kworker/R-ext4-]\n  252 [kworker/R-ext4-]\n  253 [kworker/R-ext4-]\n  254 [kworker/R-ext4-]\n  255 [kworker/u4:3-events_unbound]\n  256 [kworker/0:2H-kblockd]\n  257 [kworker/R-ext4-]\n  258 [kworker/R-ext4-]\n  259 [kworker/R-ext4-]\n  260 [kworker/R-ext4-]\n  261 [kworker/R-ext4-]\n  262 [kworker/R-ext4-]\n  266 [kworker/R-ext4-]\n  267 [kworker/R-ext4-]\n  268 [kworker/R-ext4-]\n  269 [kworker/R-ext4-]\n  270 [kworker/R-kveri]\n  271 [kworker/R-ext4-]\n  272 [kworker/R-kveri]\n  273 [kworker/R-kveri]\n  274 [kworker/R-kveri]\n  275 [kworker/R-kveri]\n  276 [kworker/R-kveri]\n  277 [kworker/R-kveri]\n  278 [kworker/R-ext4-]\n  279 [kworker/R-ext4-]\n  280 [kworker/R-kveri]\n  281 [kworker/R-ext4-]\n  282 [kworker/R-kveri]\n  283 [kworker/R-kveri]\n  284 [kworker/R-kveri]\n  285 [kworker/R-ext4-]\n  286 [kworker/R-ext4-]\n  287 [kworker/R-kveri]\n  288 [kworker/R-kveri]\n  289 [kworker/R-ext4-]\n  290 [kworker/R-ext4-]\n  291 [kworker/R-ext4-]\n  292 [kworker/R-ext4-]\n  293 [kworker/R-ext4-]\n  294 [kworker/R-ext4-]\n  295 [kworker/R-ext4-]\n  296 [kworker/R-ext4-]\n  297 [kworker/R-ext4-]\n  327 dhcpclient -i wlan0 --no-gateway\n  330 statsd\n  331 netd\n  332 zygote64\n  334 android.hidl.allocator@1.0-service\n  335 android.hardware.audio.service\n  336 android.hardware.camera.provider.ranchu\n  337 android.hardware.camera.provider@2.7-service-google\n  341 android.hardware.gatekeeper@1.0-service.software\n  342 android.hardware.graphics.allocator@3.0-service.ranchu\n  343 android.hardware.health-service.example\n  344 android.hardware.media.c2@1.0-service-goldfish\n  345 android.hardware.sensors-service.multihal\n  346 android.hardware.thermal@2.0-service.mock\n  347 android.hardware.usb-service.example\n  348 android.hardware.wifi-service\n  349 android.hardware.bluetooth-service.default\n  350 android.hardware.contexthub-service.example\n  355 android.hardware.graphics.composer3-service.ranchu\n  356 android.hardware.identity-service.example\n  357 android.hardware.lights-service.example\n  358 android.hardware.power-service.example\n  359 android.hardware.power.stats-service.example\n  360 android.hardware.vibrator-service.example\n  361 android.hardware.authsecret-service.example\n  362 android.hardware.cas-service.example\n  363 android.hardware.neuralnetworks-service-sample-all\n  364 android.hardware.neuralnetworks-service-sample-limited\n  365 android.hardware.neuralnetworks-shim-service-sample\n  366 android.hardware.rebootescrow-service.default\n  367 audioserver\n  368 credstore /data/misc/credstore\n  369 gpuservice\n  372 surfaceflinger\n  375 adbd --root_seclabel=u:r:su:s0\n  382 iptables-restore --noflush -w -v\n  383 ip6tables-restore --noflush -w -v\n  384 traced_probes\n  393 mdnsd\n  394 traced\n  395 logcat -f /dev/hvc1 *:V\n  398 bt_vhci_forwarder -virtio_console_dev=/dev/bluetooth0\n  400 cameraserver\n  406 incidentd\n  411 installd\n  412 media.extractor aextractor\n  414 media.metrics diametrics\n  415 mediaserver\n  416 storaged\n  417 wificond\n  418 libgoldfish-rild\n  421 media.swcodec oid.media.swcodec/bin/mediaswcodec\n  422 gatekeeperd /data/misc/gatekeeper\n  601 process-tracker --interval 1000\n  603 process-tracker --interval 1000\n  605 process-tracker --interval 1000\n  607 process-tracker --interval 1000\n  609 process-tracker --interval 1000\n  611 process-tracker --interval 1000\n  613 process-tracker --interval 1000\n  615 process-tracker --interval 1000\n  621 system_server\n  628 [kworker/1:4H-kverityd]\n  633 [kworker/1:9H-kblockd]\n  825 android.hardware.biometrics.fingerprint-service.ranchu\n  834 android.hardware.biometrics.face-service.example\n  857 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n  874 com.android.systemui\n  915 android.hardware.gnss-service.ranchu\n  922 com.android.networkstack.process\n  940 webview_zygote\n  953 com.android.bluetooth\n  968 com.android.se\n  978 com.android.phone\n  981 com.android.settings\n 1081 com.android.permissioncontroller\n 1271 android.process.acore\n 1343 com.android.launcher3\n 1420 com.android.inputmethod.latin\n 1437 android.ext.services\n 1476 com.android.providers.media.module\n 1494 com.android.emulator.multidisplay\n 1891 com.android.messaging\n 1908 com.android.ondevicepersonalization.services\n 1920 com.android.packageinstaller\n 1935 com.android.providers.calendar\n 1950 com.android.rkpdapp\n 1967 com.android.shell\n 1980 com.android.statementservice\n 2003 com.android.externalstorage\n 2034 com.android.localtransport\n 4740 [kworker/u5:2-blk_crypto_wq]\n 4754 dev.droidbridge.testapp7\n 4974 dev.droidbridge.iconfixture\n 5889 [kworker/1:1]\n 6745 com.android.calendar\n 6764 com.android.deskclock\n 8402 [kworker/0:1-virtio_vsock]\n 8670 [kworker/1:0-virtio_vsock]\n 9352 [kworker/u5:0-blk_crypto_wq]\n11089 [kworker/0:2-virtio_vsock]\n13756 ps -A -o PID,ARGS\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+        "-s",
+        "emulator-5580",
+        "emu",
+        "avd",
+        "name"
+      ],
+      "exit": 0,
+      "stdout": "DroidBridge_API35\nOK\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+        "-s",
+        "emulator-5580",
+        "emu",
+        "kill"
+      ],
+      "exit": 0,
+      "stdout": "OK: killing emulator, bye bye\nOK\n",
+      "stderr": ""
+    }
+  ]
+}

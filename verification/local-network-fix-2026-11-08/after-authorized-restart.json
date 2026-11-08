@@ -1,0 +1,12 @@
+{
+  "start_local": "2026-11-08 11:34:14",
+  "end_local": "2026-11-08 11:39:44",
+  "elapsed_seconds": 332.155809,
+  "droidbridge_alert_records": 0,
+  "obsolete_uuid_blocked_records": 0,
+  "alerts": [],
+  "new_server_pid": 2056,
+  "replacement_is_android_sdk": true,
+  "privacy_settings_changed": false,
+  "actual_native_and_fallback_retested_after_restart": true
+}

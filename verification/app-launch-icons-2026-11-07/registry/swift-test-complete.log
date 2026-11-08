@@ -1,0 +1,72 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module DroidBridgeCoreTests
+[4/6] Compiling DroidBridgeCoreTests DesktopAppSessionsTests.swift
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.30s)
+Test Suite 'Selected tests' started at 2026-11-07 20:25:56.729.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-07 20:25:56.730.
+Test Suite 'DesktopAppSessionsTests' started at 2026-11-07 20:25:56.730.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testConcurrentReadsNeverObservePartialPublication]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:179: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testConcurrentReadsNeverObservePartialPublication] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-CF76EA6D-1B1A-418F-9A4D-555B59B25A70” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-CF76EA6D-1B1A-418F-9A4D-555B59B25A70, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-CF76EA6D-1B1A-418F-9A4D-555B59B25A70, NSUnderlyingError=0xabecb5950 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testConcurrentReadsNeverObservePartialPublication]' failed (0.159 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testContendedLockHasBoundedWaitAndCanBeRetried]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:162: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testContendedLockHasBoundedWaitAndCanBeRetried] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-C62D41DB-A689-4726-AF55-F94E574FAB2A” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-C62D41DB-A689-4726-AF55-F94E574FAB2A, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-C62D41DB-A689-4726-AF55-F94E574FAB2A, NSUnderlyingError=0xabecb69d0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testContendedLockHasBoundedWaitAndCanBeRetried]' failed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testLatePublisherAndCleanupCannotOverwriteNewGeneration]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:50: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testLatePublisherAndCleanupCannotOverwriteNewGeneration] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-81A94C71-532E-45B5-87C8-FA9743DA1ECD” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-81A94C71-532E-45B5-87C8-FA9743DA1ECD, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-81A94C71-532E-45B5-87C8-FA9743DA1ECD, NSUnderlyingError=0xabecb6a90 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testLatePublisherAndCleanupCannotOverwriteNewGeneration]' failed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testMalformedAndOversizedPayloadRejected]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:78: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testMalformedAndOversizedPayloadRejected] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-48BCDF28-55A1-4038-9045-A55A9FE338DD” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-48BCDF28-55A1-4038-9045-A55A9FE338DD, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-48BCDF28-55A1-4038-9045-A55A9FE338DD, NSUnderlyingError=0xabecb58f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testMalformedAndOversizedPayloadRejected]' failed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testNonRegularLockRejectedWithoutBlocking]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:152: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testNonRegularLockRejectedWithoutBlocking] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-07291E10-CC89-4A8E-8CC0-495925044418” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-07291E10-CC89-4A8E-8CC0-495925044418, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-07291E10-CC89-4A8E-8CC0-495925044418, NSUnderlyingError=0xabecb5ce0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testNonRegularLockRejectedWithoutBlocking]' failed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPayloadSymlinkAndHardlinkRejectedWithoutTouchingTarget]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:116: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testPayloadSymlinkAndHardlinkRejectedWithoutTouchingTarget] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-0545CA86-8533-4FED-BF9F-E2FE2EE4FCD1” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-0545CA86-8533-4FED-BF9F-E2FE2EE4FCD1, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-0545CA86-8533-4FED-BF9F-E2FE2EE4FCD1, NSUnderlyingError=0xabecb6880 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPayloadSymlinkAndHardlinkRejectedWithoutTouchingTarget]' failed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPrivateRootAndParentSymlinkEnforced]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:136: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testPrivateRootAndParentSymlinkEnforced] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-F8F736BA-AE17-4075-B7AD-09625E98CED3” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-F8F736BA-AE17-4075-B7AD-09625E98CED3, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-F8F736BA-AE17-4075-B7AD-09625E98CED3, NSUnderlyingError=0xabecb5f20 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPrivateRootAndParentSymlinkEnforced]' failed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:23: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-9769CBFB-ABD4-4C94-9F35-2425BFFBE772” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-9769CBFB-ABD4-4C94-9F35-2425BFFBE772, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-9769CBFB-ABD4-4C94-9F35-2425BFFBE772, NSUnderlyingError=0xabecb68b0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity]' failed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSavedProcessReuseAndUnvalidatedMetadataDoNotBecomeTrusted]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:89: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testSavedProcessReuseAndUnvalidatedMetadataDoNotBecomeTrusted] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-14305DBE-3550-456F-A636-CA82126B8848” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-14305DBE-3550-456F-A636-CA82126B8848, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-14305DBE-3550-456F-A636-CA82126B8848, NSUnderlyingError=0xabecb5cb0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSavedProcessReuseAndUnvalidatedMetadataDoNotBecomeTrusted]' failed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBoundsAndValidationPreserveLastGoodSnapshot]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:63: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBoundsAndValidationPreserveLastGoodSnapshot] : failed: caught error: "Error Domain=NSCocoaErrorDomain Code=4 "“desktop-app-sessions-8F45827C-2D32-431D-9766-B3BC9F3D4141” couldn’t be removed." UserInfo={NSUserStringVariant=(
+    Remove
+), NSFilePath=/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-8F45827C-2D32-431D-9766-B3BC9F3D4141, NSURL=file:///var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/desktop-app-sessions-8F45827C-2D32-431D-9766-B3BC9F3D4141, NSUnderlyingError=0xabecb68e0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBoundsAndValidationPreserveLastGoodSnapshot]' failed (0.000 seconds).
+Test Suite 'DesktopAppSessionsTests' failed at 2026-11-07 20:25:56.894.
+	 Executed 10 tests, with 10 failures (10 unexpected) in 0.164 (0.165) seconds
+Test Suite 'DroidBridgePackageTests.xctest' failed at 2026-11-07 20:25:56.894.
+	 Executed 10 tests, with 10 failures (10 unexpected) in 0.164 (0.165) seconds
+Test Suite 'Selected tests' failed at 2026-11-07 20:25:56.895.
+	 Executed 10 tests, with 10 failures (10 unexpected) in 0.164 (0.165) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-recovery-installed.py", line 151, in <module>
+    assert 'com.genymobile.scrcpy.Server 5.0.1' not in android('shell', 'ps', '-A', '-o', 'PID,ARGS')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

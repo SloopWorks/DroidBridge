@@ -1,0 +1,4 @@
+$ dist/DroidBridge.app/Contents/Resources/Runtime/bin/adb devices -l
+List of devices attached
+57091FDCH01331         device usb:2-2 product:blazer model:Pixel_10_Pro device:blazer transport_id:63
+

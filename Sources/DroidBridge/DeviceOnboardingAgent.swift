@@ -39,9 +39,11 @@ enum DeviceOnboardingAgent {
         let executable = destination.appendingPathComponent("DroidBridgeAvailability")
         var arguments = [executable.path,"--adb",destination.appendingPathComponent("adb").path,"--private-root",paths.privateRoot.path,"--active-root",paths.activeRoot.path,"--preferences",DroidBridgePreferences.defaultURL.path,"--log",paths.privateRoot.appendingPathComponent("availability/availability.jsonl").path]
         if let scope = CompanionQAScope.current { arguments += ["--companion-qa-root", scope.root.path, "--serial", scope.serial] }
-        let plist: [String:Any] = ["Label":label,"ProgramArguments":arguments,"RunAtLoad":true,"KeepAlive":true,"ThrottleInterval":30,"ProcessType":"Background","StandardOutPath":"/dev/null","StandardErrorPath":"/dev/null"]
+        let plist: [String:Any] = ["Label":label,"ProgramArguments":arguments,"RunAtLoad":true,"KeepAlive":true,"ThrottleInterval":30,"ProcessType":"Background","StandardOutPath":"/dev/null","StandardErrorPath":"/dev/null","AssociatedBundleIdentifiers":["app.droidbridge.desktop"],"EnvironmentVariables":["ADB_MDNS":"0"]]
         let domain = "gui/\(getuid())"
         if let data = try? Data(contentsOf:plistURL), let existing = try? PropertyListSerialization.propertyList(from:data,format:nil) as? [String:Any], existing["ProgramArguments"] as? [String] == arguments,
+           existing["AssociatedBundleIdentifiers"] as? [String] == ["app.droidbridge.desktop"],
+           (existing["EnvironmentVariables"] as? [String:String])?["ADB_MDNS"] == "0",
            (try? await ProcessRunner.run("/bin/launchctl",arguments:["print",domain+"/"+label],timeout:3)) != nil {
             try await CoreAvailabilityAuthority.requireCompanionPolicySafe(paths: paths); return
         }

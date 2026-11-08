@@ -1,0 +1,8 @@
+COMMAND: swift build, then compile all shipping UI sources with actual-emulator wrapper fixture
+[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.15s)
+COMMAND: packaged factory + Launch Services + actual decoded video, isolated scope on emulator-5580
+FAIL: app launch icons: message("Couldn’t open app: You don’t have permission to save the file “scrcpy” in the folder “MacOS”.")
+Retained failed QA root: /private/tmp/droidbridge-app-icons.sGCoVt

@@ -1,0 +1,9 @@
+COMMAND: swift build; swiftc shipping UI sources + real-emulator recovery fixture
+[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.20s)
+COMMAND: real video fixture, isolated root, only emulator-5580; exact owned server termination and scoped sleep/wake
+Disrupt exact owned Android server scid=062d6d34, pid=4081, session=78C5D73D-223B-4123-9A7D-7AAE29BB710B
+Disrupt exact owned Android server scid=0a374760, pid=4260, session=246AF4BB-DB76-43C6-AA85-93AD6BC5E56E
+PASS: actual native recovery, bounded flapping, sleep wait, manual Retry, close/quit fencing and exact resource cleanup

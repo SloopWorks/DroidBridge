@@ -1,0 +1,8 @@
+COMMAND: swift build; swiftc shipping UI sources + real-emulator recovery fixture
+Another instance of SwiftPM (PID: 43976) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.15s)
+COMMAND: real video fixture, isolated root, only emulator-5580; exact owned server termination and scoped sleep/wake
+Disrupt exact owned Android server scid=3f688e52, pid=2341, session=BE19F640-1904-4DA1-AEF9-08013E487C00
+FAIL: message("Expected exactly one owned session receipt")

@@ -33,7 +33,10 @@ final class SocketChannel: @unchecked Sendable {
             while received < size {
                 let count = recv(fd,bytes.baseAddress!.advanced(by: received),size-received,0)
                 if count < 0 && errno == EINTR { continue }
-                guard count > 0 else { throw BridgeError.message("Android video transport disconnected") }
+                guard count > 0 else {
+                    let detail = count == 0 ? "peer closed the socket" : "socket error \(errno)"
+                    throw SessionConnectionError.interrupted("Android transport disconnected (\(detail))")
+                }
                 received += count
             }
         }; return data
@@ -44,7 +47,7 @@ final class SocketChannel: @unchecked Sendable {
             while sent < data.count {
                 let count = Darwin.send(fd,bytes.baseAddress!.advanced(by:sent),data.count-sent,0)
                 if count < 0 && errno == EINTR { continue }
-                guard count > 0 else { throw BridgeError.message("Android input transport disconnected") }; sent += count
+                guard count > 0 else { throw SessionConnectionError.interrupted("Android input transport disconnected (socket error \(errno))") }; sent += count
             }
         }
     }
@@ -108,7 +111,8 @@ final class NativeTransport: @unchecked Sendable {
                     // Device messages are drained so clipboard notifications can never
                     // fill the control socket and stall Android input processing.
                     DispatchQueue.global(qos:.utility).async { [self,control] in
-                        do { while !isStopped { _ = try control.read(1) } } catch {}
+                        do { while !isStopped { _ = try control.read(1) } }
+                        catch { if !isStopped { onFailure?(error) } }
                     }
                     let decoder = H264Decoder()
                     var packetBytes = 0

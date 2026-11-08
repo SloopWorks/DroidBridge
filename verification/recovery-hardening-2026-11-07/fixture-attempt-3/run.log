@@ -1,0 +1,27 @@
+COMMAND: swift build; swiftc shipping UI sources + real-emulator recovery fixture
+[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module DroidBridgeStreaming
+[4/6] Compiling DroidBridgeStreaming BridgeSession.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking DroidBridge
+[6/7] Applying DroidBridge
+Build complete! (1.69s)
+scripts/verify-connection-recovery.swift:79:26: warning: 'init(contentsOf:)' was deprecated in macOS 15: Use `init(contentsOf:encoding:)` instead [#DeprecatedDeclaration]
+ 77 |             return value?["ownerPID"] as? Int32 == getpid() ? value : nil
+ 78 |         }
+ 79 |         let events = try String(contentsOf: session.logURL.appendingPathExtension("jsonl")).split(separator: "\n").compactMap { try? JSONSerialization.jsonObject(with: Data($0.utf8)) as? [String: Any] }
+    |                          `- warning: 'init(contentsOf:)' was deprecated in macOS 15: Use `init(contentsOf:encoding:)` instead [#DeprecatedDeclaration]
+ 80 |         guard let scid = events.first(where: { $0["event"] as? String == "native_resources" })?["scid"] as? String else { throw BridgeError.message("Missing native resource identity") }
+ 81 |         try require(receipts.contains { $0["scid"] as? String == scid && $0["serial"] as? String == device.serial }, "Missing exact owned session receipt")
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+COMMAND: real video fixture, isolated root, only emulator-5580; exact owned server termination and scoped sleep/wake
+Disrupt exact owned Android server scid=0ac9d2d7, pid=2532, session=047ACE3F-D940-45A4-B45A-E6C006363C3E
+Disrupt exact owned Android server scid=3b172ad5, pid=2624, session=42082FF0-4D42-4B6E-9C99-FED457943815
+Disrupt exact owned Android server scid=3bc05bb1, pid=2722, session=50E722E6-0504-422C-A3FE-32083652D13E
+Disrupt exact owned Android server scid=2af09a56, pid=2817, session=5E82BAA4-648A-457E-8472-31C018CF9B13
+Disrupt exact owned Android server scid=479cf6e3, pid=2913, session=87BD59BB-FDC0-4153-8410-3510C91D5574
+FAIL: message("Dedicated emulator did not sleep")

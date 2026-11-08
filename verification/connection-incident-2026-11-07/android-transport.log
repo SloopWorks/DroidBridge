@@ -1,0 +1,158 @@
+--------- beginning of system
+11-07 09:31:34.174  1698  3634 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:31:34.174  1698  3634 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:31:35.671  1698  4280 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:31:35.672  1698  4280 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:32:20.210  1698  1958 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:32:20.211  1698  1958 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:32:21.695  1698  1958 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:32:21.695  1698  1958 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:33:16.245  1698  4277 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:33:16.245  1698  4277 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:33:17.715  1698  2788 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:33:17.715  1698  2788 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:34:08.863  1698  2065 D UsbDeviceManager: Usb state update CONNECTED
+11-07 09:34:08.921  1698  2065 D UsbDeviceManager: Usb state update DISCONNECTED
+11-07 09:34:09.476  1698  2065 D UsbDeviceManager: Usb state update CONNECTED
+11-07 09:34:09.578  1698  2065 D UsbDeviceManager: Usb state update CONFIGURED
+11-07 09:34:09.614  1698  2479 I UsbDeviceManager: getUsbSpeedCb speed:3 ,transactionId:3017
+11-07 09:34:17.856  1698  2437 I PowerManagerService: Nap time (uid 1000)...
+11-07 09:34:17.864  1698  2437 I PowerManagerService: Going to sleep due to timeout (uid 1000, screenOffTimeout=300000, activityTimeoutWM=10000, maxDimRatio=0.20000005, maxDimDur=7000)...
+11-07 09:34:18.560  1698  2437 I PowerManagerService: Dozing...
+11-07 09:34:18.586  1698  1698 I PowerManagerService: onFlip(): Face up.
+11-07 09:34:28.221  1698  4751 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:34:28.221  1698  4751 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:34:29.694  1698  2479 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:34:29.695  1698  2479 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:35:10.160  1698  2065 D UsbDeviceManager: Usb state update CONNECTED
+11-07 09:35:10.215  1698  2065 D UsbDeviceManager: Usb state update DISCONNECTED
+11-07 09:35:10.794  1698  2065 D UsbDeviceManager: Usb state update CONNECTED
+11-07 09:35:10.915  1698  2065 D UsbDeviceManager: Usb state update CONFIGURED
+11-07 09:35:10.949  1698  4205 I UsbDeviceManager: getUsbSpeedCb speed:3 ,transactionId:3021
+11-07 09:35:13.241  1698  4205 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:35:13.241  1698  4205 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:35:14.706  1698  4205 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:35:14.706  1698  4205 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:35:45.655  1698  2065 D UsbDeviceManager: Usb state update CONNECTED
+11-07 09:35:45.798  1698  2065 D UsbDeviceManager: Usb state update DISCONNECTED
+11-07 09:35:46.379  1698  2065 D UsbDeviceManager: Usb state update CONNECTED
+11-07 09:35:46.411  1698  2065 D UsbDeviceManager: Usb state update CONFIGURED
+11-07 09:35:46.437  1698  4275 I UsbDeviceManager: getUsbSpeedCb speed:3 ,transactionId:3025
+11-07 09:36:12.189  1698 11214 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:36:12.189  1698 11214 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:36:13.682  1698  4290 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:36:13.683  1698  4290 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:36:14.941  1698  2065 D UsbDeviceManager: Usb state update CONNECTED
+11-07 09:36:15.056  1698  2065 D UsbDeviceManager: Usb state update DISCONNECTED
+11-07 09:36:15.615  1698  2065 D UsbDeviceManager: Usb state update CONNECTED
+11-07 09:36:15.643  1698  2065 D UsbDeviceManager: Usb state update CONFIGURED
+11-07 09:36:15.682  1698  4379 I UsbDeviceManager: getUsbSpeedCb speed:3 ,transactionId:3029
+--------- beginning of main
+11-07 09:37:17.155  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_5a1e3343': could not connect to localabstract address 'localabstract:scrcpy_5a1e3343' (Connection refused)
+11-07 09:37:17.488 14666 14686 D scrcpy  : Using video encoder: 'c2.google.avc.encoder'
+11-07 09:37:17.567 14666 14686 D scrcpy  : Video codec size alignment requirement: 2px
+11-07 09:37:17.637 14666 14686 I scrcpy  : New display: 720x1080/240 (id=86)
+11-07 09:37:17.722 14666 14706 I scrcpy  : Starting app "Messages" [com.google.android.apps.messaging] on display 86...
+11-07 09:37:17.857  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:17.967  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:21.229  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:21.635  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:21.861  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:22.097  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:23.178  1698  4205 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:37:23.178  1698  4205 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:37:24.673  1698  4205 I UsbPortManager: AIDL UsbDataStatus:1
+11-07 09:37:24.673  1698  4205 I UsbPortManager: ClientCallback AIDL V1: port0
+11-07 09:37:25.865  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:26.051  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:29.864  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:30.114  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:32.884  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:33.223 14666 14684 D scrcpy  : Controller stopped
+11-07 09:37:33.253  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:33.283  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop ro.build.version.sdk'
+11-07 09:37:33.357 14678 14678 I scrcpy  : Cleaning up
+11-07 09:37:33.429  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:rm -f /data/local/tmp/droidbridge-5a1e3343.jar'
+11-07 09:37:33.450  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:rm -f /data/local/tmp/droidbridge-5a1e3343.jar'
+11-07 09:37:33.467  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:rm -f /data/local/tmp/droidbridge-5a1e3343.jar'
+11-07 09:37:33.553  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package resolve-activity --brief -a android.intent.action.MAIN -c android.intent.category.LAUNCHER com.google.android.apps.messaging'
+11-07 09:37:33.754  1318  1318 I adbd    : adbd service requested 'sync:'
+11-07 09:37:33.857  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:34.013  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_2925f725': could not connect to localabstract address 'localabstract:scrcpy_2925f725' (Connection refused)
+11-07 09:37:34.031  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:CLASSPATH=/data/local/tmp/droidbridge-2925f725.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=2925f725 tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_system_decorations=true vd_destroy_content=true clipboard_autosync=false keep_active=true power_on=false display_ime_policy=hide cleanup=true'
+11-07 09:37:34.072  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:34.172  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_2925f725': could not connect to localabstract address 'localabstract:scrcpy_2925f725' (Connection refused)
+11-07 09:37:34.327  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_2925f725': could not connect to localabstract address 'localabstract:scrcpy_2925f725' (Connection refused)
+11-07 09:37:34.438 14869 14869 I scrcpy  : Device: [Google] google Pixel 10 Pro (Android 17)
+11-07 09:37:34.750 14869 14907 D scrcpy  : Using video encoder: 'c2.google.avc.encoder'
+11-07 09:37:34.824 14869 14907 D scrcpy  : Video codec size alignment requirement: 2px
+11-07 09:37:34.873 14869 14907 I scrcpy  : New display: 720x1080/240 (id=87)
+11-07 09:37:34.969 14869 15012 I scrcpy  : Starting app "Messages" [com.google.android.apps.messaging] on display 87...
+11-07 09:37:37.858  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:38.081  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:41.864  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:42.099  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:44.535  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:44.803  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:45.869  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:46.053  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:49.863  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:50.098  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:50.513 14869 14904 D scrcpy  : Controller stopped
+11-07 09:37:50.548  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop ro.build.version.sdk'
+11-07 09:37:50.664 14899 14899 I scrcpy  : Cleaning up
+11-07 09:37:50.679  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:rm -f /data/local/tmp/droidbridge-2925f725.jar'
+11-07 09:37:50.712  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:rm -f /data/local/tmp/droidbridge-2925f725.jar'
+11-07 09:37:50.736  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:rm -f /data/local/tmp/droidbridge-2925f725.jar'
+11-07 09:37:50.975  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package resolve-activity --brief -a android.intent.action.MAIN -c android.intent.category.LAUNCHER com.google.android.apps.messaging'
+11-07 09:37:51.250  1318  1318 I adbd    : adbd service requested 'sync:'
+11-07 09:37:51.479  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_77705b9f': could not connect to localabstract address 'localabstract:scrcpy_77705b9f' (Connection refused)
+11-07 09:37:51.496  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:CLASSPATH=/data/local/tmp/droidbridge-77705b9f.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=77705b9f tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_system_decorations=true vd_destroy_content=true clipboard_autosync=false keep_active=true power_on=false display_ime_policy=hide cleanup=true'
+11-07 09:37:51.639  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_77705b9f': could not connect to localabstract address 'localabstract:scrcpy_77705b9f' (Connection refused)
+11-07 09:37:51.798  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_77705b9f': could not connect to localabstract address 'localabstract:scrcpy_77705b9f' (Connection refused)
+11-07 09:37:51.937 15203 15203 I scrcpy  : Device: [Google] google Pixel 10 Pro (Android 17)
+11-07 09:37:51.957  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_77705b9f': could not connect to localabstract address 'localabstract:scrcpy_77705b9f' (Connection refused)
+11-07 09:37:52.335 15203 15274 D scrcpy  : Using video encoder: 'c2.google.avc.encoder'
+11-07 09:37:52.345 15203 15274 D scrcpy  : Video codec size alignment requirement: 2px
+11-07 09:37:52.358 15203 15274 I scrcpy  : New display: 720x1080/240 (id=88)
+11-07 09:37:52.432 15203 15296 I scrcpy  : Starting app "Messages" [com.google.android.apps.messaging] on display 88...
+11-07 09:37:53.856  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:54.094  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:56.234  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:56.637  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:37:57.216  1318  1318 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-v' 'threadtime' '-t' '12000''
+11-07 09:37:57.860  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:37:58.096  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:38:01.887  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:38:02.111  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:38:05.862  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:38:06.119  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:38:07.963  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:38:08.043 15203 15269 D scrcpy  : Controller stopped
+11-07 09:38:08.057 15203 15268 D scrcpy  : Keep active thread stopped
+11-07 09:38:08.059 15203 15270 D scrcpy  : Device message sender stopped
+11-07 09:38:08.157  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:rm -f /data/local/tmp/droidbridge-77705b9f.jar'
+11-07 09:38:08.165 15260 15260 I scrcpy  : Cleaning up
+11-07 09:38:08.176  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:rm -f /data/local/tmp/droidbridge-77705b9f.jar'
+11-07 09:38:08.205  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:rm -f /data/local/tmp/droidbridge-77705b9f.jar'
+11-07 09:38:08.355  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:38:09.858  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:38:10.006  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:38:11.427  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:38:11.594  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:38:11.814  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop ro.build.version.sdk'
+11-07 09:38:12.092  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package resolve-activity --brief -a android.intent.action.MAIN -c android.intent.category.LAUNCHER com.google.android.apps.messaging'
+11-07 09:38:12.254  1318  1318 I adbd    : adbd service requested 'sync:'
+11-07 09:38:12.475  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_1ddb83e8': could not connect to localabstract address 'localabstract:scrcpy_1ddb83e8' (Connection refused)
+11-07 09:38:12.497  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:CLASSPATH=/data/local/tmp/droidbridge-1ddb83e8.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=1ddb83e8 tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_system_decorations=true vd_destroy_content=true clipboard_autosync=false keep_active=true power_on=false display_ime_policy=hide cleanup=true'
+11-07 09:38:12.635  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_1ddb83e8': could not connect to localabstract address 'localabstract:scrcpy_1ddb83e8' (Connection refused)
+11-07 09:38:12.799  1318  1318 E adbd    : failed to connect to socket 'localabstract:scrcpy_1ddb83e8': could not connect to localabstract address 'localabstract:scrcpy_1ddb83e8' (Connection refused)
+11-07 09:38:12.817 15814 15814 I scrcpy  : Device: [Google] google Pixel 10 Pro (Android 17)
+11-07 09:38:13.128 15814 15864 D scrcpy  : Using video encoder: 'c2.google.avc.encoder'
+11-07 09:38:13.155 15814 15864 D scrcpy  : Video codec size alignment requirement: 2px
+11-07 09:38:13.187 15814 15864 I scrcpy  : New display: 720x1080/240 (id=89)
+11-07 09:38:13.227 15814 15897 I scrcpy  : Starting app "Messages" [com.google.android.apps.messaging] on display 89...
+11-07 09:38:13.856  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:getprop sys.boot_completed'
+11-07 09:38:13.970  1318  1318 I adbd    : adbd service requested 'shell,v2,raw:cmd package path android'
+11-07 09:38:15.296  1318  1318 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys power'
+11-07 09:38:15.317  1318  1318 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-v' 'threadtime' '-t' '20000' 'adbd:V' 'UsbDeviceManager:V' 'UsbPortManager:V' 'UsbDeviceManager-JNI:V' 'scrcpy:V' 'CCodec:W' 'Codec2Client:W' 'MediaCodec:W' 'DisplayPowerController:V' 'PowerManagerService:V' '*:S''

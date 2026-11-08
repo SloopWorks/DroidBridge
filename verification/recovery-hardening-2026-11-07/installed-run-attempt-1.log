@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-recovery-installed.py", line 148, in <module>
+    owned = [line for line in android('forward', '--list').splitlines() if line.split()[0] == serial and 'scrcpy_' in line]
+                                                                           ~~~~~~~~~~~~^^^
+IndexError: list index out of range

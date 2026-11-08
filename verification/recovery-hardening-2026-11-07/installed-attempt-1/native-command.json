@@ -1,0 +1,13 @@
+[
+  "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/connection-recovery-21/DroidBridge.app/Contents/MacOS/DroidBridge",
+  "--companion-qa-root",
+  "/private/tmp/droidbridge-recovery-acceptance-7507u0tn/native",
+  "--serial",
+  "emulator-5580",
+  "--launch",
+  "dev.droidbridge.testapp7",
+  "--name",
+  "Recovery Acceptance",
+  "--backend",
+  "native"
+]

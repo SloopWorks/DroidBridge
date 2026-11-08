@@ -1,0 +1,21 @@
+2026-11-07
+scripts/verify-app-launch-resolver.sh
+First attempt compiled shipping UI and fixture successfully, but resolver refused /private/tmp QA root because Foundation standardizedFileURL rewrote it to /tmp and the shipping symlink check rejected macOS's /tmp symlink. Evidence: run-private-tmp-alias-failure.log. Reported to owner of shipping resolver for correction; fixture retains canonical private root requirement.
+
+scripts/verify-app-launch-resolver.sh
+Second attempt compiled while filtered tests refreshed DesktopAppSessions.swift.o; compiler safely refused changed input. Evidence: run-object-refresh-failure.log.
+
+scripts/verify-app-launch-resolver.sh
+PASS after shipping lexical-path fix and completed object refresh: 13 checks. Evidence: run.log and resolver-results.json. No actual app/session launches, Android commands or managed catalog writes. This validates resolver and icon-size eligibility helpers, not rendered app icon or video acceptance.
+
+scripts/verify-app-launch-resolver.sh
+PASS: 14 checks after explicitly constructing opposite directory URL hints between FileManager enumeration and the live process dependency fixture. Evidence run.log, resolver-results.json; prior 13-check successful run retained as run-before-directory-hint.log. No app launches, Android operations or managed catalog writes.
+
+scripts/verify-app-launch-resolver.sh
+Lease fixture first attempt failed before builder invocation because /bin/true is not installed on macOS; corrected fixture source to /usr/bin/true (copied only, never executed). Evidence run-lease-host-path-failure.log.
+
+scripts/verify-app-launch-resolver.sh
+All 21 checks passed, but shell returned 127 after its script was modified during execution to add stale-result cleanup. Preserved run-lease-shell-offset-failure.log. Re-ran with script frozen.
+
+scripts/verify-app-launch-resolver.sh
+PASS, clean exit 0: 21 shipping resolver and preparation-lease checks. Held lock returned busy after 1.017299s; cancellation returned CancellationError after 0.000056s. Busy/cancel/failure paths left no stage or published app. After unlock builder reached intentionally absent Runtime, cleaned staging and released its kernel lease. Latest run.log and resolver-results.json contain authoritative successful result. Production Swift unchanged for this followup.

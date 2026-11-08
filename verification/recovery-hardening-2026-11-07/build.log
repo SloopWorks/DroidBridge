@@ -1,0 +1,72 @@
+[0/1] Planning build
+Building for debugging...
+[0/13] Write sources
+[3/13] Write swift-version--58304C5D6DBC2206.txt
+[5/20] Compiling DroidBridgeCore CompanionBrokerService.swift
+[6/20] Compiling DroidBridgeCore CompanionActions.swift
+[7/20] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[8/20] Compiling DroidBridgeCore SessionConnection.swift
+[9/20] Compiling DroidBridgeCore CompanionReleaseMetadata.swift
+[10/20] Compiling DroidBridgeCore CompanionBrokerRegistry.swift
+[11/20] Compiling DroidBridgeCore DeviceReadiness.swift
+[12/31] Compiling DroidBridgeCompanionBroker main.swift
+[13/31] Emitting module DroidBridgeCompanionBroker
+[13/31] Write Objects.LinkFileList
+[15/31] Compiling DroidBridgeAvailability main.swift
+[16/31] Emitting module DroidBridgeAvailability
+[16/31] Write Objects.LinkFileList
+[18/31] Compiling DroidBridgeStreaming SocketTransport.swift
+[18/31] Linking DroidBridgeCompanionBroker
+[19/31] Linking DroidBridgeAvailability
+[20/31] Applying DroidBridgeAvailability
+[21/31] Applying DroidBridgeCompanionBroker
+[23/31] Compiling DroidBridgeStreaming H264Decoder.swift
+[24/31] Emitting module DroidBridgeStreaming
+[25/31] Compiling DroidBridgeStreaming DeviceAudioArtifacts.swift
+[26/31] Compiling DroidBridgeStreaming BridgeSession.swift
+[27/31] Compiling DroidBridgeStreaming DeviceAudioRouter.swift
+[28/31] Compiling DroidBridgeStreaming SessionRecovery.swift
+[29/53] Compiling DroidBridge SessionRecovery.swift
+[30/54] Compiling DroidBridge PhoneDisplayControls.swift
+[31/54] Compiling DroidBridge NativeWindow.swift
+[32/54] Compiling DroidBridge MacAppWrapper.swift
+[33/54] Compiling DroidBridge main.swift
+[34/54] Compiling DroidBridge AudioControls.swift
+[35/54] Compiling DroidBridge CompanionCatalogSync.swift
+[36/54] Compiling DroidBridge ManagedAppNameRepair.swift
+[37/54] Emitting module DroidBridge
+[38/54] Compiling DroidBridge DesktopWorkspace.swift
+[39/54] Compiling DroidBridge DeviceOnboarding.swift
+[40/54] Compiling DroidBridge CompanionLauncherIntegration.swift
+[41/54] Compiling DroidBridge CompanionPairingScanner.swift
+[42/54] Compiling DroidBridge CompanionWirelessSetup.swift
+[43/54] Compiling DroidBridge DesktopSettings.swift
+[44/54] Compiling DroidBridge DeviceOnboardingAgent.swift
+[45/54] Compiling DroidBridge DeviceOnboardingUI.swift
+[46/54] Compiling DroidBridge CompanionDesktopAdapter.swift
+[47/54] Compiling DroidBridge CompanionLaunchTrace.swift
+[48/54] Compiling DroidBridge Launcher.swift
+[49/54] Compiling DroidBridge LauncherUI.swift
+[50/54] Compiling DroidBridge CompanionTransfers.swift
+[51/54] Compiling DroidBridge CompanionWindow.swift
+[51/54] Write Objects.LinkFileList
+[52/54] Linking DroidBridge
+[53/54] Applying DroidBridge
+Build complete! (10.09s)

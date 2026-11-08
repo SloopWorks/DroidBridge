@@ -1,0 +1,4 @@
+COMMAND: swiftc shipping UI sources except main + existing Core/Streaming objects + metadata-only resolver fixture
+COMMAND: private resolver fixture --companion-qa-root <owned /private/tmp root> --serial emulator-5580
+FAIL: message("A symbolic link in the Mac app path prevents safe launching.")
+PASS: Fixture has no installed host; live selection cannot depend on stopped-wrapper freshness

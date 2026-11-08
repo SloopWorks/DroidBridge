@@ -21,6 +21,7 @@ public final class BridgeSession {
     public var onState: ((SessionState,String?) -> Void)?
     public var onMetrics: ((SessionMetrics) -> Void)?
     public private(set) var state: SessionState = .stopped
+    public private(set) var recoveryReason: SessionRecoveryReason?
     public private(set) var metrics = SessionMetrics()
     public private(set) var logURL: URL
     private let toolchain: Toolchain
@@ -106,6 +107,9 @@ public final class BridgeSession {
             guard api >= 33 else {
                 throw BridgeError.message("DroidBridge requires Android 13 (API 33) or later to keep the software keyboard hidden. This device reports API \(api).")
             }
+            let videoReadiness = await DeviceVideoReadiness.probe(device: descriptor.device, toolchain: toolchain)
+            try check(token)
+            if videoReadiness == .sleeping { throw SessionConnectionError.sleeping }
             let version = try await ProcessRunner.run(toolchain.scrcpy, arguments:["--version"],environment:toolchain.environment)
             guard version.output.contains("scrcpy 5.0.1") else { throw BridgeError.message("DroidBridge requires the bundled scrcpy 5.0.1 client and server") }
             try check(token)
@@ -116,7 +120,11 @@ public final class BridgeSession {
             if descriptor.configuration.backend == .scrcpy { try await startExternal(token:token) }
             else { try await startNative(token:token) }
         } catch {
-            if generation == token { stop(reason: "startup_failure"); transition(.failed,error.localizedDescription) }
+            if generation == token {
+                stop(reason: "startup_failure")
+                recoveryReason = (error as? SessionConnectionError)?.recoveryReason
+                transition(.failed,error.localizedDescription)
+            }
             else if state == .failed, let startupTerminalMessage { throw BridgeError.message(startupTerminalMessage) }
             throw error
         }
@@ -159,7 +167,10 @@ public final class BridgeSession {
                     : beforeReady ? "Fallback session process ended before Android confirmed the application display (\(reason)). See \(self.logURL.path)" : "Session process exited (\(reason)). See \(self.logURL.path)"
                 if beforeReady { self.startupTerminalMessage = message }
                 self.stop(reason: "session_process_exit")
-                let clean = code == 0 && terminated.terminationReason == .exit && !beforeReady
+                let clean = code == 0 && terminated.terminationReason == .exit && !beforeReady && self.descriptor.configuration.backend == .scrcpy
+                // An upstream SDL window closing normally is an explicit end.
+                // Unexpected child exits are finite recovery candidates.
+                self.recoveryReason = clean ? nil : .processExited
                 self.transition(clean ? .stopped : .failed,clean ? nil : message)
             }
         }
@@ -215,6 +226,9 @@ public final class BridgeSession {
             if readiness.0 && readiness.1 {transition(.running);trackExternalWindow(token:token);return}
             try await Task.sleep(for:.milliseconds(50))
         }
+        let readiness = await DeviceVideoReadiness.probe(device: descriptor.device, toolchain: toolchain)
+        try check(token)
+        if readiness == .sleeping { throw SessionConnectionError.sleeping }
         throw BridgeError.message("Android did not confirm the fallback application and video renderer within 15 seconds. See \(logURL.path)")
     }
     /// Public window metadata only, scoped to the exact supervised child PID.
@@ -253,7 +267,16 @@ public final class BridgeSession {
         }
     }
     private func adb(_ arguments: [String]) async throws -> ProcessResult {
-        try await ProcessRunner.run(toolchain.adb,arguments:["-s",descriptor.device.serial]+arguments,environment:toolchain.environment)
+        do { return try await ProcessRunner.run(toolchain.adb,arguments:["-s",descriptor.device.serial]+arguments,environment:toolchain.environment) }
+        catch {
+            // Confirm transport loss rather than classifying arbitrary command,
+            // package or permission errors by matching their human-readable text.
+            let state = try? await ProcessRunner.run(toolchain.adb, arguments: ["-s",descriptor.device.serial,"get-state"], environment: toolchain.environment, timeout: 2, allowNonZeroExit: true)
+            if let state, state.status != 0 || state.output.trimmingCharacters(in: .whitespacesAndNewlines) != "device" {
+                throw SessionConnectionError.interrupted("Android connection became unavailable. \(error.localizedDescription)")
+            }
+            throw error
+        }
     }
     private func startNative(token: UUID) async throws {
         let scid = String(format:"%08x",UInt32.random(in:1...0x7fffffff))
@@ -267,6 +290,7 @@ public final class BridgeSession {
         let result = try await adb(["forward","tcp:0","localabstract:scrcpy_\(scid)"])
         guard let port = UInt16(result.output.trimmingCharacters(in:.whitespacesAndNewlines)), port > 0 else { throw BridgeError.message("ADB did not allocate a video port") }
         localForward = "tcp:\(port)"; try check(token); forward = localForward
+        appendEvent(["event": "native_resources", "scid": scid, "forward": "tcp:\(port)"])
         let c = descriptor.configuration
         let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=\(c.maximumFramesPerSecond)","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_system_decorations=\(c.showSystemDecorations)","vd_destroy_content=true","clipboard_autosync=false","keep_active=true","power_on=false","display_ime_policy=hide","cleanup=true"]
         try spawn(toolchain.adb,arguments:arguments,token:token)
@@ -288,7 +312,10 @@ public final class BridgeSession {
         transport.onFailure = { [weak self] error in Task { @MainActor in
             guard let self,self.generation == token else { return }
             let diagnostic = self.transport?.startupDiagnostic ?? "video diagnostics unavailable"
-            self.stop(reason: "transport_failure"); self.transition(.failed,"\(error.localizedDescription) (\(diagnostic))")
+            if self.state == .starting { self.startupTerminalMessage = "\(error.localizedDescription) (\(diagnostic))" }
+            self.stop(reason: "transport_failure")
+            self.recoveryReason = (error as? SessionConnectionError)?.recoveryReason
+            self.transition(.failed,"\(error.localizedDescription) (\(diagnostic))")
         } }
         onStartupProgress?("Waiting for \(descriptor.application.name)…")
         try await transport.start(port:port,package:descriptor.application.packageName)
@@ -298,6 +325,9 @@ public final class BridgeSession {
             if state == .running { return }
             try await Task.sleep(nanoseconds:100_000_000)
         }
+        let readiness = await DeviceVideoReadiness.probe(device: descriptor.device, toolchain: toolchain)
+        try check(token)
+        if readiness == .sleeping { throw SessionConnectionError.sleeping }
         throw BridgeError.message("Android did not produce a decoded video frame within 15 seconds (\(transport.startupDiagnostic))")
         } catch {
             // Cleanup belongs to this start attempt, even if stop() fenced it
@@ -323,7 +353,17 @@ public final class BridgeSession {
                     guard let expected = Self.remoteSocket(remote) else {throw BridgeError.message("Missing native session socket identity")}
                     let list = try await ProcessRunner.run(tools.adb,arguments:["forward","--list"],environment:tools.environment,timeout:5)
                     let exact = list.output.components(separatedBy:.newlines).contains { line in let fields=line.split(whereSeparator:{$0.isWhitespace});return fields.count==3 && fields[0]==serial && fields[1]==forward && fields[2]==expected }
-                    if exact {_ = try await ProcessRunner.run(tools.adb,arguments:["-s",serial,"forward","--remove",forward],environment:tools.environment,timeout:5)}
+                    if exact {
+                        let removal = try await ProcessRunner.run(tools.adb,arguments:["-s",serial,"forward","--remove",forward],environment:tools.environment,timeout:5,allowNonZeroExit:true)
+                        if removal.status != 0 {
+                            // The supervisor may have removed the same owned
+                            // forward after our snapshot. Confirm absence; never
+                            // retry removal against a rebound foreign endpoint.
+                            let after = try await ProcessRunner.run(tools.adb,arguments:["forward","--list"],environment:tools.environment,timeout:5)
+                            let remains = after.output.components(separatedBy:.newlines).contains { line in let fields=line.split(whereSeparator:{$0.isWhitespace});return fields.count==3 && fields[0]==serial && fields[1]==forward && fields[2]==expected }
+                            if remains { throw BridgeError.message("Owned Android forward cleanup is pending") }
+                        }
+                    }
                 } catch {complete=false}
             }
             if let remote {
@@ -348,6 +388,7 @@ public final class BridgeSession {
         // Closing an intent is terminal. A reconnect creates a new BridgeSession;
         // a previously queued start must never resurrect a closed window.
         admissionOpen = false
+        recoveryReason = nil
         externalWindowTask?.cancel();externalWindowTask=nil;externalChildPID=nil
         guard state != .stopped || process != nil || forward != nil || remotePath != nil else { return }
         appendEvent(["event": "session_stop_requested", "reason": String(reason.prefix(128))])

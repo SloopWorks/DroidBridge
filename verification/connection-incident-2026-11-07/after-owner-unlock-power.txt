@@ -1,0 +1,7 @@
+  mWakefulness=Awake
+  mIsPowered=true
+  mBootCompleted=true
+  mBootCompleted=true
+  mIsPowered=true
+mWakefulness=1
+  mIsPowered=true

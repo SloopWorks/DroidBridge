@@ -1,0 +1,16 @@
+{
+  "path": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/app-launch-icons-22/DroidBridge.app",
+  "version": "0.2.0",
+  "build": "22",
+  "executableSHA256": "9d9bc9eb5a2d44be74f3ac7441c7d71e754cc1c950a951d67c546ec8c74e9757",
+  "signing": "adhoc",
+  "notarized": false,
+  "deepStrictCodesignVerified": true,
+  "documentsMatchSource": true,
+  "outsideBuildDirectory": true,
+  "runOutsideBuildDirectory": true,
+  "packagedLaunchButtonObserved": true,
+  "physicalPixelVerified": false,
+  "actualDockSwitcherVisualCaptureVerified": false,
+  "runningApplicationIconPixelsVerified": true
+}

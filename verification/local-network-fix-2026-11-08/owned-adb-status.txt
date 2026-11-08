@@ -1,0 +1,14 @@
+usb_backend: USB_DISABLED
+mdns_backend: MDNS_DISABLED
+version: "37.0.0"
+build: "android-tools"
+executable_absolute_path: "/Users/patrick/workspace/DroidBridge/.build/adb-runtime/adb"
+log_absolute_path: "/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T//adb.501.log"
+os: "Darwin 25.2.0 (arm64)"
+trace_level: ""
+burst_mode: false
+mdns_enabled: false
+keystore_path: "/Users/patrick/.android/adbkey"
+known_hosts_path: "/Users/patrick/.android/adb_known_hosts.pb"
+COMMAND  PID    USER   FD   TYPE            DEVICE SIZE/OFF NODE NAME
+adb     8629 patrick    5u  IPv4 0x602b9c252d43f34      0t0  TCP 127.0.0.1:56997 (LISTEN)

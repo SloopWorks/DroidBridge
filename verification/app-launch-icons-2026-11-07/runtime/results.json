@@ -1,0 +1,10 @@
+[
+  {
+    "case" : "cancel_before_admission",
+    "passed" : true
+  },
+  {
+    "error" : "message(\"Couldn’t open app: macOS opened a different copy of the app. Close it and retry from DroidBridge.\")",
+    "passed" : false
+  }
+]

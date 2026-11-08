@@ -1,0 +1,2 @@
+{"backend":"native","details":{"height":"702","launcher_visible":"false","width":"65","window_number":"4669"},"device":"emulator-5580","event":"loading_window_presented","package":"dev.droidbridge.testapp7","session":"15EBD1C5-0BE6-44EE-9999-6C197D88B8DF","timestamp":"2026-11-07T18:04:52Z"}
+{"backend":"native","details":{"reason":"close_control"},"device":"emulator-5580","event":"session_close","package":"dev.droidbridge.testapp7","session":"15EBD1C5-0BE6-44EE-9999-6C197D88B8DF","timestamp":"2026-11-07T18:04:52Z"}

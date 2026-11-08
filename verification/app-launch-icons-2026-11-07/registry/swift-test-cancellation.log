@@ -1,0 +1,88 @@
+[0/1] Planning build
+Building for debugging...
+[0/11] Write sources
+[3/11] Write swift-version--58304C5D6DBC2206.txt
+[5/13] Compiling DroidBridgeCore DesktopAppSessions.swift
+[6/13] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[6/16] Write Objects.LinkFileList
+[8/22] Linking DroidBridgeCompanionBroker
+[9/22] Linking DroidBridgeAvailability
+[10/22] Applying DroidBridgeCompanionBroker
+[11/22] Applying DroidBridgeAvailability
+[13/22] Compiling DroidBridgeCoreTests DesktopAppSessionsTests.swift
+[14/22] Emitting module DroidBridgeCoreTests
+[14/22] Write Objects.LinkFileList
+[16/22] Compiling DroidBridge AppLaunchSessions.swift
+[17/22] Compiling DroidBridge MacAppWrapper.swift
+[18/22] Compiling DroidBridge AppLaunch.swift
+[19/22] Emitting module DroidBridge
+[19/33] Linking DroidBridgePackageTests
+[21/33] Compiling DroidBridge CompanionDesktopAdapter.swift
+[22/33] Compiling DroidBridge CompanionLauncherIntegration.swift
+[23/33] Compiling DroidBridge ManagedAppNameRepair.swift
+[24/33] Compiling DroidBridge LauncherUI.swift
+[25/33] Compiling DroidBridge AudioControls.swift
+[26/33] Compiling DroidBridge SessionRecovery.swift
+[27/33] Compiling DroidBridge main.swift
+[28/33] Compiling DroidBridge PhoneDisplayControls.swift
+[29/33] Compiling DroidBridge Launcher.swift
+[30/33] Compiling DroidBridge CompanionWindow.swift
+[31/33] Compiling DroidBridge DeviceOnboardingUI.swift
+[31/34] Write Objects.LinkFileList
+[32/34] Linking DroidBridge
+[33/34] Applying DroidBridge
+Build complete! (4.16s)
+Test Suite 'Selected tests' started at 2026-11-07 20:33:43.036.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-07 20:33:43.037.
+Test Suite 'DesktopAppSessionsTests' started at 2026-11-07 20:33:43.037.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testCancelledReaderDoesNotWaitForContendedLockDeadline]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testCancelledReaderDoesNotWaitForContendedLockDeadline]' passed (0.109 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testConcurrentReadsNeverObservePartialPublication]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testConcurrentReadsNeverObservePartialPublication]' passed (0.103 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testContendedLockHasBoundedWaitAndCanBeRetried]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testContendedLockHasBoundedWaitAndCanBeRetried]' passed (1.004 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testLatePublisherAndCleanupCannotOverwriteNewGeneration]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testLatePublisherAndCleanupCannotOverwriteNewGeneration]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testMalformedAndOversizedPayloadRejected]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testMalformedAndOversizedPayloadRejected]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testNonRegularLockRejectedWithoutBlocking]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testNonRegularLockRejectedWithoutBlocking]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPayloadSymlinkAndHardlinkRejectedWithoutTouchingTarget]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPayloadSymlinkAndHardlinkRejectedWithoutTouchingTarget]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPrivateRootAndParentSymlinkEnforced]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPrivateRootAndParentSymlinkEnforced]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSavedProcessReuseAndUnvalidatedMetadataDoNotBecomeTrusted]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSavedProcessReuseAndUnvalidatedMetadataDoNotBecomeTrusted]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBackendCanChangeWithoutChangingWrapperLaunchIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBackendCanChangeWithoutChangingWrapperLaunchIdentity]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBoundsAndValidationPreserveLastGoodSnapshot]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBoundsAndValidationPreserveLastGoodSnapshot]' passed (0.001 seconds).
+Test Suite 'DesktopAppSessionsTests' passed at 2026-11-07 20:33:44.272.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 1.234 (1.235) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-07 20:33:44.272.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 1.234 (1.235) seconds
+Test Suite 'Selected tests' passed at 2026-11-07 20:33:44.272.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 1.234 (1.236) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

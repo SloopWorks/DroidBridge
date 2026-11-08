@@ -1,0 +1,115 @@
+[
+  {
+    "case" : "cancel_before_admission",
+    "passed" : true
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "native",
+    "bundle" : "\/tmp\/droidbridge-app-icons.jTC3kH\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.testapp7\/Android Launch Probe.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 36.08978271484375,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qa6db24b03873f",
+    "package" : "dev.droidbridge.testapp7",
+    "passed" : true,
+    "pid" : 86527,
+    "presented_decoded_video" : true,
+    "running_icon_pixel_error" : 0,
+    "seconds" : 4.9338210821151733,
+    "session" : "C61FA3C5-95EB-4BC9-9B8F-1FC5799915AF",
+    "stages" : [
+      "Checking existing app…",
+      "Loading Android launcher icon…",
+      "Opening app…",
+      "Preparing Mac app…"
+    ]
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "native",
+    "bundle" : "\/tmp\/droidbridge-app-icons.jTC3kH\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.testapp7\/Android Launch Probe.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 36.08978271484375,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qa6db24b03873f",
+    "package" : "dev.droidbridge.testapp7",
+    "passed" : true,
+    "pid" : 86527,
+    "presented_decoded_video" : true,
+    "running_icon_pixel_error" : 0,
+    "seconds" : 0.11650300025939941,
+    "session" : "C61FA3C5-95EB-4BC9-9B8F-1FC5799915AF",
+    "stages" : [
+      "Bringing app to front…",
+      "Checking existing app…"
+    ]
+  },
+  {
+    "case" : "reuse_same_process_session_and_unhide",
+    "passed" : true
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "native",
+    "bundle" : "\/tmp\/droidbridge-app-icons.jTC3kH\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.iconfixture\/Android Icon Alias.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 42.14825439453125,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.pb5ae9250195affe596a9bf76.qa6db24b03873f",
+    "package" : "dev.droidbridge.iconfixture",
+    "passed" : true,
+    "pid" : 86925,
+    "presented_decoded_video" : true,
+    "running_icon_pixel_error" : 0,
+    "seconds" : 3.43681800365448,
+    "session" : "6E7F3222-8991-4E97-AD89-7467B83CF39D",
+    "stages" : [
+      "Checking existing app…",
+      "Opening app…",
+      "Preparing Mac app…"
+    ]
+  },
+  {
+    "case" : "two_distinct_android_app_identities",
+    "passed" : true
+  },
+  {
+    "case" : "management_restart_rediscovers_unpaired_apps",
+    "passed" : true
+  },
+  {
+    "case" : "missing_snapshot_never_claims_running",
+    "passed" : true
+  },
+  {
+    "case" : "close_exact_independent_apps",
+    "passed" : true
+  },
+  {
+    "case" : "cancel_during_icon_extraction",
+    "passed" : true
+  },
+  {
+    "android_icns_pixel_error" : 0,
+    "backend" : "scrcpy",
+    "bundle" : "\/tmp\/droidbridge-app-icons.jTC3kH\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/scrcpy\/dev.droidbridge.testapp7\/Android Launch Probe.app",
+    "case" : "open",
+    "difference_from_droidbridge_icon" : 36.08978271484375,
+    "identifier" : "app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.scrcpy.p6d2e3bc49949f7682981a4f4.qa6db24b03873f",
+    "package" : "dev.droidbridge.testapp7",
+    "passed" : true,
+    "pid" : 87018,
+    "presented_decoded_video" : false,
+    "running_icon_pixel_error" : 0,
+    "seconds" : 4.5100009441375732,
+    "session" : "580AA8CB-4A61-4133-8FDF-1E916232E4CA",
+    "stages" : [
+      "Checking existing app…",
+      "Loading Android launcher icon…",
+      "Opening app…",
+      "Preparing Mac app…"
+    ]
+  },
+  {
+    "case" : "fallback_wrapper_and_video",
+    "passed" : true
+  }
+]

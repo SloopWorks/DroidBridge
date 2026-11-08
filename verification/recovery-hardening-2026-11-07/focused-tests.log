@@ -1,0 +1,54 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Emitting module DroidBridgeStreaming
+[5/8] Compiling DroidBridgeStreaming BridgeSession.swift
+[5/9] Write Objects.LinkFileList
+[6/11] Linking DroidBridge
+[7/11] Applying DroidBridge
+[9/11] Emitting module DroidBridgeCoreTests
+[10/11] Compiling DroidBridgeCoreTests ConnectionRecoveryTests.swift
+[10/12] Write Objects.LinkFileList
+[11/12] Linking DroidBridgePackageTests
+Build complete! (2.30s)
+Test Suite 'Selected tests' started at 2026-11-07 09:57:40.109.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-07 09:57:40.110.
+Test Suite 'ConnectionRecoveryTests' started at 2026-11-07 09:57:40.110.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testBrieflyRunningSuccessorsDoNotResetRecoveryBudget]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testBrieflyRunningSuccessorsDoNotResetRecoveryBudget]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepingStartupIsActionableAndDoesNotStageOrLaunchServer]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepingStartupIsActionableAndDoesNotStageOrLaunchServer]' passed (0.395 seconds).
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepReadinessUsesWakefulnessRatherThanPanelPower]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepReadinessUsesWakefulnessRatherThanPanelPower]' passed (0.000 seconds).
+Test Suite 'ConnectionRecoveryTests' passed at 2026-11-07 09:57:40.507.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.396 (0.396) seconds
+Test Suite 'DeviceReadinessTests' started at 2026-11-07 09:57:40.507.
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testBootReadinessProgressesWithoutLosingIntent]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testBootReadinessProgressesWithoutLosingIntent]' passed (0.634 seconds).
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testProbeTimeoutAndFiniteRetryCadence]' started.
+Test Case '-[DroidBridgeCoreTests.DeviceReadinessTests testProbeTimeoutAndFiniteRetryCadence]' passed (0.213 seconds).
+Test Suite 'DeviceReadinessTests' passed at 2026-11-07 09:57:41.353.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.846 (0.847) seconds
+Test Suite 'HiddenIMEArgumentTests' started at 2026-11-07 09:57:41.353.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testBothActualSpawnPathsAlwaysHideIMEForNewAndRestoredSessions]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testBothActualSpawnPathsAlwaysHideIMEForNewAndRestoredSessions]' passed (41.254 seconds).
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testFallbackSuppressesButtonlessHoverAcrossSupportedAndroidVersions]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testFallbackSuppressesButtonlessHoverAcrossSupportedAndroidVersions]' passed (5.525 seconds).
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testUnsupportedOrUnknownSDKFailsBeforeAppResolutionStagingOrChildLaunch]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testUnsupportedOrUnknownSDKFailsBeforeAppResolutionStagingOrChildLaunch]' passed (4.627 seconds).
+Test Suite 'HiddenIMEArgumentTests' passed at 2026-11-07 09:58:32.760.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 51.406 (51.407) seconds
+Test Suite 'NativeStartupExitTests' started at 2026-11-07 09:58:32.760.
+Test Case '-[DroidBridgeCoreTests.NativeStartupExitTests testCleanProcessExitBeforeFirstFramePreservesActionableFailure]' started.
+Test Case '-[DroidBridgeCoreTests.NativeStartupExitTests testCleanProcessExitBeforeFirstFramePreservesActionableFailure]' passed (3.106 seconds).
+Test Suite 'NativeStartupExitTests' passed at 2026-11-07 09:58:35.867.
+	 Executed 1 test, with 0 failures (0 unexpected) in 3.106 (3.107) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-07 09:58:35.867.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 55.754 (55.756) seconds
+Test Suite 'Selected tests' passed at 2026-11-07 09:58:35.867.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 55.754 (55.757) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

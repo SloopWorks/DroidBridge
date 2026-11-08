@@ -17,7 +17,7 @@ public struct Toolchain {
         let serverPaths = [server, env["DROIDBRIDGE_SERVER"], resources?.appendingPathComponent("share/scrcpy/scrcpy-server").path, "/opt/homebrew/share/scrcpy/scrcpy-server", "/usr/local/share/scrcpy/scrcpy-server"].compactMap { $0 }
         self.server = serverPaths.first { FileManager.default.fileExists(atPath: $0) } ?? serverPaths.first ?? "/opt/homebrew/share/scrcpy/scrcpy-server"
         self.audioClient = Self.resolve(audioClient ?? env["DROIDBRIDGE_AUDIO_CLIENT"], name: "DroidBridgeAudioClient", bundled: resources?.appendingPathComponent("bin/DroidBridgeAudioClient").path, extras: [FileManager.default.currentDirectoryPath + "/.build/audio-client/DroidBridgeAudioClient"])
-        self.environment = ["ADB": self.adb, "SCRCPY_SERVER_PATH": self.server]
+        self.environment = ["ADB": self.adb, "SCRCPY_SERVER_PATH": self.server, "ADB_MDNS": "0"]
     }
 
     private static func resolve(_ explicit: String?, name: String, bundled: String?, extras: [String]) -> String {
