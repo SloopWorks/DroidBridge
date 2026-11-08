@@ -1,0 +1,6 @@
+COMMAND: scoped adb -s emulator-5580 emu avd name
+DroidBridge_API35
+OK
+COMMAND: scoped adb -s emulator-5580 emu kill
+OK: killing emulator, bye bye
+OK

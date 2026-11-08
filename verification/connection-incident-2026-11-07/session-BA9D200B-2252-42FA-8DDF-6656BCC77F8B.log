@@ -1,0 +1,11 @@
+{"event":"supervisor_alias_acquired"}
+{"event":"supervisor_started","parent":81045,"child":83321}
+[server] INFO: Device: [Google] google Pixel 10 Pro (Android 17)
+[server] DEBUG: Using video encoder: 'c2.google.avc.encoder'
+[server] DEBUG: Video codec size alignment requirement: 2px
+[server] INFO: New display: 720x1080/240 (id=77)
+[server] INFO: Starting app "Messages" [com.google.android.apps.messaging] on display 77...
+{"event":"supervisor_cleanup_already_complete","operation":"forward"}
+adb: device '57091FDCH01331' not found
+{"event":"supervisor_cleanup_failed","operation":"shell"}
+{"event":"supervisor_stopped","reason":"child_exit","exit_status":255,"signal":null,"requested_signal":15}

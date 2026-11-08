@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/Users/patrick/Library/Application Support/DroidBridge/ManagedApps.noindex/backups/24765229b512f4c4630354f4/jj.app.cyf-E2A3DA8E-17D8-4754-A1C5-E1089AC2CE62.app",
+    "name": "Challenge Your Friends",
+    "identifier": "app.droidbridge.managed.d24765229b512f4c4630354f4.jj.app.cyf",
+    "build": "20",
+    "networkUsageDescription": null,
+    "executableUuidOutput": "UUID: B77BBDC5-BEA5-3F7B-A7A3-62870B2EC411 (arm64) /Users/patrick/Library/Application Support/DroidBridge/ManagedApps.noindex/backups/24765229b512f4c4630354f4/jj.app.cyf-E2A3DA8E-17D8-4754-A1C5-E1089AC2CE62.app/Contents/MacOS/DroidBridge"
+  },
+  {
+    "path": "/Users/patrick/Library/Application Support/DroidBridge/ManagedApps.noindex/inactive/24765229b512f4c4630354f4/Challenge Your Friends.app",
+    "name": "Challenge Your Friends",
+    "identifier": "app.droidbridge.managed.d24765229b512f4c4630354f4.jj.app.cyf",
+    "build": "22",
+    "networkUsageDescription": null,
+    "executableUuidOutput": "UUID: 381EB190-4D8C-34FD-9208-6FB2D0D01BA2 (arm64) /Users/patrick/Library/Application Support/DroidBridge/ManagedApps.noindex/inactive/24765229b512f4c4630354f4/Challenge Your Friends.app/Contents/MacOS/DroidBridge"
+  },
+  {
+    "path": "/Users/patrick/Applications/DroidBridge.app",
+    "name": "DroidBridge",
+    "identifier": "app.droidbridge.desktop",
+    "build": "20",
+    "networkUsageDescription": null,
+    "executableUuidOutput": "UUID: B77BBDC5-BEA5-3F7B-A7A3-62870B2EC411 (arm64) /Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge"
+  }
+]

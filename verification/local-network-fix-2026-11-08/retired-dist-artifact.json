@@ -1,0 +1,14 @@
+{
+  "retired_stale_repository_artifact": "/Users/patrick/workspace/DroidBridge/dist/DroidBridge-build20.retired",
+  "former_path": "/Users/patrick/workspace/DroidBridge/dist/DroidBridge.app",
+  "main_uuid": "UUID: B77BBDC5-BEA5-3F7B-A7A3-62870B2EC411 (arm64) /Users/patrick/workspace/DroidBridge/dist/DroidBridge.app/Contents/MacOS/DroidBridge",
+  "original_metadata_hashes": [
+    {
+      "metadata_sha256": "c0ce1f4deb20a7098a3cfa2b28fe782f97367eb605043de0b9034b5b8e4e3bc6"
+    },
+    {
+      "metadata_sha256": "7ff73615a5e8eccd7fb4c80f5b7b6c26672d4b91b43a6dcb467300404afabd84"
+    }
+  ],
+  "reason": "Only remaining Launch Services record for the obsolete shared UUID; retained as nonlaunchable data, all bytes preserved."
+}

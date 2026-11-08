@@ -21,7 +21,7 @@ final class ManagedAppsTests: XCTestCase {
         try FileManager.default.createDirectory(at: url.appendingPathComponent("Contents/Resources"), withIntermediateDirectories: true)
         try Data([0]).write(to: url.appendingPathComponent("Contents/MacOS/DroidBridge"))
         try FileManager.default.setAttributes([.posixPermissions: 0o700], ofItemAtPath: url.appendingPathComponent("Contents/MacOS/DroidBridge").path)
-        let info: [String:Any] = ["DroidBridgeManagedNamingVersion":2,"CFBundleIdentifier":reservation.bundleIdentifier,"CFBundleShortVersionString":"0.1.2","CFBundleVersion":"3","DroidBridgeManagedGeneration":reservation.id.uuidString,"DroidBridgeManagedDevice":reservation.deviceHash]
+        let info: [String:Any] = ["CFBundleExecutable":"DroidBridge","CFBundlePackageType":"APPL","DroidBridgeManagedNamingVersion":2,"CFBundleIdentifier":reservation.bundleIdentifier,"CFBundleShortVersionString":"0.1.2","CFBundleVersion":"3","DroidBridgeManagedGeneration":reservation.id.uuidString,"DroidBridgeManagedDevice":reservation.deviceHash]
         try PropertyListSerialization.data(fromPropertyList:info,format:.xml,options:0).write(to:url.appendingPathComponent("Contents/Info.plist"))
         let launch = ["managed_key":reservation.key,"managed_generation":reservation.id.uuidString,"serial":reservation.device.serial,"package":reservation.application.packageName,"name":reservation.application.name,"backend":reservation.backend.rawValue]
         try JSONEncoder().encode(launch).write(to:url.appendingPathComponent("Contents/Resources/launch.json")); return url

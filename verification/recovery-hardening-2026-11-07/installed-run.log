@@ -1,0 +1,2 @@
+PASS packaged native: interrupted stream recovered automatically with real decoded content
+PASS packaged scrcpy: interrupted stream recovered automatically with real decoded content

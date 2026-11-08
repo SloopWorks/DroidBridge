@@ -39,6 +39,7 @@ public enum CompanionWirelessADB {
                 let handle = try FileHandle(forWritingTo: path); defer { try? handle.close() }
                 let pipe = Pipe(); defer { try? pipe.fileHandleForWriting.close() }
                 let child = Process(); child.executableURL = URL(fileURLWithPath: adb); child.arguments = arguments
+                child.environment = ProcessInfo.processInfo.environment.merging(["ADB_MDNS": "0"]) { _, new in new }
                 child.standardOutput = handle; child.standardError = handle; child.standardInput = pipe
                 try owner.launch(child)
                 if let input { try? pipe.fileHandleForWriting.write(contentsOf: Data(input.utf8)) }

@@ -1,0 +1,52 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling DroidBridgeCoreTests DesktopAppSessionsTests.swift
+[4/5] Emitting module DroidBridgeCoreTests
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.08s)
+Test Suite 'Selected tests' started at 2026-11-07 20:26:26.251.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-07 20:26:26.252.
+Test Suite 'DesktopAppSessionsTests' started at 2026-11-07 20:26:26.253.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testConcurrentReadsNeverObservePartialPublication]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:193: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testConcurrentReadsNeverObservePartialPublication] : XCTAssertEqual failed: ("["message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")", "message(\"Invalid wrapper presentation directory.\")"]") is not equal to ("[]")
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testConcurrentReadsNeverObservePartialPublication]' failed (0.256 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testContendedLockHasBoundedWaitAndCanBeRetried]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:176: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testContendedLockHasBoundedWaitAndCanBeRetried] : XCTAssertNotNil failed: threw error "message("Invalid wrapper presentation directory.")"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testContendedLockHasBoundedWaitAndCanBeRetried]' failed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testLatePublisherAndCleanupCannotOverwriteNewGeneration]' started.
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/DesktopAppSessions.swift:152: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testLatePublisherAndCleanupCannotOverwriteNewGeneration] : failed: caught error: "message("Invalid wrapper presentation directory.")"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testLatePublisherAndCleanupCannotOverwriteNewGeneration]' failed (0.005 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testMalformedAndOversizedPayloadRejected]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testMalformedAndOversizedPayloadRejected]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testNonRegularLockRejectedWithoutBlocking]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testNonRegularLockRejectedWithoutBlocking]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPayloadSymlinkAndHardlinkRejectedWithoutTouchingTarget]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPayloadSymlinkAndHardlinkRejectedWithoutTouchingTarget]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPrivateRootAndParentSymlinkEnforced]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testPrivateRootAndParentSymlinkEnforced]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:27: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity] : XCTAssertEqual failed: threw error "message("Invalid wrapper presentation directory.")"
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:29: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity] : XCTAssertTrue failed: threw error "message("Invalid wrapper presentation directory.")"
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:30: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity] : XCTUnwrap failed: threw error "message("Invalid wrapper presentation directory.")"
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:30: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity] : failed: caught error: "message("Invalid wrapper presentation directory.")"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testRoundTripAndExactExpectedProcessIdentity]' failed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSavedProcessReuseAndUnvalidatedMetadataDoNotBecomeTrusted]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:101: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testSavedProcessReuseAndUnvalidatedMetadataDoNotBecomeTrusted] : XCTAssertNil failed: threw error "message("Invalid wrapper presentation directory.")"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSavedProcessReuseAndUnvalidatedMetadataDoNotBecomeTrusted]' failed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBoundsAndValidationPreserveLastGoodSnapshot]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:68: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBoundsAndValidationPreserveLastGoodSnapshot] : XCTAssertTrue failed: threw error "message("Invalid wrapper presentation directory.")"
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/DesktopAppSessionsTests.swift:75: error: -[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBoundsAndValidationPreserveLastGoodSnapshot] : XCTAssertEqual failed: threw error "message("Invalid wrapper presentation directory.")"
+Test Case '-[DroidBridgeCoreTests.DesktopAppSessionsTests testSessionBoundsAndValidationPreserveLastGoodSnapshot]' failed (0.011 seconds).
+Test Suite 'DesktopAppSessionsTests' failed at 2026-11-07 20:26:26.540.
+	 Executed 10 tests, with 10 failures (9 unexpected) in 0.286 (0.288) seconds
+Test Suite 'DroidBridgePackageTests.xctest' failed at 2026-11-07 20:26:26.540.
+	 Executed 10 tests, with 10 failures (9 unexpected) in 0.286 (0.288) seconds
+Test Suite 'Selected tests' failed at 2026-11-07 20:26:26.540.
+	 Executed 10 tests, with 10 failures (9 unexpected) in 0.286 (0.289) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

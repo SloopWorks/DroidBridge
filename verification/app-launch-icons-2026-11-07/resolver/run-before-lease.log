@@ -1,0 +1,17 @@
+COMMAND: swiftc shipping UI sources except main + existing Core/Streaming objects + metadata-only resolver fixture
+COMMAND: private resolver fixture --companion-qa-root <owned /private/tmp root> --serial emulator-5580
+PASS: Fixture has no installed host; live selection cannot depend on stopped-wrapper freshness
+PASS: Live-app fixture uses the opposite directory URL hint from the enumerated wrapper
+PASS: Live private cache wins over an earlier stopped manual candidate
+PASS: A live-looking manual wrapper saved for a different serial is ignored
+PASS: A live-looking manual wrapper saved for a different backend is ignored
+PASS: One package has distinct private bundle identities for each phone and backend
+PASS: Private bundle identity is deterministic
+PASS: One package has distinct private cache directories for each phone and backend
+PASS: Malformed wrapper plist or launch JSON is never returned as launchable
+PASS: A symbolic link in the wrapper directory is refused
+PASS: Companion-sized 128px icon is rejected for a Mac wrapper
+PASS: A 512px Android icon is accepted for a Mac wrapper
+PASS: Malformed icon bytes are rejected
+PASS: Resolver fixture leaves managed catalog and managed apps untouched
+PASS: 14 shipping resolver checks; no applications or Android sessions launched

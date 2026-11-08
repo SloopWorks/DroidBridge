@@ -1,0 +1,6 @@
+Read-only diagnosis. No permissions, network settings, helper processes or app bundles changed.
+
+/usr/bin/log show --last 6h --style compact --info --predicate 'eventMessage CONTAINS[c] "E2A3DA8E-17D8-4754-A1C5-E1089AC2CE62" OR eventMessage CONTAINS[c] "jj.app.cyf"'
+/usr/bin/log show --last 2h --style compact --info --predicate '(process == "UserEventAgent" OR process == "nehelper" OR process == "neagent") AND (eventMessage CONTAINS[c] "jj.app.cyf" OR eventMessage CONTAINS[c] "DroidBridge" OR eventMessage CONTAINS[c] "D6592DAA")'
+/usr/bin/dwarfdump --uuid <DroidBridge main/wrapper executable>
+Inspected owned wrapper Info.plist metadata, MacAppWrapper.swift, ManagedApps.swift and bundled ADB source mdns_utils.cpp / adb.cpp.

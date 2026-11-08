@@ -8,6 +8,24 @@ import DroidBridgeCore
 /// Builds are private until signing succeeds; updates atomically swap complete
 /// bundles and retain the previous generation without altering launch intent.
 enum MacAppWrapper {
+    /// Private launchers do not opt a device into Spotlight or change a saved
+    /// manual wrapper's phone/backend. Each phone and backend owns its identity.
+    static func onDemandIdentifier(device: AndroidDevice, application: AndroidApplication, backend: BackendKind) -> String {
+        let scope = CompanionQAScope.current.map { ".qa" + $0.serviceSuffix } ?? ""
+        return "app.droidbridge.launcher.d\(ManagedAppCatalog.deviceHash(device.serial)).\(backend.rawValue).p\(ManagedAppCatalog.deviceHash(application.packageName))" + scope
+    }
+
+    @MainActor
+    static func createOnDemand(application: AndroidApplication, device: AndroidDevice, backend: BackendKind, iconPNG: Data,
+                               hostBundleURL: URL, destinationRoot: URL) async throws -> URL {
+        let running = Set(NSWorkspace.shared.runningApplications.compactMap { $0.bundleURL.map { canonicalPath($0) } })
+        let work = Task.detached(priority: .userInitiated) {
+            try await build(application: application, device: device, backend: backend, iconPNG: iconPNG, host: hostBundleURL,
+                            root: destinationRoot, running: running, managed: nil, onDemand: true)
+        }
+        return try await withTaskCancellationHandler(operation: { try await work.value }, onCancel: { work.cancel() })
+    }
+
     @MainActor
     static func create(application: AndroidApplication, device: AndroidDevice, backend: BackendKind, iconPNG: Data,
                        hostBundleURL: URL = Bundle.main.bundleURL, destinationRoot: URL? = nil) async throws -> URL {
@@ -34,7 +52,7 @@ enum MacAppWrapper {
     }
 
     private static func build(application: AndroidApplication, device: AndroidDevice, backend: BackendKind, iconPNG: Data,
-                              host: URL, root: URL, running: Set<String>, managed: ManagedAppReservation?, preservingConfiguration: [String:String]? = nil) async throws -> URL {
+                              host: URL, root: URL, running: Set<String>, managed: ManagedAppReservation?, preservingConfiguration: [String:String]? = nil, onDemand: Bool = false) async throws -> URL {
         try AndroidDiscovery.validatePackage(application.packageName)
         try AndroidDiscovery.validateSerial(device.serial)
         guard host.pathExtension == "app" else { throw BridgeError.message("Install DroidBridge.app before creating Mac app wrappers.") }
@@ -45,21 +63,23 @@ enum MacAppWrapper {
         }
         let executable = host.appendingPathComponent("Contents/MacOS/DroidBridge")
         guard fm.isExecutableFile(atPath: executable.path) else { throw BridgeError.message("DroidBridge's installed executable is missing.") }
-        if managed != nil {
-            var current = root.standardizedFileURL
+        if managed != nil || onDemand {
+            var current = root
             while current.path != "/" {
                 var metadata = stat()
                 if lstat(current.path, &metadata) == 0, (metadata.st_mode & S_IFMT) == S_IFLNK { throw ManagedAppCatalogError.invalid("symbolic link in factory staging path") }
                 current.deleteLastPathComponent()
             }
         }
-        try fm.createDirectory(at: root, withIntermediateDirectories: true)
+        try fm.createDirectory(at: root, withIntermediateDirectories: true, attributes: onDemand ? [.posixPermissions: 0o700] : nil)
+        let launchLease = onDemand ? try await OnDemandAppLease.acquire(root: root) : nil
+        defer { withExtendedLifetime(launchLease) {} }
         let label = application.name.replacingOccurrences(of: "/", with: "-").replacingOccurrences(of: ":", with: "-")
         var safeName = ""
         for character in label { guard (safeName + String(character)).utf8.count <= 180 else { break }; safeName.append(character) }
         guard !safeName.isEmpty else { throw BridgeError.message("The Android application name is empty.") }
-        let identifier = managed?.bundleIdentifier ?? "app.droidbridge.wrapper.\(application.packageName)"
-        let proposed = managed?.stagedBundleURL ?? root.appendingPathComponent("\(safeName).app")
+        let identifier = managed?.bundleIdentifier ?? (onDemand ? onDemandIdentifier(device: device, application: application, backend: backend) : "app.droidbridge.wrapper.\(application.packageName)")
+        let proposed = managed?.stagedBundleURL ?? root.appendingPathComponent(onDemand ? ManagedAppCatalog.bundleFilename(application.packageName, name: application.name) : "\(safeName).app")
         let matching = try fm.contentsOfDirectory(at: root, includingPropertiesForKeys: nil).filter { candidate in
             guard candidate.pathExtension == "app", !candidate.lastPathComponent.hasPrefix("."),
                   let info = readPlist(candidate), info["CFBundleIdentifier"] as? String == identifier else { return false }
@@ -87,9 +107,14 @@ enum MacAppWrapper {
             }
             let config = try Data(contentsOf: destination.appendingPathComponent("Contents/Resources/launch.json"))
             let saved = try JSONDecoder().decode([String: String].self, from: config)
-            guard saved["package"] == application.packageName, let serial = saved["serial"], let backend = saved["backend"], BackendKind(rawValue: backend) != nil,
+            guard saved["package"] == application.packageName, let serial = saved["serial"], let savedBackend = saved["backend"], BackendKind(rawValue: savedBackend) != nil,
                   let name = saved["name"], !name.isEmpty else { throw BridgeError.message("The existing wrapper's launch configuration is invalid; it was preserved.") }
             try AndroidDiscovery.validateSerial(serial)
+            if onDemand {
+                guard serial == device.serial, saved["package"] == application.packageName, saved["backend"] == backend.rawValue else {
+                    throw BridgeError.message("The cached Mac app belongs to a different phone or backend; it was preserved.")
+                }
+            }
             options = saved; previousConfig = config
             previousInfo = try Data(contentsOf: destination.appendingPathComponent("Contents/Info.plist"))
         }
@@ -100,6 +125,7 @@ enum MacAppWrapper {
         try fm.createDirectory(at: contents.appendingPathComponent("MacOS"), withIntermediateDirectories: true)
         try fm.createDirectory(at: resources, withIntermediateDirectories: true)
         try ManagedAppCloneCopy.copy(executable, to: contents.appendingPathComponent("MacOS/DroidBridge"))
+        try AppBinaryIdentity.personalize(contents.appendingPathComponent("MacOS/DroidBridge"), identifier: identifier)
         let hostResources = host.appendingPathComponent("Contents/Resources")
         try ManagedAppCloneCopy.copy(hostResources.appendingPathComponent("Runtime"), to: resources.appendingPathComponent("Runtime"))
         for name in ["licenses", "THIRD_PARTY.md"] {
@@ -116,6 +142,9 @@ enum MacAppWrapper {
             playerInfo["CFBundleName"] = options["name"] ?? application.name
             playerInfo["CFBundleDisplayName"] = options["name"] ?? application.name
             playerInfo["CFBundleIconFile"] = "AndroidApp.icns"
+            playerInfo["NSLocalNetworkUsageDescription"] = "Connect to your Android phone over Wi-Fi when you choose a wireless connection in DroidBridge."
+            guard let playerExecutable = playerInfo["CFBundleExecutable"] as? String, !playerExecutable.contains("/"), !playerExecutable.isEmpty else { throw BridgeError.message("Invalid Player executable") }
+            try AppBinaryIdentity.personalize(player.appendingPathComponent("Contents/MacOS/" + playerExecutable), identifier: identifier + ".player")
             let playerResources = player.appendingPathComponent("Contents/Resources")
             try fm.createDirectory(at: playerResources, withIntermediateDirectories: true)
             for name in ["AndroidApp.png", "AndroidApp.icns"] { try fm.copyItem(at: resources.appendingPathComponent(name), to: playerResources.appendingPathComponent(name)) }
@@ -126,6 +155,9 @@ enum MacAppWrapper {
         try config.write(to: resources.appendingPathComponent("launch.json"))
         let name = options["name"] ?? application.name
         var plist: [String: Any] = ["CFBundleIdentifier": identifier, "CFBundleName": name, "CFBundleDisplayName": name, "CFBundleExecutable": "DroidBridge", "CFBundlePackageType": "APPL", "CFBundleShortVersionString": hostInfo["CFBundleShortVersionString"] as? String ?? "0.1.2", "CFBundleVersion": hostInfo["CFBundleVersion"] as? String ?? "3", "CFBundleIconFile": "AndroidApp.icns", "LSMinimumSystemVersion": "26.0", "NSHighResolutionCapable": true, "DroidBridgeWrapperFormat": 2]
+        if onDemand { plist["DroidBridgeOnDemandFormat"] = 1 }
+        plist["DroidBridgeAppIdentityVersion"] = AppBinaryIdentity.format
+        plist["NSLocalNetworkUsageDescription"] = "Connect to your Android phone over Wi-Fi when you choose a wireless connection in DroidBridge."
         if let managed {
             plist["DroidBridgeManagedGeneration"] = managed.id.uuidString
             plist["DroidBridgeManagedDevice"] = managed.deviceHash
@@ -154,6 +186,8 @@ enum MacAppWrapper {
                 if renamex_np(stage.path, destination.path, UInt32(RENAME_SWAP)) == 0 { removeStage = true }
                 throw BridgeError.message("Could not retain the previous app generation; the update was rolled back or retained at \(stage.path).")
             }
+            try? await WrapperBackup.unregister(backup)
+            try WrapperBackup.retire(backup)
         } else {
             guard renamex_np(stage.path, destination.path, UInt32(RENAME_EXCL)) == 0 else { throw BridgeError.message("The destination appeared while building; no existing app was replaced.") }
             removeStage = false
@@ -189,5 +223,31 @@ enum MacAppWrapper {
             }
         }
         _ = try await ProcessRunner.run("/usr/bin/iconutil", arguments: ["-c", "icns", iconset.path, "-o", resources.appendingPathComponent("AndroidApp.icns").path], timeout: 20)
+    }
+}
+
+/// A crash releases the kernel lock; no PID receipt or management UI dependency
+/// is needed for one cached app's publication. Never inherited by signing tools.
+private final class OnDemandAppLease {
+    private let descriptor: Int32
+    private init(_ descriptor: Int32) { self.descriptor = descriptor }
+    deinit { Darwin.close(descriptor) }
+    static func acquire(root: URL) async throws -> OnDemandAppLease {
+        let fd = Darwin.open(root.appendingPathComponent(".launch.lock").path, O_CREAT | O_RDWR | O_NOFOLLOW | O_NONBLOCK | O_CLOEXEC, 0o600)
+        guard fd >= 0 else { throw BridgeError.message("Cannot open this Mac app's preparation lock.") }
+        do {
+            var metadata = stat()
+            guard fstat(fd, &metadata) == 0, metadata.st_mode & S_IFMT == S_IFREG, metadata.st_uid == geteuid(),
+                  metadata.st_mode & 0o077 == 0, metadata.st_nlink == 1 else { throw BridgeError.message("The Mac app preparation lock is unsafe.") }
+            let deadline = ProcessInfo.processInfo.systemUptime + 1
+            while true {
+                try Task.checkCancellation()
+                if flock(fd, LOCK_EX | LOCK_NB) == 0 { return OnDemandAppLease(fd) }
+                guard errno == EWOULDBLOCK || errno == EINTR, ProcessInfo.processInfo.systemUptime < deadline else {
+                    throw BridgeError.message("Another DroidBridge process is preparing this app. Retry when it finishes.")
+                }
+                try await Task.sleep(for: .milliseconds(20))
+            }
+        } catch { Darwin.close(fd); throw error }
     }
 }

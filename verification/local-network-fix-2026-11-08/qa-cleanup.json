@@ -1,0 +1,9 @@
+{
+  "removed_exact_disposable_scopes": [
+    "/private/tmp/droidbridge-app-icons.sGCoVt",
+    "/private/tmp/droidbridge-app-icons.P9UAEr",
+    "/private/tmp/droidbridge-network-gui-20261108"
+  ],
+  "dedicated_emulator_stopped": true,
+  "shared_adb_server_preserved": true
+}

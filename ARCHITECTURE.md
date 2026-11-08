@@ -78,9 +78,33 @@ Wrapper startup creates a local icon/name loading host before recovery or Androi
 
 Before native staging, an immutable session receipt records owner PID, device serial and random scrcpy session ID. Recovery skips active owners (including independent wrappers), validates identities, and removes only abandoned matching forwards and the derived remote JAR. Offline cleanup retains the receipt for a later retry. The launcher completes recovery before beginning discovery polling or new admission. The supervisor handles running-child crash cleanup; receipts cover the earlier staging interval.
 
-Closing a session destroys its virtual display and its tasks under scrcpy's default content policy. Android controls persistent app state, task affinity, orientation and activity recreation. Saved session intent supports explicit restore after relaunch, while enabled reconnect polling waits for boot completion and package-service readiness before replacing disconnected sessions. Readiness is reconsidered on later polls even if the device list is unchanged. Each outage permits three failed launches with at least eight seconds between failures; closing an intent cancels its retry. Discovery results are fenced against a changed selection or application shutdown.
+Closing a session destroys its virtual display and its tasks under scrcpy's default content policy. Android controls persistent app state, task affinity, orientation and activity recreation. Saved session intent supports explicit restore after relaunch. Typed native socket failures (including control-channel closure) and unexpected supervised process exits enqueue recovery independently of device enumeration; a brief USB interruption between four-second polls cannot strand a failed session. A normal upstream SDL-window exit, invalid configuration, protocol or decoder failure does not initiate automatic recovery.
+
+Enabled recovery waits for boot/package-service readiness and positively detected system sleep to end. `DeviceVideoReadiness` reads system wakefulness rather than physical panel state, preserving explicit phone-screen-off use; unknown OEM output does not fabricate sleep. Sleeping waits retain intent without staging a server, consuming retries or waking/unlocking the phone. Each recovery chain admits at most three automatic launches, with at least eight seconds between admissions. A briefly running successor carries the same budget; a stable minute permits a fresh budget on the next interruption. Manual Retry starts a fresh budget. Turning automatic recovery off preserves an explicit Retry action. Close and Quit fence every admission continuation.
+
+Native replacements drain predecessor cleanup and transfer the same NSWindow only after admission, preserving window position and minimized state. Reattachment clears old image/input/loading state and fences callbacks against the new session. A native Retry button and categorical wake/recovery/pause messages replace the generic backend-switch advice. Session logs include exact native resource identity and recovery admission/success/wait events. Concurrent supervisor/GUI cleanup verifies an owned forward is absent after an already-removed error and never retries deletion against a foreign mapping. Discovery results remain fenced against selection changes and shutdown.
 
 ## Native application experience
+
+Launcher button, Return and double-click launches resolve an exact phone/package/backend
+wrapper before opening video. All matching live wrappers take precedence over stopped
+managed/manual candidates. Current stopped wrappers are signature- and executable-checked;
+otherwise a device/backend-specific application is built under
+`~/Library/Application Support/DroidBridge/Launchers.noindex`. These on-demand apps
+do not enable Spotlight or alter saved manual launch settings. Android's full-size
+launcher icon supplies each independent Mac application's Dock and switcher identity.
+Captured launch intent has a tracked cancellation/drain task and a persistent progress
+banner across workspace navigation; cancellation ends at Launch Services handoff.
+Successful handoff confirms opening, never that Android video is running.
+
+Independent wrappers publish bounded atomic presentation snapshots through
+`DesktopAppSessionStore`, separately from companion trust/commands. Main discovers live
+owned wrapper applications through AppKit and reads only their exact PID/start-time,
+bundle URL/identifier snapshots off-main, including after management-app restart.
+Missing/stale status is explicit, actual session states/backends are retained, and
+paired broker rows are deduplicated by session UUID. Snapshot metadata grants no
+launch, control or process authority. Open/Close App actions target the observed exact
+NSRunningApplication; quitting the management app leaves independent apps running.
 
 AppKit windows supply move/resize/minimize/full-screen controls, focus and Mission Control integration. Windows in the main launcher process share one Cmd+Tab identity. Generated wrappers copy the Mach-O executable into separate bundles with package-specific application identities and launch parameters. They use isolated intent stores and copy the pinned runtime into each wrapper, so each wrapper is independently portable and can pass strict signature verification. Explicitly closing the final wrapper session ends that wrapper process; unexpected termination retains visible diagnostics and retry/fallback controls.
 
@@ -273,3 +297,12 @@ Implementation, source/fixture proof, installed interoperability and public
 release acceptance are distinct. The current cohort is recorded under
 `verification/companion/`; unresolved OS/host/performance gates remain in
 `KNOWN_ISSUES.md` and are not waived by this as-built architecture.
+
+Generated application identities follow `AppBinaryIdentity` (Core): every wrapper
+and nested Player main Mach-O receives a unique per-bundle UUID before signing.
+`WrapperBackup` (Core) retires retained application metadata without deleting
+rollback bytes; managed catalog publication and maintenance serialize migration.
+ADB children disable unused automatic mDNS browsing while explicit wireless
+pair/connect and existing shared servers retain their behavior. Per-user agents
+associate with the main desktop bundle for macOS local-network attribution. See
+WRAPPER_DESIGN.md for provenance verification, recovery and signing limits.

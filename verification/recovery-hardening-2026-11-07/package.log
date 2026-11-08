@@ -1,0 +1,136 @@
+Package Python: /usr/local/bin/python3 3.14.5
+ninja: Entering directory `/Users/patrick/workspace/DroidBridge/.build/audio-client/build'
+ninja: no work to do.
+INFO: autodetecting backend as ninja
+INFO: calculating backend command to run: /opt/homebrew/bin/ninja -C /Users/patrick/workspace/DroidBridge/.build/audio-client/build
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+
+Dependencies (compiled / linked):
+ - SDL: 3.4.18 / 3.4.18
+ - libavcodec: 63.1.102 / 63.1.102
+ - libavformat: 63.1.102 / 63.1.102
+ - libavutil: 61.1.102 / 61.1.102
+Pinned source a60891aea193d92e7e5c3942700eca63f9d19a5f; audio readiness patch d9d91f9b6e416a4b583f81bae1adeb8ee80ed4c5d4f0ac16bf689d11a4272c5a
+[0/1] Planning build
+Building for production...
+[0/10] Write sources
+[3/10] Write swift-version--58304C5D6DBC2206.txt
+[5/11] Compiling DroidBridgeCore ADBPortableRuntime.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[6/14] Compiling DroidBridgeCompanionBroker main.swift
+[6/14] Write Objects.LinkFileList
+[8/14] Compiling DroidBridgeAvailability main.swift
+[8/14] Write Objects.LinkFileList
+[9/14] Linking DroidBridgeCompanionBroker
+[10/14] Linking DroidBridgeAvailability
+[12/14] Compiling DroidBridgeStreaming BridgeSession.swift
+[13/15] Compiling DroidBridge AudioControls.swift
+[13/15] Write Objects.LinkFileList
+[14/15] Linking DroidBridge
+Build complete! (40.66s)
+warning: [options] bootstrap class path not set in conjunction with -source 8
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+Note: /Users/patrick/workspace/DroidBridge/android/icon-helper/dev/droidbridge/icons/IconHelper.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+4 warnings
+/Users/patrick/workspace/DroidBridge/.build/icon-helper/icon-helper.jar
+Copied exact companion APK notices.
+{"portable": true, "files": ["adb", "adb-libbrotlicommon.1.2.0.dylib", "adb-libbrotlidec.1.2.0.dylib", "adb-libbrotlienc.1.2.0.dylib", "adb-liblz4.1.10.0.dylib", "adb-libusb-1.0.0.dylib", "adb-libzstd.1.5.7.dylib"], "verified_signatures_and_load_closure": true}
+{"portable": true, "files": ["adb", "adb-libbrotlicommon.1.2.0.dylib", "adb-libbrotlidec.1.2.0.dylib", "adb-libbrotlienc.1.2.0.dylib", "adb-liblz4.1.10.0.dylib", "adb-libusb-1.0.0.dylib", "adb-libzstd.1.5.7.dylib"], "verified_signatures_and_load_closure": true}
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/bin/scrcpy
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavformat.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavcodec.63.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavutil.61.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavutil.61.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavutil.61.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libavutil.61.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libswresample.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libSDL3.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libSDL3.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libusb-1.0.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libusb-1.0.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libssl.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libssl.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libssl.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libcrypto.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libcrypto.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libvpx.12.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libvpx.12.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/liblzma.5.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/liblzma.5.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libdav1d.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libdav1d.7.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libmp3lame.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libmp3lame.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libmp3lame.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libopus.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libopus.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libSvtAv1Enc.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libSvtAv1Enc.4.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libx264.165.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libx264.165.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libx265.217.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libx265.217.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libmpg123.0.dylib
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/patrick/workspace/DroidBridge/.build/droidbridge-runtime.2PYSvk/Runtime/lib/libmpg123.0.dylib
+Collected runtime notices for 16 formulae. Corresponding-source review remains required before public redistribution.
+{"portable": true, "files": ["adb", "adb-libbrotlicommon.1.2.0.dylib", "adb-libbrotlidec.1.2.0.dylib", "adb-libbrotlienc.1.2.0.dylib", "adb-liblz4.1.10.0.dylib", "adb-libusb-1.0.0.dylib", "adb-libzstd.1.5.7.dylib"], "verified_signatures_and_load_closure": true}
+PASS package checks; report /Users/patrick/workspace/DroidBridge/.build/droidbridge-package.C2StcS/player-libraries.json
+PASS package checks; report /Users/patrick/workspace/DroidBridge/.build/droidbridge-package.C2StcS/player-verification.json
+PASS package checks; report /Users/patrick/workspace/DroidBridge/.build/droidbridge-package.C2StcS/signature-verification.json
+created: /Users/patrick/workspace/DroidBridge/.build/droidbridge-package.C2StcS/DroidBridge-0.2.0-arm64.dmg
+Packaged /Users/patrick/workspace/DroidBridge/dist/connection-recovery/DroidBridge.app (adhoc)

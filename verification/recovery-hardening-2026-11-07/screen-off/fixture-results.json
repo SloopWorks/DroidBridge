@@ -1,0 +1,14 @@
+[
+  {
+    "case" : "explicit_physical_panel_off",
+    "continued_frames" : 34,
+    "policy_preserved" : true,
+    "recovered_frames" : 5
+  },
+  {
+    "case" : "minimized_recovery",
+    "frames" : 5,
+    "remained_minimized" : true,
+    "same_window" : true
+  }
+]

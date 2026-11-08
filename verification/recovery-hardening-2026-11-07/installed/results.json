@@ -1,0 +1,39 @@
+{
+  "artifact": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/connection-recovery-21/DroidBridge.app",
+  "sha256": "b3f5899d289f6c665b073c375a045425e23330f0f013af24ab878a4abdb6cd5f",
+  "results": [
+    {
+      "backend": "native",
+      "passed": true,
+      "host_pid": 77760,
+      "same_host_survived": true,
+      "original": "session-2654D7B9-00F7-4F5F-AE20-3154D7FF61BB.log.jsonl",
+      "successor": "session-C34C4D29-30B3-4D3D-8B8A-C77811E944B5.log.jsonl",
+      "transport_successor": "session-5B565FE0-1719-4725-A94F-96C7BF668E1A.log.jsonl",
+      "scoped_adb_reconnect_output": "reconnecting emulator-5580 [device]",
+      "transport_recovery_seconds": 12.041,
+      "decoded_content": true,
+      "same_native_window": true,
+      "disruption": {
+        "exact_scid": "36b35116",
+        "android_pid": 5722
+      }
+    },
+    {
+      "backend": "scrcpy",
+      "passed": true,
+      "host_pid": 78344,
+      "same_host_survived": true,
+      "original": "session-26125FC3-A01A-4443-8917-56A6609DB814.log.jsonl",
+      "successor": "session-39B5D507-AAFC-4907-8F2A-1DAAE5CBDA13.log.jsonl",
+      "transport_successor": "session-0499A041-E5B2-44AA-9C62-2F0E5BD6A555.log.jsonl",
+      "scoped_adb_reconnect_output": "reconnecting emulator-5580 [device]",
+      "transport_recovery_seconds": 12.367,
+      "decoded_content": true,
+      "same_native_window": false,
+      "disruption": {
+        "exact_supervised_client_pid": 78648
+      }
+    }
+  ]
+}

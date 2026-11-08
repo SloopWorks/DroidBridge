@@ -1,0 +1,1 @@
+FAIL: message("lsregister failed (1): failed to scan /Users/patrick/Library/Application Support/DroidBridge/ManagedApps.noindex/backups/5e6f2505624f8523ae5b4121/com.android.contacts-430D94D8-A9E5-416D-BEC6-AF6B920F3557.app/Contents/Resources/Runtime/Player.app: -10814\n from spotlight")

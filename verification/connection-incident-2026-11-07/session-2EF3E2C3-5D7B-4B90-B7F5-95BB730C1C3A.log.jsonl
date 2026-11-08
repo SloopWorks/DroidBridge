@@ -1,0 +1,4 @@
+{"backend":"native","details":{"height":"702","launcher_visible":"true","width":"468","window_number":"4594"},"device":"57091FDCH01331","event":"loading_window_presented","package":"com.google.android.apps.messaging","session":"2EF3E2C3-5D7B-4B90-B7F5-95BB730C1C3A","timestamp":"2026-11-07T17:39:47Z"}
+{"backend":"native","device":"57091FDCH01331","package":"com.google.android.apps.messaging","session":"2EF3E2C3-5D7B-4B90-B7F5-95BB730C1C3A","state":"starting","timestamp":"2026-11-07T17:39:47Z"}
+{"backend":"native","device":"57091FDCH01331","package":"com.google.android.apps.messaging","session":"2EF3E2C3-5D7B-4B90-B7F5-95BB730C1C3A","state":"running","timestamp":"2026-11-07T17:39:50Z"}
+{"backend":"native","details":{"initial_blank_frames":"1","window_number":"4594"},"device":"57091FDCH01331","event":"native_content_presented","package":"com.google.android.apps.messaging","session":"2EF3E2C3-5D7B-4B90-B7F5-95BB730C1C3A","timestamp":"2026-11-07T17:39:50Z"}

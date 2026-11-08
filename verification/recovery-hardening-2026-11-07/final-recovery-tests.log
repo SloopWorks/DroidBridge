@@ -1,0 +1,30 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Emitting module DroidBridgeCoreTests
+[4/5] Compiling DroidBridgeCoreTests ConnectionRecoveryTests.swift
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.41s)
+Test Suite 'Selected tests' started at 2026-11-07 10:14:21.122.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-07 10:14:21.123.
+Test Suite 'ConnectionRecoveryTests' started at 2026-11-07 10:14:21.123.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testBrieflyRunningSuccessorsDoNotResetRecoveryBudget]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testBrieflyRunningSuccessorsDoNotResetRecoveryBudget]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testNormalFallbackWindowExitDoesNotRequestRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testNormalFallbackWindowExitDoesNotRequestRecovery]' passed (1.073 seconds).
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepingStartupIsActionableAndDoesNotStageOrLaunchServer]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepingStartupIsActionableAndDoesNotStageOrLaunchServer]' passed (0.386 seconds).
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepReadinessUsesWakefulnessRatherThanPanelPower]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepReadinessUsesWakefulnessRatherThanPanelPower]' passed (0.000 seconds).
+Test Suite 'ConnectionRecoveryTests' passed at 2026-11-07 10:14:22.584.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.460 (1.461) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-07 10:14:22.584.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.460 (1.461) seconds
+Test Suite 'Selected tests' passed at 2026-11-07 10:14:22.584.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.460 (1.462) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

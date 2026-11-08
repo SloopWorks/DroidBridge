@@ -1,0 +1,9 @@
+{"event":"supervisor_alias_acquired"}
+{"event":"supervisor_started","parent":81045,"child":3580}
+[server] INFO: Device: [Google] google Pixel 10 Pro (Android 17)
+[server] DEBUG: Using video encoder: 'c2.google.avc.encoder'
+[server] DEBUG: Video codec size alignment requirement: 2px
+[server] INFO: New display: 720x1080/240 (id=86)
+[server] INFO: Starting app "Messages" [com.google.android.apps.messaging] on display 86...
+{"event":"supervisor_cleanup_already_complete","operation":"forward"}
+{"event":"supervisor_stopped","reason":"stop_signal","exit_status":null,"signal":15,"requested_signal":15}

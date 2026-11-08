@@ -615,7 +615,7 @@ struct CompanionAppPresentation {
         }
     }
     private func renderSessions() {
-        let localIDs = Set(adapter.launcher?.sessions.keys.map { $0.uuidString.lowercased() } ?? [])
+        let localIDs = Set(adapter.launcher?.sessions.keys.map { $0.uuidString.lowercased() } ?? []).union(adapter.launcher?.launchedSessionIDs ?? [])
         let values = adapter.sessionSnapshot.filter {
             $0["device_id"]?.string == selectedID && (!embedded || !localIDs.contains($0["session_id"]?.string?.lowercased() ?? ""))
         }
@@ -626,6 +626,7 @@ struct CompanionAppPresentation {
         }
         sessions.setViews(rows.isEmpty ? [label(embedded ? "No sessions are registered in other Mac apps for this phone." : "No Mac sessions are registered for this phone.")] : rows)
     }
+    func refreshLocalSessions() { renderSessions() }
     private func sendRemoteCommand(_ kind: String, payload: [String: CompanionJSON]) {
         guard let phone else { return }
         run("Requesting \(kind.replacingOccurrences(of: "_", with: " ")) on this Mac…") { [weak self] in guard let self else { throw CancellationError() }; let id = UUID(); _ = try await self.adapter.broker.request(operation: "host_command", payload: ["device_id": .string(phone.id), "kind": .string(kind), "payload": .object(payload)], requestID: id); return try await self.waitForHostReceipt(id, device: phone.id, pending: "Waiting for the exact Mac session owner…") }

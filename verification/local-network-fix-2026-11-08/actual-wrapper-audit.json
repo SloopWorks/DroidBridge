@@ -1,0 +1,10 @@
+{
+  "catalog_records": 264,
+  "existing_apps_checked": 264,
+  "distinct_generated_main_and_player_uuids": 528,
+  "source_and_roles_match": true,
+  "previous_launch_intent_and_icon_preserved": 264,
+  "pending_publications": 0,
+  "pending_registrations": 0,
+  "errors": []
+}

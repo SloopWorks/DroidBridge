@@ -36,6 +36,8 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     var previousSerials = Set<String>()
     var readySerials = Set<String>()
     var reconnectRetries: [UUID: ReconnectRetry] = [:]
+    var recoveryWaitingForWake = Set<UUID>()
+    var retrying = Set<UUID>()
     var appsDeviceSerial: String?
     var loadingAppsSerial: String?
     var appsLoadToken=UUID()
@@ -53,6 +55,17 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     var iconTasks: [String: Task<Void, Never>] = [:]
     var creatingWrapper = false
     var wrapperTask: Task<Void, Never>?
+    var appLaunchTask: Task<Void, Never>?
+    var appLaunchRequest: UUID?
+    var appLaunchProgress: AppLaunchProgress?
+    var launchedApps: [Int32: LaunchedDesktopApp] = [:]
+    var launchedAppPresentation: [String] = []
+    var appSessionTimer: Timer?
+    var appSessionPollTask: Task<Void, Never>?
+    var wrapperSessionTask: Task<Void, Never>?
+    var wrapperSessionDirty = false
+    var wrapperSessionProducer: DesktopAppSessionProducer?
+    let desktopAppSessionStore = DesktopAppSessionStore()
     var iconRecency: [String] = []
     var iconRecoveryMessages: [String] = []
     lazy var iconProvider = AndroidIconProvider(toolchain: toolchain)
@@ -221,7 +234,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     func tableViewSelectionDidChange(_ notification:Notification) {updateLauncherPresentation()}
     var canLaunchSelectedApp:Bool {
         guard let device=selectedDevice else {return false}
-        return !quitting && device.state == "device" && readySerials.contains(device.serial) && appsDeviceSerial == device.serial && selectedApp != nil
+        return !quitting && appLaunchRequest == nil && device.state == "device" && readySerials.contains(device.serial) && appsDeviceSerial == device.serial && selectedApp != nil
     }
     var canOnboardSelectedDevice:Bool {
         guard let device=selectedDevice else {return false}
@@ -319,6 +332,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     @objc func refreshAction() { iconFailures.removeAll(); refresh() }
     func beginPolling() {
         guard !quitting else { return }
+        startAppSessionMonitoring()
         timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in Task { @MainActor in self?.pollPhoneDisplayControls();self?.pollAudioControls();self?.refreshDevices() } }
         refresh()
     }
@@ -347,8 +361,9 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
                 if launcherUIReady, onboarding.isRunning, let captured=onboarding.capturedSerial, !connected.contains(captured) { onboarding.cancel() }
                 for session in Array(sessions.values) where !connected.contains(session.descriptor.device.serial) {
                     let id = session.descriptor.id
-                    if sessionStates[id] != "disconnected" || previousSerials.contains(session.descriptor.device.serial) {
-                        session.stop(reason: "device_unavailable"); sessionStates[id] = "disconnected"; reconnectRetries[id] = ReconnectRetry()
+                    if sessionStates[id] != "disconnected", session.state == .running || session.state == .starting {
+                        enqueueRecovery(session, reason: .transportInterrupted)
+                        session.stop(reason: "device_unavailable")
                     }
                 }
                 let changed = found != devices
@@ -370,24 +385,15 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
                 readySerials = ready
                 companion.catalogVisibilityChanged()
                 pollAudioControls()
+                // Recover before catalog/icon work. Transport callbacks enqueue
+                // intent even when a short USB outage was invisible to polling.
+                await recoverInterruptedSessions(ready: ready)
+                guard !quitting, !Task.isCancelled else { return }
                 // A wrapper already knows its package/name/icon. Never wait for the
                 // full catalog (or fetch every app icon) to launch that identity.
                 if (!isWrapper || window?.isVisible == true), forceApps || changed || appsDeviceSerial != selectedDevice?.serial || selectedDevice.map({ !ready.contains($0.serial) }) == true { await loadApps(readinessChecked: true) }
                 if devices.isEmpty { showLaunchProblem("No Android device found. Check USB debugging, authorization, or start an emulator.") }
                 else if selectedDevice == nil, let preferredSerial { showLaunchProblem("Waiting for requested Android device \(preferredSerial).") }
-                if reconnect.state == .on {
-                    for session in Array(sessions.values) where sessionStates[session.descriptor.id] == "disconnected" {
-                        let descriptor = session.descriptor
-                        var retry = reconnectRetries[descriptor.id] ?? ReconnectRetry()
-                        guard retry.admits(intentPresent: sessions[descriptor.id] != nil, ready: ready.contains(descriptor.device.serial), enabled: reconnect.state == .on, now: Date()) else { continue }
-                        if let successor = await launch(device: descriptor.device, app: descriptor.application, configuration: descriptor.configuration, readinessChecked: true,replacing:descriptor.id,replacementReason:"reconnect_replacement"), !quitting, sessions[successor.descriptor.id] != nil, successor.state != .running {
-                            retry.failed(at: Date())
-                            reconnectRetries[successor.descriptor.id] = retry
-                            sessionStates[successor.descriptor.id] = "disconnected"
-                            status.stringValue = retry.failures == ReconnectRetry.maximumAttempts ? "Automatic reconnection paused after three failed launches. Close and launch the app to retry." : "Reconnection failed; retrying after at least eight seconds (\(retry.failures)/3)."
-                        }
-                    }
-                }
                 previousSerials = connected; updateSessions();pollPhoneDisplayControls();pollAudioControls()
                 await launchArgumentsIfNeeded()
             } catch { showLaunchProblem(error.localizedDescription) }
@@ -429,11 +435,10 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     }
     @objc func launchAction() {
         guard canLaunchSelectedApp,let device=selectedDevice,let app=selectedApp else {status.stringValue="Select an app from a connected, ready device first.";return}
-        status.stringValue="Opening \(app.name) on \(device.model)…"
-        Task { await launch(device: device, app: app, configuration: SessionConfiguration(backend: backend,showSystemDecorations:(try? DroidBridgePreferences.load().showAndroidSystemDecorations) ?? true)) }
+        openApp(device: device, app: app, backend: backend)
     }
     @discardableResult
-    func launch(device: AndroidDevice, app: AndroidApplication, configuration: SessionConfiguration, readinessChecked: Bool = false,replacing:UUID? = nil,restoring:UUID? = nil,replacementReason:String = "session_replacement", admissionCheck: (() throws -> Void)? = nil) async -> BridgeSession? {
+    func launch(device: AndroidDevice, app: AndroidApplication, configuration: SessionConfiguration, readinessChecked: Bool = false,replacing:UUID? = nil,restoring:UUID? = nil,replacementReason:String = "session_replacement", recoveryBudget: ReconnectRetry? = nil, admissionCheck: (() throws -> Void)? = nil) async -> BridgeSession? {
         guard !quitting,!Task.isCancelled,!wrapperLaunchCancelled else { return nil }
         let predecessor=replacing.flatMap {sessions[$0]}
         if replacing != nil && predecessor == nil {return nil}
@@ -445,6 +450,12 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
             let bundleURL=Bundle.main.bundleURL, catalog=managedCatalog
             let allowed = await Task.detached { ((try? DroidBridgePreferences.load().bulkWrapperOnboardingEnabled) == true) && ((try? catalog.isLaunchAllowed(bundleURL:bundleURL,serial:device.serial,packageName:app.packageName)) == true) }.value
             guard allowed, !quitting,!Task.isCancelled else { status.stringValue="This managed app is disabled or its owning device is unavailable. Enable device apps in Spotlight and reconnect that device."; return nil }
+        }
+        if let predecessor {
+            do { try admissionCheck?() }
+            catch { status.stringValue = error.localizedDescription; return nil }
+            await predecessor.stopAndWait()
+            guard !quitting, !Task.isCancelled, let replacing, sessions[replacing] === predecessor else { return nil }
         }
         guard !wrapperLaunchCancelled else {return nil}
         // Admission is complete. Recheck ownership after every suspension before
@@ -468,12 +479,20 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
         let descriptor = SessionDescriptor(device: device, application: app, configuration: initialConfiguration)
         let session = BridgeSession(descriptor: descriptor, toolchain: toolchain)
         sessions[descriptor.id] = session; sessionStates[descriptor.id] = "starting"
+        reconnectRetries[descriptor.id] = recoveryBudget
         if let restoring {pending.removeAll {$0.id==restoring}}
+        // Transfer an existing native window only after admission. Closing that
+        // window at any earlier suspension still cancels the original intent.
+        let retainedHost: NativeWindowController?
+        if let replacing, configuration.backend == .native, predecessor?.descriptor.configuration.backend == .native {
+            retainedHost = hosts.removeValue(forKey: replacing)
+        } else { retainedHost = nil }
         if let replacing {close(replacing,reason:replacementReason)}
         if configuration.backend == .native || isWrapper {
             let host: NativeWindowController
-            let reusingPreview=launchPreview != nil
-            if let preview=launchPreview { host=preview;launchPreview=nil;host.video.statusMessage=nil;host.attach(session) }
+            let reusingPreview=launchPreview != nil || retainedHost != nil
+            if let retainedHost { host=retainedHost;host.attach(session) }
+            else if let preview=launchPreview { host=preview;launchPreview=nil;host.attach(session) }
             else { host=NativeWindowController(session: session);host.video.applicationIcon=icons[iconKey(device,app)] }
             host.video.loadingMessage="Opening \(app.name)…"
             if configuration.backend == .scrcpy, let window=host.window {
@@ -482,19 +501,27 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
             }
             session.onExternalWindowFrame = { [weak host] frame in host?.rememberExternalFrame(frame) }
             host.onClose = { [weak self] in self?.close(descriptor.id, reason: "window_close") }
+            host.video.onRetry = { [weak self] in self?.retry(descriptor.id) }
             hosts[descriptor.id] = host
             if !reusingPreview,host.window?.isMiniaturized != true {host.showWindow(nil);host.window?.makeKeyAndOrderFront(nil)}
             session.recordClientEvent("loading_window_presented",details:["window_number":String(host.window?.windowNumber ?? -1),"width":String(Int(host.video.bounds.width)),"height":String(Int(host.video.bounds.height)),"launcher_visible":String(window?.isVisible ?? false)])
         }
         session.onState = { [weak self, weak session] state, message in
-            guard let self, let session, self.sessions[descriptor.id] != nil else { return }
+            guard let self, let session, self.sessions[descriptor.id] === session else { return }
             if self.sessionStates[descriptor.id] == "disconnected" { return }
             self.sessionStates[descriptor.id] = state.rawValue
             self.pollAudioControls()
             if state == .failed || state == .stopped { self.presentFailure(session, message: message) }
-            else { self.hosts[descriptor.id]?.video.statusMessage = nil }
+            else { self.hosts[descriptor.id]?.video.statusMessage = nil; self.hosts[descriptor.id]?.video.canRetry = false }
             if let message, state != .failed && state != .stopped { self.status.stringValue = message }
-            if state == .running {self.pollPhoneDisplayControls()}
+            if state == .running {
+                self.sessionErrors.removeValue(forKey: descriptor.id)
+                self.reconnectRetries[descriptor.id]?.running(at: Date())
+                if let retry = self.reconnectRetries[descriptor.id] {
+                    session.recordClientEvent("recovery_succeeded", details: ["attempt": String(retry.failures)])
+                }
+                self.pollPhoneDisplayControls()
+            }
             if state == .running && self.isWrapper {
                 if descriptor.configuration.backend == .scrcpy {
                     self.hosts[descriptor.id]?.prepareExternalHandoff()
@@ -543,7 +570,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
             NSRunningApplication(processIdentifier:pid)?.activate(options:.activateAllWindows)
             return
         }
-        if let session = sessions.values.first(where: { $0.descriptor.configuration.backend == .native && ($0.state == .running || $0.state == .starting) }), hosts[session.descriptor.id]?.window != nil {
+        if let session = sessions.values.first(where: { $0.descriptor.configuration.backend == .native && $0.state != .stopping }), hosts[session.descriptor.id]?.window != nil {
             presentNativeWrapper(session, reason: "application_reopen")
             if !isWrapper { hosts[session.descriptor.id]?.window?.deminiaturize(nil); hosts[session.descriptor.id]?.window?.makeKeyAndOrderFront(nil) }
         } else {
@@ -560,13 +587,23 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
         let id = session.descriptor.id
         let reason = message ?? "The Android stream ended without an error message. Its process and Android server output are in the session log."
         sessionErrors[id] = reason
-        hosts[id]?.video.statusMessage = "Session ended.\nRetry or switch backend in the DroidBridge launcher."
-        status.stringValue = "\(session.descriptor.application.name): \(reason.prefix(350)) Retry this session or try the other backend. Open its Log for details."
+        if session.state == .failed, let recovery = session.recoveryReason {
+            enqueueRecovery(session, reason: recovery)
+        } else {
+            // stop() briefly emits stopped before a typed failure. Do not erase
+            // the successor's inherited budget at that intermediate callback.
+            if session.state == .failed { reconnectRetries.removeValue(forKey: id); recoveryWaitingForWake.remove(id) }
+            hosts[id]?.video.statusMessage = String(reason.prefix(240)) + "\nChoose Retry, or open the session Log in DroidBridge."
+            hosts[id]?.video.canRetry = true
+            status.stringValue = "\(session.descriptor.application.name): \(reason.prefix(350)) Open its Log for details."
+        }
         if isWrapper { NSApp.setActivationPolicy(.regular); showWindow(nil); window?.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true) }
     }
     func retry(_ id: UUID, backend: BackendKind? = nil) {
-        guard let previous = sessions[id] else { return }
+        guard let previous = sessions[id], !retrying.contains(id), !quitting else { return }
+        retrying.insert(id); hosts[id]?.video.canRetry = false
         Task {
+            defer { retrying.remove(id); if sessions[id] === previous { hosts[id]?.video.canRetry = true } }
             let descriptor = previous.descriptor
             guard await DeviceReadiness.isReady(device: descriptor.device, toolchain: toolchain) else { status.stringValue = "Android is unavailable or still booting. Connect the device, then Retry."; return }
             guard sessions[id] === previous, !quitting else { return }
@@ -579,6 +616,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     func close(_ id: UUID, reason: String = "close_control") {
         sessionErrors.removeValue(forKey: id)
         reconnectRetries.removeValue(forKey: id)
+        recoveryWaitingForWake.remove(id)
         let session = sessions.removeValue(forKey: id)
         session?.recordClientEvent("session_close", details: ["reason": reason])
         if let host = hosts.removeValue(forKey: id) { host.onClose = nil; host.close() }
@@ -606,16 +644,24 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     }
     func updateSessions() {
         companion.markSessionsChanged()
+        publishWrapperSessions()
         guard launcherUI != nil else { return }
         let visible=visibleSessions
         let presentation=visible.values.map {LauncherSessionPresentation(controller:self,session:$0)}.sorted {$0.id.uuidString<$1.id.uuidString}
-        guard presentation != sessionPresentation else {updateLauncherPresentation();return}
+        let external = visibleLaunchedApps
+        let externalPresentation = external.map(\.presentation)
+        guard presentation != sessionPresentation || externalPresentation != launchedAppPresentation else {updateLauncherPresentation();return}
         sessionPresentation=presentation
+        launchedAppPresentation=externalPresentation
         for view in sessionList.arrangedSubviews {sessionList.removeArrangedSubview(view);view.removeFromSuperview()}
-        if visible.isEmpty {sessionList.addArrangedSubview(LauncherUI.sessionEmptyLabel())}
+        if visible.isEmpty && external.isEmpty {sessionList.addArrangedSubview(LauncherUI.sessionEmptyLabel())}
         for (id,session) in visible.sorted(by:{$0.value.descriptor.application.name.localizedStandardCompare($1.value.descriptor.application.name) == .orderedAscending}) {
             let row=LauncherUI.sessionCard(controller:self,id:id,session:session)
             sessionList.addArrangedSubview(row);row.widthAnchor.constraint(equalTo:sessionList.widthAnchor).isActive=true
+        }
+        for app in external {
+            let row = LauncherUI.launchedAppCard(controller: self, app: app)
+            sessionList.addArrangedSubview(row); row.widthAnchor.constraint(equalTo: sessionList.widthAnchor).isActive = true
         }
         updateLauncherPresentation()
     }
@@ -707,6 +753,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     }
     func shutdownAndWait() async {
         quitting = true
+        appLaunchTask?.cancel(); appSessionTimer?.invalidate(); appSessionPollTask?.cancel()
         settingsWindowController?.close();launcherUI?.hostWindowClosed()
         await companion.shutdown()
         for task in deviceSelectionTasks.values {task.cancel()}
@@ -725,6 +772,14 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
         let pendingIcons = Array(iconTasks.values)
         for task in pendingIcons { await task.value }
         if let task = wrapperTask { await task.value }
+        if let task = appLaunchTask { await task.value }
+        if let task = appSessionPollTask { await task.value }
+        if let task = wrapperSessionTask { await task.value }
+        if let producer = wrapperSessionProducer {
+            let store = desktopAppSessionStore
+            _ = try? await Task.detached { try store.remove(producer) }.value
+            wrapperSessionProducer = nil
+        }
         if let task = refreshTask { await task.value }
         for task in Array(deviceSelectionTasks.values) {await task.value}
         deviceSelectionTasks.removeAll();deviceSelectionTask=nil

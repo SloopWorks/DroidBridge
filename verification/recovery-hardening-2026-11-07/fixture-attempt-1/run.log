@@ -1,0 +1,7 @@
+COMMAND: swift build; swiftc shipping UI sources + real-emulator recovery fixture
+[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.17s)
+COMMAND: real video fixture, isolated root, only emulator-5580; exact owned server termination and scoped sleep/wake
+FAIL: message("Cannot identify exact owned Android server: [\" 2204 sh -c CLASSPATH=/data/local/tmp/droidbridge-02fec146.jar app_process / com.genymobile.scrcpy.Server 5.0.1 scid=02fec146 tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_system_decorations=true vd_destroy_content=true clipboard_autosync=false keep_active=true power_on=false display_ime_policy=hide cleanup=true\", \" 2206 app_process / com.genymobile.scrcpy.Server 5.0.1 scid=02fec146 tunnel_forward=true audio=false control=true video_codec=h264 max_fps=30 video_bit_rate=6000000 new_display=720x1080/240 flex_display=true vd_system_decorations=true vd_destroy_content=true clipboard_autosync=false keep_active=true power_on=false display_ime_policy=hide cleanup=true\"]")

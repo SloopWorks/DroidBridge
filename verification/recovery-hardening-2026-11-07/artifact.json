@@ -1,0 +1,9 @@
+{
+  "artifact": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/connection-recovery-21/DroidBridge.app",
+  "source": "/Users/patrick/workspace/DroidBridge/dist/connection-recovery/DroidBridge.app",
+  "sha256": "b3f5899d289f6c665b073c375a045425e23330f0f013af24ab878a4abdb6cd5f",
+  "version": "21",
+  "signature_verification_exit": 0,
+  "signature_verification_output": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/connection-recovery-21/DroidBridge.app: valid on disk\n/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/connection-recovery-21/DroidBridge.app: satisfies its Designated Requirement\n",
+  "architecture_document_matches_source": true
+}

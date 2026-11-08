@@ -1,0 +1,16 @@
+{
+  "start_local": "2026-11-08 11:12:35",
+  "start_utc": "2026-11-08T19:12:35.155073+00:00",
+  "wrapper": "/private/tmp/droidbridge-network-gui-20261108/DroidBridge Test.app",
+  "launch": "cua.getApp, independent GUI launch; no Terminal parent launch",
+  "first_visible_ticks": 21,
+  "first_visible_display": 7,
+  "input": "CUA clicked increment counter",
+  "end_utc": "2026-11-08T19:15:07.437767+00:00",
+  "end_local": "2026-11-08 11:15:07",
+  "second_visible_ticks": 488,
+  "second_visible_clicks": 1,
+  "visible_decoded_video": true,
+  "elapsed_seconds": 152.282694,
+  "droidbridge_local_network_alert_records": 4
+}

@@ -1,0 +1,19 @@
+2026-11-08 10:23:09.241 I  nehelper[186:6d334] [com.apple.networkextension:] Showing local network alert for app.droidbridge.managed.d24765229b512f4c4630354f4.com.Slack even though not in the foreground
+2026-11-08 10:24:09.592 I  nehelper[186:702a5] [com.apple.networkextension:] Showing local network alert for app.droidbridge.managed.d24765229b512f4c4630354f4.com.venmo even though not in the foreground
+2026-11-08 10:25:09.853 I  nehelper[186:70618] [com.apple.networkextension:] Showing local network alert for app.droidbridge.managed.d24765229b512f4c4630354f4.com.strava even though not in the foreground
+2026-11-08 10:26:10.405 I  nehelper[186:75fb3] [com.apple.networkextension:] Showing local network alert for app.droidbridge.managed.d24765229b512f4c4630354f4.com.hualai even though not in the foreground
+2026-11-08 10:27:11.100 I  nehelper[186:79205] [com.apple.networkextension:] Showing local network alert for app.droidbridge.managed.d24765229b512f4c4630354f4.jj.app.cyf even though not in the foreground
+)
+2026-11-08 10:27:11.095 I  nehelper[186:79205] [com.apple.networkextension:] No team ID found for (bundleID: app.droidbridge.managed.d24765229b512f4c4630354f4.jj.app.cyf, name: jj.app.cyf-E2A3DA8E-17D8-4754-A1C5-E1089AC2CE62)
+2026-11-08 10:27:11.096 I  nehelper[186:79205] [com.apple.networkextension:] No team ID found for (bundleID: app.droidbridge.managed.d24765229b512f4c4630354f4.jj.app.cyf, name: jj.app.cyf-E2A3DA8E-17D8-4754-A1C5-E1089AC2CE62)
+2026-11-08 10:27:11.096 I  nehelper[186:79205] [com.apple.networkextension:] UUID cache hit for app.droidbridge.managed.d24765229b512f4c4630354f4.jj.app.cyf
+2026-11-08 10:27:11.100 I  nehelper[186:79205] [com.apple.networkextension:] Local network preference not yet set, prompting for jj.app.cyf-E2A3DA8E-17D8-4754-A1C5-E1089AC2CE62 (app.droidbridge.managed.d24765229b512f4c4630354f4.jj.app.cyf)
+2026-11-08 10:27:11.101 I  nehelper[186:79205] [com.apple.networkextension:] LocalNetwork icon configuration: notification dictionary option {
+    AlertHeader = "Allow \134U201cjj.app.cyf-E2A3DA8E-17D8-4754-A1C5-E1089AC2CE62\134U201d to find devices on local networks?";
+    AlertMessage = "This will allow the app to discover, connect to, and collect data from devices on your networks.";
+    AlternateButtonTitle = "Don\134U2019t Allow";
+    DefaultButtonTitle = Allow;
+    IconURL = "file:///System/Library/Frameworks/NetworkExtension.framework/Resources/LocalNetworkPrivacy.png";
+    SBUserNotificationDefaultButtonTag = 32;
+2026-11-08 10:28:11.414 I  nehelper[186:7cfa1] [com.apple.networkextension:] Showing local network alert for app.droidbridge.managed.d24765229b512f4c4630354f4.com.read.ai even though not in the foreground
+2026-11-08 10:29:12.567 I  nehelper[186:7d4e6] [com.apple.networkextension:] Showing local network alert for app.droidbridge.managed.d24765229b512f4c4630354f4.com.bsa.sbm even though not in the foreground

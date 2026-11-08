@@ -80,8 +80,9 @@ public enum CompanionBrokerInstaller {
             let plist: [String: Any] = ["Label": CompanionBrokerIPC.serviceName,
                 "ProgramArguments": arguments,
                 "MachServices": [CompanionBrokerIPC.serviceName: true], "RunAtLoad": true,
+                "AssociatedBundleIdentifiers": ["app.droidbridge.desktop"],
                 "KeepAlive": ["SuccessfulExit": false], "ThrottleInterval": 10,
-                "EnvironmentVariables": ["DROIDBRIDGE_ADB": target.appendingPathComponent("adb").path]]
+                "EnvironmentVariables": ["DROIDBRIDGE_ADB": target.appendingPathComponent("adb").path, "ADB_MDNS": "0"]]
             let data = try PropertyListSerialization.data(fromPropertyList: plist, format: .xml, options: 0)
             let old = try? Data(contentsOf: plistURL)
             if old != data {

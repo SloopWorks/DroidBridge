@@ -1,0 +1,15 @@
+{
+  "ARCHITECTURE.md": "a2b0fe394007ca194f4e1bf468a798df2c8ec86fa6a57f77e14ad7401ca16d3e",
+  "Sources/DroidBridge/Launcher.swift": "ebaf03544e143525273a531793036e8d8fdd241f936ce3d951b9e1ae0c4239f7",
+  "Sources/DroidBridge/LauncherUI.swift": "c6f5df64d67b280ffb812ff4244737d030cc5f656190a93b3201ad119b003175",
+  "Sources/DroidBridge/NativeWindow.swift": "de84211ae269619984afa4d6267114d3cd8f68fa7b8ff408136c3f581b3ea843",
+  "Sources/DroidBridge/SessionRecovery.swift": "741d8397d3a7a22e442afafc1d70b1383c0d0c3bda2bd0eda9e64338e02cf54b",
+  "Sources/DroidBridgeCore/DeviceReadiness.swift": "927459e311381c8b00c8d317f794dbc9d349b6c4cd8187069c3b98c33e671368",
+  "Sources/DroidBridgeCore/SessionConnection.swift": "f2efb618904d785df01d71c49e1fe052fea1705d981f2bcd963884c0bcfb5eec",
+  "Sources/DroidBridgeStreaming/BridgeSession.swift": "b7f40bdaf52b99b3ea14d160765de9e1bbadee83de3ec7ca2a26cdaee908143d",
+  "Sources/DroidBridgeStreaming/SocketTransport.swift": "9d2146e52a91e6e4f118a1d4cf255ebf90a7713facafa6f505170815d58aebb8",
+  "Tests/DroidBridgeCoreTests/ConnectionRecoveryTests.swift": "1cae54f665a7af72587b6948dbbdefae4f52f5f77cae8ba1d1ebc1cc4c89c536",
+  "scripts/verify-connection-recovery.sh": "b3ce633d2058b758bd3a64de42aae77a7b7ab641db3fa4e7a1db1d26393c6bfa",
+  "scripts/verify-connection-recovery.swift": "b38635d3537646ce57e7c2148b00b979dbaebf2744687a8debae6952e0a268af",
+  "scripts/verify-recovery-installed.py": "82e2375f84adad8210ea910ac5782100a6ec82927a8cb309bab7552b89210c66"
+}

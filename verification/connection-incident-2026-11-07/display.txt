@@ -1,0 +1,1504 @@
+DISPLAY MANAGER (dumpsys display)
+  mSafeMode=false
+  mPendingTraversal=false
+  mViewports=[DisplayViewport{type=INTERNAL, valid=true, isActive=false, displayId=0, uniqueId='local:4619827452008645888', physicalPort=0, orientation=0, densityDpi=420, xDpi=415.636, yDpi=416.421, logicalFrame=Rect(0, 0 - 1080, 2410), physicalFrame=Rect(0, 0 - 1080, 2410), deviceWidth=1080, deviceHeight=2410}, DisplayViewport{type=VIRTUAL, valid=true, isActive=false, displayId=89, uniqueId='virtual:com.android.shell,2000,scrcpy,85', physicalPort=null, orientation=0, densityDpi=240, xDpi=240.0, yDpi=240.0, logicalFrame=Rect(0, 0 - 720, 1080), physicalFrame=Rect(0, 0 - 720, 1080), deviceWidth=720, deviceHeight=1080}]
+  mDefaultDisplayDefaultColorMode=0
+  mWifiDisplayScanRequestCount=0
+  mStableDisplaySize=Point(1280, 2856)
+  mMinimumBrightnessCurve=[(0.0, 0.0), (2000.0, 50.0), (4000.0, 90.0)]
+  mMaxImportanceForRRCallbacks=200
+  mMirrorBuiltInDisplaySetting=true
+
+  mHdrConversionMode=HdrConversionMode{ConversionMode=HDR_CONVERSION_SYSTEM, PreferredHdrOutputType=HDR_TYPE_INVALID}
+
+Display States: size=2
+---------------------
+  Display Id=0
+  Display State=OFF
+  Display Brightness=-1.0
+  Display SdrBrightness=-1.0
+  Display Id=89
+  Display State=OFF
+  Display Brightness=-1.0
+  Display SdrBrightness=-1.0
+
+Display Adapters: size=3
+------------------------
+  LocalDisplayAdapter
+  VirtualDisplayAdapter
+  OverlayDisplayAdapter
+    mCurrentOverlaySetting=
+    mOverlays: size=0
+
+Display Devices: size=2
+-----------------------
+  DisplayDeviceInfo{"Built-in Screen": uniqueId="local:4619827452008645888", 1080 x 2410, modeId 2, modeIdForSizeOverride -1, renderFrameRate 120.00001, hasArrSupport true, frameRateCategoryRate FrameRateCategoryRate {normal=60.0, high=90.0}, supportedRefreshRates [120.00001, 60.000004, 40.0, 30.000002, 24.000002, 20.0, 15.000001, 10.0, 5.0, 2.0000002, 1.0000001], defaultModeId 2, userPreferredModeId -1, supportedModes [{id=1, parentModeId=-1, sfModeId=0, flags=, width=1280, height=2856, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=2, parentModeId=-1, sfModeId=1, flags=, width=1080, height=2410, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=3, parentModeId=1, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1280, height=2856, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=4, parentModeId=2, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1080, height=2410, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}], colorMode 0, supportedColorModes [0, 7, 9], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[2, 3, 4], mMaxLuminance=1000.0, mMaxAverageLuminance=1000.0, mMinLuminance=5.0E-4}, allmSupported false, gameContentTypeSupported false, density 420, 415.636 x 416.421 dpi, appVsyncOff 6233332, presDeadline 11500000, cutout DisplayCutout{insets=Rect(0, 172 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(494, 0 - 586, 172), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2410 physicalDisplayWidth=1280 physicalDisplayHeight=2856 density={3.0} cutoutSpec={m 689,102 a 49,49 0 0 0 -98,0 49,49 0 0 0 98,0 z @left} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={0.84375}}} sideOverrides={}}, touch INTERNAL, rotation 0, type INTERNAL, address StablePhysical{id=4619827452008645888, port=0}, deviceProductInfo DeviceProductInfo{name=BMEA-A0D-00, manufacturerPnpId=GGL, productId=0, modelYear=null, manufactureDate=ManufactureDate{week=1, year=1990}, connectionToSinkType=1, edidStructureMetadata=EdidStructureMetadata{version=0, revision=0}, videoInputType=0}, state OFF, committedState OFF, frameRateOverride {uid=10280 frameRateHz=60.000004} , brightnessMinimum 0.0, brightnessMaximum 1.0, brightnessDefault 0.062353346, brightnessDim 0.05, hdrSdrRatio 1.0, roundedCorners RoundedCorners{[RoundedCorner{position=TopLeft, radius=132, center=Point(132, 132)}, RoundedCorner{position=TopRight, radius=132, center=Point(948, 132)}, RoundedCorner{position=BottomRight, radius=132, center=Point(948, 2278)}, RoundedCorner{position=BottomLeft, radius=132, center=Point(132, 2278)}]}, FLAG_ALLOWED_TO_BE_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_TRUSTED, installOrientation 0, displayShape DisplayShape{type=2, displayWidth=1080, displayHeight=2410, physicalPixelDisplaySizeRatio=0.84375, rotation=0, offsetX=0, offsetY=0, scale=1.0}}
+    mAdapter=LocalDisplayAdapter
+    mUniqueId=local:4619827452008645888
+    mDisplayToken=android.os.BinderProxy@a671a84
+    mCurrentLayerStack=-1
+    mCurrentFlags=1
+    mCurrentOrientation=0
+    mCurrentLayerStackRect=Rect(0, 0 - 1080, 2410)
+    mCurrentDisplayRect=Rect(0, 0 - 1080, 2410)
+    mCurrentSurface=null
+    mPhysicalDisplayId=4619827452008645888
+    mPort=0
+    mDisplayModeSpecs={baseModeId=2 allowGroupSwitching=false primary=physical: (0.0 Infinity) render:  (0.0 120.00001) appRequest=physical: (0.0 Infinity) render:  (0.0 120.00001) idleScreenRefreshRateConfig=null workDurationsData=null}
+    mDisplayModeSpecsInvalid=false
+    mActiveModeId=2
+    mActiveColorMode=0
+    mDefaultModeId=2
+    mUserPreferredModeId=-1
+    mHasArrSupport=true
+    mSupportedRefreshRates=[120.00001, 60.000004, 40.0, 30.000002, 24.000002, 20.0, 15.000001, 10.0, 5.0, 2.0000002, 1.0000001]
+    mState=OFF
+    mCommittedState=OFF
+    mBrightnessState=-1.0
+    mBacklightAdapter=BacklightAdapter [useSurfaceControl=true (force_anyway? false), backlight=null]
+    mAllmSupported=false
+    mAllmRequested=false
+    mGameContentTypeSupported=false
+    mGameContentTypeRequested=false
+    mStaticDisplayInfo=StaticDisplayInfo{isInternal=true, port=0, density=3.0, secure=true, deviceProductInfo=DeviceProductInfo{name=BMEA-A0D-00, manufacturerPnpId=GGL, productId=0, modelYear=null, manufactureDate=ManufactureDate{week=1, year=1990}, connectionToSinkType=1, edidStructureMetadata=EdidStructureMetadata{version=0, revision=0}, videoInputType=0}, installOrientation=0, screenPartStatus=0}
+    mSfDisplayModes=
+      DisplayMode{id=0, width=1280, height=2856, xDpi=492.606, yDpi=493.485, peakRefreshRate=120.00001, vsyncRate=120.00001, appVsyncOffsetNanos=6233332, presentationDeadlineNanos=11500000, supportedHdrTypes=[2, 4, 3], group=1}
+      DisplayMode{id=1, width=1080, height=2410, xDpi=415.636, yDpi=416.421, peakRefreshRate=120.00001, vsyncRate=120.00001, appVsyncOffsetNanos=6233332, presentationDeadlineNanos=11500000, supportedHdrTypes=[2, 4, 3], group=2}
+    mActiveSfDisplayMode=DisplayMode{id=1, width=1080, height=2410, xDpi=415.636, yDpi=416.421, peakRefreshRate=120.00001, vsyncRate=120.00001, appVsyncOffsetNanos=6233332, presentationDeadlineNanos=11500000, supportedHdrTypes=[2, 4, 3], group=2}
+    mActiveRenderFrameRate=120.00001
+    mAppVsyncOffsetNanos=6233332
+    mPresentationDeadlineNanos=11500000
+    mSupportedModes=
+      DisplayModeRecord{mMode={id=1, parentModeId=-1, sfModeId=0, flags=, width=1280, height=2856, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}}
+      DisplayModeRecord{mMode={id=2, parentModeId=-1, sfModeId=1, flags=, width=1080, height=2410, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}}
+      DisplayModeRecord{mMode={id=3, parentModeId=1, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1280, height=2856, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}}
+      DisplayModeRecord{mMode={id=4, parentModeId=2, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1080, height=2410, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}}
+    mSupportedColorModes=[0, 7, 9]
+    
+    DisplayDeviceConfig: 
+    ---------------------
+    DisplayDeviceConfig{mLoadedFrom=/vendor/etc/displayconfig/display_port_0.xml
+    mBacklight=[0.0, 0.65, 1.0], mNits=[1.0, 1450.0, 2250.0], mRawBacklight=[0.0, 0.65, 1.0], mRawNits=[1.0, 1450.0, 2250.0], mInterpolationType=0mBrightness=[0.0, 0.65, 1.0]
+    mBrightnessToBacklightSpline=MonotoneCubicSpline{[(0.0, 0.0: 1.0), (0.65, 0.65: 1.0), (1.0, 1.0: 1.0)]}, mBacklightToBrightnessSpline=MonotoneCubicSpline{[(0.0, 0.0: 1.0), (0.65, 0.65: 1.0), (1.0, 1.0: 1.0)]}, mNitsToBacklightSpline=MonotoneCubicSpline{[(1.0, 0.0: 4.4858523E-4), (1450.0, 0.65: 4.4304263E-4), (2250.0, 1.0: 4.3750004E-4)]}, mBacklightMinimum=0.0, mBacklightMaximum=1.0, mBrightnessDefault=0.062353346, mBrightnessDim=0.05, mQuirks=null
+    mLuxThrottlingData={ADAPTIVE={1000.0=0.26870257, 6000.0=0.38084885, 10000.0=0.44813666}}, mHbmData=HBM{minLux: 10000.0, transition: 0.65, timeWindow: 1200000ms, timeMax: 300000ms, timeMin: 60000ms, allowInLowPowerMode: false, minimumHdrPercentOfScreen: 0.0, mSdrToHdrRatioSpline=MonotoneCubicSpline{[(1.0, 2.0: 2.0), (2.0, 4.0: 0.0), (5.0, 4.0: 0.0), (100.0, 8.0: 0.042105265)]}, refreshRateLimit=null, isHighBrightnessModeEnabled=true} , mThermalThrottlingData=ThermalThrottlingData{mThermalBrightnessThrottlingDataMapByThrottlingId={default=ThermalBrightnessThrottlingData{throttlingLevels:[[1,0.34541062], [2,0.21711525], [3,0.15341614], [4,0.08926846]]} }, mRefreshRateThrottlingMap={}, mThermalThrottlingWorkDurations={}}
+    , mPowerThrottlingDataMapByThrottlingId={}
+    mBrightnessRampFastDecrease=0.7047244, mBrightnessRampFastIncrease=0.7047244, mBrightnessRampSlowDecrease=0.024, mBrightnessRampSlowIncrease=0.05, mBrightnessRampSlowDecreaseIdle=0.024, mBrightnessRampSlowIncreaseIdle=0.05, mBrightnessRampDecreaseMaxMillis=20000, mBrightnessRampIncreaseMaxMillis=2000, mBrightnessRampDecreaseMaxIdleMillis=20000, mBrightnessRampIncreaseMaxIdleMillis=2000, mLuxDeltaToRampIncreaseMaxMillis=null, mLuxDeltaToRampDecreaseMaxMillis=null, mAutoBrightnessBrighteningRampGamma=NaN, mAutoBrightnessDarkeningRampGamma=NaN
+    mAmbientHorizonLong=5000, mAmbientHorizonShort=50
+    mAmbientBrightnessHysteresis=HysteresisLevels {
+        mBrighteningThresholdLevels=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 13.0, 15.0, 17.0, 19.0, 20.0, 22.0, 25.0, 27.0, 30.0, 32.0, 35.0, 37.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 2000.0, 3000.0, 4000.0],
+        mBrighteningThresholdsPercentages=[4.999, 4.999, 2.4989998, 1.999, 1.749, 1.599, 1.9260001, 1.805, 1.6539999, 1.484, 1.2989999, 1.181, 0.92300004, 0.799, 0.705, 0.578, 0.549, 0.52, 0.47599998, 0.49400002, 0.46, 0.53099996, 0.45700002, 0.48599997, 0.499, 0.517, 0.565, 0.612, 0.66, 0.708, 0.742, 0.636, 0.582, 0.549, 0.513, 0.477, 0.44099998, 0.405, 0.36900002, 0.294, 0.269, 0.22, 0.219],
+        mMinBrightening=10.0,
+        mDarkeningThresholdLevels=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 13.0, 15.0, 17.0, 19.0, 20.0, 22.0, 25.0, 27.0, 30.0, 32.0, 35.0, 37.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 2000.0, 3000.0, 4000.0],
+        mDarkeningThresholdsPercentages=[0.5, 0.5, 0.75, 0.833, 0.875, 0.9, 0.916, 0.857, 0.75, 0.666, 0.6, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.283],
+        mMinDarkening=0.0
+    }
+    mAmbientIdleHysteresis=HysteresisLevels {
+        mBrighteningThresholdLevels=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 13.0, 15.0, 17.0, 19.0, 20.0, 22.0, 25.0, 27.0, 30.0, 32.0, 35.0, 37.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 2000.0, 3000.0, 4000.0],
+        mBrighteningThresholdsPercentages=[4.999, 4.999, 2.4989998, 1.999, 1.749, 1.599, 1.9260001, 1.805, 1.6539999, 1.484, 1.2989999, 1.181, 0.92300004, 0.799, 0.705, 0.578, 0.549, 0.52, 0.47599998, 0.49400002, 0.46, 0.53099996, 0.45700002, 0.48599997, 0.499, 0.517, 0.565, 0.612, 0.66, 0.708, 0.742, 0.636, 0.582, 0.549, 0.513, 0.477, 0.44099998, 0.405, 0.36900002, 0.294, 0.269, 0.22, 0.219],
+        mMinBrightening=0.0,
+        mDarkeningThresholdLevels=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 13.0, 15.0, 17.0, 19.0, 20.0, 22.0, 25.0, 27.0, 30.0, 32.0, 35.0, 37.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 2000.0, 3000.0, 4000.0],
+        mDarkeningThresholdsPercentages=[0.5, 0.5, 0.75, 0.833, 0.875, 0.9, 0.916, 0.857, 0.75, 0.666, 0.6, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.283],
+        mMinDarkening=0.0
+    }
+    mScreenBrightnessHysteresis=HysteresisLevels {
+        mBrighteningThresholdLevels=[0.0],
+        mBrighteningThresholdsPercentages=[0.1],
+        mMinBrightening=0.0,
+        mDarkeningThresholdLevels=[0.0],
+        mDarkeningThresholdsPercentages=[0.2],
+        mMinDarkening=0.0
+    }
+    mScreenBrightnessIdleHysteresis=HysteresisLevels {
+        mBrighteningThresholdLevels=[0.0],
+        mBrighteningThresholdsPercentages=[0.1],
+        mMinBrightening=0.0,
+        mDarkeningThresholdLevels=[0.0],
+        mDarkeningThresholdsPercentages=[0.2],
+        mMinDarkening=0.0
+    }
+    mAmbientLightSensor=SensorData{type= com.google.sensor.auto_brightness, name= , refreshRateRange: [0.0, Infinity], supportedModes=[]}, mScreenOffBrightnessSensor=SensorData{type= com.google.sensor.binned_brightness, name= null, refreshRateRange: [0.0, Infinity], supportedModes=[]}, mProximitySensor=SensorData{type= com.google.sensor.prox_voice_call, name= Proximity(Voice Calls) Sensor (wake-up), refreshRateRange: [0.0, Infinity], supportedModes=[]}, mTempSensor=SensorData{type= SKIN, name= null, refreshRateRange: [0.0, Infinity], supportedModes=[]}, mRefreshRateLimitations= [], mDensityMapping= DensityMapping{mDensityMappingEntries=[DensityMappingEntry{squaredDiagonal=6974500, density=420}, DensityMappingEntry{squaredDiagonal=9795136, density=480}]}, mAutoBrightnessBrighteningLightDebounce= 1000, mAutoBrightnessDarkeningLightDebounce= 4000, mAutoBrightnessBrighteningLightDebounceIdle= 1000, mAutoBrightnessDarkeningLightDebounceIdle= 4000, mDisplayBrightnessMapping= mBrightnessLevelsNits= [5.139055, 9.962019, 18.34823, 21.550682, 24.016779, 32.5, 46.0, 53.26923, 55.684563, 63.032482, 71.80252, 84.52631, 111.15724, 129.95047, 147.69106, 166.48074, 176.68456, 444.30115, 649.04895, 806.12634, 935.6339, 993.10095, 1189.1057, 1310.4114, 1415.9592, 1537.5922, 1641.5, 1730.2657, 1890.6998, 1964.0239, 2015.6743, 2076.6768, 2139.8667, 2201.915, 2250.0], mBrightnessLevelsLuxMap= {default_normal=[0.0, 1.0, 2.0, 3.0, 4.0, 8.0, 12.0, 15.0, 20.0, 30.0, 50.0, 100.0, 300.0, 500.0, 700.0, 900.0, 1000.0, 3000.0, 5000.0, 7000.0, 9000.0, 10000.0, 14000.0, 17000.0, 20000.0, 24000.0, 28000.0, 32000.0, 42000.0, 52000.0, 62000.0, 72000.0, 82000.0, 92000.0, 100000.0]}, mBrightnessLevelsMap= {default_normal=[]}, mDdcAutoBrightnessAvailable= true, mAutoBrightnessAvailable= true, mIdleStylusTimeoutMillis= 0
+    mDefaultLowBlockingZoneRefreshRate= 0, mDefaultHighBlockingZoneRefreshRate= 0, mRefreshRateData= RefreshRateData {defaultRefreshRate: 0, defaultPeakRefreshRate: 120, defaultRefreshRateInHbmHdr: 0, defaultRefreshRateInHbmSunlight: 0, defaultWorkDurations=null, lowPowerSupportedModes=[], lowLightBlockingZoneSupportedModes=[], lowPowerWorkDurations=null} , mRefreshRateZoneProfiles= {}, mLowBlockingZoneThermalMapId= null, mHighBlockingZoneThermalMapId= null
+    mLowDisplayBrightnessThresholds= [], mLowAmbientBrightnessThresholds= [], mHighDisplayBrightnessThresholds= [], mHighAmbientBrightnessThresholds= []
+    mScreenOffBrightnessSensorValueToLux= [-1, 0, 5, 80, 1500]
+    mUsiVersion= null
+    mHdrBrightnessData= HdrBrightnessData {mMaxBrightnessLimits: {10.0=0.715625}, mBrightnessIncreaseDebounceMillis: 10000, mScreenBrightnessRampIncrease: 0.004, mBrightnessDecreaseDebounceMillis: 5000, mScreenBrightnessRampDecrease: 0.004, transitionPoint: 0.65, minimumHdrPercentOfScreenForNbm: 0.0, minimumHdrPercentOfScreenForHbm: 0.0, allowInLowPowerMode: false, sdrToHdrRatioSpline: MonotoneCubicSpline{[(1.0, 2.0: 2.0), (2.0, 4.0: 0.0), (5.0, 4.0: 0.0), (100.0, 8.0: 0.042105265)]}, highestHdrSdrRatio: 8.0} 
+    mBrightnessCapForWearBedtimeMode= 0.07480315
+    mEvenDimmerBrightnessData:EvenDimmerBrightnessData {transitionPoint: 0.0, nits: [1.0, 1450.0, 2250.0], backlight: [0.0, 0.65, 1.0], brightness: [0.0, 0.65, 1.0], backlightToNits: LinearSpline{[(0.0, 1.0: 2229.231), (0.65, 1450.0: 2285.714), (1.0, 2250.0)]}, nitsToBacklight: LinearSpline{[(1.0, 0.0: 4.4858523E-4), (1450.0, 0.65: 4.3750004E-4), (2250.0, 1.0)]}, brightnessToBacklight: LinearSpline{[(0.0, 0.0: 1.0), (0.65, 0.65: 1.0), (1.0, 1.0)]}, backlightToBrightness: LinearSpline{[(0.0, 0.0: 1.0), (0.65, 0.65: 1.0), (1.0, 1.0)]}, minLuxToNits: MonotoneCubicSpline{[(0.0, 0.24: 0.076), (10.0, 1.0: 0.050499998), (50.0, 2.0: 0.0), (1000.0, 2.0: 0.0), (3000.0, 2.6: 5.166667E-4), (6000.0, 4.8: 7.416667E-4), (10000.0, 7.8: 7.35E-4), (20000.0, 15.0: 7.216666E-4), (50000.0, 36.7: 7.2333333E-4)]}} 
+    mVrrSupported= true
+    mDozeBrightnessSensorValueToBrightness= [-1.0, 0.0, 0.004037267, 0.021980677, 0.066839196]
+    mDefaultDozeBrightness= 0.0
+    mFrameRateVelocityMapping=[android.view.FrameRateVelocityPoint@1b1003c1]
+    }
+    mEvenDimmerEnabled=false
+    mEvenDimmerStrength=0
+    mNitsToEvenDimmerStrength=LinearSpline{[(0.04444444, 100.0: -104.651566), (0.05399996, 99.0: -104.65092), (0.06355554, 98.0: -104.651566), (0.07311106, 97.0: -104.65026), (0.082666695, 96.0: -104.651566), (0.092222214, 95.0: -104.65092), (0.10177779, 94.0: -104.651566), (0.11133331, 93.0: -104.65092), (0.12088889, 92.0: -104.651566), (0.13044441, 91.0: -104.65026), (0.14000005, 90.0: -104.651566), (0.14955556, 89.0: -104.65092), (0.15911114, 88.0: -104.651566), (0.16866666, 87.0: -104.651566), (0.17822218, 86.0: -104.65092), (0.18777776, 85.0: -104.65092), (0.19733334, 84.0: -104.65092), (0.20688891, 83.0: -104.651566), (0.21644443, 82.0: -104.65092), (0.22600001, 81.0: -104.651566), (0.23555553, 80.0: -104.65092), (0.24511111, 79.0: -104.65092), (0.2546667, 78.0: -104.65092), (0.26422226, 77.0: -104.651566), (0.27377778, 76.0: -104.651566), (0.2833333, 75.0: -104.65092), (0.29288888, 74.0: -104.651566), (0.3024444, 73.0: -104.65092), (0.31199998, 72.0: -104.65092), (0.32155555, 71.0: -104.65092), (0.33111113, 70.0: -104.651566), (0.34066665, 69.0: -104.65092), (0.35022223, 68.0: -104.651566), (0.35977775, 67.0: -104.65092), (0.36933333, 66.0: -104.65092), (0.3788889, 65.0: -104.65092), (0.38844448, 64.0: -104.651566), (0.398, 63.0: -104.651566), (0.40755552, 62.0: -104.65092), (0.4171111, 61.0: -104.651566), (0.42666662, 60.0: -104.65026), (0.43622226, 59.0: -104.651566), (0.44577777, 58.0: -104.65092), (0.45533335, 57.0: -104.651566), (0.46488887, 56.0: -104.65092), (0.47444445, 55.0: -104.651566), (0.48399997, 54.0: -104.65026), (0.4935556, 53.0: -104.651566), (0.5031111, 52.0: -104.65092), (0.5126667, 51.0: -104.651566), (0.5222222, 50.0: -104.651566), (0.53177774, 49.0: -104.65092), (0.5413333, 48.0: -104.65092), (0.5508889, 47.0: -104.65092), (0.5604445, 46.0: -104.65092), (0.57000005, 45.0: -104.651566), (0.5795556, 44.0: -104.651566), (0.5891111, 43.0: -104.65092), (0.59866667, 42.0: -104.65092), (0.60822225, 41.0: -104.651566), (0.61777776, 40.0: -104.65092), (0.62733334, 39.0: -104.651566), (0.63688886, 38.0: -104.65092), (0.64644444, 37.0: -104.65092), (0.656, 36.0: -104.65092), (0.6655556, 35.0: -104.651566), (0.6751111, 34.0: -104.651566), (0.68466663, 33.0: -104.65092), (0.6942222, 32.0: -104.65092), (0.7037778, 31.0: -104.651566), (0.7133333, 30.0: -104.65092), (0.7228889, 29.0: -104.651566), (0.7324444, 28.0: -104.65092), (0.742, 27.0: -104.65092), (0.75155556, 26.0: -104.65092), (0.76111114, 25.0: -104.651566), (0.77066666, 24.0: -104.65092), (0.78022224, 23.0: -104.651566), (0.78977776, 22.0: -104.65092), (0.79933333, 21.0: -104.65092), (0.8088889, 20.0: -104.651566), (0.81844443, 19.0: -104.65092), (0.828, 18.0: -104.651566), (0.8375555, 17.0: -104.65092), (0.8471111, 16.0: -104.65092), (0.8566667, 15.0: -104.651566), (0.8662222, 14.0: -104.65092), (0.8757778, 13.0: -104.65092), (0.88533336, 12.0: -104.651566), (0.8948889, 11.0: -104.65092), (0.90444446, 10.0: -104.651566), (0.914, 9.0: -104.65092), (0.92355555, 8.0: -104.65092), (0.93311113, 7.0: -104.651566), (0.94266665, 6.0: -104.65092), (0.9522222, 5.0: -104.65092), (0.9617778, 4.0: -104.651566), (0.9713333, 3.0: -104.65092), (0.9808889, 2.0: -104.651566), (0.9904444, 1.0: -104.65092), (1.0, 0.0)]}
+  DisplayDeviceInfo{"scrcpy": uniqueId="virtual:com.android.shell,2000,scrcpy,85", 720 x 1080, modeId 156, modeIdForSizeOverride -1, renderFrameRate 60.0, hasArrSupport false, frameRateCategoryRate null, supportedRefreshRates [], defaultModeId 156, userPreferredModeId -1, supportedModes [{id=156, parentModeId=-1, sfModeId=-1, flags=, width=720, height=1080, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[]}], colorMode 0, supportedColorModes [0], hdrCapabilities null, allmSupported false, gameContentTypeSupported false, density 240, 240.0 x 240.0 dpi, appVsyncOff 0, presDeadline 16666666, touch VIRTUAL, rotation 0, type VIRTUAL, deviceProductInfo null, state OFF, committedState UNKNOWN, owner com.android.shell (uid 2000), frameRateOverride , brightnessMinimum 0.0, brightnessMaximum 1.0, brightnessDefault 0.0, brightnessDim -1.0, hdrSdrRatio NaN, FLAG_ROTATES_WITH_CONTENT, FLAG_PRESENTATION, FLAG_OWN_CONTENT_ONLY, FLAG_DESTROY_CONTENT_ON_REMOVAL, FLAG_SHOULD_SHOW_SYSTEM_DECORATIONS, FLAG_TRUSTED, FLAG_OWN_DISPLAY_GROUP, FLAG_ALWAYS_UNLOCKED, FLAG_TOUCH_FEEDBACK_DISABLED, FLAG_OWN_FOCUS, installOrientation 0, displayShape DisplayShape{type=3, displayWidth=720, displayHeight=1080, physicalPixelDisplaySizeRatio=1.0, rotation=0, offsetX=0, offsetY=0, scale=1.0}}
+    mAdapter=VirtualDisplayAdapter
+    mUniqueId=virtual:com.android.shell,2000,scrcpy,85
+    mDisplayToken=android.os.BinderProxy@665546f
+    mCurrentLayerStack=-1
+    mCurrentFlags=1
+    mCurrentOrientation=0
+    mCurrentLayerStackRect=Rect(0, 0 - 720, 1080)
+    mCurrentDisplayRect=Rect(0, 0 - 720, 1080)
+    mCurrentSurface=Surface(name=null mNativeObject=-5476376629918127472)/@0x5b8f57c
+    mFlags=65483
+    mDisplayState=OFF
+    mStopped=false
+    mDisplayIdToMirror=0
+    mWindowManagerMirroring=false
+    mRequestedRefreshRate=0.0
+
+LogicalDisplayMapper:
+---------------------
+  mSingleDisplayDemoMode=false
+  mCurrentLayout=[default_layout: [{dispId: 0(ON), displayGroupName: , addr: StablePhysical{id=4619827452008645888, port=0}, mThermalBrightnessThrottlingMapId: null, mRefreshRateZoneId: null, mLeadDisplayId: -1, mLeadDisplayAddress: null, mThermalRefreshRateThrottlingMapId: null, mPowerThrottlingMapId: null}]]
+  mDeviceStatesOnWhichToWakeUp={}
+  mDeviceStatesOnWhichSelectiveSleep={}
+  mIsInteractive=false
+  mBootCompleted=true
+  
+  mDeviceState=0
+  mPendingDeviceState=-1
+  mDeviceStateToBeAppliedAfterBoot=-1
+  
+  Logical Displays: size=2
+  Display 0:
+    mDisplayId=0
+    mPrimaryDisplayDevice=Built-in Screen(local:4619827452008645888)
+    mIsEnabled=true
+    mIsInTransition=false
+    mLayerStack=0
+    mPosition=-1
+    mHasContent=true
+    mDesiredDisplayModeSpecs={baseModeId=2 allowGroupSwitching=false primary=physical: (0.0 Infinity) render:  (0.0 120.00001) appRequest=physical: (0.0 Infinity) render:  (0.0 120.00001) idleScreenRefreshRateConfig=null workDurationsData=null}
+    mRequestedColorMode=0
+    mDisplayOffset=(0, 0)
+    mDisplayScalingDisabled=false
+    mPowerOptimizationEnabled=false
+    mBaseDisplayInfo=DisplayInfo{"Built-in Screen", displayId 0, displayGroupId 0, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_TRUSTED, FLAG_ALLOWS_CONTENT_MODE_SWITCH, real 1080 x 2410, largest app 1080 x 2410, smallest app 1080 x 2410, appVsyncOff 6233332, presDeadline 11500000, mode 2, renderFrameRate 120.00001, hasArrSupport true, frameRateCategoryRate FrameRateCategoryRate {normal=60.0, high=90.0}, supportedRefreshRates [120.00001, 60.000004, 40.0, 30.000002, 24.000002, 20.0, 15.000001, 10.0, 5.0, 2.0000002, 1.0000001], frameRateVelocityMapping [android.view.FrameRateVelocityPoint@1b1003c1], defaultMode 2, userPreferredModeId -1, supportedModes [{id=1, parentModeId=-1, sfModeId=0, flags=, width=1280, height=2856, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=2, parentModeId=-1, sfModeId=1, flags=, width=1080, height=2410, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=3, parentModeId=1, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1280, height=2856, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=4, parentModeId=2, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1080, height=2410, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[2, 3, 4], mMaxLuminance=1000.0, mMaxAverageLuminance=1000.0, mMinLuminance=5.0E-4}, isForceSdr false, userDisabledHdrTypes [], minimalPostProcessingSupported false, rotation 0, state OFF, committedState OFF, type INTERNAL, uniqueId "local:4619827452008645888", app 1080 x 2410, density 420 (415.636 x 416.421) dpi, layerStack 0, colorMode 0, supportedColorModes [0, 7, 9], address StablePhysical{id=4619827452008645888, port=0}, deviceProductInfo DeviceProductInfo{name=BMEA-A0D-00, manufacturerPnpId=GGL, productId=0, modelYear=null, manufactureDate=ManufactureDate{week=1, year=1990}, connectionToSinkType=1, edidStructureMetadata=EdidStructureMetadata{version=0, revision=0}, videoInputType=0}, removeMode 0, refreshRateOverride 0.0, brightnessMinimum 0.0, brightnessMaximum 1.0, brightnessDefault 0.062353346, brightnessDim 0.05, installOrientation ROTATION_0, layoutLimitedRefreshRate null, hdrSdrRatio 1.0, thermalRefreshRateThrottling {}, thermalBrightnessThrottlingDataId default, canHostTasks true}
+    mOverrideDisplayInfo=DisplayInfo{"Built-in Screen", displayId 0, displayGroupId 0, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_TRUSTED, FLAG_ALLOWS_CONTENT_MODE_SWITCH, real 1080 x 2410, largest app 2410 x 2410, smallest app 1080 x 1080, appVsyncOff 6233332, presDeadline 11500000, mode 2, renderFrameRate 120.00001, hasArrSupport true, frameRateCategoryRate FrameRateCategoryRate {normal=60.0, high=90.0}, supportedRefreshRates [120.00001, 60.000004, 40.0, 30.000002, 24.000002, 20.0, 15.000001, 10.0, 5.0, 2.0000002, 1.0000001], frameRateVelocityMapping [android.view.FrameRateVelocityPoint@1b1003c1], defaultMode 2, userPreferredModeId -1, supportedModes [{id=1, parentModeId=-1, sfModeId=0, flags=, width=1280, height=2856, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=2, parentModeId=-1, sfModeId=1, flags=, width=1080, height=2410, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=3, parentModeId=1, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1280, height=2856, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=4, parentModeId=2, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1080, height=2410, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[2, 3, 4], mMaxLuminance=1000.0, mMaxAverageLuminance=1000.0, mMinLuminance=5.0E-4}, isForceSdr false, userDisabledHdrTypes [], minimalPostProcessingSupported false, rotation 0, state ON, committedState ON, type INTERNAL, uniqueId "local:4619827452008645888", app 1080 x 2410, density 420 (415.636 x 416.421) dpi, layerStack 0, colorMode 0, supportedColorModes [0, 7, 9], address StablePhysical{id=4619827452008645888, port=0}, deviceProductInfo DeviceProductInfo{name=BMEA-A0D-00, manufacturerPnpId=GGL, productId=0, modelYear=null, manufactureDate=ManufactureDate{week=1, year=1990}, connectionToSinkType=1, edidStructureMetadata=EdidStructureMetadata{version=0, revision=0}, videoInputType=0}, removeMode 0, refreshRateOverride 0.0, brightnessMinimum 0.0, brightnessMaximum 1.0, brightnessDefault 0.062353346, brightnessDim 0.05, installOrientation ROTATION_0, layoutLimitedRefreshRate null, hdrSdrRatio 1.0, thermalRefreshRateThrottling {}, thermalBrightnessThrottlingDataId default, canHostTasks true}
+    mRequestedMinimalPostProcessing=false
+    mFrameRateOverrides=[{uid=10280 frameRateHz=60.000004}]
+    mPendingFrameRateOverrideUids={}
+    mDisplayGroupId=0
+    mDisplayGroupName=
+    mThermalBrightnessThrottlingDataId=default
+    mLeadDisplayId=-1
+    mLayoutLimitedRefreshRate=null
+    mThermalRefreshRateThrottling={}
+    mPowerThrottlingDataId=default
+    DisplayInfoProxy (mInfo):
+      mDisplayInfoGroupsChanged=NONE
+      mDisplayInfoChangeSource=DISPLAY_MANAGER
+  
+  Display 89:
+    mDisplayId=89
+    mPrimaryDisplayDevice=scrcpy(virtual:com.android.shell,2000,scrcpy,85)
+    mIsEnabled=true
+    mIsInTransition=false
+    mLayerStack=89
+    mPosition=-1
+    mHasContent=true
+    mDesiredDisplayModeSpecs={baseModeId=156 allowGroupSwitching=false primary=physical: (0.0 60.0) render:  (0.0 60.0) appRequest=physical: (0.0 60.0) render:  (0.0 60.0) idleScreenRefreshRateConfig=null workDurationsData=null}
+    mRequestedColorMode=0
+    mDisplayOffset=(0, 0)
+    mDisplayScalingDisabled=false
+    mPowerOptimizationEnabled=false
+    mBaseDisplayInfo=DisplayInfo{"scrcpy", displayId 89, displayGroupId 0, FLAG_PRESENTATION, FLAG_SHOULD_SHOW_SYSTEM_DECORATIONS, FLAG_TRUSTED, FLAG_OWN_DISPLAY_GROUP, FLAG_ALWAYS_UNLOCKED, FLAG_TOUCH_FEEDBACK_DISABLED, real 720 x 1080, largest app 720 x 1080, smallest app 720 x 1080, appVsyncOff 0, presDeadline 16666666, mode 156, renderFrameRate 60.0, hasArrSupport false, frameRateCategoryRate null, supportedRefreshRates [], frameRateVelocityMapping [], defaultMode 156, userPreferredModeId -1, supportedModes [{id=156, parentModeId=-1, sfModeId=-1, flags=, width=720, height=1080, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[]}], hdrCapabilities null, isForceSdr false, userDisabledHdrTypes [], minimalPostProcessingSupported false, rotation 0, state OFF, committedState UNKNOWN, type VIRTUAL, uniqueId "virtual:com.android.shell,2000,scrcpy,85", app 720 x 1080, density 240 (240.0 x 240.0) dpi, layerStack 89, colorMode 0, supportedColorModes [0], deviceProductInfo null, owner com.android.shell (uid 2000), removeMode 1, refreshRateOverride 0.0, brightnessMinimum 0.0, brightnessMaximum 1.0, brightnessDefault 0.0, brightnessDim -1.0, installOrientation ROTATION_0, layoutLimitedRefreshRate null, hdrSdrRatio not_available, thermalRefreshRateThrottling {}, thermalBrightnessThrottlingDataId default, canHostTasks true}
+    mOverrideDisplayInfo=DisplayInfo{"scrcpy", displayId 89, displayGroupId 0, FLAG_PRESENTATION, FLAG_SHOULD_SHOW_SYSTEM_DECORATIONS, FLAG_TRUSTED, FLAG_OWN_DISPLAY_GROUP, FLAG_ALWAYS_UNLOCKED, FLAG_TOUCH_FEEDBACK_DISABLED, real 720 x 1080, largest app 1080 x 1080, smallest app 720 x 720, appVsyncOff 0, presDeadline 16666666, mode 156, renderFrameRate 60.0, hasArrSupport false, frameRateCategoryRate null, supportedRefreshRates [], frameRateVelocityMapping [], defaultMode 156, userPreferredModeId -1, supportedModes [{id=156, parentModeId=-1, sfModeId=-1, flags=, width=720, height=1080, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[]}], hdrCapabilities null, isForceSdr false, userDisabledHdrTypes [], minimalPostProcessingSupported false, rotation 0, state UNKNOWN, committedState UNKNOWN, type VIRTUAL, uniqueId "virtual:com.android.shell,2000,scrcpy,85", app 720 x 1080, density 240 (240.0 x 240.0) dpi, layerStack 89, colorMode 0, supportedColorModes [0], deviceProductInfo null, owner com.android.shell (uid 2000), removeMode 1, refreshRateOverride 60.0, brightnessMinimum 0.0, brightnessMaximum 1.0, brightnessDefault 0.0, brightnessDim -1.0, installOrientation ROTATION_0, layoutLimitedRefreshRate null, hdrSdrRatio not_available, thermalRefreshRateThrottling {}, thermalBrightnessThrottlingDataId default, canHostTasks true}
+    mRequestedMinimalPostProcessing=false
+    mFrameRateOverrides=[]
+    mPendingFrameRateOverrideUids={}
+    mDisplayGroupId=0
+    mDisplayGroupName=null
+    mThermalBrightnessThrottlingDataId=default
+    mLeadDisplayId=-1
+    mLayoutLimitedRefreshRate=null
+    mThermalRefreshRateThrottling={}
+    mPowerThrottlingDataId=default
+    DisplayInfoProxy (mInfo):
+      mDisplayInfoGroupsChanged=STATE
+      mDisplayInfoChangeSource=DISPLAY_MANAGER
+  
+  
+  Display Groups: size=1
+  Group 0:
+    Display 0 com.android.server.display.LocalDisplayAdapter$LocalDisplayDevice@4747e05
+    Display 89 com.android.server.display.VirtualDisplayAdapter$VirtualDisplayDevice@dd5e5a
+    Group Name: 
+    Flags: 0
+  
+  DeviceStateToLayoutMap:
+  -----------------------
+    Registered Layouts:
+    state(-1): [default_layout: [{dispId: 0(ON), displayGroupName: , addr: StablePhysical{id=4619827452008645888, port=0}, mThermalBrightnessThrottlingMapId: null, mRefreshRateZoneId: null, mLeadDisplayId: -1, mLeadDisplayAddress: null, mThermalRefreshRateThrottlingMapId: null, mPowerThrottlingMapId: null}]]
+
+Callbacks: size=62
+-----------------
+  0: mPid=772 mUid=10345 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  1: mPid=1698 mUid=1000 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  2: mPid=1702 mUid=10142 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  3: mPid=1962 mUid=10240 mWifiDisplayScanRequested=false cached=true frozen=false pendingDisplayEvents=0 pendingTopology=false
+  4: mPid=3599 mUid=10280 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  5: mPid=4286 mUid=1027 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  6: mPid=4364 mUid=10255 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  7: mPid=4404 mUid=1001 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  8: mPid=4487 mUid=10292 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  9: mPid=5053 mUid=10312 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  10: mPid=5397 mUid=10441 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  11: mPid=5578 mUid=10338 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  12: mPid=7378 mUid=10200 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  13: mPid=7938 mUid=1000 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  14: mPid=8178 mUid=10534 mWifiDisplayScanRequested=false cached=true frozen=false pendingDisplayEvents=1 pendingTopology=false
+  15: mPid=9244 mUid=10412 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  16: mPid=9942 mUid=10497 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  17: mPid=9995 mUid=30166 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  18: mPid=10033 mUid=10339 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  19: mPid=10839 mUid=10421 mWifiDisplayScanRequested=false cached=true frozen=false pendingDisplayEvents=0 pendingTopology=false
+  20: mPid=11191 mUid=10203 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=16 pendingTopology=false
+  21: mPid=11248 mUid=10456 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  22: mPid=11445 mUid=10152 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  23: mPid=11673 mUid=10535 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  24: mPid=11686 mUid=10213 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  25: mPid=11710 mUid=10522 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  26: mPid=12125 mUid=10332 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  27: mPid=13844 mUid=10427 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  28: mPid=14837 mUid=10479 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  29: mPid=15090 mUid=30190 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  30: mPid=16076 mUid=10328 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  31: mPid=18487 mUid=10390 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  32: mPid=18693 mUid=10387 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  33: mPid=19292 mUid=10212 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  34: mPid=20194 mUid=10322 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=51 pendingTopology=false
+  35: mPid=20327 mUid=10507 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  36: mPid=20381 mUid=10317 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  37: mPid=20675 mUid=10327 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  38: mPid=21241 mUid=10118 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=25 pendingTopology=false
+  39: mPid=21242 mUid=10399 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  40: mPid=21334 mUid=10250 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  41: mPid=21631 mUid=10477 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  42: mPid=22833 mUid=10238 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  43: mPid=24529 mUid=10467 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  44: mPid=24800 mUid=10216 mWifiDisplayScanRequested=false cached=true frozen=false pendingDisplayEvents=0 pendingTopology=false
+  45: mPid=25400 mUid=10138 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  46: mPid=26939 mUid=10240 mWifiDisplayScanRequested=false cached=true frozen=false pendingDisplayEvents=0 pendingTopology=false
+  47: mPid=27071 mUid=10186 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  48: mPid=27151 mUid=10147 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  49: mPid=27746 mUid=10321 mWifiDisplayScanRequested=false cached=true frozen=false pendingDisplayEvents=0 pendingTopology=false
+  50: mPid=27979 mUid=10381 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  51: mPid=28942 mUid=10538 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  52: mPid=29082 mUid=10159 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  53: mPid=29175 mUid=10186 mWifiDisplayScanRequested=false cached=false frozen=true pendingDisplayEvents=17 pendingTopology=false
+  54: mPid=29325 mUid=10373 mWifiDisplayScanRequested=false cached=false frozen=true pendingDisplayEvents=26 pendingTopology=false
+  55: mPid=29448 mUid=10159 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  56: mPid=29589 mUid=10553 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  57: mPid=30529 mUid=10179 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  58: mPid=30859 mUid=10499 mWifiDisplayScanRequested=false cached=true frozen=false pendingDisplayEvents=0 pendingTopology=false
+  59: mPid=30878 mUid=1002 mWifiDisplayScanRequested=false cached=false frozen=false pendingDisplayEvents=0 pendingTopology=false
+  60: mPid=31172 mUid=10197 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+  61: mPid=31232 mUid=10392 mWifiDisplayScanRequested=false cached=true frozen=true pendingDisplayEvents=26 pendingTopology=false
+
+PersistentDataStore:
+--------------------
+  mLoaded=true
+  mDirty=false
+  StableDeviceValues{mWidth=1280, mHeight=2856}
+  UserState serial=0:
+    DisplayState uniqueId=local:4619827452008645888:
+      brightness=0.047941834
+      connection-preference=0
+      color-mode=0
+      hdr-preference=1
+      BrightnessConfiguration{mConfiguration=BrightnessConfiguration{[(0.0, 2.0810757), (0.006737947, 2.0810757), (0.011108996, 2.1165068), (0.01831564, 2.1749227), (0.030197384, 2.271234), (0.049787067, 2.4300249), (0.082085, 2.6918266), (0.13533528, 3.1234646), (0.22313017, 3.8351157), (0.36787945, 5.0084295), (0.60653067, 6.9428973), (1.0, 10.132296), (1.6487212, 15.390723), (2.7182817, 23.884722), (4.481689, 36.04533), (7.389056, 55.156746), (12.182494, 78.65872), (20.085537, 89.26633), (33.11545, 90.26699), (54.59815, 94.88478), (90.01713, 102.83554), (148.41316, 105.234665), (244.69193, 109.5512), (403.4288, 144.79776), (665.14166, 198.94727), (1096.6332, 281.90552), (1808.0424, 390.5865), (2980.958, 498.14572), (4914.769, 637.9285), (8103.084, 839.9006), (13359.727, 1106.0972), (22026.465, 1417.9731), (36315.504, 1730.8889), (59874.14, 1987.6276), (98715.77, 2214.3062), (162754.8, 2371.0725), (268337.28, 2578.846), (442413.4, 2899.5408), (729416.4, 3386.9128), (1202604.2, 4092.841), (1982759.2, 5033.354), (3269017.2, 6115.135), (5389698.5, 7102.907), (8886111.0, 8000.001)], {}, 'modelId:12, shouldCollectColorSamples = false'}, mTimestamp=2026-11-07 12:46:22, mPackageName='com.google.android.apps.turbo'}
+      DisplayMode{mWidth=0, mHeight=0, mRefreshRate=0.0}
+
+LegacyPersistentDataStore:
+--------------------
+  mLoaded=true
+  mDirty=false
+  RememberedWifiDisplays:
+  DisplayStates:
+    0: local:4619827452008645888
+      ColorMode=0
+      BrightnessValues: 
+User: 0 Value: 0.047941834
+      DisplayBrightnessConfigurations: 
+      User 0:
+        set at: 2026-11-06 16:55:54
+        set by: com.google.android.apps.turbo
+        BrightnessConfiguration{[(0.0, 2.0810757), (0.006737947, 2.0810757), (0.011108996, 2.1165068), (0.01831564, 2.1749227), (0.030197384, 2.271234), (0.049787067, 2.4300249), (0.082085, 2.6918266), (0.13533528, 3.1234646), (0.22313017, 3.8351157), (0.36787945, 5.0084295), (0.60653067, 6.9428973), (1.0, 10.132296), (1.6487212, 15.390723), (2.7182817, 23.884722), (4.481689, 36.04533), (7.389056, 55.156746), (12.182494, 78.65872), (20.085537, 89.26633), (33.11545, 90.26699), (54.59815, 94.88478), (90.01713, 102.83554), (148.41316, 105.234665), (244.69193, 109.5512), (403.4288, 144.79776), (665.14166, 198.94727), (1096.6332, 281.90552), (1808.0424, 390.5865), (2980.958, 498.14572), (4914.769, 637.9285), (8103.084, 839.9006), (13359.727, 1106.0972), (22026.465, 1417.9731), (36315.504, 1730.8889), (59874.14, 1987.6276), (98715.77, 2214.3062), (162754.8, 2371.0725), (268337.28, 2578.846), (442413.4, 2899.5408), (729416.4, 3386.9128), (1202604.2, 4092.841), (1982759.2, 5033.354), (3269017.2, 6115.135), (5389698.5, 7102.907), (8886111.0, 8000.001)], {}, 'modelId:12, shouldCollectColorSamples = false'}
+      ConnectionPreference=0
+      Resolution=0 0
+      RefreshRate=0.0
+      HdrPreference=1
+  StableDeviceValues:
+      StableDisplayWidth=1280
+      StableDisplayHeight=2856
+  GlobalBrightnessConfigurations:
+  mBrightnessNitsForDefaultDisplay=-1.0
+
+Display Window Policy Controllers: size=0
+
+Display Power Controllers: size=2
+
+Display Power Controller:
+-------------------------
+  mDisplayId=0
+  mLeadDisplayId=-1
+  mLightSensor={Sensor name="Auto Brightness", vendor="Google", version=1, type=131088, maxRange=1000000.0, resolution=0.001, power=0.001, minDelay=0}
+  mDisplayBrightnessFollowers={}
+
+Display Power Controller Locked State:
+  mDisplayReadyLocked=true
+  mPendingRequestLocked=policy=DOZE, useProximitySensor=false, screenBrightnessOverride=NaN, screenAutoBrightnessAdjustmentOverride=NaN, screenLowPowerBrightnessFactor=1.0, blockScreenOn=false, lowPowerMode=false, boostScreenBrightness=false, dozeScreenBrightness=0.0, dozeScreenState=OFF, dozeScreenStateReason=UNKNOWN, useNormalBrightnessForDoze=false
+  mPendingRequestChangedLocked=false
+  mPendingUpdatePowerStateLocked=false
+
+Display Power Controller Configuration:
+  mScreenBrightnessDozeConfig=0.0
+  mUseSoftwareAutoBrightnessConfig=true
+  mSkipScreenOnBrightnessRamp=false
+  mColorFadeFadesConfig=false
+  mColorFadeEnabled=true
+  mIsDisplayInternal=true
+  mCachedBrightnessInfo.brightness=0.047941834
+  mCachedBrightnessInfo.adjustedBrightness=0.0
+  mCachedBrightnessInfo.brightnessMin=0.0
+  mCachedBrightnessInfo.brightnessMax=0.65
+  mCachedBrightnessInfo.hbmMode=0
+  mCachedBrightnessInfo.hbmTransitionPoint=0.65
+  mCachedBrightnessInfo.brightnessMaxReason =0
+  mCachedBrightnessInfo.brightnessReason =android.util.MutableInt@49cc88b
+  mDisplayBlanksAfterDozeConfig=false
+  mBrightnessBucketsInDozeConfig=false
+  mDozeScaleFactor=1.0
+
+Display Power Controller Thread State:
+  mPowerRequest=policy=DOZE, useProximitySensor=false, screenBrightnessOverride=NaN, screenAutoBrightnessAdjustmentOverride=NaN, screenLowPowerBrightnessFactor=1.0, blockScreenOn=false, lowPowerMode=false, boostScreenBrightness=false, dozeScreenBrightness=0.0, dozeScreenState=OFF, dozeScreenStateReason=UNKNOWN, useNormalBrightnessForDoze=false
+  mBrightnessReason=screen_off
+  mDozing=true
+  mSkipRampState=RAMP_STATE_SKIP_NONE
+  mScreenOnBlockStartRealTime=947186298
+  mScreenOffBlockStartRealTime=947413992
+  mPendingScreenOnUnblocker=null
+  mPendingScreenOffUnblocker=null
+  mPendingScreenOff=false
+  mReportedToPolicy=REPORTED_TO_POLICY_SCREEN_OFF
+  mIsRbcActive=false
+AutomaticBrightnessStrategy:
+  mDisplayId=0
+  mAutoBrightnessAdjustment=0.0
+  mPendingAutoBrightnessAdjustment=NaN
+  mTemporaryAutoBrightnessAdjustment=NaN
+  mShouldResetShortTermModel=false
+  mAppliedAutoBrightness=true
+  mAutoBrightnessAdjustmentChanged=false
+  mAppliedTemporaryAutoBrightnessAdjustment=false
+  mUseAutoBrightness=true
+  mIsAutoBrightnessOverriddenInDoze=false
+  mWasShortTermModelActive=false
+  mAutoBrightnessAdjustmentReasonsFlags=0
+  mScreenBrightnessRampAnimator.isAnimating()=false
+  mColorFadeOffAnimator.isStarted()=false
+
+Display Power State:
+  mStopped=false
+  mScreenState=OFF
+  mScreenBrightness=0.0
+  mSdrScreenBrightness=0.0
+  mScreenReady=true
+  mScreenUpdatePending=false
+  mColorFadePrepared=true
+  mColorFadeLevel=0.0
+  mColorFadeReady=true
+  mColorFadeDrawPending=false
+
+Photonic Modulator State:
+  mPendingState=OFF
+  mPendingBacklight=-1.0
+  mPendingSdrBacklight=-1.0
+  mActualState=OFF
+  mActualBacklight=-1.0
+  mActualSdrBacklight=-1.0
+  mStateChangeInProgress=false
+  mBacklightChangeInProgress=false
+
+Color Fade State:
+  mPrepared=true
+  mMode=1
+  mDisplayLayerStack=0
+  mDisplayWidth=1080
+  mDisplayHeight=2410
+  mSurfaceVisible=true
+  mSurfaceAlpha=1.0
+
+
+DisplayBrightnessController:
+  mDisplayId=: 0
+  mScreenBrightnessDefault=0.062353346
+  mPersistBrightnessNitsForDefaultDisplay=false
+  mIsStylusBeingUsed=false
+  mCurrentMinBrightness=4.4858517E-4
+  mCurrentMaxBrightness=0.26870257
+  mPendingUnthrottledScreenBrightness=NaN
+  mCurrentScreenBrightness=0.047941834
+  mCurrentUnthrottledBrightness=0.047941834
+  mLastUserSetScreenBrightness=0.09363462
+  Last selected DisplayBrightnessStrategy= ScreenOffBrightnessStrategy
+
+DisplayBrightnessStrategySelector:
+----------------------------------
+  mDisplayId= 0
+  mOldBrightnessStrategyName= ScreenOffBrightnessStrategy
+  mAllowAutoBrightnessWhileDozingConfig= false
+  mAllowAutoBrightnessWhileDozing= false
+DozeBrightnessStrategy:
+  mDozeScaleFactor:1.0
+  mDefaultDozeBrightness:0.0
+FollowerBrightnessStrategy:
+  mDisplayId=0
+  mBrightnessToFollow:NaN
+  mBrightnessToFollowSlowChange:false
+OverrideBrightnessStrategy:
+  mWindowManagerBrightnessOverride=NaN
+  mWindowManagerBrightnessOverrideTag=null
+TemporaryBrightnessStrategy:
+  mTemporaryScreenBrightness:NaN
+AutomaticBrightnessStrategy:
+  mDisplayId=0
+  mAutoBrightnessAdjustment=0.0
+  mPendingAutoBrightnessAdjustment=NaN
+  mTemporaryAutoBrightnessAdjustment=NaN
+  mShouldResetShortTermModel=false
+  mAppliedAutoBrightness=true
+  mAutoBrightnessAdjustmentChanged=false
+  mAppliedTemporaryAutoBrightnessAdjustment=false
+  mUseAutoBrightness=true
+  mIsAutoBrightnessOverriddenInDoze=false
+  mWasShortTermModelActive=false
+  mAutoBrightnessAdjustmentReasonsFlags=0
+OffloadBrightnessStrategy:
+  mOffloadScreenBrightness:NaN
+AutoBrightnessFallbackStrategy:
+  mLeadDisplayId=-1
+  mIsDisplayEnabled=true
+
+Screen Off Brightness Sensor Controller:
+----------------------------------------
+  registered=true
+  lastSensorValue=3
+
+BrightnessClamperController:
+LightSensorController
+  mLightSensor={Sensor name="Auto Brightness", vendor="Google", version=1, type=131088, maxRange=1000000.0, resolution=0.001, power=0.001, minDelay=0}
+  mRegisteredLightSensor=null
+BrightnessThermalClamper:
+  mThrottlingStatus: 0
+  mUniqueDisplayId: local:4619827452008645888
+  mDataId: default
+  mDataOverride: {}
+  mDataFromDeviceConfig: ThermalBrightnessThrottlingData{throttlingLevels:[[1,0.34541062], [2,0.21711525], [3,0.15341614], [4,0.08926846]]} 
+  mDataActive: ThermalBrightnessThrottlingData{throttlingLevels:[[1,0.34541062], [2,0.21711525], [3,0.15341614], [4,0.08926846]]} 
+  mBrightnessCap:1.0
+  mApplied:false
+  ThermalStatusObserver:
+    mStarted: true
+    mObserverTempSensor: SensorData{type= SKIN, name= null, refreshRateRange: [0.0, Infinity], supportedModes=[]}
+    ThermalService available
+BrightnessExternalModifier:
+  mBrightnessCapMap: []
+  mBrightnessCap: 1.0
+  mBrightnessCapReason: 0
+  mApplied: false
+  mStopped: false
+DisplayDimModifier:
+  mScreenBrightnessDimConfig=0.05
+  mScreenBrightnessMinimumDimAmount=0.04
+BrightnessModifier:
+  mApplied=false
+BrightnessLowPowerModeModifier:
+BrightnessModifier:
+  mApplied=false
+BrightnessLowLuxModifier:
+  mIsActive=false
+  mBrightnessLowerBound=0.0
+  mReason=0
+  mAmbientLux=-1.0
+  mMinNitsAllowed=-1.0
+HdrBrightnessModifier:
+  mHdrBrightnessData=HdrBrightnessData {mMaxBrightnessLimits: {10.0=0.715625}, mBrightnessIncreaseDebounceMillis: 10000, mScreenBrightnessRampIncrease: 0.004, mBrightnessDecreaseDebounceMillis: 5000, mScreenBrightnessRampDecrease: 0.004, transitionPoint: 0.65, minimumHdrPercentOfScreenForNbm: 0.0, minimumHdrPercentOfScreenForHbm: 0.0, allowInLowPowerMode: false, sdrToHdrRatioSpline: MonotoneCubicSpline{[(1.0, 2.0: 2.0), (2.0, 4.0: 0.0), (5.0, 4.0: 0.0), (100.0, 8.0: 0.042105265)]}, highestHdrSdrRatio: 8.0} 
+  mScreenSize=2602800.0
+  mMaxDesiredHdrRatio=1.0
+  mHdrLayerSize=-1.0
+  mAmbientLux=-1.0
+  mLowPowerMode=false
+  mMode=NO_HDR
+  mMaxBrightness=1.0
+  mPendingMaxBrightness=1.0
+  mTransitionRate=-1.0
+  mPendingTransitionRate=-1.0
+  mHdrListener registered=true
+  mHdrOverrideListener registered=true
+  mLowPowerModeSettingObserver.mRegistered=true
+  mHdrSettingsObserver.mRegistered=true
+  mHdrBrightnessEnabled=true
+  mHdrBrightnessBoostLevel=1.0
+  ratioScaleFactor=1.0
+  mHdrBoostOverride=null
+BrightnessPluginModifier:
+  mMaxBrightnessCap=1.0
+  mTransitionRate=-1.0
+  mReasonModifier=0
+  mRegisteredUniqueDisplayId=local:4619827452008645888
+BrightnessMaxLuxModifier:
+  mAutoBrightnessEnabled=false
+  mIsHbmAllowed=false
+  mAmbientLux=-1.0
+  mMaxBrightness=1.0
+  mMaxBrightnessLimits={ADAPTIVE={1000.0=0.26870257, 6000.0=0.38084885, 10000.0=0.44813666}}
+  shouldListenToLightSensor=false
+
+HighBrightnessModeController:
+  mHbmControllerIsEnabled=true
+  mCurrentMin=0.0
+  mCurrentMax=0.65
+  mHbmMode=off
+  mAmbientLux=227.34174 (old/invalid)
+  mBrightnessMin=0.0
+  mBrightnessMax=1.0
+  remainingTime=300000
+  width*height=1080*2410
+  mHdrBoostDisabled=true
+  mRunningStartTimeMillis=-1 (584215402 ms ago)
+  mEvents=
+
+HighBrightnessModeState:
+  mBrightness=0.0
+  mUnthrottledBrightness=-1.0
+  mThrottlingReason=none
+  mHbmMode=off
+  mHbmStatsState=HBM_OFF
+  mHbmData=HBM{minLux: 10000.0, transition: 0.65, timeWindow: 1200000ms, timeMax: 300000ms, timeMin: 60000ms, allowInLowPowerMode: false, minimumHdrPercentOfScreen: 0.0, mSdrToHdrRatioSpline=MonotoneCubicSpline{[(1.0, 2.0: 2.0), (2.0, 4.0: 0.0), (5.0, 4.0: 0.0), (100.0, 8.0: 0.042105265)]}, refreshRateLimit=null, isHighBrightnessModeEnabled=true} 
+  mIsInAllowedAmbientRange=false
+  mIsAutoBrightnessEnabled=false
+  mIsAutoBrightnessOffByState=true
+  mIsHdrLayerPresent=false
+  mIsTimeAvailable= true
+  mIsBlockedByLowPowerMode=false
+
+
+Automatic Brightness Controller Configuration:
+----------------------------------------------
+  mState=AUTO_BRIGHTNESS_OFF_DUE_TO_DISPLAY_STATE
+  mScreenBrightnessRangeMinimum=0.0
+  mScreenBrightnessRangeMaximum=1.0
+  mDozeScaleFactor=1.0
+  mInitialLightSensorRate=250
+  mNormalLightSensorRate=250
+  mLightSensorWarmUpTimeConfig=0
+  mBrighteningLightDebounceConfig=1000
+  mDarkeningLightDebounceConfig=4000
+  mBrighteningLightDebounceConfigIdle=1000
+  mDarkeningLightDebounceConfigIdle=4000
+  mResetAmbientLuxAfterWarmUpConfig=true
+  mAmbientLightHorizonLong=5000
+  mAmbientLightHorizonShort=50
+  mWeightingIntercept=5000
+
+Automatic Brightness Controller State:
+--------------------------------------
+  mLightSensor={Sensor name="Auto Brightness", vendor="Google", version=1, type=131088, maxRange=1000000.0, resolution=0.001, power=0.001, minDelay=0}
+  mLightSensorEnabled=false
+  mLightSensorEnableTime=583750414 (464987 ms ago)
+  mCurrentLightSensorRate=-1
+  mAmbientLux=227.34174
+  mAmbientLuxValid=false
+  mPreThresholdLux=-1.0
+  mPreThresholdBrightness=NaN
+  mAmbientBrighteningThreshold=371.93106
+  mAmbientDarkeningThreshold=107.98733
+  mScreenBrighteningThreshold=0.052736018
+  mScreenDarkeningThreshold=0.03835347
+  mLastObservedLux=255.76349
+  mLastObservedLuxTime=947413885 (in 363198484 ms)
+  mRecentLightSamples=0
+  mAmbientLightRingBuffer=[]
+  mScreenAutoBrightness=NaN
+  mDisplayPolicy=DOZE
+  mShortTermModel=
+    mAnchor: -1.0
+     mBrightness: NaN
+     mIsValid: false
+  mPausedShortTermModel=
+    mAnchor: -1.0
+     mBrightness: NaN
+     mIsValid: false
+  
+  mBrightnessAdjustmentSamplePending=false
+  mBrightnessAdjustmentSampleOldLux=0.36512998
+  mBrightnessAdjustmentSampleOldBrightness=0.001778175
+  mForegroundAppPackageName=null
+  mPendingForegroundAppPackageName=null
+  mForegroundAppCategory=-1
+  mPendingForegroundAppCategory=-1
+  Current mode=default
+  
+  Mapper for mode default:
+  PhysicalMappingStrategy
+    mConfig=BrightnessConfiguration{[(0.0, 2.0810757), (0.006737947, 2.0810757), (0.011108996, 2.1165068), (0.01831564, 2.1749227), (0.030197384, 2.271234), (0.049787067, 2.4300249), (0.082085, 2.6918266), (0.13533528, 3.1234646), (0.22313017, 3.8351157), (0.36787945, 5.0084295), (0.60653067, 6.9428973), (1.0, 10.132296), (1.6487212, 15.390723), (2.7182817, 23.884722), (4.481689, 36.04533), (7.389056, 55.156746), (12.182494, 78.65872), (20.085537, 89.26633), (33.11545, 90.26699), (54.59815, 94.88478), (90.01713, 102.83554), (148.41316, 105.234665), (244.69193, 109.5512), (403.4288, 144.79776), (665.14166, 198.94727), (1096.6332, 281.90552), (1808.0424, 390.5865), (2980.958, 498.14572), (4914.769, 637.9285), (8103.084, 839.9006), (13359.727, 1106.0972), (22026.465, 1417.9731), (36315.504, 1730.8889), (59874.14, 1987.6276), (98715.77, 2214.3062), (162754.8, 2371.0725), (268337.28, 2578.846), (442413.4, 2899.5408), (729416.4, 3386.9128), (1202604.2, 4092.841), (1982759.2, 5033.354), (3269017.2, 6115.135), (5389698.5, 7102.907), (8886111.0, 8000.001)], {}, 'modelId:12, shouldCollectColorSamples = false'}
+    mBrightnessSpline=MonotoneCubicSpline{[(0.0, 2.0810757: 0.0), (0.006737947, 2.0810757: 0.0), (0.011108996, 2.1165066: 8.105843), (0.01831564, 2.1749227: 8.105839), (0.030197384, 2.2712338: 8.105828), (0.049787067, 2.4300249: 8.105841), (0.082085, 2.6918263: 8.105829), (0.13533528, 3.123464: 8.105829), (0.22313017, 3.8351145: 8.105825), (0.36787945, 5.008426: 8.105819), (0.60653067, 6.942889: 8.105816), (1.0, 10.132278: 8.105804), (1.6487212, 15.390679: 8.023657), (2.7182817, 23.884615: 7.4187574), (4.481689, 36.045063: 6.7346563), (7.389056, 55.156113: 5.738064), (12.182494, 78.657425: 3.1224904), (20.085537, 89.26466: 0.22566496), (33.11545, 90.2653: 0.04639692), (54.59815, 94.88291: 0.21970673), (90.01713, 102.83333: 0.11726238), (148.41316, 105.23237: 0.03678213), (244.69193, 109.548676: 0.12936662), (403.4288, 144.79343: 0.21446122), (665.14166, 198.93918: 0.19956586), (1096.6332, 281.8899: 0.17249662), (1808.0424, 390.55865: 0.12222132), (2980.958, 498.10474: 0.08198342), (4914.769, 637.8721: 0.06780964), (8103.084, 839.83167: 0.056993112), (13359.727, 1106.0414: 0.043316893), (22026.465, 1417.9681: 0.028946629), (36315.504, 1730.9268: 0.016399577), (59874.14, 1987.6487: 0.008366292), (98715.77, 2214.3066: 0.0016657873), (162754.8, 2250.0: 0.0), (268337.28, 2250.0: 0.0), (442413.4, 2250.0: 0.0), (729416.4, 2250.0: 0.0), (1202604.2, 2250.0: 0.0), (1982759.2, 2250.0: 0.0), (3269017.2, 2250.0: 0.0), (5389698.5, 2250.0: 0.0), (8886111.0, 2250.0: 0.0)]}
+    mNitsToBrightnessSpline=MonotoneCubicSpline{[(1.0, 0.0: 4.4858523E-4), (1450.0, 0.65: 4.4304263E-4), (2250.0, 1.0: 4.3750004E-4)]}
+    mBrightnessToNitsSpline=MonotoneCubicSpline{[(0.0, 1.0: 2229.231), (0.65, 1450.0: 2257.4727), (1.0, 2250.0: 2285.714)]}
+    mAdjustedNitsToBrightnessSpline=MonotoneCubicSpline{[(1.0, 0.0: 4.4858523E-4), (1450.0, 0.65: 4.4304263E-4), (2250.0, 1.0: 4.3750004E-4)]}
+    mAdjustedBrightnessToNitsSpline=MonotoneCubicSpline{[(0.0, 1.0: 2229.231), (0.65, 1450.0: 2257.4727), (1.0, 2250.0: 2285.714)]}
+    mMaxGamma=1.0499878
+    mAutoBrightnessAdjustment=0.0
+    mUserLux=-1.0
+    mUserBrightness=NaN
+    mDefaultConfig=BrightnessConfiguration{[(0.0, 5.139055), (1.0, 9.962019), (2.0, 18.34823), (3.0, 21.550682), (4.0, 24.016779), (8.0, 32.5), (12.0, 46.0), (15.0, 53.26923), (20.0, 55.684563), (30.0, 63.032482), (50.0, 71.80252), (100.0, 84.52631), (300.0, 111.15724), (500.0, 129.95047), (700.0, 147.69106), (900.0, 166.48074), (1000.0, 176.68456), (3000.0, 444.30115), (5000.0, 649.04895), (7000.0, 806.12634), (9000.0, 935.6339), (10000.0, 993.10095), (14000.0, 1189.1057), (17000.0, 1310.4114), (20000.0, 1415.9592), (24000.0, 1537.5922), (28000.0, 1641.5), (32000.0, 1730.2657), (42000.0, 1890.6998), (52000.0, 1964.0239), (62000.0, 2015.6743), (72000.0, 2076.6768), (82000.0, 2139.8667), (92000.0, 2201.915), (100000.0, 2250.0)], {}, ', shouldCollectColorSamples = false, shortTermModelTimeout = 300000, shortTermModelLowerLuxMultiplier = 0.6, shortTermModelUpperLuxMultiplier = 0.6'}
+    mBrightnessRangeAdjustmentApplied=false
+    shortTermModelTimeout=300000
+    Previous short-term models (oldest to newest): 
+    Computed at 10-30 21:32:44.036: 
+              lux:     0, 0.007, 0.011, 0.018, 0.030, 0.050, 0.082,  0.14,  0.22,  0.37
+          current:   2.1,   2.1,   2.1,   2.2,   2.2,   2.4,   2.7,   3.1,   3.8,   5.0
+      current(bl): 0.000, 0.000, 0.000, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.002
+       current(%):     5,     5,     5,     5,     5,     5,     6,     7,     8,     9
+    current(hbm%):     4,     4,     4,     4,     4,     4,     5,     5,     6,     7
+  
+              lux:  0.61,   1.0,   1.6,   2.7,   4.5,   7.4,    12,    20,    33,    55
+          current:   6.9,    10,    15,    24,    36,    54,    77,    89,    90,    95
+      current(bl): 0.003, 0.004, 0.006, 0.010, 0.016, 0.024, 0.034, 0.039, 0.040, 0.042
+       current(%):    11,    14,    17,    22,    27,    33,    40,    43,    43,    44
+    current(hbm%):     9,    11,    14,    17,    22,    27,    32,    34,    35,    36
+  
+              lux:    90,   148,   245,   403,   665, 1097, 1808, 2981, 4915, 8103, 13360
+          current:   103,   105,   109,   144,   199,  282,  390,  497,  635,  834,  1097
+      current(bl): 0.046, 0.047, 0.048, 0.064, 0.089, 0.13, 0.18, 0.22, 0.29, 0.37,  0.49
+       current(%):    46,    46,    47,    54,    61,   69,   75,   80,   85,   90,    95
+    current(hbm%):    37,    37,    38,    44,    52,   60,   67,   72,   76,   82,    87
+  
+              lux: 22026, 36316, 59874, 98716, 162755, 268337, 442413, 729416, 1202604
+          current:  1407,  1720,  1983,  2210,   2250,   2250,   2250,   2250,    2250
+      current(bl):  0.63,  0.77,  0.88,  0.98,    1.0,    1.0,    1.0,    1.0,     1.0
+       current(%):    99,   103,   106,   108,    108,    108,    108,    108,     108
+    current(hbm%):    92,    95,    98,   100,    100,    100,    100,    100,     100
+  
+              lux: 1982759, 3269017, 5389699, 8886111
+          current:    2250,    2250,    2250,    2250
+      current(bl):     1.0,     1.0,     1.0,     1.0
+       current(%):     108,     108,     108,     108
+    current(hbm%):     100,     100,     100,     100
+  
+    Computed at 11-02 10:56:03.211: 
+              lux:     0, 0.007, 0.011, 0.018, 0.030, 0.050, 0.082,  0.14,  0.22,  0.37
+          current:   2.0,   2.0,   2.1,   2.1,   2.2,   2.4,   2.6,   3.0,   3.7,   4.8
+      current(bl): 0.000, 0.000, 0.000, 0.000, 0.001, 0.001, 0.001, 0.001, 0.001, 0.002
+       current(%):     5,     5,     5,     5,     5,     5,     6,     6,     7,     9
+    current(hbm%):     4,     4,     4,     4,     4,     4,     5,     5,     6,     7
+  
+              lux:  0.61,   1.0,   1.6,   2.7,   4.5,   7.4,    12,    20,    33,    55
+          current:   6.7,   9.8,    15,    23,    35,    54,    77,    87,    88,    93
+      current(bl): 0.003, 0.004, 0.006, 0.010, 0.015, 0.024, 0.034, 0.039, 0.039, 0.041
+       current(%):    11,    13,    17,    21,    27,    33,    40,    42,    42,    44
+    current(hbm%):     9,    11,    14,    17,    21,    27,    32,    34,    34,    35
+  
+              lux:    90,   148,   245,   403,   665, 1097, 1808, 2981, 4915, 8103, 13360
+          current:   101,   103,   107,   142,   196,  278,  385,  491,  630,  832,  1098
+      current(bl): 0.045, 0.046, 0.048, 0.063, 0.087, 0.12, 0.17, 0.22, 0.28, 0.37,  0.49
+       current(%):    45,    46,    47,    54,    61,   69,   75,   80,   85,   90,    95
+    current(hbm%):    37,    37,    38,    44,    51,   59,   66,   71,   76,   82,    87
+  
+              lux: 22026, 36316, 59874, 98716, 162755, 268337, 442413, 729416, 1202604
+          current:  1411,  1726,  1983,  2211,   2250,   2250,   2250,   2250,    2250
+      current(bl):  0.63,  0.77,  0.88,  0.98,    1.0,    1.0,    1.0,    1.0,     1.0
+       current(%):   100,   103,   106,   108,    108,    108,    108,    108,     108
+    current(hbm%):    92,    95,    98,   100,    100,    100,    100,    100,     100
+  
+              lux: 1982759, 3269017, 5389699, 8886111
+          current:    2250,    2250,    2250,    2250
+      current(bl):     1.0,     1.0,     1.0,     1.0
+       current(%):     108,     108,     108,     108
+    current(hbm%):     100,     100,     100,     100
+  
+    Computed at 11-03 19:02:32.547: 
+              lux:     0, 0.007, 0.011, 0.018, 0.030, 0.050, 0.082,  0.14,  0.22,  0.37
+          current:   104,   104,   104,   104,   104,   104,   104,   104,   104,   104
+      current(bl): 0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046
+       current(%):    46,    46,    46,    46,    46,    46,    46,    46,    46,    46
+    current(hbm%):    37,    37,    37,    37,    37,    37,    37,    37,    37,    37
+  
+              lux:  0.61,   1.0,   1.6,   2.7,   4.5,   7.4,    12,    20,    33,    55
+          current:   104,   104,   104,   104,   104,   104,   104,   104,   104,   104
+      current(bl): 0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046, 0.046
+       current(%):    46,    46,    46,    46,    46,    46,    46,    46,    46,    46
+    current(hbm%):    37,    37,    37,    37,    37,    37,    37,    37,    37,    37
+  
+              lux:    90,   148,   245,   403,   665, 1097, 1808, 2981, 4915, 8103, 13360
+          current:   104,   106,   110,   145,   199,  282,  391,  498,  638,  839,  1104
+      current(bl): 0.046, 0.047, 0.049, 0.065, 0.089, 0.13, 0.18, 0.22, 0.29, 0.38,  0.50
+       current(%):    46,    47,    47,    54,    61,   69,   75,   80,   85,   90,    95
+    current(hbm%):    37,    38,    38,    44,    52,   60,   67,   72,   77,   82,    87
+  
+              lux: 22026, 36316, 59874, 98716, 162755, 268337, 442413, 729416, 1202604
+          current:  1415,  1728,  1985,  2211,   2250,   2250,   2250,   2250,    2250
+      current(bl):  0.63,  0.77,  0.88,  0.98,    1.0,    1.0,    1.0,    1.0,     1.0
+       current(%):   100,   103,   106,   108,    108,    108,    108,    108,     108
+    current(hbm%):    92,    95,    98,   100,    100,    100,    100,    100,     100
+  
+              lux: 1982759, 3269017, 5389699, 8886111
+          current:    2250,    2250,    2250,    2250
+      current(bl):     1.0,     1.0,     1.0,     1.0
+       current(%):     108,     108,     108,     108
+    current(hbm%):     100,     100,     100,     100
+  
+    Computed at 11-04 09:40:53.329: 
+              lux:     0, 0.007, 0.011, 0.018, 0.030, 0.050, 0.082,  0.14,  0.22,  0.37
+          current:   119,   122,   124,   128,   129,   129,   129,   129,   129,   129
+      current(bl): 0.053, 0.055, 0.055, 0.057, 0.057, 0.057, 0.057, 0.057, 0.057, 0.057
+       current(%):    49,    50,    51,    51,    51,    51,    51,    51,    51,    51
+    current(hbm%):    40,    40,    41,    41,    41,    41,    41,    41,    41,    41
+  
+              lux:  0.61,   1.0,   1.6,   2.7,   4.5,   7.4,    12,    20,    33,    55
+          current:   129,   129,   129,   129,   129,   129,   129,   129,   129,   129
+      current(bl): 0.057, 0.057, 0.057, 0.057, 0.057, 0.057, 0.057, 0.057, 0.057, 0.057
+       current(%):    51,    51,    51,    51,    51,    51,    51,    51,    51,    51
+    current(hbm%):    41,    41,    41,    41,    41,    41,    41,    41,    41,    41
+  
+              lux:    90,   148,   245,   403,   665, 1097, 1808, 2981, 4915, 8103, 13360
+          current:   129,   129,   129,   145,   200,  283,  391,  499,  638,  840,  1106
+      current(bl): 0.057, 0.057, 0.057, 0.065, 0.089, 0.13, 0.18, 0.22, 0.29, 0.38,  0.50
+       current(%):    51,    51,    51,    54,    62,   69,   75,   80,   85,   90,    95
+    current(hbm%):    41,    41,    41,    44,    52,   60,   67,   72,   77,   82,    87
+  
+              lux: 22026, 36316, 59874, 98716, 162755, 268337, 442413, 729416, 1202604
+          current:  1418,  1731,  1986,  2212,   2250,   2250,   2250,   2250,    2250
+      current(bl):  0.64,  0.77,  0.88,  0.98,    1.0,    1.0,    1.0,    1.0,     1.0
+       current(%):   100,   103,   106,   108,    108,    108,    108,    108,     108
+    current(hbm%):    92,    95,    98,   100,    100,    100,    100,    100,     100
+  
+              lux: 1982759, 3269017, 5389699, 8886111
+          current:    2250,    2250,    2250,    2250
+      current(bl):     1.0,     1.0,     1.0,     1.0
+       current(%):     108,     108,     108,     108
+    current(hbm%):     100,     100,     100,     100
+  
+    Computed at 11-04 18:00:12.667: 
+              lux:     0, 0.007, 0.011, 0.018, 0.030, 0.050, 0.082,  0.14,  0.22,  0.37
+          current:    86,    88,    90,    92,    96,   103,   114,   132,   161,   209
+      current(bl): 0.038, 0.039, 0.040, 0.041, 0.043, 0.046, 0.051, 0.059, 0.072, 0.094
+       current(%):    42,    42,    43,    43,    44,    46,    48,    52,    57,    63
+    current(hbm%):    34,    34,    35,    35,    36,    37,    39,    42,    46,    53
+  
+              lux:  0.61,   1.0,   1.6,   2.7,   4.5,   7.4,    12,    20,    33,    55
+          current:   209,   209,   209,   209,   209,   209,   209,   209,   209,   209
+      current(bl): 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094, 0.094
+       current(%):    63,    63,    63,    63,    63,    63,    63,    63,    63,    63
+    current(hbm%):    53,    53,    53,    53,    53,    53,    53,    53,    53,    53
+  
+              lux:    90,   148,   245,   403,   665, 1097, 1808, 2981, 4915, 8103, 13360
+          current:   209,   209,   209,   209,   209,  284,  393,  500,  640,  841,  1106
+      current(bl): 0.094, 0.094, 0.094, 0.094, 0.094, 0.13, 0.18, 0.22, 0.29, 0.38,  0.50
+       current(%):    63,    63,    63,    63,    63,   69,   75,   80,   85,   90,    95
+    current(hbm%):    53,    53,    53,    53,    53,   60,   67,   72,   77,   82,    87
+  
+              lux: 22026, 36316, 59874, 98716, 162755, 268337, 442413, 729416, 1202604
+          current:  1417,  1729,  1986,  2212,   2250,   2250,   2250,   2250,    2250
+      current(bl):  0.64,  0.77,  0.88,  0.98,    1.0,    1.0,    1.0,    1.0,     1.0
+       current(%):   100,   103,   106,   108,    108,    108,    108,    108,     108
+    current(hbm%):    92,    95,    98,   100,    100,    100,    100,    100,     100
+  
+              lux: 1982759, 3269017, 5389699, 8886111
+          current:    2250,    2250,    2250,    2250
+      current(bl):     1.0,     1.0,     1.0,     1.0
+       current(%):     108,     108,     108,     108
+    current(hbm%):     100,     100,     100,     100
+  
+    Difference between current config and default: 
+              lux:     0, 0.007, 0.011, 0.018, 0.030, 0.050, 0.082,  0.14,  0.22,  0.37
+          default:   5.1,   5.2,   5.2,   5.2,   5.3,   5.4,   5.5,   5.8,   6.1,   6.8
+        long-term:   2.1,   2.1,   2.1,   2.2,   2.3,   2.4,   2.7,   3.1,   3.8,   5.0
+          current:   2.1,   2.1,   2.1,   2.2,   2.3,   2.4,   2.7,   3.1,   3.8,   5.0
+      current(bl): 0.000, 0.000, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.002
+       current(%):     5,     5,     5,     5,     5,     5,     6,     7,     8,     9
+    current(hbm%):     4,     4,     4,     4,     4,     4,     5,     5,     6,     7
+  
+              lux:  0.61,   1.0,   1.6,   2.7,   4.5,   7.4,    12,    20,    33,    55
+          default:   7.8,  10.0,    16,    21,    25,    31,    47,    56,    65,    73
+        long-term:   6.9,    10,    15,    24,    36,    55,    79,    89,    90,    95
+          current:   6.9,    10,    15,    24,    36,    55,    79,    89,    90,    95
+      current(bl): 0.003, 0.004, 0.006, 0.010, 0.016, 0.024, 0.035, 0.040, 0.040, 0.042
+       current(%):    11,    14,    17,    22,    27,    33,    40,    43,    43,    44
+    current(hbm%):     9,    11,    14,    18,    22,    27,    32,    34,    35,    36
+  
+              lux:    90,   148,   245,   403,   665, 1097, 1808, 2981, 4915, 8103, 13360
+          default:    83,    93,   105,   121,   145,  188,  283,  442,  641,  880,  1160
+        long-term:   103,   105,   110,   145,   199,  282,  391,  498,  638,  840,  1106
+          current:   103,   105,   110,   145,   199,  282,  391,  498,  638,  840,  1106
+      current(bl): 0.046, 0.047, 0.049, 0.065, 0.089, 0.13, 0.18, 0.22, 0.29, 0.38,  0.50
+       current(%):    46,    46,    47,    54,    61,   69,   75,   80,   85,   90,    95
+    current(hbm%):    37,    37,    38,    44,    52,   60,   67,   72,   77,   82,    87
+  
+              lux: 22026, 36316, 59874, 98716, 162755, 268337, 442413, 729416, 1202604
+          default:  1480,  1808,  2004,  2242,   2250,   2250,   2250,   2250,    2250
+        long-term:  1418,  1731,  1988,  2214,   2371,   2579,   2900,   3387,    4093
+          current:  1418,  1731,  1988,  2214,   2250,   2250,   2250,   2250,    2250
+      current(bl):  0.64,  0.77,  0.89,  0.98,    1.0,    1.0,    1.0,    1.0,     1.0
+       current(%):   100,   103,   106,   108,    108,    108,    108,    108,     108
+    current(hbm%):    92,    95,    98,   100,    100,    100,    100,    100,     100
+  
+              lux: 1982759, 3269017, 5389699, 8886111
+          default:    2250,    2250,    2250,    2250
+        long-term:    5033,    6115,    7103,    8000
+          current:    2250,    2250,    2250,    2250
+      current(bl):     1.0,     1.0,     1.0,     1.0
+       current(%):     108,     108,     108,     108
+    current(hbm%):     100,     100,     100,     100
+  
+  
+  mAmbientBrightnessThresholds=HysteresisLevels {
+      mBrighteningThresholdLevels=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 13.0, 15.0, 17.0, 19.0, 20.0, 22.0, 25.0, 27.0, 30.0, 32.0, 35.0, 37.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 2000.0, 3000.0, 4000.0],
+      mBrighteningThresholdsPercentages=[4.999, 4.999, 2.4989998, 1.999, 1.749, 1.599, 1.9260001, 1.805, 1.6539999, 1.484, 1.2989999, 1.181, 0.92300004, 0.799, 0.705, 0.578, 0.549, 0.52, 0.47599998, 0.49400002, 0.46, 0.53099996, 0.45700002, 0.48599997, 0.499, 0.517, 0.565, 0.612, 0.66, 0.708, 0.742, 0.636, 0.582, 0.549, 0.513, 0.477, 0.44099998, 0.405, 0.36900002, 0.294, 0.269, 0.22, 0.219],
+      mMinBrightening=10.0,
+      mDarkeningThresholdLevels=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 13.0, 15.0, 17.0, 19.0, 20.0, 22.0, 25.0, 27.0, 30.0, 32.0, 35.0, 37.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 2000.0, 3000.0, 4000.0],
+      mDarkeningThresholdsPercentages=[0.5, 0.5, 0.75, 0.833, 0.875, 0.9, 0.916, 0.857, 0.75, 0.666, 0.6, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.283],
+      mMinDarkening=0.0
+  }
+  mAmbientBrightnessThresholdsIdle=HysteresisLevels {
+      mBrighteningThresholdLevels=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 13.0, 15.0, 17.0, 19.0, 20.0, 22.0, 25.0, 27.0, 30.0, 32.0, 35.0, 37.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 2000.0, 3000.0, 4000.0],
+      mBrighteningThresholdsPercentages=[4.999, 4.999, 2.4989998, 1.999, 1.749, 1.599, 1.9260001, 1.805, 1.6539999, 1.484, 1.2989999, 1.181, 0.92300004, 0.799, 0.705, 0.578, 0.549, 0.52, 0.47599998, 0.49400002, 0.46, 0.53099996, 0.45700002, 0.48599997, 0.499, 0.517, 0.565, 0.612, 0.66, 0.708, 0.742, 0.636, 0.582, 0.549, 0.513, 0.477, 0.44099998, 0.405, 0.36900002, 0.294, 0.269, 0.22, 0.219],
+      mMinBrightening=0.0,
+      mDarkeningThresholdLevels=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 13.0, 15.0, 17.0, 19.0, 20.0, 22.0, 25.0, 27.0, 30.0, 32.0, 35.0, 37.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 2000.0, 3000.0, 4000.0],
+      mDarkeningThresholdsPercentages=[0.5, 0.5, 0.75, 0.833, 0.875, 0.9, 0.916, 0.857, 0.75, 0.666, 0.6, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.525, 0.283],
+      mMinDarkening=0.0
+  }
+  mScreenBrightnessThresholds=HysteresisLevels {
+      mBrighteningThresholdLevels=[0.0],
+      mBrighteningThresholdsPercentages=[0.1],
+      mMinBrightening=0.0,
+      mDarkeningThresholdLevels=[0.0],
+      mDarkeningThresholdsPercentages=[0.2],
+      mMinDarkening=0.0
+  }
+  mScreenBrightnessThresholdsIdle=HysteresisLevels {
+      mBrighteningThresholdLevels=[0.0],
+      mBrighteningThresholdsPercentages=[0.1],
+      mMinBrightening=0.0,
+      mDarkeningThresholdLevels=[0.0],
+      mDarkeningThresholdsPercentages=[0.2],
+      mMinDarkening=0.0
+  }
+Automatic Brightness Adjustments Last 100 Events: 
+  11-07 08:11:43.690 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.041542333, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6000.033, thermalStatus=none
+  11-07 08:11:43.905 - BrightnessEvent: brt=0.044959355(46.0%), nits=101.143036, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.044959355, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:11:43.952 - BrightnessEvent: brt=0.044962108(46.0%), nits=101.14917, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.044959355, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.044962108, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6000.033, thermalStatus=none
+  11-07 08:11:43.995 - BrightnessEvent: brt=0.047008608(66.0%), nits=105.70397, lux=164.84299, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.044962108, rcmdBrt=0.047008608, preBrt=NaN, preLux=-1.0, lastReadLux=164.84299, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047008608, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6000.033, thermalStatus=none
+  11-07 08:11:50.925 - BrightnessEvent: brt=0.047008608(66.0%), nits=105.70397, lux=164.84299, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.047008608, rcmdBrt=0.047008608, preBrt=NaN, preLux=-1.0, lastReadLux=239.43361, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047008608, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6000.033, thermalStatus=none
+  11-07 08:13:45.709 - BrightnessEvent: brt=0.052117847(69.0%), nits=117.074165, lux=287.57623, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.047008608, rcmdBrt=0.052117847, preBrt=0.047008608, preLux=164.84299, lastReadLux=287.57623, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.052117847, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.05, colorTemp=6046.182, thermalStatus=none
+  11-07 08:18:04.367 - BrightnessEvent: brt=0.052117847(69.0%), nits=117.074165, lux=287.57623, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.052117847, rcmdBrt=0.052117847, preBrt=0.047008608, preLux=164.84299, lastReadLux=149.05267, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.052117847, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6100.904, thermalStatus=none
+  11-07 08:18:04.827 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.052117847, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6100.904, thermalStatus=none
+  11-07 08:18:04.854 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:25:41.390 - BrightnessEvent: brt=4.849292E-4(5.0%), nits=2.081009, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=4.849292E-4, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:25:41.416 - BrightnessEvent: brt=4.8495637E-4(5.0%), nits=2.0810697, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=4.849292E-4, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=4.8495637E-4, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6100.904, thermalStatus=none
+  11-07 08:25:41.449 - BrightnessEvent: brt=0.046718262(46.0%), nits=105.057785, lux=142.86763, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=4.8495637E-4, rcmdBrt=0.046718262, preBrt=NaN, preLux=-1.0, lastReadLux=142.86763, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.046718262, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6100.904, thermalStatus=none
+  11-07 08:25:41.449 - BrightnessEvent: brt=0.046718262(66.0%), nits=105.057785, lux=142.86763, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.046718262, rcmdBrt=0.046718262, preBrt=NaN, preLux=-1.0, lastReadLux=142.86763, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.046718262, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6100.904, thermalStatus=none
+  11-07 08:25:47.887 - BrightnessEvent: brt=0.046718262(66.0%), nits=105.057785, lux=142.86763, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.046718262, rcmdBrt=0.046718262, preBrt=NaN, preLux=-1.0, lastReadLux=220.82574, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.046718262, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6062.2974, thermalStatus=none
+  11-07 08:25:48.318 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.046718262, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6062.2974, thermalStatus=none
+  11-07 08:25:48.364 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:34:08.909 - BrightnessEvent: brt=0.044949953(46.0%), nits=101.12211, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.044949953, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:34:08.940 - BrightnessEvent: brt=0.043375015(45.0%), nits=97.616646, lux=65.7492, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.044949953, rcmdBrt=0.043375015, preBrt=NaN, preLux=-1.0, lastReadLux=65.7492, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.043375015, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6062.2974, thermalStatus=none
+  11-07 08:34:08.969 - BrightnessEvent: brt=0.043375015(65.0%), nits=97.616646, lux=65.7492, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.043375015, rcmdBrt=0.043375015, preBrt=NaN, preLux=-1.0, lastReadLux=65.7492, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.043375015, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6062.2974, thermalStatus=none
+  11-07 08:34:09.159 - BrightnessEvent: brt=0.043375015(65.0%), nits=97.616646, lux=65.7492, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.043375015, rcmdBrt=0.043375015, preBrt=NaN, preLux=-1.0, lastReadLux=82.683105, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.043375015, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6062.2974, thermalStatus=none
+  11-07 08:34:10.275 - BrightnessEvent: brt=0.048540436(67.0%), nits=109.11311, lux=241.08185, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.043375015, rcmdBrt=0.048540436, preBrt=0.043375015, preLux=65.7492, lastReadLux=241.08185, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048540436, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.05, colorTemp=6071.968, thermalStatus=none
+  11-07 08:34:27.057 - BrightnessEvent: brt=0.048540436(67.0%), nits=109.11311, lux=241.08185, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.048540436, rcmdBrt=0.048540436, preBrt=0.043375015, preLux=65.7492, lastReadLux=121.53434, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048540436, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6071.968, thermalStatus=none
+  11-07 08:34:27.499 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.048540436, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6071.968, thermalStatus=none
+  11-07 08:34:27.546 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:54:02.492 - BrightnessEvent: brt=0.044949953(46.0%), nits=101.12211, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.044949953, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:54:02.494 - BrightnessEvent: brt=0.047158685(67.0%), nits=106.03798, lux=185.72029, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.044949953, rcmdBrt=0.047158685, preBrt=NaN, preLux=-1.0, lastReadLux=185.72029, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047158685, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6071.968, thermalStatus=none
+  11-07 08:54:07.802 - BrightnessEvent: brt=6.685376E-4(5.0%), nits=2.4903057, lux=0.05717004, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.047158685, rcmdBrt=6.685376E-4, preBrt=0.047158685, preLux=185.72029, lastReadLux=0.05717004, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=6.685376E-4, brtRange=[4.3987314E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.024, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:10.467 - BrightnessEvent: brt=3.3144356E-4(0.0%), nits=1.7388595, lux=0.05717004, reason=automatic [ dim lux_lower_bound ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=DIM, flags=, initBrt=6.685376E-4, rcmdBrt=6.685376E-4, preBrt=0.047158685, preLux=185.72029, lastReadLux=4.8776034E-8, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=6.685376E-4, brtRange=[3.3144356E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:10.868 - BrightnessEvent: brt=2.7384507E-4(0.0%), nits=1.6104606, lux=0.05717004, reason=automatic [ dim lux_lower_bound ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=DIM, flags=, initBrt=3.3144356E-4, rcmdBrt=6.685376E-4, preBrt=0.047158685, preLux=185.72029, lastReadLux=5.0170346E-8, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=6.685376E-4, brtRange=[2.7384507E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:12.553 - BrightnessEvent: brt=6.685376E-4(7.0%), nits=2.4903057, lux=0.05717004, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=2.7384507E-4, rcmdBrt=6.685376E-4, preBrt=0.047158685, preLux=185.72029, lastReadLux=5.6955557E-8, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=6.685376E-4, brtRange=[2.201519E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:12.566 - BrightnessEvent: brt=4.8516612E-4(5.0%), nits=2.0815372, lux=5.6955553E-8, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=6.685376E-4, rcmdBrt=4.8516612E-4, preBrt=6.685376E-4, preLux=0.05717004, lastReadLux=5.6955557E-8, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=4.8516612E-4, brtRange=[2.201519E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:12.977 - BrightnessEvent: brt=4.8516612E-4(6.0%), nits=2.0815372, lux=5.6955553E-8, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=4.8516612E-4, rcmdBrt=4.8516612E-4, preBrt=6.685376E-4, preLux=0.05717004, lastReadLux=7.871114E-8, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=4.8516612E-4, brtRange=[1.4802732E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:12.995 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=4.8516612E-4, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:13.207 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:54:46.010 - BrightnessEvent: brt=4.849292E-4(5.0%), nits=2.081009, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=4.849292E-4, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:54:46.012 - BrightnessEvent: brt=0.045501433(46.0%), nits=102.34955, lux=86.54309, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=4.849292E-4, rcmdBrt=0.045501433, preBrt=NaN, preLux=-1.0, lastReadLux=86.54309, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.045501433, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:46.026 - BrightnessEvent: brt=0.045501433(66.0%), nits=102.34955, lux=86.54309, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.045501433, rcmdBrt=0.045501433, preBrt=NaN, preLux=-1.0, lastReadLux=86.54309, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.045501433, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:46.463 - BrightnessEvent: brt=0.045501433(66.0%), nits=102.34955, lux=86.54309, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.045501433, rcmdBrt=0.045501433, preBrt=NaN, preLux=-1.0, lastReadLux=77.31998, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.045501433, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6229.587, thermalStatus=none
+  11-07 08:54:58.004 - BrightnessEvent: brt=0.045501433(66.0%)(hdr=0.22930153), nits=102.34955(hdr=510.68747), lux=86.54309, reason=automatic [ hdr ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.045501433, rcmdBrt=0.045501433, preBrt=NaN, preLux=-1.0, lastReadLux=39.90557, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.045501433, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=hdr, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=5967.9707, thermalStatus=none
+  11-07 08:55:02.823 - BrightnessEvent: brt=0.045501433(66.0%)(hdr=0.22930153), nits=102.34955(hdr=510.68747), lux=86.54309, reason=automatic [ hdr ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.045501433, rcmdBrt=0.045501433, preBrt=NaN, preLux=-1.0, lastReadLux=81.17305, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.045501433, brtRange=[4.485186E-4, 0.26870257], hbmMax=0.65, hbmMode=hdr, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=5967.9707, thermalStatus=none
+  11-07 08:55:04.506 - BrightnessEvent: brt=0.045501433(66.0%)(hdr=0.22930153), nits=102.34955(hdr=510.68747), lux=86.54309, reason=automatic [ hdr ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.045501433, rcmdBrt=0.045501433, preBrt=NaN, preLux=-1.0, lastReadLux=81.137474, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.045501433, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=hdr, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6026.215, thermalStatus=none
+  11-07 08:55:26.352 - BrightnessEvent: brt=0.045501433(66.0%), nits=102.34955, lux=86.54309, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.045501433, rcmdBrt=0.045501433, preBrt=NaN, preLux=-1.0, lastReadLux=75.249466, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.045501433, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6128.7705, thermalStatus=none
+  11-07 08:57:43.168 - BrightnessEvent: brt=0.045501433(66.0%), nits=102.34955, lux=86.54309, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.045501433, rcmdBrt=0.045501433, preBrt=NaN, preLux=-1.0, lastReadLux=96.74758, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.045501433, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6128.7705, thermalStatus=none
+  11-07 08:57:43.581 - BrightnessEvent: brt=0.045501433(66.0%), nits=102.34955, lux=86.54309, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.045501433, rcmdBrt=0.045501433, preBrt=NaN, preLux=-1.0, lastReadLux=35.629288, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.045501433, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6182.203, thermalStatus=none
+  11-07 08:57:43.596 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.045501433, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6182.203, thermalStatus=none
+  11-07 08:57:43.668 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:58:55.592 - BrightnessEvent: brt=4.849292E-4(5.0%), nits=2.081009, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=4.849292E-4, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 08:58:55.611 - BrightnessEvent: brt=4.8495637E-4(5.0%), nits=2.0810697, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=4.849292E-4, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=4.8495637E-4, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6182.203, thermalStatus=none
+  11-07 08:58:55.635 - BrightnessEvent: brt=0.0477159(67.0%), nits=107.2781, lux=220.49649, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=4.8495637E-4, rcmdBrt=0.0477159, preBrt=NaN, preLux=-1.0, lastReadLux=220.49649, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.0477159, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6182.203, thermalStatus=none
+  11-07 09:03:50.609 - BrightnessEvent: brt=0.0077158995(29.0%), nits=18.197966, lux=220.49649, reason=automatic [ dim ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=DIM, flags=, initBrt=0.0477159, rcmdBrt=0.0477159, preBrt=NaN, preLux=-1.0, lastReadLux=257.1965, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.0477159, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6139.457, thermalStatus=none
+  11-07 09:03:57.748 - BrightnessEvent: brt=0.0477159(67.0%), nits=107.2781, lux=220.49649, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.0077158995, rcmdBrt=0.0477159, preBrt=NaN, preLux=-1.0, lastReadLux=258.4959, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.0477159, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6139.457, thermalStatus=none
+  11-07 09:03:58.196 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.0477159, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6139.457, thermalStatus=none
+  11-07 09:03:58.371 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 09:12:42.820 - BrightnessEvent: brt=0.044949953(46.0%), nits=101.12211, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.044949953, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 09:12:42.842 - BrightnessEvent: brt=0.04495128(46.0%), nits=101.12505, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.044949953, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04495128, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6139.457, thermalStatus=none
+  11-07 09:12:42.855 - BrightnessEvent: brt=0.048697732(47.0%), nits=109.46318, lux=244.04744, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.04495128, rcmdBrt=0.048697732, preBrt=NaN, preLux=-1.0, lastReadLux=244.04744, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048697732, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6139.457, thermalStatus=none
+  11-07 09:12:42.884 - BrightnessEvent: brt=0.048697732(67.0%), nits=109.46318, lux=244.04744, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.048697732, rcmdBrt=0.048697732, preBrt=NaN, preLux=-1.0, lastReadLux=244.04744, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048697732, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6139.457, thermalStatus=none
+  11-07 09:17:43.426 - BrightnessEvent: brt=0.008697733(30.0%), nits=20.386013, lux=244.04744, reason=automatic [ dim ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=DIM, flags=, initBrt=0.048697732, rcmdBrt=0.048697732, preBrt=NaN, preLux=-1.0, lastReadLux=259.9135, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048697732, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6139.756, thermalStatus=none
+  11-07 09:17:50.524 - BrightnessEvent: brt=0.048697732(67.0%), nits=109.46318, lux=244.04744, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.008697733, rcmdBrt=0.048697732, preBrt=NaN, preLux=-1.0, lastReadLux=259.97543, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048697732, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6139.756, thermalStatus=none
+  11-07 09:17:50.952 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.048697732, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6139.756, thermalStatus=none
+  11-07 09:17:51.171 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 09:18:12.711 - BrightnessEvent: brt=0.044949953(46.0%), nits=101.12211, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.044949953, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 09:18:12.758 - BrightnessEvent: brt=0.04495128(46.0%), nits=101.12505, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.044949953, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04495128, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6139.756, thermalStatus=none
+  11-07 09:18:12.777 - BrightnessEvent: brt=0.048754737(47.0%), nits=109.590034, lux=245.0322, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.04495128, rcmdBrt=0.048754737, preBrt=NaN, preLux=-1.0, lastReadLux=245.0322, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048754737, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6139.756, thermalStatus=none
+  11-07 09:18:12.777 - BrightnessEvent: brt=0.048754737(67.0%), nits=109.590034, lux=245.0322, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.048754737, rcmdBrt=0.048754737, preBrt=NaN, preLux=-1.0, lastReadLux=245.0322, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048754737, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.05, colorTemp=6139.756, thermalStatus=none
+  11-07 09:18:17.796 - BrightnessEvent: brt=0.048754737(67.0%), nits=109.590034, lux=245.0322, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.048754737, rcmdBrt=0.048754737, preBrt=NaN, preLux=-1.0, lastReadLux=262.91553, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048754737, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6102.114, thermalStatus=none
+  11-07 09:23:07.107 - BrightnessEvent: brt=0.008754738(30.0%), nits=20.513048, lux=245.0322, reason=automatic [ dim ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=DIM, flags=, initBrt=0.048754737, rcmdBrt=0.048754737, preBrt=NaN, preLux=-1.0, lastReadLux=259.90036, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048754737, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6158.424, thermalStatus=none
+  11-07 09:23:14.199 - BrightnessEvent: brt=0.048754737(67.0%), nits=109.590034, lux=245.0322, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.008754738, rcmdBrt=0.048754737, preBrt=NaN, preLux=-1.0, lastReadLux=260.89148, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.048754737, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6158.424, thermalStatus=none
+  11-07 09:23:14.646 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.048754737, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6158.424, thermalStatus=none
+  11-07 09:23:14.838 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 09:26:30.858 - BrightnessEvent: brt=0.044949953(46.0%), nits=101.12211, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.044949953, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 09:26:30.873 - BrightnessEvent: brt=0.046527974(46.0%), nits=104.63429, lux=120.084854, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.044949953, rcmdBrt=0.046527974, preBrt=NaN, preLux=-1.0, lastReadLux=120.084854, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.046527974, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6158.424, thermalStatus=none
+  11-07 09:26:30.933 - BrightnessEvent: brt=0.046527974(66.0%), nits=104.63429, lux=120.084854, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.046527974, rcmdBrt=0.046527974, preBrt=NaN, preLux=-1.0, lastReadLux=120.084854, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.046527974, brtRange=[4.4858534E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6158.424, thermalStatus=none
+  11-07 09:26:31.031 - BrightnessEvent: brt=0.046527974(66.0%), nits=104.63429, lux=120.084854, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.046527974, rcmdBrt=0.046527974, preBrt=NaN, preLux=-1.0, lastReadLux=139.16757, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.046527974, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6158.424, thermalStatus=none
+  11-07 09:27:14.667 - BrightnessEvent: brt=0.046527974(66.0%), nits=104.63429, lux=253.22661, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.046527974, rcmdBrt=0.046527974, preBrt=NaN, preLux=120.084854, lastReadLux=22.391973, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.046527974, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6111.885, thermalStatus=none
+  11-07 09:27:15.623 - BrightnessEvent: brt=0.024392977(52.0%), nits=55.352695, lux=7.4193587, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.046527974, rcmdBrt=0.024392977, preBrt=0.046527974, preLux=253.22661, lastReadLux=7.4193583, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.024392977, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.024, colorTemp=6062.716, thermalStatus=none
+  11-07 09:27:17.326 - BrightnessEvent: brt=0.04160316(64.0%), nits=93.67266, lux=49.543484, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.024392977, rcmdBrt=0.04160316, preBrt=0.024392977, preLux=7.4193587, lastReadLux=47.81048, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04160316, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.05, colorTemp=6014.76, thermalStatus=none
+  11-07 09:27:18.532 - BrightnessEvent: brt=0.04606822(66.0%), nits=103.61103, lux=97.32445, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.04160316, rcmdBrt=0.04606822, preBrt=0.04160316, preLux=49.543484, lastReadLux=96.18541, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04606822, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.05, colorTemp=6014.76, thermalStatus=none
+  11-07 09:27:19.997 - BrightnessEvent: brt=0.04606822(66.0%), nits=103.61103, lux=97.32445, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.04606822, rcmdBrt=0.04606822, preBrt=0.04160316, preLux=49.543484, lastReadLux=205.30125, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04606822, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6014.76, thermalStatus=none
+  11-07 09:27:22.092 - BrightnessEvent: brt=0.04606822(66.0%), nits=103.61103, lux=97.32445, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.04606822, rcmdBrt=0.04606822, preBrt=0.04160316, preLux=49.543484, lastReadLux=16.578377, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04606822, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6044.167, thermalStatus=none
+  11-07 09:27:23.281 - BrightnessEvent: brt=0.04606822(66.0%), nits=103.61103, lux=97.32445, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.04606822, rcmdBrt=0.04606822, preBrt=0.04160316, preLux=49.543484, lastReadLux=12.507873, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04606822, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=5975.293, thermalStatus=none
+  11-07 09:27:24.359 - BrightnessEvent: brt=0.04606822(66.0%), nits=103.61103, lux=97.32445, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.04606822, rcmdBrt=0.04606822, preBrt=0.04160316, preLux=49.543484, lastReadLux=223.45357, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04606822, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=5926.7876, thermalStatus=none
+  11-07 09:29:26.785 - BrightnessEvent: brt=0.04606822(66.0%), nits=103.61103, lux=261.79712, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=KEY, policy=BRIGHT, flags=, initBrt=0.04606822, rcmdBrt=0.04606822, preBrt=0.04160316, preLux=97.32445, lastReadLux=18.315361, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04606822, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6115.6533, thermalStatus=none
+  11-07 09:29:29.553 - BrightnessEvent: brt=0.04606822(66.0%), nits=103.61103, lux=261.79712, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.04606822, rcmdBrt=0.04606822, preBrt=0.04160316, preLux=97.32445, lastReadLux=172.55585, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04606822, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6148.443, thermalStatus=none
+  11-07 09:29:29.997 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.04606822, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6148.443, thermalStatus=none
+  11-07 09:29:30.046 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 09:30:30.725 - BrightnessEvent: brt=0.044949953(46.0%), nits=101.12211, lux=-1.0, reason=screen_off_brightness_sensor, strat=AutoBrightnessFallbackStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.044949953, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+  11-07 09:30:30.734 - BrightnessEvent: brt=0.04264275(44.0%), nits=95.98672, lux=59.34978, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.044949953, rcmdBrt=0.04264275, preBrt=NaN, preLux=-1.0, lastReadLux=59.34978, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04264275, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6148.443, thermalStatus=none
+  11-07 09:30:30.830 - BrightnessEvent: brt=0.04264275(64.0%), nits=95.98672, lux=59.34978, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.04264275, rcmdBrt=0.04264275, preBrt=NaN, preLux=-1.0, lastReadLux=59.34978, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04264275, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6148.443, thermalStatus=none
+  11-07 09:30:32.351 - BrightnessEvent: brt=0.04264275(64.0%), nits=95.98672, lux=59.34978, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.04264275, rcmdBrt=0.04264275, preBrt=NaN, preLux=-1.0, lastReadLux=48.53304, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04264275, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6094.3564, thermalStatus=none
+  11-07 09:30:34.637 - BrightnessEvent: brt=0.04264275(64.0%), nits=95.98672, lux=59.34978, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.04264275, rcmdBrt=0.04264275, preBrt=NaN, preLux=-1.0, lastReadLux=43.859127, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.04264275, brtRange=[4.3428593E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6227.582, thermalStatus=none
+  11-07 09:30:36.012 - BrightnessEvent: brt=0.047941834(67.0%), nits=107.78092, lux=227.34174, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.04264275, rcmdBrt=0.047941834, preBrt=0.04264275, preLux=59.34978, lastReadLux=227.34174, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047941834, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.05, colorTemp=6290.2183, thermalStatus=none
+  11-07 09:30:38.725 - BrightnessEvent: brt=0.047941834(67.0%), nits=107.78092, lux=227.34174, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.047941834, rcmdBrt=0.047941834, preBrt=0.04264275, preLux=59.34978, lastReadLux=249.2785, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047941834, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6240.082, thermalStatus=none
+  11-07 09:30:41.805 - BrightnessEvent: brt=0.007941835(29.0%), nits=18.701477, lux=227.34174, reason=automatic [ dim ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=DIM, flags=, initBrt=0.047941834, rcmdBrt=0.047941834, preBrt=0.04264275, preLux=59.34978, lastReadLux=249.70898, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047941834, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6171.9062, thermalStatus=none
+  11-07 09:30:43.585 - BrightnessEvent: brt=0.047941834(67.0%), nits=107.78092, lux=227.34174, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=BRIGHT, flags=, initBrt=0.007941835, rcmdBrt=0.047941834, preBrt=0.04264275, preLux=59.34978, lastReadLux=250.93558, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047941834, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6171.9062, thermalStatus=none
+  11-07 09:34:15.860 - BrightnessEvent: brt=0.007941835(29.0%), nits=18.701477, lux=227.34174, reason=automatic [ dim ], strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=DIM, flags=, initBrt=0.047941834, rcmdBrt=0.047941834, preBrt=0.04264275, preLux=59.34978, lastReadLux=254.21078, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047941834, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.7047244, colorTemp=6171.9062, thermalStatus=none
+  11-07 09:34:17.943 - BrightnessEvent: brt=0.047941834(67.0%), nits=107.78092, lux=227.34174, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.007941835, rcmdBrt=0.047941834, preBrt=0.04264275, preLux=59.34978, lastReadLux=255.51965, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047941834, brtRange=[4.4858517E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6171.9062, thermalStatus=none
+  11-07 09:34:18.372 - BrightnessEvent: brt=0.047941834(67.0%), nits=107.78092, lux=227.34174, reason=automatic, strat=AutomaticBrightnessStrategy, state=ON, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.047941834, rcmdBrt=0.047941834, preBrt=0.04264275, preLux=59.34978, lastReadLux=255.76349, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=0.047941834, brtRange=[4.4858523E-4, 0.26870257], hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=true, rampSpeed=0.0, colorTemp=6171.9062, thermalStatus=none
+  11-07 09:34:18.386 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=DEFAULT_POLICY, policy=OFF, flags=, initBrt=0.047941834, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=6171.9062, thermalStatus=none
+  11-07 09:34:18.571 - BrightnessEvent: brt=0.0(0.0%), nits=1.0, lux=-1.0, reason=screen_off, strat=ScreenOffBrightnessStrategy, state=OFF, stateReason=UNKNOWN, policy=DOZE, flags=, initBrt=0.0, rcmdBrt=NaN, preBrt=NaN, preLux=0.0, wasShortTermModelActive=false, autoBrightness=true (default), unclampedBrt=-1.0, hbmMax=0.65, hbmMode=off, thrmMax=1.0, rbcStrength=0, powerFactor=1.0, physDisp=Built-in Screen(local:4619827452008645888), logicalId=0, slowChange=false, rampSpeed=0.0, colorTemp=-1.0, thermalStatus=none
+No Reduce Bright Colors Adjustments
+
+DisplayWhiteBalanceController:
+------------------------------
+  mLoggingEnabled=false
+  mEnabled=false
+  mStrongModeEnabled=false
+  mDisplayPowerControllerCallbacks=com.android.server.display.DisplayPowerController@6c3f581
+  AmbientBrightnessSensor
+    mLoggingEnabled=false
+    mHandler=Handler (com.android.server.display.DisplayPowerController$DisplayControllerHandler) {9030626}
+    mSensorManager=android.hardware.SystemSensorManager@98d6267
+    mSensor={Sensor name="Auto Brightness", vendor="Google", version=1, type=131088, maxRange=1000000.0, resolution=0.001, power=0.001, minDelay=0}
+    mEnabled=false
+    mRate=250
+    mEventsCount=0
+    mEventsHistory=[252.72627 @ 1794072808632, 252.77429 @ 1794072809641, 253.553 @ 1794072810665, 252.75517 @ 1794072811667, 252.45284 @ 1794072812679, 252.80399 @ 1794072813692, 252.71246 @ 1794072814704, 252.95808 @ 1794072815718, 253.00867 @ 1794072816740, 252.4253 @ 1794072817759, 252.82953 @ 1794072818763, 253.06264 @ 1794072819788, 252.67296 @ 1794072820796, 252.87444 @ 1794072821819, 253.64697 @ 1794072822826, 253.16383 @ 1794072823827, 252.9306 @ 1794072824843, 253.60907 @ 1794072825845, 253.20412 @ 1794072826858, 252.67091 @ 1794072827866, 253.27464 @ 1794072828877, 253.21667 @ 1794072829888, 252.912 @ 1794072830910, 253.61151 @ 1794072831922, 253.34062 @ 1794072832938, 252.89485 @ 1794072833958, 252.97522 @ 1794072834970, 253.78761 @ 1794072835995, 253.69374 @ 1794072837009, 253.48425 @ 1794072838017, 253.32915 @ 1794072839018, 253.06433 @ 1794072840028, 253.86588 @ 1794072841044, 253.04042 @ 1794072842058, 253.39673 @ 1794072843058, 253.59192 @ 1794072844080, 253.02312 @ 1794072845105, 253.32292 @ 1794072846134, 253.22583 @ 1794072847136, 253.44307 @ 1794072848140, 253.23187 @ 1794072849143, 253.88339 @ 1794072850145, 253.9145 @ 1794072851172, 253.52539 @ 1794072852187, 253.62401 @ 1794072853210, 253.38661 @ 1794072854223, 254.21078 @ 1794072855224, 253.88031 @ 1794072856243, 255.51965 @ 1794072857255, 255.76349 @ 1794072858258]
+    mCallbacks=com.android.server.display.whitebalance.DisplayWhiteBalanceController@7d87814
+  AmbientBrightnessFilter
+    mLoggingEnabled=false
+    mHorizon=10000
+    mBuffer=[]
+    mIntercept=10.0
+  AmbientColorTemperatureSensor
+    mLoggingEnabled=false
+    mHandler=Handler (com.android.server.display.DisplayPowerController$DisplayControllerHandler) {9030626}
+    mSensorManager=android.hardware.SystemSensorManager@98d6267
+    mSensor={Sensor name="TMD3743 Color", vendor="AMS", version=1, type=65544, maxRange=10000.0, resolution=1.0, power=0.001, minDelay=0}
+    mEnabled=false
+    mRate=100
+    mEventsCount=0
+    mEventsHistory=[3657.294 @ 1794070486462, 3807.4316 @ 1794070502344, 3957.5405 @ 1794070502822, 4108.5273 @ 1794070663185, 4270.7773 @ 1794070663203, 4448.0986 @ 1794070663240, 4631.765 @ 1794070663345, 4789.014 @ 1794070663361, -1.0 @ 1794070735633, 3875.4404 @ 1794070735858, 4025.497 @ 1794070774269, -1.0 @ 1794071562903, 4010.477 @ 1794071563095, 3859.6326 @ 1794071566466, 4009.9019 @ 1794071573817, -1.0 @ 1794071892822, 4017.809 @ 1794071892964, 3866.4958 @ 1794071895212, 4016.8481 @ 1794071896034, -1.0 @ 1794072390982, 3923.769 @ 1794072391115, 3772.9473 @ 1794072434061, 3620.031 @ 1794072436041, 3776.9807 @ 1794072436508, 3927.107 @ 1794072439052, 3776.6104 @ 1794072440118, 3624.9822 @ 1794072441408, 3776.27 @ 1794072442215, 3622.5264 @ 1794072442610, 3471.6687 @ 1794072442925, 3622.64 @ 1794072443716, 3773.4153 @ 1794072443954, 3931.3066 @ 1794072444025, 3780.7031 @ 1794072566491, 3627.507 @ 1794072566595, 3780.1582 @ 1794072566999, 3930.3528 @ 1794072567228, 4082.5361 @ 1794072567816, 4235.0576 @ 1794072567929, 4385.4424 @ 1794072568100, 4229.7114 @ 1794072568448, 4078.9456 @ 1794072568569, 3927.4084 @ 1794072568726, -1.0 @ 1794072630869, 3888.713 @ 1794072630999, 4042.4617 @ 1794072631050, 4196.7417 @ 1794072631658, 4347.734 @ 1794072633843, 4193.8794 @ 1794072635802, 4043.8125 @ 1794072636612]
+    mCallbacks=com.android.server.display.whitebalance.DisplayWhiteBalanceController@7d87814
+  AmbientColorTemperatureFilter
+    mLoggingEnabled=false
+    mHorizon=1000
+    mBuffer=[]
+    mIntercept=10.0
+  DisplayWhiteBalanceThrottler
+    mLoggingEnabled=false
+    mIncreaseDebounce=1000
+    mDecreaseDebounce=1000
+    mLastTime=-1
+    mBaseThresholds=[6300.0, 6400.0, 6850.0, 7450.0]
+    mIncreaseThresholds=[0.007874, 0.0075472, 0.006993, 0.0067114]
+    mDecreaseThresholds=[0.007874, 0.0075472, 0.006993, 0.0067114]
+    mIncreaseThreshold=-1.0
+    mDecreaseThreshold=-1.0
+    mLastValue=-1.0
+  mLowLightAmbientColorTemperature=5250.0
+  mLowLightAmbientColorTemperatureStrong=4000.0
+  mHighLightAmbientColorTemperature=6700.0
+  mHighLightAmbientColorTemperatureStrong=8000.0
+  mAmbientColorTemperature=-1.0
+  mPendingAmbientColorTemperature=-1.0
+  mLastAmbientColorTemperature=6171.9062
+  mAmbientColorTemperatureHistory=[5978.547 @ 1794068034348, 5822.766 @ 1794068035440, 6048.3677 @ 1794068037297, 5981.3994 @ 1794068046401, 6041.417 @ 1794068048204, 5840.2866 @ 1794068049280, 5961.8916 @ 1794068050764, 6049.725 @ 1794068053766, 6100.904 @ 1794068284136, 6100.904 @ 1794068741391, 6062.2974 @ 1794068742065, 6062.2974 @ 1794069248909, 6071.968 @ 1794069249159, 6071.968 @ 1794070442493, 6175.0396 @ 1794070442759, 6229.587 @ 1794070443890, 6229.587 @ 1794070486010, 5967.9707 @ 1794070486464, 6026.215 @ 1794070502823, 6128.7705 @ 1794070504506, 6182.203 @ 1794070663341, 6182.203 @ 1794070735592, 6087.72 @ 1794070735865, 6139.457 @ 1794070774916, 6139.457 @ 1794071562821, 6155.2383 @ 1794071563096, 6079.8164 @ 1794071567969, 6139.756 @ 1794071574587, 6139.756 @ 1794071892711, 6158.9043 @ 1794071892964, 6102.114 @ 1794071896037, 6158.424 @ 1794071897797, 6158.424 @ 1794072390858, 6111.885 @ 1794072391115, 6062.716 @ 1794072434669, 6014.76 @ 1794072436245, 6109.856 @ 1794072439998, 6044.167 @ 1794072441031, 5975.293 @ 1794072442092, 5926.7876 @ 1794072443281, 6005.4004 @ 1794072444359, 6115.6533 @ 1794072445361, 6066.9507 @ 1794072566786, 6148.443 @ 1794072568075, 6148.443 @ 1794072630725, 6094.3564 @ 1794072631000, 6227.582 @ 1794072632353, 6290.2183 @ 1794072634638, 6240.082 @ 1794072636702, 6171.9062 @ 1794072638727]
+  mAmbientColorTemperatureOverride=-1.0
+  mAmbientToDisplayColorTemperatureSpline=LinearSpline{[(2500.0, 5250.0: 0.5), (3100.0, 5550.0: 0.75), (3700.0, 6000.0: 0.5), (4200.0, 6250.0: 0.33333334), (4800.0, 6450.0: 0.2), (5300.0, 6550.0: 0.2857143), (6000.0, 6750.0: 0.2), (6500.0, 6850.0: 0.2), (7000.0, 6950.0: 0.2), (7500.0, 7050.0: 0.3), (8000.0, 7200.0)]}
+  mStrongAmbientToDisplayColorTemperatureSpline=LinearSpline{[(3000.0, 4000.0: 1.2), (3500.0, 4600.0: 1.6), (4000.0, 5400.0: 1.8), (4500.0, 6300.0: 1.8), (5000.0, 7200.0: 0.0), (5500.0, 7200.0: 0.0), (6000.0, 7200.0: 0.0), (6500.0, 7200.0: 0.0), (7000.0, 7200.0: 0.0), (7500.0, 7200.0: 0.0), (8000.0, 7200.0)]}
+  mLowLightAmbientBrightnessToBiasSpline=LinearSpline{[(3.0, 0.0: 0.14285715), (10.0, 1.0)]}
+  mLowLightAmbientBrightnessToBiasSplineStrong=LinearSpline{[(3.0, 0.0: 0.14285715), (10.0, 1.0)]}
+  mHighLightAmbientBrightnessToBiasSpline=LinearSpline{[(130000.0, 0.0: 5.0E-5), (150000.0, 1.0)]}
+  mHighLightAmbientBrightnessToBiasSplineStrong=LinearSpline{[(130000.0, 0.0: 5.0E-5), (150000.0, 1.0)]}
+DisplayWhiteBalanceSettings:
+----------------------------
+  mLoggingEnabled=false
+  mContext=android.app.ContextImpl@5b7b228
+  mHandler=Handler (com.android.server.display.whitebalance.DisplayWhiteBalanceSettings$DisplayWhiteBalanceSettingsHandler) {f3968bd}
+  mEnabled=true
+  mActive=true
+  mCallbacks=com.android.server.display.DisplayPowerController@6c3f581
+
+WakelockController State:
+-------------------------
+  mDisplayId=0
+  mUnfinishedBusiness=false
+  mOnStateChangePending=false
+  mOnProximityPositiveMessages=false
+  mOnProximityNegativeMessages=false
+  mIsOverrideDozeScreenStateAcquired=false
+
+DisplayStateController:
+-----------------------
+  mShouldSkipScreenOffTransition=false
+  mPerformScreenOffTransition=false
+  mDozeStateOverride=0
+
+DisplayPowerProximityStateController:
+-------------------------------------
+  mPendingWaitForNegativeProximityLocked=false
+  mDisplayId=0
+  mWaitingForNegativeProximity=false
+  mIgnoreProximityUntilChanged=false
+  mProximitySensor={Sensor name="Proximity(Voice Calls) Sensor (wake-up)", vendor="Google", version=1, type=131092, maxRange=1000000.0, resolution=1.0, power=0.001, minDelay=0}
+  mProximitySensorEnabled=false
+  mProximityThreshold=5.0
+  mProximity=Unknown
+  mPendingProximity=Unknown
+  mPendingProximityDebounceTime=-1 (584215427 ms ago)
+  mScreenOffBecauseOfProximity=false
+  mSkipRampBecauseOfProximityChangeToNegative=false
+
+Display Power Controller:
+-------------------------
+  mDisplayId=89
+  mLeadDisplayId=-1
+  mLightSensor={Sensor name="Auto Brightness", vendor="Google", version=1, type=131088, maxRange=1000000.0, resolution=0.001, power=0.001, minDelay=0}
+  mDisplayBrightnessFollowers={}
+
+Display Power Controller Locked State:
+  mDisplayReadyLocked=true
+  mPendingRequestLocked=policy=DOZE, useProximitySensor=false, screenBrightnessOverride=NaN, screenAutoBrightnessAdjustmentOverride=NaN, screenLowPowerBrightnessFactor=1.0, blockScreenOn=false, lowPowerMode=false, boostScreenBrightness=false, dozeScreenBrightness=0.0, dozeScreenState=OFF, dozeScreenStateReason=UNKNOWN, useNormalBrightnessForDoze=false
+  mPendingRequestChangedLocked=false
+  mPendingUpdatePowerStateLocked=false
+
+Display Power Controller Configuration:
+  mScreenBrightnessDozeConfig=0.0
+  mUseSoftwareAutoBrightnessConfig=true
+  mSkipScreenOnBrightnessRamp=false
+  mColorFadeFadesConfig=false
+  mColorFadeEnabled=true
+  mIsDisplayInternal=false
+  mCachedBrightnessInfo.brightness=0.0
+  mCachedBrightnessInfo.adjustedBrightness=0.0
+  mCachedBrightnessInfo.brightnessMin=0.0
+  mCachedBrightnessInfo.brightnessMax=1.0
+  mCachedBrightnessInfo.hbmMode=0
+  mCachedBrightnessInfo.hbmTransitionPoint=Infinity
+  mCachedBrightnessInfo.brightnessMaxReason =0
+  mCachedBrightnessInfo.brightnessReason =android.util.MutableInt@8895eb2
+  mDisplayBlanksAfterDozeConfig=false
+  mBrightnessBucketsInDozeConfig=false
+  mDozeScaleFactor=1.0
+
+Display Power Controller Thread State:
+  mPowerRequest=policy=DOZE, useProximitySensor=false, screenBrightnessOverride=NaN, screenAutoBrightnessAdjustmentOverride=NaN, screenLowPowerBrightnessFactor=1.0, blockScreenOn=false, lowPowerMode=false, boostScreenBrightness=false, dozeScreenBrightness=0.0, dozeScreenState=OFF, dozeScreenStateReason=UNKNOWN, useNormalBrightnessForDoze=false
+  mBrightnessReason=screen_off
+  mDozing=true
+  mSkipRampState=RAMP_STATE_SKIP_NONE
+  mScreenOnBlockStartRealTime=0
+  mScreenOffBlockStartRealTime=947648819
+  mPendingScreenOnUnblocker=null
+  mPendingScreenOffUnblocker=null
+  mPendingScreenOff=false
+  mReportedToPolicy=REPORTED_TO_POLICY_SCREEN_OFF
+  mIsRbcActive=false
+AutomaticBrightnessStrategy:
+  mDisplayId=89
+  mAutoBrightnessAdjustment=0.0
+  mPendingAutoBrightnessAdjustment=NaN
+  mTemporaryAutoBrightnessAdjustment=NaN
+  mShouldResetShortTermModel=false
+  mAppliedAutoBrightness=false
+  mAutoBrightnessAdjustmentChanged=false
+  mAppliedTemporaryAutoBrightnessAdjustment=false
+  mUseAutoBrightness=true
+  mIsAutoBrightnessOverriddenInDoze=false
+  mWasShortTermModelActive=false
+  mAutoBrightnessAdjustmentReasonsFlags=0
+  mScreenBrightnessRampAnimator.isAnimating()=false
+  mColorFadeOffAnimator.isStarted()=false
+
+Display Power State:
+  mStopped=false
+  mScreenState=OFF
+  mScreenBrightness=0.0
+  mSdrScreenBrightness=0.0
+  mScreenReady=true
+  mScreenUpdatePending=false
+  mColorFadePrepared=false
+  mColorFadeLevel=0.0
+  mColorFadeReady=true
+  mColorFadeDrawPending=false
+
+Photonic Modulator State:
+  mPendingState=OFF
+  mPendingBacklight=-1.0
+  mPendingSdrBacklight=-1.0
+  mActualState=OFF
+  mActualBacklight=-1.0
+  mActualSdrBacklight=-1.0
+  mStateChangeInProgress=false
+  mBacklightChangeInProgress=false
+
+Color Fade State:
+  mPrepared=false
+  mMode=0
+  mDisplayLayerStack=0
+  mDisplayWidth=0
+  mDisplayHeight=0
+  mSurfaceVisible=false
+  mSurfaceAlpha=0.0
+
+
+DisplayBrightnessController:
+  mDisplayId=: 89
+  mScreenBrightnessDefault=0.0
+  mPersistBrightnessNitsForDefaultDisplay=false
+  mIsStylusBeingUsed=false
+  mCurrentMinBrightness=0.0
+  mCurrentMaxBrightness=1.0
+  mPendingUnthrottledScreenBrightness=NaN
+  mCurrentScreenBrightness=0.0
+  mCurrentUnthrottledBrightness=0.0
+  mLastUserSetScreenBrightness=NaN
+  Last selected DisplayBrightnessStrategy= ScreenOffBrightnessStrategy
+
+DisplayBrightnessStrategySelector:
+----------------------------------
+  mDisplayId= 89
+  mOldBrightnessStrategyName= ScreenOffBrightnessStrategy
+  mAllowAutoBrightnessWhileDozingConfig= false
+  mAllowAutoBrightnessWhileDozing= false
+DozeBrightnessStrategy:
+  mDozeScaleFactor:1.0
+  mDefaultDozeBrightness:0.0
+FollowerBrightnessStrategy:
+  mDisplayId=89
+  mBrightnessToFollow:NaN
+  mBrightnessToFollowSlowChange:false
+OverrideBrightnessStrategy:
+  mWindowManagerBrightnessOverride=NaN
+  mWindowManagerBrightnessOverrideTag=null
+TemporaryBrightnessStrategy:
+  mTemporaryScreenBrightness:NaN
+AutomaticBrightnessStrategy:
+  mDisplayId=89
+  mAutoBrightnessAdjustment=0.0
+  mPendingAutoBrightnessAdjustment=NaN
+  mTemporaryAutoBrightnessAdjustment=NaN
+  mShouldResetShortTermModel=false
+  mAppliedAutoBrightness=false
+  mAutoBrightnessAdjustmentChanged=false
+  mAppliedTemporaryAutoBrightnessAdjustment=false
+  mUseAutoBrightness=true
+  mIsAutoBrightnessOverriddenInDoze=false
+  mWasShortTermModelActive=false
+  mAutoBrightnessAdjustmentReasonsFlags=0
+OffloadBrightnessStrategy:
+  mOffloadScreenBrightness:NaN
+AutoBrightnessFallbackStrategy:
+  mLeadDisplayId=0
+  mIsDisplayEnabled=false
+
+
+BrightnessClamperController:
+LightSensorController
+  mLightSensor={Sensor name="Auto Brightness", vendor="Google", version=1, type=131088, maxRange=1000000.0, resolution=0.001, power=0.001, minDelay=0}
+  mRegisteredLightSensor=null
+BrightnessThermalClamper:
+  mThrottlingStatus: 0
+  mUniqueDisplayId: virtual:com.android.shell,2000,scrcpy,85
+  mDataId: default
+  mDataOverride: {}
+  mDataFromDeviceConfig: null
+  mDataActive: null
+  mBrightnessCap:1.0
+  mApplied:false
+  ThermalStatusObserver:
+    mStarted: true
+    mObserverTempSensor: SensorData{type= SKIN, name= null, refreshRateRange: [0.0, Infinity], supportedModes=[]}
+    ThermalService available
+BrightnessExternalModifier:
+  mBrightnessCapMap: []
+  mBrightnessCap: 1.0
+  mBrightnessCapReason: 0
+  mApplied: false
+  mStopped: false
+DisplayDimModifier:
+  mScreenBrightnessDimConfig=0.05
+  mScreenBrightnessMinimumDimAmount=0.04
+BrightnessModifier:
+  mApplied=false
+BrightnessLowPowerModeModifier:
+BrightnessModifier:
+  mApplied=false
+HdrBrightnessModifier:
+  mHdrBrightnessData=null
+  mScreenSize=777600.0
+  mMaxDesiredHdrRatio=1.0
+  mHdrLayerSize=-1.0
+  mAmbientLux=-1.0
+  mLowPowerMode=false
+  mMode=NO_HDR
+  mMaxBrightness=1.0
+  mPendingMaxBrightness=1.0
+  mTransitionRate=-1.0
+  mPendingTransitionRate=-1.0
+  mHdrListener registered=false
+  mHdrOverrideListener registered=false
+  mLowPowerModeSettingObserver.mRegistered=false
+  mHdrSettingsObserver.mRegistered=false
+  mHdrBrightnessEnabled=true
+  mHdrBrightnessBoostLevel=1.0
+  ratioScaleFactor=1.0
+  mHdrBoostOverride=null
+BrightnessPluginModifier:
+  mMaxBrightnessCap=1.0
+  mTransitionRate=-1.0
+  mReasonModifier=0
+  mRegisteredUniqueDisplayId=virtual:com.android.shell,2000,scrcpy,85
+BrightnessMaxLuxModifier:
+  mAutoBrightnessEnabled=false
+  mIsHbmAllowed=false
+  mAmbientLux=-1.0
+  mMaxBrightness=1.0
+  mMaxBrightnessLimits={}
+  shouldListenToLightSensor=false
+
+HighBrightnessModeController:
+  mHbmControllerIsEnabled=true
+  mCurrentMin=0.0
+  mCurrentMax=1.0
+  mHbmMode=off
+  mAmbientLux=0.0 (old/invalid)
+  mBrightnessMin=0.0
+  mBrightnessMax=1.0
+  remainingTime=0
+  width*height=720*1080
+  mHdrBoostDisabled=true
+  mHighBrightnessModeMetadata=null
+
+HighBrightnessModeState:
+  mBrightness=0.0
+  mUnthrottledBrightness=0.0
+  mThrottlingReason=none
+  mHbmMode=off
+  mHbmStatsState=HBM_OFF
+  mHbmData=null
+  mIsInAllowedAmbientRange=false
+  mIsAutoBrightnessEnabled=false
+  mIsAutoBrightnessOffByState=true
+  mIsHdrLayerPresent=false
+  mIsTimeAvailable= false
+  mIsBlockedByLowPowerMode=false
+
+No Reduce Bright Colors Adjustments
+
+
+WakelockController State:
+-------------------------
+  mDisplayId=89
+  mUnfinishedBusiness=false
+  mOnStateChangePending=false
+  mOnProximityPositiveMessages=false
+  mOnProximityNegativeMessages=false
+  mIsOverrideDozeScreenStateAcquired=false
+
+DisplayStateController:
+-----------------------
+  mShouldSkipScreenOffTransition=false
+  mPerformScreenOffTransition=false
+  mDozeStateOverride=0
+
+DisplayPowerProximityStateController:
+-------------------------------------
+  mPendingWaitForNegativeProximityLocked=false
+  mDisplayId=89
+  mWaitingForNegativeProximity=false
+  mIgnoreProximityUntilChanged=false
+  mProximitySensor=null
+  mProximitySensorEnabled=false
+  mProximityThreshold=0.0
+  mProximity=Unknown
+  mPendingProximity=Unknown
+  mPendingProximityDebounceTime=-1 (584215428 ms ago)
+  mScreenOffBecauseOfProximity=false
+  mSkipRampBecauseOfProximityChangeToNegative=false
+
+BrightnessTracker state:
+------------------------
+  mStarted=true
+  mLightSensor={Sensor name="Auto Brightness", vendor="Google", version=1, type=131088, maxRange=1000000.0, resolution=0.001, power=0.001, minDelay=0}
+  mLastBatteryLevel=0.9
+  mLastBrightness=107.78092
+  mEventsDirty=false
+  mEvents.size=9
+    10-08 07:37:21.261, userId=0, 273.63766->272.2575, isUserSetBrightness=true, powerBrightnessFactor=1.0, isDefaultBrightnessConfig=false, recent lux values= {(1047.0122,1791470240970)}
+    10-25 17:25:28.438, userId=0, 2.0757182->318.25113, isUserSetBrightness=true, powerBrightnessFactor=1.0, isDefaultBrightnessConfig=false, recent lux values= {(0.044975366,1792974322788), (0.042592946,1792974323782), (0.0560304,1792974324782), (0.07553179,1792974325783), (0.07560067,1792974326787), (0.080754034,1792974327788)}
+    10-26 08:51:55.600, userId=0, 90.04131->88.70502, isUserSetBrightness=true, powerBrightnessFactor=1.0, isDefaultBrightnessConfig=false, recent lux values= {(30.578287,1793029915140)}
+    10-28 20:20:50.391, userId=0, 3.8933818->38.27987, isUserSetBrightness=true, powerBrightnessFactor=1.0, isDefaultBrightnessConfig=false, recent lux values= {(0.81994694,1793244044717), (0.83498627,1793244045715), (0.85953605,1793244046715), (0.8639619,1793244047716), (0.8544338,1793244048717), (0.80954397,1793244049717)}
+    10-30 21:32:44.043, userId=0, 86.44189->88.70502, isUserSetBrightness=true, powerBrightnessFactor=1.0, isDefaultBrightnessConfig=false, recent lux values= {(17.099691,1793421163794), (14.873884,1793421163839)}
+    11-02 10:56:03.213, userId=0, 240.95647->237.55675, isUserSetBrightness=true, powerBrightnessFactor=1.0, isDefaultBrightnessConfig=false, recent lux values= {(875.65424,1793645762868)}
+    11-03 19:02:32.552, userId=0, 2.0755374->104.42019, isUserSetBrightness=true, powerBrightnessFactor=1.0, isDefaultBrightnessConfig=false, recent lux values= {(0.048156224,1793761346735), (0.031403776,1793761347491), (0.018793404,1793761348492), (0.033695545,1793761349493), (1.0346986,1793761349880), (2.0448148,1793761350014), (3.0508308,1793761350130), (2.7441432,1793761350376), (2.454131,1793761350405), (2.1884124,1793761350430), (1.9588964,1793761350451), (1.7263544,1793761350472), (1.5413119,1793761350485), (1.3603438,1793761350501), (1.186065,1793761350518), (1.0611421,1793761350530), (0.9421401,1793761350543), (0.8299245,1793761350556), (0.7253103,1793761350568), (0.599082,1793761350585), (0.48721948,1793761350601), (0.36751905,1793761350618), (0.25209618,1793761350643), (0.1502804,1793761350672), (0.04832131,1793761350727), (5.104773E-4,1793761351735)}
+    11-04 09:40:53.331, userId=0, 2.184698->128.76726, isUserSetBrightness=true, powerBrightnessFactor=1.0, isDefaultBrightnessConfig=false, recent lux values= {(0.5694014,1793814048174), (0.54807013,1793814048489), (0.69101113,1793814049489), (1.6942488,1793814050156), (2.72572,1793814050252), (3.798295,1793814050314), (4.8218384,1793814050361), (5.8699627,1793814050406), (6.888224,1793814050452), (7.9812665,1793814050507), (9.18946,1793814050602), (7.8946915,1793814051444), (7.046736,1793814051465), (6.2754602,1793814051569), (5.565381,1793814051653), (4.9934587,1793814051757), (6.0082555,1793814052049), (7.0597963,1793814052174), (8.142898,1793814052336), (9.36813,1793814052495), (10.775086,1793814052708), (12.411871,1793814052920), (14.301767,1793814053174)}
+    11-04 18:00:12.669, userId=0, 4.963826->209.686, isUserSetBrightness=true, powerBrightnessFactor=1.0, isDefaultBrightnessConfig=false, recent lux values= {(1.1020775,1793844006946), (1.0659441,1793844007935), (1.0703639,1793844008937), (1.058317,1793844009942), (1.2523456,1793844010946), (1.1884873,1793844011946)}
+  mWriteBrightnessTrackerStateScheduled=false
+  mSensorRegistered=false
+  mColorSamplingEnabled=false
+  mNoFramesToSample=0
+  mFrameRate=0.0
+  mIsDisplayActive=false
+  mDisplayListenerRegistered=false
+
+AmbientBrightnessStats:
+  0 2026-11-01 {0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0, 10000.0} {5349.8765, 67.02601, 15.788, 161.68, 1513.8679, 1220.0732, 79.63601, 1188.8627, 1867.8256, 693.8532, 132.67499, 0.0}
+  0 2026-11-02 {0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0, 10000.0} {3855.7185, 434.5436, 479.86465, 135.27206, 1610.7351, 566.02234, 1872.8126, 4218.543, 1256.0056, 0.0, 0.0, 0.0}
+  0 2026-11-03 {0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0, 10000.0} {2650.2117, 32.078, 334.8282, 1324.6469, 1002.15576, 452.70422, 3424.0999, 1889.2528, 323.9603, 601.3325, 0.0, 0.0}
+  0 2026-11-04 {0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0, 10000.0} {3970.4785, 7.998, 96.09701, 3538.8928, 278.72018, 202.66417, 4525.367, 5617.8, 993.78906, 0.0, 0.0, 0.0}
+  0 2026-11-05 {0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0, 10000.0} {27.818, 15.1449995, 125.11695, 33.036, 900.9226, 1271.3883, 4281.4116, 3216.3684, 1044.9696, 0.0, 0.0, 0.0}
+  0 2026-11-06 {0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0, 10000.0} {3519.7058, 1772.7681, 1382.392, 182.81406, 279.43286, 1051.9675, 7838.6875, 1558.75, 719.36554, 0.0, 0.0, 0.0}
+  0 2026-11-07 {0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0, 10000.0} {14.345999, 0.423, 0.392, 0.957, 137.74802, 601.10736, 977.16205, 2606.559, 393.81335, 0.0, 0.0, 0.0}
+
+DisplayModeDirector:
+--------------------
+  mSupportedModesByDisplay:
+    0 -> [{id=1, parentModeId=-1, sfModeId=0, flags=, width=1280, height=2856, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=2, parentModeId=-1, sfModeId=1, flags=, width=1080, height=2410, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=3, parentModeId=1, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1280, height=2856, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}, {id=4, parentModeId=2, sfModeId=-1, flags=, FLAG_ARR_RENDER_RATE, width=1080, height=2410, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}]
+    89 -> [{id=156, parentModeId=-1, sfModeId=-1, flags=, width=720, height=1080, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[]}]
+  mDefaultModeByDisplay:
+    0 -> {id=2, parentModeId=-1, sfModeId=1, flags=, width=1080, height=2410, fps=120.00001, vsync=120.00001, alternativeRefreshRates=[], supportedHdrTypes=[2, 3, 4]}
+    89 -> {id=156, parentModeId=-1, sfModeId=-1, flags=, width=720, height=1080, fps=60.0, vsync=60.0, alternativeRefreshRates=[], supportedHdrTypes=[]}
+  mModeSwitchingType: SWITCHING_TYPE_WITHIN_GROUPS
+  mAlwaysRespectAppRequest: false
+  SettingsObserver
+    mDefaultRefreshRate: 0.0
+    mDefaultPeakRefreshRate: 120.0
+  AppRequestObserver
+    mEnableSizeVote=true
+    mmEnabledForTesting=false
+  BrightnessObserver
+    mAmbientLux: -1.0
+    mBrightness: 0.0
+    mDefaultDisplayState: 1
+    mLowPowerModeEnabled: false
+    mRefreshRateChangeable: true
+    mShouldObserveDisplayLowChange: false
+    mShouldObserveAmbientLowChange: false
+    mRefreshRateInLowZone: 0
+    mShouldObserveDisplayHighChange: false
+    mShouldObserveAmbientHighChange: false
+    mRefreshRateInHighZone: 0
+    mRegisteredLightSensor: null
+    mLightSensor: null
+    mLightSensorName: 
+    mLightSensorType: com.google.sensor.auto_brightness
+    mLastSensorData: 0.0
+    mTimestamp: 1969-12-31 16:00:00.000
+  UdfpsObserver
+    mUdfpsRefreshRateEnabled: 
+    mAuthenticationPossible: 
+   HbmObserver
+     mHbmMode: {0=0}
+     mHbmActive: {0=false}
+     mRefreshRateInHbmSunlight: 0
+     mRefreshRateInHbmHdr: 0
+  SkinThermalStatusObserver:
+    mStatus: 0
+    mThermalThrottlingByDisplay: {0={}, 89={}}
+    mThermalWorkDurationsByDisplay: {0=null, 2=null, 3=null, 4=null, 5=null, 6=null, 7=null, 8=null, 9=null, 10=null, 11=null, 12=null, 13=null, 14=null, 15=null, 16=null, 17=null, 18=null, 19=null, 20=null, 21=null, 22=null, 23=null, 24=null, 25=null, 26=null, 27=null, 28=null, 29=null, 30=null, 31=null, 32=null, 33=null, 34=null, 35=null, 36=null, 37=null, 38=null, 39=null, 40=null, 41=null, 42=null, 43=null, 44=null, 45=null, 46=null, 47=null, 48=null, 49=null, 50=null, 51=null, 52=null, 53=null, 54=null, 55=null, 56=null, 57=null, 58=null, 59=null, 60=null, 61=null, 62=null, 64=null, 65=null, 68=null, 69=null, 70=null, 71=null, 72=null, 73=null, 74=null, 75=null, 76=null, 77=null, 78=null, 79=null, 80=null, 81=null, 82=null, 83=null, 84=null, 85=null, 86=null, 87=null, 88=null, 89=null}
+  mVotesByDisplay:
+    0:
+      PRIORITY_USER_SETTING_PEAK_RENDER_FRAME_RATE -> RenderVote{ RefreshRateVote{  mMinRefreshRate=0.0, mMaxRefreshRate=120.00001 } }
+      PRIORITY_USER_SETTING_MIN_RENDER_FRAME_RATE -> RenderVote{ RefreshRateVote{  mMinRefreshRate=0.0, mMaxRefreshRate=Infinity } }
+    89:
+      PRIORITY_USER_SETTING_PEAK_RENDER_FRAME_RATE -> RenderVote{ RefreshRateVote{  mMinRefreshRate=0.0, mMaxRefreshRate=60.0 } }
+      PRIORITY_USER_SETTING_PEAK_REFRESH_RATE -> CombinedVote{ mVotes=[PhysicalVote{ RefreshRateVote{  mMinRefreshRate=0.0, mMaxRefreshRate=60.0 } }, DisableRefreshRateSwitchingVote{ mDisableRefreshRateSwitching=false }] }
+      PRIORITY_USER_SETTING_MIN_RENDER_FRAME_RATE -> RenderVote{ RefreshRateVote{  mMinRefreshRate=0.0, mMaxRefreshRate=Infinity } }
+  SensorObserver
+    mIsProxActive=false
+    mDozeStateByDisplay:
+      0 -> false
+      89 -> false
+
+BrightnessSynchronizer:
+-----------------------
+  mLatestIntBrightness=13
+  mLatestFloatBrightness=0.047941834
+  mCurrentUpdate=null
+  mPendingUpdate=null
+
+Small area detection allowlist:
+-------------------------------
+  Packages:
+    com.reddit.frontpage threshold = 0.07
+    com.instagram.android threshold = 0.07
+    com.bilibili.app.in threshold = 0.07
+    com.twitter.android threshold = 0.07
+    com.zhiliaoapp.musically threshold = 0.07
+    com.spotify.music threshold = 0.05
+    com.facebook.katana threshold = 0.07
+
+Display Topology Coordinator:
+----------------------------------------
+  isExtendedDisplayAllowed=true
+  shouldIncludeDefaultDisplayInTopology=false
+  DisplayTopology:
+  --------------------
+    mPrimaryDisplayId: 0
+    Topology tree:
+      Display {id=0, logical width=1080, logical height=2410, logical density=420, position=left, offset=0.0}
+
+    PluginManager:
+    PluginStorage:
+    values={}
+    listeners={}
+    PluginEventStorage:
+
+DisplayManagerFlags:
+--------------------
+ synced_resolution_switch:                             true (def:true)
+ sensor_based_brightness_throttling:                   true (def:true)
+ block_autobrightness_changes_on_stylus_usage:         true (def:true)
+ enable_get_supported_refresh_rates:                   true (def:true)
+ enable_display_content_mode_management:               true (def:true)
+ framerate_override_triggers_rr_callbacks:             true (def:true)
+ refresh_rate_event_for_foreground_apps:               true (def:true)
+ committed_state_separate_event:                       true (def:true)
+ separate_timeouts:                                    true (def:true)
+ delay_implicit_rr_registration_until_rr_accessed:     true (def:true)
+ ensure_color_fade_when_turning_on:                    false (def:false)
+ minmode_cap_brightness_enabled:                       false (def:false)

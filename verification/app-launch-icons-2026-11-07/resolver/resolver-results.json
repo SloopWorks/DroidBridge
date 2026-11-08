@@ -1,0 +1,35 @@
+{
+  "androidCommands" : 0,
+  "checkCount" : 21,
+  "fixtureOnly" : true,
+  "openedApplications" : 0,
+  "passed" : [
+    "Fixture has no installed host; live selection cannot depend on stopped-wrapper freshness",
+    "Live-app fixture uses the opposite directory URL hint from the enumerated wrapper",
+    "Live private cache wins over an earlier stopped manual candidate",
+    "A live-looking manual wrapper saved for a different serial is ignored",
+    "A live-looking manual wrapper saved for a different backend is ignored",
+    "One package has distinct private bundle identities for each phone and backend",
+    "Private bundle identity is deterministic",
+    "One package has distinct private cache directories for each phone and backend",
+    "Malformed wrapper plist or launch JSON is never returned as launchable",
+    "A symbolic link in the wrapper directory is refused",
+    "Companion-sized 128px icon is rejected for a Mac wrapper",
+    "A 512px Android icon is accepted for a Mac wrapper",
+    "Malformed icon bytes are rejected",
+    "Held preparation lock reports busy after a bounded approximately one-second wait",
+    "Busy preparation leaves no staging bundle or published app",
+    "Cancelling a held-lock preparation returns CancellationError within 700ms",
+    "Cancelled preparation leaves no staging bundle or published app",
+    "After lock release preparation reaches the intentionally missing runtime",
+    "Failed runtime preparation cleans its staging bundle without publishing",
+    "Preparation failure releases its kernel lease for the next attempt",
+    "Resolver fixture leaves managed catalog and managed apps untouched"
+  ],
+  "scope" : "\/private\/tmp\/droidbridge-resolver.kNJZtL",
+  "serial" : "emulator-5580",
+  "timings" : {
+    "heldLockBusySeconds" : 1.0279930833330582,
+    "heldLockCancellationSeconds" : 0.00019329166570969392
+  }
+}

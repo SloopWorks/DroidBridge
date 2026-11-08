@@ -29,13 +29,47 @@ struct ManagedAppNameRepairProgress {
         FileManager.default.fileExists(atPath:paths.privateRoot.appendingPathComponent("catalog.json").path)
     }
     func schedule() {
-        guard !isRunning,mayProceed(),hostBundleURL.pathExtension == "app",Date() >= nextSweep,Self.catalogExists(paths:catalog.paths) else {return}
+        guard !isRunning,mayProceed(),hostBundleURL.pathExtension == "app",Date() >= nextSweep else {return}
         isRunning=true
         work=Task { [self] in
             defer {isRunning=false;work=nil;onProgress?(ManagedAppNameRepairProgress(message:""))}
             do {
-                let records=try await Task.detached {try self.catalog.records()}.value
+                let hasCatalog = Self.catalogExists(paths: catalog.paths)
+                let records=try await Task.detached {hasCatalog ? try self.catalog.records() : []}.value
                 try checkAdmission()
+                let backupReaders = runningPaths()
+                let manualRoot = CompanionQAScope.current?.root.appendingPathComponent("ManualApps") ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Applications/DroidBridge Apps")
+                let cacheRoot = AppLaunchResolver.cacheRoot
+                let backupWork = Task.detached {
+                    var remaining = 16
+                    let discovery = WrapperBackup.legacyDirectories(manualRoot: manualRoot, cacheRoot: cacheRoot)
+                    var issues = discovery.issues
+                    for directory in discovery.directories where remaining > 0 {
+                        try Task.checkCancellation()
+                        do {
+                            let result = try await WrapperBackup.retireDirectory(directory, runningBundlePaths: backupReaders, limit: remaining)
+                            remaining -= result.attempts; issues += result.issues
+                        } catch is CancellationError { throw CancellationError() }
+                          catch { issues.append(String(error.localizedDescription.prefix(500))) }
+                    }
+                    return Array(issues.prefix(16))
+                }
+                let legacyIssues = try await withTaskCancellationHandler(operation: { try await backupWork.value }, onCancel: { backupWork.cancel() })
+                try checkAdmission()
+                let retired = await Task.detached {
+                    do { return hasCatalog ? try self.catalog.retireBackups(runningBundlePaths: backupReaders) : WrapperBackup.Migration() }
+                    catch { var result = WrapperBackup.Migration(); result.note(self.catalog.paths.privateRoot, error); return result }
+                }.value
+                for issue in (legacyIssues + retired.issues).prefix(16) { onDetail?("Backup preserved: " + issue) }
+                for backup in retired.retired {
+                    try checkAdmission()
+                    do {
+                        try await WrapperBackup.unregister(backup)
+                        try await Task.detached { try self.catalog.completeBackupUnregistration(backup) }.value
+                    } catch { onDetail?("Backup unregistration will retry: " + String(error.localizedDescription.prefix(500))) }
+                }
+                nextSweep = Date().addingTimeInterval(4)
+                guard hasCatalog else { return }
                 let liveKeys=Set(records.map(\.key));retryAfter=retryAfter.filter{liveKeys.contains($0.key)}
                 let info=Bundle(url:hostBundleURL)?.infoDictionary ?? [:]
                 let hostVersion=info["CFBundleShortVersionString"] as? String ?? ""
@@ -152,8 +186,7 @@ struct ManagedAppNameRepairProgress {
 
 extension LauncherController {
     func scheduleManagedNameRepair() {
-        guard !isWrapper,!quitting,!creatingWrapper,!onboardingPending,!onboarding.isRunning,
-              ManagedAppNameRepair.catalogExists() else {return}
+        guard !isWrapper,!quitting,!creatingWrapper,!onboardingPending,!onboarding.isRunning else {return}
         if managedNameRepair == nil {
             let repair=ManagedAppNameRepair(toolchain:toolchain,catalog:managedCatalog)
             repair.mayProceed={ [weak self] in

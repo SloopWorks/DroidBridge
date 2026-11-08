@@ -1,0 +1,10 @@
+{
+  "installed": "/Users/patrick/Applications/DroidBridge.app",
+  "build": "23",
+  "sha256": "d241ddb9e897254e2943b53bd239a587c3a1d5d7d17c95d3546a8df519e5090b",
+  "previous_app_archive": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/pre-popup-fix-20.zip",
+  "previous_executable_sha256": "d0a4207cd7dbf9567d5e6e12004d1bbace97ecc31a1e33bd9c966fd73f530b55",
+  "archive_crc_verified": true,
+  "atomic_swap": true,
+  "signing": "ad-hoc, not notarized"
+}

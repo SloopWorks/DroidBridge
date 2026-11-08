@@ -1,0 +1,21 @@
+COMMAND: swift build; swiftc shipping UI sources + real-emulator recovery fixture
+Another instance of SwiftPM (PID: 53853) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module DroidBridge
+[4/6] Compiling DroidBridge Launcher.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking DroidBridge
+[6/7] Applying DroidBridge
+Build complete! (2.53s)
+COMMAND: real video fixture, isolated root, only emulator-5580; exact owned server termination and scoped sleep/wake
+Disrupt exact owned Android server scid=5c24a666, pid=3200, session=F369D5FA-05CB-4DCF-BA49-0E11316EA1AB
+Disrupt exact owned Android server scid=12fc55e4, pid=3296, session=58E320C1-29F3-4665-AFC2-2BC8739B00B0
+Disrupt exact owned Android server scid=2f91c2c8, pid=3389, session=37D3C68B-1C38-459E-A0A0-D686EDB828A6
+Disrupt exact owned Android server scid=16ebe720, pid=3476, session=769FBAF3-0ED3-4D39-89C8-9719F9FAB6C1
+Disrupt exact owned Android server scid=4c16d10c, pid=3567, session=F6D508AC-DC8A-459D-9206-BB68C2E45059
+Disrupt exact owned Android server scid=15de2fae, pid=3654, session=7B123CC6-E82A-418C-8214-683DE024AA8E
+Disrupt exact owned Android server scid=73f8e10e, pid=3873, session=B152FF9D-4915-4CBF-A062-840E7D596D23
+Disrupt exact owned Android server scid=65596e91, pid=3966, session=7FCDE025-D83A-4B41-A0B5-0911CD67BE27
+PASS: actual native recovery, bounded flapping, sleep wait, manual Retry, close/quit fencing and exact resource cleanup

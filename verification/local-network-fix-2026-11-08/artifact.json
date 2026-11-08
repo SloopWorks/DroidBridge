@@ -1,0 +1,10 @@
+{
+  "path": "/Users/patrick/Applications/DroidBridge.app",
+  "review_path": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/local-network-fix-23/DroidBridge.app",
+  "build": "23",
+  "version": "0.2.0",
+  "sha256": "d241ddb9e897254e2943b53bd239a587c3a1d5d7d17c95d3546a8df519e5090b",
+  "signing": "ad-hoc, not notarized",
+  "source_files": 146,
+  "main_uuid_output": "UUID: D4DA42B9-72EA-3944-A369-4B08A03BE424 (arm64) /Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge"
+}

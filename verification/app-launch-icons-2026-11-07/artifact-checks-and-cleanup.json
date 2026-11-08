@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/usr/bin/codesign",
+        "--verify",
+        "--deep",
+        "--strict",
+        "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/app-launch-icons-22/DroidBridge.app"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/bin/launchctl",
+        "bootout",
+        "gui/501/dev.droidbridge.companion.broker.qa.fbcb603bb43f"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "removedOwnedQaRoots": [
+    "/private/tmp/droidbridge-icons-ui.jNkMWd",
+    "/private/tmp/droidbridge-app-icons.YR1Lkj",
+    "/private/tmp/droidbridge-app-icons.kt8g3N"
+  ],
+  "removedQaBroker": "dev.droidbridge.companion.broker.qa.fbcb603bb43f",
+  "productionHelpersPreserved": true
+}

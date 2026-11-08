@@ -50,6 +50,26 @@ needed to build it, not to use it.
 
 ## macOS icon and application identity
 
+The launcher's Launch App button, Return and double-click use independent wrappers
+automatically. A matching live wrapper is reopened first, even when a stopped
+managed/manual wrapper exists earlier in the search order. Otherwise a current,
+verified wrapper is reused or a private on-demand wrapper is created. Its identifier
+and cache path include the phone, package and backend; manual wrappers with different
+saved launch settings remain unchanged. Spotlight integration is independent.
+
+An app-named banner shows checking, icon loading, preparation and opening immediately
+and survives catalog refresh/navigation. Preparation is cancellable and drained on
+quit. After Launch Services accepts opening, the wrapper's local loading window owns
+connection progress. A handoff is not proof of live Android video.
+
+The central Sessions view reads exact live-wrapper presentation snapshots without
+requiring companion pairing. Snapshots are optional, bounded, generation fenced and
+validated against observed process start time, bundle URL and identifier. Missing or
+stale snapshots show status unavailable; actual running is published only after the
+streaming backend admits video. Main-app restart rediscovers running wrappers, and
+quitting main does not close them. Open App and Close App use AppKit's observed
+application identity rather than a PID supplied by a file.
+
 Wrapper creation obtains the PNG asynchronously and generates an ICNS containing
 the sizes required by macOS. The bundle declares that icon, and the running
 NSApplication uses it as its application icon. Finder, Dock and the application
@@ -94,3 +114,36 @@ backend exit and verify explicit close still terminates it. Actual Dock or
 Cmd+Tab interaction requires an unlocked Mac and must be distinguished from
 programmatic application identity and icon checks. Physical ChatGPT behavior is
 not certified by an emulator fixture.
+
+## Local-network privacy and generated code identity
+
+Each wrapper main executable and nested Player has a deterministic, app-specific
+LC_UUID in every Mach-O slice, derived from its source build UUID and bundle ID.
+The factory patches only private staging copies before signing. Distinct bundle
+IDs must never reuse the host executable UUID (Apple TN3178/TN3179). Generated
+apps carry `DroidBridgeAppIdentityVersion=1`. Stopped-app reuse removes signatures
+from private comparison copies and compares the actual personalized code against
+the host; trusting a source-hash plist alone is insufficient. A release's original
+dSYM UUID needs the corresponding generated UUID when symbolicating a wrapper;
+UUID personalization does not change instruction addresses.
+
+Retained generations are data, not launch targets. The outer and nested Player
+`Contents/Info.plist` files are renamed `DroidBridgeRetiredInfo.plist`; all bytes
+are preserved. To restore deliberately, copy the backup to a private staging
+location, rename these metadata files back, verify the complete signature, and
+publish only after the existing running-app checks. Never launch from a backup.
+Managed catalog migration checks device/package/generation ownership, skips live
+apps, retires at most 16 per pass and retries exact-URL Launch Services
+unregistration until a receipt is durable. Publication accepts retired metadata
+only at owned backup paths, so crash recovery remains possible. `.noindex` alone
+is not a privacy or application-registration boundary.
+
+DroidBridge child ADB processes use `ADB_MDNS=0`. scrcpy inherits this setting;
+explicit wireless `pair` and `connect` remain available. This suppresses unused
+ambient wireless browsing only for servers newly started by DroidBridge. An
+existing shared server is neither changed nor stopped. Both per-user agents
+associate with `app.droidbridge.desktop`, and shipped apps explain intentional
+wireless access with `NSLocalNetworkUsageDescription`. Generated wrappers are
+locally ad-hoc signed; release identity persistence for the main app still needs
+working Developer ID signing and separate verification. Never bypass local
+network privacy or edit its system database to suppress a prompt.

@@ -1,0 +1,653 @@
+USB MANAGER STATE (dumpsys usb):
+{
+  device_manager={
+    handler={
+      current_functions_applied=true
+      screen_locked=true
+      connected=true
+      configured=true
+      host_connected=false
+      source_power=false
+      sink_power=true
+      usb_charging=false
+      hide_usb_notification=false
+      audio_accessory_connected=false
+      kernel_state=CONFIGURED
+    }
+    USB Event Log=UsbDeviceManager activity
+    USB Event=[
+      11-02 14:05:58:026 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=302263, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-02 14:05:58:167 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-02 14:06:02:767 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-02 14:06:02:837 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=302288, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-02 14:06:03:381 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=302292, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-02 14:06:03:538 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-02 14:06:09:672 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-02 14:06:09:796 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=302316, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-02 14:06:10:342 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=302329, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-02 14:06:10:471 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-02 14:15:42:345 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=302516, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-02 14:15:42:946 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=302520, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-02 14:15:43:228 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-02 14:50:20:798 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-02 14:50:20:803 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-02 14:50:49:158 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=303708, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-02 14:50:49:771 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=303713, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-02 14:50:52:148 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 12:00:29:097 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 12:14:54:236 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 12:14:54:403 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 12:14:54:454 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=335778, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 12:14:54:997 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=335781, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 12:14:55:214 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 12:14:55:323 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 13:18:16:599 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336492, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:17:181 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336497, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:17:536 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 13:18:23:196 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336566, ACTION=remove, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:23:198 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336567, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:23:203 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336570, ACTION=remove, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:23:251 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336597, ACTION=add, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:23:818 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336599, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:49:509 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336640, ACTION=remove, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:49:518 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336641, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:49:518 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336644, ACTION=remove, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:49:751 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336691, ACTION=add, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:50:133 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336694, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:53:715 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 13:18:53:725 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 13:18:53:962 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336864, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:54:552 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=336869, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 13:18:54:853 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 13:34:16:612 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 13:34:16:663 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:50:14:933 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:50:15:033 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340586, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:50:15:034 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:50:15:581 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340591, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:50:15:811 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:50:15:875 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:51:02:043 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340651, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:51:02:639 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340658, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:51:03:259 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:51:03:290 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:51:03:974 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:51:04:103 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340730, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:51:04:649 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340733, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:51:04:689 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:51:36:436 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340822, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:51:38:073 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340835, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:51:39:353 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:51:49:917 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:51:49:955 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:52:43:906 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:52:43:952 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:52:43:969 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340953, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:52:44:514 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=340956, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:52:44:753 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:52:44:808 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-03 14:59:05:747 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=341062, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:59:06:339 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=341067, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-03 14:59:06:675 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 09:24:19:171 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 09:24:19:207 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 09:39:45:994 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=372687, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 09:39:46:610 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=372692, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 09:39:46:757 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 10:23:13:778 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 10:23:13:782 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 11:15:48:564 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 11:15:48:700 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=374709, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 11:15:49:321 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=374714, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 11:15:51:607 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:48:58:514 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:48:58:521 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:51:27:342 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:51:27:417 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:51:27:480 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=381375, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 13:51:30:127 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=381380, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 13:51:30:365 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:51:30:449 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:51:33:860 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=381424, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 13:51:34:475 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=381429, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 13:51:35:228 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:51:35:300 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:51:40:335 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=381519, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 13:51:40:922 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=381532, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 13:51:43:221 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:52:52:400 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 13:52:52:407 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 14:40:07:178 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=382738, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 14:40:07:786 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=382743, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 14:40:10:046 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 14:40:12:775 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 14:40:12:806 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 15:51:04:198 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=384711, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 15:51:04:802 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=384722, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 15:51:05:168 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 15:51:07:194 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 15:51:07:213 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-04 15:58:49:647 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=384927, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 15:58:50:257 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=384932, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-04 15:58:52:517 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-05 16:00:12:479 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-05 16:00:12:484 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-05 16:46:52:756 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=422544, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-05 16:46:53:359 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=422549, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-05 16:46:53:573 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 08:39:29:536 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 08:39:29:560 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:20:16:417 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=449723, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 09:20:17:017 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=449732, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 09:20:17:276 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:20:18:383 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:20:18:436 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:21:20:383 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:21:20:468 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:21:20:477 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=449821, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 09:21:21:018 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=449824, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 09:21:21:029 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:21:21:306 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:22:06:772 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:22:06:881 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:22:06:942 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=449849, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 09:22:07:494 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=449853, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 09:22:07:709 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:22:07:777 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:47:08:614 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=450127, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 09:47:09:617 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 09:47:10:314 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=450141, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 11:30:25:596 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 11:30:25:612 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 12:43:36:792 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 12:43:36:917 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=457474, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 12:43:37:455 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=457477, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 12:43:37:653 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 12:58:53:079 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=458245, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 12:58:53:705 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=458251, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 12:58:54:012 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 14:04:30:030 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 14:04:30:038 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 14:14:20:807 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=459696, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 14:14:21:438 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=459701, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 14:14:21:759 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 14:14:23:992 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 14:14:24:002 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 14:30:54:528 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=460782, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 14:30:55:135 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=460787, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 14:30:55:434 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 15:15:42:128 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 15:15:42:144 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 15:15:51:115 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=463093, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 15:15:51:714 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=463096, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 15:15:53:087 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 15:15:53:094 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-06 15:51:30:334 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=464517, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 15:51:32:999 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=464541, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-06 15:51:33:206 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:27:23:162 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:27:23:165 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:29:07:440 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:29:07:625 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=497699, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:29:08:170 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=497706, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:29:08:346 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:29:10:177 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:29:10:307 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=497722, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:29:10:864 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=497728, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:29:11:003 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:30:29:484 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=497812, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:30:30:089 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=497817, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:30:30:349 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:30:34:125 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:30:34:141 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:34:08:870 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:34:08:923 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=497954, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:34:09:460 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=497957, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:34:09:607 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:35:10:179 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:35:10:202 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=498014, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:35:10:785 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=498017, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:35:10:939 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:35:45:667 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:35:45:798 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=498071, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:35:46:357 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=498075, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:35:46:423 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:36:14:957 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+      11-07 09:36:15:058 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=498126, ACTION=change, USB_UDC_NAME=dwc3-gadget, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:36:15:608 USB UEVENT: {SUBSYSTEM=udc, SEQNUM=498130, ACTION=change, USB_UDC_NAME=dwc3-gadget, USB_UDC_DRIVER=g1, DEVPATH=/devices/platform/simple_usb_bus/c450000.usb3/c400000.dwc3/udc/c400000.dwc3}
+      11-07 09:36:15:663 USB intent: Intent { act=android.hardware.usb.action.USB_STATE flg=0x31000000 xflg=0x4 (has extras) }
+    ]
+  }
+  host_manager={
+    num_connects=0
+  }
+  port_manager={
+    is_simulation_active=false
+    usb_ports={
+      port={
+        id=port0
+        supported_modes=dual
+        supports_compliance_warnings=true
+        supported_alt_modes=1
+        supports_power_profiles=true
+      }
+      status={
+        connected=true
+        current_mode=ufp
+        power_role=sink
+        data_role=device
+        role_combinations=[
+          {
+            power_role=source
+            data_role=host
+          }
+          {
+            power_role=source
+            data_role=device
+          }
+          {
+            power_role=sink
+            data_role=host
+          }
+          {
+            power_role=sink
+            data_role=device
+          }
+        ]
+        contaminant_presence_status=not detected
+        usb_data_status=enabled
+        is_power_transfer_limited=false
+        usb_power_brick_status=disconnected
+        compliance_warning_status=[]
+        displayport_alt_mode_status=DisplayPortAltModeInfo{partnerSink=unknown, cable=unknown, numLanes=0, hotPlugDetect=false, linkTrainingStatus=unknown}
+        power_profile_status= mPortSinkPowerProfiles={PowerProfileInfo{type=fixed, , maxVoltageMv=5000, maxCurrentMa=3000}, PowerProfileInfo{type=fixed, , maxVoltageMv=9000, maxCurrentMa=2200}, PowerProfileInfo{type=spr pps, , minVoltageMv=5000, maxVoltageMv=11000, maxCurrentMa=3000}, PowerProfileInfo{type=rp default, maxVoltageMv=5000, maxCurrentMa=1500}, PowerProfileInfo{type=rp 1.5A, maxVoltageMv=5000, maxCurrentMa=1500}, PowerProfileInfo{type=rp 3.0A, maxVoltageMv=5000, maxCurrentMa=3000}, } , mPortSourcePowerProfiles={PowerProfileInfo{type=fixed, , maxVoltageMv=5000, maxCurrentMa=900}, PowerProfileInfo{type=rp default, maxVoltageMv=5000, maxCurrentMa=900}, } , mPartnerSinkPowerProfiles={PowerProfileInfo{type=fixed, , maxVoltageMv=5000, maxCurrentMa=3000}, PowerProfileInfo{type=variable, , minVoltageMv=4750, maxVoltageMv=21000, maxCurrentMa=4700}, PowerProfileInfo{type=rp default, maxVoltageMv=5000, maxCurrentMa=500}, PowerProfileInfo{type=rp 1.5A, maxVoltageMv=5000, maxCurrentMa=1500}, PowerProfileInfo{type=rp 3.0A, maxVoltageMv=5000, maxCurrentMa=3000}, } , mPartnerSourcePowerProfiles={PowerProfileInfo{type=fixed, , maxVoltageMv=5000, maxCurrentMa=3000}, PowerProfileInfo{type=rp default, maxVoltageMv=5000, maxCurrentMa=1500}, PowerProfileInfo{type=rp 1.5A, maxVoltageMv=5000, maxCurrentMa=1500}, PowerProfileInfo{type=rp 3.0A, maxVoltageMv=5000, maxCurrentMa=3000}, } , mPortSinkPowerProfileMatches={PowerProfileMatchInfo{portIndex=0, partnerIndex=0, minVoltageMv=-2, maxVoltageMv=5000, minCurrentMa=-2, maxCurrentMa=3000, maxPowerMw=-2}, PowerProfileMatchInfo{portIndex=3, partnerIndex=1, minVoltageMv=-2, maxVoltageMv=5000, minCurrentMa=-2, maxCurrentMa=1500, maxPowerMw=-2}, PowerProfileMatchInfo{portIndex=4, partnerIndex=2, minVoltageMv=-2, maxVoltageMv=5000, minCurrentMa=-2, maxCurrentMa=1500, maxPowerMw=-2}, PowerProfileMatchInfo{portIndex=5, partnerIndex=3, minVoltageMv=-2, maxVoltageMv=5000, minCurrentMa=-2, maxCurrentMa=3000, maxPowerMw=-2}, } , mPortSourcePowerProfileMatches={PowerProfileMatchInfo{portIndex=0, partnerIndex=0, minVoltageMv=-2, maxVoltageMv=5000, minCurrentMa=-2, maxCurrentMa=900, maxPowerMw=-2}, PowerProfileMatchInfo{portIndex=1, partnerIndex=2, minVoltageMv=-2, maxVoltageMv=5000, minCurrentMa=-2, maxCurrentMa=500, maxPowerMw=-2}, }
+      }
+      can_change_mode=true
+      can_change_power_role=true
+      can_change_data_role=true
+      connected_at_millis=947189488
+      last_connect_duration_millis=0
+    }
+    usb_hal_version=20
+  }
+  alsa_manager={
+    cards_parser=-1
+  }
+  settings_manager={
+    user_settings=[
+      {
+        user_id=0
+        device_attached_activities=[
+          {
+            activity={
+              package_name=android
+              class_name=com.android.internal.app.ForwardIntentToManagedProfile
+            }
+          }
+          {
+            activity={
+              package_name=com.android.mtp
+              class_name=com.android.mtp.ReceiverActivity
+            }
+            filters=[
+              {
+                vendor_id=-1
+                product_id=-1
+                class=255
+                subclass=255
+                protocol=0
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=-1
+                product_id=-1
+                class=6
+                subclass=1
+                protocol=1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+            ]
+          }
+          {
+            activity={
+              package_name=com.google.android.apps.photos
+              class_name=com.google.android.libraries.social.ingest.IngestActivity
+            }
+            filters={
+              vendor_id=-1
+              product_id=-1
+              class=6
+              subclass=1
+              protocol=1
+              manufacturer_name=null
+              product_name=null
+              serial_number=null
+            }
+          }
+          {
+            activity={
+              package_name=com.dd.doordash
+              class_name=com.stripe.stripeterminal.internal.common.usb.UsbEventReceiverActivity
+            }
+            filters=[
+              {
+                vendor_id=11369
+                product_id=22352
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=5538
+                product_id=257
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+            ]
+          }
+          {
+            activity={
+              package_name=com.ovz.carscanner
+              class_name=crc6499ccedf271453986.MainActivity
+            }
+            filters=[
+              {
+                vendor_id=1027
+                product_id=24577
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1027
+                product_id=24592
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1027
+                product_id=24593
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1027
+                product_id=24596
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1027
+                product_id=24597
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=4292
+                product_id=60000
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=4292
+                product_id=60016
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=4292
+                product_id=60017
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=4292
+                product_id=60032
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1659
+                product_id=8963
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1659
+                product_id=9123
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1659
+                product_id=9139
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1659
+                product_id=9155
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1659
+                product_id=9171
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1659
+                product_id=9187
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=1659
+                product_id=9203
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=6790
+                product_id=21795
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=6790
+                product_id=29987
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=6790
+                product_id=21972
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+              {
+                vendor_id=28787
+                product_id=12343
+                class=-1
+                subclass=-1
+                protocol=-1
+                manufacturer_name=null
+                product_name=null
+                serial_number=null
+              }
+            ]
+          }
+        ]
+        accessory_attached_activities=[
+          {
+            activity={
+              package_name=com.google.android.gms
+              class_name=com.google.android.gms.backup.component.D2dSourceActivity
+            }
+            filters={
+              manufacturer=Google, Inc.
+              model=DeviceMigration
+              version=39842
+            }
+          }
+          {
+            activity={
+              package_name=com.google.android.projection.gearhead
+              class_name=com.google.android.apps.auto.carservice.gmscorecompat.FirstActivityImpl
+            }
+            filters=[
+              {
+                manufacturer=Android
+                model=Android Open Automotive Protocol
+                version=null
+              }
+              {
+                manufacturer=Android
+                model=Android Auto
+                version=null
+              }
+              {
+                manufacturer=Android
+                model=Android
+                version=null
+              }
+            ]
+          }
+          {
+            activity={
+              package_name=com.srtc.source
+              class_name=com.rclink.source.ui.main.ActivityMain
+            }
+            filters=[
+              {
+                manufacturer=TripleCam
+                model=CarKit
+                version=null
+              }
+              {
+                manufacturer=CamTree
+                model=CarKit
+                version=null
+              }
+            ]
+          }
+          {
+            activity={
+              package_name=com.zhiliaoapp.musically
+              class_name=com.bytedance.android.livesdk.comp.impl.gameanchor.mirror.activity.UsbSourceProxyActivity
+            }
+            filters={
+              manufacturer=Android
+              model=Accessory Display
+              version=null
+            }
+          }
+        ]
+      }
+      {
+        user_id=10
+      }
+    ]
+    profile_group_settings={
+      parent_user_id=0
+      USB Event Log=UsbProfileGroupSettingsManager activity
+    }
+  }
+  permissions_manager={
+    user_permissions=[
+      {
+        user_id=0
+      }
+      {
+        user_id=10
+      }
+    ]
+  }
+}

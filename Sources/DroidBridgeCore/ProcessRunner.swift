@@ -25,6 +25,12 @@ public enum ProcessRunner {
             process.executableURL = URL(fileURLWithPath: executable)
             process.arguments = arguments
             process.environment = ProcessInfo.processInfo.environment.merging(environment) { _, new in new }
+            // USB and explicit `adb pair/connect` do not require ambient Bonjour
+            // browsing. This affects only a server newly started by our child;
+            // an existing shared server is never restarted or reconfigured.
+            if URL(fileURLWithPath: executable).lastPathComponent == "adb" {
+                process.environment?["ADB_MDNS"] = "0"
+            }
             process.standardOutput = handle
             process.standardError = handle
             process.standardInput = FileHandle.nullDevice

@@ -1,0 +1,22 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/8] Emitting module DroidBridge
+[4/8] Compiling DroidBridge AppLaunchSessions.swift
+[5/8] Compiling DroidBridge Launcher.swift
+[6/8] Compiling DroidBridge LauncherUI.swift
+[7/18] Compiling DroidBridge CompanionLauncherIntegration.swift
+[8/18] Compiling DroidBridge PhoneDisplayControls.swift
+[9/18] Compiling DroidBridge SessionRecovery.swift
+[10/18] Compiling DroidBridge DeviceOnboardingUI.swift
+[11/18] Compiling DroidBridge ManagedAppNameRepair.swift
+[12/18] Compiling DroidBridge AudioControls.swift
+[13/18] Compiling DroidBridge main.swift
+[14/18] Compiling DroidBridge CompanionDesktopAdapter.swift
+[15/18] Compiling DroidBridge AppLaunch.swift
+[16/18] Compiling DroidBridge CompanionWindow.swift
+[16/19] Write Objects.LinkFileList
+[17/19] Linking DroidBridge
+[18/19] Applying DroidBridge
+Build complete! (4.13s)

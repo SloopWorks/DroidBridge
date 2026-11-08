@@ -1,0 +1,11 @@
+COMMAND: swift build, then compile all shipping UI sources with actual-emulator wrapper fixture
+[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.22s)
+COMMAND: packaged factory + Launch Services + actual decoded video, isolated scope on emulator-5580
+FAIL: app launch icons: message("Running snapshot had no presented decoded Android content")
+QA handoff expected=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qa27584b205a93 at=/private/tmp/droidbridge-app-icons.kt8g3N/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp7/Android Launch Probe.app observed=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qa27584b205a93 at=/private/tmp/droidbridge-app-icons.kt8g3N/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp7/Android Launch Probe.app pid=78318
+QA handoff expected=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qa27584b205a93 at=/private/tmp/droidbridge-app-icons.kt8g3N/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp7/Android Launch Probe.app observed=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p6d2e3bc49949f7682981a4f4.qa27584b205a93 at=/private/tmp/droidbridge-app-icons.kt8g3N/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp7/Android Launch Probe.app pid=78318
+QA handoff expected=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.pb5ae9250195affe596a9bf76.qa27584b205a93 at=/private/tmp/droidbridge-app-icons.kt8g3N/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.iconfixture/Android Icon Alias.app observed=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.pb5ae9250195affe596a9bf76.qa27584b205a93 at=/private/tmp/droidbridge-app-icons.kt8g3N/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.iconfixture/Android Icon Alias.app pid=78473
+Retained failed QA root: /private/tmp/droidbridge-app-icons.kt8g3N

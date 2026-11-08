@@ -1,0 +1,10 @@
+{
+  "original_reported_backup": "/Users/patrick/Library/Application Support/DroidBridge/ManagedApps.noindex/backups/24765229b512f4c4630354f4/jj.app.cyf-E2A3DA8E-17D8-4754-A1C5-E1089AC2CE62.app",
+  "force_registration_status": 0,
+  "output": "",
+  "normal_info_exists": false,
+  "retired_info_exists": true,
+  "forced_rescan_result": "launch-disabled, no-info.plist, unsupported-format placeholder; no bundle identifier or Mach-O UUID",
+  "can_launch_as_app": false,
+  "can_alias_old_uuid": false
+}
