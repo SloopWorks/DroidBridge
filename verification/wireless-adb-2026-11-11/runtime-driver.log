@@ -1,0 +1,20 @@
+Started an isolated loopback ADB server with USB, emulator scanning and mDNS disabled.
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-wireless-adb.py", line 192, in <module>
+    pair_port = until("Android Settings QR scanner started a pairing server",
+                      lambda: (p if (p := port_log(r"Pairing server started on port (\d+)")) and p != old_pair_port else None), 30)
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-wireless-adb.py", line 55, in until
+    raise RuntimeError(f"Timed out: {label}")
+RuntimeError: Timed out: Android Settings QR scanner started a pairing server
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-wireless-adb.py", line 234, in <module>
+    set_wireless(start_wireless)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-wireless-adb.py", line 95, in set_wireless
+    current = wireless_page()
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-wireless-adb.py", line 91, in wireless_page
+    raise RuntimeError("Cannot find Wireless debugging in Android Settings")
+RuntimeError: Cannot find Wireless debugging in Android Settings

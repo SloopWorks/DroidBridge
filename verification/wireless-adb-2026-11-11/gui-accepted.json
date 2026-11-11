@@ -1,0 +1,11 @@
+{
+  "app": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/wireless-adb-25-final/DroidBridge.app",
+  "mac_executable_sha256": "9dac82bdff09462acf1697f8db2202b0d21c7085d380c9978b7132be1b4c3f67",
+  "qr_visible": true,
+  "number_fields_hidden": true,
+  "companion_action_separate": true,
+  "qr_removed_on_cancel": true,
+  "quit_confirmed": true,
+  "qa_broker_bootout_status": 0,
+  "qa_scope_removed": true
+}

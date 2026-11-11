@@ -108,7 +108,7 @@ def main():
     def connect(endpoint):
         flow.action('set_field', window='Connect over Wi-Fi', label='Wireless ADB connection address', value=endpoint)
         flow.action('click', window='Connect over Wi-Fi', title='Connect')
-        wait_result('connected to ' + endpoint)
+        wait_result('Connected over Wi-Fi')
         aliases.append(endpoint)
         check = subprocess.run([str(args.adb), '-s', endpoint, 'shell', 'getprop', 'ro.serialno'], check=True, capture_output=True, timeout=15).stdout
         assert check == flow.adb('shell', 'getprop', 'ro.serialno', binary=True), 'TLS endpoint was not the same owned emulator'
@@ -129,12 +129,13 @@ def main():
         pairing = redirect(int(pair_address.group(1)))
         connection = redirect(int(first.rsplit(':', 1)[1]))
         flow.action('click', label='Companion section Connection')
-        flow.action('click', title='Set Up Wi-Fi ADB…')
+        flow.action('click', title='Connect over Wi-Fi…')
+        flow.action('click', window='Connect over Wi-Fi', title='Manual Setup…')
         flow.action('set_field', window='Connect over Wi-Fi', label='Wireless ADB pairing address', value=pairing)
         flow.action('set_field', window='Connect over Wi-Fi', label='Wireless ADB pairing code', value=secret.group())
         secret, text = None, None
         flow.action('click', window='Connect over Wi-Fi', title='Pair')
-        wait_result('Successfully paired')
+        wait_result('Enter the connection address')
         connect(connection)
         if not any(n.get('text') == 'Use wireless debugging' for n in flow.nodes()):
             enter_wireless()

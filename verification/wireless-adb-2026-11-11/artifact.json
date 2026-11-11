@@ -1,0 +1,21 @@
+{
+  "path": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/wireless-adb-25-final/DroidBridge.app",
+  "build": 25,
+  "signing": "ad hoc, not notarized",
+  "mac_executable_sha256": "9dac82bdff09462acf1697f8db2202b0d21c7085d380c9978b7132be1b4c3f67",
+  "companion_apk_sha256": "1efc5a2a03c79930a0bbc1f534f44b11571d6d8d424b71ded0b45a5ed4532ec6",
+  "wireless_source_sha256": {
+    "Sources/DroidBridge/CompanionWirelessSetup.swift": "166e025ccde9af8b8f9fe5824a91e2eed611345056fef9e14aeac2b940d47fc5",
+    "Sources/DroidBridge/CompanionWindow.swift": "fc6031c7708fde89effb0b52c8cc3eacb0eb67f9e84f1059d7b0923dadae6dee",
+    "Sources/DroidBridge/Launcher.swift": "0c6a0a3aed48dc3af12867bea80953173a371caaedb3317fc60d0888b7ffa54a",
+    "Sources/DroidBridgeCore/CompanionWirelessADB.swift": "e450e8ea9e1391af28ab3e7e69c8273dac4477e222e1f69e6cf5b908fb35bbfc",
+    "Sources/DroidBridgeCore/CompanionWirelessBonjour.swift": "b83854e0200e85d9f632ec57044da007bb060b76f643ba79bf429e45ae44fead",
+    "Sources/DroidBridgeCore/CompanionWirelessReconnect.swift": "61ec226a9f292a4e926f026dcd00fdc6a0347ef56c65023eeca8c8baa4f9fe28",
+    "Sources/DroidBridgeCore/CompanionSetupValidation.swift": "3b41a8b91fdecd262bdb7a6907fdf207b7835dfff1236b63e7f27e642f7e27a9",
+    "Sources/DroidBridgeStreaming/BridgeSession.swift": "adefd4abbc46f5a62e93dbab3eca1b1e2f020bf5e919f604619653759723e3d4",
+    "Sources/DroidBridgeCore/AndroidDiscovery.swift": "7b2eca0670e3d70e948043aeae9375e4f11257335233adde86db385cb6f996f9",
+    "Sources/DroidBridgeCore/Models.swift": "9ca6f5738d9aa53934295001c8db574daf5813a5dc2cb7e581cbaea8666745fb",
+    "AndroidCompanion/app/src/main/java/dev/droidbridge/companion/MainActivity.kt": "c44e531734ece11c598b420180e7cda9b822474539e1f4f76315b1dc2e5eb72c",
+    "scripts/package.sh": "b77f34aedcab06a12011c5aaffbf4f939338c3a7da0660f63cf3aeff26247ccc"
+  }
+}

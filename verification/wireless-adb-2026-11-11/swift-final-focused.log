@@ -1,0 +1,87 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write swift-version--58304C5D6DBC2206.txt
+[2/7] Emitting module DroidBridgeCoreTests
+[3/7] Compiling DroidBridgeCoreTests CompanionWirelessReconnectTests.swift
+[4/7] Compiling DroidBridgeCoreTests CompanionWirelessADBTests.swift
+[5/7] Compiling DroidBridgeCoreTests CompanionSetupValidationTests.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking DroidBridgePackageTests
+Build complete! (1.93s)
+Test Suite 'Selected tests' started at 2026-11-11 09:47:05.116.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-11 09:47:05.117.
+Test Suite 'AndroidDiscoveryTests' started at 2026-11-11 09:47:05.117.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testAppLabelsAndWrappedNames]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testDevicesPreserveUnavailableStates]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testHostilePackageAndSerialRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' started.
+/Users/patrick/workspace/DroidBridge/Tests/DroidBridgeCoreTests/AndroidDiscoveryTests.swift:26: -[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn] : Test skipped - Set DROIDBRIDGE_TEST_SERIAL to an emulator serial
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testLiveDiscoveryWhenOptedIn]' skipped (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerDoesNotEvaluateShell]' passed (0.094 seconds).
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' started.
+Test Case '-[DroidBridgeCoreTests.AndroidDiscoveryTests testRunnerTimeoutAndFailure]' passed (0.298 seconds).
+Test Suite 'AndroidDiscoveryTests' passed at 2026-11-11 09:47:05.512.
+	 Executed 6 tests, with 1 test skipped and 0 failures (0 unexpected) in 0.395 (0.395) seconds
+Test Suite 'CompanionWirelessADBTests' started at 2026-11-11 09:47:05.512.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testConnectVerifiesExactTransportIDInsteadOfAnyReadyDevice]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testConnectVerifiesExactTransportIDInsteadOfAnyReadyDevice]' passed (0.418 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testFingerprintRejectsMissingAndMalformedAndroidIDs]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testFingerprintRejectsMissingAndMalformedAndroidIDs]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testMismatchedFingerprintUnwindsOnlyNewlyOpenedEndpoint]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testMismatchedFingerprintUnwindsOnlyNewlyOpenedEndpoint]' passed (0.708 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testOnlyAcceptExactADBPairingReceiptAndWellFormedGUID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testOnlyAcceptExactADBPairingReceiptAndWellFormedGUID]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' passed (0.251 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testQRUsesAndroidFormatAndFreshIndependentCredentials]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testQRUsesAndroidFormatAndFreshIndependentCredentials]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' passed (0.202 seconds).
+Test Suite 'CompanionWirelessADBTests' passed at 2026-11-11 09:47:07.091.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 1.579 (1.580) seconds
+Test Suite 'CompanionWirelessReconnectTests' started at 2026-11-11 09:47:07.091.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testAmbiguousHistoricalAddressRefusesBeforeAnyDeviceCommand]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testAmbiguousHistoricalAddressRefusesBeforeAnyDeviceCommand]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testForgetFencesLateResultAndKeepsStaleAliasBlocked]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testForgetFencesLateResultAndKeepsStaleAliasBlocked]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testNoEnrollmentDoesNotTouchNetworkAndInvalidGUIDIsRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testNoEnrollmentDoesNotTouchNetworkAndInvalidGUIDIsRejected]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPerPhoneBackoffDoesNotStarveOtherSavedPhones]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPerPhoneBackoffDoesNotStarveOtherSavedPhones]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPortAndIPRotationUsesGUIDAndPreservesHistoricalAliasCheckAcrossRestart]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPortAndIPRotationUsesGUIDAndPreservesHistoricalAliasCheckAcrossRestart]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testStorageRejectsSymlinkAndLeavesTargetUntouched]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testStorageRejectsSymlinkAndLeavesTargetUntouched]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBSelectionRequiresExactlyOneAuthorizedUSBTransportID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBSelectionRequiresExactlyOneAuthorizedUSBTransportID]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBWiFiHintRejectsOtherInterfacesAndAmbiguity]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBWiFiHintRejectsOtherInterfacesAndAmbiguity]' passed (0.000 seconds).
+Test Suite 'CompanionWirelessReconnectTests' passed at 2026-11-11 09:47:07.105.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.013 (0.014) seconds
+Test Suite 'ConnectionRecoveryTests' started at 2026-11-11 09:47:07.105.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testBrieflyRunningSuccessorsDoNotResetRecoveryBudget]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testBrieflyRunningSuccessorsDoNotResetRecoveryBudget]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testNormalFallbackWindowExitDoesNotRequestRecovery]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testNormalFallbackWindowExitDoesNotRequestRecovery]' passed (1.147 seconds).
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepingStartupIsActionableAndDoesNotStageOrLaunchServer]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepingStartupIsActionableAndDoesNotStageOrLaunchServer]' passed (0.401 seconds).
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepReadinessUsesWakefulnessRatherThanPanelPower]' started.
+Test Case '-[DroidBridgeCoreTests.ConnectionRecoveryTests testSleepReadinessUsesWakefulnessRatherThanPanelPower]' passed (0.000 seconds).
+Test Suite 'ConnectionRecoveryTests' passed at 2026-11-11 09:47:08.654.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 1.548 (1.548) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-11 09:47:08.654.
+	 Executed 27 tests, with 1 test skipped and 0 failures (0 unexpected) in 3.535 (3.537) seconds
+Test Suite 'Selected tests' passed at 2026-11-11 09:47:08.654.
+	 Executed 27 tests, with 1 test skipped and 0 failures (0 unexpected) in 3.535 (3.538) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

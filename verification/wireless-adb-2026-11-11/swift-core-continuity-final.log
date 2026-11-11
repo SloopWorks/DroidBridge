@@ -1,0 +1,54 @@
+Another instance of SwiftPM (PID: 16113) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/8] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.15s)
+Test Suite 'Selected tests' started at 2026-11-11 09:31:57.560.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-11 09:31:57.560.
+Test Suite 'CompanionWirelessADBTests' started at 2026-11-11 09:31:57.561.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testConnectVerifiesExactTransportIDInsteadOfAnyReadyDevice]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testConnectVerifiesExactTransportIDInsteadOfAnyReadyDevice]' passed (0.438 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testFingerprintRejectsMissingAndMalformedAndroidIDs]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testFingerprintRejectsMissingAndMalformedAndroidIDs]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testMismatchedFingerprintUnwindsOnlyNewlyOpenedEndpoint]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testMismatchedFingerprintUnwindsOnlyNewlyOpenedEndpoint]' passed (0.725 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testOnlyAcceptExactADBPairingReceiptAndWellFormedGUID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testOnlyAcceptExactADBPairingReceiptAndWellFormedGUID]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' passed (0.192 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testQRUsesAndroidFormatAndFreshIndependentCredentials]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testQRUsesAndroidFormatAndFreshIndependentCredentials]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' passed (0.224 seconds).
+Test Suite 'CompanionWirelessADBTests' passed at 2026-11-11 09:31:59.144.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 1.582 (1.584) seconds
+Test Suite 'CompanionWirelessReconnectTests' started at 2026-11-11 09:31:59.145.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testAmbiguousHistoricalAddressRefusesBeforeAnyDeviceCommand]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testAmbiguousHistoricalAddressRefusesBeforeAnyDeviceCommand]' passed (0.007 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testForgetFencesLateResultAndKeepsStaleAliasBlocked]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testForgetFencesLateResultAndKeepsStaleAliasBlocked]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testNoEnrollmentDoesNotTouchNetworkAndInvalidGUIDIsRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testNoEnrollmentDoesNotTouchNetworkAndInvalidGUIDIsRejected]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPerPhoneBackoffDoesNotStarveOtherSavedPhones]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPerPhoneBackoffDoesNotStarveOtherSavedPhones]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPortAndIPRotationUsesGUIDAndPreservesHistoricalAliasCheckAcrossRestart]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPortAndIPRotationUsesGUIDAndPreservesHistoricalAliasCheckAcrossRestart]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testStorageRejectsSymlinkAndLeavesTargetUntouched]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testStorageRejectsSymlinkAndLeavesTargetUntouched]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBSelectionRequiresExactlyOneAuthorizedUSBTransportID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBSelectionRequiresExactlyOneAuthorizedUSBTransportID]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBWiFiHintRejectsOtherInterfacesAndAmbiguity]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBWiFiHintRejectsOtherInterfacesAndAmbiguity]' passed (0.000 seconds).
+Test Suite 'CompanionWirelessReconnectTests' passed at 2026-11-11 09:31:59.165.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.019 (0.021) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-11 09:31:59.165.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 1.602 (1.605) seconds
+Test Suite 'Selected tests' passed at 2026-11-11 09:31:59.165.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 1.602 (1.605) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

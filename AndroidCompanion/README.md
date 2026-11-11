@@ -13,6 +13,15 @@ The service listens on Android loopback only, port37841, reached by an exact
 ADB forward. Android's paired wireless debugging can carry that same transport;
 this application does not open a raw LAN listener or silently grant ADB access.
 
+For wireless setup, show the QR from the Mac’s **Devices → Connect over Wi-Fi**
+flow. On the phone, **Home → Connection setup → Open Developer options** opens
+Android Settings. Enable **Wireless debugging**, then scan the Mac’s QR from
+**Pair device with QR code** in that screen. Android controls network approval
+and debugging trust. Keep an existing USB cable connected until the Mac confirms
+wireless access. An already paired phone can reconnect on the same Wi-Fi with
+Wireless debugging enabled; a new companion QR does not restore ADB trust. The
+phone’s **Pair a new Mac** QR still pairs companion sharing separately.
+
 For an installable locally signed release:
 
 ```

@@ -49,7 +49,8 @@ public struct AndroidDiscovery {
             let fields = line.split(whereSeparator: \.isWhitespace).map(String.init)
             guard fields.count >= 2, ["device", "unauthorized", "offline", "recovery", "sideload", "bootloader"].contains(fields[1]), (try? validateSerial(fields[0])) != nil else { return nil }
             let model = fields.first { $0.hasPrefix("model:") }.map { String($0.dropFirst(6)).replacingOccurrences(of: "_", with: " ") } ?? fields[0]
-            return AndroidDevice(serial: fields[0], model: model, state: fields[1])
+            let usb = fields.dropFirst(2).contains { $0.hasPrefix("usb:") && $0.count > 4 }
+            return AndroidDevice(serial: fields[0], model: model, state: fields[1], usb: usb ? true : nil)
         }
     }
 

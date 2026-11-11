@@ -1,0 +1,6 @@
+DroidBridge_API35
+OK
+35
+true
+true
+shell Android ID available: True

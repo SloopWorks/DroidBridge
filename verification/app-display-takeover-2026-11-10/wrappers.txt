@@ -1,0 +1,2 @@
+/private/tmp/droidbridge-display-wrappers-pgbCbd/native/Display Move Probe (native).app
+/private/tmp/droidbridge-display-wrappers-pgbCbd/scrcpy/Display Move Probe (scrcpy).app

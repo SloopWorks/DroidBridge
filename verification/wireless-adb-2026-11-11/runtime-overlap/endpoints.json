@@ -1,0 +1,7 @@
+{
+  "initial_android_tls_port": 38739,
+  "rotated_android_tls_port": 35407,
+  "initial_test_relay": 63226,
+  "rotated_test_relay": 63349,
+  "old_advertisement_retained_during_reconnect": true
+}

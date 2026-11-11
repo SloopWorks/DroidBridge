@@ -218,7 +218,7 @@ class InstalledFlow:
         qr.write_bytes(self.adb('exec-out', 'screencap', '-p', binary=True))
         os.chmod(qr, 0o600)
         try:
-            self.action('click', title='Pair Phone…')
+            self.action('click', title='Pair Companion…')
             if self.args.pairing_path == 'image':
                 self.action('click', window='Pair Android Companion', title='Import QR Image…')
                 self.action('choose_file', path=str(qr))

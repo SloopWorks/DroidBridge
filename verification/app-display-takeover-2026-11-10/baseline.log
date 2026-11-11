@@ -1,0 +1,10 @@
+native mac-first display 2 * Hist  #0: ActivityRecord{3c98123 u0 dev.droidbridge.testapp7/.MainActivity t1475}
+native adb-default display 2 * Hist  #0: ActivityRecord{3c98123 u0 dev.droidbridge.testapp7/.MainActivity t1475}
+native adb-display-0 display 0 * Hist  #0: ActivityRecord{3c98123 u0 dev.droidbridge.testapp7/.MainActivity t1475}
+native host_alive True running_last running adb_state device
+native adb-return display 2 * Hist  #0: ActivityRecord{3c98123 u0 dev.droidbridge.testapp7/.MainActivity t1475}
+scrcpy mac-first display 3 * Hist  #0: ActivityRecord{4d33d61 u0 dev.droidbridge.testapp7/.MainActivity t1478}
+scrcpy adb-default display 3 * Hist  #0: ActivityRecord{4d33d61 u0 dev.droidbridge.testapp7/.MainActivity t1478}
+scrcpy adb-display-0 display 0 * Hist  #0: ActivityRecord{4d33d61 u0 dev.droidbridge.testapp7/.MainActivity t1478}
+scrcpy host_alive True running_last running adb_state device
+scrcpy adb-return display 3 * Hist  #0: ActivityRecord{4d33d61 u0 dev.droidbridge.testapp7/.MainActivity t1478}

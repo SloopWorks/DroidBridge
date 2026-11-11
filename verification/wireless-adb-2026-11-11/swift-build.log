@@ -1,0 +1,33 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[3/10] Write swift-version--58304C5D6DBC2206.txt
+[5/13] Compiling DroidBridgeCore CompanionWirelessADB.swift
+[6/13] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[7/13] Compiling DroidBridgeCore CompanionWirelessReconnect.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessReconnect.swift:185:26: error: value of optional type 'Substring.SubSequence?' (aka 'Optional<Substring>') must be unwrapped to a value of type 'Substring.SubSequence' (aka 'Substring')
+183 |     static func usbTransportID(_ output: String, serial: String) -> UInt64? {
+184 |         let rows = output.split(whereSeparator: \.isNewline).map { $0.split(whereSeparator: \.isWhitespace) }
+185 |             .filter { $0.first == serial }
+    |                          |- error: value of optional type 'Substring.SubSequence?' (aka 'Optional<Substring>') must be unwrapped to a value of type 'Substring.SubSequence' (aka 'Substring')
+    |                          |- note: coalesce using '??' to provide a default when the optional value contains 'nil'
+    |                          `- note: force-unwrap using '!' to abort execution if the optional value contains 'nil'
+186 |         guard rows.count == 1, let fields = rows.first, fields.count >= 4, fields[1] == "device" else { return nil }
+187 |         let flags = fields.dropFirst(2), usb = flags.filter { $0.hasPrefix("usb:") && $0.count > 4 }

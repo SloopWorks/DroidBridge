@@ -1,0 +1,78 @@
+[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[4/13] Compiling DroidBridgeCore CompanionWirelessBonjour.swift
+[5/13] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[6/13] Compiling DroidBridgeCore CompanionWirelessADB.swift
+[7/14] Compiling DroidBridgeCore CompanionWirelessReconnect.swift
+[8/21] Emitting module DroidBridgeAvailability
+[8/21] Write Objects.LinkFileList
+[10/21] Emitting module DroidBridgeCompanionBroker
+[10/21] Write Objects.LinkFileList
+[12/21] Emitting module DroidBridgeStreaming
+[12/25] Linking DroidBridgeAvailability
+[13/25] Linking DroidBridgeCompanionBroker
+[14/25] Applying DroidBridgeAvailability
+[15/25] Applying DroidBridgeCompanionBroker
+[17/25] Compiling DroidBridgeCoreTests CompanionWirelessADBTests.swift
+[18/25] Emitting module DroidBridgeCoreTests
+[19/25] Compiling DroidBridge CompanionWirelessSetup.swift
+[20/25] Emitting module DroidBridge
+[20/25] Write Objects.LinkFileList
+[22/25] Linking DroidBridge
+[23/25] Applying DroidBridge
+[24/25] Linking DroidBridgePackageTests
+Build complete! (5.67s)
+Test Suite 'Selected tests' started at 2026-11-11 09:57:49.419.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-11 09:57:49.420.
+Test Suite 'CompanionWirelessADBTests' started at 2026-11-11 09:57:49.420.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testConnectVerifiesExactTransportIDInsteadOfAnyReadyDevice]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testConnectVerifiesExactTransportIDInsteadOfAnyReadyDevice]' passed (0.430 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testFingerprintRejectsMissingAndMalformedAndroidIDs]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testFingerprintRejectsMissingAndMalformedAndroidIDs]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testMismatchedFingerprintUnwindsOnlyNewlyOpenedEndpoint]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testMismatchedFingerprintUnwindsOnlyNewlyOpenedEndpoint]' passed (0.747 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testOnlyAcceptExactADBPairingReceiptAndWellFormedGUID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testOnlyAcceptExactADBPairingReceiptAndWellFormedGUID]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' passed (0.296 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testQRUsesAndroidFormatAndFreshIndependentCredentials]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testQRUsesAndroidFormatAndFreshIndependentCredentials]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testSavedBonjourCandidatesPreferReplacementAndKeepStableBound]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testSavedBonjourCandidatesPreferReplacementAndKeepStableBound]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testSavedReconnectChecksOverlappingAddressesUntilOneIsVerified]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testSavedReconnectChecksOverlappingAddressesUntilOneIsVerified]' passed (0.497 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' passed (0.208 seconds).
+Test Suite 'CompanionWirelessADBTests' passed at 2026-11-11 09:57:51.602.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 2.181 (2.182) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-11 09:57:51.602.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 2.181 (2.182) seconds
+Test Suite 'Selected tests' passed at 2026-11-11 09:57:51.602.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 2.181 (2.183) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

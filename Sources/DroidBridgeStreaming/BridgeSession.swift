@@ -22,6 +22,7 @@ public final class BridgeSession {
     public var onMetrics: ((SessionMetrics) -> Void)?
     public private(set) var state: SessionState = .stopped
     public private(set) var recoveryReason: SessionRecoveryReason?
+    public private(set) var appMovedToDisplay: Int32?
     public private(set) var metrics = SessionMetrics()
     public private(set) var logURL: URL
     private let toolchain: Toolchain
@@ -34,6 +35,7 @@ public final class BridgeSession {
     private var logHandle: FileHandle?
     private var transport: NativeTransport?
     private var frameMailbox: FrameMailbox?
+    private var appDisplayTask: Task<Void, Never>?
     var forwardedEndpoint: String? { forward }
     private var forward: String?
     private var remotePath: String?
@@ -78,7 +80,7 @@ public final class BridgeSession {
         guard admissionOpen else { throw CancellationError() }
         guard state == .stopped || state == .failed else { return }
         guard descriptor.application.packageName.range(of:"^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)+$",options:.regularExpression) != nil, descriptor.application.packageName.utf8.count <= 255 else { throw BridgeError.message("Invalid Android package name") }
-        guard descriptor.device.serial.range(of:"^[A-Za-z0-9._:-]+$",options:.regularExpression) != nil else { throw BridgeError.message("Invalid Android device serial") }
+        try AndroidDiscovery.validateSerial(descriptor.device.serial)
         let c = descriptor.configuration
         guard (160...4096).contains(c.width), (160...4096).contains(c.height), (72...640).contains(c.density) else { throw BridgeError.message("Display size must be 160–4096 pixels and density 72–640 dpi") }
         guard (15...60).contains(c.maximumFramesPerSecond) else { throw BridgeError.message("Frame rate must be between 15 and 60 fps") }
@@ -89,6 +91,8 @@ public final class BridgeSession {
         }
         let token = UUID(); generation = token; transition(.starting)
         do {
+            try await CompanionWirelessReconnect.shared.checkKnownSerial(adb: toolchain.adb, serial: descriptor.device.serial)
+            try check(token)
             let admittedAlias: CanonicalAliasLease?
             #if DEBUG
             if let testingAliasAdmission {admittedAlias=try await testingAliasAdmission()}
@@ -208,28 +212,59 @@ public final class BridgeSession {
         while ProcessInfo.processInfo.systemUptime<deadline {
             try Task.checkCancellation();try check(token)
             let readiness=try await Task.detached(priority:.utility) {
-                let handle=try FileHandle(forReadingFrom:url);defer {try? handle.close()}
-                let data=try handle.read(upToCount:64*1024) ?? Data()
-                // A real terminal enables the client's OSC window-title
-                // sequence, which can interleave with a server log line.
-                let text=String(decoding:data,as:UTF8.self).replacingOccurrences(of:#"\x1B\][^\x07]*(?:\x07|\x1B\\)"#,with:"",options:.regularExpression)
-                let lines=text.components(separatedBy:.newlines)
-                let launched=lines.contains {line in
-                    guard line.hasPrefix("[server] INFO: Starting app "),let range=line.range(of:"[\(package)] on display ",options:.backwards) else {return false}
-                    let suffix=line[range.upperBound...]
-                    return suffix.range(of:#"^[0-9]+\.\.\.$"#,options:.regularExpression) != nil
-                }
+                let lines = try AppDisplayWatch.launchOutput(url)
+                let display = AppDisplayWatch.launchedDisplay(lines, package: package)
                 let rendered=lines.contains {$0.range(of:#"^INFO: Texture(?: \(VideoToolbox\))?: [0-9]+x[0-9]+$"#,options:.regularExpression) != nil}
-                return (launched,rendered)
+                return (display,rendered)
             }.value
             try Task.checkCancellation();try check(token)
-            if readiness.0 && readiness.1 {transition(.running);trackExternalWindow(token:token);return}
+            if let display = readiness.0, readiness.1 {
+                transition(.running); trackExternalWindow(token:token)
+                watchAppDisplay(token: token, display: display)
+                return
+            }
             try await Task.sleep(for:.milliseconds(50))
         }
         let readiness = await DeviceVideoReadiness.probe(device: descriptor.device, toolchain: toolchain)
         try check(token)
         if readiness == .sleeping { throw SessionConnectionError.sleeping }
         throw BridgeError.message("Android did not confirm the fallback application and video renderer within 15 seconds. See \(logURL.path)")
+    }
+
+    private func watchAppDisplay(token: UUID, display: Int32? = nil) {
+        let url = logURL, package = descriptor.application.packageName
+        let serial = descriptor.device.serial, tools = toolchain
+        appDisplayTask = Task { [weak self] in
+            var owned = display
+            // Native video can arrive before the server's app launch receipt.
+            for _ in 0..<25 where owned == nil {
+                guard !Task.isCancelled, self?.generation == token else { return }
+                owned = await Task.detached(priority: .utility) {
+                    guard let lines = try? AppDisplayWatch.launchOutput(url) else { return nil as Int32? }
+                    return AppDisplayWatch.launchedDisplay(lines, package: package)
+                }.value
+                if owned == nil { try? await Task.sleep(for: .milliseconds(200)) }
+            }
+            guard let owned, self?.generation == token, self?.state == .running, !Task.isCancelled else { return }
+            self?.appendEvent(["event": "app_display_bound", "display": owned])
+            var watch = AppDisplayWatch()
+            var initialSamples = 0
+            while !Task.isCancelled, self?.generation == token, self?.state == .running {
+                let snapshot = await AppDisplayWatch.probe(adb: tools.adb, environment: tools.environment, serial: serial, package: package)
+                guard !Task.isCancelled, self?.generation == token, self?.state == .running else { return }
+                if let moved = watch.observe(snapshot, ownedDisplay: owned), let self {
+                    self.appendEvent(["event": "app_moved_to_display", "from_display": owned, "to_display": moved.display, "task_id": moved.task.id])
+                    self.appMovedToDisplay = moved.display
+                    let message = moved.display == 0 ? "This app is now on your phone." : "Android moved this app to another display."
+                    self.end(reason: "android_task_moved", finalState: .failed, message: message)
+                    return
+                }
+                initialSamples += 1
+                let samplingInitialPlacement = !watch.hasObservedOwnedTask && initialSamples < 8
+                do { try await Task.sleep(for: watch.candidate != nil || samplingInitialPlacement ? .milliseconds(350) : .seconds(3)) }
+                catch { return }
+            }
+        }
     }
     /// Public window metadata only, scoped to the exact supervised child PID.
     /// No screen pixels, accessibility permission or unrelated titles are read.
@@ -322,7 +357,7 @@ public final class BridgeSession {
         try check(token)
         for _ in 0..<150 {
             try check(token)
-            if state == .running { return }
+            if state == .running { watchAppDisplay(token: token); return }
             try await Task.sleep(nanoseconds:100_000_000)
         }
         let readiness = await DeviceVideoReadiness.probe(device: descriptor.device, toolchain: toolchain)
@@ -385,10 +420,15 @@ public final class BridgeSession {
         }
     }
     public func stop(reason: String = "requested") {
+        end(reason: reason, finalState: .stopped)
+    }
+
+    private func end(reason: String, finalState: SessionState, message: String? = nil) {
         // Closing an intent is terminal. A reconnect creates a new BridgeSession;
         // a previously queued start must never resurrect a closed window.
         admissionOpen = false
         recoveryReason = nil
+        appDisplayTask?.cancel(); appDisplayTask = nil
         externalWindowTask?.cancel();externalWindowTask=nil;externalChildPID=nil
         guard state != .stopped || process != nil || forward != nil || remotePath != nil else { return }
         appendEvent(["event": "session_stop_requested", "reason": String(reason.prefix(128))])
@@ -414,6 +454,6 @@ public final class BridgeSession {
         let cleanupReceipt = startupInFlight == 0 ? receiptURL : nil
         forward = nil; remotePath = nil; receiptURL = nil
         cleanup(forward:cleanupForward,remote:cleanupRemote,receipt:cleanupReceipt,aliasLease:aliasLease)
-        transition(.stopped)
+        transition(finalState, message)
     }
 }

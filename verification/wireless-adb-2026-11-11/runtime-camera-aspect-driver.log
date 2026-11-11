@@ -1,0 +1,9 @@
+Started an isolated loopback ADB server with USB, emulator scanning and mDNS disabled.
+Android Settings camera scanned the invitation and started its real pairing server.
+Paired and established a verified TLS ADB transport with the packaged runtime.
+Android rotated its TLS port. Started a fresh Mac probe with the same saved profile.
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-wireless-adb.py", line 250, in <module>
+    assert recovery.wait(timeout=70) == 0, "Reconnect/video probe failed; inspect reconnect.log"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Reconnect/video probe failed; inspect reconnect.log

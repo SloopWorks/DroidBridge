@@ -1,0 +1,55 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/12] Compiling DroidBridgeCore CompanionWirelessADB.swift
+[4/12] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[5/12] Compiling DroidBridgeCore CompanionWirelessBonjour.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessBonjour.swift:57:63: error: value of optional type 'String?' must be unwrapped to a value of type 'String'
+ 55 |         var lastChange: TimeInterval = 0
+ 56 |         var error: DNSServiceErrorType = 0
+ 57 |         init(instance: String?, kind: Kind) { self.instance = instance; self.kind = kind }
+    |                                                               |- error: value of optional type 'String?' must be unwrapped to a value of type 'String'
+    |                                                               |- note: coalesce using '??' to provide a default when the optional value contains 'nil'
+    |                                                               `- note: force-unwrap using '!' to abort execution if the optional value contains 'nil'
+ 58 |     }
+ 59 | 
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessBonjour.swift:96:64: error: value of optional type 'String?' must be unwrapped to a value of type 'String'
+ 94 |                   service.type.trimmingCharacters(in: CharacterSet(charactersIn: ".")) == state.kind.rawValue else { return }
+ 95 |             if let instance = state.instance {
+ 96 |                 guard CompanionWirelessBonjour.matches(service.instance, instance: instance, kind: state.kind) else { return }
+    |                                                                |- error: value of optional type 'String?' must be unwrapped to a value of type 'String'
+    |                                                                |- note: coalesce using '??' to provide a default when the optional value contains 'nil'
+    |                                                                `- note: force-unwrap using '!' to abort execution if the optional value contains 'nil'
+ 97 |             } else {
+ 98 |                 guard (try? CompanionWirelessADB.validateServiceInstance(service.instance)) != nil else { return }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessBonjour.swift:120:77: error: value of optional type 'String?' must be unwrapped to a value of type 'String'
+118 |                 let window = min(deadline, ProcessInfo.processInfo.systemUptime + 2)
+119 |                 let addresses = try resolve(service, deadline: window)
+120 |                 targets.formUnion(addresses.map { Target(instance: instance ?? service.instance, address: $0) })
+    |                                                                             |- error: value of optional type 'String?' must be unwrapped to a value of type 'String'
+    |                                                                             |- note: coalesce using '??' to provide a default when the optional value contains 'nil'
+    |                                                                             `- note: force-unwrap using '!' to abort execution if the optional value contains 'nil'
+121 |             }
+122 |             let eligible = targets.filter { expectedHost == nil || $0.address.host == expectedHost }
+[6/13] Compiling DroidBridgeCore CompanionWirelessReconnect.swift
+error: fatalError

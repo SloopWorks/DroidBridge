@@ -96,11 +96,20 @@ These features are integrated into the same DroidBridge Mac window; there is no 
   including version/platform, size, SHA-256 and signing status. An unpublished
   version stays unavailable. The phone cannot install or approve software on Mac.
 
-For Wi-Fi, use the Mac wireless setup controls with Android **Wireless debugging
-→ Pair device with pairing code**, then Connect using its current debugging
-endpoint. This is Android's authenticated debugging transport; companion QR trust
-is a separate step. Drain current USB sessions before changing aliases. A
-reconnection can have a visible gap and never promises seamless stream migration.
+For Wi-Fi, open **Devices → Connect over Wi-Fi** in DroidBridge. On the same
+network, turn on **Wireless debugging** in Android Developer options, choose
+**Pair device with QR code**, and scan the Mac's code. Allow local network access
+on the Mac if prompted. If a phone already authorizes this Mac over USB, try
+**Use Connected USB Phone** with Wireless debugging enabled. Keep USB connected
+until DroidBridge confirms Wi-Fi is ready. **Manual Setup** is available if the
+network blocks discovery.
+
+DroidBridge remembers paired phones and rediscovers their current Wi-Fi address
+while the main Mac app is open. Keep Wireless debugging on; **Reconnect Saved
+Phone** retries immediately. **Forget Saved Phone** stops DroidBridge reconnecting;
+forget the Mac in Android's Wireless debugging settings to revoke debugging.
+Companion QR trust is separate. Close active USB app windows before reopening
+them on Wi-Fi; an address change may require reopening an app on the new connection.
 
 ## Companion quick access and saved content
 

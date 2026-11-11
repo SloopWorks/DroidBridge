@@ -1,0 +1,94 @@
+[0/1] Planning build
+Building for debugging...
+[0/14] Write sources
+[2/14] Write swift-version--58304C5D6DBC2206.txt
+[4/20] Compiling DroidBridgeCore AndroidDiscovery.swift
+[5/20] Compiling DroidBridgeCore CompanionWirelessADB.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessADB.swift:7:39: error: covariant 'Self' type cannot be referenced from a stored property initializer
+  5 | /// attempt, and the secret stays in memory and goes to ADB through stdin only.
+  6 | public final class CompanionWirelessQRInvitation: @unchecked Sendable {
+  7 |     let serviceInstance = "studio-" + Self.randomHex(bytes: 12)
+    |                                       `- error: covariant 'Self' type cannot be referenced from a stored property initializer
+  8 |     private let secret = Self.randomHex(bytes: 16)
+  9 |     private let createdAt = ProcessInfo.processInfo.systemUptime
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessADB.swift:8:26: error: covariant 'Self' type cannot be referenced from a stored property initializer
+  6 | public final class CompanionWirelessQRInvitation: @unchecked Sendable {
+  7 |     let serviceInstance = "studio-" + Self.randomHex(bytes: 12)
+  8 |     private let secret = Self.randomHex(bytes: 16)
+    |                          `- error: covariant 'Self' type cannot be referenced from a stored property initializer
+  9 |     private let createdAt = ProcessInfo.processInfo.systemUptime
+ 10 |     private let lock = NSLock()
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessADB.swift:120:127: error: value of optional type 'String.SubSequence?' (aka 'Optional<Substring>') must be unwrapped to a value of type 'String.SubSequence' (aka 'Substring')
+118 |         try AndroidDiscovery.validateSerial(serial)
+119 |         let listing = try await run(adb: adb, arguments: ["devices", "-l"], input: nil, secret: nil, timeout: 3)
+120 |         let records = listing.components(separatedBy: .newlines).map { $0.split(whereSeparator: \.isWhitespace) }.filter { $0.first == serial }
+    |                                                                                                                               |- error: value of optional type 'String.SubSequence?' (aka 'Optional<Substring>') must be unwrapped to a value of type 'String.SubSequence' (aka 'Substring')
+    |                                                                                                                               |- note: coalesce using '??' to provide a default when the optional value contains 'nil'
+    |                                                                                                                               `- note: force-unwrap using '!' to abort execution if the optional value contains 'nil'
+121 |         guard records.count == 1, let record = records.first, record.count >= 3, record[1] == "device" else { return false }
+122 |         let ids = record.dropFirst(2).filter { $0.hasPrefix("transport_id:") }
+[6/20] Compiling DroidBridgeCore Models.swift
+[7/20] Compiling DroidBridgeCore CompanionWirelessBonjour.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessBonjour.swift:69:79: error: a C function pointer cannot be formed from a closure that captures context
+ 67 |         let state = BrowseState(instance: instance, kind: kind)
+ 68 |         var browse: DNSServiceRef?
+ 69 |         let result = DNSServiceBrowse(&browse, 0, 0, kind.rawValue, "local.", { _, flags, index, error, name, type, domain, context in
+    |                                                                               `- error: a C function pointer cannot be formed from a closure that captures context
+ 70 |             guard let context else { return }
+ 71 |             let state = Unmanaged<BrowseState>.fromOpaque(context).takeUnretainedValue()
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessBonjour.swift:144:85: error: a C function pointer cannot be formed from a closure that captures context
+142 |         var reference: DNSServiceRef?
+143 |         let protocols = DNSServiceProtocol(kDNSServiceProtocol_IPv4 | kDNSServiceProtocol_IPv6)
+144 |         let result = DNSServiceGetAddrInfo(&reference, 0, index, protocols, target, { _, flags, _, error, _, address, ttl, context in
+    |                                                                                     `- error: a C function pointer cannot be formed from a closure that captures context
+145 |             guard let context else { return }
+146 |             let state = Unmanaged<AddressState>.fromOpaque(context).takeUnretainedValue()
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[8/29] Compiling DroidBridgeCore CompanionWirelessReconnect.swift
+[9/29] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessADB.swift:7:39: error: covariant 'Self' type cannot be referenced from a stored property initializer
+  5 | /// attempt, and the secret stays in memory and goes to ADB through stdin only.
+  6 | public final class CompanionWirelessQRInvitation: @unchecked Sendable {
+  7 |     let serviceInstance = "studio-" + Self.randomHex(bytes: 12)
+    |                                       `- error: covariant 'Self' type cannot be referenced from a stored property initializer
+  8 |     private let secret = Self.randomHex(bytes: 16)
+  9 |     private let createdAt = ProcessInfo.processInfo.systemUptime
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionWirelessADB.swift:8:26: error: covariant 'Self' type cannot be referenced from a stored property initializer
+  6 | public final class CompanionWirelessQRInvitation: @unchecked Sendable {
+  7 |     let serviceInstance = "studio-" + Self.randomHex(bytes: 12)
+  8 |     private let secret = Self.randomHex(bytes: 16)
+    |                          `- error: covariant 'Self' type cannot be referenced from a stored property initializer
+  9 |     private let createdAt = ProcessInfo.processInfo.systemUptime
+ 10 |     private let lock = NSLock()
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[10/29] Compiling DroidBridgeCore PhoneDisplayPower.swift
+[11/29] Compiling DroidBridgeCore SessionConnection.swift
+[12/29] Compiling DroidBridgeCore DeviceSelection.swift
+[13/29] Compiling DroidBridgeCore ManagedApps.swift
+[14/29] Compiling DroidBridgeCore DeviceReadiness.swift
+[15/29] Compiling DroidBridgeCore AndroidIconProvider.swift
+[16/29] Compiling DroidBridgeCore CompanionBrokerService.swift
+[17/29] Compiling DroidBridgeCore CompanionQAScope.swift
+[18/29] Compiling DroidBridgeCore ManagedAvailabilityMonitor.swift
+error: fatalError

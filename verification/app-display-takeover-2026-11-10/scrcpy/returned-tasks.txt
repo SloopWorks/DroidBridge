@@ -1,0 +1,188 @@
+ACTIVITY MANAGER ACTIVITIES (dumpsys activity activities)
+Display #7 (activities from top to bottom):
+  * Task{d3f3ded #1486 type=standard A=10160:dev.droidbridge.testapp7 U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1}
+    mLastNonFullscreenBounds=Rect(61, 81 - 408, 549)
+    isSleeping=false
+    topResumedActivity=ActivityRecord{a88a404 u0 dev.droidbridge.testapp7/.MainActivity t1486}
+    * Hist  #0: ActivityRecord{a88a404 u0 dev.droidbridge.testapp7/.MainActivity t1486}
+      packageName=dev.droidbridge.testapp7 processName=dev.droidbridge.testapp7
+      launchedFromUid=2000 launchedFromPackage=com.android.shell launchedFromFeature=null userId=0
+      app=ProcessRecord{f149c95 2365:dev.droidbridge.testapp7/u0a160}
+      Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 pkg=dev.droidbridge.testapp7 cmp=dev.droidbridge.testapp7/.MainActivity }
+      rootOfTask=true task=Task{d3f3ded #1486 type=standard A=10160:dev.droidbridge.testapp7}
+      taskAffinity=10160:dev.droidbridge.testapp7
+      mActivityComponent=dev.droidbridge.testapp7/.MainActivity
+      baseDir=/data/app/~~z5sR60IX6QtKx_Xz3py0mw==/dev.droidbridge.testapp7-8q8bJIOmD65W0WOR3MjLDQ==/base.apk
+      dataDir=/data/user/0/dev.droidbridge.testapp7
+      stateNotNeeded=false componentSpecified=true mActivityType=standard
+      compat={420dpi} theme=0x1030241
+      mLastReportedConfigurations:
+        mGlobalConfig={1.0 310mcc260mnc [en_US] ldltr sw301dp w301dp h455dp 240dpi smll port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 452, 682) mAppBounds=Rect(0, 0 - 452, 682) mMaxBounds=Rect(0, 0 - 452, 682) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} as.3 s.123 fontWeightAdjustment=0}
+        mOverrideConfig={0.0 ?mcc0mnc ?localeList ?layoutDir sw301dp w301dp h455dp 240dpi smll port ?uimode ?night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 452, 682) mAppBounds=Rect(0, 0 - 452, 682) mMaxBounds=Rect(0, 0 - 452, 682) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.4 ?fontWeightAdjustment}
+      mLastReportedActivityWindowInfo=ActivityWindowInfo{isEmbedded=false, taskBounds=Rect(0, 0 - 452, 682), taskFragmentBounds=Rect(0, 0 - 452, 682)}
+      CurrentConfiguration={1.0 310mcc260mnc [en_US] ldltr sw301dp w301dp h455dp 240dpi smll port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 452, 682) mAppBounds=Rect(0, 0 - 452, 682) mMaxBounds=Rect(0, 0 - 452, 682) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} as.3 s.4 fontWeightAdjustment=0}
+      RequestedOverrideConfiguration={0.0 ?mcc0mnc ?localeList ?layoutDir ?swdp ?wdp ?hdp ?density ?lsize ?long ?ldr ?wideColorGamut ?orien ?uimode ?night ?touch ?keyb/?/? ?nav/? winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=null mMaxBounds=Rect(0, 0 - 0, 0) mDisplayRotation=undefined mWindowingMode=undefined mActivityType=standard mAlwaysOnTop=undefined mRotation=undefined} ?fontWeightAdjustment}
+      taskDescription: label="null" icon=null iconResource=/0 iconFilename=null primaryColor=fff5f5f5
+        backgroundColor=fffafafa statusBarColor=ff757575 navigationBarColor=808080
+       backgroundColorFloating=ffffffff
+      launchFailed=false launchCount=1 lastLaunchTime=-22s17ms
+      mHaveState=false mIcicle=null
+      state=RESUMED delayedResume=false finishing=false
+      keysPaused=false inHistory=true idle=true
+      occludesParent=true noDisplay=false immersive=false launchMode=0
+      mActivityType=standard
+      mImeInsetsFrozenUntilStartInput=false
+      windows=[Window{e61678a u0 dev.droidbridge.testapp7/dev.droidbridge.testapp7.MainActivity}]
+      windowType=2
+      mOccludesParent=true
+      overrideOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+      requestedOrientation=SCREEN_ORIENTATION_UNSPECIFIED
+      mVisibleRequested=true mVisible=true mClientVisible=true reportedDrawn=true reportedVisible=true
+      mNumInterestingWindows=1 mNumDrawnWindows=1 allDrawn=true lastAllDrawn=false)
+      startingData=null firstWindowDrawn=true mIsExiting=false
+      nowVisible=true lastVisibleTime=-239ms
+      resizeMode=RESIZE_MODE_RESIZEABLE
+      mLastReportedMultiWindowMode=false mLastReportedPictureInPictureMode=false
+      supportsSizeChanges=SIZE_CHANGES_UNSUPPORTED_METADATA
+      configChanges=0x1c83
+      neverSandboxDisplayApis=false
+      alwaysSandboxDisplayApis=false
+      areBoundsLetterboxed=false
+      mCameraCompatControlState=hidden
+      mCameraCompatControlEnabled=false
+      Local Activity c892bfc State:
+        mResumed=true mStopped=false mFinished=false
+        mIsInMultiWindowMode=false mIsInPictureInPictureMode=false
+        mChangingConfigurations=false
+        mCurrentConfig={1.0 310mcc260mnc [en_US] ldltr sw301dp w301dp h455dp 240dpi smll port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 452, 682) mAppBounds=Rect(0, 0 - 452, 682) mMaxBounds=Rect(0, 0 - 452, 682) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} as.3 s.4 fontWeightAdjustment=0}
+        mLoadersStarted=true
+        FragmentManager misc state:
+          mHost=android.app.Activity$HostCallbacks@8dd5d71
+          mContainer=android.app.Activity$HostCallbacks@8dd5d71
+          mCurState=5 mStateSaved=false mDestroyed=false
+      ViewRoot:
+        mAdded=true
+        mRemoved=false
+        mStopped=false
+        mPausedForTransition=false
+        mConsumeBatchedInputScheduled=false
+        mConsumeBatchedInputImmediatelyScheduled=false
+        mPendingInputEventCount=0
+        mProcessInputEventsScheduled=false
+        mTraversalScheduled=false
+        mReportNextDraw=false
+        mLastReportedMergedConfiguration={mGlobalConfig={1.0 310mcc260mnc [en_US] ldltr sw301dp w301dp h455dp 240dpi smll port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 452, 682) mAppBounds=Rect(0, 0 - 452, 682) mMaxBounds=Rect(0, 0 - 452, 682) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} as.3 s.123 fontWeightAdjustment=0} mOverrideConfig={0.0 ?mcc0mnc ?localeList ?layoutDir sw301dp w301dp h455dp 240dpi smll port ?uimode ?night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 452, 682) mAppBounds=Rect(0, 0 - 452, 682) mMaxBounds=Rect(0, 0 - 452, 682) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.4 ?fontWeightAdjustment}}
+        mLastConfigurationFromResources={1.0 310mcc260mnc [en_US] ldltr sw301dp w301dp h455dp 240dpi smll port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 452, 682) mAppBounds=Rect(0, 0 - 452, 682) mMaxBounds=Rect(0, 0 - 452, 682) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} as.3 s.4 fontWeightAdjustment=0}
+        mLastReportedActivityWindowInfo=ActivityWindowInfo{isEmbedded=false, taskBounds=Rect(0, 0 - 452, 682), taskFragmentBounds=Rect(0, 0 - 452, 682)}
+        mIsAmbientMode=false
+        mUnbufferedInputSource=0
+        mAttachInfo=         AttachInfo:
+          mHasWindowFocus=true
+          mWindowVisibility=0
+          mInTouchMode=true
+          mUnbufferedDispatchRequested=false
+        android.view.ViewRootImpl$NativePreImeInputStage: mQueueLength=0
+        android.view.ViewRootImpl$ImeInputStage: mQueueLength=0
+        android.view.ViewRootImpl$NativePostImeInputStage: mQueueLength=0
+        android.view.ViewRootImpl$WindowInputEventReceiver
+         mInputChannel: e61678a dev.droidbridge.testapp7/dev.droidbridge.testapp7.MainActivity (client)
+         mSeqMap: {}
+         mReceiverPtr:
+          mInputConsumer:
+            mResampleTouch = true
+            mChannel = e61678a dev.droidbridge.testapp7/dev.droidbridge.testapp7.MainActivity (client)
+            mMsgDeferred: false
+            Batches:
+                <empty>
+            mSeqChains:
+                <empty>
+            mConsumeTimes:
+                <empty>
+            
+          mBatchedInputEventPending: false
+          mOutboundQueue:
+            <empty>
+          
+      Choreographer:
+        mFrameScheduled=false
+        mLastFrameTime=708287 (51 ms ago)
+      InsetsController:
+          InsetsState
+            mDisplayFrame=Rect(0, 0 - 452, 682)
+            mDisplayCutout=DisplayCutout{insets=Rect(0, 0 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=0 displayHeight=0 physicalDisplayWidth=0 physicalDisplayHeight=0 density={0.0} cutoutSpec={} rotation={0} scale={0.0} physicalPixelDisplaySizeRatio={0.0}}} sideOverrides=null}
+            mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=0, center=Point(0, 0)}, RoundedCorner{position=TopRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomRight, radius=0, center=Point(0, 0)}, RoundedCorner{position=BottomLeft, radius=0, center=Point(0, 0)}]}
+            mRoundedCornerFrame=Rect(0, 0 - 452, 682)
+            mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=null rotation=0}
+            mDisplayShape=DisplayShape{ spec=1810826747 displayWidth=452 displayHeight=682 physicalPixelDisplaySizeRatio=1.0 rotation=0 offsetX=0 offsetY=0 scale=1.0}
+              InsetsSource id=c550001 type=navigationBars frame=[0,610][452,682] visible=true flags= sideHint=BOTTOM boundingRects=null
+              InsetsSource id=c550004 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE boundingRects=null
+              InsetsSource id=c550005 type=mandatorySystemGestures frame=[0,610][452,682] visible=true flags= sideHint=BOTTOM boundingRects=null
+              InsetsSource id=c550006 type=tappableElement frame=[0,610][452,682] visible=true flags= sideHint=BOTTOM boundingRects=null
+              InsetsSource id=c550024 type=systemGestures frame=[0,0][0,0] visible=true flags= sideHint=NONE boundingRects=null
+          mIsPredictiveBackImeHideAnimInProgress=false
+      WindowOnBackDispatcher:
+          Top Callback: android.view.ViewRootImpl$$ExternalSyntheticLambda11@2feb2c9
+          Callbacks: 
+            Callback: android.view.ViewRootImpl$$ExternalSyntheticLambda11@2feb2c9 Priority=0
+      ImeBackAnimationController:
+          mLastProgress=0.0
+          mTriggerBack=false
+          mIsPreCommitAnimationInProgress=false
+          mStartRootScrollY=0
+          isBackAnimationAllowed=true
+          isAdjustPan=true
+          isHideAnimationInProgress=false
+      View Hierarchy:
+        com.android.internal.policy.DecorView{f1f6756 V.E...... R....... 0,0-452,682 aid=7}[MainActivity]
+          android.widget.LinearLayout{45f63d7 V.E...... ........ 0,0-452,682}
+            android.view.ViewStub{c5334c4 G.E...... ......I. 0,0-0,0 #10201cb android:id/action_mode_bar_stub}
+            android.widget.FrameLayout{d195fad V.E...... ........ 0,0-452,682 #1020002 android:id/content}
+              android.widget.LinearLayout{bc2a2e2 V.E...... ........ 0,0-452,682}
+                android.widget.TextView{c4c6673 V.ED..... ........ 24,50-428,137}
+                android.widget.TextView{3b0d930 V.ED..... ........ 24,137-428,228}
+                android.widget.Button{f9949a9 VFED..C.. ........ 24,228-428,300}
+                android.widget.EditText{a6c0b2e VFED..CL. ........ 24,300-428,368 aid=1073741826}
+                android.widget.Button{efcf6cf VFED..C.. ........ 24,368-428,440}
+                android.widget.Button{802585c VFED..C.. ........ 24,440-428,512}
+                android.widget.Button{313d765 VFED..C.. ........ 24,512-428,584}
+          android.view.View{831ac3a V.ED..... ........ 0,610-452,682 #1020030 android:id/navigationBarBackground}
+      Looper (main, tid 2) {31d21c8}
+        Message 0: { when=+8ms callback=dev.droidbridge.testapp7.MainActivity$2 target=android.os.Handler }
+        Message 1: { when=+744ms what=2 arg1=1 obj=android.animation.AnimationHandler$$ExternalSyntheticLambda0@6de91f1 target=android.view.Choreographer$FrameHandler }
+        (Total messages: 2, polling=false, quitting=false)
+      ResourcesManager:
+        total apks: 2
+        resources: 6
+        resource impls: 7
+      1 dumpables:
+      #0: AutofillManager
+            AutofillManager:
+              sessionId: 2147483647
+              state: UNKNOWN
+              context: dev.droidbridge.testapp7.MainActivity@c892bfc
+              service client: null
+              client: android.view.autofill.AutofillClientController@e7c30eb (android.os.BinderProxy@5d00fc3)
+              enabled: false
+              enabledAugmentedOnly: false
+              hasService: true
+              hasCallback: false
+              onInvisibleCalled false
+              last autofilled data: null
+              id of last fill UI shown: null
+              tracked views: null
+              fillable ids: null
+              entered ids: null
+              save trigger id: null
+              save on finish(): false
+              options: logLvl=0, compatMode=false, augmented=false, appDisabledExpiration=0
+              fill dialog enabled: false
+              fill dialog enabled hints: []
+              compat mode enabled: false
+              debug: false verbose: false
+            Autofill Compat Mode: false
+  Resumed activities in task display areas (from top to bottom):
+    Resumed: ActivityRecord{a88a404 u0 dev.droidbridge.testapp7/.MainActivity t1486}
+
+Display #0 (activities from top to bottom):
+
+  ResumedActivity: ActivityRecord{a88a404 u0 dev.droidbridge.testapp7/.MainActivity t1486}

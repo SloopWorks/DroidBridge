@@ -1,0 +1,31 @@
+{
+  "only_emulator_controlled": "DroidBridge_API35 / emulator-5580",
+  "remaining_forwards": [],
+  "remaining_scrcpy_servers": [],
+  "remaining_scrcpy_displays": [],
+  "emulator_shutdown": "OK: killing emulator, bye bye\nOK",
+  "qa_wrapper_registrations": [
+    {
+      "path": "/private/tmp/droidbridge-display-wrappers-pgbCbd/native/Display Move Probe (native).app/Contents/Resources/Runtime/Player.app",
+      "status": 1,
+      "output": "failed to scan /private/tmp/droidbridge-display-wrappers-pgbCbd/native/Display Move Probe (native).app/Contents/Resources/Runtime/Player.app: -10814\n from spotlight"
+    },
+    {
+      "path": "/private/tmp/droidbridge-display-wrappers-pgbCbd/native/Display Move Probe (native).app",
+      "status": 0,
+      "output": ""
+    },
+    {
+      "path": "/private/tmp/droidbridge-display-wrappers-pgbCbd/scrcpy/Display Move Probe (scrcpy).app/Contents/Resources/Runtime/Player.app",
+      "status": 0,
+      "output": ""
+    },
+    {
+      "path": "/private/tmp/droidbridge-display-wrappers-pgbCbd/scrcpy/Display Move Probe (scrcpy).app",
+      "status": 0,
+      "output": ""
+    }
+  ],
+  "qa_wrapper_root_removed": true,
+  "shared_adb_pid_before_and_after": 34809
+}
