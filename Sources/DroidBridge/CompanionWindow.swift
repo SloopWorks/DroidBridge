@@ -270,8 +270,9 @@ struct CompanionAppPresentation {
     }
     private func buildConnection() {
         let connect = button("Connect Companion") { [weak self] in self?.connect() }
-        let pair = button("Pair Phone…") { [weak self] in self?.showPairing() }
-        let wifi = button("Set Up Wi-Fi ADB…") { [weak self] in self?.showWireless() }
+        let pair = button("Pair Companion…") { [weak self] in self?.showPairing() }
+        let wifi = button("Connect over Wi-Fi…") { [weak self] in self?.showWireless() }
+        wifi.isEnabled = adapter.launcher?.isWrapper == false
         let install = button("Install / Update Android Companion") { [weak self] in self?.installCompanion() }
         let open = button("Open Android Companion") { [weak self] in self?.openAndroidCompanion() }
         let retry = button("Retry") { [weak self] in self?.connect() }
@@ -281,7 +282,7 @@ struct CompanionAppPresentation {
         retryHost.isEnabled = adapter.launcher?.isWrapper == false && Bundle.main.bundleURL.pathExtension == "app"
         pendingPairings.orientation = .vertical; pendingPairings.alignment = .leading; pendingPairings.spacing = 10
         hostRegistration.setAccessibilityLabel("Mac phone-launch registration")
-        let content = column([label("Two permissions, one local connection", heading: true), label(embedded ? "USB or Android's paired wireless debugging authorizes the Android device selected in the toolbar. Install, Open, Connect and Pair always use that device. Saved pairing above selects whose trust you manage, including an offline phone; it does not change the setup device. Companion pairing separately authorizes app catalog, sharing and phone dashboard access." : "USB or Android's paired wireless debugging authorizes ADB. Companion pairing separately authorizes this Mac's app catalog, handoff and phone dashboard. Select its authorized ADB device, install/open the companion if needed, then start its connection service on the phone."), adbDevices, row([install, open]), row([connect, pair, wifi]), row([retry, disconnect]), forget, hostRegistration, retryHost, pendingPairings, label("Trusted Macs", heading: true), button("Refresh Trusted Macs") { [weak self] in self?.loadTrusts() }, trusts, label("If no ADB device appears: enable Developer options and USB debugging on Android, connect USB, unlock the phone and accept its debugging prompt. A QR code does not grant ADB access. Revoke an untrusted Mac from either companion UI. If a local credential becomes unreadable after an unsigned update, use Forget Pairing on This Mac, remove the old trust on the phone, and pair with a fresh link.")])
+        let content = column([label("Two permissions, one local connection", heading: true), label(embedded ? "USB or Android's paired wireless debugging authorizes the Android device selected in the toolbar. Install, Open, Connect and Pair always use that device. Saved pairing above selects whose trust you manage, including an offline phone; it does not change the setup device. Companion pairing separately authorizes app catalog, sharing and phone dashboard access." : "USB or Android's paired wireless debugging authorizes ADB. Companion pairing separately authorizes this Mac's app catalog, handoff and phone dashboard. Select its authorized ADB device, install/open the companion if needed, then start its connection service on the phone."), adbDevices, row([install, open]), row([connect, pair, wifi]), row([retry, disconnect]), forget, hostRegistration, retryHost, pendingPairings, label("Trusted Macs", heading: true), button("Refresh Trusted Macs") { [weak self] in self?.loadTrusts() }, trusts, label("If no ADB device appears: enable Developer options and USB debugging on Android, connect USB, unlock the phone and accept its debugging prompt. The companion QR code only grants companion access. For wireless debugging, use Connect over Wi-Fi. Revoke an untrusted Mac from either companion UI. If a local credential becomes unreadable after an unsigned update, use Forget Pairing on This Mac, remove the old trust on the phone, and pair with a fresh link.")])
         page("Connection", content)
     }
     private func buildApps() {
@@ -446,7 +447,17 @@ struct CompanionAppPresentation {
             } catch { self.changingPhone = false; if !Task.isCancelled { self.status.stringValue = error.localizedDescription } }
         }
     }
-    private func showWireless() { wireless = CompanionWirelessSetup(tools: adapter.launcher?.toolchain ?? Toolchain()); wireless?.onConnected = { [weak self] in self?.adapter.launcher?.refreshDevices() }; wireless?.showWindow(nil) }
+    private func showWireless() {
+        guard let launcher = adapter.launcher, !launcher.isWrapper else { return }
+        if let wireless, wireless.window?.isVisible == true { wireless.open(); return }
+        wireless?.shutdown()
+        let selected = launcher.selectedDevice
+        let usb = selected.flatMap { $0.state == "device" && $0.usb == true ? $0 : nil }
+        let setup = CompanionWirelessSetup(tools: launcher.toolchain, usbDevice: usb)
+        setup.onConnected = { [weak launcher] serial in launcher?.wirelessDidConnect(serial) }
+        wireless = setup
+        setup.open()
+    }
     private func deviceAction(_ operation: String, message: String) {
         guard let phone else { status.stringValue = "Select a paired phone first."; return }
         run("Updating companion connection…") { [weak self] in guard let self else { throw CancellationError() }; _ = try await self.adapter.broker.request(operation: operation, payload: ["device_id": .string(phone.id)]); try await self.adapter.refreshStatus(); return message }

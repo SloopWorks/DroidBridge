@@ -1,0 +1,9 @@
+Started an isolated loopback ADB server with USB, emulator scanning and mDNS disabled.
+Android Settings camera scanned the invitation and started its real pairing server.
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-wireless-adb.py", line 225, in <module>
+    until("PAKE pairing receipt", guid_path.exists, 25)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-wireless-adb.py", line 58, in until
+    raise RuntimeError(f"Timed out: {label}")
+RuntimeError: Timed out: PAKE pairing receipt

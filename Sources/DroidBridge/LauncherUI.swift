@@ -332,13 +332,16 @@ import DroidBridgeStreaming
         let state=c.sessionStates[id] ?? "starting"
         let stateLabel=label(state.capitalized,size:11,weight:.medium,secondary:true);stateLabel.setContentCompressionResistancePriority(.required,for:.horizontal)
         if state == "disconnected" {stateLabel.stringValue = "Waiting to reconnect"}
+        if let display = session.appMovedToDisplay {stateLabel.stringValue = display == 0 ? "On phone" : "On another display"}
         if state == "running" {stateLabel.textColor = .systemGreen} else if state == "failed" || state == "disconnected" {stateLabel.textColor = .systemOrange}
         let top=NSStackView(views:[name,stateLabel]);top.spacing=12
         let detail=label("\(descriptor.device.model.replacingOccurrences(of:"_",with:" ")) · \(descriptor.configuration.backend == .native ? "Native AppKit" : "scrcpy")",size:11,secondary:true);detail.maximumNumberOfLines=1;detail.lineBreakMode = .byTruncatingTail
         let focus=ClosureButton(title:"Focus") { [weak c] in c?.focusSession(id) }
-        focus.isEnabled=descriptor.configuration.backend == .native ? (c.hosts[id] != nil && (session.state == .starting || session.state == .running)) : session.externalApplicationPID != nil
+        focus.isEnabled=session.appMovedToDisplay != nil || (descriptor.configuration.backend == .native ? (c.hosts[id] != nil && (session.state == .starting || session.state == .running)) : session.externalApplicationPID != nil)
         var controls:[NSView]=[focus]
-        if session.state == .failed || session.state == .stopped {
+        if session.appMovedToDisplay != nil {
+            controls.append(ClosureButton(title:"Move to Mac") { [weak c] in c?.retry(id) })
+        } else if session.state == .failed || session.state == .stopped {
             controls += [ClosureButton(title:"Retry") { [weak c] in c?.retry(id) },ClosureButton(title:descriptor.configuration.backend == .native ? "Try scrcpy" : "Try Native") { [weak c] in c?.retry(id,backend:descriptor.configuration.backend == .native ? .scrcpy : .native) }]
         }
         controls += [ClosureButton(title:"Log") {NSWorkspace.shared.open(session.logURL)},ClosureButton(title:"Close") { [weak c] in c?.close(id) }]
@@ -350,7 +353,7 @@ import DroidBridgeStreaming
         }
         rows.append(actions)
         let card=Self.card(column(rows,spacing:6));card.toolTip=c.sessionErrors[id]
-        card.setAccessibilityLabel("\(descriptor.application.name), \(state), \(descriptor.device.model)")
+        card.setAccessibilityLabel("\(descriptor.application.name), \(stateLabel.stringValue), \(descriptor.device.model)")
         return card
     }
     static func launchedAppCard(controller c:LauncherController,app:LaunchedDesktopApp)->NSView {
@@ -430,6 +433,6 @@ struct LauncherSessionPresentation:Equatable {
         id=descriptor.id;name=descriptor.application.name;device=descriptor.device.model;backend=descriptor.configuration.backend.rawValue
         state=controller.sessionStates[id] ?? "starting";error=controller.sessionErrors[id]
         retry=session.state == .failed || session.state == .stopped
-        focus=descriptor.configuration.backend == .native ? (controller.hosts[id] != nil && (session.state == .starting || session.state == .running)) : session.externalApplicationPID != nil
+        focus=session.appMovedToDisplay != nil || (descriptor.configuration.backend == .native ? (controller.hosts[id] != nil && (session.state == .starting || session.state == .running)) : session.externalApplicationPID != nil)
     }
 }

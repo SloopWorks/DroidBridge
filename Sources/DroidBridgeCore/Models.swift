@@ -4,7 +4,8 @@ public struct AndroidDevice: Identifiable, Codable, Hashable, Sendable {
     public let serial: String
     public let model: String
     public let state: String
-    public init(serial: String, model: String, state: String = "device") { self.serial = serial; self.model = model; self.state = state }
+    public let usb: Bool?
+    public init(serial: String, model: String, state: String = "device", usb: Bool? = nil) { self.serial = serial; self.model = model; self.state = state; self.usb = usb }
 }
 public struct AndroidApplication: Identifiable, Codable, Hashable, Sendable {
     public var id: String { packageName }

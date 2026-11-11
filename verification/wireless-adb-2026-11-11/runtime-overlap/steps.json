@@ -1,0 +1,7 @@
+[
+  "Started an isolated loopback ADB server with USB, emulator scanning and mDNS disabled.",
+  "Used Android\u2019s real Settings code dialog as the camera-independent fallback. The code stayed in private test storage.",
+  "Paired and established a verified TLS ADB transport with the packaged runtime.",
+  "Android rotated its TLS port. Started a fresh Mac probe with the same saved profile.",
+  "Saved phone reconnected without a QR or typed values; native AppKit showed decoded Android video."
+]

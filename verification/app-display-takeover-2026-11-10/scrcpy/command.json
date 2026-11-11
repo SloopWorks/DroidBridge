@@ -1,0 +1,15 @@
+[
+  "/private/tmp/droidbridge-display-wrappers-pgbCbd/scrcpy/Display Move Probe (scrcpy).app/Contents/MacOS/DroidBridge",
+  "--wrapper",
+  "--companion-qa-root",
+  "/private/tmp/droidbridge-display-move-8r_np58l/qa",
+  "--serial",
+  "emulator-5580",
+  "--launch",
+  "dev.droidbridge.testapp7",
+  "--name",
+  "DroidBridge Display Probe",
+  "--backend",
+  "scrcpy",
+  "--companion-launch-trace"
+]

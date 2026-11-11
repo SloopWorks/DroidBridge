@@ -347,13 +347,36 @@ class MainActivity : Activity() {
         operations()
     }
     private fun startConnection() { runCatching { startForegroundService(Intent(this, BridgeService::class.java)); announce("Starting connection service…"); handler.postDelayed({ snapshot() }, 500) }.onFailure { announce("Connection service could not start. Check Diagnostics.") } }
-    private fun setup() { AlertDialog.Builder(this).setTitle("Connect phone and Mac").setMessage("1. Connect a USB data cable and enable USB debugging in Developer options. Approve Android’s debugging prompt only for your trusted Mac.\n\n2. Or enable Wireless debugging and use Connect over Wi-Fi on the Mac. Android’s pairing and connection addresses have different ports.\n\n3. Start this app’s service and pair DroidBridge separately. Pairing here does not authorize Android debugging.").setPositiveButton("Open Developer options") { _, _ -> runCatching { startActivity(Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS)) }.onFailure { announce("Enable Developer options in Android Settings → About phone, then return here.") } }.setNegativeButton("Close", null).showAccessible() }
+    private fun setup() {
+        AlertDialog.Builder(this).setTitle("Connect phone and Mac")
+            .setMessage("""
+                On your Mac, open DroidBridge → Devices → Connect over Wi-Fi to show a QR code.
+
+                On this phone, open Developer options below and turn on Wireless debugging. Allow the network if you trust it. In Wireless debugging, tap Pair device with QR code and scan the Mac’s QR.
+
+                Already paired? Put both devices on the same Wi-Fi, turn on Wireless debugging, and reconnect from the Mac. If you’re using USB, leave the cable in until the Mac confirms Wi-Fi is connected.
+
+                If Android has no QR option, use its pairing code with the Mac’s manual option. For USB only, connect a data cable, enable USB debugging, and approve your Mac on the phone.
+
+                If Developer options are hidden, go to Android Settings → About phone and tap Build number seven times. Pair a new Mac in this app afterward if you want companion sharing. That pairing is separate from Android debugging.
+            """.trimIndent())
+            .setPositiveButton("Open Developer options") { _, _ -> openDeveloperOptions() }
+            .setNegativeButton("Close", null)
+            .showAccessible()
+    }
+
+    private fun openDeveloperOptions() {
+        if (runCatching { startActivity(Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS)) }.isSuccess) return
+        announce("Open Android Settings → About phone and tap Build number seven times if Developer options are hidden.")
+        runCatching { startActivity(Intent(Settings.ACTION_DEVICE_INFO_SETTINGS)) }
+            .recoverCatching { startActivity(Intent(Settings.ACTION_SETTINGS)) }
+    }
     private fun pair() {
         if (!store.running) { announce("Start the connection service first"); return }
         store.startPairing(); val deadline = android.os.SystemClock.elapsedRealtime() + 120000
         val uri = store.pairingUri()
         val box = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(16), dp(12), dp(16), dp(12)) }
-        box.addView(text("On your Mac, open DroidBridge → Devices → Pair Phone. Scan this QR, import its image, or paste the pairing link. Approve the same Mac name and comparison code here."))
+        box.addView(text("On your Mac, open DroidBridge → Devices → Pair Companion. Scan this QR, import its image, or paste the pairing link. Approve the same Mac name and comparison code here. This QR is for companion sharing. For Wireless debugging, scan the Mac’s QR from Android Settings."))
         val matrix = com.google.zxing.qrcode.QRCodeWriter().encode(uri, com.google.zxing.BarcodeFormat.QR_CODE, 600, 600); val bitmap = Bitmap.createBitmap(600, 600, Bitmap.Config.ARGB_8888)
         for (y in 0 until 600) for (x in 0 until 600) bitmap.setPixel(x, y, if (matrix[x, y]) Color.BLACK else Color.WHITE)
         box.addView(ImageView(this).apply { setImageBitmap(bitmap); contentDescription = "Temporary pairing QR code"; adjustViewBounds = true }, LinearLayout.LayoutParams(-1, dp(240)))

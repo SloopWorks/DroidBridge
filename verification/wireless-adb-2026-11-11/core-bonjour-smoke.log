@@ -1,0 +1,3 @@
+PASS: native Bonjour resolved exact QR instance; mock ADB received QR secret through stdin
+PASS: native Bonjour resolved same-host TLS connect instance; exact mock transport verified with hidden shell GUID
+PASS: cancellation released the native browse within the bounded interval

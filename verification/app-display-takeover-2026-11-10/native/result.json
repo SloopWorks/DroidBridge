@@ -1,0 +1,25 @@
+{
+  "backend": "native",
+  "same_android_task": 1481,
+  "display_path": [
+    4,
+    0,
+    5
+  ],
+  "detect_seconds": 3.18,
+  "remained_on_phone_until_click": true,
+  "adb_stayed_connected": true,
+  "initial_video": {
+    "initial_blank_frames": "0",
+    "window_number": "17232"
+  },
+  "returned_video": {
+    "initial_blank_frames": "0",
+    "window_number": "17232"
+  },
+  "original_session": "session-AA9BA136-3DF1-4B78-B039-EDE88E53F653.log.jsonl",
+  "returned_session": "session-94355904-B87A-4025-9F94-1BEE41D5EEB2.log.jsonl",
+  "app": "/private/tmp/droidbridge-display-wrappers-pgbCbd/native/Display Move Probe (native).app",
+  "executable_sha256": "5e03ecda7d6079672e434610fe52e1ee55261d27f20c5f92e78b13bc6e82e906",
+  "clean_quit_and_exact_forward_cleanup": true
+}

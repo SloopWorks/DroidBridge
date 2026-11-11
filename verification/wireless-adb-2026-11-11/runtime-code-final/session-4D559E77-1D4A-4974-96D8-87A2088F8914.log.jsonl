@@ -1,0 +1,8 @@
+{"backend":"native","device":"127.0.0.1:55113","package":"dev.droidbridge.testapp7","session":"4D559E77-1D4A-4974-96D8-87A2088F8914","state":"starting","timestamp":"2026-11-11T17:48:48Z"}
+{"backend":"native","device":"127.0.0.1:55113","event":"native_resources","forward":"tcp:55346","package":"dev.droidbridge.testapp7","scid":"000e2ab9","session":"4D559E77-1D4A-4974-96D8-87A2088F8914","timestamp":"2026-11-11T17:48:49Z"}
+{"backend":"native","device":"127.0.0.1:55113","package":"dev.droidbridge.testapp7","session":"4D559E77-1D4A-4974-96D8-87A2088F8914","state":"running","timestamp":"2026-11-11T17:48:49Z"}
+{"backend":"native","details":{"initial_blank_frames":"1","window_number":"17736"},"device":"127.0.0.1:55113","event":"native_content_presented","package":"dev.droidbridge.testapp7","session":"4D559E77-1D4A-4974-96D8-87A2088F8914","timestamp":"2026-11-11T17:48:49Z"}
+{"backend":"native","device":"127.0.0.1:55113","display":2,"event":"app_display_bound","package":"dev.droidbridge.testapp7","session":"4D559E77-1D4A-4974-96D8-87A2088F8914","timestamp":"2026-11-11T17:48:50Z"}
+{"backend":"native","device":"127.0.0.1:55113","event":"session_stop_requested","package":"dev.droidbridge.testapp7","reason":"requested","session":"4D559E77-1D4A-4974-96D8-87A2088F8914","timestamp":"2026-11-11T17:48:50Z"}
+{"backend":"native","device":"127.0.0.1:55113","package":"dev.droidbridge.testapp7","session":"4D559E77-1D4A-4974-96D8-87A2088F8914","state":"stopping","timestamp":"2026-11-11T17:48:50Z"}
+{"backend":"native","device":"127.0.0.1:55113","package":"dev.droidbridge.testapp7","session":"4D559E77-1D4A-4974-96D8-87A2088F8914","state":"stopped","timestamp":"2026-11-11T17:48:50Z"}

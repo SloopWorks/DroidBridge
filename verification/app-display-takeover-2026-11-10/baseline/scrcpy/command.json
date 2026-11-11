@@ -1,0 +1,14 @@
+[
+  "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge",
+  "--companion-qa-root",
+  "/private/tmp/droidbridge-takeover-_oh_86hx/scrcpy",
+  "--serial",
+  "emulator-5580",
+  "--launch",
+  "dev.droidbridge.testapp7",
+  "--name",
+  "Display Move Probe",
+  "--backend",
+  "scrcpy",
+  "--companion-launch-trace"
+]

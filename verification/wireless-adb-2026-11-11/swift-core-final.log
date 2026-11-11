@@ -1,0 +1,38 @@
+Another instance of SwiftPM (PID: 4891) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Emitting module DroidBridgeCoreTests
+[4/5] Compiling DroidBridgeCoreTests CompanionWirelessReconnectTests.swift
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.09s)
+Test Suite 'Selected tests' started at 2026-11-11 09:27:18.689.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-11 09:27:18.690.
+Test Suite 'CompanionWirelessADBTests' started at 2026-11-11 09:27:18.690.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testConnectVerifiesExactTransportIDInsteadOfAnyReadyDevice]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testConnectVerifiesExactTransportIDInsteadOfAnyReadyDevice]' passed (0.422 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testMismatchedGUIDUnwindsOnlyNewlyOpenedEndpoint]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testMismatchedGUIDUnwindsOnlyNewlyOpenedEndpoint]' passed (0.712 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testOnlyAcceptExactADBPairingReceiptAndWellFormedGUID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testOnlyAcceptExactADBPairingReceiptAndWellFormedGUID]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testPairCodeUsesStdinAndIsRedactedFromReturnedOutput]' passed (0.284 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testQRUsesAndroidFormatAndFreshIndependentCredentials]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testQRUsesAndroidFormatAndFreshIndependentCredentials]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testTimeoutAndCancellationFinishBoundedly]' passed (0.209 seconds).
+Test Suite 'CompanionWirelessADBTests' passed at 2026-11-11 09:27:20.320.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 1.629 (1.630) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-11 09:27:20.320.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 1.629 (1.630) seconds
+Test Suite 'Selected tests' passed at 2026-11-11 09:27:20.320.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 1.629 (1.631) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

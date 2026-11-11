@@ -1,0 +1,146 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/11] Compiling DroidBridgeCore CompanionWirelessBonjour.swift
+[4/11] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[5/13] Compiling DroidBridgeCore CompanionWirelessADB.swift
+[6/13] Compiling DroidBridgeCore CompanionWirelessReconnect.swift
+[7/30] Compiling DroidBridgeCompanionBroker main.swift
+[8/30] Emitting module DroidBridgeCompanionBroker
+[8/30] Write Objects.LinkFileList
+[10/30] Emitting module DroidBridgeAvailability
+[11/30] Compiling DroidBridgeAvailability main.swift
+[11/30] Write Objects.LinkFileList
+[13/30] Compiling DroidBridgeStreaming SocketTransport.swift
+[14/30] Compiling DroidBridgeStreaming SessionRecovery.swift
+[15/30] Compiling DroidBridgeStreaming Protocol.swift
+[15/30] Linking DroidBridgeAvailability
+[15/30] Linking DroidBridgeCompanionBroker
+[17/30] Applying DroidBridgeCompanionBroker
+[17/30] Applying DroidBridgeAvailability
+[20/30] Compiling DroidBridgeStreaming H264Decoder.swift
+[21/30] Compiling DroidBridgeStreaming BridgeSession.swift
+[22/30] Compiling DroidBridgeStreaming DeviceAudioArtifacts.swift
+[23/30] Compiling DroidBridgeStreaming DeviceAudioRouter.swift
+[24/30] Compiling DroidBridgeStreaming AppDisplayWatch.swift
+[25/30] Emitting module DroidBridgeStreaming
+[26/112] Compiling DroidBridgeCoreTests CompanionQAScopeTests.swift
+[27/112] Compiling DroidBridgeCoreTests CompanionQRImageReaderTests.swift
+[28/112] Compiling DroidBridgeCoreTests CompanionReleaseMetadataTests.swift
+[29/112] Compiling DroidBridgeCoreTests CompanionSecurityTests.swift
+[30/116] Compiling DroidBridgeCoreTests DeviceSelectionTests.swift
+[31/116] Compiling DroidBridgeCoreTests DroidBridgePreferencesTests.swift
+[32/116] Compiling DroidBridgeCoreTests FrameMailboxTests.swift
+[33/116] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[34/116] Compiling DroidBridgeCoreTests ConnectionRecoveryTests.swift
+[35/116] Compiling DroidBridgeCoreTests DesktopAppSessionsTests.swift
+[36/116] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[37/116] Compiling DroidBridgeCoreTests DeviceAudioPreferencesTests.swift
+[38/116] Compiling DroidBridgeCoreTests PhoneDisplayPowerTests.swift
+[39/116] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[40/116] Compiling DroidBridgeCoreTests ScrcpyPortLeaseTests.swift
+[41/116] Compiling DroidBridgeCoreTests ScrcpyStartupLeaseTests.swift
+[42/116] Compiling DroidBridgeCoreTests CompanionJournalSecurityTests.swift
+[43/116] Compiling DroidBridgeCoreTests CompanionNotificationSecurityTests.swift
+[44/116] Compiling DroidBridgeCoreTests CompanionPendingAdmissionTests.swift
+[45/116] Compiling DroidBridgeCoreTests CompanionPerformanceTests.swift
+[46/116] Compiling DroidBridgeCoreTests CompanionProfileCommitTests.swift
+[47/116] Emitting module DroidBridgeCoreTests
+[48/116] Compiling DroidBridgeCoreTests ADBPortableRuntimeTests.swift
+[49/116] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[50/116] Compiling DroidBridgeCoreTests AndroidIconProviderTests.swift
+[51/116] Compiling DroidBridgeCoreTests AppDisplayWatchTests.swift
+[52/116] Compiling DroidBridgeCoreTests AppPrivacyTests.swift
+[53/116] Compiling DroidBridgeCoreTests DeviceAudioQATests.swift
+[54/116] Compiling DroidBridgeCoreTests DeviceAudioReadinessTests.swift
+[55/116] Compiling DroidBridgeCoreTests DeviceAudioTests.swift
+[56/116] Compiling DroidBridgeCoreTests DeviceReadinessTests.swift
+[57/116] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[58/116] Compiling DroidBridgeCoreTests NativeDiagnosticsTests.swift
+[59/116] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[60/116] Compiling DroidBridgeCoreTests PhoneDisplayPowerQATests.swift
+[61/116] Compiling DroidBridgeCoreTests InputGeometryTests.swift
+[62/116] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[63/116] Compiling DroidBridgeCoreTests ManagedAppNamingQATests.swift
+[64/116] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[65/116] Compiling DroidBridgeCoreTests CompanionCleanupSecurityTests.swift
+[66/116] Compiling DroidBridgeCoreTests CompanionClockTests.swift
+[67/116] Compiling DroidBridge DeviceOnboardingAgent.swift
+[68/116] Compiling DroidBridge DeviceOnboardingUI.swift
+[69/116] Compiling DroidBridge CompanionTransfers.swift
+[70/116] Compiling DroidBridgeCoreTests AvailabilityRuntimeStoreTests.swift
+[71/116] Compiling DroidBridgeCoreTests BrokerAdmissionTLSPeer.swift
+[72/116] Compiling DroidBridgeCoreTests CanonicalAliasAdmissionTests.swift
+[73/116] Compiling DroidBridgeCoreTests CompanionActionsTests.swift
+[74/116] Compiling DroidBridgeCoreTests CompanionBoundaryTests.swift
+[75/116] Compiling DroidBridgeCoreTests CompanionSetupValidationTests.swift
+[76/116] Compiling DroidBridgeCoreTests CompanionTLSFixture.swift
+[77/116] Compiling DroidBridgeCoreTests CompanionWirelessADBTests.swift
+[78/116] Compiling DroidBridgeCoreTests CompanionWirelessReconnectTests.swift
+[79/116] Compiling DroidBridge CompanionWindow.swift
+[80/116] Compiling DroidBridge DesktopWorkspace.swift
+[81/116] Compiling DroidBridge DeviceOnboarding.swift
+[82/116] Compiling DroidBridge CompanionWirelessSetup.swift
+[83/116] Compiling DroidBridge DesktopSettings.swift
+[84/116] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[85/116] Compiling DroidBridgeCoreTests StartupFrameVisibilityTests.swift
+[86/116] Compiling DroidBridgeCoreTests StreamingTests.swift
+[87/116] Compiling DroidBridgeCoreTests SupervisorDiagnosticsTests.swift
+[87/116] Write Objects.LinkFileList
+[88/116] Linking DroidBridgePackageTests
+[98/116] Emitting module DroidBridge
+[99/116] Compiling DroidBridge NativeWindow.swift
+[112/116] Compiling DroidBridge PhoneDisplayControls.swift
+[113/116] Compiling DroidBridge SessionRecovery.swift
+[114/117] Compiling DroidBridge main.swift
+[114/117] Write Objects.LinkFileList
+[115/117] Linking DroidBridge
+[116/117] Applying DroidBridge
+Build complete! (11.11s)
+Test Suite 'Selected tests' started at 2026-11-11 09:31:56.861.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-11 09:31:56.861.
+Test Suite 'CompanionWirelessReconnectTests' started at 2026-11-11 09:31:56.861.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testAmbiguousHistoricalAddressRefusesBeforeAnyDeviceCommand]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testAmbiguousHistoricalAddressRefusesBeforeAnyDeviceCommand]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testForgetFencesLateResultAndKeepsStaleAliasBlocked]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testForgetFencesLateResultAndKeepsStaleAliasBlocked]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testNoEnrollmentDoesNotTouchNetworkAndInvalidGUIDIsRejected]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testNoEnrollmentDoesNotTouchNetworkAndInvalidGUIDIsRejected]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPerPhoneBackoffDoesNotStarveOtherSavedPhones]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPerPhoneBackoffDoesNotStarveOtherSavedPhones]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPortAndIPRotationUsesGUIDAndPreservesHistoricalAliasCheckAcrossRestart]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testPortAndIPRotationUsesGUIDAndPreservesHistoricalAliasCheckAcrossRestart]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testStorageRejectsSymlinkAndLeavesTargetUntouched]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testStorageRejectsSymlinkAndLeavesTargetUntouched]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBSelectionRequiresExactlyOneAuthorizedUSBTransportID]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBSelectionRequiresExactlyOneAuthorizedUSBTransportID]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBWiFiHintRejectsOtherInterfacesAndAmbiguity]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessReconnectTests testUSBWiFiHintRejectsOtherInterfacesAndAmbiguity]' passed (0.000 seconds).
+Test Suite 'CompanionWirelessReconnectTests' passed at 2026-11-11 09:31:56.873.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.011 (0.011) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-11 09:31:56.873.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.011 (0.011) seconds
+Test Suite 'Selected tests' passed at 2026-11-11 09:31:56.873.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.011 (0.012) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

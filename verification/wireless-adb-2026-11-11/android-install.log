@@ -1,0 +1,11 @@
+Performing Streamed Install
+Success
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] pkg=dev.droidbridge.companion }
+Error: Activity not started, unable to resolve Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 pkg=dev.droidbridge.companion }
+Starting: Intent { cmp=dev.droidbridge.companion/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: dev.droidbridge.companion/.MainActivity
+TotalTime: 229
+WaitTime: 230
+Complete

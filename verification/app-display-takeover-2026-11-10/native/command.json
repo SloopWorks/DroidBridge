@@ -1,0 +1,15 @@
+[
+  "/private/tmp/droidbridge-display-wrappers-pgbCbd/native/Display Move Probe (native).app/Contents/MacOS/DroidBridge",
+  "--wrapper",
+  "--companion-qa-root",
+  "/private/tmp/droidbridge-display-move-hzn4rj0y/qa",
+  "--serial",
+  "emulator-5580",
+  "--launch",
+  "dev.droidbridge.testapp7",
+  "--name",
+  "DroidBridge Display Probe",
+  "--backend",
+  "native",
+  "--companion-launch-trace"
+]

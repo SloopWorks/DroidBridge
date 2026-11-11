@@ -36,6 +36,7 @@ public struct CompanionPairCode: Equatable {
 /// companion API still stays on loopback behind an exact owned ADB forward.
 public struct CompanionWirelessEndpoint: Equatable {
     public let argument: String
+    let host: String
     public init(_ value: String) throws {
         let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard value.utf8.count <= 300, !value.contains(where: { $0.isWhitespace }) else {
@@ -59,5 +60,6 @@ public struct CompanionWirelessEndpoint: Equatable {
             throw BridgeError.message("The wireless debugging port must be between 1 and 65535.")
         }
         argument = value
+        self.host = host
     }
 }

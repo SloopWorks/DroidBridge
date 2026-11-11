@@ -29,6 +29,8 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     }()
     var timer: Timer?
     var refreshTask: Task<Void, Never>?
+    private var wirelessReconnectTask: Task<Void, Never>?
+    private var wirelessSelection: String?
     var refreshing = false
     var quitting = false
     var pending: [SessionDescriptor] = []
@@ -357,6 +359,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
                 let discovered = try await discovery.devices()
                 let found = CompanionQAScope.current?.filterDevices(discovered) ?? discovered
                 guard !quitting else { return }
+                pollSavedWirelessPhones(found)
                 let connected = Set(found.filter { $0.state == "device" }.map(\.serial))
                 if launcherUIReady, onboarding.isRunning, let captured=onboarding.capturedSerial, !connected.contains(captured) { onboarding.cancel() }
                 for session in Array(sessions.values) where !connected.contains(session.descriptor.device.serial) {
@@ -368,10 +371,13 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
                 }
                 let changed = found != devices
                 devices = found
-                if launcherUIReady && (changed || devicePicker.numberOfItems == 0) {
+                if launcherUIReady && (changed || devicePicker.numberOfItems == 0 || wirelessSelection != nil) {
+                    let requested = wirelessSelection
+                    wirelessSelection = nil
                     devicePicker.removeAllItems()
                     devicePicker.addItems(withTitles: devices.map { "\($0.model) · \($0.serial)\($0.state == "device" ? "" : " (\($0.state))")" })
-                    if let index = DeviceSelection.index(in: devices, currentSerial: selected, preferredSerial: preferredSerial) { devicePicker.selectItem(at: index) }
+                    if let requested, let index = devices.firstIndex(where: { $0.serial == requested && $0.state == "device" }) { devicePicker.selectItem(at: index) }
+                    else if let index = DeviceSelection.index(in: devices, currentSerial: selected, preferredSerial: preferredSerial) { devicePicker.selectItem(at: index) }
                     else { devicePicker.selectItem(at: -1) }
                 }
                 discardStaleIconRequests()
@@ -397,6 +403,24 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
                 previousSerials = connected; updateSessions();pollPhoneDisplayControls();pollAudioControls()
                 await launchArgumentsIfNeeded()
             } catch { showLaunchProblem(error.localizedDescription) }
+        }
+    }
+
+    func wirelessDidConnect(_ serial: String?) {
+        guard !quitting, !isWrapper else { return }
+        wirelessSelection = serial
+        refreshDevices()
+    }
+
+    private func pollSavedWirelessPhones(_ found: [AndroidDevice]) {
+        // Only the main app browses. Generated Android wrappers never initiate
+        // ambient discovery or present a Local Network permission prompt.
+        guard !isWrapper, !quitting, wirelessReconnectTask == nil else { return }
+        wirelessReconnectTask = Task { [weak self, toolchain] in
+            let result = await CompanionWirelessReconnect.shared.reconnectIfDue(adb: toolchain.adb, devices: found)
+            guard let self else { return }
+            self.wirelessReconnectTask = nil
+            if result != nil, !Task.isCancelled, !self.quitting { self.refreshDevices() }
         }
     }
     @objc func deviceChanged() {
@@ -566,6 +590,10 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
             host.window?.deminiaturize(nil);host.window?.makeKeyAndOrderFront(nil);NSApp.activate(ignoringOtherApps:true)
             return
         }
+        if let session = sessions.values.first(where: { $0.appMovedToDisplay != nil }) {
+            focusSession(session.descriptor.id)
+            return
+        }
         if let session=sessions.values.first(where: {$0.descriptor.configuration.backend == .scrcpy && $0.state == .running}),let pid=session.externalApplicationPID {
             NSRunningApplication(processIdentifier:pid)?.activate(options:.activateAllWindows)
             return
@@ -585,6 +613,32 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     }
     func presentFailure(_ session: BridgeSession, message: String?) {
         let id = session.descriptor.id
+        if let display = session.appMovedToDisplay {
+            guard !quitting else { return }
+            let reason = display == 0 ? "This app is now on your phone." : "Android moved this app to another display."
+            sessionErrors[id] = reason
+            reconnectRetries.removeValue(forKey: id)
+            recoveryWaitingForWake.remove(id)
+            let host = hosts[id] ?? NativeWindowController(session: session)
+            hosts[id] = host
+            host.video.canRevealVideo = false
+            host.video.statusMessage = reason
+            host.video.frameImage = nil
+            host.video.setRetryTitle("Move to Mac")
+            host.video.canRetry = !retrying.contains(id)
+            host.video.onRetry = { [weak self] in self?.retry(id) }
+            // The fallback Player window closed with its owned stream. Reuse
+            // the wrapper's local window for the action without stealing focus.
+            if session.descriptor.configuration.backend == .scrcpy {
+                if isWrapper { NSApp.setActivationPolicy(.regular) }
+                host.onClose = { [weak self] in self?.close(id, reason: "window_close") }
+                host.window?.delegate = host
+                if host.window?.isMiniaturized != true { host.window?.orderFront(nil) }
+            }
+            status.stringValue = "\(session.descriptor.application.name): \(reason)"
+            session.recordClientEvent("app_move_presented", details: ["window_number": String(host.window?.windowNumber ?? -1)])
+            return
+        }
         let reason = message ?? "The Android stream ended without an error message. Its process and Android server output are in the session log."
         sessionErrors[id] = reason
         if session.state == .failed, let recovery = session.recoveryReason {
@@ -605,7 +659,12 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
         Task {
             defer { retrying.remove(id); if sessions[id] === previous { hosts[id]?.video.canRetry = true } }
             let descriptor = previous.descriptor
-            guard await DeviceReadiness.isReady(device: descriptor.device, toolchain: toolchain) else { status.stringValue = "Android is unavailable or still booting. Connect the device, then Retry."; return }
+            guard await DeviceReadiness.isReady(device: descriptor.device, toolchain: toolchain) else {
+                guard sessions[id] === previous, !quitting else { return }
+                status.stringValue = "Android is unavailable or still booting. Connect the device, then try again."
+                if previous.appMovedToDisplay != nil { hosts[id]?.video.statusMessage = status.stringValue }
+                return
+            }
             guard sessions[id] === previous, !quitting else { return }
             var configuration = descriptor.configuration
             if let backend { configuration.backend = backend }
@@ -640,7 +699,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     func focusSession(_ id:UUID) {
         guard let session=sessions[id] else {return}
         if session.descriptor.configuration.backend == .scrcpy,let pid=session.externalApplicationPID {NSRunningApplication(processIdentifier:pid)?.activate(options:.activateAllWindows)}
-        else if session.descriptor.configuration.backend == .native,let window=hosts[id]?.window {window.deminiaturize(nil);window.makeKeyAndOrderFront(nil);NSApp.activate(ignoringOtherApps:true)}
+        else if session.descriptor.configuration.backend == .native || session.appMovedToDisplay != nil, let window=hosts[id]?.window {window.deminiaturize(nil);window.makeKeyAndOrderFront(nil);NSApp.activate(ignoringOtherApps:true)}
     }
     func updateSessions() {
         companion.markSessionsChanged()
@@ -753,6 +812,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     }
     func shutdownAndWait() async {
         quitting = true
+        wirelessReconnectTask?.cancel()
         appLaunchTask?.cancel(); appSessionTimer?.invalidate(); appSessionPollTask?.cancel()
         settingsWindowController?.close();launcherUI?.hostWindowClosed()
         await companion.shutdown()
@@ -781,6 +841,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
             wrapperSessionProducer = nil
         }
         if let task = refreshTask { await task.value }
+        if let task = wirelessReconnectTask { await task.value }
         for task in Array(deviceSelectionTasks.values) {await task.value}
         deviceSelectionTasks.removeAll();deviceSelectionTask=nil
         if let task = restoreTask {await task.value}

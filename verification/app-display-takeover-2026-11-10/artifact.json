@@ -1,0 +1,15 @@
+{
+  "path": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/app-display-takeover-24/DroidBridge.app",
+  "build": 24,
+  "signing": "ad-hoc (not notarized)",
+  "sha256": "f0d8ca030e6af413e615a08ac3f15815ba523ee1c639f89556a9476dfd9aa919",
+  "source_files": {
+    "ARCHITECTURE.md": "e374b41a9454bbe0380d5302630b8385a4c27f2186a9e578d69161ffcc203182",
+    "Sources/DroidBridge/Launcher.swift": "6d99ae07f9caf4cddee4eb3a07f37c03d9dd51cc12de371edfd35aefe152c9d2",
+    "Sources/DroidBridge/LauncherUI.swift": "35e382cd98a4d43174156e927174af8a36df46f085accc98c8e9894fc668a547",
+    "Sources/DroidBridge/NativeWindow.swift": "b304d9c18de0592f789d16e8dc6900bd8805505075e07d79dec2c1929da8510b",
+    "Sources/DroidBridgeStreaming/AppDisplayWatch.swift": "6db09f91a89c550dc3ffef95f3c00b305005d9d5a1e40a8536db05207cefb178",
+    "Sources/DroidBridgeStreaming/BridgeSession.swift": "a4ca2bdd8c58f1eb15f25639e1c19a53b61c7fc801e56239c28177f62d97ab01",
+    "Tests/DroidBridgeCoreTests/AppDisplayWatchTests.swift": "09570098d5fac5a66ac15179eeb8ea0264466a0986bb6c50b08ace06820c27ec"
+  }
+}

@@ -80,6 +80,8 @@ Before native staging, an immutable session receipt records owner PID, device se
 
 Closing a session destroys its virtual display and its tasks under scrcpy's default content policy. Android controls persistent app state, task affinity, orientation and activity recreation. Saved session intent supports explicit restore after relaunch. Typed native socket failures (including control-channel closure) and unexpected supervised process exits enqueue recovery independently of device enumeration; a brief USB interruption between four-second polls cannot strand a failed session. A normal upstream SDL-window exit, invalid configuration, protocol or decoder failure does not initiate automatic recovery.
 
+Android can move an existing task to another display while the virtual display and video connection remain healthy. Both backends bind the pinned server's launch receipt to the owned display, then read package-scoped Android activity placement off the UI thread. Two consecutive observations must find the same user/task on a different display and no app task on the owned display. Unreadable output, static video and independent phone instances do not count. A confirmed move ends only the owned stream and shows **Move to Mac**. It preserves the task on its new display until the user explicitly launches it back; it does not enter automatic reconnect. Native reuse retains the existing Mac window. Android still decides whether to reuse or recreate the task on return.
+
 Enabled recovery waits for boot/package-service readiness and positively detected system sleep to end. `DeviceVideoReadiness` reads system wakefulness rather than physical panel state, preserving explicit phone-screen-off use; unknown OEM output does not fabricate sleep. Sleeping waits retain intent without staging a server, consuming retries or waking/unlocking the phone. Each recovery chain admits at most three automatic launches, with at least eight seconds between admissions. A briefly running successor carries the same budget; a stable minute permits a fresh budget on the next interruption. Manual Retry starts a fresh budget. Turning automatic recovery off preserves an explicit Retry action. Close and Quit fence every admission continuation.
 
 Native replacements drain predecessor cleanup and transfer the same NSWindow only after admission, preserving window position and minimized state. Reattachment clears old image/input/loading state and fences callbacks against the new session. A native Retry button and categorical wake/recovery/pause messages replace the generic backend-switch advice. Session logs include exact native resource identity and recovery admission/success/wait events. Concurrent supervisor/GUI cleanup verifies an owned forward is absent after an already-removed error and never retries deletion against a foreign mapping. Discovery results remain fenced against selection changes and shutdown.
@@ -306,3 +308,15 @@ ADB children disable unused automatic mDNS browsing while explicit wireless
 pair/connect and existing shared servers retain their behavior. Per-user agents
 associate with the main desktop bundle for macOS local-network attribution. See
 WRAPPER_DESIGN.md for provenance verification, recovery and signing limits.
+
+The main app owns wireless debugging discovery. Android's Settings QR scanner
+starts the pairing service for a fresh, one-use Mac invitation. Bonjour locates
+the exact invitation, ADB authenticates the pairing, and the app retains the
+returned service locator, a hashed Android identity and verified connection
+aliases only after connecting. The USB shortcut reads a WLAN address and the
+identity from the exact authorized USB transport; it never enables debugging.
+Saved-phone recovery uses fresh DNS-SD, bounded retry and read-only transport
+identity checks. Generated wrappers do not browse. Numeric aliases are not
+stable device identities; do not redirect an app session to another alias
+without stronger identity or explicit user action. The pinned companion TLS
+protocol continues to authorize companion operations separately.

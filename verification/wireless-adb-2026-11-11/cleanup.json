@@ -1,0 +1,12 @@
+{
+  "avd": "DroidBridge_API35 / emulator-5580",
+  "wireless_debugging_restored": true,
+  "remaining_forwards": [],
+  "remaining_scrcpy_servers": [],
+  "remaining_scrcpy_displays": [],
+  "emulator_exit": "OK: killing emulator, bye bye\nOK",
+  "shared_adb_pid_before_and_after": 34809,
+  "installed_mac_build": "23",
+  "probe_root_removed": true,
+  "wireless_debugging_after": "off"
+}

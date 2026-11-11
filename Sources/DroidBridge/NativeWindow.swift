@@ -13,6 +13,10 @@ final class AndroidVideoView: NSView {
     let revealVideoButton = NSButton(title:"Show Android Screen",target:nil,action:nil)
     let retryButton = NSButton(title: "Retry", target: nil, action: nil)
     var canRetry = false { didSet { retryButton.isHidden = !canRetry } }
+    func setRetryTitle(_ title: String) {
+        retryButton.title = title
+        retryButton.setAccessibilityLabel(title == "Retry" ? "Retry Android connection" : title)
+    }
     var onRetry: (() -> Void)?
     @objc private func retry(_ sender: Any?) { onRetry?() }
     var canRevealVideo = false {didSet {revealVideoButton.isHidden = !canRevealVideo}}
@@ -183,6 +187,7 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
         blankNoticeTask?.cancel(); blankNoticeTask = nil
         pendingBlankFrame = nil; firstBlankFrameAt = nil; initialBlankFrames = 0; blankVideoNotice = false
         video.frameImage = nil; video.statusMessage = nil; video.canRevealVideo = false; video.canRetry = false; video.dragging = false
+        video.setRetryTitle("Retry")
         self.session = session
         qaMetricsEnabled = CompanionQAScope.current != nil && ProcessInfo.processInfo.arguments.contains("--companion-launch-trace")
         qaMetricsSamples = 0; qaMetricsLastTime = Double.leastNormalMagnitude

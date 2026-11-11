@@ -1,0 +1,23 @@
+{
+  "backend": "scrcpy",
+  "same_android_task": 1486,
+  "display_path": [
+    6,
+    0,
+    7
+  ],
+  "detect_seconds": 3.189,
+  "remained_on_phone_until_click": true,
+  "adb_stayed_connected": true,
+  "initial_video": {
+    "renderer": "SDL texture"
+  },
+  "returned_video": {
+    "renderer": "SDL texture"
+  },
+  "original_session": "session-AF66CAB8-0579-42B7-9A4A-29EF5F1C9AF0.log.jsonl",
+  "returned_session": "session-43E37ADF-5D6C-415C-AC67-F31F9B44ECDB.log.jsonl",
+  "app": "/private/tmp/droidbridge-display-wrappers-pgbCbd/scrcpy/Display Move Probe (scrcpy).app",
+  "executable_sha256": "bb1433abb8a21ad83fc988c2617717e7f97056c3c1d14451db3489b6f45c6ec2",
+  "clean_quit_and_exact_forward_cleanup": true
+}

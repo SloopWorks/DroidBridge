@@ -1,0 +1,16 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.17s)
+Test Suite 'Selected tests' started at 2026-11-11 09:25:42.157.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-11 09:25:42.158.
+Test Suite 'CompanionWirelessADBTests' started at 2026-11-11 09:25:42.158.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testAmbiguousAndOfflineADBRowsCannotAuthorizeAProbe]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' started.
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testBrowseMatchesOnlySelectedPairingOrRememberedConnection]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.CompanionWirelessADBTests testConnectVerifiesExactTransportIDInsteadOfAnyReadyDevice]' started.
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.
