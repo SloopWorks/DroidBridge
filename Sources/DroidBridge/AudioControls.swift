@@ -100,6 +100,17 @@ struct AudioPresentation: Equatable {
         if preferenceError == nil { router.retry(serial: serial) }
     }
 
+    func sessionStarted(serial: String) {
+        guard !stopped, preferenceError == nil, activeSerials.contains(serial),
+              connectedSerials.contains(serial) else { return }
+        let current = router.status(for: serial)
+        guard current.phase == .phone || current.phase == .failed,
+              presentation(for: serial).route != .phone else { return }
+        // A deliberate app launch gets one fresh attempt after an earlier
+        // capture failed. Polling and video recovery keep the failure latch.
+        router.retry(serial: serial)
+    }
+
     func presentation(for serial: String?) -> AudioPresentation {
         guard let serial else {
             return AudioPresentation(route: .mac, phase: .phone,
@@ -172,14 +183,24 @@ extension LauncherController {
         return selectedDevice
     }
 
-    func pollAudioControls() {
+    func pollAudioControls(newSessionSerial: String? = nil) {
         guard !quitting else { return }
         var active = Set(sessions.values.filter { $0.state == .running && sessionStates[$0.descriptor.id] != "disconnected" }.map { $0.descriptor.device.serial })
         // Main's phone dashboard also controls independent wrappers. Their
         // broker-verified running sessions participate in the same device-wide
         // shared audio lease; no new connection or phone authority is inferred.
-        if !isWrapper { active.formUnion(companion.sessionSnapshot.filter { $0["phase"]?.string == "running" }.compactMap { $0["serial"]?.string }.filter { readySerials.contains($0) }) }
+        if !isWrapper {
+            active.formUnion(companion.sessionSnapshot.filter { $0["phase"]?.string == "running" }.compactMap { $0["serial"]?.string }.filter { readySerials.contains($0) })
+            for app in launchedApps.values {
+                guard !app.application.isTerminated, app.process.owner.isAlive,
+                      readySerials.contains(app.device.serial), let snapshot = app.snapshot,
+                      Date().timeIntervalSince(snapshot.updatedAt) < 30,
+                      snapshot.sessions.contains(where: { $0.state == .running }) else { continue }
+                active.insert(app.device.serial)
+            }
+        }
         audioControls.reconcile(activeSerials: active, connectedSerials: readySerials)
+        if let newSessionSerial { audioControls.sessionStarted(serial: newSessionSerial) }
     }
 
     @objc func audioRouteChanged(_ sender: NSPopUpButton) {

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "before_stop": {
+    "displays": 1,
+    "forwards": []
+  },
+  "stopped_owned_avd": "DroidBridge_API35 on 5580"
+}

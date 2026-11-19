@@ -533,8 +533,9 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
         session.onState = { [weak self, weak session] state, message in
             guard let self, let session, self.sessions[descriptor.id] === session else { return }
             if self.sessionStates[descriptor.id] == "disconnected" { return }
+            let newSession = state == .running && self.sessionStates[descriptor.id] == "starting" && recoveryBudget == nil
             self.sessionStates[descriptor.id] = state.rawValue
-            self.pollAudioControls()
+            self.pollAudioControls(newSessionSerial: newSession ? device.serial : nil)
             if state == .failed || state == .stopped { self.presentFailure(session, message: message) }
             else { self.hosts[descriptor.id]?.video.statusMessage = nil; self.hosts[descriptor.id]?.video.canRetry = false }
             if let message, state != .failed && state != .stopped { self.status.stringValue = message }

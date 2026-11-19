@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "build": 27,
+  "app_executable_sha256": "c93eca57229649cd1713546f70b1700bb802cafab62bb9ef53157de54e1fb8d9",
+  "serial": "emulator-5580",
+  "saved_route": "mac",
+  "stale_failure_retained": true,
+  "failure_blocks_new_request": false,
+  "audio_phase": "ready",
+  "audio_client_launches": 1,
+  "route_toggles_before_ready": 0,
+  "menu_initialized_observed": true,
+  "queued_pcm_blocks": 1825,
+  "positive_997hz_blocks": 100,
+  "peak_997hz": 0.00147818,
+  "initial_silence": true,
+  "returned_to_silence": true,
+  "live_native_video_frames": 1479,
+  "physical_speaker_audibility_verified": false,
+  "physical_pixel_verified": false
+}

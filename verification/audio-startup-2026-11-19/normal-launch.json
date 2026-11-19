@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "entry": "Mac Apps list \u2192 Launch App \u2192 generated standalone wrapper",
+  "companion_paired": false,
+  "launcher_menu_phase": "shared",
+  "wrapper_audio_phase": "ready",
+  "audio_owners": 1,
+  "audio_clients": 1,
+  "new_wrapper_is_audio_owner": true,
+  "running_wrapper_sessions": 1,
+  "saved_route": "mac",
+  "route_toggles": 0
+}

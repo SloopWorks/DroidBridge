@@ -61,7 +61,7 @@ extension LauncherController {
         guard !quitting, appSessionPollTask == nil else { return }
         let oldCount = launchedApps.count
         launchedApps = launchedApps.filter { !$0.value.application.isTerminated && $0.value.process.owner.isAlive }
-        if oldCount != launchedApps.count { updateSessions() }
+        if oldCount != launchedApps.count { updateSessions(); pollAudioControls() }
         // After management-app restart, only live AppKit identities supply PIDs.
         // Registry files are presentation, never launch or process authority.
         let live = NSWorkspace.shared.runningApplications.filter { application in
@@ -119,6 +119,7 @@ extension LauncherController {
             }
             if changed {
                 self.updateSessions()
+                self.pollAudioControls()
                 self.companion.windowController?.refreshLocalSessions()
             }
         }

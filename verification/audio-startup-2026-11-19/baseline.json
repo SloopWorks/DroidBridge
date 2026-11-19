@@ -1,0 +1,8 @@
+{
+  "app_build": 23,
+  "saved_route": "mac",
+  "current_request_latched": true,
+  "video_running": true,
+  "audio_ready_owners": 0,
+  "scope": "Dedicated emulator, isolated storage, previous real audio client interrupted then app reopened"
+}

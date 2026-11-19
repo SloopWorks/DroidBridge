@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "saved_route": "phone",
+  "new_app_started_with_phone_selected": true,
+  "running_independent_apps": 2,
+  "audio_clients": 0,
+  "audio_owners": 0,
+  "menu_phase": "phone"
+}

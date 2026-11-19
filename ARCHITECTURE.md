@@ -155,7 +155,9 @@ A supervisor-held per-serial lease spans playback and teardown, including GUI
 crashes. Per-attempt receipts are followed through the UUID in that lease inode;
 late old-GUI status cannot publish over a successor. A route/retry-scoped failure
 latch is fenced by the supervisor, preventing wrappers repeatedly restarting a
-failed capture. Explicit Retry or a route change admits a new attempt. Port
+failed capture. Explicit Retry, a route change, or a deliberate new app launch
+after audio failure admits a new attempt. Polling and automatic video recovery
+retain the failure latch. Port
 leases persist through exact serial/local/remote forward cleanup. The custom
 client uses no-rebind and delegates supervised forward cleanup to the owner.
 Launcher and native-wrapper menus share atomic audio-preferences.json independently of the older screen/Spotlight settings file; legacy wrappers cannot erase audio intent. Audio work and
