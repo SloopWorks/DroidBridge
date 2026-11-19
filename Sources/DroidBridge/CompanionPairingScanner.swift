@@ -42,18 +42,27 @@ private final class CompanionCameraCapture: @unchecked Sendable {
 }
 
 @MainActor final class CompanionPairingScanner: NSWindowController, NSWindowDelegate {
+    private static let instructions = "Scan with Camera, import a QR image, or paste the complete current pairing link. Its server fingerprint authenticates the phone; pairing still requires phone approval."
+    let serial: String
     private let camera = CompanionCameraCapture()
     private let detector = CompanionCameraDetector()
     private let preview = NSView()
-    private let status = NSTextField(wrappingLabelWithString: "Scan with Camera, import a QR image, or paste the complete current pairing link. Its server fingerprint authenticates the phone; pairing still requires phone approval.")
+    private let status = NSTextField(wrappingLabelWithString: CompanionPairingScanner.instructions)
     private let code = NSSecureTextField(string: "")
     private let cameraButton = NSButton(title: "Scan with Camera", target: nil, action: nil)
     private var previewAdded = false
     private var finished = false
     private var imageTask: Task<Void, Never>?
     var onPairCode: ((CompanionPairCode) -> Void)?
+    var connectionIssue: String? {
+        didSet {
+            guard connectionIssue != oldValue else { return }
+            status.stringValue = connectionIssue ?? Self.instructions
+        }
+    }
 
-    init() {
+    init(serial: String) {
+        self.serial = serial
         let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 600, height: 540), styleMask: [.titled, .closable, .resizable], backing: .buffered, defer: false)
         window.title = "Pair Android Companion"; window.contentMinSize = NSSize(width: 480, height: 380); window.contentView = LauncherBackground(); window.center()
         super.init(window: window); window.delegate = self
@@ -69,7 +78,7 @@ private final class CompanionCameraCapture: @unchecked Sendable {
         preview.setAccessibilityLabel("QR camera preview")
         status.maximumNumberOfLines = 0; status.lineBreakMode = .byWordWrapping; status.setAccessibilityLabel("Pairing scanner status")
         let heading = NSTextField(wrappingLabelWithString: "On Android, open DroidBridge → Pair a New Mac. Import its QR or paste the complete pairing link, including the server fingerprint. The link expires after two minutes and differs from the six-digit wireless debugging code.")
-        let content = NSStackView(views: [heading, actions, preview, manual, status]); content.orientation = .vertical; content.alignment = .leading; content.spacing = 15
+        let content = NSStackView(views: [heading, status, actions, preview, manual]); content.orientation = .vertical; content.alignment = .leading; content.spacing = 15
         content.translatesAutoresizingMaskIntoConstraints = false
         let scroll = NSScrollView(); scroll.hasVerticalScroller = true; scroll.drawsBackground = false; scroll.translatesAutoresizingMaskIntoConstraints = false
         let document = LauncherDocumentView(); document.translatesAutoresizingMaskIntoConstraints = false; document.addSubview(content); scroll.documentView = document; window.contentView?.addSubview(scroll)
@@ -80,9 +89,15 @@ private final class CompanionCameraCapture: @unchecked Sendable {
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    @objc private func useManualCode() { let value = code.stringValue; code.stringValue = ""; accept(value) }
+    @objc private func useManualCode() {
+        guard connectionIssue == nil else { return }
+        let value = code.stringValue
+        code.stringValue = ""
+        accept(value)
+    }
     private func accept(_ text: String) {
         guard !finished else { return }
+        if let connectionIssue { status.stringValue = connectionIssue; return }
         do {
             let value = try CompanionPairCode(text)
             finished = true; imageTask?.cancel(); stopCamera(); code.stringValue = ""
@@ -90,7 +105,7 @@ private final class CompanionCameraCapture: @unchecked Sendable {
         } catch { status.stringValue = error.localizedDescription }
     }
     @objc private func scanCamera() {
-        guard !finished else { return }
+        guard !finished, connectionIssue == nil else { return }
         guard Bundle.main.object(forInfoDictionaryKey: "NSCameraUsageDescription") != nil else {
             status.stringValue = "Camera scanning is unavailable in this development build. Import an image or enter the code instead."; return
         }
@@ -113,11 +128,12 @@ private final class CompanionCameraCapture: @unchecked Sendable {
             if !self.previewAdded {
                 let layer = AVCaptureVideoPreviewLayer(session: self.camera.session); layer.videoGravity = .resizeAspectFill; layer.frame = self.preview.bounds; layer.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]; self.preview.layer?.addSublayer(layer); self.previewAdded = true
             }
-            self.status.stringValue = "Point the camera at the current pairing QR code on the phone. No camera image is stored or sent."
+            self.status.stringValue = self.connectionIssue ?? "Point the camera at the current pairing QR code on the phone. No camera image is stored or sent."
         } }
     }
     private func stopCamera() { camera.stop() }
     @objc private func importImage() {
+        guard !finished, connectionIssue == nil else { return }
         let panel = NSOpenPanel(); panel.allowedContentTypes = [.png, .jpeg, .heic, .tiff]; panel.canChooseDirectories = false; panel.allowsMultipleSelection = false
         guard let window else { return }
         panel.beginSheetModal(for: window) { [weak self] result in

@@ -262,7 +262,7 @@ import DroidBridgeStreaming
             connection.toolTip="\(device.model)\n\(device.serial)\n\(device.state)"
             let phone=c.companion.device(for:device.serial)
             connection.stringValue += phone?.paired == true ? (phone?.connected == true ? " · Android app paired and connected" : " · Android app paired, disconnected") : " · Android app not paired"
-        } else {connection.stringValue="Connect a phone with USB debugging enabled, or start an emulator."}
+        } else {connection.stringValue="Connect a phone with USB debugging enabled, or start an emulator.";connection.toolTip=nil}
         let catalogLoaded=device.map {$0.state == "device" && ready && c.appsDeviceSerial == $0.serial} ?? false
         if let device {
             let model=device.model.replacingOccurrences(of:"_",with:" ")

@@ -167,11 +167,15 @@ struct CompanionAppPresentation {
         if changedSelection || (managingSavedPairing && activePage != .connection) {
             managingSavedPairing = false
             notificationIntent = UUID(); actionToken = UUID()
-            action?.cancel(); action = nil; pairingTask?.cancel(); scanner?.close(); progress.stopAnimation(nil)
+            action?.cancel(); action = nil; pairingTask?.cancel(); progress.stopAnimation(nil)
             selectedID = selectedSerial.flatMap { adapter.device(for: $0)?.id }
             clearPhoneContent()
         }
-        if leavingPage { notificationIntent = UUID() }
+        // The scanner stays pinned to its original serial through transport changes.
+        if leavingPage {
+            notificationIntent = UUID()
+            if activePage != .connection { scanner?.close() }
+        }
         refreshState(); adapter.catalogVisibilityChanged()
     }
     func hostWindowClosed() {
@@ -354,6 +358,9 @@ struct CompanionAppPresentation {
             presentedADBDevices = adapter.launcher?.devices ?? []
         }
         if let selectedSerial, let index = adbDevices.itemArray.firstIndex(where: { ($0.representedObject as? String) == selectedSerial }) { adbDevices.selectItem(at: index) }
+        if let scanner, scanner.window?.isVisible == true {
+            scanner.connectionIssue = pairingConnectionIssue(for: scanner.serial)
+        }
         detail.stringValue = phone.map { "\($0.name) · \($0.connected ? "Authenticated companion connected" : "Companion offline")\($0.error.map { " · \($0)" } ?? "")" } ?? (embedded ? "The selected Android device has no saved companion pairing. Connect and pair it in Devices." : adapter.statusMessage)
         hostRegistration.stringValue = adapter.hostRegistrationMessage.isEmpty ? "For phone launch setup, open the installed main DroidBridge app once." : adapter.hostRegistrationMessage
         if previous != selectedID, !changingPhone { clearPhoneContent() }
@@ -389,7 +396,7 @@ struct CompanionAppPresentation {
             guard let self else { throw CancellationError() }
             let reply = try await self.adapter.broker.request(operation: "connect", payload: ["serial": .string(serial)])
             try await self.adapter.refreshStatus()
-            return reply.data["paired"]?.bool == true ? "Authenticated companion connected." : "Pairing is required. Open the phone's pairing window, then choose Pair Phone and use its complete QR or pairing link."
+            return reply.data["paired"]?.bool == true ? "Authenticated companion connected." : "Pairing is required. Open the phone's pairing window, then choose Pair Companion and use its complete QR or pairing link."
         }
     }
     private func installCompanion() {
@@ -413,12 +420,47 @@ struct CompanionAppPresentation {
             return "Companion opened on the phone. Start its connection service, then choose Connect Companion here."
         }
     }
-    private func showPairing() {
-        guard serial != nil else { status.stringValue = "Select an authorized ADB device first."; return }
-        scanner = CompanionPairingScanner(); scanner?.onPairCode = { [weak self] code in self?.pair(code) }; scanner?.showWindow(nil)
+    private func pairingConnectionIssue(for targetSerial: String? = nil) -> String? {
+        if let targetSerial, let serial, serial != targetSerial {
+            return "Select the original phone in the DroidBridge toolbar to continue, or close this window and pair the newly selected phone."
+        }
+        guard let serial, let device = adapter.launcher?.devices.first(where: { $0.serial == serial }) else {
+            return "Connect your phone with USB debugging enabled, or connect over Wi-Fi using Android Wireless debugging."
+        }
+        switch device.state {
+        case "device": return nil
+        case "unauthorized": return "Unlock your phone and accept Android’s USB debugging prompt."
+        default: return "The selected phone is offline. Reconnect its USB cable or check Wireless debugging on the phone."
+        }
     }
-    private func pair(_ code: CompanionPairCode) {
-        guard let serial else { return }; pairingTask?.cancel()
+    private func showPairing() {
+        if let scanner, scanner.window?.isVisible == true {
+            scanner.window?.makeKeyAndOrderFront(nil)
+            return
+        }
+        guard let serial, pairingConnectionIssue() == nil else {
+            guard let owner = embedded ? hostWindow : window else { return }
+            let alert = NSAlert()
+            alert.messageText = "Connect your Android phone first"
+            alert.informativeText = pairingConnectionIssue() ?? "Select an authorized Android phone in the DroidBridge toolbar."
+            alert.addButton(withTitle: "Refresh Devices")
+            let offersWiFi = adapter.launcher?.isWrapper == false
+            if offersWiFi { alert.addButton(withTitle: "Connect over Wi-Fi…") }
+            alert.addButton(withTitle: "Cancel")
+            alert.beginSheetModal(for: owner) { [weak self] result in
+                if result == .alertFirstButtonReturn { self?.adapter.launcher?.refreshAction() }
+                if offersWiFi, result == .alertSecondButtonReturn { self?.showWireless() }
+            }
+            return
+        }
+        guard pairingTask == nil else { status.stringValue = "Wait for the current pairing request to finish."; return }
+        let scanner = CompanionPairingScanner(serial: serial)
+        self.scanner = scanner
+        scanner.onPairCode = { [weak self] code in self?.pair(code, serial: serial) }
+        scanner.showWindow(nil)
+    }
+    private func pair(_ code: CompanionPairCode, serial: String) {
+        guard pairingConnectionIssue(for: serial) == nil, pairingTask == nil else { return }
         let name = adapter.launcher?.devices.first(where: { $0.serial == serial })?.model ?? "selected Android phone"
         status.stringValue = "Requesting pairing with \(name). Approve this Mac on the phone; no trust is established yet."; progress.startAnimation(nil)
         pairingTask = Task { [weak self] in
@@ -443,6 +485,7 @@ struct CompanionAppPresentation {
                 try Task.checkCancellation()
                 guard reply.data["status"]?.string == "approved" else { throw CompanionBoundaryError("pairing_not_approved", "Pairing was not approved or expired. Open a new phone pairing window to retry.") }
                 self.selectedID = reply.data["device_id"]?.string; self.changingPhone = true; try await self.adapter.refreshStatus(); self.changingPhone = false
+                try Task.checkCancellation()
                 self.status.stringValue = "Phone approved this Mac. Authenticated companion connected."; self.loadCatalog(); self.loadTrusts()
             } catch { self.changingPhone = false; if !Task.isCancelled { self.status.stringValue = error.localizedDescription } }
         }
@@ -495,7 +538,7 @@ struct CompanionAppPresentation {
             guard reply.data["status"]?.string == "forgotten" else { throw CompanionBoundaryError("pairing_not_forgotten", "The local service did not confirm removal. Refresh and retry.") }
             try await self.adapter.refreshStatus()
             self.trusts.setViews([])
-            return "Local pairing removed. On the phone, remove this Mac from Trusted Macs, then use Pair Phone with a fresh pairing link. Your app wrappers and settings are retained." + (reply.data["cleanup_pending"]?.bool == true ? " Old connection cleanup is pending; the local service will retry it." : "")
+            return "Local pairing removed. On the phone, remove this Mac from Trusted Macs, then use Pair Companion with a fresh pairing link. Your app wrappers and settings are retained." + (reply.data["cleanup_pending"]?.bool == true ? " Old connection cleanup is pending; the local service will retry it." : "")
         }
     }
     private func renderPendingPairings() {
