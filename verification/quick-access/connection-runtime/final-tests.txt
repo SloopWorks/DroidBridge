@@ -1,0 +1,78 @@
+[0/1] Planning build
+Building for debugging...
+[0/11] Write sources
+[3/11] Write swift-version--58304C5D6DBC2206.txt
+[5/13] Compiling DroidBridgeCore QuickOpen.swift
+[6/13] Emitting module DroidBridgeCore
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionCredentialStore.swift:27:46: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+25 |     // This public legacy API denies interaction for this broker process without
+26 |     // widening any item's ACL. Refuse work if that policy cannot be established.
+27 |     private static let noInteractionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                              `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+28 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+29 |     private static func query(_ deviceID: String) throws -> [String: Any] {
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridgeCore/CompanionPendingCredentialStore.swift:13:44: warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+11 |         public init(record: CompanionCredentialRecord, expires: Date) { self.record = record; self.expires = expires }
+12 |     }
+13 |     private static let interactionStatus = SecKeychainSetUserInteractionAllowed(false)
+   |                                            `- warning: 'SecKeychainSetUserInteractionAllowed' was deprecated in macOS 10.10: SecKeychain is deprecated [#DeprecatedDeclaration]
+14 |     private static var service: String { "dev.sloopworks.DroidBridge.companion.pending.v1" + (CompanionQAScope.current?.keychainServiceSuffix ?? "") }
+15 |     private static func query(_ id: UUID) throws -> [String: Any] {
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[6/17] Write Objects.LinkFileList
+[8/22] Linking DroidBridgeCompanionBroker
+[9/22] Applying DroidBridgeCompanionBroker
+[11/22] Compiling DroidBridgeAvailability main.swift
+[12/22] Emitting module DroidBridgeAvailability
+[12/22] Write Objects.LinkFileList
+[13/22] Linking DroidBridgePackageTests
+[15/22] Compiling DroidBridge DesktopSettings.swift
+[16/22] Compiling DroidBridge QuickAccess.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/QuickAccess.swift:39:92: warning: expression of type 'QuickOpenPreferences' is unused [#no-usage]
+ 37 |             guard !Task.isCancelled else { return }
+ 38 |             do {
+ 39 |                 try await Task.detached { try QuickOpenPreferences.update { $0 = value } }.value
+    |                                                                                            `- warning: expression of type 'QuickOpenPreferences' is unused [#no-usage]
+ 40 |                 guard let self, !Task.isCancelled, self.launcher?.quitting == false else { return }
+ 41 |                 if self.enabled, CompanionQAScope.current == nil, let launcher = self.launcher {
+[17/22] Emitting module DroidBridge
+[17/35] Linking DroidBridgeAvailability
+[18/35] Applying DroidBridgeAvailability
+[20/35] Compiling DroidBridge main.swift
+[21/35] Compiling DroidBridge ManagedAppNameRepair.swift
+[22/35] Compiling DroidBridge CompanionDesktopAdapter.swift
+[23/35] Compiling DroidBridge PhoneDisplayControls.swift
+[24/35] Compiling DroidBridge SessionRecovery.swift
+[25/35] Compiling DroidBridge AppLaunchSessions.swift
+[26/35] Compiling DroidBridge CompanionLauncherIntegration.swift
+[27/35] Compiling DroidBridge Launcher.swift
+[28/35] Compiling DroidBridge AudioControls.swift
+[29/35] Compiling DroidBridge LauncherUI.swift
+[30/35] Compiling DroidBridge DeviceOnboardingUI.swift
+[31/35] Compiling DroidBridge AppLaunch.swift
+[32/35] Compiling DroidBridge CompanionWindow.swift
+[32/35] Write Objects.LinkFileList
+[33/35] Linking DroidBridge
+[34/35] Applying DroidBridge
+Build complete! (4.06s)
+Test Suite 'Selected tests' started at 2026-11-21 10:46:04.951.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-21 10:46:04.951.
+Test Suite 'QuickOpenTests' started at 2026-11-21 10:46:04.951.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testConnectionEdgesWaitForReadinessWithoutRepeatingOnBootFlaps]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testConnectionEdgesWaitForReadinessWithoutRepeatingOnBootFlaps]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testPreferencesRoundTripAndRejectInvalidExternalIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testPreferencesRoundTripAndRejectInvalidExternalIdentity]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testUnauthorizedRearmsAndUnselectedDeviceNeverOpens]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testUnauthorizedRearmsAndUnselectedDeviceNeverOpens]' passed (0.000 seconds).
+Test Suite 'QuickOpenTests' passed at 2026-11-21 10:46:04.955.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-21 10:46:04.955.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'Selected tests' passed at 2026-11-21 10:46:04.955.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.003 (0.005) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

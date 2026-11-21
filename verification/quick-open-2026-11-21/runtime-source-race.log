@@ -1,0 +1,8 @@
+COMMAND: swift build
+[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.16s)
+COMMAND: swiftc -parse-as-library shipping UI + verify-quick-access.swift
+error: input file 'Sources/DroidBridge/QuickAccess.swift' was modified during the build
+error: input file 'Sources/DroidBridge/QuickAccess.swift' was modified during the build

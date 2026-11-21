@@ -1,0 +1,48 @@
+[
+  {
+    "command": [
+      "adb",
+      "-s",
+      "emulator-5580",
+      "get-state"
+    ],
+    "returncode": 0,
+    "output": "device\n"
+  },
+  {
+    "command": [
+      "adb",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "returncode": 0,
+    "output": "1\n"
+  },
+  {
+    "command": [
+      "adb",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "getprop",
+      "ro.build.version.release"
+    ],
+    "returncode": 0,
+    "output": "15\n"
+  },
+  {
+    "command": [
+      "adb",
+      "-s",
+      "emulator-5580",
+      "emu",
+      "avd",
+      "name"
+    ],
+    "returncode": 0,
+    "output": "DroidBridge_API35\nOK\n"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "operation": "SIGTERM exact isolated QA broker",
+    "pid": 16189,
+    "observed_command": "/private/tmp/droidbridge-quick-cold-pvq35d4f/CompanionBroker/generations/a07684dfe346ee79fa20b00e08bc5f7bd03ce4c3d7b79c533e2d4e62d30717ba/DroidBridgeCompanionBroker --companion-qa-root /private/tmp/droidbridge-quick-cold-pvq35d4f --serial emulator-5580",
+    "exit_verified": true
+  },
+  {
+    "operation": "remove exact exited QA scope",
+    "root": "/private/tmp/droidbridge-quick-cold-pvq35d4f"
+  },
+  {
+    "operation": "SIGTERM exact isolated QA broker",
+    "pid": 25671,
+    "observed_command": "/private/tmp/droidbridge-quick-cold-znym34eh/CompanionBroker/generations/a07684dfe346ee79fa20b00e08bc5f7bd03ce4c3d7b79c533e2d4e62d30717ba/DroidBridgeCompanionBroker --companion-qa-root /private/tmp/droidbridge-quick-cold-znym34eh --serial emulator-5580",
+    "exit_verified": true
+  },
+  {
+    "operation": "remove exact exited QA scope",
+    "root": "/private/tmp/droidbridge-quick-cold-znym34eh"
+  }
+]

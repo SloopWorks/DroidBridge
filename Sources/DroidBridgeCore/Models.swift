@@ -21,18 +21,22 @@ public struct SessionConfiguration: Codable {
     public var backend: BackendKind
     /// Encoder ceiling for this session. Profile changes apply to new sessions.
     public var maximumFramesPerSecond: Int
+    /// Capture physical display 0 without launching or moving an Android task.
+    public var mirrorDeviceScreen: Bool
     /// Applies only to this virtual display. App-drawn controls are separate;
     /// the session always hides Android's software keyboard on this display.
     /// The phone's system UI and global keyboard settings are never changed.
     public var showSystemDecorations: Bool
-    public init(width: Int = 720, height: Int = 1080, density: Int = 240, backend: BackendKind = .native, showSystemDecorations: Bool = true, maximumFramesPerSecond: Int = 30) {
+    public init(width: Int = 720, height: Int = 1080, density: Int = 240, backend: BackendKind = .native, showSystemDecorations: Bool = true, maximumFramesPerSecond: Int = 30, mirrorDeviceScreen: Bool = false) {
         self.width = width; self.height = height; self.density = density; self.backend = backend
+        self.mirrorDeviceScreen = mirrorDeviceScreen
         self.showSystemDecorations = showSystemDecorations
         self.maximumFramesPerSecond = maximumFramesPerSecond
     }
-    private enum CodingKeys: String, CodingKey { case width, height, density, backend, showSystemDecorations, maximumFramesPerSecond }
+    private enum CodingKeys: String, CodingKey { case width, height, density, backend, showSystemDecorations, maximumFramesPerSecond, mirrorDeviceScreen }
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        mirrorDeviceScreen = try values.decodeIfPresent(Bool.self, forKey: .mirrorDeviceScreen) ?? false
         width = try values.decode(Int.self, forKey: .width)
         height = try values.decode(Int.self, forKey: .height)
         density = try values.decode(Int.self, forKey: .density)

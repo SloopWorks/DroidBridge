@@ -1,0 +1,28 @@
+[0/1] Planning build
+Building for debugging...
+[0/9] Write sources
+[1/9] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[4/6] Emitting module DroidBridgeCoreTests
+[4/6] Write Objects.LinkFileList
+[5/6] Linking DroidBridgePackageTests
+Build complete! (1.45s)
+Test Suite 'Selected tests' started at 2026-11-21 10:44:02.689.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-21 10:44:02.689.
+Test Suite 'DesktopConfigurationTests' started at 2026-11-21 10:44:02.689.
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testDecorationChoiceDoesNotRewriteSavedDescriptor]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testDecorationChoiceDoesNotRewriteSavedDescriptor]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testLegacySessionKeepsDecorationsAndNewPreferenceRoundTrips]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testLegacySessionKeepsDecorationsAndNewPreferenceRoundTrips]' passed (0.000 seconds).
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testMirrorCaptureDefaultsToVirtualAndRoundTripsExplicitIntent]' started.
+Test Case '-[DroidBridgeCoreTests.DesktopConfigurationTests testMirrorCaptureDefaultsToVirtualAndRoundTripsExplicitIntent]' passed (0.000 seconds).
+Test Suite 'DesktopConfigurationTests' passed at 2026-11-21 10:44:02.691.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-21 10:44:02.691.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'Selected tests' passed at 2026-11-21 10:44:02.691.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.001 (0.003) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

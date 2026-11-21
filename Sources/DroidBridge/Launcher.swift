@@ -27,6 +27,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
         button.state = .on
         return button
     }()
+    lazy var quickAccess = QuickAccessController(launcher: self)
     var timer: Timer?
     var refreshTask: Task<Void, Never>?
     private var wirelessReconnectTask: Task<Void, Never>?
@@ -384,11 +385,13 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
                 var probeSerials = Set(sessions.values.filter { sessionStates[$0.descriptor.id] == "disconnected" }.map { $0.descriptor.device.serial })
                 if let serial = selectedDevice?.serial { probeSerials.insert(serial) }
                 if let preferredSerial { probeSerials.insert(preferredSerial) }
+                if quickAccess.enabled, let serial = quickAccess.serial { probeSerials.insert(serial) }
                 var ready = Set<String>()
                 for device in found where probeSerials.contains(device.serial) && device.state == "device" {
                     if await DeviceReadiness.isReady(device: device, toolchain: toolchain) { ready.insert(device.serial) }
                 }
                 readySerials = ready
+                quickAccess.observe(devices: found, ready: ready)
                 companion.catalogVisibilityChanged()
                 pollAudioControls()
                 // Recover before catalog/icon work. Transport callbacks enqueue
@@ -813,9 +816,11 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
     }
     func shutdownAndWait() async {
         quitting = true
+        quickAccess.stop()
         wirelessReconnectTask?.cancel()
         appLaunchTask?.cancel(); appSessionTimer?.invalidate(); appSessionPollTask?.cancel()
         settingsWindowController?.close();launcherUI?.hostWindowClosed()
+        await quickAccess.stopAndWait()
         await companion.shutdown()
         for task in deviceSelectionTasks.values {task.cancel()}
         if let preview=launchPreview {preview.onClose=nil;preview.close();launchPreview=nil}

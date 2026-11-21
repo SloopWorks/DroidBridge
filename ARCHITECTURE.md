@@ -1,6 +1,6 @@
 # DroidBridge as-built architecture
 
-DroidBridge is a Swift/AppKit application. Android executes every application on an authorized USB ADB device or emulator. Each session creates its own Android virtual display and task. Device video remains on the local Android/Mac connection; no external service receives screen content or input.
+DroidBridge is a Swift/AppKit application. Android executes every application on an authorized USB ADB device or emulator. App sessions create their own Android virtual display and task; explicit current-screen sessions mirror physical display 0 without launching an Android task. Device video remains on the local Android/Mac connection; no external service receives screen content or input.
 
 ## Modules
 
@@ -59,6 +59,37 @@ Presentation refresh performs no network, catalog or process admission. Sidebar 
 `DroidBridge` owns the native launcher, device/app search, session registry, native rendering views/windows, keyboard/mouse mapping, persistence, reconnect polling, menus and application wrappers. No video decoding or blocking ADB command runs in UI composition.
 
 `DroidBridgeSupervisor` is a small C executable outside the GUI's lifetime. It launches the exact session child in a dedicated process group, monitors its original parent and child, and stops only its owned process group when the GUI exits or crashes. Native sessions supply exact ADB forward and remote-JAR cleanup arguments. Cleanup is bounded and uses argument arrays.
+
+
+## Open on device connection
+
+General Settings owns an opt-in automatic-opening choice, off by default, bound
+to an explicitly saved ADB device and one target: the DroidBridge control window,
+a specific Android app, or the current device screen. The same action is available
+in Window → Quick Access and through Command-Shift-D while the main app runs.
+Shortcut reservation failures remain actionable in Settings and do not disable
+automatic connection opening. The helper checks the saved phone independently of managed catalog work while
+enabled; the running GUI checks once per second, coalescing in-flight discovery. Neither path unlocks a phone.
+
+`QuickOpenPreferences` stores a bounded, atomically published independent policy.
+An explicit Settings save can recover a malformed policy by retaining its bytes
+in a uniquely named local backup before atomic replacement; automatic reads fail
+closed. The availability helper observes only the saved serial and opens the exact
+user-owned saved main bundle when no copy at that exact URL is running. The GUI
+owns presentation when already running. Each observer consumes one authorized,
+ready connection edge; missing/offline/unauthorized transport re-arms it, while a
+readiness fluctuation alone does not. Starting DroidBridge with its saved device
+already connected counts as its initial connection. Failed effects are visible
+and require explicit retry or a new connection; polling never repeats an uncertain
+app launch. Disabling or changing the target fences pending admission.
+
+Current-screen capture uses `SessionConfiguration.mirrorDeviceScreen`, defaulting
+to false for existing saved sessions. Both pinned backends capture display 0,
+omit app-start/new-display/IME/keep-active options, suppress virtual resize and
+app-placement monitoring, and preserve the existing owned stream cleanup. The
+native window displays decoded live video and accepts normal input; Android lock
+and secure-content policy still apply. Closing it stops capture without deleting
+phone tasks or changing the phone display configuration.
 
 ## Two backends, one session model
 

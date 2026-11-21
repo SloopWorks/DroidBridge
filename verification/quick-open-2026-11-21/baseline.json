@@ -1,0 +1,28 @@
+[
+  {
+    "command": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "returncode": 0,
+    "output": "?? verification/naming-review-2026-11-04/DROIDTANDEM_AVAILABILITY.json\n?? verification/naming-review-2026-11-04/DROIDTANDEM_RESEARCH.json\n?? verification/pixel-usb-debugging-2026-11-16/\n?? verification/pixel-wireless-debugging-2026-11-13/\n"
+  },
+  {
+    "command": [
+      "adb",
+      "devices",
+      "-l"
+    ],
+    "returncode": 0,
+    "output": "List of devices attached\n\n"
+  },
+  {
+    "command": [
+      "scrcpy",
+      "--version"
+    ],
+    "returncode": 0,
+    "output": "scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>\n\nDependencies (compiled / linked):\n - SDL: 3.4.18 / 3.4.18\n - libavcodec: 63.1.102 / 63.1.102\n - libavformat: 63.1.102 / 63.1.102\n - libavutil: 61.1.102 / 61.1.102\n - libusb: - / 1.0.30\n"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "source": "/Users/patrick/workspace/DroidBridge/.build/quick-open-package/DroidBridge.app",
+  "destination": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app",
+  "signature_verification_command": [
+    "codesign",
+    "--verify",
+    "--deep",
+    "--strict",
+    "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app"
+  ],
+  "returncode": 0,
+  "output": "",
+  "executable_sha256": "94dc0ace6550c0252574fb69faee61e026b616a35737547a1f97c5b9be46f3a1",
+  "signing": "ad hoc, local development verification only"
+}

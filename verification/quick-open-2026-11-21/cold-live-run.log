@@ -1,0 +1,16 @@
+Started dedicated emulator; waiting for automatic app launch
+{
+  "passed": true,
+  "scope": "/private/tmp/droidbridge-quick-cold-znym34eh",
+  "app": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app",
+  "pid": 25178,
+  "helper_pid": 24129,
+  "emulator_pid": 24160,
+  "automatic_launch_after_emulator_start_seconds": 18.144328791997395,
+  "native_running_log": "/private/tmp/droidbridge-quick-cold-znym34eh/Logs/session-31D9D978-6A48-4C11-9A55-2381291D46C4.log.jsonl",
+  "disabled_and_disconnected_do_not_launch": true,
+  "single_host_after_repeated_polls": true,
+  "executable_sha256": "94dc0ace6550c0252574fb69faee61e026b616a35737547a1f97c5b9be46f3a1",
+  "app_left_open_for_visual_review": true
+}
+Holding owned emulator for live UI review; quit only the reported exact app PID to finish

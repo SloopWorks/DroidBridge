@@ -1,0 +1,10 @@
+COMMAND: swift build
+[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.22s)
+COMMAND: swiftc -parse-as-library shipping UI + verify-quick-access.swift
+COMMAND: /private/tmp/droidbridge-quick-open.PwhKP2/QuickAccessQA.app/Contents/MacOS/VerifyQuickAccess --companion-qa-root /private/tmp/droidbridge-quick-open.PwhKP2 --serial emulator-5580
+QA handoff expected=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p3765b62798052b5751909895.qac2b833ccf950 at=/private/tmp/droidbridge-quick-open.PwhKP2/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp20261121/Quick Open Test.app observed=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p3765b62798052b5751909895.qac2b833ccf950 at=/private/tmp/droidbridge-quick-open.PwhKP2/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp20261121/Quick Open Test.app pid=13808
+QA handoff expected=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p3765b62798052b5751909895.qac2b833ccf950 at=/private/tmp/droidbridge-quick-open.PwhKP2/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp20261121/Quick Open Test.app observed=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p3765b62798052b5751909895.qac2b833ccf950 at=/private/tmp/droidbridge-quick-open.PwhKP2/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp20261121/Quick Open Test.app pid=13808
+PASS: automatic quick open, native mirror, app reuse, failures and cleanup

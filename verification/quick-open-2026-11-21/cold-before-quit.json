@@ -1,0 +1,31 @@
+[
+  {
+    "command": [
+      "adb",
+      "-s",
+      "emulator-5580",
+      "forward",
+      "--list"
+    ],
+    "returncode": 0,
+    "output": "\n"
+  },
+  {
+    "command": [
+      "adb",
+      "devices",
+      "-l"
+    ],
+    "returncode": 0,
+    "output": "List of devices attached\n\n"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "output": ""
+  }
+]

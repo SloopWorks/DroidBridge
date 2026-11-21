@@ -1,0 +1,6 @@
+2026-11-21: Executed swift build from repository root after adding QuickAccessHotKey.swift.
+SwiftPM waited for concurrent PID 73796.
+Observed output: [5/16] Compiling DroidBridge QuickAccessHotKey.swift
+No diagnostics reported for QuickAccessHotKey.swift.
+Overall build exit 1: Launcher.swift:30 cannot find QuickAccessController in scope (integration file being implemented concurrently).
+This is partial compilation evidence only; no executed shortcut acceptance claimed.
