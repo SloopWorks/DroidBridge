@@ -1,0 +1,51 @@
+[0/1] Planning build
+Building for debugging...
+[0/11] Write sources
+[2/11] Write swift-version--58304C5D6DBC2206.txt
+[4/30] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[5/30] Compiling DroidBridgeCoreTests ConnectionRecoveryTests.swift
+[6/30] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[7/30] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[8/30] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[9/30] Emitting module DroidBridgeCoreTests
+[10/30] Compiling DroidBridgeCoreTests CompanionPerformanceTests.swift
+[11/30] Compiling DroidBridgeCoreTests CanonicalAliasAdmissionTests.swift
+[12/30] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[13/30] Compiling DroidBridgeCoreTests StreamingTests.swift
+[13/30] Write Objects.LinkFileList
+[14/30] Linking DroidBridgePackageTests
+[16/30] Compiling DroidBridge AudioControls.swift
+[17/30] Compiling DroidBridge Launcher.swift
+[18/30] Compiling DroidBridge QuickAccess.swift
+[19/30] Compiling DroidBridge SessionRecovery.swift
+[20/30] Compiling DroidBridge PhoneDisplayControls.swift
+[21/30] Compiling DroidBridge LauncherUI.swift
+[22/30] Compiling DroidBridge main.swift
+[23/30] Compiling DroidBridge DesktopSettings.swift
+[24/30] Compiling DroidBridge CompanionDesktopAdapter.swift
+[25/30] Compiling DroidBridge AppLaunchSessions.swift
+[26/34] Emitting module DroidBridge
+[27/34] Compiling DroidBridge CompanionWindow.swift
+[28/34] Compiling DroidBridge DeviceOnboardingUI.swift
+[29/34] Compiling DroidBridge AppLaunch.swift
+[30/34] Compiling DroidBridge CompanionLauncherIntegration.swift
+[31/34] Compiling DroidBridge ManagedAppNameRepair.swift
+[31/34] Write Objects.LinkFileList
+[32/34] Linking DroidBridge
+[33/34] Applying DroidBridge
+Build complete! (4.23s)
+Test Suite 'Selected tests' started at 2026-11-21 10:43:38.046.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-21 10:43:38.048.
+Test Suite 'HiddenIMEArgumentTests' started at 2026-11-21 10:43:38.048.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testMirrorSpawnCapturesPrimaryDisplayWithoutAppOrPhonePolicyChanges]' started.
+Test Case '-[DroidBridgeCoreTests.HiddenIMEArgumentTests testMirrorSpawnCapturesPrimaryDisplayWithoutAppOrPhonePolicyChanges]' passed (10.309 seconds).
+Test Suite 'HiddenIMEArgumentTests' passed at 2026-11-21 10:43:48.357.
+	 Executed 1 test, with 0 failures (0 unexpected) in 10.309 (10.309) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-21 10:43:48.357.
+	 Executed 1 test, with 0 failures (0 unexpected) in 10.309 (10.309) seconds
+Test Suite 'Selected tests' passed at 2026-11-21 10:43:48.357.
+	 Executed 1 test, with 0 failures (0 unexpected) in 10.309 (10.311) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

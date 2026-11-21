@@ -1,0 +1,89 @@
+Another instance of SwiftPM (PID: 81089) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[1/10] Write swift-version--58304C5D6DBC2206.txt
+[3/63] Compiling DroidBridgeCoreTests DeviceAudioReadinessTests.swift
+[4/63] Compiling DroidBridgeCoreTests DeviceAudioTests.swift
+[5/63] Compiling DroidBridgeCoreTests DeviceReadinessTests.swift
+[6/63] Compiling DroidBridgeCoreTests DeviceSelectionTests.swift
+[7/67] Compiling DroidBridgeCoreTests DroidBridgePreferencesTests.swift
+[8/67] Compiling DroidBridgeCoreTests FrameMailboxTests.swift
+[9/67] Compiling DroidBridgeCoreTests HiddenIMEArgumentTests.swift
+[10/67] Compiling DroidBridgeCoreTests InputGeometryTests.swift
+[11/67] Compiling DroidBridgeCoreTests CompanionQAScopeTests.swift
+[12/67] Compiling DroidBridgeCoreTests CompanionQRImageReaderTests.swift
+[13/67] Compiling DroidBridgeCoreTests CompanionReleaseMetadataTests.swift
+[14/67] Compiling DroidBridgeCoreTests CompanionSecurityTests.swift
+[15/67] Compiling DroidBridgeCoreTests CompanionSetupValidationTests.swift
+[16/67] Compiling DroidBridgeCoreTests CompanionJournalSecurityTests.swift
+[17/67] Compiling DroidBridgeCoreTests CompanionNotificationSecurityTests.swift
+[18/67] Compiling DroidBridgeCoreTests CompanionPendingAdmissionTests.swift
+[19/67] Compiling DroidBridgeCoreTests CompanionPerformanceTests.swift
+[20/67] Compiling DroidBridgeCoreTests CompanionProfileCommitTests.swift
+[21/67] Compiling DroidBridgeCoreTests QALifecycleTests.swift
+[22/67] Compiling DroidBridgeCoreTests QuickOpenTests.swift
+[23/67] Compiling DroidBridgeCoreTests ScrcpyPortLeaseTests.swift
+[24/67] Compiling DroidBridgeCoreTests ScrcpyStartupLeaseTests.swift
+[25/67] Compiling DroidBridgeCoreTests NativeDiagnosticsTests.swift
+[26/67] Compiling DroidBridgeCoreTests NativeStartupExitTests.swift
+[27/67] Compiling DroidBridgeCoreTests PhoneDisplayPowerQATests.swift
+[28/67] Compiling DroidBridgeCoreTests PhoneDisplayPowerTests.swift
+[29/67] Compiling DroidBridgeCoreTests CompanionTLSFixture.swift
+[30/67] Compiling DroidBridgeCoreTests CompanionWirelessADBTests.swift
+[31/67] Compiling DroidBridgeCoreTests CompanionWirelessReconnectTests.swift
+[32/67] Compiling DroidBridgeCoreTests ConnectionRecoveryTests.swift
+[33/67] Compiling DroidBridgeCoreTests DesktopAppSessionsTests.swift
+[34/67] Compiling DroidBridgeCoreTests DesktopConfigurationTests.swift
+[35/67] Compiling DroidBridgeCoreTests DeviceAudioPreferencesTests.swift
+[36/67] Compiling DroidBridgeCoreTests DeviceAudioQATests.swift
+[37/67] Compiling DroidBridgeCoreTests ADBPortableRuntimeTests.swift
+[38/67] Compiling DroidBridgeCoreTests AndroidDiscoveryTests.swift
+[39/67] Compiling DroidBridgeCoreTests AndroidIconProviderTests.swift
+[40/67] Compiling DroidBridgeCoreTests AppDisplayWatchTests.swift
+[41/67] Compiling DroidBridgeCoreTests AppPrivacyTests.swift
+[42/67] Compiling DroidBridgeCoreTests ManagedAppCatalogQATests.swift
+[43/67] Compiling DroidBridgeCoreTests ManagedAppNamingQATests.swift
+[44/67] Compiling DroidBridgeCoreTests ManagedAppsTests.swift
+[45/67] Compiling DroidBridgeCoreTests ManagedAvailabilityMonitorTests.swift
+[46/67] Compiling DroidBridgeCoreTests CompanionCleanupSecurityTests.swift
+[47/67] Compiling DroidBridgeCoreTests CompanionClockTests.swift
+[48/67] Compiling DroidBridgeCoreTests CompanionCommandSecurityTests.swift
+[49/67] Compiling DroidBridgeCoreTests CompanionDiagnosticsTests.swift
+[50/67] Compiling DroidBridgeCoreTests CompanionExportPolicyTests.swift
+[51/67] Compiling DroidBridgeCoreTests AvailabilityRuntimeStoreTests.swift
+[52/67] Compiling DroidBridgeCoreTests BrokerAdmissionTLSPeer.swift
+[53/67] Compiling DroidBridgeCoreTests CanonicalAliasAdmissionTests.swift
+[54/67] Compiling DroidBridgeCoreTests CompanionActionsTests.swift
+[55/67] Compiling DroidBridgeCoreTests CompanionBoundaryTests.swift
+[56/67] Emitting module DroidBridgeCoreTests
+[57/67] Compiling DroidBridgeCoreTests CompanionBrokerSchedulerTests.swift
+[58/67] Compiling DroidBridgeCoreTests CompanionBrokerTLSRaceTests.swift
+[59/67] Compiling DroidBridgeCoreTests CompanionBrokerTests.swift
+[60/67] Compiling DroidBridgeCoreTests CompanionCatalogReadScopeTests.swift
+[61/67] Compiling DroidBridgeCoreTests CompanionCatalogSignalTests.swift
+[62/67] Compiling DroidBridgeCoreTests SessionRecoveryTests.swift
+[63/67] Compiling DroidBridgeCoreTests StartupFrameVisibilityTests.swift
+[64/67] Compiling DroidBridgeCoreTests StreamingTests.swift
+[65/67] Compiling DroidBridgeCoreTests SupervisorDiagnosticsTests.swift
+[65/67] Write Objects.LinkFileList
+[66/67] Linking DroidBridgePackageTests
+Build complete! (2.33s)
+Test Suite 'Selected tests' started at 2026-11-21 10:45:43.779.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-21 10:45:43.780.
+Test Suite 'QuickOpenTests' started at 2026-11-21 10:45:43.780.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testConnectionEdgesWaitForReadinessWithoutRepeatingOnBootFlaps]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testConnectionEdgesWaitForReadinessWithoutRepeatingOnBootFlaps]' passed (0.002 seconds).
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testPreferencesRoundTripAndRejectInvalidExternalIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testPreferencesRoundTripAndRejectInvalidExternalIdentity]' passed (0.003 seconds).
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testUnauthorizedRearmsAndUnselectedDeviceNeverOpens]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testUnauthorizedRearmsAndUnselectedDeviceNeverOpens]' passed (0.000 seconds).
+Test Suite 'QuickOpenTests' passed at 2026-11-21 10:45:43.786.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-21 10:45:43.786.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'Selected tests' passed at 2026-11-21 10:45:43.786.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.005 (0.006) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

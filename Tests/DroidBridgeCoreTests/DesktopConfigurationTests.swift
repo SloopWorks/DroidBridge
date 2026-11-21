@@ -14,6 +14,16 @@ final class DesktopConfigurationTests: XCTestCase {
         }
     }
 
+    func testMirrorCaptureDefaultsToVirtualAndRoundTripsExplicitIntent() throws {
+        let legacy = Data(#"{"width":720,"height":1080,"density":240,"backend":"native"}"#.utf8)
+        XCTAssertFalse(try JSONDecoder().decode(SessionConfiguration.self, from: legacy).mirrorDeviceScreen)
+        XCTAssertFalse(SessionConfiguration().mirrorDeviceScreen)
+        for backend in BackendKind.allCases {
+            let configuration = SessionConfiguration(backend: backend, mirrorDeviceScreen: true)
+            XCTAssertTrue(try JSONDecoder().decode(SessionConfiguration.self, from: JSONEncoder().encode(configuration)).mirrorDeviceScreen)
+        }
+    }
+
     func testDecorationChoiceDoesNotRewriteSavedDescriptor() throws {
         let original = SessionDescriptor(device: AndroidDevice(serial: "emulator-5580", model: "Test"), application: AndroidApplication(packageName: "com.android.settings", name: "Settings"), configuration: SessionConfiguration(showSystemDecorations: false))
         let saved = try JSONEncoder().encode(original)

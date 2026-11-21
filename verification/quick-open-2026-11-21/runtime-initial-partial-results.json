@@ -1,0 +1,21 @@
+{
+  "connection_edges" : "Disabled\/other-device\/booting ignored; ready edge opens once; readiness flaps do not refocus; disconnect\/reconnect rearms",
+  "control_focus" : {
+    "active" : true,
+    "frontmost_pid" : 98849,
+    "key_window" : true,
+    "qa_pid" : 98849
+  },
+  "mirror" : {
+    "changing_pixel_hashes" : [
+      "41bd4f8853682371773a2212a610fbd1dce1f6bec3b994eea2bdfe03e9942684",
+      "567280431fd9d856315f12e2319c5e4a1e87ca0bdca23743f6192d3c411471a0"
+    ],
+    "first_decoded_seconds" : 3.1440000833244994,
+    "frames" : 22,
+    "height" : 1920,
+    "log" : "\/private\/tmp\/droidbridge-quick-open.Ads4lp\/Logs\/session-6C731667-D862-4FEB-B80D-FDA158061A73.log",
+    "same_window_on_reopen" : true,
+    "width" : 1080
+  }
+}

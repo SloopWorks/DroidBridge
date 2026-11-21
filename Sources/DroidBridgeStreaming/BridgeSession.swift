@@ -117,10 +117,12 @@ public final class BridgeSession {
             let version = try await ProcessRunner.run(toolchain.scrcpy, arguments:["--version"],environment:toolchain.environment)
             guard version.output.contains("scrcpy 5.0.1") else { throw BridgeError.message("DroidBridge requires the bundled scrcpy 5.0.1 client and server") }
             try check(token)
-            onStartupProgress?("Opening \(descriptor.application.name)…")
-            let activity = try await adb(["shell","cmd","package","resolve-activity","--brief","-a","android.intent.action.MAIN","-c","android.intent.category.LAUNCHER",descriptor.application.packageName])
-            guard !activity.output.contains("No activity found"), activity.output.contains("/") else { throw BridgeError.message("Android application has no launchable activity") }
-            try check(token)
+            if !c.mirrorDeviceScreen {
+                onStartupProgress?("Opening \(descriptor.application.name)…")
+                let activity = try await adb(["shell","cmd","package","resolve-activity","--brief","-a","android.intent.action.MAIN","-c","android.intent.category.LAUNCHER",descriptor.application.packageName])
+                guard !activity.output.contains("No activity found"), activity.output.contains("/") else { throw BridgeError.message("Android application has no launchable activity") }
+                try check(token)
+            }
             if descriptor.configuration.backend == .scrcpy { try await startExternal(token:token) }
             else { try await startNative(token:token) }
         } catch {
@@ -195,12 +197,14 @@ public final class BridgeSession {
         // Its initial content points come from new-display dimensions instead.
         if let frame=placement {config.width=Int(frame.width)/2*2;config.height=Int(frame.height)/2*2}
         let lease = try ScrcpyPortLease.acquire(); externalPortLease = lease
-        var args = ["--serial",descriptor.device.serial,"--no-audio","--new-display=\(config.width)x\(config.height)/\(config.density)","--flex-display","--start-app=\(descriptor.application.packageName)","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=\(config.maximumFramesPerSecond)","--video-codec=h264","--keep-active","--no-power-on","--display-ime-policy=hide"]
+        var args = ["--serial",descriptor.device.serial,"--no-audio","--window-title=DroidBridge · \(descriptor.application.name)","--max-fps=\(config.maximumFramesPerSecond)","--video-codec=h264","--no-power-on"]
+        if config.mirrorDeviceScreen { args.append("--display-id=0") }
+        else { args += ["--keep-active", "--display-ime-policy=hide", "--new-display=\(config.width)x\(config.height)/\(config.density)", "--flex-display", "--start-app=\(descriptor.application.packageName)"] }
         // Buttonless hover can crash Android 15's virtual-display dispatcher
         // or prevent Android 17 clicks. Pinned scrcpy suppresses only that
         // motion; clicks, drags and scrolling remain enabled, like native input.
         args.append("--no-mouse-hover")
-        if !config.showSystemDecorations { args.append("--no-vd-system-decorations") }
+        if !config.mirrorDeviceScreen && !config.showSystemDecorations { args.append("--no-vd-system-decorations") }
         args.append("--port=\(lease.port)")
         if let frame=placement {
             args += ["--window-x=\(Int(frame.minX))","--window-y=\(Int(frame.minY))"]
@@ -218,9 +222,9 @@ public final class BridgeSession {
                 return (display,rendered)
             }.value
             try Task.checkCancellation();try check(token)
-            if let display = readiness.0, readiness.1 {
+            if readiness.1 && (config.mirrorDeviceScreen || readiness.0 != nil) {
                 transition(.running); trackExternalWindow(token:token)
-                watchAppDisplay(token: token, display: display)
+                if let display = readiness.0 { watchAppDisplay(token: token, display: display) }
                 return
             }
             try await Task.sleep(for:.milliseconds(50))
@@ -232,6 +236,7 @@ public final class BridgeSession {
     }
 
     private func watchAppDisplay(token: UUID, display: Int32? = nil) {
+        guard !descriptor.configuration.mirrorDeviceScreen else { return }
         let url = logURL, package = descriptor.application.packageName
         let serial = descriptor.device.serial, tools = toolchain
         appDisplayTask = Task { [weak self] in
@@ -320,14 +325,16 @@ public final class BridgeSession {
         let remote = receipt.remote; remotePath = remote
         var localForward: String?
         do {
-        onStartupProgress?("Preparing app display…")
+        onStartupProgress?(descriptor.configuration.mirrorDeviceScreen ? "Preparing device screen…" : "Preparing app display…")
         _ = try await adb(["push",toolchain.server,remote]); try check(token)
         let result = try await adb(["forward","tcp:0","localabstract:scrcpy_\(scid)"])
         guard let port = UInt16(result.output.trimmingCharacters(in:.whitespacesAndNewlines)), port > 0 else { throw BridgeError.message("ADB did not allocate a video port") }
         localForward = "tcp:\(port)"; try check(token); forward = localForward
         appendEvent(["event": "native_resources", "scid": scid, "forward": "tcp:\(port)"])
         let c = descriptor.configuration
-        let arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=\(c.maximumFramesPerSecond)","video_bit_rate=6000000","new_display=\(c.width)x\(c.height)/\(c.density)","flex_display=true","vd_system_decorations=\(c.showSystemDecorations)","vd_destroy_content=true","clipboard_autosync=false","keep_active=true","power_on=false","display_ime_policy=hide","cleanup=true"]
+        var arguments = ["-s",descriptor.device.serial,"shell","CLASSPATH=\(remote)","app_process","/","com.genymobile.scrcpy.Server","5.0.1","scid=\(scid)","tunnel_forward=true","audio=false","control=true","video_codec=h264","max_fps=\(c.maximumFramesPerSecond)","video_bit_rate=6000000","clipboard_autosync=false","power_on=false","cleanup=true"]
+        if c.mirrorDeviceScreen { arguments.append("display_id=0") }
+        else { arguments += ["keep_active=true", "display_ime_policy=hide", "new_display=\(c.width)x\(c.height)/\(c.density)", "flex_display=true", "vd_system_decorations=\(c.showSystemDecorations)", "vd_destroy_content=true"] }
         try spawn(toolchain.adb,arguments:arguments,token:token)
         let transport = NativeTransport(); self.transport = transport
         let mailbox = FrameMailbox { [weak self] frame in
@@ -353,7 +360,7 @@ public final class BridgeSession {
             self.transition(.failed,"\(error.localizedDescription) (\(diagnostic))")
         } }
         onStartupProgress?("Waiting for \(descriptor.application.name)…")
-        try await transport.start(port:port,package:descriptor.application.packageName)
+        try await transport.start(port:port,package:c.mirrorDeviceScreen ? nil : descriptor.application.packageName)
         try check(token)
         for _ in 0..<150 {
             try check(token)
@@ -407,7 +414,7 @@ public final class BridgeSession {
             if complete, let receipt { try? FileManager.default.removeItem(at:receipt) }
         }
     }
-    public func resize(width: Int, height: Int) { guard state == .running else { return }; transport?.send(ScrcpyControl.resize(width:width,height:height)) }
+    public func resize(width: Int, height: Int) { guard state == .running, !descriptor.configuration.mirrorDeviceScreen else { return }; transport?.send(ScrcpyControl.resize(width:width,height:height)) }
     public func sendInput(_ event: AndroidInputEvent) { guard state == .running else { return }; transport?.send(ScrcpyControl.encode(event)) }
     /// Defers application termination until supervised processes and exact
     /// ADB resources have completed cleanup, including an earlier window close.

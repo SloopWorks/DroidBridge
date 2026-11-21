@@ -178,3 +178,20 @@ selection or session before starting a new deliberate request. The app preserves
 receipts and does not automatically replay uncertain effects. For installation,
 removal and local data locations see [BUILD.md](BUILD.md); for a concise full
 physical-phone check see [PIXEL_VERIFICATION.md](PIXEL_VERIFICATION.md).
+
+### Open automatically when a device connects
+
+In **Settings → General → Quick Access**, enable automatic opening, choose what
+comes forward, and use **Use Selected Device** (or **Use Selected Device and App**)
+to save the exact phone and app. Choose DroidBridge’s control window, a specific
+Android app, or a live mirror of the phone’s current screen. The choice is off by
+default. The saved phone must be authorized for Android debugging and ready;
+DroidBridge does not unlock it.
+
+The background availability helper can open the saved installed DroidBridge app.
+Opening occurs once per connection, including an already connected phone when
+DroidBridge starts. Brief Android readiness changes do not repeatedly bring windows
+forward. Use **Window → Quick Access**, **Open Now**, or **⇧⌘D** while DroidBridge is
+running to retry; Settings explains a shortcut conflict or unavailable device.
+A current-screen mirror shares the phone’s current task and keyboard. Closing the
+Mac mirror ends capture and leaves that Android task on the phone.

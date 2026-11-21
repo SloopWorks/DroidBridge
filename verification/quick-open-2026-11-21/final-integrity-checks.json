@@ -1,0 +1,22 @@
+[
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "codesign",
+      "--verify",
+      "--deep",
+      "--strict",
+      "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app"
+    ],
+    "returncode": 0,
+    "output": ""
+  }
+]

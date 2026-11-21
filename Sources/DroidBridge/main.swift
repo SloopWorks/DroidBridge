@@ -74,6 +74,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         let windowItem = NSMenuItem(); windowItem.title = "Window"
         let windowMenu = NSMenu(title: "Window")
         windowMenu.addItem(withTitle: "DroidBridge", action: #selector(showLauncher), keyEquivalent: "l").target = self
+        windowMenu.addItem(withTitle: "Quick Access", action: #selector(openQuickAccess), keyEquivalent: "").target = self
         windowMenu.addItem(withTitle: "Minimize", action: #selector(NSWindow.performMiniaturize(_:)), keyEquivalent: "m")
         windowMenu.addItem(withTitle: "Zoom", action: #selector(NSWindow.performZoom(_:)), keyEquivalent: "")
         windowMenu.addItem(.separator())
@@ -94,6 +95,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         if launcher == nil { launcher = LauncherController() }
         if !launcher.prepareWrapperLaunch() { launcher.showWindow(nil) }
         NSApp.activate(ignoringOtherApps: true)
+        launcher.quickAccess.load()
         launcher.companion.start()
         CompanionLaunchTrace.record("companion_start_scheduled")
         Task { @MainActor in
@@ -103,6 +105,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         }
     }
     func validateMenuItem(_ item:NSMenuItem)->Bool {
+        if item.action == #selector(openQuickAccess) { return launcher?.quickAccess.enabled == true && launcher?.isWrapper == false }
         if item.action == #selector(findApp) {return launcher?.window?.isKeyWindow == true || (launcher?.sessions.isEmpty == true && launcher?.launchPreview == nil && launcher?.isWrapper == false)}
         if item.action == #selector(launchSelectedApp) || item.action == #selector(createSelectedMacApp) {return launcher?.window?.isKeyWindow == true && launcher?.launcherUI?.currentSection == .apps && launcher?.canLaunchSelectedApp == true}
         if item.action == #selector(addDeviceApps) {return launcher?.canOnboardSelectedDevice == true}
@@ -159,6 +162,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
     @objc func usePhoneMenuAudio() {if let launcher,let device=launcher.audioMenuDevice() {launcher.setAudioRoute(.phone,device:device)}}
     @objc func turnPhoneScreenOff() {launcher?.turnPhoneScreenOff()}
     @objc func turnPhoneScreenOn() {launcher?.turnPhoneScreenOn()}
+    @objc func openQuickAccess() { launcher?.quickAccess.open() }
     @objc func showLauncher() { launcher?.showWindow(nil); launcher?.window?.makeKeyAndOrderFront(nil);launcher?.refreshDevices(forceApps:true) }
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool { launcher?.reopen(); return false }
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { false }

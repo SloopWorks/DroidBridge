@@ -13,6 +13,12 @@ import DroidBridgeCore
 @MainActor final class DesktopSettingsWindowController: NSWindowController {
     private weak var launcher: LauncherController?
     private let tabs = DesktopSettingsTabs()
+    private let quickEnabled = NSButton(checkboxWithTitle: "Open automatically when my device connects", target: nil, action: nil)
+    private let quickTarget = NSPopUpButton()
+    private let quickSummary = NSTextField(wrappingLabelWithString: "")
+    private let quickStatus = NSTextField(wrappingLabelWithString: "")
+    private var quickNow: ClosureButton!
+    private var quickChoose: ClosureButton!
     private let deviceNote = NSTextField(wrappingLabelWithString: "")
     static var defaults: UserDefaults {
         if let scope = CompanionQAScope.current,
@@ -29,7 +35,18 @@ import DroidBridgeCore
         window.title = "DroidBridge Settings"; window.isReleasedWhenClosed = false
         super.init(window: window)
         tabs.tabStyle = .toolbar
+        quickTarget.addItems(withTitles: QuickAccessController.Target.allCases.map(\.title))
+        quickEnabled.target = self; quickEnabled.action = #selector(saveQuickAccess)
+        quickTarget.target = self; quickTarget.action = #selector(saveQuickAccess)
+        quickChoose = ClosureButton(title: "Use Selected Device and App") { [weak self, weak launcher] in
+            launcher?.quickAccess.saveSelection(); self?.refresh()
+        }
+        quickNow = ClosureButton(title: "Open Now") { [weak launcher] in launcher?.quickAccess.open() }
         tabs.addTabViewItem(page("General", symbol: "gearshape", views: [
+            heading("Quick Access"), quickEnabled,
+            note("Bring your chosen window to the front once the saved device is connected and ready. This does not unlock your phone."),
+            label("Bring to front"), quickTarget, quickSummary, quickChoose, quickStatus,
+            quickNow,
             heading("New app windows"), note("These defaults apply to newly opened Android app windows. Running windows keep their current configuration."),
             label("Rendering backend"), launcher.backendPicker, launcher.decorationsPreference,
             heading("Recovery"), launcher.reconnect,
@@ -75,7 +92,26 @@ import DroidBridgeCore
         Self.defaults.set(launcher.reconnect.state == .on, forKey: "desktop.reconnect")
         launcher.updateLauncherPresentation()
     }
+    @objc private func saveQuickAccess() {
+        guard let quick = launcher?.quickAccess else { return }
+        quick.enabled = quickEnabled.state == .on
+        quick.target = QuickAccessController.Target.allCases[max(0, quickTarget.indexOfSelectedItem)]
+        quick.configure(); quick.persist(); refresh()
+    }
     func refresh() {
+        if let quick = launcher?.quickAccess {
+            let supported = launcher?.isWrapper == false
+            quickEnabled.isEnabled = supported
+            quickEnabled.state = quick.enabled ? .on : .off
+            quickTarget.selectItem(at: QuickAccessController.Target.allCases.firstIndex(of: quick.target) ?? 0)
+            quickTarget.isEnabled = supported && quick.enabled
+            quickNow.isEnabled = supported && quick.enabled && (quick.target == .control || quick.serial != nil)
+            quickChoose.isHidden = false
+            quickChoose.isEnabled = supported && quick.enabled && (quick.target == .app ? launcher?.canLaunchSelectedApp == true : launcher?.selectedDevice?.state == "device")
+            quickChoose.title = quick.target == .app ? "Use Selected Device and App" : "Use Selected Device"
+            quickSummary.stringValue = quick.target == .control ? "DroidBridge control app · \(quick.deviceName)" : (quick.target == .app ? "\(quick.appName) · \(quick.deviceName)" : "Current screen · \(quick.deviceName)")
+            quickStatus.stringValue = supported ? quick.message : "Configure automatic opening in the DroidBridge control app’s Settings."
+        }
         deviceNote.stringValue = launcher?.selectedDevice.map { "Selected device: \($0.model.replacingOccurrences(of: "_", with: " "))\nAudio, phone-screen policy and performance profile belong to this device." } ?? "Select a device in the main window to configure audio, phone-screen policy and performance."
     }
     private func heading(_ text: String) -> NSTextField { LauncherUI.label(text, size: 15, weight: .semibold) }

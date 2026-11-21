@@ -60,8 +60,8 @@ final class HiddenIMEArgumentTests:XCTestCase {
         for executable in [adb,scrcpy] {try FileManager.default.setAttributes([.posixPermissions:0o755],ofItemAtPath:executable.path)}
         return Fixture(root:root,tools:Toolchain(adb:adb.path,scrcpy:scrcpy.path,server:root.appendingPathComponent("server").path),portDescriptor:fd)
     }
-    private func descriptor(_ backend:BackendKind,decorations:Bool,restored:Bool) throws ->SessionDescriptor {
-        let original=SessionDescriptor(device:AndroidDevice(serial:"qa-ime-"+UUID().uuidString,model:"Fixture"),application:AndroidApplication(packageName:"dev.droidbridge.testapp",name:"Probe"),configuration:SessionConfiguration(backend:backend,showSystemDecorations:decorations))
+    private func descriptor(_ backend:BackendKind,decorations:Bool,restored:Bool,mirror:Bool=false) throws ->SessionDescriptor {
+        let original=SessionDescriptor(device:AndroidDevice(serial:"qa-ime-"+UUID().uuidString,model:"Fixture"),application:AndroidApplication(packageName:"dev.droidbridge.testapp",name:"Probe"),configuration:SessionConfiguration(backend:backend,showSystemDecorations:decorations,mirrorDeviceScreen:mirror))
         guard restored else {return original}
         var json=try XCTUnwrap(JSONSerialization.jsonObject(with:JSONEncoder().encode(original)) as? [String:Any])
         var configuration=try XCTUnwrap(json["configuration"] as? [String:Any])
@@ -72,9 +72,9 @@ final class HiddenIMEArgumentTests:XCTestCase {
         return try JSONDecoder().decode(SessionDescriptor.self,from:JSONSerialization.data(withJSONObject:json))
     }
     @MainActor
-    private func capturedArguments(_ backend:BackendKind,decorations:Bool,restored:Bool,api:Int?=nil) async throws ->[String] {
+    private func capturedArguments(_ backend:BackendKind,decorations:Bool,restored:Bool,api:Int?=nil,mirror:Bool=false) async throws ->[String] {
         let fixture=try fixture(sdk:String(api ?? (restored ? 33 : 35)));defer {fixture.remove()}
-        let session=BridgeSession(descriptor:try descriptor(backend,decorations:decorations,restored:restored),toolchain:fixture.tools)
+        let session=BridgeSession(descriptor:try descriptor(backend,decorations:decorations,restored:restored,mirror:mirror),toolchain:fixture.tools)
         if backend == .scrcpy {
             try await session.start()
             XCTAssertEqual(session.state,.running)
@@ -111,6 +111,17 @@ final class HiddenIMEArgumentTests:XCTestCase {
             XCTAssertTrue(args.contains("--display-ime-policy=hide"))
         }
     }
+    @MainActor
+    func testMirrorSpawnCapturesPrimaryDisplayWithoutAppOrPhonePolicyChanges() async throws {
+        for backend in BackendKind.allCases {
+            let args = try await capturedArguments(backend, decorations: false, restored: false, mirror: true)
+            XCTAssertTrue(args.contains(backend == .scrcpy ? "--display-id=0" : "display_id=0"))
+            XCTAssertFalse(args.contains { $0.contains("new-display") || $0.hasPrefix("new_display=") || $0.contains("flex-display") || $0.hasPrefix("flex_display=") })
+            XCTAssertFalse(args.contains { $0.contains("start-app") || $0.hasPrefix("start_app=") || $0.contains("ime-policy") || $0.hasPrefix("display_ime_policy=") || $0.contains("keep-active") || $0.hasPrefix("keep_active=") })
+            XCTAssertTrue(args.contains(backend == .scrcpy ? "--no-power-on" : "power_on=false"))
+        }
+    }
+
     @MainActor
     func testUnsupportedOrUnknownSDKFailsBeforeAppResolutionStagingOrChildLaunch() async throws {
         for backend in BackendKind.allCases {

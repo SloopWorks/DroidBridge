@@ -1,0 +1,55 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module DroidBridge
+[4/7] Compiling DroidBridge AppLaunch.swift
+[5/7] Compiling DroidBridge QuickAccess.swift
+[6/20] Compiling DroidBridge DeviceOnboardingUI.swift
+[7/20] Compiling DroidBridge CompanionDesktopAdapter.swift
+[8/20] Compiling DroidBridge main.swift
+[9/20] Compiling DroidBridge DesktopSettings.swift
+[10/20] Compiling DroidBridge SessionRecovery.swift
+[11/20] Compiling DroidBridge ManagedAppNameRepair.swift
+[12/20] Compiling DroidBridge PhoneDisplayControls.swift
+[13/20] Compiling DroidBridge CompanionLauncherIntegration.swift
+[14/20] Compiling DroidBridge AppLaunchSessions.swift
+[15/20] Compiling DroidBridge AudioControls.swift
+[16/20] Compiling DroidBridge LauncherUI.swift
+[17/20] Compiling DroidBridge Launcher.swift
+[18/20] Compiling DroidBridge CompanionWindow.swift
+[18/21] Write Objects.LinkFileList
+[19/21] Linking DroidBridge
+[20/21] Applying DroidBridge
+Build complete! (3.85s)
+[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module DroidBridge
+[4/7] Compiling DroidBridge AppLaunch.swift
+[5/7] Compiling DroidBridge QuickAccess.swift
+[5/8] Write Objects.LinkFileList
+[6/8] Linking DroidBridge
+[7/8] Applying DroidBridge
+Build complete! (1.53s)
+[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Compiling DroidBridge QuickAccess.swift
+[4/6] Emitting module DroidBridge
+[4/7] Write Objects.LinkFileList
+[5/7] Linking DroidBridge
+[6/7] Applying DroidBridge
+Build complete! (1.27s)
+Another instance of SwiftPM (PID: 3870) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Compiling DroidBridge QuickAccess.swift
+[4/6] Emitting module DroidBridge
+[4/7] Write Objects.LinkFileList
+[5/7] Linking DroidBridge
+[6/7] Applying DroidBridge
+Build complete! (1.58s)

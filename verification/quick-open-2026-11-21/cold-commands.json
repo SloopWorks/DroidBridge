@@ -1,0 +1,75 @@
+[
+  {
+    "command": [
+      "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+      "-s",
+      "emulator-5580",
+      "get-state"
+    ],
+    "returncode": 1,
+    "output": "error: device 'emulator-5580' not found\n"
+  },
+  {
+    "command": [
+      "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+      "devices"
+    ],
+    "returncode": 0,
+    "output": "List of devices attached\n\n"
+  },
+  {
+    "command": [
+      "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+      "devices"
+    ],
+    "returncode": 0,
+    "output": "List of devices attached\n\n"
+  },
+  {
+    "command": [
+      "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app/Contents/Resources/Runtime/bin/DroidBridgeAvailability",
+      "--adb",
+      "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+      "--private-root",
+      "/private/tmp/droidbridge-quick-cold-znym34eh/ManagedApps.noindex",
+      "--active-root",
+      "/private/tmp/droidbridge-quick-cold-znym34eh/Applications",
+      "--preferences",
+      "/private/tmp/droidbridge-quick-cold-znym34eh/preferences.json",
+      "--log",
+      "/private/tmp/droidbridge-quick-cold-znym34eh/helper.jsonl",
+      "--companion-qa-root",
+      "/private/tmp/droidbridge-quick-cold-znym34eh",
+      "--serial",
+      "emulator-5580",
+      "--once"
+    ],
+    "returncode": 0,
+    "output": "{\"registrations\":0,\"probed\":0,\"available\":0,\"enabled\":false,\"pendingRegistrations\":0,\"messages\":[],\"transitions\":0}\n"
+  },
+  {
+    "command": [
+      "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "am",
+      "start",
+      "-n",
+      "dev.droidbridge.testapp20261121/.MainActivity"
+    ],
+    "returncode": 0,
+    "output": "Starting: Intent { cmp=dev.droidbridge.testapp20261121/.MainActivity }\n"
+  },
+  {
+    "command": [
+      "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/quick-open-2026-11-21/DroidBridge.app/Contents/Resources/Runtime/bin/adb",
+      "-s",
+      "emulator-5580",
+      "forward",
+      "--list"
+    ],
+    "returncode": 0,
+    "output": "\n"
+  }
+]

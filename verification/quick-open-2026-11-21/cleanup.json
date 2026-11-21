@@ -1,0 +1,11 @@
+{
+  "review_pid_exited": 25178,
+  "helper_pid_exited": true,
+  "owned_forwards_after_quit": "\n",
+  "original_processes_preserved": {
+    "96808": "/Users/patrick/Applications/DroidBridge.app/Contents/MacOS/DroidBridge",
+    "620": "/Users/patrick/Applications/DroidBridge Apps/Devices/24765229b512f4c4630354f4/Messages.app/Contents/MacOS/DroidBridge",
+    "77294": "/Users/patrick/Library/Application Support/DroidBridge/Launchers.noindex/24765229b512f4c4630354f4/native/org.mozilla.firefox/Firefox.app/Contents/MacOS/DroidBridge"
+  },
+  "user_automatic_opening_preferences_created": false
+}

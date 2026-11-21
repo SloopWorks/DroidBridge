@@ -135,7 +135,7 @@ enum AppLaunchResolver {
 extension LauncherController {
     /// Called synchronously from buttons, Return and double-click: the busy
     /// state exists before the first suspension and repeated clicks coalesce.
-    func openApp(device: AndroidDevice, app: AndroidApplication, backend: BackendKind, host: URL = Bundle.main.bundleURL) {
+    func openApp(device: AndroidDevice, app: AndroidApplication, backend: BackendKind, host: URL = Bundle.main.bundleURL, admissionCheck: (() throws -> Void)? = nil) {
         guard appLaunchTask == nil, !quitting else { return }
         let request = UUID()
         appLaunchRequest = request
@@ -148,6 +148,7 @@ extension LauncherController {
                 self.updateLauncherPresentation(); self.pumpIcons()
             }
             do {
+                try admissionCheck?()
                 try AndroidDiscovery.validateSerial(device.serial)
                 try AndroidDiscovery.validatePackage(app.packageName)
                 let running = self.runningAppLaunches()
@@ -157,6 +158,7 @@ extension LauncherController {
                 }
                 let found = try await withTaskCancellationHandler(operation: { try await lookup.value }, onCancel: { lookup.cancel() })
                 try self.checkAppLaunch(request)
+                try admissionCheck?()
                 let resolved: ResolvedAppLaunch
                 if let found { resolved = found }
                 else {
@@ -166,13 +168,16 @@ extension LauncherController {
                     if let cached, AppLaunchResolver.usableIcon(cached) { png = cached }
                     else { png = try await self.iconProvider.icon(device: device, application: app) }
                     try self.checkAppLaunch(request)
+                    try admissionCheck?()
                     self.setAppLaunchMessage("Preparing Mac app…", request: request)
                     let url = try await MacAppWrapper.createOnDemand(application: app, device: device, backend: backend, iconPNG: png,
                                                                    hostBundleURL: host, destinationRoot: AppLaunchResolver.directory(device: device, app: app, backend: backend))
                     try self.checkAppLaunch(request)
+                    try admissionCheck?()
                     resolved = ResolvedAppLaunch(url: url, identifier: MacAppWrapper.onDemandIdentifier(device: device, application: app, backend: backend), running: nil)
                 }
                 try self.checkAppLaunch(request)
+                try admissionCheck?()
                 // NSWorkspace may reuse an application by bundle identity. Refuse
                 // an ambiguous copy rather than focusing the wrong installed app.
                 let conflicts = self.runningAppLaunches().filter { $0.identifier == resolved.identifier && $0.url.standardizedFileURL.path != resolved.url.standardizedFileURL.path }

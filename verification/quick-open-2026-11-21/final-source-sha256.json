@@ -1,0 +1,13 @@
+{
+  "Sources/DroidBridge/QuickAccess.swift": "6ed214ab5343262a3810c61d5989a1d4ec381d9c0f19f958b459b07a6b3bad54",
+  "Sources/DroidBridge/AppLaunch.swift": "bded789e39e3b8f963f205e60570dfda2129f12587bd985507b2d310bf0f1500",
+  "Sources/DroidBridge/QuickAccessHotKey.swift": "d32cc03e737b40d2062df411c1b96d1d96423da8586f76c4f130d0804a4cf8d9",
+  "Sources/DroidBridge/DesktopSettings.swift": "0f813df68e7d969916644963c96da92fad9051f9b5203d5d34868672336a3190",
+  "Sources/DroidBridge/Launcher.swift": "051d755feadf89c2ad68da492f52831770234f9ae668829bdb4bd6a63f43198b",
+  "Sources/DroidBridge/main.swift": "1ff0720419b290b25c2a1386eb230be3fa1eb933815641d0a666061c34ec3651",
+  "Sources/DroidBridgeAvailability/main.swift": "a9db3bc6110ebd092d1b8b843ffeb7e4d57fb0cc1f5b4bc3524cad19d53133ca",
+  "Sources/DroidBridgeCore/QuickOpen.swift": "9fb51bf3726733b776dec7510786b7d6caaf8a5e98a215240bd0fc60b1aa8d78",
+  "Sources/DroidBridgeCore/Models.swift": "8aeba3959c15ff832abeb0d0a54773718f1ee4700a832783fb2592b40e504feb",
+  "Sources/DroidBridgeStreaming/BridgeSession.swift": "39203ba33500d4ea5b0b5f008c82918765fca1829ec01b0f46742192a19e4e21",
+  "Sources/DroidBridgeStreaming/SocketTransport.swift": "a916b737928d017eb71aaad1a5482e5cdd5116ae548df99557caa7f4b0c94613"
+}

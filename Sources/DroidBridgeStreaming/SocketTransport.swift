@@ -88,7 +88,7 @@ final class NativeTransport: @unchecked Sendable {
             do { try channel?.write(data) } catch { if !isStopped { onFailure?(error) } }
         }
     }
-    func start(port: UInt16, package: String) async throws {
+    func start(port: UInt16, package: String?) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void,Error>) in
             DispatchQueue.global(qos:.userInitiated).async { [self] in
                 do {
@@ -106,7 +106,7 @@ final class NativeTransport: @unchecked Sendable {
                     _ = try video.read(64)
                     guard try video.read(4).number(0,4) == 0x68323634 else { throw BridgeError.message("Expected pinned H.264 video codec") }
                     video.continuousReads(); control.continuousReads()
-                    send(ScrcpyControl.startApp(package))
+                    if let package { send(ScrcpyControl.startApp(package)) }
                     continuation.resume()
                     // Device messages are drained so clipboard notifications can never
                     // fill the control socket and stall Android input processing.

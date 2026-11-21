@@ -1,0 +1,35 @@
+{
+  "cleanup" : "No extra ADB forwards or displays; owned wrapper terminated",
+  "connection_edges" : "Disabled\/other-device\/booting ignored; ready edge opens once; readiness flaps do not refocus; disconnect\/reconnect rearms",
+  "control_focus" : {
+    "active" : true,
+    "frontmost_pid" : 13179,
+    "key_window" : true,
+    "qa_pid" : 13179
+  },
+  "disabled_during_app_preparation" : "No late Launch Services handoff",
+  "disconnected" : "Disconnected QA is disconnected. Reconnect it, then choose Window → Quick Access to retry.",
+  "display_counts" : {
+    "after_device_info_lines" : 1,
+    "before_device_info_lines" : 1
+  },
+  "mirror" : {
+    "changing_pixel_hashes" : [
+      "1c12abd36ee1b743da12b0a6b13952a07b82b72e96a355e52c550f33fd08e7e4",
+      "03c9be09fca5f5f1a3bc28c4c0a5e7149ed0004b2ea44208355b4c32566c4d23"
+    ],
+    "decoded_several_frames_seconds" : 1.8259913750225678,
+    "frames" : 38,
+    "height" : 1920,
+    "log" : "\/private\/tmp\/droidbridge-quick-open.PwhKP2\/Logs\/session-D613C549-3E0C-463D-B6BA-9BE9F43BE196.log",
+    "same_window_on_reopen" : true,
+    "width" : 1080
+  },
+  "missing_app" : "Missing QA App is no longer available on Dedicated Android 15 emulator. Choose another app in Settings → General.",
+  "specific_app" : {
+    "actual_running_video" : true,
+    "bundle" : "\/tmp\/droidbridge-quick-open.PwhKP2\/Launchers.noindex\/5e6f2505624f8523ae5b4121\/native\/dev.droidbridge.testapp20261121\/Quick Open Test.app",
+    "pid" : 13808,
+    "same_pid_on_reopen" : true
+  }
+}

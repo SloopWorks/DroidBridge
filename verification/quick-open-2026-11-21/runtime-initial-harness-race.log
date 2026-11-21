@@ -1,0 +1,8 @@
+COMMAND: swift build
+[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.18s)
+COMMAND: swiftc -parse-as-library shipping UI + verify-quick-access.swift
+COMMAND: /private/tmp/droidbridge-quick-open.Ads4lp/QuickAccessQA.app/Contents/MacOS/VerifyQuickAccess --companion-qa-root /private/tmp/droidbridge-quick-open.Ads4lp --serial emulator-5580
+FAIL: quick access: message("Disabled pending request admitted a session")

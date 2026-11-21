@@ -1,0 +1,57 @@
+Another instance of SwiftPM (PID: 85664) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution...[0/1] Planning build
+Building for debugging...
+[0/10] Write sources
+[2/10] Write swift-version--58304C5D6DBC2206.txt
+[3/13] Write Objects.LinkFileList
+[5/15] Emitting module DroidBridgeCompanionBroker
+[5/16] Write Objects.LinkFileList
+[6/16] Linking DroidBridgeAvailability
+[7/16] Applying DroidBridgeAvailability
+[9/16] Emitting module DroidBridgeStreaming
+[9/22] Linking DroidBridgeCompanionBroker
+[10/22] Applying DroidBridgeCompanionBroker
+[12/22] Compiling DroidBridgeCoreTests QuickOpenTests.swift
+[13/22] Emitting module DroidBridgeCoreTests
+[13/22] Write Objects.LinkFileList
+[15/22] Emitting module DroidBridge
+[16/22] Compiling DroidBridge DesktopSettings.swift
+[17/22] Compiling DroidBridge Launcher.swift
+[18/22] Compiling DroidBridge QuickAccess.swift
+[18/34] Linking DroidBridgePackageTests
+[20/34] Compiling DroidBridge main.swift
+[21/34] Compiling DroidBridge AudioControls.swift
+[22/34] Compiling DroidBridge ManagedAppNameRepair.swift
+[23/34] Compiling DroidBridge DeviceOnboardingUI.swift
+[24/34] Compiling DroidBridge SessionRecovery.swift
+[25/34] Compiling DroidBridge CompanionLauncherIntegration.swift
+[26/34] Compiling DroidBridge CompanionDesktopAdapter.swift
+[27/34] Compiling DroidBridge PhoneDisplayControls.swift
+[28/34] Compiling DroidBridge AppLaunch.swift
+[29/34] Compiling DroidBridge LauncherUI.swift
+[30/34] Compiling DroidBridge AppLaunchSessions.swift
+[31/34] Compiling DroidBridge CompanionWindow.swift
+[31/34] Write Objects.LinkFileList
+[32/34] Linking DroidBridge
+[33/34] Applying DroidBridge
+Build complete! (4.45s)
+Test Suite 'Selected tests' started at 2026-11-21 10:50:19.053.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-21 10:50:19.054.
+Test Suite 'QuickOpenTests' started at 2026-11-21 10:50:19.054.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testConnectionEdgesWaitForReadinessWithoutRepeatingOnBootFlaps]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testConnectionEdgesWaitForReadinessWithoutRepeatingOnBootFlaps]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testExplicitSaveRecoversCorruptionButOrdinaryUpdatesFailClosed]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testExplicitSaveRecoversCorruptionButOrdinaryUpdatesFailClosed]' passed (0.004 seconds).
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testPreferencesRoundTripAndRejectInvalidExternalIdentity]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testPreferencesRoundTripAndRejectInvalidExternalIdentity]' passed (0.001 seconds).
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testUnauthorizedRearmsAndUnselectedDeviceNeverOpens]' started.
+Test Case '-[DroidBridgeCoreTests.QuickOpenTests testUnauthorizedRearmsAndUnselectedDeviceNeverOpens]' passed (0.000 seconds).
+Test Suite 'QuickOpenTests' passed at 2026-11-21 10:50:19.061.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.006 (0.007) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-21 10:50:19.061.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.006 (0.007) seconds
+Test Suite 'Selected tests' passed at 2026-11-21 10:50:19.061.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.006 (0.008) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

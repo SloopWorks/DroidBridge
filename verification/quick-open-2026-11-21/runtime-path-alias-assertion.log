@@ -1,0 +1,9 @@
+COMMAND: swift build
+[0/1] Planning build
+Building for debugging...
+[0/7] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.17s)
+COMMAND: swiftc -parse-as-library shipping UI + verify-quick-access.swift
+COMMAND: /private/tmp/droidbridge-quick-open.wjorEo/QuickAccessQA.app/Contents/MacOS/VerifyQuickAccess --companion-qa-root /private/tmp/droidbridge-quick-open.wjorEo --serial emulator-5580
+FAIL: quick access: message("Specific app escaped isolated QA root")
+QA handoff expected=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p3765b62798052b5751909895.qab02f2b71df0d at=/private/tmp/droidbridge-quick-open.wjorEo/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp20261121/Quick Open Test.app observed=app.droidbridge.launcher.d5e6f2505624f8523ae5b4121.native.p3765b62798052b5751909895.qab02f2b71df0d at=/private/tmp/droidbridge-quick-open.wjorEo/Launchers.noindex/5e6f2505624f8523ae5b4121/native/dev.droidbridge.testapp20261121/Quick Open Test.app pid=7591
