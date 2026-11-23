@@ -521,6 +521,11 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
             if let retainedHost { host=retainedHost;host.attach(session) }
             else if let preview=launchPreview { host=preview;launchPreview=nil;host.attach(session) }
             else { host=NativeWindowController(session: session);host.video.applicationIcon=icons[iconKey(device,app)] }
+            host.onFirstPresentation = {
+                DesktopUsage.shared.meter?.recordNativeSession()
+                DesktopUsage.shared.updateForeground()
+            }
+            DesktopUsage.shared.updateForeground()
             host.video.loadingMessage="Opening \(app.name)…"
             if configuration.backend == .scrcpy, let window=host.window {
                 // SDL uses desktop top-left coordinates and point-sized windows.
@@ -535,6 +540,7 @@ final class LauncherController: NSWindowController, NSWindowDelegate, NSTableVie
         }
         session.onState = { [weak self, weak session] state, message in
             guard let self, let session, self.sessions[descriptor.id] === session else { return }
+            DesktopUsage.shared.updateForeground()
             if self.sessionStates[descriptor.id] == "disconnected" { return }
             let newSession = state == .running && self.sessionStates[descriptor.id] == "starting" && recoveryBudget == nil
             self.sessionStates[descriptor.id] = state.rawValue

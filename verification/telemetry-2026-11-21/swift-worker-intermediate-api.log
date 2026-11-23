@@ -1,0 +1,109 @@
+Traceback (most recent call last):
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-telemetry-worker.py", line 51, in <module>
+    run(["swift", "build"])
+    ~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/patrick/workspace/DroidBridge/scripts/verify-telemetry-worker.py", line 27, in run
+    assert p.returncode == 0, p.stdout + p.stderr
+           ^^^^^^^^^^^^^^^^^
+AssertionError: [0/1] Planning build
+Building for debugging...
+[0/8] Write sources
+[1/8] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[3/7] Emitting module DroidBridge
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopSettings.swift:128:45: error: cannot find type 'UsageConsentResult' in scope
+126 |     }
+127 | 
+128 |     private func showUsageConsent(_ result: UsageConsentResult, button: NSButton) {
+    |                                             `- error: cannot find type 'UsageConsentResult' in scope
+129 |         let unavailable = result.status == .unavailable
+130 |         button.allowsMixedState = unavailable
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopUsage.swift:106:61: error: cannot find type 'UsageConsentResult' in scope
+104 |     }
+105 | 
+106 |     func setConsent(_ enabled: Bool, completion: @escaping (UsageConsentResult) -> Void) {
+    |                                                             `- error: cannot find type 'UsageConsentResult' in scope
+107 |         guard !isWrapper, let meter else { return }
+108 |         clock?.cancel()
+[4/7] Compiling DroidBridge DesktopSettings.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopSettings.swift:128:45: error: cannot find type 'UsageConsentResult' in scope
+126 |     }
+127 | 
+128 |     private func showUsageConsent(_ result: UsageConsentResult, button: NSButton) {
+    |                                             `- error: cannot find type 'UsageConsentResult' in scope
+129 |         let unavailable = result.status == .unavailable
+130 |         button.allowsMixedState = unavailable
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopSettings.swift:79:19: error: value of type 'UsageMeter' has no member 'readConsentStatus'
+ 77 |             retryUsageWithdrawal = retry
+ 78 |             usageStatus.isHidden = true
+ 79 |             meter.readConsentStatus { [weak self] result in
+    |                   `- error: value of type 'UsageMeter' has no member 'readConsentStatus'
+ 80 |                 self?.showUsageConsent(result, button: consent)
+ 81 |             }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopSettings.swift:80:23: error: reference to member 'showUsageConsent' cannot be resolved without a contextual type
+ 78 |             usageStatus.isHidden = true
+ 79 |             meter.readConsentStatus { [weak self] result in
+ 80 |                 self?.showUsageConsent(result, button: consent)
+    |                       `- error: reference to member 'showUsageConsent' cannot be resolved without a contextual type
+ 81 |             }
+ 82 |             integrations.append(contentsOf: [
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopSettings.swift:79:51: error: cannot infer type of closure parameter 'result' without a type annotation
+ 77 |             retryUsageWithdrawal = retry
+ 78 |             usageStatus.isHidden = true
+ 79 |             meter.readConsentStatus { [weak self] result in
+    |                                                   `- error: cannot infer type of closure parameter 'result' without a type annotation
+ 80 |                 self?.showUsageConsent(result, button: consent)
+ 81 |             }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopUsage.swift:106:61: error: cannot find type 'UsageConsentResult' in scope
+104 |     }
+105 | 
+106 |     func setConsent(_ enabled: Bool, completion: @escaping (UsageConsentResult) -> Void) {
+    |                                                             `- error: cannot find type 'UsageConsentResult' in scope
+107 |         guard !isWrapper, let meter else { return }
+108 |         clock?.cancel()
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopSettings.swift:124:19: error: reference to member 'showUsageConsent' cannot be resolved without a contextual type
+122 |         retryUsageWithdrawal?.isEnabled = false
+123 |         DesktopUsage.shared.setConsent(enabled) { [weak self] result in
+124 |             self?.showUsageConsent(result, button: button)
+    |                   `- error: reference to member 'showUsageConsent' cannot be resolved without a contextual type
+125 |         }
+126 |     }
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopSettings.swift:123:63: error: cannot infer type of closure parameter 'result' without a type annotation
+121 |         button.isEnabled = false
+122 |         retryUsageWithdrawal?.isEnabled = false
+123 |         DesktopUsage.shared.setConsent(enabled) { [weak self] result in
+    |                                                               `- error: cannot infer type of closure parameter 'result' without a type annotation
+124 |             self?.showUsageConsent(result, button: button)
+125 |         }
+[5/7] Compiling DroidBridge DesktopUsage.swift
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopUsage.swift:106:61: error: cannot find type 'UsageConsentResult' in scope
+104 |     }
+105 | 
+106 |     func setConsent(_ enabled: Bool, completion: @escaping (UsageConsentResult) -> Void) {
+    |                                                             `- error: cannot find type 'UsageConsentResult' in scope
+107 |         guard !isWrapper, let meter else { return }
+108 |         clock?.cancel()
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopUsage.swift:111:35: error: extra trailing closure passed in call
+109 |         clock = nil
+110 |         generation &+= 1
+111 |         meter.setConsent(enabled) { [weak self] result in
+    |                                   `- error: extra trailing closure passed in call
+112 |             completion(result)
+113 |             self?.updateForeground()
+
+/Users/patrick/workspace/DroidBridge/Sources/DroidBridge/DesktopUsage.swift:111:49: error: cannot infer type of closure parameter 'result' without a type annotation
+109 |         clock = nil
+110 |         generation &+= 1
+111 |         meter.setConsent(enabled) { [weak self] result in
+    |                                                 `- error: cannot infer type of closure parameter 'result' without a type annotation
+112 |             completion(result)
+113 |             self?.updateForeground()
+

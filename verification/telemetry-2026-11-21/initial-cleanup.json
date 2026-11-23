@@ -1,0 +1,10 @@
+{
+  "exact_qa_brokers_stopped": [
+    {
+      "pid": 7178,
+      "observed_command": "/private/tmp/droidbridge-telemetry-a_2gjw3m/CompanionBroker/generations/a07684dfe346ee79fa20b00e08bc5f7bd03ce4c3d7b79c533e2d4e62d30717ba/DroidBridgeCompanionBroker --companion-qa-root /private/tmp/droidbridge-telemetry-a_2gjw3m --serial emulator-5580",
+      "exit_verified": true
+    }
+  ],
+  "scope_removed": "/private/tmp/droidbridge-telemetry-a_2gjw3m"
+}

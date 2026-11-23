@@ -1,0 +1,12 @@
+{
+  "command": [
+    "scripts/package.sh"
+  ],
+  "environment_overrides": {
+    "DROIDBRIDGE_SIGNING_MODE": "adhoc",
+    "DROIDBRIDGE_BUILD_NUMBER": "20261122",
+    "DROIDBRIDGE_OUTPUT_DIR": "/Users/patrick/workspace/DroidBridge/.build/telemetry-package",
+    "DROIDBRIDGE_COMPANION_APK": "/Users/patrick/workspace/DroidBridge/AndroidCompanion/app/build/outputs/apk/release/app-release.apk",
+    "ADB_PATH": "/Users/patrick/workspace/DroidBridge/.build/adb-runtime/adb"
+  }
+}

@@ -13,7 +13,7 @@ swift build
 BIN=$(swift build --show-bin-path)
 UI_SOURCES=()
 while IFS= read -r SOURCE; do UI_SOURCES+=("$SOURCE"); done < <(rg --files Sources/DroidBridge | rg '\.swift$' | rg -v '/main\.swift$' | sort)
-swiftc -parse-as-library -I "$BIN/Modules" "${UI_SOURCES[@]}" scripts/verify-connection-recovery.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o "$QA_ROOT/verify-recovery"
+swiftc -parse-as-library -I "$BIN/Modules" "${UI_SOURCES[@]}" scripts/verify-connection-recovery.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o "$BIN"/AnonymousUsage.build/*.o -o "$QA_ROOT/verify-recovery"
 cat > "$QA_ROOT/adb" <<'PY'
 #!/usr/bin/env python3
 import os, pathlib, sys, time

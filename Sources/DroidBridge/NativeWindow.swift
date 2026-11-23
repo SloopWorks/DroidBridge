@@ -140,6 +140,8 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
     let frameName: String
     var onClose: (() -> Void)?
     var resizing: DispatchWorkItem?
+    var onFirstPresentation: (() -> Void)?
+    private var reportedPresentation = false
     private var pendingBlankFrame:CGImage?
     private var firstBlankFrameAt: Double?
     private var blankNoticeTask: Task<Void,Never>?
@@ -189,6 +191,7 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
         video.frameImage = nil; video.statusMessage = nil; video.canRevealVideo = false; video.canRetry = false; video.dragging = false
         video.setRetryTitle("Retry")
         self.session = session
+        reportedPresentation = false
         qaMetricsEnabled = CompanionQAScope.current != nil && ProcessInfo.processInfo.arguments.contains("--companion-launch-trace")
         qaMetricsSamples = 0; qaMetricsLastTime = Double.leastNormalMagnitude
         if qaMetricsEnabled {
@@ -203,6 +206,7 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
             guard let self,let image=self.pendingBlankFrame,self.session?.state == .running else {return}
             self.video.statusMessage=nil;self.video.canRevealVideo=false;self.blankVideoNotice=false
             self.video.frameImage=image;self.pendingBlankFrame=nil;self.blankNoticeTask?.cancel();self.blankNoticeTask=nil
+            self.reportFirstPresentation()
             self.session?.recordClientEvent("native_blank_video_revealed",details:["window_number":String(self.window?.windowNumber ?? -1)])
             self.resizeDisplay()
         }
@@ -228,11 +232,17 @@ final class NativeWindowController: NSWindowController, NSWindowDelegate {
             if self.blankVideoNotice {self.video.statusMessage=nil;self.blankVideoNotice=false}
             self.video.frameImage = frame;self.pendingBlankFrame=nil;self.video.canRevealVideo=false
             if first {
+                self.reportFirstPresentation()
                 self.blankNoticeTask?.cancel();self.blankNoticeTask=nil
                 self.session?.recordClientEvent("native_content_presented",details:["window_number":String(self.window?.windowNumber ?? -1),"initial_blank_frames":String(self.initialBlankFrames)])
                 self.resizeDisplay()
             }
         }
+    }
+    private func reportFirstPresentation() {
+        guard !reportedPresentation else { return }
+        reportedPresentation = true
+        onFirstPresentation?()
     }
     private func recordQAMetrics(_ metrics: SessionMetrics, final: Bool = false) {
         guard qaMetricsEnabled, let session else { return }

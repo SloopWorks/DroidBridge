@@ -1,0 +1,21 @@
+{
+  "tables": [
+    "weekly"
+  ],
+  "columns": [
+    "week",
+    "foreground_sessions",
+    "active_minutes",
+    "native_sessions"
+  ],
+  "totals": [
+    {
+      "week": "2026-W47",
+      "foreground_sessions": 1,
+      "active_minutes": 2,
+      "native_sessions": 1
+    }
+  ],
+  "database_mode": "0o600",
+  "captured_requests": 1
+}

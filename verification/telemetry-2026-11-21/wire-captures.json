@@ -1,0 +1,17 @@
+[
+  {
+    "method": "POST",
+    "path": "/v1/droidbridge/usage",
+    "header_names": [
+      "Connection",
+      "Content-Length",
+      "Content-Type",
+      "Host"
+    ],
+    "body": {
+      "foreground_sessions": 1,
+      "active_minutes": 2,
+      "native_sessions": 1
+    }
+  }
+]

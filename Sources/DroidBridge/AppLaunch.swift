@@ -187,7 +187,7 @@ extension LauncherController {
                 let configuration = NSWorkspace.OpenConfiguration()
                 configuration.createsNewApplicationInstance = false
                 configuration.activates = true
-                if let scope = CompanionQAScope.current { configuration.arguments = ["--companion-qa-root", scope.root.path, "--serial", device.serial] }
+                if let scope = CompanionQAScope.current { configuration.arguments = ["--companion-qa-root", scope.root.path, "--serial", device.serial] + DesktopUsage.shared.wrapperArguments }
                 let launched = try await NSWorkspace.shared.openApplication(at: resolved.url, configuration: configuration)
                 if CompanionQAScope.current != nil {
                     print("QA handoff expected=\(resolved.identifier) at=\(resolved.url.path) observed=\(launched.bundleIdentifier ?? "nil") at=\(launched.bundleURL?.path ?? "nil") pid=\(launched.processIdentifier)")

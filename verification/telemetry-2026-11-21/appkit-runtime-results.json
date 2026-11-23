@@ -1,0 +1,16 @@
+{
+  "daily_rollover_triggered_actual_http" : true,
+  "foreground_is_injected_not_physical_focus" : true,
+  "injected_foreground_minutes" : 2,
+  "ledger_mode" : "600",
+  "native_frame_before_control_exit" : 1,
+  "native_wrapper_pid" : 52913,
+  "new_decoded_wrapper_after_withdrawal" : "Shared counters remained empty and unauthorized",
+  "new_native_frame_with_control_closed" : true,
+  "pre_consent" : "Actual decoded wrapper video produced no telemetry directory",
+  "production_endpoint_contacted" : false,
+  "scope" : "\/private\/tmp\/droidbridge-telemetry-flktk4ww",
+  "shipping_settings_consent_action_verified" : true,
+  "wire_requests_after_repeated_send" : 1,
+  "wrapper_survived_control_quit" : true
+}

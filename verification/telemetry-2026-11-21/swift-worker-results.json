@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "path": "real Swift Network transport -> local workerd -> local D1 -> operator CLI",
+  "rows": [
+    {
+      "week": "2026-W47",
+      "foreground_sessions": 1,
+      "active_minutes": 0,
+      "native_sessions": 1
+    }
+  ],
+  "no_remote_deployment": true,
+  "wrangler_metrics_disabled": true
+}

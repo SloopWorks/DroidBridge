@@ -1,0 +1,18 @@
+
+ ⛅️ wrangler 4.110.0 (update available 4.166.0)
+───────────────────────────────────────────────
+Your Worker has access to the following bindings:
+Binding                                  Resource         Mode
+env.USAGE (droidbridge-usage-local)      D1 Database      local
+
+⎔ Starting local server...
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mScheduled Workers are not automatically triggered during local development.[0m
+
+  To manually trigger a scheduled event, run:
+    curl "http://127.0.0.1:64349/cdn-cgi/handler/scheduled"
+  For more details, see [4mhttps://developers.cloudflare.com/workers/configuration/cron-triggers/#test-cron-triggers-locally[0m
+
+
+[wrangler:info] Ready on http://127.0.0.1:64349
+[wrangler:info] GET /v1/droidbridge/usage 405 Method Not Allowed (2ms)
+[wrangler:info] POST /v1/droidbridge/usage 204 No Content (11ms)

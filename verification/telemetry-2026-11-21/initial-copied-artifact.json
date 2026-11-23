@@ -1,0 +1,14 @@
+{
+  "app": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/anonymous-usage-2026-11-21/DroidBridge.app",
+  "signing": "ad hoc local verification",
+  "command": [
+    "codesign",
+    "--verify",
+    "--deep",
+    "--strict",
+    "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/anonymous-usage-2026-11-21/DroidBridge.app"
+  ],
+  "returncode": 0,
+  "output": "",
+  "executable_sha256": "3a40d8218c045921eb567cc48ade0decbff55d4d5e96898e528653b564aa0426"
+}

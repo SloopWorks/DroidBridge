@@ -21,7 +21,7 @@ prefix,separator,_=source.partition('\nMainActor.assumeIsolated {')
 assert separator, 'AppDelegate boundary moved; update the explicit test extraction'
 Path(sys.argv[1]).write_text(prefix+'\n')
 PY_EXTRACT
-swiftc -parse-as-library -I "$BIN/Modules" "${UI_SOURCES[@]}" "$QA_ROOT/AppDelegate.swift" scripts/verify-launcher-redesign.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o .build/qa-launcher-redesign
+swiftc -parse-as-library -I "$BIN/Modules" "${UI_SOURCES[@]}" "$QA_ROOT/AppDelegate.swift" scripts/verify-launcher-redesign.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o "$BIN"/AnonymousUsage.build/*.o -o .build/qa-launcher-redesign
 mkdir -p verification/launcher-redesign/qa
 rm -f verification/launcher-redesign/qa/results.json
 DROIDBRIDGE_ADB=/usr/bin/false DROIDBRIDGE_SCRCPY=/usr/bin/false DROIDBRIDGE_SERVER="$QA_ROOT/nonexistent-server" .build/qa-launcher-redesign 2>&1 | tee verification/launcher-redesign/qa/run.log

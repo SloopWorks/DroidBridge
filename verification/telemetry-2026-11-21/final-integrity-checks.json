@@ -1,0 +1,34 @@
+[
+  {
+    "cwd": "/Users/patrick/workspace/DroidBridge",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "output": ""
+  },
+  {
+    "cwd": "/Users/patrick/workspace/sloopworksinstrumentationplatform",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "output": ""
+  },
+  {
+    "cwd": "/Users/patrick/workspace/DroidBridge",
+    "command": [
+      "codesign",
+      "--verify",
+      "--deep",
+      "--strict",
+      "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/anonymous-usage-2026-11-21/DroidBridge.app"
+    ],
+    "returncode": 0,
+    "output": ""
+  }
+]

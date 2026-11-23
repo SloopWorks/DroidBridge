@@ -1,0 +1,9 @@
+test_calendar_retention_and_rollback (test_collector.ReceiverTest.test_calendar_retention_and_rollback) ... ok
+test_contract_and_receiver_agree (test_collector.ReceiverTest.test_contract_and_receiver_agree) ... ok
+test_http_and_operator_read (test_collector.ReceiverTest.test_http_and_operator_read) ... ok
+test_strict_wire (test_collector.ReceiverTest.test_strict_wire) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.516s
+
+OK

@@ -1,0 +1,20 @@
+{
+  "scope": "/private/tmp/droidbridge-telemetry-a_2gjw3m",
+  "app": "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/anonymous-usage-2026-11-21/DroidBridge.app",
+  "main_pid": 6740,
+  "collector_pid": 6738,
+  "proxy_port": 56965,
+  "origin_port": 56964,
+  "command": [
+    "/Users/patrick/Library/Application Support/DroidBridge/ReviewBuilds/anonymous-usage-2026-11-21/DroidBridge.app/Contents/MacOS/DroidBridge",
+    "--companion-qa-root",
+    "/private/tmp/droidbridge-telemetry-a_2gjw3m",
+    "--serial",
+    "emulator-5580",
+    "--usage-loopback-port",
+    "56965"
+  ],
+  "executable_sha256": "3a40d8218c045921eb567cc48ade0decbff55d4d5e96898e528653b564aa0426",
+  "production_endpoint_absent": true
+}
+Runtime hold ended; exact QA broker/process cleanup remains with reviewer

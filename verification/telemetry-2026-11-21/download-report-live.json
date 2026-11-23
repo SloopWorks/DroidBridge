@@ -1,0 +1,27 @@
+{
+  "asset_count": 0,
+  "assets": [],
+  "counters_available": false,
+  "cumulative_downloads_by_kind": {
+    "android_package": 0,
+    "mac_archive": 0,
+    "mac_installer": 0,
+    "metadata": 0,
+    "other": 0
+  },
+  "format": "sloopworks.aggregate-downloads.v1",
+  "interval_delta_complete": false,
+  "interval_download_delta": null,
+  "inventory_complete": true,
+  "limitations": [
+    "Counts asset transfers, not unique people, installations, completed installations, or active users.",
+    "Repeated downloads, bots, CI, and multiple package formats can increase counters.",
+    "Absent releases/assets are unavailable inventory, not proof of zero downloads.",
+    "New, missing, or decreased asset counters make the total interval delta unknown."
+  ],
+  "missing_previous_asset_ids": [],
+  "observed_utc_day": "2026-11-21",
+  "published_releases": 0,
+  "repository": "SloopWorks/DroidBridge",
+  "source": "github_release_asset_counters"
+}

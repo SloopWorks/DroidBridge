@@ -1,0 +1,25 @@
+[
+  {
+    "command": [
+      "adb",
+      "-s",
+      "emulator-5580",
+      "emu",
+      "avd",
+      "name"
+    ],
+    "returncode": 0,
+    "output": "DroidBridge_API35\nOK\n"
+  },
+  {
+    "command": [
+      "adb",
+      "-s",
+      "emulator-5580",
+      "emu",
+      "kill"
+    ],
+    "returncode": 0,
+    "output": "OK: killing emulator, bye bye\nOK\n"
+  }
+]

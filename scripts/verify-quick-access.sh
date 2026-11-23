@@ -21,7 +21,7 @@ while IFS= read -r QA_SOURCE; do UI_SOURCES+=("$QA_SOURCE"); done < <(rg --files
 printf '%s\n' 'COMMAND: swiftc -parse-as-library shipping UI + verify-quick-access.swift'
 ditto "$DROIDBRIDGE_QUICK_HOST" "$QA_ROOT/QuickAccessQA.app"
 QA_EXEC="$QA_ROOT/QuickAccessQA.app/Contents/MacOS/VerifyQuickAccess"
-swiftc -parse-as-library -I "$BIN/Modules" "${UI_SOURCES[@]}" scripts/verify-quick-access.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o "$QA_EXEC"
+swiftc -parse-as-library -I "$BIN/Modules" "${UI_SOURCES[@]}" scripts/verify-quick-access.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o "$BIN"/AnonymousUsage.build/*.o -o "$QA_EXEC"
 /usr/libexec/PlistBuddy -c 'Set :CFBundleExecutable VerifyQuickAccess' "$QA_ROOT/QuickAccessQA.app/Contents/Info.plist"
 /usr/libexec/PlistBuddy -c 'Set :CFBundleIdentifier app.droidbridge.qa.quickaccess' "$QA_ROOT/QuickAccessQA.app/Contents/Info.plist"
 printf 'COMMAND: %s --companion-qa-root %s --serial emulator-5580\n' "$QA_EXEC" "$QA_ROOT"

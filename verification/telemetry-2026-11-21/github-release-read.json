@@ -1,0 +1,1 @@
+{"method":"GET","url":"https://api.github.com/repos/SloopWorks/DroidBridge/releases?per_page=100&page=1","tool":"GitHub connector fetch","response":[],"interpretation":"No published releases or asset counters were returned. This does not establish zero downloads or zero users.","source_documentation":"https://docs.github.com/en/rest/releases/releases#list-releases"}

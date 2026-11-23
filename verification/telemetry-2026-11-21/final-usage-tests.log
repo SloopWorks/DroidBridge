@@ -1,0 +1,39 @@
+[0/1] Planning build
+Building for debugging...
+[0/8] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (0.16s)
+Test Suite 'Selected tests' started at 2026-11-21 12:24:45.867.
+Test Suite 'DroidBridgePackageTests.xctest' started at 2026-11-21 12:24:45.868.
+Test Suite 'UsageMeterTests' started at 2026-11-21 12:24:45.868.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testClippingAndRolloverTickDefersDeliveryUntilForegroundTransition]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testClippingAndRolloverTickDefersDeliveryUntilForegroundTransition]' passed (0.041 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testCorruptAggregateIsPurgedAndCannotRevivePriorGrant]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testCorruptAggregateIsPurgedAndCannotRevivePriorGrant]' passed (0.003 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testDeferredSocketRechecksConsentRevision]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testDeferredSocketRechecksConsentRevision]' passed (0.002 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testDenyByDefaultScopeAndOwner]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testDenyByDefaultScopeAndOwner]' passed (0.001 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testEndpointPolicyWithoutNetwork]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testEndpointPolicyWithoutNetwork]' passed (0.000 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testHeldAccountingLockCannotPreventWithdrawalOrReviveDeferredSend]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testHeldAccountingLockCannotPreventWithdrawalOrReviveDeferredSend]' passed (0.039 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testInvalidAccountingLockStillRemovesPermission]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testInvalidAccountingLockStillRemovesPermission]' passed (0.001 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testMissingLegacyPermissionAndInaccessibleAuthorityFailClosed]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testMissingLegacyPermissionAndInaccessibleAuthorityFailClosed]' passed (0.002 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testParallelDrainAndExpiry]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testParallelDrainAndExpiry]' passed (0.014 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testPrivateLedgerCreationReplacementAndLegacyModeRepair]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testPrivateLedgerCreationReplacementAndLegacyModeRepair]' passed (0.002 seconds).
+Test Case '-[AnonymousUsageTests.UsageMeterTests testWithdrawalPurgesAndFencesExistingWrapper]' started.
+Test Case '-[AnonymousUsageTests.UsageMeterTests testWithdrawalPurgesAndFencesExistingWrapper]' passed (0.004 seconds).
+Test Suite 'UsageMeterTests' passed at 2026-11-21 12:24:45.979.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.110 (0.111) seconds
+Test Suite 'DroidBridgePackageTests.xctest' passed at 2026-11-21 12:24:45.979.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.110 (0.111) seconds
+Test Suite 'Selected tests' passed at 2026-11-21 12:24:45.979.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 0.110 (0.112) seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

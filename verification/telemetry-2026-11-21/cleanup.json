@@ -1,0 +1,15 @@
+{
+  "qa_brokers": [
+    {
+      "operation": "terminate exact isolated QA broker",
+      "pid": 52088,
+      "observed_command": "/private/tmp/droidbridge-telemetry-flktk4ww/CompanionBroker/generations/a07684dfe346ee79fa20b00e08bc5f7bd03ce4c3d7b79c533e2d4e62d30717ba/DroidBridgeCompanionBroker --companion-qa-root /private/tmp/droidbridge-telemetry-flktk4ww --serial emulator-5580",
+      "exit_verified": true
+    }
+  ],
+  "review_main_exited": true,
+  "collector_exited": true,
+  "user_usage_directory_created": false,
+  "owned_forward_count": 0,
+  "display_device_count": 1
+}

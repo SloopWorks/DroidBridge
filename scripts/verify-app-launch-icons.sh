@@ -18,7 +18,7 @@ swift build
 BIN=$(swift build --show-bin-path)
 UI_SOURCES=()
 while IFS= read -r SOURCE; do UI_SOURCES+=("$SOURCE"); done < <(rg --files Sources/DroidBridge | rg '\.swift$' | rg -v '/main\.swift$' | sort)
-swiftc -parse-as-library -I "$BIN/Modules" "${UI_SOURCES[@]}" scripts/verify-app-launch-icons.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o "$QA_ROOT/verify-app-icons"
+swiftc -parse-as-library -I "$BIN/Modules" "${UI_SOURCES[@]}" scripts/verify-app-launch-icons.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o "$BIN"/AnonymousUsage.build/*.o -o "$QA_ROOT/verify-app-icons"
 printf '%s\n' 'COMMAND: packaged factory + Launch Services + actual decoded video, isolated scope on emulator-5580'
 DROIDBRIDGE_LAUNCH_REVIEW_APP="$REVIEW_APP" DROIDBRIDGE_LAUNCH_EVIDENCE="$EVIDENCE" DROIDBRIDGE_ADB="$REVIEW_APP/Contents/Resources/Runtime/bin/adb" DROIDBRIDGE_ICON_HELPER="$REVIEW_APP/Contents/Resources/Runtime/share/droidbridge/icon-helper.jar" "$QA_ROOT/verify-app-icons" --companion-qa-root "$QA_ROOT" --serial emulator-5580
 QA_PASSED=1

@@ -150,7 +150,7 @@ extension LauncherController {
         }
         let configuration = NSWorkspace.OpenConfiguration()
         configuration.createsNewApplicationInstance = false
-        if let scope = CompanionQAScope.current { configuration.arguments = ["--companion-qa-root", scope.root.path, "--serial", tracked.device.serial] }
+        if let scope = CompanionQAScope.current { configuration.arguments = ["--companion-qa-root", scope.root.path, "--serial", tracked.device.serial] + DesktopUsage.shared.wrapperArguments }
         Task {
             do {
                 let opened = try await NSWorkspace.shared.openApplication(at: tracked.process.bundleURL, configuration: configuration)

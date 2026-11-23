@@ -14,6 +14,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         guard Bundle.main.url(forResource: "launch", withExtension: "json") != nil || ProcessInfo.processInfo.arguments.contains("--wrapper") else { return }
         CompanionLaunchTrace.record("will_finish_launching")
         NSApp.setActivationPolicy(.regular)
+        DesktopUsage.shared.start(isWrapper: true)
         launcher = LauncherController()
         _ = launcher.prepareWrapperLaunch()
     }
@@ -94,6 +95,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         NSApp.mainMenu = menu
         if launcher == nil { launcher = LauncherController() }
         if !launcher.prepareWrapperLaunch() { launcher.showWindow(nil) }
+        DesktopUsage.shared.start(isWrapper: launcher.isWrapper)
         NSApp.activate(ignoringOtherApps: true)
         launcher.quickAccess.load()
         launcher.companion.start()
@@ -165,11 +167,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
     @objc func openQuickAccess() { launcher?.quickAccess.open() }
     @objc func showLauncher() { launcher?.showWindow(nil); launcher?.window?.makeKeyAndOrderFront(nil);launcher?.refreshDevices(forceApps:true) }
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool { launcher?.reopen(); return false }
+    func applicationDidBecomeActive(_ notification: Notification) { DesktopUsage.shared.updateForeground() }
+    func applicationDidResignActive(_ notification: Notification) { DesktopUsage.shared.updateForeground() }
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { false }
     var terminating = false
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         guard !terminating else { return .terminateLater }
         terminating = true
+        DesktopUsage.shared.stop()
         Task { @MainActor in
             await launcher?.shutdownAndWait()
             NSApp.reply(toApplicationShouldTerminate: true)

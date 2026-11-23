@@ -22,7 +22,11 @@ ffmpeg -hide_banner -loglevel error -f lavfi -i color=black:s=64x64 -frames:v 1 
 printf '%s' native-present > "$QA_ROOT/mode"
 swift build
 BIN=$(swift build --show-bin-path)
-swiftc -parse-as-library -I "$BIN/Modules" Sources/DroidBridge/Launcher.swift Sources/DroidBridge/LauncherUI.swift Sources/DroidBridge/PhoneDisplayControls.swift Sources/DroidBridge/AudioControls.swift Sources/DroidBridge/ManagedAppNameRepair.swift Sources/DroidBridge/DeviceOnboarding.swift Sources/DroidBridge/DeviceOnboardingUI.swift Sources/DroidBridge/DeviceOnboardingAgent.swift Sources/DroidBridge/NativeWindow.swift Sources/DroidBridge/MacAppWrapper.swift scripts/verify-launch-ux.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o -o .build/qa-launch-ux
+UI_SOURCES=()
+for source in Sources/DroidBridge/*.swift; do
+    [[ "$source" == */main.swift ]] || UI_SOURCES+=("$source")
+done
+swiftc -parse-as-library -I "$BIN/Modules" "${UI_SOURCES[@]}" scripts/verify-launch-ux.swift "$BIN"/DroidBridgeCore.build/*.o "$BIN"/DroidBridgeStreaming.build/*.o "$BIN"/AnonymousUsage.build/*.o -o .build/qa-launch-ux
 QA_OUT="${DROIDBRIDGE_QA_OUTPUT:-verification/launch-ux/qa}"
 mkdir -p "$QA_OUT"
 rm -f "$QA_OUT/results.json"

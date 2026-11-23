@@ -1,0 +1,82 @@
+[
+  {
+    "command": [
+      "/Users/patrick/workspace/sloopworksinstrumentationplatform/packages/workerd-smoke/node_modules/.bin/wrangler",
+      "d1",
+      "migrations",
+      "apply",
+      "USAGE",
+      "--local",
+      "--persist-to",
+      "/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/droidbridge-swift-worker-yx0d4m_s/d1",
+      "--config",
+      "/Users/patrick/workspace/sloopworksinstrumentationplatform/services/anonymous-usage/worker/wrangler.jsonc"
+    ],
+    "cwd": "/Users/patrick/workspace/sloopworksinstrumentationplatform/services/anonymous-usage/worker",
+    "returncode": 0,
+    "output": "\n \u26c5\ufe0f wrangler 4.110.0 (update available 4.166.0)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nResource location: local \n\nUse --remote if you want to access the remote instance.\n\nMigrations to be applied:\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 name            \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 0001_weekly.sql \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n? About to apply 1 migration(s)\nYour database may not be available to serve requests during the migration, continue?\n\ud83e\udd16 Using fallback value in non-interactive context: yes\n\ud83c\udf00 Executing on local database USAGE (00000000-0000-0000-0000-000000000000) from ../../../../../../../var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/droidbridge-swift-worker-yx0d4m_s/d1/v3/d1:\n\ud83c\udf00 To execute on your remote database, add a --remote flag to your wrangler command.\n\ud83d\udea3 2 commands executed successfully.\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 name            \u2502 status \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 0001_weekly.sql \u2502 \u2705     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "command": [
+      "swift",
+      "build"
+    ],
+    "cwd": "/Users/patrick/workspace/DroidBridge",
+    "returncode": 0,
+    "output": "[0/1] Planning build\nBuilding for debugging...\n[0/7] Write swift-version--58304C5D6DBC2206.txt\nBuild complete! (0.19s)\nAnother instance of SwiftPM (PID: 44183) is already running using '/Users/patrick/workspace/DroidBridge/.build', waiting until that process has finished execution..."
+  },
+  {
+    "command": [
+      "swift",
+      "build",
+      "--show-bin-path"
+    ],
+    "cwd": "/Users/patrick/workspace/DroidBridge",
+    "returncode": 0,
+    "output": "/Users/patrick/workspace/DroidBridge/.build/arm64-apple-macosx/debug\n"
+  },
+  {
+    "command": [
+      "swiftc",
+      "-I",
+      "/Users/patrick/workspace/DroidBridge/.build/arm64-apple-macosx/debug/Modules",
+      "/Users/patrick/workspace/DroidBridge/scripts/verify-telemetry-worker.swift",
+      "/Users/patrick/workspace/DroidBridge/.build/arm64-apple-macosx/debug/AnonymousUsage.build/UsageMeter.swift.o",
+      "/Users/patrick/workspace/DroidBridge/.build/arm64-apple-macosx/debug/AnonymousUsage.build/UsageReport.swift.o",
+      "-o",
+      "/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/droidbridge-swift-worker-yx0d4m_s/swift-probe"
+    ],
+    "cwd": "/Users/patrick/workspace/DroidBridge",
+    "returncode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/droidbridge-swift-worker-yx0d4m_s/swift-probe",
+      "/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/droidbridge-swift-worker-yx0d4m_s/meter",
+      "64349"
+    ],
+    "cwd": "/Users/patrick/workspace/DroidBridge",
+    "returncode": 0,
+    "output": "Swift transport completed one capped contribution; repeated attempt was budgeted\n"
+  },
+  {
+    "command": [
+      "/Users/patrick/workspace/sloopworksinstrumentationplatform/packages/workerd-smoke/node_modules/.bin/wrangler",
+      "d1",
+      "execute",
+      "USAGE",
+      "--command",
+      "SELECT * FROM weekly ORDER BY week",
+      "--json",
+      "--local",
+      "--persist-to",
+      "/var/folders/9_/kg8d6rm90pj9c99nb_9h88p00000gn/T/droidbridge-swift-worker-yx0d4m_s/d1",
+      "--config",
+      "/Users/patrick/workspace/sloopworksinstrumentationplatform/services/anonymous-usage/worker/wrangler.jsonc"
+    ],
+    "cwd": "/Users/patrick/workspace/sloopworksinstrumentationplatform/services/anonymous-usage/worker",
+    "returncode": 0,
+    "output": "[\n  {\n    \"results\": [\n      {\n        \"week\": \"2026-W47\",\n        \"foreground_sessions\": 1,\n        \"active_minutes\": 0,\n        \"native_sessions\": 1\n      }\n    ],\n    \"success\": true,\n    \"meta\": {\n      \"duration\": 0\n    }\n  }\n]\n"
+  }
+]

@@ -155,6 +155,11 @@ enum MacAppWrapper {
         try config.write(to: resources.appendingPathComponent("launch.json"))
         let name = options["name"] ?? application.name
         var plist: [String: Any] = ["CFBundleIdentifier": identifier, "CFBundleName": name, "CFBundleDisplayName": name, "CFBundleExecutable": "DroidBridge", "CFBundlePackageType": "APPL", "CFBundleShortVersionString": hostInfo["CFBundleShortVersionString"] as? String ?? "0.1.2", "CFBundleVersion": hostInfo["CFBundleVersion"] as? String ?? "3", "CFBundleIconFile": "AndroidApp.icns", "LSMinimumSystemVersion": "26.0", "NSHighResolutionCapable": true, "DroidBridgeWrapperFormat": 2]
+        if hostInfo["DroidBridgeUsageLane"] as? String == "production-v1",
+           let endpoint = hostInfo["DroidBridgeUsageEndpoint"] as? String {
+            plist["DroidBridgeUsageLane"] = "production-v1"
+            plist["DroidBridgeUsageEndpoint"] = endpoint
+        }
         if onDemand { plist["DroidBridgeOnDemandFormat"] = 1 }
         plist["DroidBridgeAppIdentityVersion"] = AppBinaryIdentity.format
         plist["NSLocalNetworkUsageDescription"] = "Connect to your Android phone over Wi-Fi when you choose a wireless connection in DroidBridge."

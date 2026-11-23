@@ -13,10 +13,12 @@ let package = Package(
     targets: [
         .executableTarget(name: "DroidBridgeSupervisor"),
         .target(name: "DroidBridgeCore"),
+        .target(name: "AnonymousUsage"),
         .executableTarget(name: "DroidBridgeAvailability", dependencies: ["DroidBridgeCore"]),
         .executableTarget(name: "DroidBridgeCompanionBroker", dependencies: ["DroidBridgeCore"]),
         .target(name: "DroidBridgeStreaming", dependencies: ["DroidBridgeCore"]),
-        .executableTarget(name: "DroidBridge", dependencies: ["DroidBridgeCore", "DroidBridgeStreaming"]),
+        .executableTarget(name: "DroidBridge", dependencies: ["DroidBridgeCore", "DroidBridgeStreaming", "AnonymousUsage"]),
+        .testTarget(name: "AnonymousUsageTests", dependencies: ["AnonymousUsage"]),
         .testTarget(name: "DroidBridgeCoreTests", dependencies: ["DroidBridgeCore", "DroidBridgeStreaming"]),
     ]
 )

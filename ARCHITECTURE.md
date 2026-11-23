@@ -61,6 +61,15 @@ Presentation refresh performs no network, catalog or process admission. Sidebar 
 `DroidBridgeSupervisor` is a small C executable outside the GUI's lifetime. It launches the exact session child in a dedicated process group, monitors its original parent and child, and stops only its owned process group when the GUI exits or crashes. Native sessions supply exact ADB forward and remote-JAR cleanup arguments. Cleanup is bounded and uses argument arrays.
 
 
+## Desktop usage instrumentation
+
+The `AnonymousUsage` Swift module accepts foreground transitions and a native
+first-frame signal. AppKit owns window, activation and sleep semantics. Control and
+wrapper processes share a private aggregate ledger, consent and a daily send
+budget. The app carries no default receiver. See
+[the measurement contract and rollout plan](docs/DESKTOP_USAGE.md) for scope,
+privacy, deployment dependencies and verification.
+
 ## Open on device connection
 
 General Settings owns an opt-in automatic-opening choice, off by default, bound

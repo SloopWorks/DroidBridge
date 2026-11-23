@@ -1,0 +1,27 @@
+[
+  {
+    "cwd": "/Users/patrick/workspace/sloopworksinstrumentationplatform/services/anonymous-usage",
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "-v"
+    ],
+    "exit_code": 0,
+    "output_file": "receiver-tests.log"
+  },
+  {
+    "cwd": "/Users/patrick/workspace/sloopworksinstrumentationplatform/services/anonymous-usage/worker",
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "-v",
+      "test_worker.py"
+    ],
+    "exit_code": 0,
+    "output_file": "worker-tests.log"
+  }
+]

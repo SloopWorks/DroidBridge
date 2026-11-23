@@ -1,4 +1,5 @@
 import AppKit
+import AnonymousUsage
 import DroidBridgeCore
 
 @MainActor private final class DesktopSettingsTabs: NSTabViewController {
@@ -19,6 +20,8 @@ import DroidBridgeCore
     private let quickStatus = NSTextField(wrappingLabelWithString: "")
     private var quickNow: ClosureButton!
     private var quickChoose: ClosureButton!
+    private let usageStatus = NSTextField(wrappingLabelWithString: "")
+    private var retryUsageWithdrawal: NSButton?
     private let deviceNote = NSTextField(wrappingLabelWithString: "")
     static var defaults: UserDefaults {
         if let scope = CompanionQAScope.current,
@@ -54,14 +57,38 @@ import DroidBridgeCore
             heading("Device settings"), deviceNote,
             ClosureButton(title: "Open Device Settings…") { [weak launcher] in launcher?.showWorkspace(.deviceSettings) }
         ]))
-        tabs.addTabViewItem(page("Integration", symbol: "magnifyingglass", views: [
+        var integrations: [NSView] = [
             heading("Android apps in Spotlight"), launcher.bulkPreference,
             note("This enables managed Android app launchers on this Mac. Per-app availability is chosen in Apps; device-wide creation and results are in Device Settings. Existing running apps remain protected."),
             ClosureButton(title: "Manage Device Apps…") { [weak launcher] in launcher?.showWorkspace(.deviceSettings) },
             heading("Pairing and permissions"),
             note("Android debugging authorization and optional Android-app pairing are separate. Review saved pairings in Devices and notification permissions in Notifications."),
             ClosureButton(title: "Manage Devices…") { [weak launcher] in launcher?.showWorkspace(.devices) }
-        ]))
+        ]
+        if !launcher.isWrapper, let meter = DesktopUsage.shared.meter {
+            let local = DesktopUsage.shared.isLocalVerification
+            let consent = NSButton(checkboxWithTitle: local ? "Share local usage summary" : "Share usage totals with SloopWorks", target: self, action: #selector(updateUsageConsent(_:)))
+            consent.isEnabled = false
+            let retry = ClosureButton(title: "Retry Turning Off Usage Statistics") { [weak self, weak consent] in
+                guard let self, let consent else { return }
+                self.changeUsageConsent(false, button: consent)
+            }
+            retry.isHidden = true
+            retryUsageWithdrawal = retry
+            usageStatus.isHidden = true
+            meter.readConsentStatus { [weak self] result in
+                self?.showUsageConsent(result, button: consent)
+            }
+            integrations.append(contentsOf: [
+                heading(local ? "Local usage verification" : "Usage statistics"), consent,
+                note(local ? "Send foreground session counts, foreground minutes and native video starts to the receiver on this Mac. Turn this off to stop reporting and clear pending counts." : "Send at most one summary per day with foreground session counts, active minutes and native video starts. Reports omit identifiers. The receiving network sees your IP address. Turn this off to stop reporting and clear pending counts.")
+            ])
+            integrations.append(contentsOf: [usageStatus, retry])
+            if local {
+                integrations.append(ClosureButton(title: "Send Usage Summary") { DesktopUsage.shared.meter?.sendPending() })
+            }
+        }
+        tabs.addTabViewItem(page("Integration", symbol: "magnifyingglass", views: integrations))
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         let identity = version.map { "Version \($0) · Build \(build ?? "unknown")" } ?? "Development build"
@@ -86,6 +113,34 @@ import DroidBridgeCore
         refresh()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) unavailable") }
+    @objc private func updateUsageConsent(_ sender: NSButton) {
+        changeUsageConsent(sender.state == .on, button: sender)
+    }
+
+    private func changeUsageConsent(_ enabled: Bool, button: NSButton) {
+        button.isEnabled = false
+        retryUsageWithdrawal?.isEnabled = false
+        DesktopUsage.shared.setConsent(enabled) { [weak self] result in
+            self?.showUsageConsent(result, button: button)
+        }
+    }
+
+    private func showUsageConsent(_ result: UsageConsentResult, button: NSButton) {
+        let unavailable = result.status == .unavailable
+        button.allowsMixedState = unavailable
+        switch result.status {
+        case .enabled: button.state = .on
+        case .disabled: button.state = .off
+        case .unavailable: button.state = .mixed
+        }
+        button.isEnabled = !unavailable && !result.purgePending
+        retryUsageWithdrawal?.isHidden = button.isEnabled
+        retryUsageWithdrawal?.isEnabled = true
+        usageStatus.isHidden = button.isEnabled
+        usageStatus.stringValue = unavailable
+            ? "DroidBridge could not confirm the saved permission. Retry turning off usage statistics."
+            : "Reporting is off. Retry to clear the remaining local counters."
+    }
     @objc private func saveDefaults() {
         guard let launcher else { return }
         Self.defaults.set(launcher.backend.rawValue, forKey: "desktop.defaultBackend")

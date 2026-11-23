@@ -14,6 +14,16 @@ BUILD_NUMBER="${DROIDBRIDGE_BUILD_NUMBER:-1}"
 [[ "$BUILD_NUMBER" =~ ^[1-9][0-9]*$ ]] || { echo "Invalid build number" >&2; exit 1; }
 # Validate all release credentials before builds or publication can replace a candidate.
 SIGNING_MODE="${DROIDBRIDGE_SIGNING_MODE:-adhoc}"
+USAGE_LANE="${DROIDBRIDGE_USAGE_LANE:-off}"
+case "$USAGE_LANE" in
+    off) ;;
+    production-v1)
+        USAGE_ENDPOINT="${DROIDBRIDGE_USAGE_ENDPOINT:-}"
+        # The explicit release lane can select only the named consent recipient.
+        [[ "$USAGE_ENDPOINT" == "https://usage.sloopworks.com/v1/droidbridge/usage" ]] || { echo "Invalid production usage endpoint" >&2; exit 1; }
+        ;;
+    *) echo "Unsupported DROIDBRIDGE_USAGE_LANE" >&2; exit 1 ;;
+esac
 SOURCE_COMMIT=""
 if [ "$SIGNING_MODE" = developer-id ]; then
     SOURCE_COMMIT="$("$PACKAGE_PYTHON" scripts/release_signing.py source-revision)"
@@ -103,6 +113,10 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict>
 <key>CFBundleName</key><string>DroidBridge</string><key>CFBundleDisplayName</key><string>DroidBridge</string><key>CFBundleIdentifier</key><string>app.droidbridge.desktop</string><key>CFBundleExecutable</key><string>DroidBridge</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>$VERSION</string><key>CFBundleVersion</key><string>$BUILD_NUMBER</string><key>DroidBridgeManagedNamingVersion</key><integer>2</integer><key>CFBundleIconFile</key><string>DroidBridge</string><key>LSMinimumSystemVersion</key><string>26.0</string><key>NSHighResolutionCapable</key><true/><key>NSLocalNetworkUsageDescription</key><string>Connect to your Android phone over Wi-Fi when you choose a wireless connection in DroidBridge.</string><key>NSBonjourServices</key><array><string>_adb-tls-pairing._tcp</string><string>_adb-tls-connect._tcp</string></array><key>NSCameraUsageDescription</key><string>Scan the pairing QR code shown on your Android phone to connect it to this Mac.</string><key>NSHumanReadableCopyright</key><string>Copyright © 2026 DroidBridge contributors</string></dict></plist>
 PLIST
+if [ "$USAGE_LANE" = production-v1 ]; then
+    /usr/libexec/PlistBuddy -c "Add :DroidBridgeUsageEndpoint string $USAGE_ENDPOINT" "$APP/Contents/Info.plist"
+    /usr/libexec/PlistBuddy -c "Add :DroidBridgeUsageLane string production-v1" "$APP/Contents/Info.plist"
+fi
 if [ -n "$SOURCE_COMMIT" ]; then
     /usr/libexec/PlistBuddy -c "Add :DroidBridgeSourceCommit string $SOURCE_COMMIT" "$APP/Contents/Info.plist"
 fi
